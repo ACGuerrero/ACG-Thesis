@@ -4,4 +4,6 @@
 *.out
 *.synctex.gz
 unam.jpg
+*.bbl
+*.blg
 
