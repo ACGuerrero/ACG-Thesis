@@ -1,0 +1,85 @@
+\documentclass[onecolumn,11pt]{article}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, total={7in, 9in}]{geometry}
+\usepackage{amsfonts}
+\usepackage{physics}
+\usepackage{bm}
+\setlength\parindent{0pt}
+\title{Proyecto de Tesis} \date{}
+\newcommand{\Cc}{\mathcal{C}} %Para escribir la C caligráfica que denota al mapeo CG
+\newcommand{\Hh}{\mathcal{H}} %Para escribir la H caligráfica que denota esp de Hilbert
+\newcommand{\ident}{\mathbb{1}}% Para escribir el op. indentidad con notación chida
+\newcommand{\CG}[1]{\Cc\left[#1\right]}
+\newcommand*{\B}[1]{\ifmmode\bm{#1}\else\textbf{#1}\fi}
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+Se presenta el proyecto de Tesis de Licenciatura del alumno de la carrera de Física en la Facultad de Ciencias de la UNAM, Adán Castillo Guerrero, bajo el tutelaje del Dr. David Dávalos González. El título tentativo es ``Título chido''.
+
+\section{Marco teórico}
+
+En el marco de la teoría de información cuántica puede asumirse que no siempre es posible acceder a toda la información de un sisterma. De la misma forma en que el ojo humano es incapaz e distinguir las $10^{23}$ moléculas que conforman el vaso de agua frente a él, los aparatos de medición pueden detectar un conjunto de partículas como una sola. 
+
+Al modelaje de un grupo como una unidad, o como otro grupo, pero con un número inferior de grados de libertad, se le llama \textit{coarse graining}. 
+
+Tengo que desarrollar mejor el marco.
+
+\begin{equation}\label{eq:CG}
+    \Cc\left[\rho\right]=\Tr_{B}\left(p\rho+(1-p)S\rho S^{\dag}\right)
+\end{equation}
+
+donde $\rho\in \Hh^{2}_{A}\otimes \Hh^{2}_{B}$ es el operador de densidad de un sistema de cuatro niveles, y $\Tr_{B}$ denota la traza parcial respecto a $\Hh^{2}_{B}$. Al estado $\rho$ se le llama estado ``microscópico'' y a $\CG{\rho}$, estado ``macroscópico''. En este documento, a los estados macroscópicos se les escribirá en negritas. De esta forma:
+\begin{equation}
+    \B{\rho}=\CG{\rho}
+\end{equation}
+
+\vspace{0.5cm}
+\section{Resumen del proyecto}
+
+El trabajo tiene como objetivo el estudio y posterior descripción de la dinámica bajo un mapeo particular de coarse graining, dado por la ecuación (\ref{eq:CG}). Esto es, dada una operación $M$:
+\begin{equation}
+    M:\Hh^{4}\rightarrow\Hh^{4}
+\end{equation}
+aplicada sobre el sistema descrito por $\rho$, nos interesa saber el mapeo efectivo resultante sobre $\B{\rho}$. Tomando en cuenta que si:
+\begin{align}
+    \rho'=&M\rho M^{\dag}\\
+    \Rightarrow \B{\rho}'=&\CG{M\rho M^{\dag}}
+\end{align}
+Para un observador externo, que solo tiene acceso a la descripción \textit{gruesa}, la dinámica se ve como:
+\begin{equation}\label{eq:obs}
+    \B{\rho}\rightarrow\mathcal{A}\left[\B{\rho}\right]=\B{\rho}'
+\end{equation}
+con $\mathcal{A}$ un mapeo:
+\begin{equation}
+    \mathcal{A}:\Hh^{2}\rightarrow\Hh^{2}
+\end{equation}
+Una idea sería determinar la forma de $\mathcal{A}$ mediante tomografía de procesos cuántica. 
+
+Claro, un ejercicio muy interesante sería el de estudiar el problema \textit{inverso}, esto es, que a través de la observación dada por la ecuación (\ref{eq:obs}), se obtenga un mapeo $\mathfrak{A}$ tal que:
+\begin{equation}
+    \rho'=\mathfrak{A}\left[\rho\right]
+\end{equation}
+La cuestión es que me parece que esto requiere haber resuelto primero el problema del mapeo de asignación inverso para el coarse graining.
+
+
+\begin{center}
+    \rule{200pt}{0.4pt}\\
+    Adán Castillo Guerrero \\
+    Estudiante de Física \\
+    Facultad de Ciencias, UNAM \\
+    
+\end{center}
+
+\vspace{1.0cm}
+
+\begin{center}
+    \rule{200pt}{0.4pt}\\
+    Dr. David Dávallos Gonzáles \\
+    Investigador postdoctoral \\
+    RCQI SAS, Eslovaquia\\
+    
+\end{center}
+
+
+\end{document}
