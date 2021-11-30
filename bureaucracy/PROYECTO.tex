@@ -4,6 +4,7 @@
 \usepackage[a4paper, total={7in, 9in}]{geometry}
 \usepackage{amsfonts}
 \usepackage{physics}
+\usepackage{xcolor}
 \usepackage{bm}
 \usepackage{hyperref}
 \title{Proyecto de Tesis} \date{}
@@ -12,6 +13,7 @@
 \newcommand{\ident}{\mathbb{1}}% Para escribir el op. indentidad con notación chida
 \newcommand{\CG}[1]{\Cc\left[#1\right]}
 \newcommand*{\B}[1]{\ifmmode\bm{#1}\else\textbf{#1}\fi}
+\newcommand{\nota}[1]{{\color{red} [#1]}}
 \begin{document}
 \maketitle
 \thispagestyle{empty}
@@ -20,7 +22,7 @@ Se presenta el proyecto de Tesis de Licenciatura del alumno de la carrera de Fí
 \section{Marco teórico}
 
 
-En el marco de la teoría de información cuántica puede asumirse que no siempre es posible acceder a toda la información del sistema de interés, quizá porque las herramientas de medición no tienen la resolución suficiente. El aparato a disposición, por ejemplo, puede confundir diferentes conjuntos de partículas entre sí. El caso más sencillo corresponde a la permutación de dos partículas. Es decir, si un sistema está compuesto por dos partículas cuyos operadores de densidad son $\rho_{1}$ y $\rho_{2}$, entonces el sistema está descrito por el operador $\rho_{1}\otimes\rho_{2}$, y la permutación equivaldría a detectar, en cambio, $\rho_{2}\otimes\rho_{1}$ \cite{FuzzyMeasurements}. Esta \textit{confusión} a la hora de la medición es una aplicación borrosa. Considérese, pues, que se aplica esta a un sistema de dos parículas descrito por un operador de densidad $\rho$:
+Dentro del marco de la \textit{teoría de información cuántica}, especialmente en la conexión con la parte experimental, es natural suponer que no siempre es posible tener disponible toda la información sobre el \textit{estado} del sistema de interés. Esto ya sea por insuficiencia en la resolución de los aparatos de medición o por el inevitable error inherente a las herramientas de medición. Un prototipo sencillo de error, pero El aparato a disposición, por ejemplo, puede confundir diferentes conjuntos de partículas entre sí. El caso más sencillo corresponde a la permutación de dos partículas. Es decir, si un sistema está compuesto por dos partículas cuyos operadores de densidad son $\rho_{1}$ y $\rho_{2}$ \nota{Esto es parte de la nota que viene después, si bien estos son los estados reducidos para cada partícula, tener conocimiento de ellos no es equivalente a conocer el estado en conjunto. Es una de las cosas que diferencia a la cuántica de la clásica.}, entonces el sistema está descrito por el operador $\rho_{1}\otimes\rho_{2}$ \nota{Aguas, no todos los estados de dos partículas tienen esta forma, dime si tienes problemas y lo hablamos}, y la permutación equivaldría a detectar, en cambio, $\rho_{2}\otimes\rho_{1}$ \cite{FuzzyMeasurements}. Esta \textit{confusión} a la hora de la medición es una aplicación borrosa. Considérese, pues, que se aplica esta a un sistema de dos parículas descrito por un operador de densidad $\rho$:
 \begin{equation}\label{eq:Fuzzy2}
 F[\rho]=p\rho+(1-p)S\rho S^{\dag}
 \end{equation}
