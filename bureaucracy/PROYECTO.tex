@@ -77,24 +77,23 @@ Al estado obtenido a través de la aplicación de asignación se le llama \texti
 \vspace{0.5cm}
 \section{Resumen del proyecto}
 
-El trabajo tiene como objetivo el estudio y posterior descripción de la dinámica bajo un mapeo particular de coarse graining, el dado por la ecuación (\ref{eq:CG}). Esto es, que dada una operación unitaria $U_{t}$ \notaAd{dejo la nota sobre mapeos CPTP (más allá de los unitarios)}
-\begin{equation}
-    U_{t}:\Hh^{4}\rightarrow\Hh^{4}
-\end{equation}
-aplicada sobre el sistema descrito inicialmente por $\rho(0)$, nos interesa saber el mapeo efectivo resultante sobre $\B{\rho}$. Tomando en cuenta que si
+El trabajo tiene como objetivo el estudio y posterior descripción de la dinámica bajo un mapeo particular de coarse graining, el dado por la ecuación (\ref{eq:CG}). Dicho esto, si $\mcU_{t}$ es un canal quántico unitario arbitrario inducido por un operador unitario $U_{t}$ \notaAd{dejo la nota sobre mapeos CPTP (más allá de los unitarios)}, esto es
+\begin{gather}
+U_{t}:\Hh^{4} \rightarrow \Hh^{4} \label{eq:UnitOpDyn}\\
+\mcU_{t}:D(\Hh^{4})\rightarrow D(\Hh^{4}) \label{eq:UnitChaDyn}\\
+\mcU_{t}[\rho]=U_{t}\rho U_{t}^{\dag}
+\end{gather}
+entonces es de interés la aplicación efectiva sobre un sistema descrito inicialmente por $\rho(0)$. Es decir, la dinámica que el observador aprecia en $\B{\rho}$. Esto se escribe así:
 \begin{align}
-    \rho(t)=&U_{t}\rho U_{t}^{\dag}\\
+    \rho(t)=&U_{t}\rho(0)U_{t}^{\dag}\\
     \Rightarrow \B{\rho}(t)=&\CG{U_{t}\rho(0) U_{t}^{\dag}}
 \end{align}
-Para un observador externo, que solo tiene acceso a la descripción \textit{gruesa}, la dinámica se ve como
-\begin{equation}\label{eq:obs}
-    \B{\rho}(0)\rightarrow\Gamma_{t}\left[\B{\rho}\right]=\B{\rho}(t)
-\end{equation}
-Al mapeo dinámico efectivo se le denota por $\Gamma_{t}$ y está dado por
-\begin{equation}
-    \Gamma_{t}=
-\end{equation}
-\notaAd{tengo que escribir bien esto, pero estoy cansado, sin falla mañana.}
+\notaAd{Lo que sigue está todo mal escrito, pero lo corrigo mañana temprano}Surge, entonces, una aplicación $\Gamma_{t}$ dada por
+\begin{gather}
+\Gamma_{t}:D(\Hh^{2})\rightarrow D(\Hh^{2})\label{eq:GammaDom}\\
+\Gamma_{t}[\rho]=\Cc\circ\mcU_{t}\circ\mcA_{\Cc}[\rho]\label{eq:Gamma}
+\end{gather}
+\notaAd{Siento que anda hiperverborréico todo esto.}
 
 
 \nota{Aquí podemos hablar del meollo de la dinámica. Ya hablando con Carlos, parte del interés es que no es lineal la dinámica gruesa. Esto es interesante, ya que la cuántica siempre es lineal, pero el universo clásico no lo es siempre. Parte de la idea de Fernando del nuevo paper de Fernando, donde habla del Assignement map, es eso, la emergencia de no linealidad. Aquí puedes hablar un poco de la ecuación: $\rho(t)=\mcC \circ \mcU_t \circ \mcA [\rho(0)]$} Claro, un ejercicio muy interesante sería el de estudiar el problema \textit{inverso}, esto es, que a través de la observación dada por la ecuación (\ref{eq:obs}), se obtenga un mapeo $\mathfrak{A}$ tal que:
