@@ -6,4 +6,5 @@
 unam.jpg
 *.bbl
 *.blg
-
+*.fls
+*fdb_latexmk
