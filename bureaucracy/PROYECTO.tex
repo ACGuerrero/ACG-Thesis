@@ -38,34 +38,42 @@
 \begin{document}
 \maketitle
 \thispagestyle{empty}
-Se presenta el proyecto de Tesis de Licenciatura del alumno de la carrera de Física en la Facultad de Ciencias de la UNAM, Adán Castillo Guerrero, bajo el tutelaje del Dr. David Dávalos González. El título tentativo es ``Título chido''.
+Se presenta el proyecto de Tesis de Licenciatura del alumno de la carrera de Física en la Facultad de Ciencias de la UNAM, Adán Castillo Guerrero, bajo el tutelaje del Dr. David Dávalos González. El título tentativo es ``\textsc{Título chido}''.
 
 \section{Marco teórico}
 
 
-Dentro del marco de la \textit{teoría de información cuántica}, especialmente en conexión con la parte experimental, es natural suponer que no siempre es posible tener disponible toda la información sobre el \textit{estado} del sistema de interés. Esto ya sea por insuficiencia en la resolución de los aparatos de medición o por el inevitable error inherente a las herramientas de medición. Un prototipo sencillo de error es el del inducido por un aparato que confunde diferentes conjuntos de partículas entre sí. El caso más simple corresponde a la permutación de dos partículas. Es decir, si un sistema está compuesto por dos partículas cuyos operadores de densidad son $\rho_{A}$ y $\rho_{B}$ \nota{Esto es parte de la nota que viene después, si bien estos son los estados reducidos para cada partícula, tener conocimiento de ellos no es equivalente a conocer el estado en conjunto. Es una de las cosas que diferencia a la cuántica de la clásica.}, pertenecientes a los espacios de Hilbert $\Hh_{A}$ y $\Hh_{B}$ respectivamente, entonces el sistema está descrito por un operador de densidad que actúa sobre $\Hh_{A}\otimes\Hh_{B}$ \notaAd{Bueno, según yo eso sí se puede decir, pero si hay sistemas de dos partículas que viven en espacios que no se pueden escribir así, los desconozco}, y la permutación equivaldría a operar, en cambio, en el espacio $\Hh_{B}\otimes\Hh_{A}$. Este intercambio accidental a la hora de la medición es una \textit{aplicación borrosa} \cite{FuzzyMeasurements}.
+Dentro del marco de la \textit{teoría de información cuántica}, especialmente en conexión con la parte experimental, es natural suponer que no siempre es posible disponer de toda la información sobre el \textit{estado} del sistema de interés. Esto ya sea por insuficiencia en la resolución de los aparatos de medición o por el inevitable error inherente a las herramientas de medición. Un prototipo sencillo de error es el del inducido por un aparato que confunde diferentes conjuntos de partículas entre sí. El caso más simple corresponde a la permutación de dos partículas. Es decir, si un sistema está compuesto por dos partículas cuyos operadores de densidad son $\rho_{A}$ y $\rho_{B}$ \nota{Esto es parte de la nota que viene después, si bien estos son los estados reducidos para cada partícula, tener conocimiento de ellos no es equivalente a conocer el estado en conjunto. Es una de las cosas que diferencia a la cuántica de la clásica.}, pertenecientes a los conjuntos de operadores de densidad sobre los espacios de Hilbert $\Hh_{A}$ y $\Hh_{B}$ respectivamente, entonces el sistema está descrito por un operador de densidad que actúa sobre $\Hh_{A}\otimes\Hh_{B}$ \notaAd{Bueno, según yo eso sí se puede decir, pero si hay sistemas de dos partículas que viven en espacios que no se pueden escribir así, los desconozco}, y la permutación equivaldría a operar, en cambio, en el espacio $\Hh_{B}\otimes\Hh_{A}$. Este intercambio accidental a la hora de la medición es una \textit{aplicación borrosa} \cite{FuzzyMeasurements}.
 
-Considérese, pues, que se aplica esta aplicación borrosa a un sistema de dos partículas caracterizado por un operador de densidad $\rho\in\Hh^{4}$. Esta acción puede escribirse como
-\begin{equation}\label{eq:Fuzzy2}
-\mcF[\rho]=p\rho+(1-p)S\rho S^{\dag}
-\end{equation}
+Considérese, pues, que se aplica esta aplicación borrosa a un sistema de dos partículas caracterizado por un operador de densidad $\rho\in D(\Hh^{4})$, con $D(\Hh^{4})$ el espacio de los operadores de densidad que actúan sobre $\Hh^{4}$. Esta acción puede escribirse como
+\begin{gather}
+\mcF:D(\Hh^{4})\rightarrow D(\Hh^{4})\label{eq:Fuzzy2Domain}\\
+\mcF[\rho]=p\rho+(1-p)S\rho S^{\dag}\label{eq:Fuzzy2}
+\end{gather}
 En esta ecuación, el parámetro  de probabilidad $p$ está asociado a la frecuencia con la que la herramienta de medición confunde a los subsistemas, y el operador $S$ es la compuerta lógica cuántica SWAP conocida en cómputo cuántico. El sistema resultante, $\mcF[\rho]$ ,es una mezcla de dos sistemas: los descritos por $\Hh_{A}\otimes\Hh_{B}$ y $\Hh_{B}\otimes\Hh_{A}$. Debe notarse, además, que la aplicación borrosa es lineal.
 
 
-La aplicación borrosa de dos partículas es un canal cuántico de un espacio $\Hh^{4}$ al mismo, pero no todos los canales cuánticos envían operadores al mismo espacio en el que actúan. Considérese un aparato de medición que es capaz de acceder únicamente a la información de uno de los subsistemas del sistema estudiado. Si el sistema es bipartita y el aparato mide únicamente sobre la primera de las partes, el estado observable es
+La aplicación borrosa manda elementos de $D(\Hh^{4})$ a elementos de $D(\Hh^{4})$. Sin embargo, no todos los canales cuánticos actúan de esta forma. Considérese un aparato de medición que es capaz de acceder únicamente a la información de uno de los subsistemas del sistema estudiado. Si el sistema es bipartita y el aparato mide únicamente sobre la primera de las partes, el estado observable es
 \begin{equation}\label{eq:TrA}
 \B{\rho}=\Tr_{2}[\rho]
 \end{equation}
-donde $\Tr_{2}$ es la traza parcial respecto al segundo subsistema. Este es un canal de $\Hh^{4}$ a $\Hh^{2}$, y, de forma efectiva, modela dos partículas como una sola. Al modelaje de un grupo como una unidad, o como otro grupo, pero con un número inferior de grados de libertad, se le llama \textit{coarse graining}. Ahora, pensando en un aparato de medición que además de intercambiar partículas, es incapaz de distinguirlas (es decir, que las ve como una sola) es posible combinar las ecuaciones (\ref{eq:Fuzzy2}) y (\ref{eq:TrA}) en una aplicación de coarse graining menos simple \cite{FuzzyMeasurements}. Matemáticamente:
-\begin{equation}\label{eq:CG}
-    \Cc\left[\rho\right]=\Tr_{B}\left(p\rho+(1-p)S\rho S^{\dag}\right)
-\end{equation}
-
-donde $\rho\in \Hh^{2}_{A}\otimes \Hh^{2}_{B}$ es el operador de densidad de un sistema de cuatro niveles, y $\Tr_{B}$ denota la traza parcial respecto a $\Hh^{2}_{B}$. Al estado $\rho$ se le llama estado ``microscópico'' y a $\CG{\rho}$, estado ``macroscópico''. En este documento, a los estados macroscópicos se les denotará en negritas. De esta forma, como en la ecuación (\ref{eq:TrA}), se escribe
+donde $\Tr_{2}$ es la traza parcial respecto al segundo subsistema. Este es un canal de $D(\Hh^{4})$ a $D(\Hh^{2})$, y, de forma efectiva, modela dos partículas como una sola. Al modelaje de un grupo como una unidad, o como otro grupo, pero con un número inferior de grados de libertad, se le llama \textit{coarse graining}. Ahora, pensando en un aparato de medición que además de intercambiar partículas, es incapaz de distinguirlas (es decir, que las ve como una sola) es posible combinar las ecuaciones (\ref{eq:Fuzzy2}) y (\ref{eq:TrA}) en una aplicación de coarse graining menos simple \cite{FuzzyMeasurements}. Matemáticamente:
+\begin{gather}
+\Cc:D(\Hh^{4})\rightarrow D(\Hh^{2})\label{eq:CGDom}\\
+\Cc\left[\rho\right]=\Tr_{B}\left(p\rho+(1-p)S\rho S^{\dag}\right)\label{eq:CG}
+\end{gather}
+donde $\Tr_{B}$ denota la traza parcial respecto al elemento de $D_{B}(\Hh^{2})$. Al estado $\rho$ se le llama estado ``microscópico'' o ``fino'' y a $\CG{\rho}$, estado ``macroscópico'' o ``grueso''. En este documento, a los estados macroscópicos se les denotará en negritas (haciendo referencia a su calidad gruesa). De esta forma, como en la ecuación (\ref{eq:TrA}), se escribe
 \begin{equation}
     \B{\rho}=\CG{\rho}
 \end{equation}
-\notaAd{Aquí toca describir lo del assignement map.}
+Si el experimentalista solo tiene acceso al sistema grueso, entonces es posible, ha sido mostrado \cite{Macro-To-Micro} \notaAd{¿qué pez con las citas desordenadas?}, que es posible asignar un estado microscópico promedio que corresponda a las observaciones realizadas. Se le llama \textit{aplicación de asignación promedio} a la aplicación asociada a un coarse graining que asigna al estado grueso un estado fino, de tal forma que bajo el coarse graining el estado grueso sea recuperable del estado fino. Esta aplicación es
+\begin{gather}
+\mcA_{\Cc}:D(\Hh^{2})\rightarrow D(\Hh^{4})\label{eq:AAMDom}\\
+\mcA_{\Cc}\left[\B{\rho}\right]=\rho_{\textsc{avg}}\mid(\Cc[\rho_{\textsc{avg}}]=\B{\rho})\label{eq:AAM}
+\end{gather}
+Al estado obtenido a través de la aplicación de asignación se le llama \textit{promedio asignado}.
+
+\notaAd{Creo que queda mejor poner aquí directo lo de las evoluciones unitarias}
 \vspace{0.5cm}
 \section{Resumen del proyecto}
 
@@ -113,7 +121,7 @@ La cuestión es que me parece que esto requiere haber resuelto primero el proble
     RCQI, Instituto de Física, Academia Eslovaca de Ciencias (SAV), Eslovaquia\\
     
 \end{center}
-\bibliographystyle{plain}
+\bibliographystyle{abbrv}
 \bibliography{bibliography}
 
 \end{document}
