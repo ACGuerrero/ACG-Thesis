@@ -3,6 +3,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[a4paper, total={7in, 9in}]{geometry}
 \usepackage{amsfonts}
+\usepackage{dsfont}
 \usepackage{physics}
 \usepackage{xcolor}
 \usepackage{multicol} %para la lista de operadores
@@ -31,7 +32,7 @@
 \title{Proyecto de Tesis} \date{}
 \newcommand{\Cc}{\mathcal{C}} %Para escribir la C caligráfica que denota al mapeo CG
 \newcommand{\Hh}{\mathbb{C}} %Para escribir al espacio de hilbert complejo
-\newcommand{\ident}{\mathbb{1}}% Para escribir el op. indentidad con notación chida
+\newcommand{\Id}{\mathds{1}}% Para escribir el op. indentidad con notación chida
 \newcommand{\CG}[1]{\Cc\left[#1\right]}
 \newcommand*{\B}[1]{\ifmmode\bm{#1}\else\textbf{#1}\fi}
 \newcommand{\nota}[1]{{\color{red} [#1]}}
@@ -95,19 +96,19 @@ Tomando en cuenta que el estado microscópico puede obtenerse de la aplicación 
 \end{gather}
 \notaAd{Siento que anda hiperverborréico todo esto.}
 
-Para estudiar esta dinámica, se propondrán diferentes mapas unitario $\mcU_{t}$, del tipo
+Para estudiar esta dinámica, se propondrán diferentes aplicaciones en el espacio microscópico. Los siguientes son algunos ejemplos de dinpamicas de interés, considerando a $\mcU_{t}$ un canal unitario $D(\Hh^{2})\rightarrow D(\Hh^{2})$:
     \begin{multicols}{3}
     \begin{enumerate}
         \item \textsc{CNOT}
-        \item $H\otimes H$
-        \item $H\otimes H$
-        \item $H\otimes H$
-        \item $H\otimes H$
-        \item $H\otimes H$
+        \item $\Id\otimes \mcU_{t}$
+        \item $\mcU_{t}\otimes\Id$
+        \item $\mcU_{t}\otimes \mcU_{t}$
+        \item \textsc{SWAP}
+        \item \textsc{CPTP}
     \end{enumerate}
     \end{multicols}
-
-\nota{Aquí podemos hablar del meollo de la dinámica. Ya hablando con Carlos, parte del interés es que no es lineal la dinámica gruesa. Esto es interesante, ya que la cuántica siempre es lineal, pero el universo clásico no lo es siempre. Parte de la idea de Fernando del nuevo paper de Fernando, donde habla del Assignement map, es eso, la emergencia de no linealidad. Aquí puedes hablar un poco de la ecuación: $\rho(t)=\mcC \circ \mcU_t \circ \mcA [\rho(0)]$} 
+Y posteriormente se caracterizará y se analizarán las propiedades de la dinámica observada en la descripción gruesa del sistema. Será de particular interés el hecho de la emergencia de no-linearidad en la dinámica, como ha sido notado en investigaciones recientes\cite{Macro-To-Micro}\cite{CGEmergingDynamics}. Este estudio se hará en apoyo de la bibliografía adecuada y de reuniones periódicas con el tutor de tesis. \notaAd{Me toca leer el artículo \cite{BeyondKraus}, lo haré para el domingo sin falla.}
+\nota{Aquí podemos hablar del meollo de la dinámica. Ya hablando con Carlos, parte del interés es que no es lineal la dinámica gruesa. Esto es interesante, ya que la cuántica siempre es lineal, pero el universo clásico no lo es siempre. Parte de la idea de Fernando del nuevo paper de Fernando, donde habla del Assignement map, es eso, la emergencia de no linealidad. Aquí puedes hablar un poco de la ecuación: $\rho(t)=\mcC \circ \mcU_t \circ \mcA [\rho(0)]$}
 
 
 \begin{center}
