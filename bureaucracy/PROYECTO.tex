@@ -5,6 +5,7 @@
 \usepackage{amsfonts}
 \usepackage{physics}
 \usepackage{xcolor}
+\usepackage{multicol} %para la lista de operadores
 \newcommand{\mcU}{\mathcal{U}}
 \newcommand{\mcO}{\mathcal{O}}
 \newcommand{\mcI}{\mathcal{I}}
@@ -77,30 +78,36 @@ Al estado obtenido a través de la aplicación de asignación se le llama \texti
 \vspace{0.5cm}
 \section{Resumen del proyecto}
 
-El trabajo tiene como objetivo el estudio y posterior descripción de la dinámica bajo un mapeo particular de coarse graining, el dado por la ecuación (\ref{eq:CG}). Dicho esto, si $\mcU_{t}$ es un canal quántico unitario arbitrario inducido por un operador unitario $U_{t}$ \notaAd{dejo la nota sobre mapeos CPTP (más allá de los unitarios)}, esto es
+El trabajo tiene como objetivo el estudio y posterior descripción de la dinámica bajo una aplicación particular de coarse graining: la dada por la ecuación (\ref{eq:CG}). Dicho esto, si $\mcU_{t}$ es un canal quántico unitario arbitrario inducido por un operador unitario $U_{t}$ que actúa en el espacio microscópico\notaAd{dejo la nota sobre mapeos CPTP (más allá de los unitarios)}, esto es
 \begin{gather}
 U_{t}:\Hh^{4} \rightarrow \Hh^{4} \label{eq:UnitOpDyn}\\
 \mcU_{t}:D(\Hh^{4})\rightarrow D(\Hh^{4}) \label{eq:UnitChaDyn}\\
 \mcU_{t}[\rho]=U_{t}\rho U_{t}^{\dag}
 \end{gather}
-entonces es de interés la aplicación efectiva sobre un sistema descrito inicialmente por $\rho(0)$. Es decir, la dinámica que el observador aprecia en $\B{\rho}$. Esto se escribe así:
-\begin{align}
-    \rho(t)=&U_{t}\rho(0)U_{t}^{\dag}\\
-    \Rightarrow \B{\rho}(t)=&\CG{U_{t}\rho(0) U_{t}^{\dag}}
-\end{align}
-\notaAd{Lo que sigue está todo mal escrito, pero lo corrigo mañana temprano}Surge, entonces, una aplicación $\Gamma_{t}$ dada por
+y el experimenador tiene acceso únicamente a la descripción macroscópica del sistema, entonces este observa una dinámica efectiva descrita por un canal $\Gamma_{t}$
+\begin{equation}
+\B{\rho}(t)=\Gamma_{t}[\B{\rho}(0)]
+\end{equation}
+Tomando en cuenta que el estado microscópico puede obtenerse de la aplicación de asignación promedio dada por las ecuaciones (\ref{eq:AAMDom}) y (\ref{eq:AAM}), entonces este canal efectivo puede escribirse como
 \begin{gather}
 \Gamma_{t}:D(\Hh^{2})\rightarrow D(\Hh^{2})\label{eq:GammaDom}\\
-\Gamma_{t}[\rho]=\Cc\circ\mcU_{t}\circ\mcA_{\Cc}[\rho]\label{eq:Gamma}
+\Gamma_{t}=\Cc\circ\mcU_{t}\circ\mcA_{\Cc}\label{eq:Gamma}
 \end{gather}
 \notaAd{Siento que anda hiperverborréico todo esto.}
 
+Para estudiar esta dinámica, se propondrán diferentes mapas unitario $\mcU_{t}$, del tipo
+    \begin{multicols}{3}
+    \begin{enumerate}
+        \item \textsc{CNOT}
+        \item $H\otimes H$
+        \item $H\otimes H$
+        \item $H\otimes H$
+        \item $H\otimes H$
+        \item $H\otimes H$
+    \end{enumerate}
+    \end{multicols}
 
-\nota{Aquí podemos hablar del meollo de la dinámica. Ya hablando con Carlos, parte del interés es que no es lineal la dinámica gruesa. Esto es interesante, ya que la cuántica siempre es lineal, pero el universo clásico no lo es siempre. Parte de la idea de Fernando del nuevo paper de Fernando, donde habla del Assignement map, es eso, la emergencia de no linealidad. Aquí puedes hablar un poco de la ecuación: $\rho(t)=\mcC \circ \mcU_t \circ \mcA [\rho(0)]$} Claro, un ejercicio muy interesante sería el de estudiar el problema \textit{inverso}, esto es, que a través de la observación dada por la ecuación (\ref{eq:obs}), se obtenga un mapeo $\mathfrak{A}$ tal que:
-\begin{equation}
-    \rho'=\mathfrak{A}\left[\rho\right]
-\end{equation}
-La cuestión es que me parece que esto requiere haber resuelto primero el problema del mapeo de asignación inverso para el coarse graining.
+\nota{Aquí podemos hablar del meollo de la dinámica. Ya hablando con Carlos, parte del interés es que no es lineal la dinámica gruesa. Esto es interesante, ya que la cuántica siempre es lineal, pero el universo clásico no lo es siempre. Parte de la idea de Fernando del nuevo paper de Fernando, donde habla del Assignement map, es eso, la emergencia de no linealidad. Aquí puedes hablar un poco de la ecuación: $\rho(t)=\mcC \circ \mcU_t \circ \mcA [\rho(0)]$} 
 
 
 \begin{center}
