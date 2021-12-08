@@ -52,7 +52,7 @@ Se presenta el proyecto de Tesis de Licenciatura del alumno de la carrera de Fí
 
 Dentro del marco de la \textit{teoría de información cuántica}, especialmente en conexión con la parte experimental, es natural suponer que no siempre es posible disponer de toda la información sobre el \textit{estado} del sistema de interés. Esto ya sea por insuficiencia en la resolución de los aparatos de medición o por el inevitable error inherente a las herramientas de medición. Un prototipo sencillo de error es el del inducido por un aparato que confunde diferentes conjuntos de partículas entre sí. El caso más simple corresponde a la permutación de dos partículas. Es decir, si un sistema está compuesto por dos partículas cuyos operadores de densidad son $\rho_{A}$ y $\rho_{B}$, pertenecientes a los conjuntos de operadores de densidad sobre los espacios de Hilbert $\mcH_{A}$ y $\mcH_{B}$ respectivamente, entonces el sistema está descrito por un operador de densidad que actúa sobre $\mcH_{A}\otimes\mcH_{B}$, y la permutación equivaldría a operar, en cambio, en el espacio $\mcH_{B}\otimes\mcH_{A}$. Este intercambio accidental a la hora de la medición es una \textit{aplicación borrosa} \cite{FuzzyMeasurements}.
 
-Considérese, pues, \textbf{que se aplica esta aplicación}\notaAd{nope} borrosa a un sistema de dos partículas caracterizado por un operador de densidad $\rho\in D(\Complex^{2}\otimes\Complex^{2})$, con $D(\Complex^{2}\otimes\Complex^{2})$ el espacio de los operadores de densidad que actúan sobre $\Complex^{2}\otimes\Complex^{2}$. Esta acción puede escribirse como
+Considérese, pues, que se aplica dicha aplicación borrosa a un sistema de dos partículas caracterizado por un operador de densidad $\rho\in D(\Complex^{2}\otimes\Complex^{2})$, con $D(\Complex^{2}\otimes\Complex^{2})$ el espacio de los operadores de densidad que actúan sobre $\Complex^{2}\otimes\Complex^{2}=\Complex^{4}$. Esta acción puede escribirse como
 \begin{gather}
 \mcF:D(\Complex^{4})\rightarrow D(\Complex^{4})\label{eq:Fuzzy2Domain}\\
 \Fuzzy{\rho}=p\rho+(1-p)S\rho S^{\dag}\label{eq:Fuzzy2}
@@ -60,11 +60,7 @@ Considérese, pues, \textbf{que se aplica esta aplicación}\notaAd{nope} borrosa
 En esta ecuación, el parámetro  de probabilidad $p$ está asociado a la frecuencia con la que la herramienta de medición confunde a los subsistemas, y el operador $S$ es la compuerta lógica cuántica SWAP conocida en cómputo cuántico. El sistema resultante, $\Fuzzy{\rho}$ ,es una mezcla de dos sistemas: los descritos por $\mcH_{A}\otimes\mcH_{B}$ y $\mcH_{B}\otimes\mcH_{A}$. Debe notarse, además, que la aplicación borrosa es lineal.
 
 
-La aplicación borrosa manda elementos de $D(\Complex^{4})$ a elementos de $D(\Complex^{4})$. Sin embargo, no todos los canales cuánticos actúan de esta forma. Considérese un aparato de medición que es capaz de acceder únicamente a la información de uno de los subsistemas del sistema estudiado. Si el sistema es bipartita y el aparato mide únicamente sobre la primera de las partes, el estado observable es
-\begin{equation}\label{eq:TrA}
-\rho=\Tr_{2}[\rho]
-\end{equation}
-donde $\Tr_{2}$ es la traza parcial respecto al segundo subsistema. Este es un canal de $D(\Complex^{4})$ a $D(\Complex^{2})$, y, de forma efectiva, modela dos partículas como una sola. Al modelaje de un grupo como una unidad, o como otro grupo, pero con un número inferior de grados de libertad, se le llama \textit{coarse graining}. Ahora, pensando en un aparato de medición que además de intercambiar partículas, es incapaz de distinguirlas (es decir, que las ve como una sola) es posible combinar las ecuaciones (\ref{eq:Fuzzy2}) y (\ref{eq:TrA}) en una aplicación de coarse graining menos simple \cite{FuzzyMeasurements}. Matemáticamente:
+Al modelaje de un grupo como una unidad, o como otro grupo, pero con un número inferior de grados de libertad, se le llama \textit{coarse graining}. Ahora, pensando en un aparato de medición que además de intercambiar partículas, es incapaz de distinguirlas (es decir, que las ve como una sola) es posible combinar las ecuaciones (\ref{eq:Fuzzy2}) y (\ref{eq:TrA}) en una aplicación de coarse graining menos simple \cite{FuzzyMeasurements}. Matemáticamente:
 \begin{gather}
 \mcC:D(\Complex^{4})\rightarrow D(\Complex^{2})\label{eq:CGDom}\\
 \mcC\left[\rho\right]=\Tr_{B}\left(p\rho+(1-p)S\rho S^{\dag}\right)\label{eq:CG}
@@ -73,7 +69,7 @@ donde $\Tr_{B}$ denota la traza parcial respecto al elemento de $D_{B}(\Complex^
 \begin{equation}
     \rho_{g}=\CG{\rho_{f}}
 \end{equation}
-Si el experimentalista solo tiene acceso al sistema grueso, entonces es posible, ha sido mostrado \cite{Macro-To-Micro} \notaAd{¿qué pez con las citas desordenadas?}, que es posible asignar un estado microscópico promedio que corresponda a las observaciones realizadas. Se le llama \textit{aplicación de asignación promedio} a la aplicación asociada a un coarse graining que asigna al estado grueso un estado fino, de tal forma que bajo el coarse graining el estado grueso sea recuperable del estado fino. Esta aplicación es
+Si el experimentalista solo tiene acceso al sistema grueso, entonces es posible, ha sido mostrado \cite{Macro-To-Micro}, que es posible asignar un estado microscópico promedio que corresponda a las observaciones realizadas. Se le llama \textit{aplicación de asignación promedio} a la aplicación asociada a un coarse graining que asigna al estado grueso un estado fino, de tal forma que bajo el coarse graining el estado grueso sea recuperable del estado fino. Esta aplicación es
 \begin{gather}
 \mcA_{\mcC}:D(\Complex^{2})\rightarrow D(\Complex^{4})\label{eq:AAMDom}\\
 \mcA_{\mcC}\left[\rho_{g}\right]=\rho_{\textsc{avg}}\mid(\CG{\rho_{\textsc{avg}}}=\rho_{g})\label{eq:AAM}
@@ -136,7 +132,7 @@ Y posteriormente se caracterizará y se analizarán las propiedades de la dinám
     RCQI, Instituto de Física, Academia Eslovaca de Ciencias (SAV), Eslovaquia\\
     
 \end{center}
-\bibliographystyle{abbrv}
+\bibliographystyle{ieeetr}
 \bibliography{bibliography}
 
 \end{document}
