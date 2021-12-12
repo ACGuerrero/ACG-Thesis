@@ -77,9 +77,13 @@ En este contexto, diferenciamos al estado ``microscópico'' o ``fino'' $\rho_{f}
 Si el experimentalista solo tiene acceso al sistema grueso, ha sido mostrado \cite{Macro-To-Micro}, que es posible asignar un estado microscópico promedio que corresponda a las observaciones realizadas. Se le llama \textit{aplicación de asignación promedio} a la aplicación asociada a un coarse graining que asigna al estado grueso un estado fino, de tal forma que bajo el coarse graining el estado grueso sea recuperable del estado fino. Esta aplicación es
 \begin{gather}
 \mcA_{\mcC}:D(\Complex^{2})\rightarrow D(\Complex^{4})\label{eq:AAMDom}\\
-\mcA_{\mcC}\left[\rho_{g}\right]=\rho_{\textsc{avg}}\mid(\CG{\rho_{\textsc{avg}}}=\rho_{g})\label{eq:AAM}
+\mcA_{\mcC}\left[\rho_{g}\right]=\textsc{AVG}(\Omega_{\rho_{g}})\label{eq:AAM}
 \end{gather}
-Al estado obtenido a través de la aplicación de asignación se le llama \textit{promedio asignado}.
+donde \textsc{AVG} indica un promedio y
+\begin{equation}
+\Omega_{\rho_{g}}=\{\rho\in D(\Complex^{2}\otimes\Complex^{2}) \mid \CG{\rho}=\rho_{g}\}
+\end{equation}
+Es importante notar que la ecuación (\ref{eq:AAM}) no es la inversa de la ecuación (\ref{eq:CG}). La aplicación $\mcA$ asigna a un estado macroscópico el estado microscópico más probable tal que este cumpla, bajo el modelado de grano grueso, con las medidiciones efectuadas: el promedio de todos los microestados en $\Omega_{\rho_{g}}$. La aparición de un promedio sobre todo un conjunto está relacionada a la ignorancia del observador. Al estado obtenido a través de la aplicación de asignación se le llama \textit{promedio asignado}.
 \vspace{0.5cm}
 \section{Resumen del proyecto}
 
