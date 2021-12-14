@@ -1,4 +1,7 @@
 \documentclass[onecolumn,11pt]{article}
+%*********
+%Paquetes
+%*********
 \usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[a4paper, total={7in, 9in}]{geometry}
@@ -6,7 +9,13 @@
 \usepackage{dsfont}
 \usepackage{physics}
 \usepackage{xcolor}
+\usepackage{tikz-cd} %para diagrama conmutatitvo
 \usepackage{multicol} %para la lista de operadores
+\usepackage{hyperref}
+\title{Proyecto de Tesis} \date{}
+%*********
+%Comandos
+%*********
 \newcommand{\mcU}{\mathcal{U}}
 \newcommand{\mcO}{\mathcal{O}}
 \newcommand{\mcI}{\mathcal{I}}
@@ -27,88 +36,91 @@
 \newcommand{\mcD}{\mathcal{D}}
 \newcommand{\mcA}{\mathcal{A}}
 \newcommand{\mcP}{\mathcal{P}}
-\usepackage{bm}
-\usepackage{hyperref}
-\title{Proyecto de Tesis} \date{}
-\newcommand{\Cc}{\mathcal{C}} %Para escribir la C caligráfica que denota al mapeo CG
-\newcommand{\Hh}{\mathbb{C}} %Para escribir al espacio de hilbert complejo
+\newcommand{\Complex}{\mathbb{C}} %Para escribir al espacio de hilbert complejo
 \newcommand{\Id}{\mathds{1}}% Para escribir el op. indentidad con notación chida
-\newcommand{\CG}[1]{\Cc\left[#1\right]}
-\newcommand*{\B}[1]{\ifmmode\bm{#1}\else\textbf{#1}\fi}
+\newcommand{\CG}[1]{\mcC\left[#1\right]}
+\newcommand{\Fuzzy}[1]{\mcF\left[#1\right]}
 \newcommand{\nota}[1]{{\color{red} [#1]}}
 \newcommand{\notaAd}[1]{{\color{blue} [#1]}} %Notas pero mías
+
 \begin{document}
 \maketitle
 \thispagestyle{empty}
-Se presenta el proyecto de Tesis de Licenciatura del alumno de la carrera de Física en la Facultad de Ciencias de la UNAM, Adán Castillo Guerrero, bajo el tutelaje del Dr. David Dávalos González. El título tentativo es ``\textsc{Dinámica de un sistema de dos qubits bajo un modelo de granulado grueso}''.
+Se presenta el proyecto de Tesis de Licenciatura del alumno de la carrera de Física en la Facultad de Ciencias de la UNAM, Adán Castillo Guerrero, bajo el tutelaje del Dr. David Dávalos González. El título tentativo es ``\textsc{Dinámica de un sistema de dos qubits bajo un modelo de grano grueso}''.
 
 \section{Marco teórico}
 
 
-Dentro del marco de la \textit{teoría de información cuántica}, especialmente en conexión con la parte experimental, es natural suponer que no siempre es posible disponer de toda la información sobre el \textit{estado} del sistema de interés. Esto ya sea por insuficiencia en la resolución de los aparatos de medición o por el inevitable error inherente a las herramientas de medición. Un prototipo sencillo de error es el del inducido por un aparato que confunde diferentes conjuntos de partículas entre sí. El caso más simple corresponde a la permutación de dos partículas. Es decir, si un sistema está compuesto por dos partículas cuyos operadores de densidad son $\rho_{A}$ y $\rho_{B}$ \nota{Esto es parte de la nota que viene después, si bien estos son los estados reducidos para cada partícula, tener conocimiento de ellos no es equivalente a conocer el estado en conjunto. Es una de las cosas que diferencia a la cuántica de la clásica.}, pertenecientes a los conjuntos de operadores de densidad sobre los espacios de Hilbert $\Hh_{A}$ y $\Hh_{B}$ respectivamente, entonces el sistema está descrito por un operador de densidad que actúa sobre $\Hh_{A}\otimes\Hh_{B}$ \notaAd{Bueno, según yo eso sí se puede decir, pero si hay sistemas de dos partículas que viven en espacios que no se pueden escribir así, los desconozco}, y la permutación equivaldría a operar, en cambio, en el espacio $\Hh_{B}\otimes\Hh_{A}$. Este intercambio accidental a la hora de la medición es una \textit{aplicación borrosa} \cite{FuzzyMeasurements}.
+Dentro del marco de la \textit{teoría de información cuántica}, especialmente en conexión con la parte experimental, es natural suponer que no siempre es posible disponer de toda la información sobre el \textit{estado} del sistema de interés. Esto ya sea por insuficiencia en la resolución de los aparatos de medición o por el inevitable error inherente a las herramientas de medición. Un prototipo sencillo de error es el del inducido por un aparato que confunde diferentes conjuntos de partículas entre sí. El caso más simple corresponde a la permutación de dos partículas. Es decir, si un sistema está compuesto por dos partículas descritas a través de los espacios de Hilbert $\mcH_{A}$ y $\mcH_{B}$, entonces el sistema está completamente determinado por un operador de densidad que actúa sobre $\mcH_{A}\otimes\mcH_{B}$, y la permutación equivaldría a operar, en cambio, en el espacio $\mcH_{B}\otimes\mcH_{A}$. Este intercambio accidental a la hora de la medición es una \textit{aplicación borrosa} \cite{FuzzyMeasurements}.
 
-Considérese, pues, que se aplica esta aplicación borrosa a un sistema de dos partículas caracterizado por un operador de densidad $\rho\in D(\Hh^{4})$, con $D(\Hh^{4})$ el espacio de los operadores de densidad que actúan sobre $\Hh^{4}$. Esta acción puede escribirse como
+Considérese, pues, que se aplica dicha aplicación borrosa a un sistema de dos partículas caracterizado por un operador de densidad $\rho\in D(\Complex^{2}\otimes\Complex^{2})$, con $D(\Complex^{2}\otimes\Complex^{2})$ el espacio de los operadores de densidad que actúan sobre $\Complex^{2}\otimes\Complex^{2}=\Complex^{4}$. Esta acción puede escribirse como
 \begin{gather}
-\mcF:D(\Hh^{4})\rightarrow D(\Hh^{4})\label{eq:Fuzzy2Domain}\\
-\mcF[\rho]=p\rho+(1-p)S\rho S^{\dag}\label{eq:Fuzzy2}
+\mcF:D(\Complex^{4})\rightarrow D(\Complex^{4})\label{eq:Fuzzy2Domain}\\
+\Fuzzy{\rho}=p\rho+(1-p)S\rho S^{\dag}\label{eq:Fuzzy2}
 \end{gather}
-En esta ecuación, el parámetro  de probabilidad $p$ está asociado a la frecuencia con la que la herramienta de medición confunde a los subsistemas, y el operador $S$ es la compuerta lógica cuántica SWAP conocida en cómputo cuántico. El sistema resultante, $\mcF[\rho]$ ,es una mezcla de dos sistemas: los descritos por $\Hh_{A}\otimes\Hh_{B}$ y $\Hh_{B}\otimes\Hh_{A}$. Debe notarse, además, que la aplicación borrosa es lineal.
+En esta ecuación, el parámetro  de probabilidad $p$ está asociado a la frecuencia con la que la herramienta de medición confunde a los subsistemas, y el operador $S$ es la compuerta lógica cuántica SWAP conocida en cómputo cuántico. El sistema resultante, $\Fuzzy{\rho}$ ,es una mezcla de dos sistemas: los descritos por $\mcH_{A}\otimes\mcH_{B}$ y $\mcH_{B}\otimes\mcH_{A}$. Debe notarse, además, que la aplicación borrosa es lineal, y que no cambia la dimensión de la imagen.
 
 
-La aplicación borrosa manda elementos de $D(\Hh^{4})$ a elementos de $D(\Hh^{4})$. Sin embargo, no todos los canales cuánticos actúan de esta forma. Considérese un aparato de medición que es capaz de acceder únicamente a la información de uno de los subsistemas del sistema estudiado. Si el sistema es bipartita y el aparato mide únicamente sobre la primera de las partes, el estado observable es
-\begin{equation}\label{eq:TrA}
-\B{\rho}=\Tr_{2}[\rho]
-\end{equation}
-donde $\Tr_{2}$ es la traza parcial respecto al segundo subsistema. Este es un canal de $D(\Hh^{4})$ a $D(\Hh^{2})$, y, de forma efectiva, modela dos partículas como una sola. Al modelaje de un grupo como una unidad, o como otro grupo, pero con un número inferior de grados de libertad, se le llama \textit{coarse graining}. Ahora, pensando en un aparato de medición que además de intercambiar partículas, es incapaz de distinguirlas (es decir, que las ve como una sola) es posible combinar las ecuaciones (\ref{eq:Fuzzy2}) y (\ref{eq:TrA}) en una aplicación de coarse graining menos simple \cite{FuzzyMeasurements}. Matemáticamente:
+Piénsese ahora en el caso en que el aparato de medición, además de inducir ruido permutativo, es incapaz de resolver todos los grados del libertad del sistema. Por ejemplo, que detecte una única partícula en el lugar en el que hay dos. Si $\rho\in D(\Complex^{2}_{A}\otimes\Complex^{2}_{B})$, matemáticamente, lo anterior puede escribirse como
 \begin{gather}
-\Cc:D(\Hh^{4})\rightarrow D(\Hh^{2})\label{eq:CGDom}\\
-\Cc\left[\rho\right]=\Tr_{B}\left(p\rho+(1-p)S\rho S^{\dag}\right)\label{eq:CG}
+\mcC:D(\Complex^{2}_{A}\otimes\Complex^{2}_{B})\rightarrow D(\Complex^{2})\label{eq:CGDom}\\
+\mcC\left[\rho\right]=\Tr_{B}\left(p\rho+(1-p)S\rho S^{\dag}\right)\label{eq:CG}
 \end{gather}
-donde $\Tr_{B}$ denota la traza parcial respecto al elemento de $D_{B}(\Hh^{2})$. Al estado $\rho$ se le llama estado ``microscópico'' o ``fino'' y a $\CG{\rho}$, estado ``macroscópico'' o ``grueso''. En este documento, a los estados macroscópicos se les denotará en negritas (haciendo referencia a su calidad gruesa). De esta forma, como en la ecuación (\ref{eq:TrA}), se escribe
+donde $\Tr_{B}$ denota la traza parcial respecto al segundo elemento. Al modelaje de un grupo como una unidad, o como otro grupo, pero con un número inferior de grados de libertad, se le llama \textit{modelo de grano grueso}. A diferencia de la aplicación borrosa, el modelo de grano grueso sí disminuye la dimensión de la imagen. Nótese la relación entre las dos aplicaciones: se puede demostrar\cite{FuzzyMeasurements} que la aplicación de grano grueso dada por la ecuación (\ref{eq:CG}) puede reescribirse en términos de la aplicación borrosa según
 \begin{equation}
-    \B{\rho}=\CG{\rho}
+\CG{\rho}=(\Tr_{B}\circ\mcF)[\rho]
 \end{equation}
-Si el experimentalista solo tiene acceso al sistema grueso, entonces es posible, ha sido mostrado \cite{Macro-To-Micro} \notaAd{¿qué pez con las citas desordenadas?}, que es posible asignar un estado microscópico promedio que corresponda a las observaciones realizadas. Se le llama \textit{aplicación de asignación promedio} a la aplicación asociada a un coarse graining que asigna al estado grueso un estado fino, de tal forma que bajo el coarse graining el estado grueso sea recuperable del estado fino. Esta aplicación es
+En este contexto, diferenciamos al estado ``microscópico'' o ``fino'' $\rho_{f}\in D(\Complex^{2}\otimes\Complex^{2})$ , y al estado ``macroscópico'' o ``grueso'' $\rho_{g}\in D(\Complex^{2})$ a través de la relación
+\begin{equation}
+    \rho_{g}=\CG{\rho_{f}}
+\end{equation}
+Si el experimentalista solo tiene acceso al sistema grueso, ha sido mostrado\cite{Macro-To-Micro}, que es posible asignar un estado microscópico promedio que corresponda a las observaciones realizadas. Se le llama \textit{aplicación de asignación promedio} a la aplicación asociada a un coarse graining que asigna al estado grueso un estado fino, de tal forma que bajo el coarse graining el estado grueso sea recuperable del estado fino. En nuestro ejemplo, esta aplicación es
 \begin{gather}
-\mcA_{\Cc}:D(\Hh^{2})\rightarrow D(\Hh^{4})\label{eq:AAMDom}\\
-\mcA_{\Cc}\left[\B{\rho}\right]=\rho_{\textsc{avg}}\mid(\Cc[\rho_{\textsc{avg}}]=\B{\rho})\label{eq:AAM}
+\mcA_{\mcC}:D(\Complex^{2})\rightarrow D(\Complex^{4})\label{eq:AAMDom}\\
+\mcA_{\mcC}\left[\rho_{g}\right]=\textsc{AVG}(\Omega_{\rho_{g}})\label{eq:AAM}
 \end{gather}
-Al estado obtenido a través de la aplicación de asignación se le llama \textit{promedio asignado}.
-
-\notaAd{Creo que queda mejor poner aquí directo lo de las evoluciones unitarias}
+donde \textsc{AVG} indica un promedio y
+\begin{equation}
+\Omega_{\rho_{g}}=\{\rho\in D(\Complex^{2}\otimes\Complex^{2}) \mid \CG{\rho}=\rho_{g}\}
+\end{equation}
+Es importante notar que la ecuación (\ref{eq:AAM}) no es la inversa de la ecuación (\ref{eq:CG}). La aplicación $\mcA$ asigna a un estado macroscópico el estado microscópico más probable tal que este cumpla, bajo el modelado de grano grueso, con las medidiciones efectuadas: el promedio de todos los microestados en $\Omega_{\rho_{g}}$. La aparición de un promedio sobre todo un conjunto está relacionada a la ignorancia del observador. Al estado obtenido a través de la aplicación de asignación se le llama \textit{promedio asignado}.
 \vspace{0.5cm}
 \section{Resumen del proyecto}
 
-El trabajo tiene como objetivo el estudio y posterior descripción de la dinámica bajo una aplicación particular de coarse graining: la dada por la ecuación (\ref{eq:CG}). Dicho esto, si $\mcU_{t}$ es un canal quántico unitario arbitrario inducido por un operador unitario $U_{t}$ que actúa en el espacio microscópico\notaAd{dejo la nota sobre mapeos CPTP (más allá de los unitarios)}, esto es
+El trabajo tiene como objetivo el estudio y posterior descripción de la dinámica bajo una aplicación particular de coarse graining: la dada por la ecuación (\ref{eq:CG}). Dicho esto, si $\mcU_{t}$ es un canal cuántico unitario arbitrario inducido por un operador unitario $U_{t}$ que actúa en el espacio microscópico\notaAd{dejo la nota sobre mapeos CPTP (más allá de los unitarios)}, esto es
 \begin{gather}
-U_{t}:\Hh^{4} \rightarrow \Hh^{4} \label{eq:UnitOpDyn}\\
-\mcU_{t}:D(\Hh^{4})\rightarrow D(\Hh^{4}) \label{eq:UnitChaDyn}\\
+U_{t}:\Complex^{4} \rightarrow \Complex^{4} \label{eq:UnitOpDyn}\\
+\mcU_{t}:D(\Complex^{4})\rightarrow D(\Complex^{4}) \label{eq:UnitChaDyn}\\
 \mcU_{t}[\rho]=U_{t}\rho U_{t}^{\dag}
 \end{gather}
 y el experimenador tiene acceso únicamente a la descripción macroscópica del sistema, entonces este observa una dinámica efectiva descrita por un canal $\Gamma_{t}$
 \begin{equation}
-\B{\rho}(t)=\Gamma_{t}[\B{\rho}(0)]
+\rho_{g}(t)=\Gamma_{t}[\rho_{g}(0)]
 \end{equation}
 Tomando en cuenta que el estado microscópico puede obtenerse de la aplicación de asignación promedio dada por las ecuaciones (\ref{eq:AAMDom}) y (\ref{eq:AAM}), entonces este canal efectivo puede escribirse como
 \begin{gather}
-\Gamma_{t}:D(\Hh^{2})\rightarrow D(\Hh^{2})\label{eq:GammaDom}\\
-\Gamma_{t}=\Cc\circ\mcU_{t}\circ\mcA_{\Cc}\label{eq:Gamma}
+\Gamma_{t}:D(\Complex^{2})\rightarrow D(\Complex^{2})\label{eq:GammaDom}\\
+\Gamma_{t}=\mcC\circ\mcU_{t}\circ\mcA_{\mcC}\label{eq:Gamma}
 \end{gather}
-\notaAd{Siento que anda hiperverborréico todo esto.}
+El siguiente diagrama ilustra la ecuación (\ref{eq:Gamma})
+\[\begin{tikzcd}[arrows={<-|}]
+\rho_{g}(0)  & \rho_{\textsc{avg}}(0) \arrow{l}{\mcA} \\
+\rho_{g}(t) \arrow{u}{\Gamma_{t}} \arrow{r}{\varphi_y} & \rho_{\textsc{avg}}(t) \arrow{u}{\mcU_{t}}
+\end{tikzcd}
+\]
 
-Para estudiar esta dinámica, se propondrán diferentes aplicaciones en el espacio microscópico. Los siguientes son algunos ejemplos de dinpamicas de interés, considerando a $\mcU_{t}$ un canal unitario $D(\Hh^{2})\rightarrow D(\Hh^{2})$:
+Para estudiar esta dinámica, se propondrán diferentes aplicaciones en el espacio microscópico. Considerando a $\mcU_{t}$ un canal unitario $D(\Complex^{2})\rightarrow D(\Complex^{2})$, algunos ejemplos incluyen
     \begin{multicols}{3}
     \begin{enumerate}
         \item \textsc{CNOT}
-        \item $\Id\otimes \mcU_{t}$
-        \item $\mcU_{t}\otimes\Id$
         \item $\mcU_{t}\otimes \mcU_{t}$
         \item \textsc{SWAP}
-        \item \textsc{CPTP}
     \end{enumerate}
     \end{multicols}
-Y posteriormente se caracterizará y se analizarán las propiedades de la dinámica observada en la descripción gruesa del sistema. Será de particular interés el hecho de la emergencia de no-linearidad en la dinámica, como ha sido notado en investigaciones recientes\cite{Macro-To-Micro}\cite{CGEmergingDynamics}. Este estudio se hará en apoyo de la bibliografía adecuada y de reuniones periódicas con el tutor de tesis. \notaAd{Me toca leer el artículo \cite{BeyondKraus}, lo haré para el domingo sin falla.}
+Y posteriormente se caracterizará y se analizarán las propiedades de la dinámica observada en la descripción gruesa del sistema. Será de particular interés el hecho de la emergencia de no-linearidad en la dinámica, como ha sido notado en investigaciones recientes\cite{Macro-To-Micro}\cite{CGEmergingDynamics}. Este estudio se hará en apoyo de la bibliografía adecuada y de simulaciones numéricas en diferentes lenguajes de programación, así como de reuniones periódicas con el tutor de tesis.
 \nota{Aquí podemos hablar del meollo de la dinámica. Ya hablando con Carlos, parte del interés es que no es lineal la dinámica gruesa. Esto es interesante, ya que la cuántica siempre es lineal, pero el universo clásico no lo es siempre. Parte de la idea de Fernando del nuevo paper de Fernando, donde habla del Assignement map, es eso, la emergencia de no linealidad. Aquí puedes hablar un poco de la ecuación: $\rho(t)=\mcC \circ \mcU_t \circ \mcA [\rho(0)]$}
+
+\vspace{3.0cm}
 
 
 \begin{center}
@@ -128,7 +140,7 @@ Y posteriormente se caracterizará y se analizarán las propiedades de la dinám
     RCQI, Instituto de Física, Academia Eslovaca de Ciencias (SAV), Eslovaquia\\
     
 \end{center}
-\bibliographystyle{abbrv}
+\bibliographystyle{ieeetr}
 \bibliography{bibliography}
 
 \end{document}
