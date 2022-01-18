@@ -21,6 +21,8 @@
 \newcommand{\mcO}{\mathcal{O}}
 \newcommand{\mcI}{\mathcal{I}}
 \newcommand{\mcL}{\mathcal{L}}
+\newcommand{\mcS}{\mathcal{S}}
+\newcommand{\hilbert}{{\sf H}}
 \newcommand{\mcB}{\mathcal{B}}
 \newcommand{\mcH}{\mathcal{H}}
 \newcommand{\mcF}{\mathcal{F}}
@@ -50,23 +52,25 @@
 A continuación se presenta el proyecto de Tesis de Licenciatura en Física que desarrollará el alumno \textbf{Adán Castillo Guerrero}, bajo la dirección del \textbf{Dr. David Dávalos González}. El título del proyecto es ``\textsc{Dinámica de un sistema de dos qubits bajo un modelo de grano grueso}''.
 
 \section{Objetivos de la tesis}
-Bajo el marco de la \textit{teoría de sistemas cuánticos abiertos} y \textit{sistemas de muchos cuerpos}, se estudiarán las propiedades de dinámicas \textit{de grano grueso} (hispanización del concepto en inglés \textit{coarse graining}). Esto es, dinámicas que emergen cuando cuando no es posible tener la descripción completa del sistema cuántico, por ejemplo de parte del experimental. Los objetivos particulares consisten en: i) el estudio de un prototipo de descripción de grano grueso formalizada en términos de una \textit{aplicación lineal} sobre el conjunto de \textit{matrices de densidad}, en particular se utilizarán sistemas de dos o más \textit{sistemas de dos niveles}(qubits); ii) construcción de las dinámicas emergentes en base a la descripción de grano grueso a nivel de los estados; iii) se utilizarán dinámicas sencillas pero bien conocidas para entender que aspectos de ellas son mas afectados, así como que propiedades prevalecen cuando no se tiene acceso a todo el sistema cuántico. Por último, se utilizarán herramientas computacionales, tales como \textit{Mathematica}, para probar las hipótesis y calcular los casos no accesibles analíticamente.
+Bajo el marco de la \textit{teoría de sistemas cuánticos abiertos} y \textit{sistemas de muchos cuerpos}, se estudiarán las propiedades de dinámicas \textit{de grano grueso} (hispanización del concepto en inglés \textit{coarse graining}). Esto es, dinámicas que emergen cuando cuando no es posible tener la descripción completa del sistema cuántico, por ejemplo de parte del experimental. Los objetivos particulares consisten en: i) el estudio de un prototipo de descripción de grano grueso formalizada en términos de una \textit{aplicación lineal} sobre el conjunto de \textit{matrices de densidad} (estados cuánticos), en particular se utilizarán sistemas de dos o más \textit{sistemas de dos niveles}(qubits); ii) construcción de las dinámicas emergentes en base a la descripción de grano grueso a nivel de los estados; iii) se utilizarán dinámicas sencillas pero bien conocidas para entender que aspectos de ellas son mas afectados, así como que propiedades prevalecen cuando no se tiene acceso a todo el sistema cuántico. Por último, se utilizarán herramientas computacionales, tales como \textit{Mathematica}, para probar las hipótesis y calcular los casos no accesibles analíticamente.
 
 \section{Marco teórico}
 
 
 Dentro del marco de la \textit{teoría de información cuántica}, especialmente en conexión con la parte experimental, es natural suponer que no siempre es posible disponer de toda la información sobre el \textit{estado} del sistema de interés. Esto ya sea por insuficiencia en la resolución de los aparatos de medición o por el inevitable error inherente a las herramientas de medición. Un prototipo sencillo de error consiste en el inducido por un aparato que no distingue diferentes conjuntos de partículas entre sí. El caso más simple corresponde a la permutación de dos partículas. Este intercambio accidental a la hora de la medición es una \textit{aplicación borrosa}~\cite{FuzzyMeasurements}.
 
-Considérese, pues, que se aplica dicha aplicación borrosa a un sistema de dos partículas caracterizado por un operador de densidad $\rho\in D
-\mcS(\Complex^{2}\otimes\Complex^{2})$, con $D(\Complex^{2}\otimes\Complex^{2})$ el espacio de los operadores de densidad que actúan sobre $\Complex^{2}\otimes\Complex^{2}=\Complex^{4}$. Esta acción puede escribirse como
-\begin{gather}
-\mcF:D(\Complex^{4})\rightarrow D(\Complex^{4})\label{eq:Fuzzy2Domain}\\
-\Fuzzy{\rho}=p\rho+(1-p)S\rho S^{\dag}\label{eq:Fuzzy2}
-\end{gather}
-En esta ecuación, el parámetro  de probabilidad $p$ está asociado a la frecuencia con la que la herramienta de medición confunde a los subsistemas, y el operador $S$ es la compuerta lógica cuántica SWAP conocida en cómputo cuántico. El sistema resultante, $\Fuzzy{\rho}$ ,es una mezcla de dos sistemas: los descritos por $\mcH_{A}\otimes\mcH_{B}$ y $\mcH_{B}\otimes\mcH_{A}$. Debe notarse, además, que la aplicación borrosa es lineal, y que no cambia la dimensión de la imagen.
+Para ilustrar lo anterior, considérese dicha aplicación borrosa sobre un sistema de dos qubits (llámense qubit $A$ y qubit $B$). El estado del sistema está caracterizado por un operador de densidad $\rho_{AB} \in \mcS(\hilbert_2 \otimes \hilbert_2)$, donde $\mcS(\hilbert_2 \otimes \hilbert_2)$ denota el espacio convexo de los operadores de densidad que actúan sobre $\hilbert_2 \otimes \hilbert_2$, donde $\hilbert_2$ es el espacio de Hilbert correspondiente a un qubit. La acción de la aplicación borrosa se escribe como sigue,
+\begin{align}
+\mcF&:\mcS(\hilbert_2 \otimes \hilbert_2)\to \mcS(\hilbert_2 \otimes \hilbert_2)\nonumber\\
+\mcF&: \rho \mapsto p\rho+(1-p)S\rho S^{\dag}\label{eq:Fuzzy2},
+\end{align}
+donde $0<p<1$ es la probabilidad con la que el aparto de medición identifica erroneamente a los dos subsistemas, $S$ es el operador de transposición de dos partículas, definido como 
+$$S\ket{\psi}\otimes \ket{\phi}=\ket{\phi}\otimes \ket{\psi} \ \ \forall \ket{\psi},\ket{\phi}\in \hilbert_2.$$
+%
+El estado resultante, $\Fuzzy{\rho_{AB}}=p\rho_{AB}+(1-p)\rho_{BA}$, es una mezcla estadística (matemáticamente descrita como una combinación convexa) del estado \textit{real} del sistema, $\rho_{AB}$, y el estado donde los qubits tienen las etiquetas equivocadas, $\rho_{BA}$. Nótese que la aplicación borrosa es lineal y conserva la dimensión del sistema. Esto es, si bien el aparato comete errores, resuelve todos los grados del libertad del sistema.
 
 
-Piénsese ahora en el caso en que el aparato de medición, además de inducir ruido permutativo, es incapaz de resolver todos los grados del libertad del sistema. Por ejemplo, que detecte una única partícula en el lugar en el que hay dos. Si $\rho\in D(\Complex^{2}_{A}\otimes\Complex^{2}_{B})$, matemáticamente, lo anterior puede escribirse como
+Considere ahora el caso en que el aparato de medición, además de describir ruido proveniente por errores en las etiquetas de las partículas, es incapaz de resolver todos los grados del libertad del sistema. Como prototipo de esto, se tiene el caso en el que se detecta solo una partícula en el lugar en el que hay dos. Matemáticamente, lo anterior puede escribirse como
 \begin{gather}
 \mcC:D(\Complex^{2}_{A}\otimes\Complex^{2}_{B})\rightarrow D(\Complex^{2})\label{eq:CGDom}\\
 \mcC\left[\rho\right]=\Tr_{B}\left(p\rho+(1-p)S\rho S^{\dag}\right)\label{eq:CG}
@@ -90,7 +94,7 @@ donde \textsc{AVG} indica un promedio y
 \end{equation}
 Al tomar el promedio (un promedio que debe tomarse en razón de la ignorancia del observador) de todos los estados del conjunto $\Omega_{\rho_{g}}$ (esto es, el promedio de todos los estados finos que corresponden a una misma descripción gruesa del sistema), la aplicación $\mcA$ asigna a un estado macroscópico el estado microscópico más probable. Esto implica que la ecuación (\ref{eq:AAM}) no es la inversa de la ecuación (\ref{eq:CG}). Al estado obtenido a través de la aplicación de asignación se le llama \textit{promedio asignado}.
 \vspace{0.5cm}
-\section{Resumen del proyecto}
+\section{Descripción del proyecto}
 
 El trabajo tiene como objetivo el estudio y posterior descripción de la dinámica bajo una aplicación particular de coarse graining: la dada por la ecuación (\ref{eq:CG}). Dicho esto, si $\mcU_{t}$ es un canal cuántico unitario arbitrario inducido por un operador unitario $U_{t}$ que actúa en el espacio microscópico, esto es
 \begin{gather}
