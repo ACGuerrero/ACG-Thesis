@@ -63,8 +63,18 @@ se hallan los siguientes operadores de Kraus:
 \end{align}
 Utilizando la forma de bloque para el operador que actúa en el sistema extendido dada en \cite{Chuang}, el unitario resultante es:
 \begin{equation}
-\begin{pmatrix}1&0&0&0&0\\0&1&0&0&0\\0&0&1&0&0\\0&0&0&1&0\\0&0&0&0&1\end{pmatrix}
+V=\begin{pmatrix}
+\sqrt{p}&0&0&0&0&0&0&-\sqrt{1 - p}\\
+0&0&\sqrt{p}&0&0&0&-\sqrt{1 - p}&0\\
+0&\sqrt{p}&0&0&0&-\sqrt{1 - p}&0&0\\
+0&0&0&\sqrt{p}&-\sqrt{1 - p}&0&0&0\\
+\sqrt{1 - p}&0&0&0&0&0&0&\sqrt{p}\\
+0&\sqrt{1 - p}&0&0&0&\sqrt{p}&0&0\\
+0&0&\sqrt{1 - p}&0&0&0&\sqrt{p}&0\\
+0&0&0&\sqrt{1 - p}&\sqrt{p}&0&0&0 
+\end{pmatrix}
 \end{equation}
+Debí verificar que esta funcionaba cuando lo hice, todo lo demás queda mal porque la unitaria no quedó.
 \bibliographystyle{ieeetr}
 \bibliography{bibliography}
 
