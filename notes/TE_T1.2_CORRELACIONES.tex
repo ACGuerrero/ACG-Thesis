@@ -1,0 +1,71 @@
+\documentclass[onecolumn,11pt]{article}
+%*********
+%Paquetes
+%*********
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, total={7in, 9in}]{geometry}
+\usepackage{amsfonts}
+\usepackage{dsfont}
+\usepackage{physics}
+\usepackage{xcolor}
+\usepackage{tikz-cd} %para diagrama conmutatitvo
+\usepackage{multicol} %para la lista de operadores
+\usepackage{hyperref}
+\title{Matriz de correlaciones $\Theta$}
+\date{\today}
+%*********
+%Comandos
+%*********
+\newcommand{\mcU}{\mathcal{U}}
+\newcommand{\mcO}{\mathcal{O}}
+\newcommand{\mcI}{\mathcal{I}}
+\newcommand{\mcL}{\mathcal{L}}
+\newcommand{\mcS}{\mathcal{S}}
+\newcommand{\hilbert}{{\sf H}}
+\newcommand{\mcB}{\mathcal{B}}
+\newcommand{\mcH}{\mathcal{H}}
+\newcommand{\mcF}{\mathcal{F}}
+\newcommand{\mcC}{\mathcal{C}}
+\newcommand{\mcT}{\mathcal{T}}
+\newcommand{\mcE}{\ensuremath{\mathcal{E}} }
+\newcommand{\mcG}{\ensuremath{\mathcal{G}} }
+\newcommand{\mcM}{\mathcal{M}}
+\newcommand{\mcN}{\mathcal{N}}
+\newcommand{\nnn}{\mathcal{N}}
+\newcommand{\choi}{\ensuremath{\mcD} }
+\newcommand{\mmm}{\mathcal{M}}
+\newcommand{\sss}{\mathcal{S}}
+\newcommand{\mcD}{\mathcal{D}}
+\newcommand{\mcA}{\mathcal{A}}
+\newcommand{\mcP}{\mathcal{P}}
+\newcommand{\Complex}{\mathbb{C}} %Para escribir al espacio de hilbert complejo
+\newcommand{\Id}{\mathds{1}}% Para escribir el op. indentidad con notación chida
+\newcommand{\CG}[1]{\mcC\left[#1\right]}
+\newcommand{\Fuzzy}[1]{\mcF\left[#1\right]}
+\newcommand{\nota}[1]{{\color{red} [#1]}}
+\newcommand{\notaAd}[1]{{\color{blue} [#1]}} %Notas pero mías
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+El objeto de esta tarea es determinar los coeficientes de correlación como se ven en la ecuación (6) del artículo \cite{CGEmergingDynamics}.
+
+\section{Operadores de Kraus}
+
+Para el mapeo de coarse graining,
+\begin{equation}
+\CG{\psi}=\Tr_{B}[p\psi+(1-p)S\psi S^{\dag}]
+\end{equation}
+se hallan los siguientes operadores de Kraus:
+\begin{align}
+    K_{1}&=\begin{pmatrix} \sqrt{p}&0&0&0\\0&0&\sqrt{p}&0\end{pmatrix} & K_{2}&=\begin{pmatrix} \sqrt{p}&0&0&0\\0&0&\sqrt{p}&0\end{pmatrix} \\ K_{3}&=\begin{pmatrix} \sqrt{1-p}&0&0&0\\0&\sqrt{1-p}&0&0\end{pmatrix} & K_{4}&=\begin{pmatrix} 0&0&\sqrt{1-p}&0\\0&0&0&\sqrt{1-p}\end{pmatrix}
+\end{align}
+Utilizando la forma de bloque para el operador que actúa en el sistema extendido dada en \cite{Chuang}, el unitario resultante es:
+\begin{equation}
+\begin{pmatrix}1&0&0&0&0\\0&1&0&0&0\\0&0&1&0&0\\0&0&0&1&0\\0&0&0&0&1\end{pmatrix}
+\end{equation}
+\bibliographystyle{ieeetr}
+\bibliography{bibliography}
+
+\end{document}
