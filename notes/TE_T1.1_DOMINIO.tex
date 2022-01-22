@@ -1,0 +1,78 @@
+\documentclass[onecolumn,11pt]{article}
+%*********
+%Paquetes
+%*********
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, total={7in, 9in}]{geometry}
+\usepackage{amsfonts}
+\usepackage{dsfont}
+\usepackage{physics}
+\usepackage{xcolor}
+\usepackage{tikz-cd} %para diagrama conmutatitvo
+\usepackage{multicol} %para la lista de operadores
+\usepackage{hyperref}
+\title{Dominio de $\Gamma_{t}$}
+\date{\today}
+%*********
+%Comandos
+%*********
+\newcommand{\mcU}{\mathcal{U}}
+\newcommand{\mcO}{\mathcal{O}}
+\newcommand{\mcI}{\mathcal{I}}
+\newcommand{\mcL}{\mathcal{L}}
+\newcommand{\mcS}{\mathcal{S}}
+\newcommand{\hilbert}{{\sf H}}
+\newcommand{\mcB}{\mathcal{B}}
+\newcommand{\mcH}{\mathcal{H}}
+\newcommand{\mcF}{\mathcal{F}}
+\newcommand{\mcC}{\mathcal{C}}
+\newcommand{\mcT}{\mathcal{T}}
+\newcommand{\mcE}{\ensuremath{\mathcal{E}} }
+\newcommand{\mcG}{\ensuremath{\mathcal{G}} }
+\newcommand{\mcM}{\mathcal{M}}
+\newcommand{\mcN}{\mathcal{N}}
+\newcommand{\nnn}{\mathcal{N}}
+\newcommand{\choi}{\ensuremath{\mcD} }
+\newcommand{\mmm}{\mathcal{M}}
+\newcommand{\sss}{\mathcal{S}}
+\newcommand{\mcD}{\mathcal{D}}
+\newcommand{\mcA}{\mathcal{A}}
+\newcommand{\mcP}{\mathcal{P}}
+\newcommand{\Complex}{\mathbb{C}} %Para escribir al espacio de hilbert complejo
+\newcommand{\Id}{\mathds{1}}% Para escribir el op. indentidad con notación chida
+\newcommand{\CG}[1]{\mcC\left[#1\right]}
+\newcommand{\Fuzzy}[1]{\mcF\left[#1\right]}
+\newcommand{\nota}[1]{{\color{red} [#1]}}
+\newcommand{\notaAd}[1]{{\color{blue} [#1]}} %Notas pero mías
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+El objeto de esta primera tarea era caracterizar el \textit{dominio} de una dinámica $\Gamma_{t}$, como se menciona en el artículo \cite{CGEmergingDynamics}.
+
+\section{Tres planos}
+Al fijar $\Gamma_{t}$, lo que puede variarse es al estado inicial $\psi_{0}$. Si se expresa:
+\begin{equation}
+    \psi_{0} = \frac{1}{4}\,\sum_{i,j} \tr[\psi_{0}(\sigma_i \otimes \sigma_j)]\, \sigma_i\otimes\sigma_j.
+\end{equation}
+Es relativamente sencillo ver que:
+\begin{equation}
+    \CG{\psi_{0}} = \frac{1}{2}\qty[\Id + \sum_{i=1}^3[p\gamma_{i,0}+(1-p)\gamma_{0,i}]\sigma_i],
+\end{equation}
+donde $\gamma_{ij} \equiv \tr[\rho(\sigma_i \otimes\sigma_j)]$. Los coeficientes $\gamma_{ij}$ pueden acomodarse, claro, como el vector de Bloch de $\psi_{0}$. En este espacio de vectores de Bloch se definen tres restricciones correspondientes a tres hiperplanos:
+\begin{align}
+\alpha_{i}=\Tr[\CG{\psi_{0}}\sigma_{i}]=p\gamma_{0}^{i}+(1-p)\gamma_{0}^{i+3}
+\end{align}
+donde se ha escogido un ordenamiento particular para el vector $\vec{\gamma_{0}}$ de compontentes $\gamma_{0}^{i}$. Los vectores normales a estos hiperplanos son nulos en todas sus componentes, exceptuando la $i$-ésima y la $i+3$-ésima, en las que valen $p$ y $(1-p)$ respectivamente. En principio, el dominio de una $\gamma_{t}$ fija tiene la forma:
+\begin{align}
+\psi=&\frac{1}{4}\left( \Id_{4}+\vec{\gamma}\cdot\vec{\sigma_{4}} \right)\\
+\vec{\gamma}=&\vec{\gamma_{0}}+\sum_{i}c_{i}\vec{v_{i}}
+\end{align}
+donde $\vec{v_{i}}$ son los vectores normales y $c_{i}$ son componentes tales que $\vec{\gamma}$ es un vector de Bloch válido. Para asegurar esto nos metemos en las broncas del pructo estrella.
+
+Sinceramente, no entiendo por qué en el artículo se afirma que el dominio es convexo.
+\bibliographystyle{ieeetr}
+\bibliography{bibliography}
+
+\end{document}
