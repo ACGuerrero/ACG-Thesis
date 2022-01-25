@@ -70,12 +70,17 @@ $$S\ket{\psi}\otimes \ket{\phi}=\ket{\phi}\otimes \ket{\psi} \ \ \forall \ket{\p
 El estado resultante, $\Fuzzy{\rho_{AB}}=p\rho_{AB}+(1-p)\rho_{BA}$, es una mezcla estadística (matemáticamente descrita como una combinación convexa) del estado \textit{real} del sistema, $\rho_{AB}$, y el estado donde los qubits tienen las etiquetas equivocadas, $\rho_{BA}$. Nótese que la aplicación borrosa es lineal y conserva la dimensión del sistema. Esto es, si bien el aparato comete errores, resuelve todos los grados del libertad del sistema.
 
 
-Considere ahora el caso en que el aparato de medición, además de describir ruido proveniente por errores en las etiquetas de las partículas, es incapaz de resolver todos los grados del libertad del sistema. Como prototipo de esto, se tiene el caso en el que se detecta solo una partícula en el lugar en el que hay dos. Matemáticamente, lo anterior puede escribirse como
-\begin{gather}
-\mcC:D(\Complex^{2}_{A}\otimes\Complex^{2}_{B})\rightarrow D(\Complex^{2})\label{eq:CGDom}\\
-\mcC\left[\rho\right]=\Tr_{B}\left(p\rho+(1-p)S\rho S^{\dag}\right)\label{eq:CG}
-\end{gather}
-donde $\Tr_{B}$ denota la traza parcial respecto al segundo elemento. Al modelaje de un grupo como una unidad, o como otro grupo, pero con un número inferior de grados de libertad, se le llama \textit{modelo de grano grueso}. A diferencia de la aplicación borrosa, el modelo de grano grueso sí disminuye la dimensión de la imagen. Nótese la relación entre las dos aplicaciones: se puede demostrar\cite{FuzzyMeasurements} que la aplicación de grano grueso dada por la ecuación (\ref{eq:CG}) puede reescribirse en términos de la aplicación borrosa según
+Considere ahora el caso en que el aparato de medición, además de describir ruido proveniente de errores de etiquetado, es incapaz de resolver todos los grados del libertad del sistema. Como prototipo de esto, se tiene el caso en el que se detecta solo una partícula en el lugar en el que hay dos. Matemáticamente, lo anterior puede escribirse como
+\begin{align}
+\mcC&:\mcS(\hilbert_2 \otimes \hilbert_2)\to \mcS(\hilbert_2 \otimes \hilbert_2)\nonumber\\
+\mcC&: \rho_{AB} \mapsto p\rho_A+(1-p)\rho_B,
+\label{eq:CG}
+\end{align}
+donde $\rho_A=\tr_B \rho_{AB}$ y $\rho_B=\tr_A \rho_{AB}$, es decir, las matrices de densidad reducidas de la partículas $A$ y $B$, respectivamente.
+%
+Esta aplicación lineal describe el 
+%
+A diferencia de la aplicación borrosa, el modelo de grano grueso sí disminuye la dimensión de la imagen. Nótese la relación entre las dos aplicaciones: se puede demostrar\cite{FuzzyMeasurements} que la aplicación de grano grueso dada por la ecuación (\ref{eq:CG}) puede reescribirse en términos de la aplicación borrosa según
 \begin{equation}
 \CG{\rho}=(\Tr_{B}\circ\mcF)[\rho]
 \end{equation}
