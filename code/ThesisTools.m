@@ -20,6 +20,7 @@ testDistribution::usage="something"
 metropolisHastingsSample::usage="something"
 cgfidelitylist::usage="something"
 cgfrobeniuslist::usage="something"
+GenerateMHData::usage="something"
 Begin["`Private`"]
 
 
@@ -102,6 +103,9 @@ Ubig=UnitaryToRotateFineStates[cstate]
 Ubig . #&/@fdata
 ]
 
+
+
+
 (*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@@@@@@@@@@@@@@TOOLS FROM ADANERICK@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*)
@@ -123,5 +127,25 @@ metropolisHastingsSample[size_,\[Beta]_,\[Delta]_,swapP_,initialstate_,targetsta
 cgfidelitylist[bigstateslist_,targetstate_,swapP_]:=fidelity[coarseGraining2[#,swapP],targetstate]&/@bigstateslist
 cgfrobeniuslist[bigstateslist_,targetstate_,swapP_]:=Norm[coarseGraining2[#,swapP]-targetstate,"Frobenius"]&/@bigstateslist
 
+GenerateMHData[n_,beta_,delta_,swapP_,zcoord_]:=
+Module[{
+targetstate,
+data,
+filename,
+thertestdist
+},
+SetDirectory["/home/acastillo/Documents/tesis-adan/code"];
+filename="MHstates_n="<>ToString[n]<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>"_beta="<>ToString[beta]<>"_delta="<>ToString[delta];
+If[FileExistsQ["/home/acastillo/Documents/tesis-adan/code/MH_data/"<>filename<>"_data"<>".m"],
+Print["Set of data exists already. Try exporting it instead."],
+Print["Set of data doesn't exist. Creating data."];
+targetstate=(IdentityMatrix[2]+zcoord*PauliMatrix[3])/2;
+data=metropolisHastingsSample[n,beta,delta,swapP,ketsToDensity[randomKets[4,1]][[1]],targetstate];
+thertestdist=cgfrobeniuslist[data,targetstate,swapP];
+Print["Data created."];
+Print["Mean distance between images and target: ", Mean[thertestdist]];
+Print["Total generated states: ",Length[data]];
+Export["MH_data/"<>filename<>"_data"<>".m",data];]
+]
 End[]
 EndPackage[]
