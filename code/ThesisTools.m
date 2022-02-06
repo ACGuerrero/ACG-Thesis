@@ -8,6 +8,18 @@ Pauli2Basis::usage="something"
 MatrixToLatex::usage="something"
 ShowOperatorsWithSphere::usage="something"
 KetsToBlochVector::usage="something"
+UnitaryStep::usage="something"
+ApplyUnitaryButSlowly::usage="something"
+UniformMixedStates::usage="something"
+MixedToPure::usage="something"
+UB2Q::usage="something"
+UnitaryToRotateFineStates::usage="something"
+AssignementMapForStateNotInZ::usage="something"
+RotatedFineStates::usage="something"
+testDistribution::usage="something"
+metropolisHastingsSample::usage="something"
+cgfidelitylist::usage="something"
+cgfrobeniuslist::usage="something"
 Begin["`Private`"]
 
 
