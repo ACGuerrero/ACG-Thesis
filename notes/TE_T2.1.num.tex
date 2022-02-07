@@ -77,10 +77,10 @@ Sea $\mcU=U\otimes U$, $\sigma_{i}'=U\sigma_{i}U^{\dag}$. En las siguientes lín
 \notaAd{Aquí estoy asumiendo que rotar a todo el conjunto mantiene la medida de Haar. Con esto me refiero a que el conjunto rotado sigue teniendo una distrubución bonita que permita sacar un promedio decente.}
 
 \begin{align*}
-\CG{\mcU \psi_{i} \mcU^{\dag}}=&\Tr_{2}\qty[p\mcU\psi_{i}\mcU^{\dag}+(1-p)\mcU S \psi_{i} S^{\dag}\mcU^{\dag}]\\
-=&\Tr_{2}\qty[p\mcU\qty(\frac{1}{4}\sum_{i,j}\gamma_{ij} \sigma_i\otimes\sigma_j)\mcU^{\dag}+(1-p)\mcU S \qty(\frac{1}{4}\sum_{i,j}\gamma_{ij} \sigma_i\otimes\sigma_j) S^{\dag}\mcU^{\dag}]\\
-=&\Tr_{2}\qty[p\mcU\qty(\frac{1}{4}\sum_{i,j}\gamma_{ij} \sigma_i\otimes\sigma_j)\mcU^{\dag}+(1-p)\mcU \qty(\frac{1}{4}\sum_{i,j}\gamma_{ij} \sigma_j\otimes\sigma_i)\mcU^{\dag}]\\
-=&\Tr_{2}\qty[p\qty(\frac{1}{4}\sum_{i,j}\gamma_{ij} \sigma_{i}'\otimes\sigma_{j}')+(1-p)\qty(\frac{1}{4}\sum_{i,j}\gamma_{ij} \sigma_{j}'´\otimes\sigma_{i}')]\\
+\CG{\mcU \psi_{i} \mcU^{\dag}}=&\Tr_{2}\qty[p\mcU\psi_{i}\mcU^{\dag}+(1-p)S\mcU \psi_{i} \mcU^{\dag}S^{\dag}]\\
+=&\Tr_{2}\qty[p\mcU\qty(\frac{1}{4}\sum_{i,j}\gamma_{ij} \sigma_i\otimes\sigma_j)\mcU^{\dag}+(1-p) S\mcU \qty(\frac{1}{4}\sum_{i,j}\gamma_{ij} \sigma_i\otimes\sigma_j) \mcU^{\dag} S^{\dag}]\\
+=&\Tr_{2}\qty[p\qty(\frac{1}{4}\sum_{i,j}\gamma_{ij} \sigma_{i}'\otimes\sigma_{j}')+(1-p)S \qty(\frac{1}{4}\sum_{i,j}\gamma_{ij} \sigma_{i}'\otimes\sigma_{j}')S^{\dag}]\\
+=&\Tr_{2}\qty[p\qty(\frac{1}{4}\sum_{i,j}\gamma_{ij} \sigma_{i}'\otimes\sigma_{j}')+(1-p)\qty(\frac{1}{4}\sum_{i,j}\gamma_{ij} \sigma_{j}'\otimes\sigma_{i}')]\\
 =&\frac{1}{2}\qty[\Id +p\sum_{i=1}\gamma_{i,0}\sigma_{i}'+(1-p)\sum_{j=1}\gamma_{0,j}\sigma_{j}']\\
 =&\frac{1}{2}\qty[\Id + \sum_{i=1}^3[p\gamma_{i,0}+(1-p)\gamma_{0,i}]U\sigma_{i}U^{\dag}]\\
 =&U\frac{1}{2}\qty[\Id + \sum_{i=1}^3[p\gamma_{i,0}+(1-p)\gamma_{0,i}]\sigma_{i}]U^{\dag}\\
