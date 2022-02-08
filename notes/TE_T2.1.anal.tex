@@ -15,7 +15,6 @@
 \usepackage{caption}
 \usepackage{subcaption} %para las subfiguras
 \title{MaxEnt}
-\date{\today}
 %*********
 %Comandos
 %*********
@@ -51,34 +50,51 @@
 \begin{document}
 \maketitle
 \thispagestyle{empty}
-Esta tarea es sobre el estado maxent.
 \section{Todos los estados están sobre $z$}
 Considérese un estado grueso $\rho_{c}\in \mcL(\mcH_{2})$, y sea $\psi\in\mcL(\mcH_{4})$ su estado subyacente $\CG{\psi}=\rho_{c}$. Si el observador puede realizar mediciones de $\sigma_{i}$ en el estado grueso, entonces es posible reconstruir un estado de máxima entropía $\psi_{max}$ según
 \begin{equation}\label{eq:MaxEnt}
 \psi_{max}=\frac{1}{\Tr(e^{\sum_{i}\lambda_{i}\hat{G}_{i}})}e^{\sum_{i}\lambda_{i}\hat{G}_{i}}
 \end{equation}
 donde $\lambda_{i}$ son los multiplicadores de Lagrange y $\hat{G}_{i}$ son operadores no tomográficamente completos \cite{MaxEnt}. Se puede demostrar que los operadores $\hat{G}_{i}$ son
-\begin{equation}
+\begin{equation}\label{eq:Gop}
 \hat{G}_{i}=p\sigma_{i}\otimes\Id+(1-p)\Id\otimes\sigma_{i}
 \end{equation}
 
 Idealmente, la ecuación (\ref{eq:MaxEnt}) está en términos de los valores de expectación $r_{i}=Tr(\sigma_{i}\rho_{c})$, y no de los multiplicadores de Lagrange. Para simplificar el problema, se puede asumir que $\rho_{c}$ está alineado con el eje $z$, de tal forma que el exponente en (\ref{eq:MaxEnt}) tenga únicamente un término.
 
+\vspace{0.2cm}
 
 En las siguientes líneas se demuestra que para todo $\rho_{c}$ con vector de Bloch $\vec{r}$ es posible reconstruir el estado de máxima entropía a través del estado de máxima entropía asociado a un estado grueso alineado en $z$, $\rho_{z}$ y la unitaria $U$ que relaciona $\rho_{c}$ y $\rho_{z}$ (para que esta exista se debe cumplir que $\abs{\vec{r}}=z$).
 
+\vspace{0.2cm}
 
-Sea, pues $\rho_{c}$ tal que $\rho_{c}=U\rho_{z}U^{\dag}$, y $\mcU=U\otimes U$
+Sea, pues $\rho_{c}$ tal que $\rho_{c}=U\rho_{z}U^{\dag}$, con $\psi_{max}$ el estado de máxima entropía reconstruído para  $\mcU=U\otimes U$. El valor de expectación de las $\sigma_{i}$ puede calcularse como
 \begin{align*}
-r_{i}&=\Tr\{\sigma_{i}U\rho_{z}U^{\dag}\}¨\\
+r_{i}&=\Tr\{\sigma_{i}U\rho_{z}U^{\dag}\}\\
 &=\Tr\{\sigma_{i}U\CG{\psi_{z}}U^{\dag}\}\\
 &=\Tr\{\sigma_{i}\CG{\mcU\psi_{z}\mcU^{\dag}}\}\\
 &=\Tr\{\Tr_{2}[\sigma_{i}\otimes\Id(p\mcU\psi_{z}\mcU^{\dag}+(1-p)S\mcU\psi_{z}\mcU^{\dag}S)]\}\\
 &=\Tr[\sigma_{i}\otimes\Id(p\mcU\psi_{z}\mcU^{\dag}+(1-p)S\mcU\psi_{z}\mcU^{\dag}S)]\\
-&=\Tr[p(\sigma_{i}\otimes\Id)\mcU\psi_{z}\mcU^{\dag}+(1-p)(\sigma_{i}\otimes\Id)S\mcU\psi_{z}\mcU^{\dag}S]\\
 &=\Tr[p\mcU^{\dag}(\sigma_{i}\otimes\Id)\mcU\psi_{z}+(1-p)\mcU^{\dag}S(\sigma_{i}\otimes\Id) S\mcU\psi_{z}]\\
+&=\Tr[p\mcU^{\dag}(\sigma_{i}\otimes\Id)\mcU\psi_{z}+(1-p)\mcU(\Id\otimes\sigma_{i})]\\
+&=\Tr[\mcU^{\dag}(p\sigma_{i}\otimes\Id+(1-p)\Id\otimes\sigma_{i})\mcU\psi_{z}]\\
+&=\Tr[\mcU^{\dag}\hat{G}_{i}\mcU\psi_{z}]\\
 \end{align*}
-
+De esto, se sigue que el estado de máxima entropía se recontruye como:
+\begin{align*}
+\psi_{max}&=\frac{1}{\Tr(e^{\sum_{i}\lambda_{i}\mcU^{\dag}\hat{G}_{i}\mcU})}e^{\sum_{i}\lambda_{i}\mcU^{\dag}\hat{G}_{i}\mcU}\\
+&=\frac{1}{\Tr(e^{\mcU^{\dag}\qty(\sum_{i}\lambda_{i}\hat{G}_{i})\mcU^{\dag}})}e^{\mcU^{\dag}\qty(\sum_{i}\lambda_{i}\hat{G}_{i})\mcU^{\dag}}\\
+&=\frac{1}{\Tr(\mcU^{\dag}e^{\sum_{i}\lambda_{i}\hat{G}_{i}}\mcU)}\mcU^{\dag}\qty(e^{\sum_{i}\lambda_{i}\hat{G}_{i}})\mcU\\
+&=\frac{1}{\Tr(\mcU^{\dag}\qty(e^{\sum_{i}\lambda_{i}\hat{G}_{i}})\mcU)}\mcU^{\dag}\qty(e^{\sum_{i}\lambda_{i}\hat{G}_{i}})\mcU\\
+&=\frac{1}{\Tr(e^{\sum_{i}\lambda_{i}\hat{G}_{i}})}\mcU^{\dag}\qty(e^{\sum_{i}\lambda_{i}\hat{G}_{i}})\mcU\\
+&=\mcU^{\dag}\psi_{max}\mcU
+\end{align*}
+\section{El estado de máxima entropía en términos de $r_{z}$}
+Si se asume que $\rho_{z}$ es un estado grueso alineado sobre el eje z, por (\ref{eq:MaxEnt}) el estado de máxima entropía es:
+\begin{equation}\label{eq:MaxEntZ}
+\psi_{max}=\frac{\text{exp}(\lambda_{3}\hat{G}_{3})}{\Tr[\text{exp}(\lambda_{3}\hat{G}_{3})]}
+\end{equation}
+donde $\hat{G}_{3}$ se define según (\ref{eq:Gop}). La forma matricial de este estado es:
 
 \bibliographystyle{ieeetr}
 \bibliography{bibliography}
