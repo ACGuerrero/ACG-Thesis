@@ -53,18 +53,18 @@
 \section{Parte analítica}
 \subsection{Una unitaria para gobernarlos a todos}
 
-Un operador unitario se traduce como una rotación en la esfera de Bloch. Entonces dos operadores están relacionados por una unitaria si sus vectores de Bloch tienen la misma norma (esto es, los operadores tienen la misma norma de Frobenius).
+Un operador unitario se traduce como una rotación en la esfera de Bloch. Entonces dos operadores están relacionados por una unitaria si sus vectores de Bloch tienen la misma norma (esto es, si los operadores tienen la misma norma de Frobenius).
 
-Si consideramos un estado sobre el eje z,
+Así, si consideramos un estado sobre el eje z,
 
-\begin{equation}
+\begin{equation}\label{eq:rhoz}
 \rho_{z}=\frac{1}{2}\qty(\Id+z\sigma_{z})
 \end{equation}
 
-entonces este está relacionado mediante una unitaria a cualquier estado $\rho$ con vector de Bloch $\vec{r}$ tal que $\abs{\vec{r}}=z$.
+entonces este está relacionado mediante una unitaria a cualquier estado $\rho\in\mcL(\mcH_{2})$ con vector de Bloch $\vec{r}$ tal que $\abs{\vec{r}}=z$.
 
-\subsection{El grueso rotado es igual al grueso del rotado}
-Sea $\rho_{z}$ un estado grueso sobre z definido como antes, y sea $\{\psi_{i}\}_{i=1}^{N}$ el conjunto de estados con los que se obtiene su estado fino asignado. Además, sea $\rho$ un estado grueso tal que $\abs{\vec{r}}=z$.
+\subsubsection{El grueso rotado es igual al grueso del rotado}
+Sea $\rho_{z}\in\mcL(\mcH_{2})$ un estado grueso sobre z definido como en (\ref{eq:rhoz}), y sea $\{\psi_{i}\}_{i=1}^{N}$ el conjunto de estados con los que se obtiene su estado fino asignado. Además, sea $\rho\in\mcL(\mcH_{2})$ un estado grueso tal que $\abs{\vec{r}}=z$.
 
 \begin{equation}
 \Rightarrow \exists U \text{ tal que } U\rho_{z}U^{\dag}=\rho
@@ -92,8 +92,8 @@ Como esto es para todo $i$, si se rota cada $\psi_{i}$, lo que obtenemos es un c
 =&U\mcA[\rho_{z}]U^{\dag}
 \end{align}
 Esto significa que podemos hallar el mapeo de asignamiento de un estado $\rho$ a través del mapeo de asignamiento de otro estado $\rho_{z}$, siempre y cuando exista una unitaria entre estos.
-\subsection{Para el MaxEnt es lo mismo pero no es igual}
-Considérese un estado grueso $\rho_{c}\in \mcL(\mcH_{2})$, y sea $\psi\in\mcL(\mcH_{4})$ su estado subyacente $\CG{\psi}=\rho_{c}$. Si el observador puede realizar mediciones de $\sigma_{i}$ en el estado grueso, entonces es posible reconstruir un estado de máxima entropía $\psi_{max}$ según
+\subsubsection{Para el MaxEnt es lo mismo pero no es igual}
+Considérese un estado grueso $\rho\in\mcL(\mcH_{2})$. Si el observador puede realizar mediciones de $\sigma_{i}$ en el estado grueso, entonces es posible reconstruir un estado de máxima entropía $\psi_{max}\in\mcL(\mcH_{4})$ según
 \begin{equation}\label{eq:MaxEnt}
 \psi_{max}=\frac{1}{\Tr(e^{\sum_{i}\lambda_{i}\hat{G}_{i}})}e^{\sum_{i}\lambda_{i}\hat{G}_{i}}
 \end{equation}
@@ -102,7 +102,7 @@ donde $\lambda_{i}$ son los multiplicadores de Lagrange y $\hat{G}_{i}$ son oper
 \hat{G}_{i}=p\sigma_{i}\otimes\Id+(1-p)\Id\otimes\sigma_{i}
 \end{equation}
 
-Idealmente, la ecuación (\ref{eq:MaxEnt}) está en términos de los valores de expectación $r_{i}=Tr(\sigma_{i}\rho_{c})$, y no de los multiplicadores de Lagrange. Para simplificar el problema, se puede asumir que $\rho_{c}$ está alineado con el eje $z$, de tal forma que el exponente en (\ref{eq:MaxEnt}) tenga únicamente un término.
+Idealmente, la ecuación (\ref{eq:MaxEnt}) está en términos de los valores de expectación $r_{i}=Tr(\sigma_{i}\rho_{c})$, y no de los multiplicadores de Lagrange. Para simplificar el problema, se puedeescoger un estado grueso $\rho_{z}$ como en (\ref{eq:rhoz}), de tal forma que el exponente en (\ref{eq:MaxEnt}) tenga únicamente un término.
 
 \vspace{0.2cm}
 
@@ -110,27 +110,31 @@ En las siguientes líneas se demuestra que para todo $\rho_{c}$ con vector de Bl
 
 \vspace{0.2cm}
 
-Sea, pues $\rho_{c}$ tal que $\rho_{c}=U\rho_{z}U^{\dag}$, con $\psi_{max}$ el estado de máxima entropía reconstruído para  $\mcU=U\otimes U$. El valor de expectación de las $\sigma_{i}$ puede calcularse como
+Sea, pues $\rho$ tal que $\rho=U\rho_{z}U^{\dag}$, con $\psi_{max}$ el estado de máxima entropía reconstruído para  $\mcU=U\otimes U$. El valor de expectación de las $\sigma_{i}$ puede calcularse como
 \begin{align*}
 r_{i}&=\Tr\{\sigma_{i}U\rho_{z}U^{\dag}\}\\
-&=\Tr\{\sigma_{i}U\CG{\psi_{z}}U^{\dag}\}\\
-&=\Tr\{\sigma_{i}\CG{\mcU\psi_{z}\mcU^{\dag}}\}\\
-&=\Tr\{\Tr_{2}[\sigma_{i}\otimes\Id(p\mcU\psi_{z}\mcU^{\dag}+(1-p)S\mcU\psi_{z}\mcU^{\dag}S)]\}\\
-&=\Tr[\sigma_{i}\otimes\Id(p\mcU\psi_{z}\mcU^{\dag}+(1-p)S\mcU\psi_{z}\mcU^{\dag}S)]\\
-&=\Tr[p\mcU^{\dag}(\sigma_{i}\otimes\Id)\mcU\psi_{z}+(1-p)\mcU^{\dag}S(\sigma_{i}\otimes\Id) S\mcU\psi_{z}]\\
-&=\Tr[p\mcU^{\dag}(\sigma_{i}\otimes\Id)\mcU\psi_{z}+(1-p)\mcU(\Id\otimes\sigma_{i})]\\
-&=\Tr[\mcU^{\dag}(p\sigma_{i}\otimes\Id+(1-p)\Id\otimes\sigma_{i})\mcU\psi_{z}]\\
-&=\Tr[\mcU^{\dag}\hat{G}_{i}\mcU\psi_{z}]\\
+&=\Tr\{\sigma_{i}U\CG{\psi_{max}^{z}}U^{\dag}\}\\
+&=\Tr\{\sigma_{i}\CG{\mcU\psi_{max}^{z}\mcU^{\dag}}\}\\
+&=\Tr\{\Tr_{2}[\sigma_{i}\otimes\Id(p\mcU\psi_{max}^{z}\mcU^{\dag}+(1-p)S\mcU\psi_{max}^{z}\mcU^{\dag}S)]\}\\
+&=\Tr[\sigma_{i}\otimes\Id(p\mcU\psi_{max}^{z}\mcU^{\dag}+(1-p)S\mcU\psi_{max}^{z}\mcU^{\dag}S)]\\
+&=\Tr[p\mcU^{\dag}(\sigma_{i}\otimes\Id)\mcU\psi_{max}^{z}+(1-p)\mcU^{\dag}S(\sigma_{i}\otimes\Id) S\mcU\psi_{max}^{z}]\\
+&=\Tr[p\mcU^{\dag}(\sigma_{i}\otimes\Id)\mcU\psi_{max}^{z}+(1-p)\mcU^{\dag}(\Id\otimes\sigma_{i})\mcU\psi_{max}^{z}]\\
+&=\Tr[\mcU^{\dag}(p\sigma_{i}\otimes\Id+(1-p)\Id\otimes\sigma_{i})\mcU\psi_{max}^{z}]\\
+&=\Tr[\mcU^{\dag}\hat{G}_{i}\mcU\psi_{max}^{z}]\\
 \end{align*}
-De esto, se sigue que el estado de máxima entropía se recontruye como:
+De esto, se sigue que el estado de máxima entropía asociado a $\rho_{z}$ se puede reconstruir como:
 \begin{align*}
-\psi_{max}&=\frac{1}{\Tr(e^{\sum_{i}\lambda_{i}\mcU^{\dag}\hat{G}_{i}\mcU})}e^{\sum_{i}\lambda_{i}\mcU^{\dag}\hat{G}_{i}\mcU}\\
+\psi_{max}^{z}&=\frac{1}{\Tr(e^{\sum_{i}\lambda_{i}\mcU^{\dag}\hat{G}_{i}\mcU})}e^{\sum_{i}\lambda_{i}\mcU^{\dag}\hat{G}_{i}\mcU}\\
 &=\frac{1}{\Tr(e^{\mcU^{\dag}\qty(\sum_{i}\lambda_{i}\hat{G}_{i})\mcU^{\dag}})}e^{\mcU^{\dag}\qty(\sum_{i}\lambda_{i}\hat{G}_{i})\mcU^{\dag}}\\
 &=\frac{1}{\Tr(\mcU^{\dag}e^{\sum_{i}\lambda_{i}\hat{G}_{i}}\mcU)}\mcU^{\dag}\qty(e^{\sum_{i}\lambda_{i}\hat{G}_{i}})\mcU\\
 &=\frac{1}{\Tr(\mcU^{\dag}\qty(e^{\sum_{i}\lambda_{i}\hat{G}_{i}})\mcU)}\mcU^{\dag}\qty(e^{\sum_{i}\lambda_{i}\hat{G}_{i}})\mcU\\
 &=\frac{1}{\Tr(e^{\sum_{i}\lambda_{i}\hat{G}_{i}})}\mcU^{\dag}\qty(e^{\sum_{i}\lambda_{i}\hat{G}_{i}})\mcU\\
 &=\mcU^{\dag}\psi_{max}\mcU
 \end{align*}
+Esto significa que si somos capaces de hallar el estado de máxima entropía asociado a un estado alineado en $z$, podemos hallar el asociado a cualquier otro estado mediante:
+\begin{equation}
+\psi_{max}=\mcU\psi_{max}^{z}\mcU^{\dag}
+\end{equation}
 \subsection{El estado de máxima entropía en términos de $r_{z}$}
 Si se asume que $\rho_{z}$ es un estado grueso alineado sobre el eje z, por (\ref{eq:MaxEnt}) el estado de máxima entropía es:
 \begin{equation}\label{eq:MaxEntZ}
@@ -156,18 +160,9 @@ donde $\hat{G}_{3}$ se define según (\ref{eq:Gop}). La forma matricial de este 
 Hallar el valor de $\lambda_{
 3}$ en términos del valor $r_{z}$ implica resolver la ecuación:
 \begin{equation}\label{eq:RZ}
-rz=-\frac{1}{2}\sech{p\lambda_{3}}\sech{(1-p)\lambda_{3}}(\sinh{\lambda_{3}}+(1-p)\sinh{\lambda_{3}(1-2p)})
+rz=-\frac{1}{2}\frac{\sinh(\lambda_{3})+(1-2p)\sinh((1-2p)\lambda_{3})}{\cosh(p\lambda_{3})\cosh((1-p)\lambda_{3})}
 \end{equation}
-No se ve ninguna forma sencilla de despejar al multiplicador de Lagrange. En realidad, esto solo se puede si la función $r_{z}(\lambda_{3})$ tiene inversa, y esto puede depender del parámetro $p$. Graficar la superficie puede dar algunas ideas del problema. La superficie es observable en la figura \ref{fig:rzsurf}.
-
-Después de una breve inspección se concluyen las siguientes cosas:
-\begin{itemize}
-\item la superficie es simétrica respecto al plano $p=0.5$
-\item la superficie es antisimétrica respecto al plano $\lambda_{3}=0$
-\item $\text{sgn}(\lambda_{3})=-\text{sgn}(r_{z})$
-\end{itemize}
-¿Pero es posible, fijada p, hallar a $\lambda_{3}$ en función de $r_{z}$? La figura \ref{fig:rzinv} parece sugerir que claro que sí. Aún más, parece que la relación es del tipo $\lambda_{3}=\text{arctanh}(r_{z})$. Así que bueno, aunque aún no he hallado la expresión, creo que debe existir.
-
+No se ve ninguna forma sencilla de despejar al multiplicador de Lagrange. En realidad, esto solo se puede si la función $r_{z}(\lambda_{3})$ tiene inversa, y esto puede depender del parámetro $p$. Graficar la superficie (Figura \ref{fig:rzsurf}) puede aclarar algo el panorama.
 \begin{figure}[h!]
 \centering
 \begin{subfigure}{0.475\textwidth}
@@ -183,17 +178,50 @@ Después de una breve inspección se concluyen las siguientes cosas:
 \caption{Superficie de $r_{z}$ según (\ref{eq:RZ}) para dos intervalos de $\lambda_{3}$. A valores $\lambda_{3}<0$ corresponden valores $r_{z}>0$ y viceversa.}
 \label{fig:rzsurf}
 \end{figure}
+
+Después de una breve inspección se concluyen las siguientes cosas:
+\begin{itemize}
+\item la superficie es simétrica respecto al plano $p=0.5$
+\item la superficie es antisimétrica  respecto al plano $\lambda_{3}=0$ i.e. $r_{z
+}(\lambda_{3},p)=-r_{z
+}(-´\lambda_{3},p)$
+\item $\text{sgn}(\lambda_{3})=-\text{sgn}(r_{z})$
+\end{itemize}
+
+La simetría respecto al plano $p=0.5$ suguiere un cambio de variable $q=\abs{p-0.5}$. La ecuación (\ref{eq:RZ}) se reescribe como:
+\begin{equation}\label{eq:RZq}
+rz=-\frac{1}{2}\frac{\sinh(\lambda_{3})+2q\sinh(2q\lambda_{3})}{\cosh((q+\frac{1}{2})\lambda_{3})\cosh((q-\frac{1}{2})\lambda_{3})}
+\end{equation}
+Y nos limitamos al dominio $\lambda_{3}\leq0$ y $0\leq q\leq\frac{1}{2}$. Podemos graficar la función (\ref{eq:RZq}) para diferentes valores de $q$ (Figura \ref{fig:rzinv}).
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.6\linewidth]{rz_has_inverse_lambda-4to4.png}
-\caption{$r_{z}$ como función de $\lambda_{3}$ para diferentes valores de $p$. La apariencia uno a uno sugiere la existencia de una inversa.}
+\caption{$r_{z}$ como función de $\lambda_{3}$ para diferentes valores de $q$. La apariencia uno a uno sugiere la existencia de una inversa.}
 \label{fig:rzinv}
 \end{figure}
+\subsubsection{Dos soluciones particulares}
 
-\section{Parte analítica}
+Considerando el caso $q=\frac{1}{2}$, la ecuación (\ref{eq:RZq}) se reduce a 
+\begin{equation}
+rz=-\frac{1}{2}\frac{2\sinh(\lambda_{3})}{\cosh(\lambda_{3})}
+\end{equation}
+de manera que $\lambda_{3}=-\text{arctanh}(rz)$.
 
-\subsection{Numérica}
-\subsubsection{Cascarón de estados mixtos}
+Si $q=0$, la ecuación (\ref{eq:RZq}) se reduce a
+\begin{equation}
+rz=-\frac{\sinh(\lambda_{3})}{\cosh(\lambda_{3}+1)}
+\end{equation}
+Mathematica sugiere la solución:
+\begin{equation}
+\lambda_{3}=\log\qty(\frac{1-r_{z}}{1+r_{z}})
+\end{equation}
+
+
+\newpage
+
+
+\section{Parte numérica}
+\subsection{Cascarón de estados mixtos}
 Se generan estados puros $\begin{pmatrix}
 a\\
 b\\ \end{pmatrix}$ de manera uniforme. Estos son puntos en el cascarón unitario. Todos estos puntos se deplazan radialmente hacia adentro mediante un factor:
@@ -209,7 +237,7 @@ A cada $\rho_{i}$ hay que hallarle su estado fino asignado. Lo que se hace es ge
 
 Como existe una unitaria $U_{i}$ entre $\rho_{z}$ y cada estado de $\{\rho_{i}\}_{i=1}^{N}$. Entonces podemos aplicar estas unitarias para hallar todos los $\mcA[\rho_{i}]$.
 
-\subsubsection{Resultados}
+\subsection{Resultados}
 
 Dos experimentos. En el primero se utiliza una probabilidad de swap $p=0.5$ (cascarón de radio $r=0.3$). El conjunto no cambia. En el segundo se utiliza una probabilidad de swap $p=0.3$ (cascarón de radio $r=0.8$).
 
@@ -231,6 +259,7 @@ Se grafican dichos cascarones en azul. Se aplica un SWAP a todos los $\mcA[\rho_
 \end{subfigure}
 \label{fig:cooldensities}
 \end{figure}
+
 
 
 \bibliographystyle{ieeetr}

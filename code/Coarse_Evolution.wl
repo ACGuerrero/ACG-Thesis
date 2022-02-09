@@ -16,13 +16,29 @@ about the visualization.
 (*@@@@@@@@@@@@@@@@@@@@@@@@@ FIRST PART @@@@@@@@@@@@@@@@@@@@@@@@@@*)
 (*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*)
 
+
+(*There are two basic parameters for the coarse graining problem.
+The z coordinate of the state and the swap probability*)
+swapP = 0.5;
+zcoord = 0.8;
+
+(*Given those two, we can obtain a maximum entropy state*)
+lambdastep=0.05
+zobs[l_,p_]:=-(1/2) Sech[l*p] Sech[l-p*l] (Sinh[l]+(1-2 p) Sinh[l-2 p*l])
+rzlambda=Table[{zobs[l,swapP],l},{l,-4,0,lambdastep}]
+nearpos[haystack_,value_]:= With[{ f = Nearest[haystack -> Range@Length@haystack]},f[value, 1]];
+lagrangemult=With[{data=Transpose[rzlambda]},data[[2,nearpos[data[[1]],zcoord]]]];
+G[i_,p_]:=p*KroneckerProduct[PauliMatrix[i],IdentityMatrix[2]]+(1-p)*KroneckerProduct[IdentityMatrix[2],PauliMatrix[i]]
+A=-\[Lambda]3*G[3,p];
+ExpMat=MatrixExp[A];
+Z=Tr[ExpMat];
+MaxEnt=ExpMat/Z;
+
 (*First we generate or import the data. The GenerateMHData function
 won't create anything if the file exists already*)
 n = 1000;
 beta = 100;
 delta = 0.6;
-swapP = 0.5;
-zcoord = 0.8;
 steps=20;
 zcoarsestate=(IdentityMatrix[2]+zcoord*PauliMatrix[3])/2;
 GenerateMHData[n, beta, delta, swapP, zcoord]
