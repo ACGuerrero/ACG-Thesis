@@ -46,7 +46,7 @@
 \newcommand{\Fuzzy}[1]{\mcF\left[#1\right]}
 \newcommand{\nota}[1]{{\color{red} [#1]}}
 \newcommand{\notaAd}[1]{{\color{blue} [#1]}} %Notas pero mías
-
+\graphicspath{ {../figures/} }
 \begin{document}
 \maketitle
 \thispagestyle{empty}
@@ -95,7 +95,58 @@ Si se asume que $\rho_{z}$ es un estado grueso alineado sobre el eje z, por (\re
 \psi_{max}=\frac{\text{exp}(\lambda_{3}\hat{G}_{3})}{\Tr[\text{exp}(\lambda_{3}\hat{G}_{3})]}
 \end{equation}
 donde $\hat{G}_{3}$ se define según (\ref{eq:Gop}). La forma matricial de este estado es:
+\begin{equation*}
+\left(
+\begin{array}{cccc}
+ \frac{1}{4} e^{-\lambda_{3}} \text{sech}(\lambda_{3} p)
+   \text{sech}(\lambda_{3}-\lambda_{3} p) & 0 & 0 & 0 \\
+ 0 & \frac{e^{2 \lambda_{3}}}{\left(e^{2 \lambda_{3}
+   p}+1\right) \left(e^{2 \lambda_{3}}+e^{2 \lambda_{3}
+   p}\right)} & 0 & 0 \\
+ 0 & 0 & \frac{1}{\left(e^{2 \lambda_{3}}+1\right) e^{-2
+   \lambda_{3} p}+e^{2 \lambda_{3}-4 \lambda_{3}
+   p}+1} & 0 \\
+ 0 & 0 & 0 & \frac{1}{4} e^{\lambda_{3}}
+   \text{sech}(\lambda_{3} p) \text{sech}(\lambda_{3}-\lambda_{3} p) \\
+\end{array}
+\right)
+\end{equation*}
+Hallar el valor de $\lambda_{
+3}$ en términos del valor $r_{z}$ implica resolver la ecuación:
+\begin{equation}\label{eq:RZ}
+rz=-\frac{1}{2}\sech{p\lambda_{3}}\sech{(1-p)\lambda_{3}}(\sinh{\lambda_{3}}+(1-p)\sinh{\lambda_{3}(1-2p)})
+\end{equation}
+No se ve ninguna forma sencilla de despejar al multiplicador de Lagrange. En realidad, esto solo se puede si la función $r_{z}(\lambda_{3})$ tiene inversa, y esto puede depender del parámetro $p$. Graficar la superficie puede dar algunas ideas del problema. La superficie es observable en la figura \ref{fig:rzsurf}.
 
+Después de una breve inspección se concluyen las siguientes cosas:
+\begin{itemize}
+\item la superficie es simétrica respecto al plano $p=0.5$
+\item la superficie es antisimétrica respecto al plano $\lambda_{3}=0$
+\item $\text{sgn}(\lambda_{3})=-\text{sgn}(r_{z})$
+\end{itemize}
+¿Pero es posible, fijada p, hallar a $\lambda_{3}$ en función de $r_{z}$? La figura \ref{fig:rzinv} parece sugerir que claro que sí. Aún más, parece que la relación es del tipo $\lambda_{3}=\text{arctanh}(r_{z})$. Así que bueno, aunque aún no he hallado la expresión, creo que debe existir.
+
+\begin{figure}[h!]
+\centering
+\begin{subfigure}{0.475\textwidth}
+  \centering
+  \includegraphics[width=0.6\linewidth]{LagrangeMult_lambda-8to8.png}
+  \caption{$-8<\lambda_{3}<8$}
+\end{subfigure}%
+\begin{subfigure}{0.475\textwidth}
+  \centering
+  \includegraphics[width=0.6\linewidth]{LagrangeMult_lambda-4to0.png}
+  \caption{$-4<\lambda_{3}<0$}
+\end{subfigure}
+\caption{Superficie de $r_{z}$ según (\ref{eq:RZ}) para dos intervalos de $\lambda_{3}$. A valores $\lambda_{3}<0$ corresponden valores $r_{z}>0$ y viceversa.}
+\label{fig:rzsurf}
+\end{figure}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.6\linewidth]{rz_has_inverse_lambda-4to4.png}
+\caption{$r_{z}$ como función de $\lambda_{3}$ para diferentes valores de $p$. La apariencia uno a uno sugiere la existencia de una inversa.}
+\label{fig:rzinv}
+\end{figure}
 \bibliographystyle{ieeetr}
 \bibliography{bibliography}
 
