@@ -14,7 +14,7 @@
 \usepackage{hyperref}
 \usepackage{caption}
 \usepackage{subcaption} %para las subfiguras
-\title{MaxEnt}
+\title{Evolución del SWAP y estado de máxima entropía}
 %*********
 %Comandos
 %*********
@@ -50,7 +50,49 @@
 \begin{document}
 \maketitle
 \thispagestyle{empty}
-\section{Todos los estados están sobre $z$}
+\section{Parte analítica}
+\subsection{Una unitaria para gobernarlos a todos}
+
+Un operador unitario se traduce como una rotación en la esfera de Bloch. Entonces dos operadores están relacionados por una unitaria si sus vectores de Bloch tienen la misma norma (esto es, los operadores tienen la misma norma de Frobenius).
+
+Si consideramos un estado sobre el eje z,
+
+\begin{equation}
+\rho_{z}=\frac{1}{2}\qty(\Id+z\sigma_{z})
+\end{equation}
+
+entonces este está relacionado mediante una unitaria a cualquier estado $\rho$ con vector de Bloch $\vec{r}$ tal que $\abs{\vec{r}}=z$.
+
+\subsection{El grueso rotado es igual al grueso del rotado}
+Sea $\rho_{z}$ un estado grueso sobre z definido como antes, y sea $\{\psi_{i}\}_{i=1}^{N}$ el conjunto de estados con los que se obtiene su estado fino asignado. Además, sea $\rho$ un estado grueso tal que $\abs{\vec{r}}=z$.
+
+\begin{equation}
+\Rightarrow \exists U \text{ tal que } U\rho_{z}U^{\dag}=\rho
+\end{equation}
+
+Sea $\mcU=U\otimes U$, $\sigma_{i}'=U\sigma_{i}U^{\dag}$. En las siguientes líneas se muestra que si se rota a todo el conjunto $\{\psi_{i}\}$ usando $\mcU$, lo que se halla es el conjunto fino para el mapeo de asignación de $\rho$. Nótese que la rotación no modifica la distribución de los estados siempre que estos satisfagan la medida de Haar.
+
+\begin{align*}
+\CG{\mcU \psi_{i} \mcU^{\dag}}=&\Tr_{2}\qty[p\mcU\psi_{i}\mcU^{\dag}+(1-p)S\mcU \psi_{i} \mcU^{\dag}S^{\dag}]\\
+=&\Tr_{2}\qty[p\mcU\qty(\frac{1}{4}\sum_{i,j}\gamma_{ij} \sigma_i\otimes\sigma_j)\mcU^{\dag}+(1-p) S\mcU \qty(\frac{1}{4}\sum_{i,j}\gamma_{ij} \sigma_i\otimes\sigma_j) \mcU^{\dag} S^{\dag}]\\
+=&\Tr_{2}\qty[p\qty(\frac{1}{4}\sum_{i,j}\gamma_{ij} \sigma_{i}'\otimes\sigma_{j}')+(1-p)S \qty(\frac{1}{4}\sum_{i,j}\gamma_{ij} \sigma_{i}'\otimes\sigma_{j}')S^{\dag}]\\
+=&\Tr_{2}\qty[p\qty(\frac{1}{4}\sum_{i,j}\gamma_{ij} \sigma_{i}'\otimes\sigma_{j}')+(1-p)\qty(\frac{1}{4}\sum_{i,j}\gamma_{ij} \sigma_{j}'\otimes\sigma_{i}')]\\
+\end{align*}
+\begin{align*}
+\Rightarrow\CG{\mcU \psi_{i} \mcU^{\dag}}=&\frac{1}{2}\qty[\Id +p\sum_{i=1}\gamma_{i,0}\sigma_{i}'+(1-p)\sum_{j=1}\gamma_{0,j}\sigma_{j}']\\
+=&\frac{1}{2}\qty[\Id + \sum_{i=1}^3[p\gamma_{i,0}+(1-p)\gamma_{0,i}]U\sigma_{i}U^{\dag}]\\
+=&U\frac{1}{2}\qty[\Id + \sum_{i=1}^3[p\gamma_{i,0}+(1-p)\gamma_{0,i}]\sigma_{i}]U^{\dag}\\
+=&U\CG{\psi_{i}}U^{\dag}\\
+=&U\rho_{z}U^{\dag}\\
+\end{align*}
+Como esto es para todo $i$, si se rota cada $\psi_{i}$, lo que obtenemos es un conjunto que podemos promediar para hallar el estado fino asignado a $\rho$. Aún mejor, como el promedio es lineal:
+\begin{align}
+\mcA[\rho]=&\frac{1}{N}\sum_{i}U\psi_{i}U^{\dag}\\
+=&U\qty(\frac{1}{N}\sum_{i}\psi_{i})U^{\dag}\\
+=&U\mcA[\rho_{z}]U^{\dag}
+\end{align}
+Esto significa que podemos hallar el mapeo de asignamiento de un estado $\rho$ a través del mapeo de asignamiento de otro estado $\rho_{z}$, siempre y cuando exista una unitaria entre estos.
+\subsection{Para el MaxEnt es lo mismo pero no es igual}
 Considérese un estado grueso $\rho_{c}\in \mcL(\mcH_{2})$, y sea $\psi\in\mcL(\mcH_{4})$ su estado subyacente $\CG{\psi}=\rho_{c}$. Si el observador puede realizar mediciones de $\sigma_{i}$ en el estado grueso, entonces es posible reconstruir un estado de máxima entropía $\psi_{max}$ según
 \begin{equation}\label{eq:MaxEnt}
 \psi_{max}=\frac{1}{\Tr(e^{\sum_{i}\lambda_{i}\hat{G}_{i}})}e^{\sum_{i}\lambda_{i}\hat{G}_{i}}
@@ -89,7 +131,7 @@ De esto, se sigue que el estado de máxima entropía se recontruye como:
 &=\frac{1}{\Tr(e^{\sum_{i}\lambda_{i}\hat{G}_{i}})}\mcU^{\dag}\qty(e^{\sum_{i}\lambda_{i}\hat{G}_{i}})\mcU\\
 &=\mcU^{\dag}\psi_{max}\mcU
 \end{align*}
-\section{El estado de máxima entropía en términos de $r_{z}$}
+\subsection{El estado de máxima entropía en términos de $r_{z}$}
 Si se asume que $\rho_{z}$ es un estado grueso alineado sobre el eje z, por (\ref{eq:MaxEnt}) el estado de máxima entropía es:
 \begin{equation}\label{eq:MaxEntZ}
 \psi_{max}=\frac{\text{exp}(\lambda_{3}\hat{G}_{3})}{\Tr[\text{exp}(\lambda_{3}\hat{G}_{3})]}
@@ -147,6 +189,50 @@ Después de una breve inspección se concluyen las siguientes cosas:
 \caption{$r_{z}$ como función de $\lambda_{3}$ para diferentes valores de $p$. La apariencia uno a uno sugiere la existencia de una inversa.}
 \label{fig:rzinv}
 \end{figure}
+
+\section{Parte analítica}
+
+\subsection{Numérica}
+\subsubsection{Cascarón de estados mixtos}
+Se generan estados puros $\begin{pmatrix}
+a\\
+b\\ \end{pmatrix}$ de manera uniforme. Estos son puntos en el cascarón unitario. Todos estos puntos se deplazan radialmente hacia adentro mediante un factor:
+\begin{equation}
+\vec{\alpha}=r\vec{\alpha_{0}}
+\end{equation}
+El resultado es un conjunto de estados mixtos $\{\rho_{i}\}_{i=1}^{N}$ cuyos vectores de Bloch se encuentran en el cascarón de radio $r$.
+
+\subsubsection{Mapeo de asignación para el cascarón}
+
+
+A cada $\rho_{i}$ hay que hallarle su estado fino asignado. Lo que se hace es generar un conjunto $\{\psi_{i}\}_{i=1}^{N}$ de estados finos para un estado grueso en $z$, $\rho_{z}$, tal que su coordenada en $z$ es justamente el radio del cascarón.
+
+Como existe una unitaria $U_{i}$ entre $\rho_{z}$ y cada estado de $\{\rho_{i}\}_{i=1}^{N}$. Entonces podemos aplicar estas unitarias para hallar todos los $\mcA[\rho_{i}]$.
+
+\subsubsection{Resultados}
+
+Dos experimentos. En el primero se utiliza una probabilidad de swap $p=0.5$ (cascarón de radio $r=0.3$). El conjunto no cambia. En el segundo se utiliza una probabilidad de swap $p=0.3$ (cascarón de radio $r=0.8$).
+
+Se grafican dichos cascarones en azul. Se aplica un SWAP a todos los $\mcA[\rho_{i}]$, y se saca el coarse graining. El resultado se grafica en amarillo.
+
+\begin{figure}[h]
+\centering
+\begin{subfigure}{0.4\textwidth}
+  \centering
+  \includegraphics[width=0.8\linewidth]{figures/effectiveswap_p=0.5_z=0.3.jpeg}
+  \caption{$p=0.5$, $r=0.3$, el conjunto no cambia después del swap subyacente}
+  \label{fig:paralelogram}
+\end{subfigure}
+\begin{subfigure}{0.4\textwidth}
+  \centering
+  \includegraphics[width=0.8\linewidth]{figures/effectiveswap_p=0.3_z=0.8.jpeg}
+  \caption{$p=0.5$, $r=0.3$, el conjunto se contrae  después del swap subyacente}
+  \label{fig:paralelogram}
+\end{subfigure}
+\label{fig:cooldensities}
+\end{figure}
+
+
 \bibliographystyle{ieeetr}
 \bibliography{bibliography}
 
