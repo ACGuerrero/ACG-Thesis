@@ -21,6 +21,15 @@ metropolisHastingsSample::usage="something"
 cgfidelitylist::usage="something"
 cgfrobeniuslist::usage="something"
 GenerateMHData::usage="something"
+GObsMaxEnt::usage="something"
+CGMaxEntStateLM::usage="something"
+NearestPosition::usage="something"
+GObsMaxEnt::usage="something"
+CGMaxEntStateLM::usage="something"
+Zobs::usage="something"
+RzLambdaTable::usage="something"
+LagrangeMultFromZCoord::usage="something"
+MaxEntForStateNotInZ::usage="something"
 Begin["`Private`"]
 
 
@@ -30,6 +39,8 @@ Begin["`Private`"]
 
 
 Pauli2Basis=Flatten[Table[Pauli[{i,j}],{i,0,3},{j,0,3}],1];
+
+NearestPosition[haystack_,value_]:= With[{ f = Nearest[haystack -> Range@Length@haystack]},f[value, 1]];
 
 MatrixToLatex[matrix_]:=
 "\\begin{pmatrix}"<>Fold[
@@ -103,6 +114,18 @@ Ubig=UnitaryToRotateFineStates[cstate]
 Ubig . #&/@fdata
 ]
 
+(*All about the MaxEnt state*)
+GObsMaxEnt[p_,i_]:=p*KroneckerProduct[PauliMatrix[i],IdentityMatrix[2]]+(1-p)*KroneckerProduct[IdentityMatrix[2],PauliMatrix[i]];
+CGMaxEntStateLM[lambda_,p_]:=With[{ExpMat=MatrixExp[-lambda*GObsMaxEnt[p,3]]},ExpMat/Tr[ExpMat]]
+Zobs[l_,p_]:=-(1/2)*Sech[l*p]*Sech[l-p*l]*(Sinh[l]+(1-2 p)*Sinh[l-2 p*l])
+RzLambdaTable[step_,p_]:=Transpose[Table[{Zobs[l,p],l},{l,-4,0,step}]];
+LagrangeMultFromZCoord[data_,zcoord_]:=data[[2,NearestPosition[data[[1]],zcoord]]]
+MaxEntForStateNotInZ[cstate_,ZMaxEnt_]:=
+With[
+{Ubig=UnitaryToRotateFineStates[cstate]
+},
+Ubig . ZMaxEnt . Dagger[Ubig]
+]
 
 
 
