@@ -12,7 +12,7 @@
 \usepackage{tikz-cd} %para diagrama conmutatitvo
 \usepackage{multicol} %para la lista de operadores
 \usepackage{hyperref}
-\title{Proyecto de Tesis de Licencuatura en Física\\ Presenta: Adán Castillo Guerrero}
+\title{Proyecto de Tesis de Licencuatura en Física\\ {\large Presenta: Adán Castillo Guerrero}}
 \date{\today}
 %*********
 %Comandos
@@ -52,7 +52,7 @@
 A continuación se presenta el proyecto de Tesis de Licenciatura en Física que desarrollará el alumno \textbf{Adán Castillo Guerrero}, bajo la dirección del \textbf{Dr. David Dávalos González}. El título del proyecto es ``\textsc{Dinámica de un sistema de dos qubits bajo un modelo de grano grueso}''.
 
 \section{Objetivos de la tesis}
-Bajo el marco de la \textit{teoría de sistemas cuánticos abiertos} y \textit{sistemas de muchos cuerpos}, se estudiarán las propiedades de dinámicas \textit{de grano grueso} (hispanización del concepto en inglés \textit{coarse graining}). Esto es, dinámicas que emergen cuando cuando no es posible tener la descripción completa del sistema cuántico, por ejemplo de parte del experimental. Los objetivos particulares consisten en: i) el estudio de un prototipo de descripción de grano grueso formalizada en términos de una \textit{aplicación lineal} sobre el conjunto de \textit{matrices de densidad} (estados cuánticos), en particular se utilizarán sistemas de dos o más \textit{sistemas de dos niveles}(qubits); ii) construcción de las dinámicas emergentes en base a la descripción de grano grueso a nivel de los estados; iii) se utilizarán dinámicas sencillas pero bien conocidas para entender que aspectos de ellas son mas afectados, así como que propiedades prevalecen cuando no se tiene acceso a todo el sistema cuántico. Por último, se utilizarán herramientas computacionales, tales como \textit{Mathematica}, para probar las hipótesis y calcular los casos no accesibles analíticamente.
+Bajo el marco de la \textit{teoría de sistemas cuánticos abiertos} y \textit{sistemas de muchos cuerpos}, se estudiarán las propiedades de dinámicas \textit{de grano grueso} (hispanización del concepto en inglés \textit{coarse graining}). Esto es, dinámicas que emergen cuando cuando no es posible tener la descripción completa del sistema cuántico, por ejemplo por parte del experimental. Los objetivos particulares consisten en: i) el estudio de un prototipo de descripción de grano grueso formalizada en términos de una \textit{aplicación lineal} sobre el conjunto de \textit{matrices de densidad} (estados cuánticos), en particular se utilizarán sistemas compuestos de dos o más \textit{sistemas de dos niveles}(qubits); ii) construcción de las dinámicas emergentes en base a la descripción de grano grueso a nivel de los estados; iii) se utilizarán dinámicas sencillas pero bien conocidas para entender que aspectos de ellas son mas afectados, así como que propiedades prevalecen cuando no se tiene acceso a todo el sistema cuántico. Por último se utilizarán herramientas computacionales, tales como \textit{Mathematica}, para probar las hipótesis y calcular los casos no accesibles analíticamente.
 
 \section{Marco teórico}
 
@@ -61,34 +61,33 @@ Dentro del marco de la \textit{teoría de información cuántica}, especialmente
 
 Para ilustrar lo anterior, considérese dicha aplicación borrosa sobre un sistema de dos qubits (llámense qubit $A$ y qubit $B$). El estado del sistema está caracterizado por un operador de densidad $\rho_{AB} \in \mcS(\hilbert_2 \otimes \hilbert_2)$, donde $\mcS(\hilbert_2 \otimes \hilbert_2)$ denota el espacio convexo de los operadores de densidad que actúan sobre $\hilbert_2 \otimes \hilbert_2$, donde $\hilbert_2$ es el espacio de Hilbert correspondiente a un qubit. La acción de la aplicación borrosa se escribe como sigue,
 \begin{align}
-\mcF&:\mcS(\hilbert_2 \otimes \hilbert_2)\to \mcS(\hilbert_2 \otimes \hilbert_2)\nonumber\\
-\mcF&: \rho \mapsto p\rho+(1-p)S\rho S^{\dag}\label{eq:Fuzzy2},
+\mcF:&\mcS(\hilbert_2 \otimes \hilbert_2)\to \mcS(\hilbert_2 \otimes \hilbert_2)\nonumber\\
+&\rho \mapsto p\rho+(1-p)S\rho S\label{eq:Fuzzy2},
 \end{align}
 donde $0<p<1$ es la probabilidad con la que el aparto de medición identifica erroneamente a los dos subsistemas, $S$ es el operador de transposición de dos partículas, definido como 
 $$S\ket{\psi}\otimes \ket{\phi}=\ket{\phi}\otimes \ket{\psi} \ \ \forall \ket{\psi},\ket{\phi}\in \hilbert_2.$$
 %
-El estado resultante, $\Fuzzy{\rho_{AB}}=p\rho_{AB}+(1-p)\rho_{BA}$, es una mezcla estadística (matemáticamente descrita como una combinación convexa) del estado \textit{real} del sistema, $\rho_{AB}$, y el estado donde los qubits tienen las etiquetas equivocadas, $\rho_{BA}$. Nótese que la aplicación borrosa es lineal y conserva la dimensión del sistema. Esto es, si bien el aparato comete errores, resuelve todos los grados del libertad del sistema.
+El estado resultante, $\Fuzzy{\rho_{AB}}=p\rho_{AB}+(1-p)\rho_{BA}$, es una mezcla estadística (matemáticamente descrita como una combinación convexa) del estado \textit{real} del sistema, $\rho_{AB}$, y el estado donde los qubits tienen las etiquetas equivocadas, $\rho_{BA}:=S\rho_{AB} S$. Nótese que la aplicación borrosa es lineal y conserva la dimensión del sistema. Esto es, si bien el aparato comete errores, este resuelve todos los grados del libertad del sistema.
 
 
 Considere ahora el caso en que el aparato de medición, además de describir ruido proveniente de errores de etiquetado, es incapaz de resolver todos los grados del libertad del sistema. Como prototipo de esto, se tiene el caso en el que se detecta solo una partícula en el lugar en el que hay dos. Matemáticamente, lo anterior puede escribirse como
 \begin{align}
-\mcC&:\mcS(\hilbert_2 \otimes \hilbert_2)\to \mcS(\hilbert_2 \otimes \hilbert_2)\nonumber\\
-\mcC&: \rho_{AB} \mapsto p\rho_A+(1-p)\rho_B,
+\mcC:&\mcS(\hilbert_2 \otimes \hilbert_2)\to \mcS(\hilbert_2)\nonumber\\
+ &\rho_{AB} \mapsto p\rho_A+(1-p)\rho_B,
 \label{eq:CG}
 \end{align}
 donde $\rho_A=\tr_B \rho_{AB}$ y $\rho_B=\tr_A \rho_{AB}$, es decir, las matrices de densidad reducidas de la partículas $A$ y $B$, respectivamente.
 %
-Esta aplicación lineal describe el 
 %
-A diferencia de la aplicación borrosa, el modelo de grano grueso sí disminuye la dimensión de la imagen. Nótese la relación entre las dos aplicaciones: se puede demostrar\cite{FuzzyMeasurements} que la aplicación de grano grueso dada por la ecuación (\ref{eq:CG}) puede reescribirse en términos de la aplicación borrosa según
+A diferencia de la aplicación borrosa, el modelo de grano grueso disminuye la dimensión del estado resultante. Además se puede mostrar que la ecuación anterior puede reescribirse en términos de la aplicación borrosa~\cite{FuzzyMeasurements},
 \begin{equation}
-\CG{\rho}=(\Tr_{B}\circ\mcF)[\rho]
+\CG{\rho}=(\Tr_{B}\circ\mcF)[\rho].
 \end{equation}
-En este contexto, diferenciamos al estado ``microscópico'' o ``fino'' $\rho_{f}\in D(\Complex^{2}\otimes\Complex^{2})$ , y al estado ``macroscópico'' o ``grueso'' $\rho_{g}\in D(\Complex^{2})$ a través de la relación
+En este contexto, diferenciamos al estado ``microscópico'' o ``fino'', denotado por $\rho_{f}\in \mcS(\hilbert_2\otimes\hilbert_2)$, y al estado ``macroscópico'' o ``grueso'', denotado por $\rho_{g}\in \mcS(\hilbert_2)$, a través de la siguiente relación,
 \begin{equation}
-    \rho_{g}=\CG{\rho_{f}}
+    \rho_{g}=\CG{\rho_{f}}.
 \end{equation}
-Si el experimentalista solo tiene acceso al sistema grueso, ha sido mostrado\cite{Macro-To-Micro}, que es posible asignar un estado microscópico promedio que corresponda a las observaciones realizadas. Se le llama \textit{aplicación de asignación promedio} a la aplicación asociada a un coarse graining que asigna al estado grueso un estado fino, de tal forma que bajo el coarse graining el estado grueso sea recuperable del estado fino. En nuestro ejemplo, esta aplicación es
+Cabe señalar que la relación anterior no es invertible, por lo que la manera de asignar un estado microscópico a uno macroscópico, no es única. En la literatura se pueden encontrar varias propuestas para hacer dicha asignación. Por ejemplo se ha utilizado el principio de máxima entropía~\cite{jaynes} en la ejecución de tomografía cuántica~\cite{maxent}, en el caso en el que no se tiene acceso en general a un conjunto completo de observables. También se han sido propuestas asignaciones directamente en el caso de aplicaciones lineales de grano grueso basadas en la información macroscópica~\cite{Macro-To-Micro}, donde además los autores muestran que los estados finos resultantes dependen de los parámetros de los estados gruesos manera no lineal. Esto tiene relevancia central en la física, ya que muestra un camino para la emergencia de dinámica no lineal a partir de dinámica lineal microscópica.
 \begin{gather}
 \mcA_{\mcC}:D(\Complex^{2})\rightarrow D(\Complex^{4})\label{eq:AAMDom}\\
 \mcA_{\mcC}\left[\rho_{g}\right]=\textsc{AVG}(\Omega_{\rho_{g}})\label{eq:AAM}
@@ -100,8 +99,8 @@ donde \textsc{AVG} indica un promedio y
 Al tomar el promedio (un promedio que debe tomarse en razón de la ignorancia del observador) de todos los estados del conjunto $\Omega_{\rho_{g}}$ (esto es, el promedio de todos los estados finos que corresponden a una misma descripción gruesa del sistema), la aplicación $\mcA$ asigna a un estado macroscópico el estado microscópico más probable. Esto implica que la ecuación (\ref{eq:AAM}) no es la inversa de la ecuación (\ref{eq:CG}). Al estado obtenido a través de la aplicación de asignación se le llama \textit{promedio asignado}.
 \vspace{0.5cm}
 \section{Descripción del proyecto}
-
-El trabajo tiene como objetivo el estudio y posterior descripción de la dinámica bajo una aplicación particular de coarse graining: la dada por la ecuación (\ref{eq:CG}). Dicho esto, si $\mcU_{t}$ es un canal cuántico unitario arbitrario inducido por un operador unitario $U_{t}$ que actúa en el espacio microscópico, esto es
+La meta del proyecto es la construcción de `dinámicas gruesas''
+El` trabajo tiene como objetivo el estudio y posterior descripción de la dinámica bajo una aplicación particular de coarse graining: la dada por la ecuación (\ref{eq:CG}). Dicho esto, si $\mcU_{t}$ es un canal cuántico unitario arbitrario inducido por un operador unitario $U_{t}$ que actúa en el espacio microscópico, esto es
 \begin{gather}
 U_{t}:\Complex^{4} \rightarrow \Complex^{4} \label{eq:UnitOpDyn}\\
 \mcU_{t}:D(\Complex^{4})\rightarrow D(\Complex^{4}) \label{eq:UnitChaDyn}\\
@@ -153,7 +152,7 @@ Será importante, además, conocer las relaciones y dependencias entre $\Gamma_{
 \begin{center}
     \rule{200pt}{0.4pt}\\
     Dr. David Dávalos Gonzáles \\
-    Investigador \\
+    Investigador asociado\\
     Centro de Investigación en Información Cuántica (RCQI)\\
     Instituto de Física, Academia Eslovaca de Ciencias (SAV)
 \end{center}
