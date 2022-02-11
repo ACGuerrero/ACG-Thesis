@@ -155,7 +155,8 @@ Module[{
 targetstate,
 data,
 filename,
-thertestdist
+thertestdist,
+time
 },
 SetDirectory["/home/acastillo/Documents/tesis-adan/code"];
 filename="MHstates_n="<>ToString[n]<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>"_beta="<>ToString[beta]<>"_delta="<>ToString[delta];
@@ -163,9 +164,10 @@ If[FileExistsQ["/home/acastillo/Documents/tesis-adan/code/MH_data/"<>filename<>"
 Print["Set of data exists already. Try exporting it instead."],
 Print["Set of data doesn't exist. Creating data."];
 targetstate=(IdentityMatrix[2]+zcoord*PauliMatrix[3])/2;
-data=metropolisHastingsSample[n,beta,delta,swapP,ketsToDensity[randomKets[4,1]][[1]],targetstate];
+{time,data}=Timing[metropolisHastingsSample[n+400,beta,delta,swapP,ketsToDensity[randomKets[4,1]][[1]],targetstate][[401;;]]];
 thertestdist=cgfrobeniuslist[data,targetstate,swapP];
 Print["Data created."];
+Print["Process took "<>ToString[time/60]<>" minutes"];
 Print["Mean distance between images and target: ", Mean[thertestdist]];
 Print["Total generated states: ",Length[data]];
 Export["MH_data/"<>filename<>"_data"<>".m",data];]
