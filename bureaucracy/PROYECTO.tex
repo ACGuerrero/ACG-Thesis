@@ -117,10 +117,11 @@ Tomando en cuenta que el estado microscópico puede obtenerse de la aplicación 
 \end{gather}
 El siguiente diagrama ilustra la ecuación (\ref{eq:Gamma})
 \[\begin{tikzcd}[arrows={<-|}]
-\rho_{g}(0)  & \rho_{\textsc{avg}}(0) \arrow{l}{\mcA} \\
-\rho_{g}(t) \arrow{u}{\Gamma_{t}} \arrow{r}{\varphi_y} & \rho_{\textsc{avg}}(t) \arrow{u}{\mcU_{t}}
+\rho_{g}(0)  & \rho_{g}(t) \arrow{l}{\Gamma_{t}} \arrow{d}{\mcC}\\
+\rho_{\textsc{avg}}(0) \arrow{u}{\mcA_{\mcC}} & \rho_{\textsc{avg}}(t) \arrow{l}{\mcU_{t}}
 \end{tikzcd}
 \]
+
 
 Para estudiar esta dinámica, se propondrán diferentes aplicaciones en el espacio microscópico. Considerando a $\mcU_{t}$ un canal unitario $D(\Complex^{2})\rightarrow D(\Complex^{2})$, algunos ejemplos incluyen
     \begin{multicols}{3}
