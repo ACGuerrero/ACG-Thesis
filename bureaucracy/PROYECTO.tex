@@ -1,4 +1,4 @@
-\documentclass[onecolumn,11pt]{article}
+\documentclass[onecolumn,10pt]{article}
 %*********
 %Paquetes
 %*********
@@ -99,8 +99,7 @@ donde \textsc{AVG} indica un promedio y
 Al tomar el promedio (un promedio que debe tomarse en razón de la ignorancia del observador) de todos los estados del conjunto $\Omega_{\rho_{g}}$ (esto es, el promedio de todos los estados finos que corresponden a una misma descripción gruesa del sistema), la aplicación $\mcA$ asigna a un estado macroscópico el estado microscópico más probable. Esto implica que la ecuación (\ref{eq:AAM}) no es la inversa de la ecuación (\ref{eq:CG}). Al estado obtenido a través de la aplicación de asignación se le llama \textit{promedio asignado}.
 \vspace{0.5cm}
 \section{Descripción del proyecto}
-La meta del proyecto es la construcción de `dinámicas gruesas''
-El` trabajo tiene como objetivo el estudio y posterior descripción de la dinámica bajo una aplicación particular de coarse graining: la dada por la ecuación (\ref{eq:CG}). Dicho esto, si $\mcU_{t}$ es un canal cuántico unitario arbitrario inducido por un operador unitario $U_{t}$ que actúa en el espacio microscópico, esto es
+La meta del proyecto es la construcción y estudio de `dinámicas gruesas'', denotadas como $\Gamma_t$, basadas en la aplicación lineal de grano grueso descrita anteriormente sobre estados microscópicos asignados apropiadamente. Todo esto dada una dinámica microscópica unitaria, denotada por $\mcU_t$. Concretamente, los elementos conocidos son el estado grueso inicial, denotado por $\rho_g(0)$ de algún sistema cuántico que evoluciona de acuerdo a una transformación unitaria $\mcU_t$
 \begin{gather}
 U_{t}:\Complex^{4} \rightarrow \Complex^{4} \label{eq:UnitOpDyn}\\
 \mcU_{t}:D(\Complex^{4})\rightarrow D(\Complex^{4}) \label{eq:UnitChaDyn}\\
@@ -112,7 +111,7 @@ y el experimenador tiene acceso únicamente a la descripción macroscópica del 
 \end{equation}
 Tomando en cuenta que el estado microscópico puede obtenerse de la aplicación de asignación promedio dada por las ecuaciones (\ref{eq:AAMDom}) y (\ref{eq:AAM}), entonces este canal efectivo puede escribirse como
 \begin{gather}
-\Gamma_{t}:D(\Complex^{2})\rightarrow D(\Complex^{2})\label{eq:GammaDom}\\
+\Gamma_{t}:\mcS(\Complex^{2})\rightarrow D(\Complex^{2})\label{eq:GammaDom}\\
 \Gamma_{t}=\mcC\circ\mcU_{t}\circ\mcA_{\mcC}\label{eq:Gamma}
 \end{gather}
 El siguiente diagrama ilustra la ecuación (\ref{eq:Gamma})
