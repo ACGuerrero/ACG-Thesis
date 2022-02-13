@@ -1,10 +1,10 @@
-\documentclass[onecolumn,11pt]{article}
+\documentclass[10pt]{article}
 %*********
 %Paquetes
 %*********
 \usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}
-\usepackage[a4paper, total={7in, 9in}]{geometry}
+\usepackage[a4paper]{geometry}
 \usepackage{amsfonts}
 \usepackage{dsfont}
 \usepackage{physics}
@@ -54,16 +54,16 @@ A continuación se presenta el proyecto de Tesis de Licenciatura en Física que 
 \section{Objetivos de la tesis}
 Bajo el marco de la \textit{teoría de sistemas cuánticos abiertos} y \textit{sistemas de muchos cuerpos}, se estudiarán las propiedades de dinámicas \textit{de grano grueso} (hispanización del concepto en inglés \textit{coarse graining}). Esto es, dinámicas que emergen cuando cuando no es posible tener la descripción completa del sistema cuántico, por ejemplo por parte del experimental. Los objetivos particulares consisten en: i) el estudio de un prototipo de descripción de grano grueso formalizada en términos de una \textit{aplicación lineal} sobre el conjunto de \textit{matrices de densidad} (estados cuánticos), en particular se utilizarán sistemas compuestos de dos o más \textit{sistemas de dos niveles}(qubits); ii) construcción de las dinámicas emergentes en base a la descripción de grano grueso a nivel de los estados; iii) se utilizarán dinámicas sencillas pero bien conocidas para entender que aspectos de ellas son mas afectados, así como que propiedades prevalecen cuando no se tiene acceso a todo el sistema cuántico. Por último se utilizarán herramientas computacionales, tales como \textit{Mathematica}, para probar las hipótesis y calcular los casos no accesibles analíticamente.
 
-\section{Marco teórico}
+\section{Descripción del proyecto}
 
-
+\subsection{Antecedentes}
 Dentro del marco de la \textit{teoría de información cuántica}, especialmente en conexión con la parte experimental, es natural suponer que no siempre es posible disponer de toda la información sobre el \textit{estado} del sistema de interés. Esto ya sea por insuficiencia en la resolución de los aparatos de medición o por el inevitable error inherente a las herramientas de medición. Un prototipo sencillo de error consiste en el inducido por un aparato que no distingue diferentes conjuntos de partículas entre sí. El caso más simple corresponde a la permutación de dos partículas. Este intercambio accidental a la hora de la medición es una \textit{aplicación borrosa}~\cite{FuzzyMeasurements}.
 
 Para ilustrar lo anterior, considérese dicha aplicación borrosa sobre un sistema de dos qubits (llámense qubit $A$ y qubit $B$). El estado del sistema está caracterizado por un operador de densidad $\rho_{AB} \in \mcS(\hilbert_2 \otimes \hilbert_2)$, donde $\mcS(\hilbert_2 \otimes \hilbert_2)$ denota el espacio convexo de los operadores de densidad que actúan sobre $\hilbert_2 \otimes \hilbert_2$, donde $\hilbert_2$ es el espacio de Hilbert correspondiente a un qubit. La acción de la aplicación borrosa se escribe como sigue,
-\begin{align}
+\begin{align*}
 \mcF:&\mcS(\hilbert_2 \otimes \hilbert_2)\to \mcS(\hilbert_2 \otimes \hilbert_2)\nonumber\\
-&\rho \mapsto p\rho+(1-p)S\rho S\label{eq:Fuzzy2},
-\end{align}
+&\rho \mapsto p\rho+(1-p)S\rho S,
+\end{align*}
 donde $0<p<1$ es la probabilidad con la que el aparto de medición identifica erroneamente a los dos subsistemas, $S$ es el operador de transposición de dos partículas, definido como 
 $$S\ket{\psi}\otimes \ket{\phi}=\ket{\phi}\otimes \ket{\psi} \ \ \forall \ket{\psi},\ket{\phi}\in \hilbert_2.$$
 %
@@ -71,73 +71,50 @@ El estado resultante, $\Fuzzy{\rho_{AB}}=p\rho_{AB}+(1-p)\rho_{BA}$, es una mezc
 
 
 Considere ahora el caso en que el aparato de medición, además de describir ruido proveniente de errores de etiquetado, es incapaz de resolver todos los grados del libertad del sistema. Como prototipo de esto, se tiene el caso en el que se detecta solo una partícula en el lugar en el que hay dos. Matemáticamente, lo anterior puede escribirse como
-\begin{align}
+\begin{align*}
 \mcC:&\mcS(\hilbert_2 \otimes \hilbert_2)\to \mcS(\hilbert_2)\nonumber\\
  &\rho_{AB} \mapsto p\rho_A+(1-p)\rho_B,
-\label{eq:CG}
-\end{align}
+\end{align*}
 donde $\rho_A=\tr_B \rho_{AB}$ y $\rho_B=\tr_A \rho_{AB}$, es decir, las matrices de densidad reducidas de la partículas $A$ y $B$, respectivamente.
 %
 %
 A diferencia de la aplicación borrosa, el modelo de grano grueso disminuye la dimensión del estado resultante. Además se puede mostrar que la ecuación anterior puede reescribirse en términos de la aplicación borrosa~\cite{FuzzyMeasurements},
-\begin{equation}
+\begin{equation*}
 \CG{\rho}=(\Tr_{B}\circ\mcF)[\rho].
-\end{equation}
+\end{equation*}
 En este contexto, diferenciamos al estado ``microscópico'' o ``fino'', denotado por $\rho_{f}\in \mcS(\hilbert_2\otimes\hilbert_2)$, y al estado ``macroscópico'' o ``grueso'', denotado por $\rho_{g}\in \mcS(\hilbert_2)$, a través de la siguiente relación,
-\begin{equation}
+\begin{equation*}
     \rho_{g}=\CG{\rho_{f}}.
-\end{equation}
-Cabe señalar que la relación anterior no es invertible, por lo que la manera de asignar un estado microscópico a uno macroscópico, no es única. En la literatura se pueden encontrar varias propuestas para hacer dicha asignación. Por ejemplo se ha utilizado el principio de máxima entropía~\cite{jaynes} en la ejecución de tomografía cuántica~\cite{maxent}, en el caso en el que no se tiene acceso en general a un conjunto completo de observables. También se han sido propuestas asignaciones directamente en el caso de aplicaciones lineales de grano grueso basadas en la información macroscópica~\cite{Macro-To-Micro}, donde además los autores muestran que los estados finos resultantes dependen de los parámetros de los estados gruesos manera no lineal. Esto tiene relevancia central en la física, ya que muestra un camino para la emergencia de dinámica no lineal a partir de dinámica lineal microscópica.
-\begin{gather}
-\mcA_{\mcC}:D(\Complex^{2})\rightarrow D(\Complex^{4})\label{eq:AAMDom}\\
-\mcA_{\mcC}\left[\rho_{g}\right]=\textsc{AVG}(\Omega_{\rho_{g}})\label{eq:AAM}
-\end{gather}
-donde \textsc{AVG} indica un promedio y
-\begin{equation}
-\Omega_{\rho_{g}}=\{\ket{\psi}\bra{\psi}\in D(\Complex^{2}\otimes\Complex^{2}) \mid \CG{\rho}=\rho_{g}\}
-\end{equation}
-Al tomar el promedio (un promedio que debe tomarse en razón de la ignorancia del observador) de todos los estados del conjunto $\Omega_{\rho_{g}}$ (esto es, el promedio de todos los estados finos que corresponden a una misma descripción gruesa del sistema), la aplicación $\mcA$ asigna a un estado macroscópico el estado microscópico más probable. Esto implica que la ecuación (\ref{eq:AAM}) no es la inversa de la ecuación (\ref{eq:CG}). Al estado obtenido a través de la aplicación de asignación se le llama \textit{promedio asignado}.
-\vspace{0.5cm}
-\section{Descripción del proyecto}
-La meta del proyecto es la construcción de `dinámicas gruesas''
-El` trabajo tiene como objetivo el estudio y posterior descripción de la dinámica bajo una aplicación particular de coarse graining: la dada por la ecuación (\ref{eq:CG}). Dicho esto, si $\mcU_{t}$ es un canal cuántico unitario arbitrario inducido por un operador unitario $U_{t}$ que actúa en el espacio microscópico, esto es
-\begin{gather}
-U_{t}:\Complex^{4} \rightarrow \Complex^{4} \label{eq:UnitOpDyn}\\
-\mcU_{t}:D(\Complex^{4})\rightarrow D(\Complex^{4}) \label{eq:UnitChaDyn}\\
-\mcU_{t}[\rho]=U_{t}\rho U_{t}^{\dag}
-\end{gather}
-y el experimenador tiene acceso únicamente a la descripción macroscópica del sistema, entonces este observa una dinámica efectiva descrita por un canal $\Gamma_{t}$
-\begin{equation}
-\rho_{g}(t)=\Gamma_{t}[\rho_{g}(0)]
-\end{equation}
-Tomando en cuenta que el estado microscópico puede obtenerse de la aplicación de asignación promedio dada por las ecuaciones (\ref{eq:AAMDom}) y (\ref{eq:AAM}), entonces este canal efectivo puede escribirse como
-\begin{gather}
-\Gamma_{t}:D(\Complex^{2})\rightarrow D(\Complex^{2})\label{eq:GammaDom}\\
-\Gamma_{t}=\mcC\circ\mcU_{t}\circ\mcA_{\mcC}\label{eq:Gamma}
-\end{gather}
-El siguiente diagrama ilustra la ecuación (\ref{eq:Gamma})
+\end{equation*}
+Cabe señalar que la relación anterior no es invertible, por lo que la manera de asignar un estado microscópico a uno macroscópico, no es única. En la literatura se pueden encontrar propuestas para hacer dicha asignación. Por ejemplo se ha utilizado el \textit{principio de máxima entropía}~\cite{jaynes} en la ejecución de tomografía cuántica~\cite{maxent}. También han sido propuestas asignaciones directamente en el caso de aplicaciones lineales de grano grueso basadas en la información macroscópica~\cite{Macro-To-Micro}, donde además los autores muestran que los estados finos resultantes dependen de los parámetros de los estados gruesos manera no lineal. Esto tiene relevancia central en la física, ya que muestra un camino para la emergencia de dinámica no lineal a partir de dinámica lineal microscópica.
+
+\subsection{Propuesta}
+La meta del proyecto es la construcción y estudio de `dinámicas gruesas'', denotadas como $\Gamma_t$, basadas en la aplicación lineal de grano grueso descrita anteriormente sobre estados microscópicos asignados apropiadamente. Todo esto dada una dinámica microscópica unitaria, denotada por $\mcU_t$. Concretamente se construirá lo siguiente,
+\begin{align*}
+\Gamma_{t}:&\mcS(\hilbert_2)\rightarrow \mcS(\hilbert_2)\\
+&\rho_g(0) \mapsto \rho_g(t),
+\end{align*}
+donde la dinámica gruesa se define como la composición,
+\begin{equation*}
+\Gamma_t:=\mcC \circ \mcU_t \circ \mcA_\mcC.
+\end{equation*}
+El siguiente diagrama ilustra la ecuación anterior,
 \[\begin{tikzcd}[arrows={<-|}]
 \rho_{g}(0)  & \rho_{g}(t) \arrow{l}{\Gamma_{t}} \arrow{d}{\mcC}\\
-\rho_{\textsc{avg}}(0) \arrow{u}{\mcA_{\mcC}} & \rho_{\textsc{avg}}(t) \arrow{l}{\mcU_{t}}
+\rho_{f}(0) \arrow{u}{\mcA_{\mcC}} & \rho_{f}(t). \arrow{l}{\mcU_{t}}
 \end{tikzcd}
 \]
+Aquí $\mcA_\mcC$ denota una aplicación que asigna un estado fino $\rho_f(0)$ al estado $\rho_g(0)$. Como ya se mencionó, no hay una forma única de hacer dicha asignación. En este trabajo se explorarán dos formas de hacerlo. La primera de ellas consiste en definir $\rho_f(0)$ como el promedio sobre todos los estados compatibles con $\rho_g(0)$~\cite{Macro-To-Micro}, es decir
+$$\rho_f(0)=\overline{\Omega(\rho_g(0))},$$
+donde
+\begin{equation*}
+\Omega(\rho)=\{\dyad{\psi}\in \mcS(\hilbert_2 \otimes \hilbert_2) \mid \mcC\left[\dyad{\psi}\right]=\rho\}.
+\end{equation*}
+La segunda forma de asignación consiste en usar el principio de máxima entropía, dados los promedios de un conjunto de observables tomográficamente completo del sistema al nivel grueso. Esto es, asignaremos al estado $\rho_g(0)$ un estado fino que formalmente sea totalmente imparcial y no añada ninguna cantidad de información arbitraría además de las restricciones $\langle A_i \rangle=\tr \left[ A_i \rho_g(0) \right]$, donde el conjunto $\left\{A_i \right\}$ es tomográficamente completo~\cite{jaynes}. Cabe señalar que por entropía, nos referimos a la entropía de Von Neumann, $S(\rho)=\tr \left[ -\rho \log(\rho) \right]$.
 
+Para estudiar la emergencia de la no linealidad se considerarán varias dinámicas microscópicas. Entre ellas destacan aquellas que son simétricas bajo el intercambio de partículas, tales como la transposición de partículas o $\mcU_t[\rho]=(U_t \otimes U_t) \rho (U_t \otimes U_t)^\dagger{}$; así como las que no son simétricas, tales como la compuerta \textit{controlled not} (CNOT).
 
-Para estudiar esta dinámica, se propondrán diferentes aplicaciones en el espacio microscópico. Considerando a $\mcU_{t}$ un canal unitario $D(\Complex^{2})\rightarrow D(\Complex^{2})$, algunos ejemplos incluyen
-    \begin{multicols}{3}
-    \begin{enumerate}
-        \item \textsc{CNOT}
-        \item $\mcU_{t}\otimes \mcU_{t}$
-        \item \textsc{SWAP}
-    \end{enumerate}
-    \end{multicols}
-Y posteriormente se caracterizará y se analizarán las propiedades de la dinámica observada en la descripción gruesa del sistema. Será de particular interés el hecho de la emergencia de no-linearidad en la dinámica, como ha sido notado en investigaciones recientes\cite{Macro-To-Micro}\cite{CGEmergingDynamics}. En efecto,
-
-
-
-Será importante, además, conocer las relaciones y dependencias entre $\Gamma_{t}$ y el estado inicial $\rho_{g}(0)$, y de las diferencias de evolución entre estados diferentes pertenecientes a un mismo $\Omega_{\rho_{g}}$. Este estudio se hará en apoyo de la bibliografía adecuada y de simulaciones numéricas en diferentes lenguajes de programación, así como de reuniones periódicas con el tutor de tesis.
-
-\vspace{3.0cm}
+\vspace{1.5cm}
 
 
 \begin{center}
