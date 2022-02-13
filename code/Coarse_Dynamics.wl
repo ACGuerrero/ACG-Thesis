@@ -38,9 +38,9 @@ ZMaxEnt//MatrixForm
 
 (*First we generate or import the data. The GenerateMHData function
 won't create anything if the file exists already*)
-n = 500;
-beta = 200;
-delta = 0.6;
+n = 1000;
+beta = 150;
+delta = 0.7;
 steps=20;
 zcoarsestate=(IdentityMatrix[2]+zcoord*PauliMatrix[3])/2;
 GenerateMHData[n, beta, delta, swapP, zcoord]
