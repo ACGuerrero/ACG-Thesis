@@ -150,27 +150,52 @@ metropolisHastingsSample[size_,\[Beta]_,\[Delta]_,swapP_,initialstate_,targetsta
 cgfidelitylist[bigstateslist_,targetstate_,swapP_]:=fidelity[coarseGraining2[#,swapP],targetstate]&/@bigstateslist
 cgfrobeniuslist[bigstateslist_,targetstate_,swapP_]:=Norm[coarseGraining2[#,swapP]-targetstate,"Frobenius"]&/@bigstateslist
 
-GenerateMHData[n_,beta_,delta_,swapP_,zcoord_]:=
-Module[{
+CreateData[n_,beta_,delta_,swapP_,zcoord_]:=Module[{
 targetstate,
 data,
 filename,
 thertestdist,
 time
 },
-SetDirectory["/home/acastillo/Documents/tesis-adan/code"];
-filename="MHstates_n="<>ToString[n]<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>"_beta="<>ToString[beta]<>"_delta="<>ToString[delta];
-If[FileExistsQ["/home/acastillo/Documents/tesis-adan/code/MH_data/"<>filename<>"_data"<>".m"],
-Print["Set of data exists already. Try exporting it instead."],
-Print["Set of data doesn't exist. Creating data."];
 targetstate=(IdentityMatrix[2]+zcoord*PauliMatrix[3])/2;
 {time,data}=Timing[metropolisHastingsSample[n+400,beta,delta,swapP,ketsToDensity[randomKets[4,1]][[1]],targetstate][[401;;]]];
 thertestdist=cgfrobeniuslist[data,targetstate,swapP];
 Print["Data created."];
 Print["Process took "<>ToString[time/60]<>" minutes"];
 Print["Mean distance between images and target: ", Mean[thertestdist]];
-Print["Total generated states: ",Length[data]];
-Export["MH_data/"<>filename<>"_data"<>".m",data];]
+Print["Number of states in the file: ",Length[data]];
+Return[data]
 ]
+
+GenerateMHData[n_,beta_,delta_,swapP_,zcoord_]:=
+Module[{
+targetstate,
+data,
+filename,
+thertestdist,
+time,
+size
+},
+SetDirectory["/home/acastillo/Documents/tesis-adan/code"];
+filename="MHstates_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>"_beta="<>ToString[beta]<>"_delta="<>ToString[delta];
+If[FileExistsQ["/home/acastillo/Documents/tesis-adan/code/MH_data/"<>filename<>"_data"<>".m"],
+	Print["Set of data exists already."];
+	data=Get["MH_data/"<>filename<>"_data"<>".m"];
+	size=Length[data];
+	Print["Data imported from file. File contains "<>ToString[size]<>" elements."];
+	If[size>=n,
+		Print["File has enough data"];
+		Return[data[[;;n]]],
+		Print["Set of data doesn't have enough data. Creating more data."];
+		data=Join[CreateData[n-Length[data],beta,delta,swapP,zcoord],data];
+		Export["MH_data/"<>filename<>"_data"<>".m",data];
+		Return[data]
+	],
+	Print["Set of data doesn't exist. Creating data."];
+	data=CreateData[n,beta,delta,swapP,zcoord];
+	Export["MH_data/"<>filename<>"_data"<>".m",data];
+	Return[data]
+]
+];
 End[]
 EndPackage[]
