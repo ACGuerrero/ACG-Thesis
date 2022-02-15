@@ -223,9 +223,45 @@ rz=-\frac{\sinh(\lambda_{3})}{\cosh(\lambda_{3}+1)}
 \end{equation}
 Mathematica sugiere la solución:
 \begin{equation}
-\lambda_{3}=\log\qty(\frac{1-r_{z}}{1+r_{z}})
+\lambda_{3}=\log\qty(\frac{1-r_{z}}{1+r_{z}}).
 \end{equation}
 
+\subsection{SWAP}
+\subsubsection{Estado fino compatible arbitrario}
+Sea $\rho_{z}\in\mcL(\mcH_{2})$ un estado grueso sobre z definido como en (\ref{eq:rhoz}) y $\psi$ un estado fino compatible con parametrización de Bloch $\vec{\gamma}$. Sabemos que la acción del coarse graining sobre $\psi$ es
+\begin{equation}\label{eq:CGSWAPprei}
+\CG{\psi}=\frac{1}{2}\qty(\Id+\sum_{k=1}^{3}(p\gamma_{k,0}+(1-p)\gamma_{0,k})\sigma_{k}).
+\end{equation}
+Este estado, claro, debe estar alineado con el eje $z$, así que se cumple que $p\gamma_{k,0}+(1-p)\gamma_{0,k}=0$ para $k=1,2$. De esta forma, el estado queda como
+\begin{equation}\label{eq:CGSWAPi}
+\CG{\psi}=\frac{1}{2}\qty(\Id+(p\gamma_{3,0}+(1-p)\gamma_{0,3})\sigma_{z}).
+\end{equation}
+Luego, si se aplica el SWAP, el estado grueso efectivo es
+\begin{equation}\label{eq:CGSWAPfi}
+\CG{S\psi S}=\frac{1}{2}\qty(\Id+\sum_{k=1}^{3}(p\gamma_{0,k}+(1-p)\gamma_{k,0})\sigma_{k}).
+\end{equation}
+Para que las ecuaciones (\ref{eq:CGSWAPi}) y (\ref{eq:CGSWAPfi}) correspondan al mismo estado (esto es, que la dinámica efectiva sea la identidad), primero debe de cumplirse que $p\gamma_{0,k}+(1-p)\gamma_{k,0}=0$ para $k=1,2$. Si se combinan ambas condiciones sobre estas componentes se obtiene
+\begin{align*}
+(2p-1)(\gamma_{k,0}-\gamma_{0,k})&=0,\\
+\gamma_{k,0}+\gamma_{0,k}&=0.
+\end{align*}
+Esto asegura que el estado descrito por (\ref{eq:CGSWAPfi}) esté sobre el eje z, pero para que la coordenada en dicho eje no cambie tras el SWAP subyacente debe cumplirse que 
+\begin{equation*}
+(2p-1)(\gamma_{3,0}-\gamma_{0,3})=0,
+\end{equation*}
+De esta forma, puede verse que un estado $\psi$ que cumpla que $\gamma_{k,0}=\gamma_{0,k}=0$ para $k=1,2$ y que $\gamma_{3,0}=\gamma_{0,3}$ no se ve afectado por el SWAP de forma efectiva. Esta invarianza es completamente dependiente del estado fino inicial (o del estado grueso inicial), y las condiciones sobre las componentes se cumplen \notaAd{solo si, estoy seguro de que si se revisan las constantes de estructura sí sale el solo si} si $\rho_{z}$ es puro, y por consiguiente $\psi=\rho_{z}\otimes\rho_{z}$.
+
+Además, la dinámica efectiva es la identidad siempre que $p=0.5$. Para dicho valor de $p$ se satisfacen todas las condiciones.
+
+\subsubsection{Mapeo de asignación}
+
+Sea $\{\psi^{j}\}_{j=1}^{N}$ el conjunto usado en el mapeo de asignación, y $\{\vec{\gamma}^{j}\}_{j=1}^{N}$ el conjunto de sus parametrizaciones de Bloch. En tal caso los estados efectivos inicial y final son:
+\begin{align}
+\rho&=\frac{\sigma_{z}}{N}\sum_{j}(p\gamma_{3,0}^{j}+(1-p)\gamma_{0,3}^{j}),\\
+\rho'&=\frac{\sigma_{z}}{N}\sum_{j}(p\gamma_{0,3}^{j}+(1-p)\gamma_{3,0}^{j}).
+\end{align}
+La dinámica efectiva vuelve a ser la identidad si $p=0.5$ o si $\rho_{z}$ es puro
+\subsubsection{Estado de máxima entropía}
 
 \newpage
 

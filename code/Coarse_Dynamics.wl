@@ -19,6 +19,16 @@ about the visualization.
 
 
 
+A=MatrixExp[-l3*GObsMaxEnt[p,3]]/Tr[MatrixExp[-l3*GObsMaxEnt[p,3]]];
+A//MatrixForm
+(partialTraceB[A]) //MatrixForm
+(partialTraceA[A]) //MatrixForm
+
+
+(* ::Input:: *)
+(*\.b4*)
+
+
 (*There are two basic parameters for the coarse graining problem.
 The z coordinate of the state and the swap probability*)
 swapP = 0.3;
