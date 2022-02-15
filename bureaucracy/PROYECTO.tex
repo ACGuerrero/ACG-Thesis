@@ -64,7 +64,7 @@ Para ilustrar lo anterior, considérese dicha aplicación borrosa sobre un siste
 \mcF:&\mcS(\hilbert_2 \otimes \hilbert_2)\to \mcS(\hilbert_2 \otimes \hilbert_2)\nonumber\\
 &\rho \mapsto p\rho+(1-p)S\rho S,
 \end{align*}
-donde $0<p<1$ es la probabilidad con la que el aparto de medición identifica erroneamente a los dos subsistemas, $S$ es el operador de transposición de dos partículas, definido como 
+donde $0<p<1$ es la probabilidad con la que el aparato de medición identifica erroneamente a los dos subsistemas, $S$ es el operador de transposición de dos partículas, definido como 
 $$S\ket{\psi}\otimes \ket{\phi}=\ket{\phi}\otimes \ket{\psi} \ \ \forall \ket{\psi},\ket{\phi}\in \hilbert_2.$$
 %
 El estado resultante, $\Fuzzy{\rho_{AB}}=p\rho_{AB}+(1-p)\rho_{BA}$, es una mezcla estadística (matemáticamente descrita como una combinación convexa) del estado accesible con un detector perfecto, $\rho_{AB}$, y el estado donde los qubits tienen las etiquetas equivocadas, $\rho_{BA}:=S\rho_{AB} S$. Nótese que la aplicación borrosa es lineal y conserva la dimensión del sistema. Esto es, si bien el aparato comete errores, este resuelve todos los grados del libertad del sistema.
@@ -112,7 +112,7 @@ donde
 \end{equation*}
 A esta asignación la llamaremos \textit{asignación promedio}. La segunda forma de asignación consiste en usar el principio de máxima entropía, dados los promedios de un conjunto de observables tomográficamente completo del sistema al nivel grueso. Esto es, asignaremos al estado $\rho_g(0)$ un estado fino que formalmente sea totalmente imparcial y no añada ninguna cantidad de información arbitraría además de las restricciones $\langle A_i \rangle=\tr \left[ A_i \rho_g(0) \right]$, donde el conjunto $\left\{A_i \right\}$ es tomográficamente completo~\cite{jaynes}. A esta asignación la denotaremos como \textit{asignación MaxEnt}. Cabe señalar que por entropía, nos referimos a la entropía de Von Neumann, $S(\rho)=\tr \left[ -\rho \log(\rho) \right]$.
 
-Para estudiar la emergencia de la no linealidad se considerarán varias dinámicas microscópicas. Entre ellas destacan aquellas que son simétricas bajo el intercambio de partículas, tales como la transposición de partículas o $\mcU_t[\rho]=(U_t \otimes U_t) \rho (U_t \otimes U_t)^\dagger{}$; así como las que no son simétricas, tales como la compuerta \textit{controlled not} (CNOT).
+Para estudiar la emergencia de la no linealidad, se considerarán varias dinámicas microscópicas. Entre ellas destacan aquellas que son simétricas bajo el intercambio de partículas, tales como la transposición de partículas o $\mcU_t[\rho]=(U_t \otimes U_t) \rho (U_t \otimes U_t)^\dagger{}$; así como las que no son simétricas, tales como la compuerta \textit{controlled not} (CNOT).
 
 El programa del proyecto es el siguiente:
 \begin{itemize}
@@ -120,7 +120,7 @@ El programa del proyecto es el siguiente:
 \item Exploración analítica de la asignación MaxEnt. Para ello se hará el computo analítico o numérico, según se obtengan ecuaciones trascendentales o no, de los multiplicadores de Lagrange asociados.
 \item Construcción de dinámicas gruesas para estados gruesos puros. Cálculos preliminares muestran que esto es posible de manera analítica.
 \item Construcción de dinámicas gruesas para estados iniciales generales. Se contempla primero una exploración numérica, sin embargo usando el asignación MaxEnt se espera desarrollar resultados analíticos.
-\item Por último, se asesorará a Adán en la escritura del documento de la tesis. Esta comprenderá un marco teórico que incluya conceptos de información cuántica y teoría de sistemas cuánticos abiertos. Luego, se presentarán los resultados a manera de un catalogo usando las diferentes dinámicas y asignaciones. Hecho esto, se discutirá la emergencia y rol de la no linealidad de las dinámicas resultantes.
+\item Por último, se asesorará a Adán en la escritura del documento de la tesis. Este comprenderá un marco teórico que incluya conceptos de información cuántica y teoría de sistemas cuánticos abiertos. Luego se presentarán los resultados a manera de un catálogo usando las diferentes dinámicas y asignaciones. Hecho esto, se discutirá la emergencia y rol de la no linealidad de las dinámicas resultantes.
 \end{itemize}
 
 \vspace{1.5cm}
