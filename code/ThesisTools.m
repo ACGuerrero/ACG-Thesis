@@ -59,8 +59,7 @@ Graphics3D[{Opacity[0.2],GrayLevel[0.9],Sphere[]},BoxRatios->1,Axes->True]]
 KetsToBlochVector[kets_,basis_]:=
 densityMatrixToPoint[ketsToDensity[kets],basis]
 
-UnitaryStep[unitary_,t_]:=
-With[{unitaryH=-I*MatrixLog[unitary]},MatrixExp[I*t*unitaryH]]
+UnitaryStep[unitary_,t_]:=MatrixPower[unitary,t];
 
 ApplyUnitaryButSlowly[unitary_,steps_,rhos_]:=
 With[
