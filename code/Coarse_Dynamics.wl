@@ -22,7 +22,7 @@ about the visualization.
 (*There are two basic parameters for the coarse graining problem.
 The z coordinate of the state and the swap probability*)
 swapP = 0.3;
-zcoord = 0.5;
+zcoord = 0.8;
 unitary=swapGate;
 
 (*Given those two, we can obtain a maximum entropy state*)
@@ -38,23 +38,18 @@ ZMaxEnt//MatrixForm
 
 (*First we generate or import the data. The GenerateMHData function
 won't create anything if the file exists already*)
-n = 1000;
+n = 30;
 beta = 150;
-delta = 0.7;
+delta = 0.6;
 steps=20;
 zcoarsestate=(IdentityMatrix[2]+zcoord*PauliMatrix[3])/2;
-GenerateMHData[n, beta, delta, swapP, zcoord]
-
-(*This imports the data*)
-filename="MHstates_n="<>ToString[n]<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>"_beta="<>ToString[beta]<>"_delta="<>ToString[delta];
-data=Get["MH_data/"<>filename<>"_data"<>".m"];
+data=GenerateMHData[n, beta, delta, swapP, zcoord];
 
 (*We create mixed states with a radius of zcoord, then we
 obtain their assignement map using the loaded data*)
 mixedstates=UniformMixedStates[zcoord,1000];
 assignements=AssignementMapForStateNotInZ[#,data]&/@mixedstates;
 maxents=MaxEntForStateNotInZ[#,ZMaxEnt]&/@mixedstates;
-visualizeBipartiteSystem[data]
 
 
 (*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*)
