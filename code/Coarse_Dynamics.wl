@@ -31,7 +31,7 @@ A//MatrixForm
 
 (*There are two basic parameters for the coarse graining problem.
 The z coordinate of the state and the swap probability*)
-swapP = 0.3;
+swapP = 0.4;
 zcoord = 0.8;
 unitary=swapGate;
 
@@ -48,7 +48,7 @@ ZMaxEnt//MatrixForm
 
 (*First we generate or import the data. The GenerateMHData function
 won't create anything if the file exists already*)
-n = 30;
+n = 2030;
 beta = 150;
 delta = 0.6;
 steps=20;
@@ -60,6 +60,9 @@ obtain their assignement map using the loaded data*)
 mixedstates=UniformMixedStates[zcoord,1000];
 assignements=AssignementMapForStateNotInZ[#,data]&/@mixedstates;
 maxents=MaxEntForStateNotInZ[#,ZMaxEnt]&/@mixedstates;
+
+
+
 
 
 (*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*)

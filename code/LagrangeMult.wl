@@ -1,22 +1,21 @@
-#!/usr/bin/env wolframscript
 (* ::Package:: *)
 
 Needs["ThesisTools`"]
-Clear[p]
-$Assumptions=Element[{\[Lambda]3,p,rz},Reals] && 0<=p<=1 && rz\[Element]Reals && 0<=rz<=1;
+Needs["CoolTools`"]
 SetDirectory["/home/acastillo/Documents/tesis-adan/code"];
-(*Observable fino*)
-G[i_,p_]:=p*KroneckerProduct[PauliMatrix[i],IdentityMatrix[2]]+(1-p)*KroneckerProduct[IdentityMatrix[2],PauliMatrix[i]]
 
+
+Clear[p]
+$Assumptions=Element[{p,rz},Reals] && rz\[Element]Reals && 0<=rz<=1;
+p=0.5;
 (*Reconstrucci\[OAcute]n del MaxEnt*)
-A=-\[Lambda]3*G[3,p];
+A=-Log[x]*GObsMaxEnt[p,3];
 ExpMat=MatrixExp[A];
 Z=Tr[ExpMat];
 MaxEnt=ExpMat/Z;
-(expr=Tr[G[3,p] . MaxEnt]//FullSimplify);
-rz[l_,p_]:=-(1/2) Sech[l*p] Sech[l-p*l] (Sinh[l]+(1-2 p) Sinh[l-2 p*l])
+CGKraus[MaxEnt,p];
+swapGate . MaxEnt . swapGate//MatrixForm
 
-obsz=Tr[G[3,p] . MaxEnt]//FullSimplify
 
 (*
 ContourPlot[expr, {p,0,1},{\[Lambda]3,0,-1}, Contours -> Table[i,{i,0.0,0.4,0.02}], 
