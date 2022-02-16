@@ -30,6 +30,8 @@ Zobs::usage="something"
 RzLambdaTable::usage="something"
 LagrangeMultFromZCoord::usage="something"
 MaxEntForStateNotInZ::usage="something"
+CGKrausOp::usage="something"
+CGKraus::usage="something"
 Begin["`Private`"]
 
 
@@ -125,6 +127,16 @@ With[
 },
 Ubig . ZMaxEnt . Dagger[Ubig]
 ]
+
+CGKrausOp[p_]:={
+Sqrt[p]KroneckerProduct[IdentityMatrix[2],{1,0}],
+Sqrt[p]KroneckerProduct[IdentityMatrix[2],{0,1}],
+Sqrt[1-p]KroneckerProduct[IdentityMatrix[2],{1,0}] . swapGate,
+Sqrt[1-p]KroneckerProduct[IdentityMatrix[2],{0,1}] . swapGate
+};
+
+CGKraus[rho_,p_]:=With[{kr=CGKrausOp[p]},Total[(# . rho . ConjugateTranspose[#])&/@kr]];
+
 
 
 
