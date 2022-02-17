@@ -1,4 +1,4 @@
-\documentclass[onecolumn,11pt]{article}
+\documentclass[onecolumn,11pt]{report}
 %*********
 %Paquetes
 %*********
@@ -12,8 +12,9 @@
 \usepackage{tikz-cd} %para diagrama conmutatitvo
 \usepackage{multicol} %para la lista de operadores
 \usepackage{hyperref}
-\title{Matriz de correlaciones $\Theta$}
-\date{\today}
+\usepackage{caption}
+\usepackage{subcaption}
+
 %*********
 %Comandos
 %*********
@@ -45,37 +46,27 @@
 \newcommand{\Fuzzy}[1]{\mcF\left[#1\right]}
 \newcommand{\nota}[1]{{\color{red} [#1]}}
 \newcommand{\notaAd}[1]{{\color{blue} [#1]}} %Notas pero mías
+\graphicspath{ {../figures/} }
+
+
+
+\title{Dinámica de un sistema de dos qubits bajo un modelo de grano grueso}
+\author{Adán Castillo Guerrero}
+\date{\today}
 
 \begin{document}
+
 \maketitle
-\thispagestyle{empty}
-El objeto de esta tarea es determinar los coeficientes de correlación como se ven en la ecuación (6) del artículo \cite{CGEmergingDynamics}.
+\begin{abstract}
+    Esta bitácora deberá ayudarme a mantener una mejor organización de los resultados conforme los voy obteniendo. \cite{Chuang}
+\end{abstract}
+\tableofcontents
+\newpage
 
-\section{Operadores de Kraus}
+\include{LOG01_feb}
 
-Para el mapeo de coarse graining,
-\begin{equation}
-\CG{\psi}=\Tr_{B}[p\psi+(1-p)S\psi S^{\dag}]
-\end{equation}
-se hallan los siguientes operadores de Kraus:
-\begin{align}
-    K_{1}&=\begin{pmatrix} \sqrt{p}&0&0&0\\0&0&\sqrt{p}&0\end{pmatrix} & K_{2}&=\begin{pmatrix} \sqrt{p}&0&0&0\\0&0&\sqrt{p}&0\end{pmatrix} \\ K_{3}&=\begin{pmatrix} \sqrt{1-p}&0&0&0\\0&\sqrt{1-p}&0&0\end{pmatrix} & K_{4}&=\begin{pmatrix} 0&0&\sqrt{1-p}&0\\0&0&0&\sqrt{1-p}\end{pmatrix}
-\end{align}
-Utilizando la forma de bloque para el operador que actúa en el sistema extendido dada en \cite{Chuang}, el unitario resultante es:
-\begin{equation}
-V=\begin{pmatrix}
-\sqrt{p}&0&0&0&0&0&0&-\sqrt{1 - p}\\
-0&0&\sqrt{p}&0&0&0&-\sqrt{1 - p}&0\\
-0&\sqrt{p}&0&0&0&-\sqrt{1 - p}&0&0\\
-0&0&0&\sqrt{p}&-\sqrt{1 - p}&0&0&0\\
-\sqrt{1 - p}&0&0&0&0&0&0&\sqrt{p}\\
-0&\sqrt{1 - p}&0&0&0&\sqrt{p}&0&0\\
-0&0&\sqrt{1 - p}&0&0&0&\sqrt{p}&0\\
-0&0&0&\sqrt{1 - p}&\sqrt{p}&0&0&0 
-\end{pmatrix}
-\end{equation}
-Debí verificar que esta funcionaba cuando lo hice, todo lo demás queda mal porque la unitaria no quedó.
 \bibliographystyle{ieeetr}
 \bibliography{bibliography}
+
 
 \end{document}

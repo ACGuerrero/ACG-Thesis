@@ -1,0 +1,24 @@
+\babel@toc {spanish}{}
+\contentsline {chapter}{\numberline {1}Febrero}{2}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Resultados generales}{2}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Diferentes formas de abordar la dinámica}{2}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Sobre el dominio de la dinámica y la matriz de correlaciones}{3}{subsection.1.1.2}%
+\contentsline {subsubsection}{Dominio}{3}{section*.2}%
+\contentsline {subsubsection}{Matriz de correlaciones}{4}{section*.3}%
+\contentsline {subsection}{\numberline {1.1.3}Una unitaria para gobernarlos a todos}{5}{subsection.1.1.3}%
+\contentsline {subsubsection}{El grueso rotado es igual al grueso del rotado}{5}{section*.4}%
+\contentsline {subsubsection}{Para el MaxEnt es lo mismo pero no es igual}{6}{section*.5}%
+\contentsline {section}{\numberline {1.2}Resultados para el estado de máxima entropía}{9}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}El estado de máxima entropía en términos de $r_{z}$}{9}{subsection.1.2.1}%
+\contentsline {subsubsection}{Dos soluciones particulares}{10}{section*.8}%
+\contentsline {subsection}{\numberline {1.2.2}La dinámica analítica para el caso $\mathcal {U}=\textsc {SWAP}$}{10}{subsection.1.2.2}%
+\contentsline {subsubsection}{Caso $p=\frac {1}{2}$}{11}{section*.9}%
+\contentsline {section}{\numberline {1.3}Resultados para el mapeo de asignación}{12}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Parte analítica}{12}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}SWAP}{12}{subsection.1.4.1}%
+\contentsline {subsubsection}{Estado fino compatible arbitrario}{12}{section*.10}%
+\contentsline {subsubsection}{Mapeo de asignación}{12}{section*.11}%
+\contentsline {section}{\numberline {1.5}Parte numérica}{13}{section.1.5}%
+\contentsline {subsection}{\numberline {1.5.1}Cascarón de estados mixtos}{13}{subsection.1.5.1}%
+\contentsline {subsubsection}{Mapeo de asignación para el cascarón}{13}{section*.12}%
+\contentsline {subsection}{\numberline {1.5.2}Resultados}{13}{subsection.1.5.2}%
