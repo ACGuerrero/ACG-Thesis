@@ -25,15 +25,10 @@ A//MatrixForm
 (partialTraceA[A]) //MatrixForm
 
 
-(* ::Input:: *)
-(*\.b4*)
-
-
 (*There are two basic parameters for the coarse graining problem.
 The z coordinate of the state and the swap probability*)
-swapP = 0.4;
-zcoord = 0.8;
-unitary=swapGate;
+swapP = 0.5;
+zcoord = 0.5;
 
 (*Given those two, we can obtain a maximum entropy state*)
 lambdastep=0.05;
@@ -48,7 +43,7 @@ ZMaxEnt//MatrixForm
 
 (*First we generate or import the data. The GenerateMHData function
 won't create anything if the file exists already*)
-n = 2030;
+n = 5000;
 beta = 150;
 delta = 0.6;
 steps=20;
@@ -63,11 +58,10 @@ maxents=MaxEntForStateNotInZ[#,ZMaxEnt]&/@mixedstates;
 
 
 
-
-
 (*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*)
 (*@@@@@@@@@@@@@@@@ THIRD PART - MAXENT DYNAMICS @@@@@@@@@@@@@@@@@*)
 (*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*)
+unitary=CNOT;
 
 newmaxents=unitary . # . Dagger[unitary]&/@maxents;
 coarsemaxents=coarseGraining2[#,swapP]&/@maxents;
@@ -99,8 +93,11 @@ Graphics3D[{Opacity[0.2],GrayLevel[0.9],Sphere[]},BoxRatios->1,Axes->True]
 ]
 
 
-Export["../figures/"<>"AssVsMaxEnt_init_"<>"_n="<>ToString[n]<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>"_beta="<>ToString[beta]<>"_delta="<>ToString[delta]<>".png",CompareTwoCoarseSets[coarseassign,coarsemaxents,{"AssMap","MaxEnt"}]]
-Export["../figures/"<>"AssVsMaxEnt_evol_"<>"_n="<>ToString[n]<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>"_beta="<>ToString[beta]<>"_delta="<>ToString[delta]<>".png",CompareTwoCoarseSets[evolcoarseassign,evolcoarsemaxents,{"AssMap","MaxEnt"}]]
+Export["../figures/"<>"AssVsMaxEnt_CNOT_init_"<>"_n="<>ToString[n]<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>"_beta="<>ToString[beta]<>"_delta="<>ToString[delta]<>".png",CompareTwoCoarseSets[coarseassign,coarsemaxents,{"AssMap","MaxEnt"}]]
+Export["../figures/"<>"AssVsMaxEnt_CNOT_evol_"<>"_n="<>ToString[n]<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>"_beta="<>ToString[beta]<>"_delta="<>ToString[delta]<>".png",CompareTwoCoarseSets[evolcoarseassign,evolcoarsemaxents,{"AssMap","MaxEnt"}]]
+
+
+CompareTwoCoarseSets[evolcoarseassign,evolcoarsemaxents,{"AssMap","MaxEnt"}]
 
 
 (*This is by default all commented. These are commands that you can 

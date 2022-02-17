@@ -5,6 +5,7 @@ Needs["CoolTools`"]
 Needs["Carlos`"]
 Needs["Quantum`"]
 Pauli2Basis::usage="something"
+CNOT::usage="something"
 MatrixToLatex::usage="something"
 ShowOperatorsWithSphere::usage="something"
 KetsToBlochVector::usage="something"
@@ -41,7 +42,7 @@ Begin["`Private`"]
 
 
 Pauli2Basis=Flatten[Table[Pauli[{i,j}],{i,0,3},{j,0,3}],1];
-
+CNOT={{1,0,0,0},{0,1,0,0},{0,0,0,1},{0,0,1,0}};
 NearestPosition[haystack_,value_]:= With[{ f = Nearest[haystack -> Range@Length@haystack]},f[value, 1]];
 
 MatrixToLatex[matrix_]:=
