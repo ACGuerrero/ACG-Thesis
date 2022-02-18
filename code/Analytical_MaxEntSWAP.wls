@@ -11,9 +11,15 @@ $Assumptions=Element[{p,rz,\[Lambda],Z},Reals] && rz\[Element]Reals && 0<=rz<=1&
 A=-\[Lambda]*GObsMaxEnt[p,3];
 ExpMat=MatrixExp[A];
 Z=Tr[ExpMat];
+1/Z//FullSimplify
 MaxEnt=ExpMat/Z;
 rhoz0=(Refine[CGKraus[MaxEnt,p],{Element[p, Reals], Element[\[Lambda], Reals], 0<=p<=1}]//Expand);
+Print["The bloch vector of the last operator is: "]
+rhoz0bv=densityMatrixToPoint[{rhoz0},gellMannBasis[1]][[1]]//FullSimplify
 rhozt=(Refine[CGKraus[swapGate . MaxEnt . swapGate,p],{Element[p, Reals], Element[\[Lambda], Reals], 0<=p<=1}]//Expand);
+Print["The bloch vector of the last operator is: ", rhoztbv]
+rhoztbv=densityMatrixToPoint[{rhozt},gellMannBasis[1]][[1]]//FullSimplify
+Print["The factor separating this states is: "rhoztbv[[3]]/rhoz0bv[[3]]//FullSimplify]
 Print[Subscript[\[Psi],"max"],"=", (MaxEnt//FullSimplify)//MatrixForm]
 Print["Notice that:"]
 Print[Subscript[\[Psi],"max"],"=", (partialTraceB[MaxEnt]//FullSimplify)//MatrixForm,"xox",(partialTraceA[MaxEnt]//FullSimplify)//MatrixForm]
@@ -32,6 +38,10 @@ lambda05=Log[(1-Subscript[r,z])/(1+Subscript[r,z])];
 Print[Subscript[\[Psi],"max"],"=", (MaxEnt//.{\[Lambda]->lambda05,p->1/2}//FullSimplify)//MatrixForm]
 Print[Subscript[\[Rho],z],"(0)=",(rhoz0//.{\[Lambda]->lambda05,p->1/2}//FullSimplify)//MatrixForm]
 Print[Subscript[\[Rho],z],"(t)=", (rhozt//.{\[Lambda]->lambda05,p->1/2}//FullSimplify)//MatrixForm]
+
+
+
+
 
 
 

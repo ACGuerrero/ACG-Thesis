@@ -240,9 +240,16 @@ A partir de este momento, no se usará un subíndice $z$ para los estados alinea
 \subsection{El estado de máxima entropía en términos de $r_{z}$}
 Sea $\rho$ como en (\ref{eq:rhoz}), entonces por (\ref{eq:MaxEnt}) el estado de máxima entropía es:
 \begin{equation}\label{eq:MaxEntZ}
-\varrho_{max}=\frac{\text{exp}(\lambda_{3}\hat{G}_{3})}{\Tr[\text{exp}(\lambda_{3}\hat{G}_{3})]}
+\varrho_{max}=\frac{\text{exp}(-\lambda_{3}\hat{G}_{3})}{\Tr[\text{exp}(-\lambda_{3}\hat{G}_{3})]}
 \end{equation}
-donde $\hat{G}_{3}$ se define según (\ref{eq:Gop}). La forma matricial de este estado es:
+donde $\hat{G}_{3}$ se define según (\ref{eq:Gop}). Como los dos términos que componen al operador comuntan entre sí, la exponencial puede separarse:
+\begin{align*}
+\varrho_{max}&=\frac{1}{Z}e^{-\lambda_{3}p\sigma_{z}\otimes\Id}e^{-\lambda_{3}(1-p)\Id\otimes\sigma_{z}}\\
+&=\frac{1}{Z}(e^{-\lambda_{3}p\sigma_{z}}\otimes\Id)( \Id\otimes e^{-\lambda_{3}(1-p)\sigma_{z}})\\
+&=\frac{1}{Z}(e^{-\lambda_{3}p\sigma_{z}}\otimes e^{-\lambda_{3}(1-p)\sigma_{z}})\\
+\end{align*}
+
+La forma matricial de este estado es:
 \begin{equation*}
 \left(
 \begin{array}{cccc}
@@ -329,6 +336,8 @@ Si se escribe $Z=\Tr{\exp(\lambda_{2}\hat{G}_{3})}$, el estado de máxima entrop
  0 & 0 & 0 & e^{\lambda } \\
 \end{pmatrix}.
 \end{equation}
+Este operador de densidad es separable. Es decir, tiene la forma $\varrho_{max}=\varrho_{max}^{A}\otimes\varrho_{max}^{B}$.
+
 Si se aplica el mapeo de grano gureso a este estado, el resultado es precisamente, $\rho$. Si se deja esto en términos de $\lambda_{3}$:
 \begin{equation}
 \rho(0)=\CG{\varrho_{max}}=\frac{1}{Z}\begin{pmatrix}

@@ -1,3 +1,4 @@
+#!/usr/bin/env wolframscript
 (* ::Package:: *)
 
 Needs["CoolTools`"]
@@ -20,15 +21,12 @@ about the visualization.
 
 
 A=MatrixExp[-l3*GObsMaxEnt[p,3]]/Tr[MatrixExp[-l3*GObsMaxEnt[p,3]]];
-A//MatrixForm
-(partialTraceB[A]) //MatrixForm
-(partialTraceA[A]) //MatrixForm
 
 
 (*There are two basic parameters for the coarse graining problem.
 The z coordinate of the state and the swap probability*)
-swapP = 0.5;
-zcoord = 0.5;
+swapP = 0.3;
+zcoord = 0.8;
 
 (*Given those two, we can obtain a maximum entropy state*)
 lambdastep=0.05;
@@ -57,11 +55,10 @@ assignements=AssignementMapForStateNotInZ[#,data]&/@mixedstates;
 maxents=MaxEntForStateNotInZ[#,ZMaxEnt]&/@mixedstates;
 
 
-
 (*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*)
 (*@@@@@@@@@@@@@@@@ THIRD PART - MAXENT DYNAMICS @@@@@@@@@@@@@@@@@*)
 (*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*)
-unitary=CNOT;
+unitary=swapGate;
 
 newmaxents=unitary . # . Dagger[unitary]&/@maxents;
 coarsemaxents=coarseGraining2[#,swapP]&/@maxents;
@@ -81,23 +78,33 @@ evolcoarseassign=coarseGraining2[#,swapP]&/@newassign;
 CoarseEvolutionAss=Table[Map[coarseGraining2[#,swapP]&,UnitaryEvolutionAss[[i]]],{i,1,Length[UnitaryEvolutionAss]}];
 
 
-CompareTwoCoarseSets[set1_,set2_,legend_]:=Show[
+CompareTwoCoarseSets[set1_,set2_,legend_,title_]:=Show[
 ListPointPlot3D[
 {densityMatrixToPoint[set1,gellMannBasis[1]],densityMatrixToPoint[set2,gellMannBasis[1]]},
 BoxRatios->{1,1,1},
 PlotRange->{{-1.,1.},{-1.`,1.`},{-1.,1.}},
 PlotLegends->legend,
-PlotLabel->Style["Avg dist="<>ToString[Mean[Table[Norm[set1[[i]]-set2[[i]],"Frobenius"],{i,Length[set1]}]]],15]
+PlotLabel->title
 ],
 Graphics3D[{Opacity[0.2],GrayLevel[0.9],Sphere[]},BoxRatios->1,Axes->True]
 ]
 
 
-Export["../figures/"<>"AssVsMaxEnt_CNOT_init_"<>"_n="<>ToString[n]<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>"_beta="<>ToString[beta]<>"_delta="<>ToString[delta]<>".png",CompareTwoCoarseSets[coarseassign,coarsemaxents,{"AssMap","MaxEnt"}]]
-Export["../figures/"<>"AssVsMaxEnt_CNOT_evol_"<>"_n="<>ToString[n]<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>"_beta="<>ToString[beta]<>"_delta="<>ToString[delta]<>".png",CompareTwoCoarseSets[evolcoarseassign,evolcoarsemaxents,{"AssMap","MaxEnt"}]]
+Export["../figures/"<>"MaxEnt_SWAP_t0vst1_"<>"_n="<>ToString[n]<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>"_beta="<>ToString[beta]<>"_delta="<>ToString[delta]<>".png",
+	CompareTwoCoarseSets[
+		coarseassign,
+		evolcoarsemaxents,
+		{ToExpression["\\rho", TeXForm, HoldForm],"\[ScriptCapitalC](S"<>ToString[ToExpression["\\varrho", TeXForm, HoldForm]]<>"S)"},"Effective evolution using MaxEnt"
+	]
+]
 
-
-CompareTwoCoarseSets[evolcoarseassign,evolcoarsemaxents,{"AssMap","MaxEnt"}]
+Export["../figures/"<>"MapAss_SWAP_t0vst1_"<>"_n="<>ToString[n]<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>"_beta="<>ToString[beta]<>"_delta="<>ToString[delta]<>".png",
+	CompareTwoCoarseSets[
+		coarsemaxents,
+		evolcoarseassign,
+		{ToExpression["\\rho", TeXForm, HoldForm],"\[ScriptCapitalC](S"<>ToString[ToExpression["\\varrho", TeXForm, HoldForm]]<>"S)"},"Effective evolution using AssMap"
+	]
+]
 
 
 (*This is by default all commented. These are commands that you can 
