@@ -1,0 +1,104 @@
+\section{Sobre el dominio de la dinámica y la matriz de correlaciones}
+
+\subsection{Dominio}
+
+El objeto de esta primera tarea era caracterizar el \textit{dominio} de una dinámica $\Gamma_{t}$, como se menciona en el artículo \cite{CGEmergingDynamics}.
+
+Para comenzar, consideremos la dinámica  $\Gamma_{t}$ caracterizada por una evolución subyacente $\mcU_{
+t}$, un estado fino inicial $\psi_{0}$, nuestra aplicación de grano grueso $\mcC$, y el estado grueso $\rho_{0}$. Si se asume que el estado grueso es puro, entonces lo siguiente es cierto:
+\begin{itemize}
+\item $\rho_{0}$ está completamente descrito por dos ángulos $\theta$ y $\phi$
+\item $\rho_{0}$ tiene vector de Bloch $\vec{\alpha}=(\cos{\phi}\sin{\theta},\sin{\phi}\sin{\theta},\cos{\theta})$
+\item $\psi_{0}=\rho_{0}\otimes\rho_{0}$
+\end{itemize}
+Ahora, si se expande a $\psi_{0}$ en la base de Pauli,
+\begin{equation}
+    \psi_{0} = \frac{1}{4}\,\sum_{i,j} \tr[\psi_{0}(\sigma_i \otimes \sigma_j)]\, \sigma_i\otimes\sigma_j
+\end{equation}
+es relativamente sencillo ver que:
+\begin{equation}
+    \CG{\psi_{0}} = \frac{1}{2}\qty[\Id + \sum_{i=1}^3[p\gamma_{i,0}+(1-p)\gamma_{0,i}]\sigma_i]
+\end{equation}
+donde $\gamma_{ij} \equiv \tr[\rho(\sigma_i \otimes\sigma_j)]$. 
+
+Los coeficientes $\gamma_{ij}$ corresponden a las componentes del vector de Bloch de $\psi_{0}$, siendo $\gamma_{i,0}$ y $\gamma_{0,i}$ las componentes de los vectores de Bloch de los subsistemas de $\psi_{0}$. Como $\psi_{0}=\rho_{0}\otimes\rho_{0}$, entonces $\gamma_{i,0}=\gamma_{0,i}=\alpha_{i}$, y se recupera $\CG{\psi_{0}}=\rho_{0}$
+
+Retomando el tema de la tarea, como se menciona en el artículo \cite{CGEmergingDynamics}, para fijar la dinámica y modificar únicamente al estado grueso inicial (esto es, deben modificarse $\vec{\alpha}$).\\
+Así, en el espacio de vectores de Bloch $\vec{\gamma}$ se definen tres restricciones correspondientes a tres hiperplanos:
+\begin{align}
+\alpha_{i}=\Tr[\CG{\psi_{0}}\sigma_{i}]=p\gamma^{i}+(1-p)\gamma^{i+3}=r_{i}
+\end{align}
+Los vectores normales a estos hiperplanos son nulos en todas sus componentes, exceptuando la $i$-ésima y la $i+3$-ésima, en las que valen $p$ y $(1-p)$ respectivamente. En principio, el dominio de una $\Gamma_{t}$ fija tiene la forma:
+\begin{align}
+\psi=&\frac{1}{4}\left( \Id_{4}+\vec{\gamma}\cdot\vec{\sigma_{4}} \right)\\
+\vec{\gamma}=&\vec{\gamma_{0}}+\sum_{i}c_{i}\vec{v_{i}}\label{eq:newgamma}
+\end{align}
+donde $\vec{v_{i}}$ son los vectores normales y $c_{i}$ son componentes tales que $\vec{\gamma}$ es un vector de Bloch válido. Si quisiéramos escribir la ecuación (\ref{eq:newgamma})  componente por componente el resultado sería:
+\begin{equation}
+\vec{\gamma}=\begin{pmatrix}
+\alpha_{1}\\
+\alpha_{2}\\
+\alpha_{3}\\
+\alpha_{1}\\
+\alpha_{2}\\
+\alpha_{3}\\
+\alpha_{1}^{2}\\
+\alpha_{1}\alpha_{2}\\
+\alpha_{1}\alpha_{3}\\
+\alpha_{2}\alpha_{1}\\
+\alpha_{2}^{2}\\
+\alpha_{2}\alpha_{3}\\
+\alpha_{3}\alpha_{1}\\
+\alpha_{3}\alpha_{2}\\
+\alpha_{3}^{3}\\
+\end{pmatrix}+\begin{pmatrix}
+c_{1}p\\
+c_{2}p\\
+c_{3}p\\
+c_{1}(1-p)\\
+c_{2}(1-p)\\
+c_{3}(1-p)\\
+0\\
+0\\
+0\\
+0\\
+0\\
+0\\
+0\\
+0\\
+0\\
+\end{pmatrix}\label{eq:newvec}
+\end{equation}
+Esto puede escribirse como un operador de densidad $\psi$. Tras aplicar el coarse graining el resultado es:
+\begin{equation}
+    \CG{\psi} = \frac{1}{2}\qty[\Id + \sum_{i=1}^3(\alpha_{i}+pc_{i}(3p-2))\sigma_i]\label{eq:newcoarse}
+\end{equation}
+Es importante notar que aunque el dominio (\ref{eq:newvec}) vive en un espacio quince dimensional, el movimiento se ve limitado a un espacio cinco dimensional, y la variedad descrita es de únicamente tres dimensiones (una por coeficiente $c_{i}$).
+
+\subsection{Matriz de correlaciones}
+
+El objeto de esta tarea es determinar los coeficientes de correlación como se ven en la ecuación (6) del artículo \cite{CGEmergingDynamics}.
+
+
+Para el mapeo de coarse graining,
+\begin{equation}
+\CG{\psi}=\Tr_{B}[p\psi+(1-p)S\psi S^{\dag}]
+\end{equation}
+se hallan los siguientes operadores de Kraus:
+\begin{align}
+    K_{1}&=\begin{pmatrix} \sqrt{p}&0&0&0\\0&0&\sqrt{p}&0\end{pmatrix} & K_{2}&=\begin{pmatrix} \sqrt{p}&0&0&0\\0&0&\sqrt{p}&0\end{pmatrix} \\ K_{3}&=\begin{pmatrix} \sqrt{1-p}&0&0&0\\0&\sqrt{1-p}&0&0\end{pmatrix} & K_{4}&=\begin{pmatrix} 0&0&\sqrt{1-p}&0\\0&0&0&\sqrt{1-p}\end{pmatrix}
+\end{align}
+Utilizando la forma de bloque para el operador que actúa en el sistema extendido dada en \cite{Chuang}, el unitario resultante es:
+\begin{equation}
+V=\begin{pmatrix}
+\sqrt{p}&0&0&0&0&0&0&-\sqrt{1 - p}\\
+0&0&\sqrt{p}&0&0&0&-\sqrt{1 - p}&0\\
+0&\sqrt{p}&0&0&0&-\sqrt{1 - p}&0&0\\
+0&0&0&\sqrt{p}&-\sqrt{1 - p}&0&0&0\\
+\sqrt{1 - p}&0&0&0&0&0&0&\sqrt{p}\\
+0&\sqrt{1 - p}&0&0&0&\sqrt{p}&0&0\\
+0&0&\sqrt{1 - p}&0&0&0&\sqrt{p}&0\\
+0&0&0&\sqrt{1 - p}&\sqrt{p}&0&0&0 
+\end{pmatrix}
+\end{equation}
+Debí verificar que esta funcionaba cuando lo hice, todo lo demás queda mal porque la unitaria no quedó.

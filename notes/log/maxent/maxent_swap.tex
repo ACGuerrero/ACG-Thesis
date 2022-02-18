@@ -1,0 +1,74 @@
+\section{La dinámica analítica para el caso $\mcU=\textsc{SWAP}$}
+
+Si se escribe $Z=\Tr{\exp(\lambda_{2}\hat{G}_{3})}$, el estado de máxima entropía compatible con $\rho$ es
+\begin{equation}
+\varrho_{max}=\frac{1}{Z}\begin{pmatrix}
+ e^{-\lambda } & 0 & 0 & 0 \\
+ 0 & e^{-\lambda  (2 p-1)} & 0 & 0 \\
+ 0 & 0 & e^{\lambda  (2 p-1)} & 0 \\
+ 0 & 0 & 0 & e^{\lambda } \\
+\end{pmatrix}.
+\end{equation}
+Este operador de densidad es separable. Es decir, tiene la forma $\varrho_{max}=\varrho_{max}^{A}\otimes\varrho_{max}^{B}$.
+
+Si se aplica el mapeo de grano gureso a este estado, el resultado es precisamente, $\rho$. Si se deja esto en términos de $\lambda_{3}$:
+\begin{equation}
+\rho(0)=\CG{\varrho_{max}}=\frac{1}{Z}\begin{pmatrix}
+ e^{-\lambda }+(1-p)e^{\lambda  (2 p-1)}+p e^{-\lambda  (2 p-1)} & 0 \\
+ 0 & e^{\lambda }+p e^{\lambda  (2 p-1)}+(1-p)e^{-\lambda  (2 p-1)} \\
+\end{pmatrix}.
+\end{equation}
+El resultado de la dinámica efectiva se puede calcular de forma directa, y es
+\begin{equation}
+\rho(t=1)=\frac{1}{Z}\CG{S\varrho_{z} S}=
+\begin{pmatrix}
+ e^{-\lambda }+p e^{\lambda  (2 p-1)}+(1-p) e^{-\lambda  (2 p-1)} & 0 \\
+ 0 & e^{\lambda }+p e^{-\lambda  (2 p-1)}+(1-p)e^{\lambda  (2 p-1)} \\
+\end{pmatrix}
+\end{equation}
+
+\subsection{Caso $p=\frac{1}{2}$}
+
+Dentro del estado de máxima entropía, los exponentes de los elementos no extremos de la diagonal se anulan. El resultado es
+\begin{equation}
+\varrho_{max}=\frac{1}{Z}
+\begin{pmatrix}
+ e^{-\lambda } & 0 & 0 & 0 \\
+ 0 & 1. & 0 & 0 \\
+ 0 & 0 & 1. & 0 \\
+ 0 & 0 & 0 & e^{\lambda } \\
+\end{pmatrix}.
+\end{equation}
+Usando este, se obtienen tanto el estado efectivo inicial como el estado efectivo final, ambos en términos del multiplicador de Lagrange, y son
+\begin{align}
+\rho(0)=\CG{\varrho_{max}}=\frac{1}{Z}
+\begin{pmatrix}
+ 1.\, +e^{-\lambda } & 0 \\
+ 0 & 1.\, +e^{\lambda } \\
+\end{pmatrix}, && \rho(1)=\CG{S\varrho_{max} S}=\frac{1}{Z}
+\begin{pmatrix}
+ 1.\, +e^{-\lambda } & 0 \\
+ 0 & 1.\, +e^{\lambda } \\
+\end{pmatrix}.
+\end{align}
+Si se usa (\ref{eq:lambda0.5}) se halla:
+\begin{equation}
+\varrho_{max}=\frac{1}{Z}
+\begin{pmatrix}
+ \frac{1}{4} \left(r_z+1\right){}^2 & 0 & 0 & 0 \\
+ 0 & \frac{1}{4} \left(1-r_z^2\right) & 0 & 0 \\
+ 0 & 0 & \frac{1}{4} \left(1-r_z^2\right) & 0 \\
+ 0 & 0 & 0 & \frac{1}{4} \left(r_z-1\right){}^2 \\
+\end{pmatrix}.
+\end{equation}
+Y recuperamos los estados inicial y final esperados:
+\begin{align}
+\rho(0)=\CG{\varrho_{max}}=\frac{1}{Z}\begin{pmatrix}
+ \frac{1}{2} \left(r_z+1\right) & 0 \\
+ 0 & \frac{1}{2} \left(1-r_z\right) \\
+\end{pmatrix}, && \rho(1)=\frac{1}{Z}\CG{S\varrho_{max} S}=
+\begin{pmatrix}
+ \frac{1}{2} \left(r_z+1\right) & 0 \\
+ 0 & \frac{1}{2} \left(1-r_z\right) \\
+\end{pmatrix}.
+\end{align}
