@@ -41,7 +41,7 @@ ZMaxEnt//MatrixForm
 
 (*First we generate or import the data. The GenerateMHData function
 won't create anything if the file exists already*)
-n = 5000;
+n = 1000;
 beta = 150;
 delta = 0.6;
 steps=20;
@@ -88,6 +88,21 @@ PlotLabel->title
 ],
 Graphics3D[{Opacity[0.2],GrayLevel[0.9],Sphere[]},BoxRatios->1,Axes->True]
 ]
+
+CoarseEvolutionPNGSet[coarseev_]:= Table[
+Labeled[
+Show[
+ListPointPlot3D[densityMatrixToPoint[coarseev[[i]],gellMannBasis[1]],BoxRatios->{1, 1, 1},PlotRange->{{-1.,1.},{-1.,1.},{-1.,1.}}],
+Graphics3D[{Opacity[0.2],GrayLevel[0.9],Sphere[]},BoxRatios->1,Axes->True]
+],
+{"t="<>ToString[i],"Coarse SWAP for p="<>ToString[swapP]<>", z="<>ToString[zcoord]},
+{Top,Bottom}], 
+{i,Length[CoarseEvolution]}];
+
+PNGSetToGif[set_]:=Export["../figures/"<>"coarse_swap_evol_"<>ToString[steps]<>"steps"<>"_n="<>ToString[n]<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>"_beta="<>ToString[beta]<>"_delta="<>ToString[delta]<>".gif",
+Flatten[{gif, Table[gif[[i]], {i, Length[gif] }]}]]
+
+
 
 
 Export["../figures/"<>"MaxEnt_SWAP_t0vst1_"<>"_n="<>ToString[n]<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>"_beta="<>ToString[beta]<>"_delta="<>ToString[delta]<>".png",
