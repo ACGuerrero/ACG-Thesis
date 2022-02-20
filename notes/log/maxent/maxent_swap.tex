@@ -1,74 +1,24 @@
 \section{La dinámica analítica para el caso $\mcU=\textsc{SWAP}$}
 
-Si se escribe $Z=\Tr{\exp(\lambda_{2}\hat{G}_{3})}$, el estado de máxima entropía compatible con $\rho$ es
+Utilizando la expresión (\ref{eq:MaxEntZ}), se puede pasar tanto a $\varrho_{max}$ como a $\varrho_{max}$ a través de la aplicación de grano grueso. El resultado $\CG{\varrho_{max}}$ corresponde al estado grueso inicial, pero en términos de $\lambda$. Así:
 \begin{equation}
-\varrho_{max}=\frac{1}{Z}\begin{pmatrix}
- e^{-\lambda } & 0 & 0 & 0 \\
- 0 & e^{-\lambda  (2 p-1)} & 0 & 0 \\
- 0 & 0 & e^{\lambda  (2 p-1)} & 0 \\
- 0 & 0 & 0 & e^{\lambda } \\
-\end{pmatrix}.
+\rho(0)=\frac{1}{Z}\CG{\varrho_{max}}=\frac{e^{-\lambda_{3}p\sigma_{z}}}{Z_{1}}+(1-p)\frac{e^{-\lambda_{3}(1-p)\sigma_{z}}}{Z_{2}},
 \end{equation}
-Este operador de densidad es separable. Es decir, tiene la forma $\varrho_{max}=\varrho_{max}^{A}\otimes\varrho_{max}^{B}$.
-
-Si se aplica el mapeo de grano gureso a este estado, el resultado es precisamente, $\rho$. Si se deja esto en términos de $\lambda_{3}$:
 \begin{equation}
-\rho(0)=\CG{\varrho_{max}}=\frac{1}{Z}\begin{pmatrix}
- e^{-\lambda }+(1-p)e^{\lambda  (2 p-1)}+p e^{-\lambda  (2 p-1)} & 0 \\
- 0 & e^{\lambda }+p e^{\lambda  (2 p-1)}+(1-p)e^{-\lambda  (2 p-1)} \\
-\end{pmatrix}.
+\rho(t=1)=\frac{1}{Z}\CG{S\varrho_{max} S}=p\frac{e^{-\lambda_{3}(1-p)\sigma_{z}}}{Z_{2}}+(1-p)\frac{e^{-\lambda_{3}p\sigma_{z}}}{Z_{1}}.
 \end{equation}
-El resultado de la dinámica efectiva se puede calcular de forma directa, y es
-\begin{equation}
-\rho(t=1)=\frac{1}{Z}\CG{S\varrho_{z} S}=
-\begin{pmatrix}
- e^{-\lambda }+p e^{\lambda  (2 p-1)}+(1-p) e^{-\lambda  (2 p-1)} & 0 \\
- 0 & e^{\lambda }+p e^{-\lambda  (2 p-1)}+(1-p)e^{\lambda  (2 p-1)} \\
-\end{pmatrix}
+Tanto el estado grueso inicial como el final son estados que, en la base de Pauli, su única componente no nula es la $z$. Esto significa que podemos relacionar ambas coordenadas a través de un coeficiente de compresión:
+\begin{equation}\label{eq:SWAPFactor}
+            \frac{r_{z}(1)}{r_{z}(0)}=\left(\frac{2 \sinh (\lambda )}{\sinh (\lambda )+(1-2 p) \sinh (\lambda -2 \lambda  p)}-1\right)
 \end{equation}
+Esto puede comprobarse en los resultados numéricos mostrados en la figura \ref{fig:factornnum}.
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.6\linewidth]{maxent/figures/MaxEnt_SWAP_t0vst1_n=5000_z=0.5_p=0.3_beta=150_delta=0.6.png}
+\caption{Apreciación del factor de compresión \notaAd{aquí está bueno comparar la diferencia radial numérica con el factor analítico}}
+\label{fig:factornnum}
+\end{figure}
 
 \subsection{Caso $p=\frac{1}{2}$}
 
-Dentro del estado de máxima entropía, los exponentes de los elementos no extremos de la diagonal se anulan. El resultado es
-\begin{equation}
-\varrho_{max}=\frac{1}{Z}
-\begin{pmatrix}
- e^{-\lambda } & 0 & 0 & 0 \\
- 0 & 1. & 0 & 0 \\
- 0 & 0 & 1. & 0 \\
- 0 & 0 & 0 & e^{\lambda } \\
-\end{pmatrix}.
-\end{equation}
-Usando este, se obtienen tanto el estado efectivo inicial como el estado efectivo final, ambos en términos del multiplicador de Lagrange, y son
-\begin{align}
-\rho(0)=\CG{\varrho_{max}}=\frac{1}{Z}
-\begin{pmatrix}
- 1.\, +e^{-\lambda } & 0 \\
- 0 & 1.\, +e^{\lambda } \\
-\end{pmatrix}, && \rho(1)=\CG{S\varrho_{max} S}=\frac{1}{Z}
-\begin{pmatrix}
- 1.\, +e^{-\lambda } & 0 \\
- 0 & 1.\, +e^{\lambda } \\
-\end{pmatrix}.
-\end{align}
-Si se usa (\ref{eq:lambda0.5}) se halla:
-\begin{equation}
-\varrho_{max}=\frac{1}{Z}
-\begin{pmatrix}
- \frac{1}{4} \left(r_z+1\right){}^2 & 0 & 0 & 0 \\
- 0 & \frac{1}{4} \left(1-r_z^2\right) & 0 & 0 \\
- 0 & 0 & \frac{1}{4} \left(1-r_z^2\right) & 0 \\
- 0 & 0 & 0 & \frac{1}{4} \left(r_z-1\right){}^2 \\
-\end{pmatrix}.
-\end{equation}
-Y recuperamos los estados inicial y final esperados:
-\begin{align}
-\rho(0)=\CG{\varrho_{max}}=\frac{1}{Z}\begin{pmatrix}
- \frac{1}{2} \left(r_z+1\right) & 0 \\
- 0 & \frac{1}{2} \left(1-r_z\right) \\
-\end{pmatrix}, && \rho(1)=\frac{1}{Z}\CG{S\varrho_{max} S}=
-\begin{pmatrix}
- \frac{1}{2} \left(r_z+1\right) & 0 \\
- 0 & \frac{1}{2} \left(1-r_z\right) \\
-\end{pmatrix}.
-\end{align}
+Aunque es posible repetir todas las cuentas desde la contrucción del estado de máxima entropía, haciendo $p=\frac{1}{2}$, basta con ver que el factor (\eqref{eq:SWAPFactor}) es $1$ en dicho caso. Así, todos los estado gruesos son puntos fijos bajo una evolución subyacente SWAP con aplicación de grano grueso con parámetro $p=\frac{1}{2}$.

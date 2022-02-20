@@ -41,7 +41,7 @@ ZMaxEnt//MatrixForm
 
 (*First we generate or import the data. The GenerateMHData function
 won't create anything if the file exists already*)
-n = 1000;
+n = 5000;
 beta = 150;
 delta = 0.6;
 steps=20;
