@@ -1,7 +1,20 @@
 \section{La dinámica analítica para el caso $\mcU=U\otimes V$}
-
+Es posible usar la ecuación (\ref{MaxEntZ}) para obtener un resultado directo de la evolución del estado de máxima entropía. Consideramos una unitaria $mcU=U\otimes V$ que evoluciona en el tiempo como $\mcU_{t}=(U\otimes V)^{t}=U^{t}\otimes V^{t}$. Así, el estado efectivo evolucionado:
+\begin{equation}\label{eq:SeparableDynamics}
+\CG{(U^{t}\otimes V^{t})\varrho_{max}(U^{t}\otimes V^{t})^{\dag}}=p\frac{1}{Z_{1}}e^{-\lambda p U^{t}\sigma_{z}(U^t)^{\dag}}+(1-p)\frac{1}{Z_{2}}e^{-\lambda (1-p)V^{t}\sigma_{z}(V^t)^{\dag}}
+\end{equation}
 \subsection{El caso $V=\Id$}
-
+\begin{equation}\label{eq:SeparableDynamicsUxI}
+\CG{(U^{t}\otimes \Id)\varrho_{max}(U^{t}\otimes \Id)^{\dag}}=p\frac{1}{Z_{1}}e^{-\lambda p U^{t}\sigma_{z}(U^t)^{\dag}}+(1-p)\frac{1}{Z_{2}}e^{-\lambda (1-p)\sigma_{z}}
+\end{equation}
 \subsection{El caso $U=\Id$}
-
+\begin{equation}\label{eq:SeparableDynamicsIxU}
+\CG{(\Id\otimes V^{t} )\varrho_{max}(\Id\otimes V^{t})^{\dag}}=p\frac{1}{Z_{1}}e^{-\lambda p \sigma_{z}}+(1-p)\frac{1}{Z_{2}}e^{-\lambda (1-p)V^{t}\sigma_{z}(V^t)^{\dag}}
+\end{equation}
 \subsection{El caso $V=U$}
+Quizá el caso más sencillo. La simetría de la unitaria permite factorizarla:
+\begin{align*}
+\CG{(U^{t}\otimes U^{t})\varrho_{max}(U^{t}\otimes U^{t})^{\dag}}&=p\frac{1}{Z_{1}}e^{-\lambda p U^{t}\sigma_{z}(U^t)^{\dag}}+(1-p)\frac{1}{Z_{2}}e^{-\lambda (1-p)U^{t}\sigma_{z}(U^t)^{\dag}}\\
+&=p\frac{1}{Z_{1}}U^{t}e^{-\lambda p \sigma_{z}}(U^t)^{\dag}+(1-p)\frac{1}{Z_{2}}U^{t}e^{-\lambda (1-p)\sigma_{z}}(U^t)^{\dag}\\
+&=U^{t}\qty(p\frac{1}{Z_{1}}e^{-\lambda p \sigma_{z}}+(1-p)\frac{1}{Z_{2}}e^{-\lambda (1-p)\sigma_{z}})(U^t)^{\dag}\\
+\end{align*}

@@ -17,14 +17,14 @@
 \contentsline {subsection}{\numberline {2.3.2}Extensión a $t$}{13}{subsection.2.3.2}%
 \contentsline {section}{\numberline {2.4}La dinámica analítica para el caso $\mathcal {U}=U\otimes V$}{13}{section.2.4}%
 \contentsline {subsection}{\numberline {2.4.1}El caso $V=\mathds {1}$}{13}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}El caso $U=\mathds {1}$}{13}{subsection.2.4.2}%
-\contentsline {subsection}{\numberline {2.4.3}El caso $V=U$}{13}{subsection.2.4.3}%
-\contentsline {chapter}{\numberline {3}Resultados para el mapeo de asignación}{14}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Parte analítica}{14}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}SWAP}{14}{subsection.3.1.1}%
-\contentsline {subsubsection}{Estado fino compatible arbitrario}{14}{section*.9}%
-\contentsline {subsubsection}{Mapeo de asignación}{15}{section*.10}%
-\contentsline {section}{\numberline {3.2}Parte numérica}{16}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Cascarón de estados mixtos}{16}{subsection.3.2.1}%
-\contentsline {subsubsection}{Mapeo de asignación para el cascarón}{16}{section*.11}%
-\contentsline {subsection}{\numberline {3.2.2}Resultados}{16}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {2.4.2}El caso $U=\mathds {1}$}{14}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}El caso $V=U$}{14}{subsection.2.4.3}%
+\contentsline {chapter}{\numberline {3}Resultados para el mapeo de asignación}{15}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Parte analítica}{15}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}SWAP}{15}{subsection.3.1.1}%
+\contentsline {subsubsection}{Estado fino compatible arbitrario}{15}{section*.9}%
+\contentsline {subsubsection}{Mapeo de asignación}{16}{section*.10}%
+\contentsline {section}{\numberline {3.2}Parte numérica}{17}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Cascarón de estados mixtos}{17}{subsection.3.2.1}%
+\contentsline {subsubsection}{Mapeo de asignación para el cascarón}{17}{section*.11}%
+\contentsline {subsection}{\numberline {3.2.2}Resultados}{17}{subsection.3.2.2}%
