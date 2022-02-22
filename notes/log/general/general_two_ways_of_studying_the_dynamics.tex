@@ -15,9 +15,9 @@ ilustrable a través del siguiente diagrama
 \end{tikzcd}
 \]
 Si la evolución subyacente total es una operación unitaria $\mcU$, entonces $\mcU_{t}$  denota exactamente $\mcU^{t}$. De esta forma, $\mcU_{t=0}=\Id$, mientras que  $\mcU_{t=1}=\mcU$. De esta forma es que se introduce la dependencia de la variable temporal en $\rho$:
-\begin{equation*}
-\rho(t)=(\mcC \circ \mcU_t \circ \mcA_\mcC)\rho(0)
-\end{equation*}
+\begin{equation}\label{eq:TimeDepenenceUnitary}
+\rho(t)=(\mcC \circ \mcU^{t} \circ \mcA_\mcC)\rho(0)
+\end{equation}
 En esta discusión, $\mcA_\mcC$ denota una aplicación que asigna un estado fino $\varrho(0)$ al estado $\rho(0)$. Esta asignación es completamente dependiente del mapeo de grano grueso $\mcC$. Exploramos dos formas de hacerla. La primera de ellas consiste en definir $\varrho(0)$ como el promedio sobre todos los estados compatibles con $\rho(0)$~\cite{Macro-To-Micro}, es decir
 $$\varrho(0)=\overline{\Omega(\rho(0))},$$
 donde

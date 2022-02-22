@@ -12,17 +12,19 @@
 \contentsline {section}{\numberline {2.2}El estado de máxima entropía en términos de $r_{z}$}{9}{section.2.2}%
 \contentsline {subsection}{\numberline {2.2.1}Dos soluciones particulares}{10}{subsection.2.2.1}%
 \contentsline {section}{\numberline {2.3}La dinámica analítica para el caso $\mathcal {U}=\textsc {SWAP}$}{11}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Caso $p=\frac {1}{2}$}{11}{subsection.2.3.1}%
-\contentsline {section}{\numberline {2.4}La dinámica analítica para el caso $\mathcal {U}=U\otimes V$}{11}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}El caso $V=\mathds {1}$}{11}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}El caso $U=\mathds {1}$}{11}{subsection.2.4.2}%
-\contentsline {subsection}{\numberline {2.4.3}El caso $V=U$}{11}{subsection.2.4.3}%
-\contentsline {chapter}{\numberline {3}Resultados para el mapeo de asignación}{13}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Parte analítica}{13}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}SWAP}{13}{subsection.3.1.1}%
-\contentsline {subsubsection}{Estado fino compatible arbitrario}{13}{section*.6}%
-\contentsline {subsubsection}{Mapeo de asignación}{14}{section*.7}%
-\contentsline {section}{\numberline {3.2}Parte numérica}{15}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Cascarón de estados mixtos}{15}{subsection.3.2.1}%
-\contentsline {subsubsection}{Mapeo de asignación para el cascarón}{15}{section*.8}%
-\contentsline {subsection}{\numberline {3.2.2}Resultados}{15}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {2.3.1}Evolución de $t=0$ a $t=1$}{11}{subsection.2.3.1}%
+\contentsline {subsubsection}{Caso $p=\frac {1}{2}$}{12}{section*.8}%
+\contentsline {subsection}{\numberline {2.3.2}Extensión a $t$}{13}{subsection.2.3.2}%
+\contentsline {section}{\numberline {2.4}La dinámica analítica para el caso $\mathcal {U}=U\otimes V$}{13}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}El caso $V=\mathds {1}$}{13}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}El caso $U=\mathds {1}$}{13}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}El caso $V=U$}{13}{subsection.2.4.3}%
+\contentsline {chapter}{\numberline {3}Resultados para el mapeo de asignación}{14}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Parte analítica}{14}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}SWAP}{14}{subsection.3.1.1}%
+\contentsline {subsubsection}{Estado fino compatible arbitrario}{14}{section*.9}%
+\contentsline {subsubsection}{Mapeo de asignación}{15}{section*.10}%
+\contentsline {section}{\numberline {3.2}Parte numérica}{16}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Cascarón de estados mixtos}{16}{subsection.3.2.1}%
+\contentsline {subsubsection}{Mapeo de asignación para el cascarón}{16}{section*.11}%
+\contentsline {subsection}{\numberline {3.2.2}Resultados}{16}{subsection.3.2.2}%
