@@ -1,0 +1,27 @@
+\section{Diferentes formas de abordar la dinámica}
+El objetivo de la tesis es contruir y estudiar ``dinámicas gruesas'', $\Gamma_t$,
+\begin{align*}
+\Gamma_{t}:&\mcS(\hilbert_2)\rightarrow \mcS(\hilbert_2)\\
+&\rho(0) \mapsto \rho(t).
+\end{align*}
+La dinámica gruesa puede verse como una composición
+\begin{equation*}
+\Gamma_t:=\mcC \circ \mcU_t \circ \mcA_\mcC.
+\end{equation*}
+ilustrable a través del siguiente diagrama
+\[\begin{tikzcd}[arrows={<-|}]
+\rho(0)  & \rho(t) \arrow{l}{\Gamma_{t}} \arrow{d}{\mcC}\\
+\varrho(0) \arrow{u}{\mcA_{\mcC}} & \varrho(t). \arrow{l}{\mcU_{t}}
+\end{tikzcd}
+\]
+Si la evolución subyacente total es una operación unitaria $\mcU$, entonces $\mcU_{t}$  denota exactamente $\mcU^{t}$. De esta forma, $\mcU_{t=0}=\Id$, mientras que  $\mcU_{t=1}=\mcU$. De esta forma es que se introduce la dependencia de la variable temporal en $\rho$:
+\begin{equation}\label{eq:TimeDepenenceUnitary}
+\rho(t)=(\mcC \circ \mcU^{t} \circ \mcA_\mcC)\rho(0)
+\end{equation}
+En esta discusión, $\mcA_\mcC$ denota una aplicación que asigna un estado fino $\varrho(0)$ al estado $\rho(0)$. Esta asignación es completamente dependiente del mapeo de grano grueso $\mcC$. Exploramos dos formas de hacerla. La primera de ellas consiste en definir $\varrho(0)$ como el promedio sobre todos los estados compatibles con $\rho(0)$~\cite{Macro-To-Micro}, es decir
+$$\varrho(0)=\overline{\Omega(\rho(0))},$$
+donde
+\begin{equation*}
+\Omega(\rho)=\{\dyad{\psi}\in \mcS(\hilbert_2 \otimes \hilbert_2) \mid \mcC\left[\dyad{\psi}\right]=\rho\}.
+\end{equation*}
+A esta asignación la llamaremos \textit{asignación promedio}. La segunda forma de asignación consiste en usar el principio de máxima entropía, dados los promedios de un conjunto de observables tomográficamente completo del sistema al nivel grueso. Esto es, asignaremos al estado $\rho_g(0)$ un estado fino que formalmente sea totalmente imparcial y no añada ninguna cantidad de información arbitraría además de las restricciones $\langle A_i \rangle=\tr \left[ A_i \rho_g(0) \right]$, donde el conjunto $\left\{A_i \right\}$ es tomográficamente completo~\cite{jaynes}. A esta asignación la denotaremos como \textit{asignación MaxEnt}. Cabe señalar que por entropía, nos referimos a la entropía de Von Neumann, $S(\rho)=\tr \left[ -\rho \log(\rho) \right]$.

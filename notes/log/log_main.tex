@@ -15,6 +15,7 @@
 \usepackage{caption}
 \usepackage{subcaption}
 
+
 %*********
 %Comandos
 %*********
@@ -46,7 +47,6 @@
 \newcommand{\Fuzzy}[1]{\mcF\left[#1\right]}
 \newcommand{\nota}[1]{{\color{red} [#1]}}
 \newcommand{\notaAd}[1]{{\color{blue} [#1]}} %Notas pero mías
-\graphicspath{ {../figures/} }
 
 
 
@@ -62,8 +62,9 @@
 \end{abstract}
 \tableofcontents
 \newpage
-
-\include{LOG01_feb}
+\include{general/general_main}
+\include{maxent/maxent_main}
+\include{assmap/assmap_main}
 
 \bibliographystyle{ieeetr}
 \bibliography{bibliography}
