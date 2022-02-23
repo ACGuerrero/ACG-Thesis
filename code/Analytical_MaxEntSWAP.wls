@@ -13,6 +13,8 @@ ExpMat=MatrixExp[A];
 Z=Tr[ExpMat];
 1/Z//FullSimplify
 MaxEnt=ExpMat/Z;
+
+(*Obtenci\[OAcute]n del factor de contracci\[OAcute]n*)
 rhoz0=(Refine[CGKraus[MaxEnt,p],{Element[p, Reals], Element[\[Lambda], Reals], 0<=p<=1}]//Expand);
 Print["The bloch vector of the last operator is: "]
 rhoz0bv=densityMatrixToPoint[{rhoz0},gellMannBasis[1]][[1]]//FullSimplify
@@ -80,4 +82,4 @@ Print["The factor separating this states is: ", (contractionfactor=rhozttbv[[3]]
 (*\.b4*)
 
 
-
+SWAPContractionFactor[1,0.3,1]

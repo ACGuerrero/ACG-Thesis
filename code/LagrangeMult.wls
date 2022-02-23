@@ -6,16 +6,15 @@ Needs["CoolTools`"]
 SetDirectory["/home/acastillo/Documents/tesis-adan/code"];
 
 
-Clear[p]
-$Assumptions=Element[{p,rz},Reals] && rz\[Element]Reals && 0<=rz<=1;
-p=0.5;
 (*Reconstrucci\[OAcute]n del MaxEnt*)
-A=-Log[x]*GObsMaxEnt[p,3];
+$Assumptions=Element[{p,rz,\[Lambda],Z,t},Reals] && rz\[Element]Reals && 0<=rz<=1&&0<=p<=1&&0<=t<=1;
+A=-\[Lambda]*GObsMaxEnt[p,3];
 ExpMat=MatrixExp[A];
 Z=Tr[ExpMat];
+1/Z//FullSimplify;
 MaxEnt=ExpMat/Z;
-CGKraus[MaxEnt,p];
-swapGate . MaxEnt . swapGate//MatrixForm
+rz=ZCoordFromLagrangeMult[\[Lambda],p]
+plot3=Plot[Evaluate[Table[rz/.{p->i},{i,0,0.5,0.1}]],{\[Lambda],-4,0},AxesLabel->{Style[Subscript[\[Lambda],3],FontSize->18],Style[Subscript[r,z],FontSize->18]},PlotLegends->{Table["p="<>ToString[i],{i,0,0.5,0.1}]}]
 
 
 (*

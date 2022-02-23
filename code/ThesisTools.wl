@@ -27,12 +27,15 @@ CGMaxEntStateLM::usage="something"
 NearestPosition::usage="something"
 GObsMaxEnt::usage="something"
 CGMaxEntStateLM::usage="something"
-Zobs::usage="something"
+ZCoordFromLagrangeMult::usage="something"
 RzLambdaTable::usage="something"
 LagrangeMultFromZCoord::usage="something"
 MaxEntForStateNotInZ::usage="something"
 CGKrausOp::usage="something"
-CGKraus::usage="something"
+CGKraus::usage="CGKraus[rho,p] applies the coarse graining map using its Kraus Operators"
+SWAPContractionFactor::usage="SWAPContractionFactor[t,p,\[Lambda]] gives the contraction factor of the coarse system resulting from applying the swap gate to a MaxEnt state characterized by p,\[Lambda]."
+SWAP::usage="SWAP[t] applies the operator at a time t. t=1 is the full swap gate, while t=0 is the identity operator."
+PlotTwoCoarseSets::usage="PlotTwoCoarseSets[set1,set2,legend,title] takes two sets of two level density operators and plots their bloch vectors."
 Begin["`Private`"]
 
 
@@ -119,8 +122,8 @@ Ubig . #&/@fdata
 (*All about the MaxEnt state*)
 GObsMaxEnt[p_,i_]:=p*KroneckerProduct[PauliMatrix[i],IdentityMatrix[2]]+(1-p)*KroneckerProduct[IdentityMatrix[2],PauliMatrix[i]];
 CGMaxEntStateLM[lambda_,p_]:=With[{ExpMat=MatrixExp[-lambda*GObsMaxEnt[p,3]]},ExpMat/Tr[ExpMat]]
-Zobs[l_,p_]:=-(1/2)*Sech[l*p]*Sech[l-p*l]*(Sinh[l]+(1-2 p)*Sinh[l-2 p*l])
-RzLambdaTable[step_,p_]:=Transpose[Table[{Zobs[l,p],l},{l,-4,0,step}]];
+ZCoordFromLagrangeMult[l_,p_]:=-(1/2)*Sech[l*p]*Sech[l-p*l]*(Sinh[l]+(1-2 p)*Sinh[l-2 p*l])
+RzLambdaTable[p_,low_,up_,step_]:=Transpose[Table[{ZCoordFromLagrangeMult[l,p],l},{l,low,up,step}]];
 LagrangeMultFromZCoord[data_,zcoord_]:=data[[2,NearestPosition[data[[1]],zcoord]]]
 MaxEntForStateNotInZ[cstate_,ZMaxEnt_]:=
 With[
@@ -138,7 +141,45 @@ Sqrt[1-p]KroneckerProduct[IdentityMatrix[2],{0,1}] . swapGate
 
 CGKraus[rho_,p_]:=With[{kr=CGKrausOp[p]},Total[(# . rho . ConjugateTranspose[#])&/@kr]];
 
+SWAPContractionFactor[t_,p_,\[Lambda]_]:=((E^(-I \[Pi] t - \[Lambda] - 
+  2 p \[Lambda]) (2 E^(
+    I \[Pi] t + 2 p \[Lambda]) (-1 + E^(2 \[Lambda])) - 
+   E^(2 \[Lambda]) (1 + E^(2 I \[Pi] t)) (-1 + 2 p) + 
+   E^(4 p \[Lambda]) (1 + E^(2 I \[Pi] t)) (-1 + 
+      2 p)))/(4 (Sinh[\[Lambda]] + (1 - 2 p) Sinh[\[Lambda] - 
+      2 p \[Lambda]])))//Chop;
 
+SWAP[t_]:={{1,0,0,0},{0,(1+Exp[I*Pi*t])/2,(1-Exp[I*Pi*t])/2,0},{0,(1-Exp[I*Pi*t])/2,(1+Exp[I*Pi*t])/2,0},{0,0,0,1}}
+
+PlotTwoCoarseSets[set1_,set2_,legend_,title_]:=Show[
+ListPointPlot3D[
+{densityMatrixToPoint[set1,gellMannBasis[1]],densityMatrixToPoint[set2,gellMannBasis[1]]},
+BoxRatios->{1,1,1},
+PlotRange->{{-1.,1.},{-1.`,1.`},{-1.,1.}},
+PlotLegends->legend,
+PlotLabel->title
+],
+Graphics3D[{Opacity[0.2],GrayLevel[0.9],Sphere[]},BoxRatios->1,Axes->True]
+]
+
+
+(*
+CoarseEvolutionPNGSet[zcoord_,swapP_,]:= With[
+{coarseev=Table[Map[coarseGraining2[#,swapP]&,ApplyUnitaryButSlowly[unitary,steps,assignements][[i]]],{i,1,Length[ApplyUnitaryButSlowly[unitary,steps,assignements]]}];
+},
+Table[
+Labeled[
+Show[
+ListPointPlot3D[densityMatrixToPoint[coarseev[[i]],gellMannBasis[1]],BoxRatios->{1, 1, 1},PlotRange->{{-1.,1.},{-1.,1.},{-1.,1.}}],
+Graphics3D[{Opacity[0.2],GrayLevel[0.9],Sphere[]},BoxRatios->1,Axes->True]
+],
+{"t="<>ToString[i],"Coarse evolution for p="<>ToString[swapP]<>", z="<>ToString[zcoord]},
+{Top,Bottom}], 
+{i,Length[coarseev]}]];
+
+PNGSetToGif[set_]:=Export["../figures/"<>"coarse_swap_evol_"<>ToString[steps]<>"steps"<>"_n="<>ToString[n]<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>"_beta="<>ToString[beta]<>"_delta="<>ToString[delta]<>".gif",
+Flatten[{gif, Table[gif[[i]], {i, Length[gif] }]}]]
+*)
 
 
 (*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@

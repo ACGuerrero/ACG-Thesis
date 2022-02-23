@@ -8,31 +8,10 @@ SetDirectory["/home/acastillo/Documents/tesis-adan/code"];
 Needs["ThesisTools`"]
 
 
-(*
-This script lets me play with the dynamics of a system.
-The first part generates the data. The second part is all
-about the visualization.
-*)
-
-(*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*)
-(*@@@@@@@@@@@@@@@@@@@@ FIRST PART - MAXENT @@@@@@@@@@@@@@@@@@@@@*)
-(*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*)
-
-
-
-A=MatrixExp[-l3*GObsMaxEnt[p,3]]/Tr[MatrixExp[-l3*GObsMaxEnt[p,3]]];
-
-
 (*There are two basic parameters for the coarse graining problem.
 The z coordinate of the state and the swap probability*)
 swapP = 0.3;
 zcoord = 0.8;
-
-(*Given those two, we can obtain a maximum entropy state*)
-lambdastep=0.05;
-rzlambda=RzLambdaTable[lambdastep,swapP];
-ZMaxEnt=CGMaxEntStateLM[LagrangeMultFromZCoord[rzlambda,zcoord][[1]],swapP];
-ZMaxEnt//MatrixForm
 
 
 (*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*)
@@ -66,6 +45,28 @@ evolcoarsemaxents=coarseGraining2[#,swapP]&/@newmaxents;
 (*UnitaryEvolutionMaxEnt=ApplyUnitaryButSlowly[unitary,steps,assignements];*)
 CoarseEvolutionMaxEnt=Table[Map[coarseGraining2[#,swapP]&,UnitaryEvolutionAss[[i]]],{i,1,Length[UnitaryEvolutionMaxEnt]}];
 
+swapP = 0.1;
+rztable=RzLambdaTable[swapP,-4,4,lambdastep=0.0001]
+Show[ListPlot[Table[
+With[
+{bv=densityMatrixToPoint[{(IdentityMatrix[2]+zcoord*PauliMatrix[3])/2,
+CGKraus[swapGate . CGMaxEntStateLM[LagrangeMultFromZCoord[rztable,zcoord][[1]],swapP] . swapGate,swapP]},gellMannBasis[1]]},
+{zcoord,bv[[2,3]]/bv[[1,3]]}],
+{zcoord,0.1,1,0.01}]],Plot[SWAPContractionFactor[1,swapP,LagrangeMultFromZCoord[rztable,zcoord][[1]]],{zcoord,0.1,1}]]
+
+
+Plot[Evaluate[Table[SWAPContractionFactor[1,p,LagrangeMultFromZCoord[rztable,zcoord][[1]]]/.{p->i},{i,0,0.5,0.1}]],{zcoord,0.1,1},AxesLabel->{Style[z,FontSize->18],Style[a,FontSize->18]},PlotLegends->{Table["p="<>ToString[i],{i,0,0.5,0.1}]}]
+
+
+Show[Join[Table[Plot[SWAPContractionFactor[1,p,LagrangeMultFromZCoord[RzLambdaTable[swapP,-4,0,lambdastep=0.01],zcoord][[1]]],{zcoord,0.1,1}],{p,0,0.5,0.1}],Table[Plot[SWAPContractionFactor[1,p,LagrangeMultFromZCoord[RzLambdaTable[swapP,0,4,lambdastep=0.01],zcoord][[1]]],{zcoord,-1,-0.1}],{p,0,0.5,0.1}]]]
+
+
+(* ::InheritFromParent:: *)
+(*Graphics[{{RGBColor[0.987148, 0.8073604000000001, 0.49470040000000004`], EdgeForm[{Opacity[0.126], Thickness[Small]}], {}, {RGBColor[0.987148, 0.8073604000000001, 0.49470040000000004`], EdgeForm[{Opacity[0.126], Thickness[Small]}], Rectangle[{0.065, 0}, {0.07, 1000.}, RoundingRadius -> 0]}, {}, {}}, {}}, AspectRatio -> GoldenRatio^(-1), Axes -> {True, True}, AxesLabel -> {None, None}, AxesOrigin -> {-0.008, 0}, FrameLabel -> {{None, None}, {None, None}}, FrameTicks -> {{Automatic, Automatic}, {Automatic, Automatic}}, GridLines -> {None, None}, GridLinesStyle -> Directive[GrayLevel[0.5, 0.4]], PlotRange -> {{0., 0.4}, {All, All}}, PlotRangePadding -> {{Scaled[0.02], Scaled[0.02]}, {Scaled[0.02], Scaled[0.05]}}, Ticks -> {Automatic, Automatic}]*)
+
+
+(coarsemaxents-evolcoarsemaxents)[[2]]//Norm
+
 
 (*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*)
 (*@@@@@@@@@@@@@ THIRD PART - ASSIGNEMENT DYNAMICS @@@@@@@@@@@@@@*)
@@ -76,33 +77,6 @@ coarseassign=coarseGraining2[#,swapP]&/@assignements;
 evolcoarseassign=coarseGraining2[#,swapP]&/@newassign;
 (*UnitaryEvolutionAss=ApplyUnitaryButSlowly[unitary,steps,assignements];*)
 CoarseEvolutionAss=Table[Map[coarseGraining2[#,swapP]&,UnitaryEvolutionAss[[i]]],{i,1,Length[UnitaryEvolutionAss]}];
-
-
-CompareTwoCoarseSets[set1_,set2_,legend_,title_]:=Show[
-ListPointPlot3D[
-{densityMatrixToPoint[set1,gellMannBasis[1]],densityMatrixToPoint[set2,gellMannBasis[1]]},
-BoxRatios->{1,1,1},
-PlotRange->{{-1.,1.},{-1.`,1.`},{-1.,1.}},
-PlotLegends->legend,
-PlotLabel->title
-],
-Graphics3D[{Opacity[0.2],GrayLevel[0.9],Sphere[]},BoxRatios->1,Axes->True]
-]
-
-CoarseEvolutionPNGSet[coarseev_]:= Table[
-Labeled[
-Show[
-ListPointPlot3D[densityMatrixToPoint[coarseev[[i]],gellMannBasis[1]],BoxRatios->{1, 1, 1},PlotRange->{{-1.,1.},{-1.,1.},{-1.,1.}}],
-Graphics3D[{Opacity[0.2],GrayLevel[0.9],Sphere[]},BoxRatios->1,Axes->True]
-],
-{"t="<>ToString[i],"Coarse SWAP for p="<>ToString[swapP]<>", z="<>ToString[zcoord]},
-{Top,Bottom}], 
-{i,Length[CoarseEvolution]}];
-
-PNGSetToGif[set_]:=Export["../figures/"<>"coarse_swap_evol_"<>ToString[steps]<>"steps"<>"_n="<>ToString[n]<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>"_beta="<>ToString[beta]<>"_delta="<>ToString[delta]<>".gif",
-Flatten[{gif, Table[gif[[i]], {i, Length[gif] }]}]]
-
-
 
 
 Export["../figures/"<>"MaxEnt_SWAP_t0vst1_"<>"_n="<>ToString[n]<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>"_beta="<>ToString[beta]<>"_delta="<>ToString[delta]<>".png",
