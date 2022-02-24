@@ -21,7 +21,7 @@ testDistribution::usage="something"
 metropolisHastingsSample::usage="something"
 cgfidelitylist::usage="something"
 cgfrobeniuslist::usage="something"
-GenerateMHData::usage="something"
+GenerateMHData::usage="GenerateMHData[n,beta,delta,swapP,zcoord,print_:True] generates a set of pure states using the Metropolis Hastings algorithm. If the data exists, it imports it."
 GObsMaxEnt::usage="something"
 CGMaxEntStateLM::usage="something"
 NearestPosition::usage="something"
@@ -220,7 +220,7 @@ Print["Number of states in the file: ",Length[data]];
 Return[data]
 ]
 
-GenerateMHData[n_,beta_,delta_,swapP_,zcoord_]:=
+GenerateMHData[n_,beta_,delta_,swapP_,zcoord_,print_:True]:=
 Module[{
 targetstate,
 data,
@@ -232,19 +232,19 @@ size
 SetDirectory["/home/acastillo/Documents/tesis-adan/code"];
 filename="MHstates_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>"_beta="<>ToString[beta]<>"_delta="<>ToString[delta];
 If[FileExistsQ["/home/acastillo/Documents/tesis-adan/code/MH_data/"<>filename<>"_data"<>".m"],
-	Print["Set of data exists already."];
+	If[print,Print["Set of data exists already."]];
 	data=Get["MH_data/"<>filename<>"_data"<>".m"];
 	size=Length[data];
-	Print["Data imported from file. File contains "<>ToString[size]<>" elements."];
+	If[print,Print["Data imported from file. File contains "<>ToString[size]<>" elements."]];
 	If[size>=n,
-		Print["File has enough data"];
+		If[print,Print["File has enough data"]];
 		Return[data[[;;n]]],
-		Print["Set of data doesn't have enough data. Creating more data."];
+		If[print,Print["Set of data doesn't have enough data. Creating more data."]];
 		data=Join[CreateData[n-Length[data],beta,delta,swapP,zcoord],data];
 		Export["MH_data/"<>filename<>"_data"<>".m",data];
 		Return[data]
 	],
-	Print["Set of data doesn't exist. Creating data."];
+	If[print,Print["Set of data doesn't exist. Creating data."]];
 	data=CreateData[n,beta,delta,swapP,zcoord];
 	Export["MH_data/"<>filename<>"_data"<>".m",data];
 	Return[data]

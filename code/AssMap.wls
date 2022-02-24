@@ -10,12 +10,13 @@ Needs["ThesisTools`"]
 
 (*There are two basic parameters for the coarse graining problem.
 The z coordinate of the state and the swap probability*)
-swapP = 0.3;
-zcoord = 0.8;
+swapP = 0.2;
+zcoord = 0.5;
+targetstate=(IdentityMatrix[2]+zcoord*PauliMatrix[3])/2;
 
 
 (*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*)
-(*@@@@@@@@@@@@@@@@@ SECOND PART - ASSIGNEMENT @@@@@@@@@@@@@@@@@@*)
+(*@@@@@@@@@@@@@@@@@ ASSIGNMENT MAP CONSTRUCION @@@@@@@@@@@@@@@@@@*)
 (*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*)
 
 (*First we generate or import the data. The GenerateMHData function
@@ -29,9 +30,35 @@ data=GenerateMHData[n, beta, delta, swapP, zcoord];
 
 (*We create mixed states with a radius of zcoord, then we
 obtain their assignement map using the loaded data*)
-mixedstates=UniformMixedStates[zcoord,1000];
-assignements=AssignementMapForStateNotInZ[#,data]&/@mixedstates;
-maxents=MaxEntForStateNotInZ[#,ZMaxEnt]&/@mixedstates;
+AssMap=Chop[Total[data]/Length[data]];
+Print["The assigned state is: ", AssMap//MatrixForm]
+Print["Fidelity between the assigned state and the target state: ", fidelity[CGKraus[AssMap,swapP],targetstate]]
+
+
+(*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*)
+(*@@@@@@@@@@@@ COMPARISON BETWEEN MAXENT AND ASSMAP @@@@@@@@@@@@@*)
+(*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*)
+lambdastep=0.05;
+lowerlambda=-4;
+upperlambda=0;
+rzlambdatable=RzLambdaTable[swapP,lowerlambda,upperlambda,lambdastep];
+lagrangemult=LagrangeMultFromZCoord[rzlambdatable,zcoord][[1]];
+ZMaxEnt=CGMaxEntStateLM[lagrangemult,swapP];
+Print["The maximum entropy state is: ", ZMaxEnt//MatrixForm]
+Print["Fidelity between the coarse maximum entropy state and the target state: ", fidelity[CGKraus[ZMaxEnt,swapP],targetstate]]
+fid=Table[
+	Table[
+		{n,With[
+			{data=GenerateMHData[n, beta, delta, p, zcoord,False]},
+		fidelity[Chop[Total[data]/Length[data]],ZMaxEnt]]},
+	{n,100,5000,100}],
+{p,0.1,0.5,0.1}];
+
+
+Export["../figures/fidelityMaxEntAssMap_vs_n.png",Labeled[ListLinePlot[fid,PlotLegends->{"p=0.1","p=0.2","p=0.3","p=0.4","p=0.5"},Frame -> True, FrameLabel -> {Style["n",FontSize->12], Style["Fidelity",FontSize->12]}],"Fidelity between MaxEnt and AssMap",Top]]
+
+
+Labeled[ListLinePlot[fid,Frame -> True, FrameLabel -> {Style["n",FontSize->12], Style["Fidelity",FontSize->12]}],"p="<>ToString[swapP],Top]
 
 
 (*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*)
