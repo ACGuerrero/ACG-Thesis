@@ -33,6 +33,7 @@ obtain their assignement map using the loaded data*)
 AssMap=Chop[Total[data]/Length[data]];
 Print["The assigned state is: ", AssMap//MatrixForm]
 Print["Fidelity between the assigned state and the target state: ", fidelity[CGKraus[AssMap,swapP],targetstate]]
+AssMapsNotInZ=AssignementMapForStateNotInZ[#,data]&/@UniformMixedStates[zcoord,1000];
 
 
 (*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*)
@@ -58,52 +59,22 @@ fid=Table[
 Export["../figures/fidelityMaxEntAssMap_vs_n.png",Labeled[ListLinePlot[fid,PlotLegends->{"p=0.1","p=0.2","p=0.3","p=0.4","p=0.5"},Frame -> True, FrameLabel -> {Style["n",FontSize->12], Style["Fidelity",FontSize->12]}],"Fidelity between MaxEnt and AssMap",Top]]
 
 
-Labeled[ListLinePlot[fid,Frame -> True, FrameLabel -> {Style["n",FontSize->12], Style["Fidelity",FontSize->12]}],"p="<>ToString[swapP],Top]
+CoarseNewAssMapsNotInZ[[1]]
 
 
 (*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*)
-(*@@@@@@@@@@@@@@@@ THIRD PART - MAXENT DYNAMICS @@@@@@@@@@@@@@@@@*)
+(*@@@@@@@@@@@@@@@@@@@@@@@@@@ DYNAMICS @@@@@@@@@@@@@@@@@@@@@@@@@@@*)
 (*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*)
 unitary=swapGate;
-
-newmaxents=unitary . # . Dagger[unitary]&/@maxents;
-coarsemaxents=coarseGraining2[#,swapP]&/@maxents;
-evolcoarsemaxents=coarseGraining2[#,swapP]&/@newmaxents;
-(*UnitaryEvolutionMaxEnt=ApplyUnitaryButSlowly[unitary,steps,assignements];*)
-CoarseEvolutionMaxEnt=Table[Map[coarseGraining2[#,swapP]&,UnitaryEvolutionAss[[i]]],{i,1,Length[UnitaryEvolutionMaxEnt]}];
-
-swapP = 0.1;
-rztable=RzLambdaTable[swapP,-4,4,lambdastep=0.0001]
-Show[ListPlot[Table[
-With[
-{bv=densityMatrixToPoint[{(IdentityMatrix[2]+zcoord*PauliMatrix[3])/2,
-CGKraus[swapGate . CGMaxEntStateLM[LagrangeMultFromZCoord[rztable,zcoord][[1]],swapP] . swapGate,swapP]},gellMannBasis[1]]},
-{zcoord,bv[[2,3]]/bv[[1,3]]}],
-{zcoord,0.1,1,0.01}]],Plot[SWAPContractionFactor[1,swapP,LagrangeMultFromZCoord[rztable,zcoord][[1]]],{zcoord,0.1,1}]]
-
-
-Plot[Evaluate[Table[SWAPContractionFactor[1,p,LagrangeMultFromZCoord[rztable,zcoord][[1]]]/.{p->i},{i,0,0.5,0.1}]],{zcoord,0.1,1},AxesLabel->{Style[z,FontSize->18],Style[a,FontSize->18]},PlotLegends->{Table["p="<>ToString[i],{i,0,0.5,0.1}]}]
-
-
-Show[Join[Table[Plot[SWAPContractionFactor[1,p,LagrangeMultFromZCoord[RzLambdaTable[swapP,-4,0,lambdastep=0.01],zcoord][[1]]],{zcoord,0.1,1}],{p,0,0.5,0.1}],Table[Plot[SWAPContractionFactor[1,p,LagrangeMultFromZCoord[RzLambdaTable[swapP,0,4,lambdastep=0.01],zcoord][[1]]],{zcoord,-1,-0.1}],{p,0,0.5,0.1}]]]
-
-
-(* ::InheritFromParent:: *)
-(*Graphics[{{RGBColor[0.987148, 0.8073604000000001, 0.49470040000000004`], EdgeForm[{Opacity[0.126], Thickness[Small]}], {}, {RGBColor[0.987148, 0.8073604000000001, 0.49470040000000004`], EdgeForm[{Opacity[0.126], Thickness[Small]}], Rectangle[{0.065, 0}, {0.07, 1000.}, RoundingRadius -> 0]}, {}, {}}, {}}, AspectRatio -> GoldenRatio^(-1), Axes -> {True, True}, AxesLabel -> {None, None}, AxesOrigin -> {-0.008, 0}, FrameLabel -> {{None, None}, {None, None}}, FrameTicks -> {{Automatic, Automatic}, {Automatic, Automatic}}, GridLines -> {None, None}, GridLinesStyle -> Directive[GrayLevel[0.5, 0.4]], PlotRange -> {{0., 0.4}, {All, All}}, PlotRangePadding -> {{Scaled[0.02], Scaled[0.02]}, {Scaled[0.02], Scaled[0.05]}}, Ticks -> {Automatic, Automatic}]*)
-
-
-(coarsemaxents-evolcoarsemaxents)[[2]]//Norm
-
-
-(*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*)
-(*@@@@@@@@@@@@@ THIRD PART - ASSIGNEMENT DYNAMICS @@@@@@@@@@@@@@*)
-(*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*)
-
-newassign=unitary . # . Dagger[unitary]&/@assignements;
-coarseassign=coarseGraining2[#,swapP]&/@assignements;
-evolcoarseassign=coarseGraining2[#,swapP]&/@newassign;
-(*UnitaryEvolutionAss=ApplyUnitaryButSlowly[unitary,steps,assignements];*)
-CoarseEvolutionAss=Table[Map[coarseGraining2[#,swapP]&,UnitaryEvolutionAss[[i]]],{i,1,Length[UnitaryEvolutionAss]}];
+NewAssMap=unitary . AssMap . Dagger[unitary];
+NewAssMapsNotInZ=unitary . # . Dagger[unitary]&/@AssMapsNotInZ;
+CoarseAssMapsNotInZ=Chop[CGKraus[#,swapP]]&/@AssMapsNotInZ;
+CoarseNewAssMapsNotInZ=Chop[CGKraus[#,swapP]]&/@NewAssMapsNotInZ;
+differences=ToSphericalCoordinates[densityMatrixToPoint[CoarseAssMapsNotInZ,gellMannBasis[1]]]-ToSphericalCoordinates[densityMatrixToPoint[CoarseNewAssMapsNotInZ,gellMannBasis[1]]];
+(*UnitaryEvolutionAss=ApplyUnitaryButSlowly[unitary,steps,assignements];
+CoarseEvolutionAss=Table[Map[coarseGraining2[#,swapP]&,UnitaryEvolutionAss[[i]]],{i,1,Length[UnitaryEvolutionAss]}];*)
+Histogram[#,{-2*Pi,2*Pi,0.05}]&/@Transpose[differences]
+PlotTwoCoarseSets[CoarseAssMapsNotInZ,CoarseNewAssMapsNotInZ,{"Initial states","Final states"},"Evolution of the Assignement Map"]
 
 
 Export["../figures/"<>"MaxEnt_SWAP_t0vst1_"<>"_n="<>ToString[n]<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>"_beta="<>ToString[beta]<>"_delta="<>ToString[delta]<>".png",
