@@ -1,9 +1,12 @@
-*.pdf
+dynamics_of_open_systems.xopp~
+log/log_main.toc
+*.toc
+*.lof
+*.lot
 *.log
 *.aux
-*.toc
 *.out
 *.bbl
+*.pdf
 *.blg
 *.synctex.gz
-unam.jpg
