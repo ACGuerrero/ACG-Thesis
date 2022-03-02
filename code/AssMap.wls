@@ -27,7 +27,6 @@ delta = 0.6;
 steps=20;
 zcoarsestate=(IdentityMatrix[2]+zcoord*PauliMatrix[3])/2;
 data=GenerateMHData[n, beta, delta, swapP, zcoord];
-
 (*We create mixed states with a radius of zcoord, then we
 obtain their assignement map using the loaded data*)
 AssMap=Chop[Total[data]/Length[data]];
@@ -47,16 +46,26 @@ lagrangemult=LagrangeMultFromZCoord[rzlambdatable,zcoord][[1]];
 ZMaxEnt=CGMaxEntStateLM[lagrangemult,swapP];
 Print["The maximum entropy state is: ", ZMaxEnt//MatrixForm]
 Print["Fidelity between the coarse maximum entropy state and the target state: ", fidelity[CGKraus[ZMaxEnt,swapP],targetstate]]
-fid=Table[
+(*As a function of n*)
+fidn=Table[
 	Table[
 		{n,With[
 			{data=GenerateMHData[n, beta, delta, p, zcoord,False]},
 		fidelity[Chop[Total[data]/Length[data]],ZMaxEnt]]},
 	{n,100,5000,100}],
 {p,0.1,0.5,0.1}];
+(*As a function of p*)
+fidp=Table[
+		{p,With[
+			{data=GenerateMHData[1000, beta, delta, p, zcoord,False]},
+		fidelity[Chop[Total[data]/Length[data]],ZMaxEnt]]},
+	{p,0.1,0.5,0.05}];
 
 
 Export["../figures/fidelityMaxEntAssMap_vs_n.png",Labeled[ListLinePlot[fid,PlotLegends->{"p=0.1","p=0.2","p=0.3","p=0.4","p=0.5"},Frame -> True, FrameLabel -> {Style["n",FontSize->12], Style["Fidelity",FontSize->12]}],"Fidelity between MaxEnt and AssMap",Top]]
+
+
+Export["../figures/fidelityMaxEntAssMap_vs_p.png",Labeled[ListLinePlot[fidp,Frame -> True, FrameLabel -> {Style["p",FontSize->12], Style["Fidelity",FontSize->12]}],"Fidelity between MaxEnt and AssMap",Top]]
 
 
 CoarseNewAssMapsNotInZ[[1]]
