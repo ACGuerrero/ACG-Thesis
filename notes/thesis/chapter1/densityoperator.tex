@@ -1,21 +1,22 @@
-\chapter{Preliminares}
 \section{El operador de densidad}
 \subsection{Derivación del operador de densidad}
-Considérese un sistema descrito por $\ket{\varphi}\in\hilbert_{n}$, con $\hilbert_{n}$ el espacio de Hilbert 
-$\hilbert_{n}=\Complex^{n}$; y $A$ un observable (un operador hermítico). Se sabe que el valor de expectación del observable está dado por $\expval{A}=\bra{\varphi}A\ket{\varphi}$. Sin embargo, se puede manipular esta expresión a través de una base ortogonal $\{\ket{e_{k}}\}$ del espacio $\hilbert_{n}$:
+
+Los vectores de estado no son la única forma de describir a los sistemas estudiados en el contexto de la mecánica cuántica. Aún más: los vectores de estado no pueden describir todos los sistemas estudiables. Por esto, y porque será particularmente útil para nuestro trabajo, introducimos el concepto del operador de densidad (también llamado, en el caso discreto, que es el que nos incumbe, matriz de densidad) de forma similar a como lo hizo L.D. Landau en 1927 \cite{Landau}.
+
+Considérese un sistema descrito por el vector de estado $\ket{\varphi}\in\hilbert_{n}$, con $\hilbert_{n}$ el espacio de Hilbert $\hilbert_{n}=\Complex^{n}$; y $A$ un observable (un operador hermítico). Se sabe que el valor de expectación del observable está dado por $\expval{A}=\bra{\varphi}A\ket{\varphi}$. Sin embargo, se puede manipular esta expresión a través de una base ortogonal $\{\ket{e_{k}}\}$ del espacio $\hilbert_{n}$:
 \begin{align*}
-\expval{A}&=\qty(\sum_{i}\dyad{e_{i}})\bra{\varphi}A\ket{\phi}\qty(\sum_{j}\dyad{e_{j}}),\\
+\expval{A}&=\qty(\sum_{i}\dyad{e_{i}})\bra{\varphi}A\ket{\varphi}\qty(\sum_{j}\dyad{e_{j}}),\\
 &=\bra{\varphi}\qty(\sum_{i}\dyad{e_{i}})A\qty(\sum_{j}\dyad{e_{j}})\ket{\varphi},\\
-&=\sum_{i,j}\bra{e_{j}}\ket{\varphi}\bra{\phi}\ket{e_{i}}\bra{e_{i}}A\ket{e_{j}}.\\
+&=\sum_{i,j}\bra{e_{j}}\ket{\varphi}\bra{\varphi}\ket{e_{i}}\bra{e_{i}}A\ket{e_{j}}.\\
 \end{align*}
 Esta es una suma sobre los elementos de dos matrices: la del observable $A$ y la definida por $\dyad{\phi}$. 
 Sin embargo, esta expresión puede simplificarse, pues es posible deshacerse de uno de los proyectores introducidos:
 \begin{align*}
 \expval{A}&=\sum_{j}\bra{e_{j}}\ket{\varphi}\bra{\varphi}\qty(\sum_{i}\dyad{e_{i}})A\ket{e_{j}},\\
 &=\sum_{j}\bra{e_{j}}\ket{\phi}\bra{\varphi}A\ket{e_{j}},\\
-&=\Tr(\dyad{\varphi}A).\\
+&=\Tr(\dyad{\varphi}A),\\
 \end{align*}
-Es de esta forma que introducimos al operador de densidad $\rho$ para un sistema descrito por $\ket{\varphi}$:
+donde definimos al operador de densidad $\rho$ para un sistema descrito por $\ket{\varphi}$ como
 \begin{equation}\label{eq:DensOpPure}
 \rho=\dyad{\varphi},
 \end{equation} 
@@ -24,40 +25,67 @@ de desidad de este según
 \begin{equation}\label{eq:ExpValFromDensOp}
 \expval{A}=\Tr(A\rho).
 \end{equation}
-El nombre ``operador de densidad'' puede resultar más claro comparando la ecuación (\ref{eq:ExpValFromDensOp}) con el valor esperado en teoría probabilística. Considerando una variable aleatoria $X$ cuya función de densidad de probabilidad es $\rho(x)$, entonces el valor esperado de una función $A$ es
+
+El nombre ``operador de densidad'' puede resultar más claro comparando la ecuación (\ref{eq:ExpValFromDensOp}) con el valor esperado en estadística. Si $X$ es una variable aleatoria cuya función de densidad de probabilidad es $\rho(x)$, entonces el valor esperado de una función $A$ de los valores de $X$ es
 \begin{equation*}
 E[A(x)]=\int A(x) \rho(x) dx.
 \end{equation*}
-En mecánica cuántica, el operador de densidad toma un rol similar al de la función de densidad.
+
+En este sentido, la matriz de densidad ocupa un rol similar al de la función de densidad.
+
 \subsection{Mezclas estadísticas}
 
-Supóngase que en lugar de trabajar con un sistema que está completamente descrito por $\ket{\varphi}$, se trabaja con uno que está en el estado $\phi_{i}$ con probabilidad $p_{i}$, donde $\{\phi_{i}\}$ es un conjunto no necesariamente ortogonal de estados de $n$ niveles $\phi_{i}\in\Complex_{n}$, y $\{p_{i}\}$ un conjunto de números reales tales que $\sum_{i}p_{i}=1$. Esto no debe confundirse con una superposición de estados $\phi_{i}$ con coeficientes $\sqrt{p_{i}}$, ya que una superposición está bien caracterizada, y está completamente descrito por $\ket{\psi}=\sum_{i}\sqrt{p_{i}}\varphi_{i}$, mientras que el sistema con el que se trabaja no lo está: el elemento probabilístico está asociado a un grado de ignorancia sobre la preparación del sistema.
+Ahora que conocemos el operador de densidad para un sistema descrito por un vector de estado, supóngase que en lugar de estudiar un sistema que está completamente descrito por $\ket{\varphi}$, se trabaja con uno que está en el estado $\ket{\varphi_{i}}$ con probabilidad $p_{i}$, donde $\{\ket{\varphi_{i}}\}$ es un conjunto no necesariamente ortogonal de estados de $n$ niveles $\ket{\varphi_{i}}\in\hilbert_{n}$, y $\{p_{i}\}$ es un conjunto de números reales tales que $\sum_{i}p_{i}=1$. A este sistema se le llama ``mezlca estadística'', y no debe confundirse con una superposición de estados $\ket{\varphi_{i}}$ con coeficientes $\sqrt{p_{i}}$, ya que una superposición está bien caracterizada, y está completamente descrita por $\ket{\psi}=\sum_{i}\sqrt{p_{i}}\ket{\varphi_{i}}$, mientras que la mezcla no lo está: el elemento probabilístico está asociado a un grado de ignorancia sobre la preparación del sistema.
 
 Ahora vuélvase a considerar un observable $A$. El valor esperado de dicho observable con respecto al sistema será, justamente
 \begin{equation}
-\expval{A}=\sum_{i}p_{i}\bra{\phi_{i}}A\ket{\phi_{i}}.
+\expval{A}=\sum_{i}p_{i}\bra{\varphi_{i}}A\ket{\varphi_{i}}.
 \end{equation}
-Sea $\{\ket{e_{k}}\}$ una base ortogonal del espacio $\Complex_{n}$. Podemos manipular la expresión anterior a través de la propiedad de completez de la base:
+Sea $\{\ket{e_{k}}\}$ una base ortogonal del espacio $\hilbert_{n}$.La expresión puede volver a manipularse:
 \begin{align*}
-\expval{A}&=\sum_{i}p_{i}\bra{\phi_{i}}A\ket{\phi_{i}},\\
-&=\sum_{i}p_{i}\bra{\phi_{i}}\sum_{j}\dyad{e_{j}}A\sum_{k}\dyad{e_{k}}\ket{\phi_{i}},\\
-&=\sum_{i,j,k}p_{i}\bra{e_{k}}\ket{\phi_{i}}\bra{\phi_{i}}\ket{e_{j}} \bra{e_{j}}A\ket{e_{k}}, \\
-&=\sum_{j,k}\bra{e_{k}}\qty(\sum_{i}p_{i}\dyad{\phi_{i}})\ket{e_{j}} \bra{e_{j}}A\ket{e_{k}}, \\
-&=\sum_{k}\bra{e_{k}}\qty(\sum_{i}p_{i}\dyad{\phi_{i}})\qty(\sum_{j}\dyad{e_{j}})A\ket{e_{k}}, \\
-&=\sum_{k}\bra{e_{k}}\qty(\sum_{i}p_{i}\dyad{\phi_{i}})A\ket{e_{k}}, \\
-&=\Tr[\qty(\sum_{i}p_{i}\dyad{\phi_{i}})A], \\
+\expval{A}&=\sum_{i}p_{i}\bra{\varphi_{i}}A\ket{\varphi_{i}},\\
+&=\sum_{i,j,k}p_{i}\bra{e_{k}}\ket{\varphi_{i}}\bra{\varphi_{i}}\ket{e_{j}} \bra{e_{j}}A\ket{e_{k}}, \\
+&=\sum_{j,k}\bra{e_{k}}\qty(\sum_{i}p_{i}\dyad{\varphi_{i}})\ket{e_{j}} \bra{e_{j}}A\ket{e_{k}}, \\
+&=\sum_{k}\bra{e_{k}}\qty(\sum_{i}p_{i}\dyad{\varphi_{i}})A\ket{e_{k}}, \\
+&=\Tr[\qty(\sum_{i}p_{i}\dyad{\varphi_{i}})A], \\
 \end{align*}
-Con lo que el sistema queda descrito por el operador de densidad $\rho$:
+Con lo que la mezcla queda descrita por el operador de densidad $\rho$:
 \begin{equation}\label{eq:DensOpMix}
-\rho=\sum_{i}p_{i}\dyad{\phi_{i}}
+\rho=\sum_{i}p_{i}\dyad{\varphi_{i}}
 \end{equation}
-Es claro, al menos matemáticamente, que el operador $\rho$ no corresponde al operador de densidad del estado $\ket{\psi}=\sum_{i}\sqrt{p_{i}}\varphi_{i}$, que es, justamente, una superposición de los estados $\varphi$ con coeficientes $\sqrt{p_{i}}$.  La diferencia física, como mencionado antes, viene de la incertidumbre asociada a la ignorancia.
+\subsection{Propiedades del operador de densidad}
+De la definición del operador de densidad destilan algunas propiedades que permiten reconocer si un operador es un operador de densidad válido, o no \cite{Holevo}:
+\begin{enumerate}
+    \item $\Tr(\rho)=1$
+    \item $\bra{\varphi}\rho\ket{\varphi}\geq 0$ $\forall$ $\ket{\varphi}\in\hilbert_{n}$
+\end{enumerate}
+Estas dos propiedades funcionan como una deficinición alternatica del operador de densidad. La primera propiedad se deriva de la normalización de los estados $\ket{\varphi_{i}}$ que definen a la matriz de densidad. La segunda puede interpretarse como la necesidad de que la probabilidad de que $\rho$ se halle en el estado $\dyad{\varphi}$ sea mayor o igual a $0$.
+\subsubsection{Pureza}
+La ecuación (\ref{eq:DensOpMix}) es la definición del operador de densidad \cite{Chuang}. Es claro, al menos matemáticamente, que el operador $\rho$ no corresponde al operador de densidad $\dyad{\psi}$ del estado $\ket{\psi}=\sum_{i}\sqrt{p_{i}}\varphi_{i}$, que es, justamente, una superposición de los estados $\ket{\varphi_{i}}$ con coeficientes $\sqrt{p_{i}}$.  La diferencia física, como mencionado antes, viene de la incertidumbre asociada a la ignorancia.
 
 \notaAd{Aqui viene un ejemplo de medición: si se mide respecto a una base en la que aparece $\ket{\psi}$, las probabilidades cambian}
-\subsection{Dinámica y propiedades del operador de densidad}
-\subsubsection{Ecuación de Liouville cuántica}
-\subsubsection{Positividad semidefinida}
-\subsubsection{Traza}
-\subsubsection{Pureza}
-\subsection{Parametrización del operador de densidad}
 
+Vemos, pues, que hay una diferencia fundamental entre los sistemas que pueden ser descritos por un vector de estado (para los que es posible contruir una matriz de densidad), y aquellos que no. Si para $\rho$ un operador de densidad,
+\begin{equation*}
+    \rho=\sum_{i}p_{i}\dyad{\varphi_{i}},
+\end{equation*}
+se cumple que $\rho=\dyad{\varphi_{i}}$ $\forall i$, entonces decimos que $\rho$ es un estado puro, y está completamente caracterizado por el vector de estado $\ket{\varphi}$. En este sentido, los estados puros (aquellos que están descritos por un vector de estado, i.e. su operador de densidad es un proyector) son los puntos extremos del conjunto convexo de operadores de densidad. Estos estados cumplen que
+\begin{itemize}
+    \item $\rho=\dyad{\psi}$
+    \item $\rho=\rho^{n}$
+    \item $\Tr(\rho^{2})=1$
+\end{itemize}
+La pureza es una medida de qué tan puro es un estado, y se define como \notaAd{ANtes de poner la fórmula necesito una fuente, no voy a poner wikipedia}
+\subsubsection{Evolución del operador de densidad}
+El postulado de la mecánica cuántica asociado al vector de estado puede reformularse para que funcione con operadores de densidad.
+
+\subsubsection{Parametrización del operador de densidad}
+Cualquier matriz de densidad puede descomponerse en términos de una base del espacio de matrices hermitianas de $n\times n$. Una elección común de base para el espacio es el de los generadores $\{\varsigma_{k}\}$ del grupo $\text{SU}(n)$, junto a la matriz identidad $\Id_{n}$. Aunque no está dentro del alcance de este trabajo estudiar las propiedades y caracterizaciones de lestos generadores, su utilizacion permite parametrizar a las matrices de densidad de forma vectorial \cite{Bruning}. En efecto, sea $\{\varsigma_{k}\}$ un conjunto de generadores de $\text{SU}(n)$ y $\rho$ una matriz de densidad $\rho\in\mcS(\hilbert_{n})$. Entonces $\rho$ está completamente descrita por el vector generalizado de Bloch de dimensión $2n^{2}-1$, $\vec{\gamma}$ definido según
+\begin{equation}
+    \rho=\frac{1}{n}\Id_{n}+\frac{1}{2}\vec{\gamma}\cdot\vec{\varsigma}.
+\end{equation}
+Si $n=2$, los generadores corresponden a las matrices de Pauli $\sigma_{i}$. En tal caso, el conjunto de vectores de Bloch corresponde a la bola unitaria tridimensional, con los estados puros en la superficie y las mezclas en el interior. Para casos en los que la dimensión es una potencia de $k$, es posible obtener nuevos generadores a través de los productos tensoriales de las matrices de Pauli consigo mismas y con la matriz identidad correspondiente. El caso $n=4$, por ejemplo \cite{Chuang}:
+\begin{equation}
+    \rho=\frac{1}{4}\sum_{i,j}\gamma_{ij}\sigma_{i}\otimes \sigma_{j} \ \ i,j\in\{0,1,2,3\},
+\end{equation}
+donde $\sigma_{0}=\Id$ y $\gamma_{i.j}=\sigma_{i}\otimes \sigma_{j}\Tr(\rho)$.
