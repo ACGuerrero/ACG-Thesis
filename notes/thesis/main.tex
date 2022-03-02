@@ -3,6 +3,49 @@
 \usepackage[utf8]{inputenc}
 \usepackage{cmap}
 \usepackage[T1]{fontenc}
+
+\usepackage{amsfonts}
+\usepackage{dsfont}
+\usepackage{physics} %indispensable
+\usepackage{xcolor} %colores, notas
+\usepackage{tikz-cd} %para diagrama conmutatitvo
+\usepackage{multicol} %para la lista de operadores
+\usepackage{hyperref} %para referencias clickeables
+\usepackage{caption}
+\usepackage{subcaption}
+
+%==============================
+%========== Comandos ==========
+%==============================
+\newcommand{\mcU}{\mathcal{U}}
+\newcommand{\mcO}{\mathcal{O}}
+\newcommand{\mcI}{\mathcal{I}}
+\newcommand{\mcL}{\mathcal{L}}
+\newcommand{\mcS}{\mathcal{S}}
+\newcommand{\hilbert}{{\sf H}}
+\newcommand{\mcB}{\mathcal{B}}
+\newcommand{\mcH}{\mathcal{H}}
+\newcommand{\mcF}{\mathcal{F}}
+\newcommand{\mcC}{\mathcal{C}}
+\newcommand{\mcT}{\mathcal{T}}
+\newcommand{\mcE}{\ensuremath{\mathcal{E}} }
+\newcommand{\mcG}{\ensuremath{\mathcal{G}} }
+\newcommand{\mcM}{\mathcal{M}}
+\newcommand{\mcN}{\mathcal{N}}
+\newcommand{\nnn}{\mathcal{N}}
+\newcommand{\choi}{\ensuremath{\mcD} }
+\newcommand{\mmm}{\mathcal{M}}
+\newcommand{\sss}{\mathcal{S}}
+\newcommand{\mcD}{\mathcal{D}}
+\newcommand{\mcA}{\mathcal{A}}
+\newcommand{\mcP}{\mathcal{P}}
+\newcommand{\Complex}{\mathbb{C}} %Para escribir al espacio de hilbert complejo
+\newcommand{\Id}{\mathds{1}}% Para escribir el op. indentidad con notación chida
+\newcommand{\CG}[1]{\mcC\left[#1\right]}
+\newcommand{\Fuzzy}[1]{\mcF\left[#1\right]}
+\newcommand{\nota}[1]{{\color{red} [#1]}}
+\newcommand{\notaAd}[1]{{\color{blue} [#1]}} %Notas pero mías
+
 \pagestyle{plain}
 \title{Dinámica de un sistema de dos qubits bajo un modelo de grano grueso}
 \author{Adán Castillo Guerrero}
@@ -35,4 +78,3 @@
 \include{appendices/appendixA}
 \include{appendices/appendixB}
 \end{document}
-

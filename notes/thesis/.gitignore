@@ -1,6 +1,8 @@
 dynamics_of_open_systems.xopp~
 log/log_main.toc
 *.toc
+*.fls
+*fdb_latexmk
 *.lof
 *.lot
 *.log

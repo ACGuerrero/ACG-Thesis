@@ -1,0 +1,63 @@
+\chapter{Preliminares}
+\section{El operador de densidad}
+\subsection{Derivación del operador de densidad}
+Considérese un sistema descrito por $\ket{\varphi}\in\hilbert_{n}$, con $\hilbert_{n}$ el espacio de Hilbert 
+$\hilbert_{n}=\Complex^{n}$; y $A$ un observable (un operador hermítico). Se sabe que el valor de expectación del observable está dado por $\expval{A}=\bra{\varphi}A\ket{\varphi}$. Sin embargo, se puede manipular esta expresión a través de una base ortogonal $\{\ket{e_{k}}\}$ del espacio $\hilbert_{n}$:
+\begin{align*}
+\expval{A}&=\qty(\sum_{i}\dyad{e_{i}})\bra{\varphi}A\ket{\phi}\qty(\sum_{j}\dyad{e_{j}}),\\
+&=\bra{\varphi}\qty(\sum_{i}\dyad{e_{i}})A\qty(\sum_{j}\dyad{e_{j}})\ket{\varphi},\\
+&=\sum_{i,j}\bra{e_{j}}\ket{\varphi}\bra{\phi}\ket{e_{i}}\bra{e_{i}}A\ket{e_{j}}.\\
+\end{align*}
+Esta es una suma sobre los elementos de dos matrices: la del observable $A$ y la definida por $\dyad{\phi}$. 
+Sin embargo, esta expresión puede simplificarse, pues es posible deshacerse de uno de los proyectores introducidos:
+\begin{align*}
+\expval{A}&=\sum_{j}\bra{e_{j}}\ket{\varphi}\bra{\varphi}\qty(\sum_{i}\dyad{e_{i}})A\ket{e_{j}},\\
+&=\sum_{j}\bra{e_{j}}\ket{\phi}\bra{\varphi}A\ket{e_{j}},\\
+&=\Tr(\dyad{\varphi}A).\\
+\end{align*}
+Es de esta forma que introducimos al operador de densidad $\rho$ para un sistema descrito por $\ket{\varphi}$:
+\begin{equation}\label{eq:DensOpPure}
+\rho=\dyad{\varphi},
+\end{equation} 
+y vemos que es posible hallar el valor esperado de un observable respecto a un estado a través del operador 
+de desidad de este según
+\begin{equation}\label{eq:ExpValFromDensOp}
+\expval{A}=\Tr(A\rho).
+\end{equation}
+El nombre ``operador de densidad'' puede resultar más claro comparando la ecuación (\ref{eq:ExpValFromDensOp}) con el valor esperado en teoría probabilística. Considerando una variable aleatoria $X$ cuya función de densidad de probabilidad es $\rho(x)$, entonces el valor esperado de una función $A$ es
+\begin{equation*}
+E[A(x)]=\int A(x) \rho(x) dx.
+\end{equation*}
+En mecánica cuántica, el operador de densidad toma un rol similar al de la función de densidad.
+\subsection{Mezclas estadísticas}
+
+Supóngase que en lugar de trabajar con un sistema que está completamente descrito por $\ket{\varphi}$, se trabaja con uno que está en el estado $\phi_{i}$ con probabilidad $p_{i}$, donde $\{\phi_{i}\}$ es un conjunto no necesariamente ortogonal de estados de $n$ niveles $\phi_{i}\in\Complex_{n}$, y $\{p_{i}\}$ un conjunto de números reales tales que $\sum_{i}p_{i}=1$. Esto no debe confundirse con una superposición de estados $\phi_{i}$ con coeficientes $\sqrt{p_{i}}$, ya que una superposición está bien caracterizada, y está completamente descrito por $\ket{\psi}=\sum_{i}\sqrt{p_{i}}\varphi_{i}$, mientras que el sistema con el que se trabaja no lo está: el elemento probabilístico está asociado a un grado de ignorancia sobre la preparación del sistema.
+
+Ahora vuélvase a considerar un observable $A$. El valor esperado de dicho observable con respecto al sistema será, justamente
+\begin{equation}
+\expval{A}=\sum_{i}p_{i}\bra{\phi_{i}}A\ket{\phi_{i}}.
+\end{equation}
+Sea $\{\ket{e_{k}}\}$ una base ortogonal del espacio $\Complex_{n}$. Podemos manipular la expresión anterior a través de la propiedad de completez de la base:
+\begin{align*}
+\expval{A}&=\sum_{i}p_{i}\bra{\phi_{i}}A\ket{\phi_{i}},\\
+&=\sum_{i}p_{i}\bra{\phi_{i}}\sum_{j}\dyad{e_{j}}A\sum_{k}\dyad{e_{k}}\ket{\phi_{i}},\\
+&=\sum_{i,j,k}p_{i}\bra{e_{k}}\ket{\phi_{i}}\bra{\phi_{i}}\ket{e_{j}} \bra{e_{j}}A\ket{e_{k}}, \\
+&=\sum_{j,k}\bra{e_{k}}\qty(\sum_{i}p_{i}\dyad{\phi_{i}})\ket{e_{j}} \bra{e_{j}}A\ket{e_{k}}, \\
+&=\sum_{k}\bra{e_{k}}\qty(\sum_{i}p_{i}\dyad{\phi_{i}})\qty(\sum_{j}\dyad{e_{j}})A\ket{e_{k}}, \\
+&=\sum_{k}\bra{e_{k}}\qty(\sum_{i}p_{i}\dyad{\phi_{i}})A\ket{e_{k}}, \\
+&=\Tr[\qty(\sum_{i}p_{i}\dyad{\phi_{i}})A], \\
+\end{align*}
+Con lo que el sistema queda descrito por el operador de densidad $\rho$:
+\begin{equation}\label{eq:DensOpMix}
+\rho=\sum_{i}p_{i}\dyad{\phi_{i}}
+\end{equation}
+Es claro, al menos matemáticamente, que el operador $\rho$ no corresponde al operador de densidad del estado $\ket{\psi}=\sum_{i}\sqrt{p_{i}}\varphi_{i}$, que es, justamente, una superposición de los estados $\varphi$ con coeficientes $\sqrt{p_{i}}$.  La diferencia física, como mencionado antes, viene de la incertidumbre asociada a la ignorancia.
+
+\notaAd{Aqui viene un ejemplo de medición: si se mide respecto a una base en la que aparece $\ket{\psi}$, las probabilidades cambian}
+\subsection{Dinámica y propiedades del operador de densidad}
+\subsubsection{Ecuación de Liouville cuántica}
+\subsubsection{Positividad semidefinida}
+\subsubsection{Traza}
+\subsubsection{Pureza}
+\subsection{Parametrización del operador de densidad}
+
