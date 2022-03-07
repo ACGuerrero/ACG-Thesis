@@ -43,6 +43,15 @@ Esto puede comprobarse en los resultados numéricos mostrados en la figura \ref{
 \label{fig:factornnum}
 \end{figure}
 
+Como el factor de compresión depende de $\lambda$, la dinámica no es lineal. Las operaciones cuánticas de un qubit se traducen como aplicaciones afines en la esfera de Bloch. Si quisiéramos ver el proceso asociado al $textsc{SWAP}$ subyacente como una transformación de la forma
+\begin{equation*}
+  \vec{r}\rightarrow M\vec{r}+\vec{c}
+\end{equation*}
+en la que $\vec{c}=0$, y $M=OS$ con $O=\Id$ y $S=a(\vec{r})\Id$, de tal forma que
+\begin{equation*}
+  \vec{r}\rightarrow a(\vec{r})\vec{r}
+\end{equation*}
+nos daríamos cuenta que la transformación no es afín, y por esto, el proceso no puede ser descrito a través del formalismo de las operaciones cuánticas (no tiene representación en operadores de Kraus). \cite{Chuang}.
 \subsubsection{Caso $p=\frac{1}{2}$}
 
 Aunque es posible repetir todas las cuentas desde la contrucción del estado de máxima entropía, haciendo $p=\frac{1}{2}$, basta con ver que el factor (\eqref{eq:SWAPFactor}) es $1$ en dicho caso. Así, todos los estado gruesos son puntos fijos bajo una evolución subyacente SWAP con aplicación de grano grueso con parámetro $p=\frac{1}{2}$.
@@ -62,7 +71,7 @@ La forma matricial del operador \textsc{SWAP} a un tiempo $t$ es
 S^{t}=\begin{pmatrix}
  1 & 0 & 0 & 0 \\
  0 & \frac{1}{2}(1+e^{i \pi t}) & \frac{1}{2} (1-e^{i \pi t}) & 0 \\
- 0 & \frac{1}{2}(1-e^{i \pi ´t}) & \frac{1}{2}(1+e^{i \pi t}) & 0 \\
+ 0 & \frac{1}{2}(1-e^{i \pi t}) & \frac{1}{2}(1+e^{i \pi t}) & 0 \\
  0 & 0 & 0 & 1
 \end{pmatrix}
 \end{equation}
