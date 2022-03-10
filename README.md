@@ -12,4 +12,5 @@ TO DO LIST
  5. Develop $$U\otimes V$$ using exponential of pauli vector
  6. Exploring general $$U$$ as $$U=\sum_{ij}\alpha_{ij} U_{i}\otimes V_{j}$$
  7. Read Jaynes' articles
- 8. Series of real exponential of a pauli vector: pauli coordinates in terms of lagrange mult.
+ 8. Series of real exponential of a pauli vector: pauli coordinates in terms of lagrange mult. &#x2611;
+ 9. Use real exponential expansion to simplify results in SWAP section
