@@ -1,17 +1,27 @@
-\section{La dinámica analítica para el caso $\mcU=U\otimes V$}
-Es posible usar la ecuación (\ref{MaxEntZ}) para obtener un resultado directo de la evolución del estado de máxima entropía. Consideramos una unitaria $mcU=U\otimes V$ que evoluciona en el tiempo como $\mcU_{t}=(U\otimes V)^{t}=U^{t}\otimes V^{t}$. Así, el estado efectivo evolucionado:
+\section{La dinámica analítica para el caso $\mcU=U_{1}\otimes U_{2}$}
+Es posible usar la ecuación (\ref{eq:MaxEntZ}) para obtener un resultado directo de la evolución del estado de máxima entropía. Consideramos una unitaria $\mcU=U_{1}\otimes U_{2}$ que evoluciona en el tiempo como $\mcU_{t}=(U_{1}\otimes U_{2})^{t}=U_{1}^{t}\otimes U_{2}^{t}$. Así, el estado efectivo evolucionado:
 \begin{equation}\label{eq:SeparableDynamics}
-\CG{(U^{t}\otimes V^{t})\varrho_{max}(U^{t}\otimes V^{t})^{\dag}}=p\frac{1}{Z_{1}}e^{-\lambda p U^{t}\sigma_{z}(U^t)^{\dag}}+(1-p)\frac{1}{Z_{2}}e^{-\lambda (1-p)V^{t}\sigma_{z}(V^t)^{\dag}}
+\CG{(U_{1}^{t}\otimes U_{2}^{t})\varrho_{max}(U_{1}^{t}\otimes U_{2}^{t})^{\dag}}=p\frac{1}{Z_{1}}e^{-\lambda p U_{1}^{t}\sigma_{z}(U_{1}^t)^{\dag}}+(1-p)\frac{1}{Z_{2}}e^{-\lambda (1-p)U_{2}^{t}\sigma_{z}(U_{2}^t)^{\dag}}
 \end{equation}
-\subsection{El caso $V=\Id$}
+tanto $U_{1}$ como $U_{2}$ pueden escribirse como $e^{-i\theta \hat{n}\cdot\vec{\sigma}}$. Incluyendo el tiempo y haciendo el cambio $t\theta\rightarrow t$, los exponentes dentro de (\ref{eq:SeparableDynamics}) se desarrollan como:
+\begin{align*}
+    e^{-i\theta \hat{n}\cdot\vec{\sigma}}\sigma_{z}e^{i\theta \hat{n}\cdot\vec{\sigma}}&=(\Id\cos{t}-i\hat{n}\cdot\vec{\sigma}\sin{t})\sigma_{z}(\Id\cos{t}+i\hat{n}\cdot\vec{\sigma}\sin{t})\\
+    &=\sigma_{z}\cos^{2}{t}+i[\sigma_{z},\hat{n}\cdot\vec{\sigma}]\sin{t}\cos{t}+(\hat{n}\cdot\vec{\sigma})\sigma_{z}(\hat{n}\cdot\vec{\sigma})\sin^{2}{t}\\
+    &=\sigma_{z}+2\sin{t}\qty((n_{x}\sigma_{y}-n_{y}\sigma_{x})\cos{t}+n_{z}(\hat{n}\cdot\vec{\sigma})\sin{t})
+\end{align*}
+A notar que si $t=0$ no hay evolución. Luego, en el límite $t\ll 1$:
+\begin{equation*}
+    e^{-i\theta \hat{n}\cdot\vec{\sigma}}\sigma_{z}e^{i\theta \hat{n}\cdot\vec{\sigma}}=\sigma_{z}+2t(n_{x}\sigma_{y}-n_{y}\sigma_{x})
+\end{equation*}
+\subsection{El caso $U_{2}=\Id$}
 \begin{equation}\label{eq:SeparableDynamicsUxI}
-\CG{(U^{t}\otimes \Id)\varrho_{max}(U^{t}\otimes \Id)^{\dag}}=p\frac{1}{Z_{1}}e^{-\lambda p U^{t}\sigma_{z}(U^t)^{\dag}}+(1-p)\frac{1}{Z_{2}}e^{-\lambda (1-p)\sigma_{z}}
+\CG{(U_{1}^{t}\otimes \Id)\varrho_{max}(U_{1}^{t}\otimes \Id)^{\dag}}=p\frac{1}{Z_{1}}e^{-\lambda p U_{1}^{t}\sigma_{z}(U_{1}^t)^{\dag}}+(1-p)\frac{1}{Z_{2}}e^{-\lambda (1-p)\sigma_{z}}
 \end{equation}
-\subsection{El caso $U=\Id$}
+\subsection{El caso $U_{1}=\Id$}
 \begin{equation}\label{eq:SeparableDynamicsIxU}
-\CG{(\Id\otimes V^{t} )\varrho_{max}(\Id\otimes V^{t})^{\dag}}=p\frac{1}{Z_{1}}e^{-\lambda p \sigma_{z}}+(1-p)\frac{1}{Z_{2}}e^{-\lambda (1-p)V^{t}\sigma_{z}(V^t)^{\dag}}
+\CG{(\Id\otimes U_{2}^{t} )\varrho_{max}(\Id\otimes U_{2}^{t})^{\dag}}=p\frac{1}{Z_{1}}e^{-\lambda p \sigma_{z}}+(1-p)\frac{1}{Z_{2}}e^{-\lambda (1-p)U_{2}^{t}\sigma_{z}(U_{2}^t)^{\dag}}
 \end{equation}
-\subsection{El caso $V=U$}
+\subsection{El caso $U_{1}=U_{2}=U$}
 Quizá el caso más sencillo. La simetría de la unitaria permite factorizarla:
 \begin{align*}
 \CG{(U^{t}\otimes U^{t})\varrho_{max}(U^{t}\otimes U^{t})^{\dag}}&=p\frac{1}{Z_{1}}e^{-\lambda p U^{t}\sigma_{z}(U^t)^{\dag}}+(1-p)\frac{1}{Z_{2}}e^{-\lambda (1-p)U^{t}\sigma_{z}(U^t)^{\dag}}\\
