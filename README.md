@@ -9,8 +9,9 @@ TO DO LIST
  2. Try other observables to contruct the MaxEnt
  3. Coordinate histograms for the AssMap under swap
  4. Thesis' intro
- 5. Develop $$U\otimes V$$ using exponential of pauli vector
- 6. Exploring general $$U$$ as $$U=\sum_{ij}\alpha_{ij} U_{i}\otimes V_{j}$$
+ 5. Develop $U\otimes V$ using exponential of pauli vector
+ 6. Exploring general $U$ as $U=\sum_{ij}\alpha_{ij} U_{i}\otimes V_{j}$
  7. Read Jaynes' articles
- 8. Series of real exponential of a pauli vector: pauli coordinates in terms of lagrange mult. &#x2611;
+ 8. ~~Series of real exponential of a pauli vector: pauli coordinates in terms of lagrange mult.~~ &#x2611; [c8b9d95](https://github.com/ACGuerrero/tesis-adan/commit/8371c7c6653dcdbee99a91017139cb5bcb551f91)
  9. Use real exponential expansion to simplify results in SWAP section
+ 10. Explore $H=\sigma_{z}\otimes \sigma_{z}$ &#x2611; [9a04ece](https://github.com/ACGuerrero/tesis-adan/commit/274d771536b0b04ea4edca866fc06359d5e0b8b8)
