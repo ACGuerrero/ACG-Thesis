@@ -17,6 +17,13 @@ rz=ZCoordFromLagrangeMult[\[Lambda],p]
 plot3=Plot[Evaluate[Table[rz/.{p->i},{i,0,0.5,0.1}]],{\[Lambda],-4,0},AxesLabel->{Style[Subscript[\[Lambda],3],FontSize->18],Style[Subscript[r,z],FontSize->18]},PlotLegends->{Table["p="<>ToString[i],{i,0,0.5,0.1}]}]
 
 
+Tr[SubMaxEnt1=MatrixExp[-\[Lambda]*p*PauliMatrix[3]]]//FullSimplify
+
+
+(* ::Input:: *)
+(*\[DoubleDot]*)
+
+
 (*
 ContourPlot[expr, {p,0,1},{\[Lambda]3,0,-1}, Contours -> Table[i,{i,0.0,0.4,0.02}], 
    ContourStyle -> Black, ContourShading -> None,ContourLabels->True, 
