@@ -1,4 +1,5 @@
 \section{La dinámica analítica para el caso $\mcU=U_{1}\otimes U_{2}$}
+
 Es posible usar la ecuación (\ref{eq:MaxEntZ}) para obtener un resultado directo de la evolución del estado de máxima entropía. Consideramos una unitaria $\mcU=U_{1}\otimes U_{2}$ que evoluciona en el tiempo como $\mcU_{t}=(U_{1}\otimes U_{2})^{t}=U_{1}^{t}\otimes U_{2}^{t}$. Así, el estado efectivo evolucionado:
 \begin{equation}\label{eq:SeparableDynamics}
 \CG{(U_{1}^{t}\otimes U_{2}^{t})\varrho_{max}(U_{1}^{t}\otimes U_{2}^{t})^{\dag}}=p\frac{1}{Z_{1}}e^{-\lambda p U_{1}^{t}\sigma_{z}(U_{1}^t)^{\dag}}+(1-p)\frac{1}{Z_{2}}e^{-\lambda (1-p)U_{2}^{t}\sigma_{z}(U_{2}^t)^{\dag}}
@@ -14,15 +15,21 @@ A notar que si $t=0$ no hay evolución. Luego, en el límite $t\ll 1$:
     e^{-i\theta \hat{n}\cdot\vec{\sigma}}\sigma_{z}e^{i\theta \hat{n}\cdot\vec{\sigma}}=\sigma_{z}+2t(n_{x}\sigma_{y}-n_{y}\sigma_{x})
 \end{equation*}
 \notaAd{Aún tengo que darle interpretación a esto. Si defino $T=\theta^{-1}$ entonces este límite corresponde justamente a $T$ alta. Mañana voy a desarrollar esto como exponencial real de un vector de Pauli. La expresión es la misma que para la exponencial compleja, pero sin unidad imaginaria e intercambiano las funciones trigonométricas por hiperbólicas}
+
 \subsection{El caso $U_{2}=\Id$}
+
 \begin{equation}\label{eq:SeparableDynamicsUxI}
 \CG{(U_{1}^{t}\otimes \Id)\varrho_{max}(U_{1}^{t}\otimes \Id)^{\dag}}=p\frac{1}{Z_{1}}e^{-\lambda p U_{1}^{t}\sigma_{z}(U_{1}^t)^{\dag}}+(1-p)\frac{1}{Z_{2}}e^{-\lambda (1-p)\sigma_{z}}
 \end{equation}
+
 \subsection{El caso $U_{1}=\Id$}
+
 \begin{equation}\label{eq:SeparableDynamicsIxU}
 \CG{(\Id\otimes U_{2}^{t} )\varrho_{max}(\Id\otimes U_{2}^{t})^{\dag}}=p\frac{1}{Z_{1}}e^{-\lambda p \sigma_{z}}+(1-p)\frac{1}{Z_{2}}e^{-\lambda (1-p)U_{2}^{t}\sigma_{z}(U_{2}^t)^{\dag}}
 \end{equation}
+
 \subsection{El caso $U_{1}=U_{2}=U$}
+
 Quizá el caso más sencillo. La simetría de la unitaria permite factorizarla:
 \begin{align*}
 \CG{(U^{t}\otimes U^{t})\varrho_{max}(U^{t}\otimes U^{t})^{\dag}}&=p\frac{1}{Z_{1}}e^{-\lambda p U^{t}\sigma_{z}(U^t)^{\dag}}+(1-p)\frac{1}{Z_{2}}e^{-\lambda (1-p)U^{t}\sigma_{z}(U^t)^{\dag}}\\

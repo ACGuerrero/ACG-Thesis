@@ -36,6 +36,8 @@ CGKraus::usage="CGKraus[rho,p] applies the coarse graining map using its Kraus O
 SWAPContractionFactor::usage="SWAPContractionFactor[t,p,\[Lambda]] gives the contraction factor of the coarse system resulting from applying the swap gate to a MaxEnt state characterized by p,\[Lambda]."
 SWAP::usage="SWAP[t] applies the operator at a time t. t=1 is the full swap gate, while t=0 is the identity operator."
 PlotTwoCoarseSets::usage="PlotTwoCoarseSets[set1,set2,legend,title] takes two sets of two level density operators and plots their bloch vectors."
+PlotTwoCoarseSetsWLine::usage="PlotTwoCoarseSets[set1,set2,legend,title] takes two sets of two level density operators and plots their bloch vectors, with a line joining corresponding points."
+
 Begin["`Private`"]
 
 
@@ -160,6 +162,15 @@ PlotLegends->legend,
 PlotLabel->title
 ],
 Graphics3D[{Opacity[0.2],GrayLevel[0.9],Sphere[]},BoxRatios->1,Axes->True]
+]
+
+PlotTwoCoarseSetsWLine[set1_,set2_,legend_,title_]:=
+With[{points={densityMatrixToPoint[set1,gellMannBasis[1]],densityMatrixToPoint[set2,gellMannBasis[1]]}},
+Show[
+ListPointPlot3D[points,BoxRatios->{1,1,1},PlotRange->{{-1.,1.},{-1.,1.},{-1.,1.}},PlotLegends->legend,PlotLabel->title],
+Graphics3D[{Opacity[0.2],ColorData[1][1],Thickness[0.005],Line/@Transpose[points]}],
+Graphics3D[{Opacity[0.2],GrayLevel[0.9],Sphere[]},BoxRatios->1,Axes->True]
+]
 ]
 
 

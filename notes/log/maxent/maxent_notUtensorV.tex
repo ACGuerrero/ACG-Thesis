@@ -1,5 +1,5 @@
 \section{Evoluciones unitarias no separables}
-\subsection{El modelo de Ising, $H=J\sigma_{z}\otimes\sigma_{z}$}
+\subsection{El modelo de Ising, $H=J\sigma_{z}\otimes\sigma_{z}$}\label{sec:Ising}
 Considérese al hamiltoniano $H=J\sigma_{z}\otimes\sigma_{z}$. La unitaria generada por este es $\mcU_{t}=e^{itH}$. Expandiendo la serie:
 \begin{align*}
     e^{itH}&=e^{itJ\sigma_{z}\otimes\sigma_{z}}\\
@@ -7,7 +7,7 @@ Considérese al hamiltoniano $H=J\sigma_{z}\otimes\sigma_{z}$. La unitaria gener
     &=\Id\sum_{j}\frac{(-1)^{j}}{(2j)!}(tJ)^{2j}+i(\sigma_{z}\otimes\sigma_{z})\sum_{k}\frac{(-1^{k})}{(2k+1)!}(tJ)^{2k+1}\\
     &=\Id \cos{tJ} + i\sigma_{z}\otimes\sigma_{z}\sin{tJ}
 \end{align*}
-El estado de máxima entroía es invariante bajo la unitaria:
+El estado de máxima entropía es invariante bajo la unitaria:
 \begin{align*}
     \mcU_{t}\varrho_{max}\mcU_{t}^{\dag}&=(\Id \cos{tJ} + i\sigma_{z}\otimes\sigma_{z}\sin{tJ})\varrho_{max}(\Id \cos{tJ} - i\sigma_{z}\otimes\sigma_{z}\sin{tJ})\\
     &=(\varrho_{max} \cos{tJ} + i\sigma_{z}\otimes\sigma_{z}\varrho_{max}\sin{tJ})(\Id \cos{tJ} - i\sigma_{z}\otimes\sigma_{z}\sin{tJ})\\

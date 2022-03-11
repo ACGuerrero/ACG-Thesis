@@ -1,5 +1,21 @@
 \section{Propiedades}
 
+
+
+\subsection{El estado de máxima entropía general: dos expresiones}
+He estado cometiendo un error terrible: creer que todos los estados de máxima entropía, independientemente de las componentes de Pauli del estado grueso con el que son compatibles, evolucionan de la misma manera que el estado de Máxima entropía compatibñe con un estado grueso alineado en $z$. Un ejemplo claro de este error es el de la unitaria generada por el hamiltoniano del modelo de Ising propuesto en la sección \ref{sec:Ising}. Es necesario, entonces, tener en cuenta la unitaria que conecta a un estado de máxima entropía compatible con un estado $\rho$ aribitrario y el estado alineado en $z$. La unitaria Puede constrirse en base a los parámetros del estado $\rho$. A cada estado de dos niveles, $\rho$, lo definen tres parámetros: su pureza, $r$, y dos ángulos $\theta$, $\phi$. La unitaria que conecta $\rho$ con el estado alineado en $z$ de pureza $z=r$ es 
+\begin{equation}
+  V=
+  \begin{pmatrix}
+      \cos{\theta} & e^{-i\phi}\sin{\theta}\\
+      e^{i\phi}\sin{\theta}& \cos{\theta}\\
+  \end{pmatrix}
+\end{equation}
+Construyendo $\mcV=V\otimes V$, podemos expresar al estado de máxima entropía de dos formas equivalentes,
+\begin{align}
+  \varrho_{max}(\rho)=\frac{1}{Z}\text{exp}(-\lambda_{3}\mcV\hat{G}_{3}\mcV^{\dag}) && \varrho_{max}(\rho)=\frac{1}{Z}\text{exp}(\sum_{i}\lambda_{i}\hat{G}_{i}).
+\end{align}
+
 \subsection{El estado máxima entropía es separable}
 
 Sea $\rho$ como en (\ref{eq:rhoz}), entonces por (\ref{eq:MaxEnt}) el estado de máxima entropía es:
@@ -16,7 +32,7 @@ Si se separa a la función de partición como un producto de trazas $Z=Z_{1}Z_{2
 \begin{equation}\label{eq:MaxEntZ}
 \varrho_{max}=\frac{e^{-\lambda_{3}p\sigma_{z}}}{Z_{1}} \otimes \frac{e^{-\lambda_{3}(1-p)\sigma_{z}}}{Z_{2}}
 \end{equation}
-
+Esto es válido para el estado alineado en $z$, 
 \subsection{El estado de máxima entropía bajo la aplicación de grano grueso}
 
 El problema de la ecuación (\ref{eq:MaxEntZ}) es que el estado de máxima entropía está en términos del multiplicador de Lagrange que se usó para maximizar la entropía, en lugar de estar en términos de la cantidad medible $r_{z}$. Si por alguna razón tuviéramos que resignarnos a trabajar con el estado en términos de $\lambda$, será necesario conocer la expresión del estado efectivo. Para hallarla, basta con pasar (\ref{eq:MaxEntZ}) por la aplicación de grano grueso. El estado efectivo es 
