@@ -7,11 +7,23 @@ Considérese al hamiltoniano $H=J\sigma_{z}\otimes\sigma_{z}$. La unitaria gener
     &=\Id\sum_{j}\frac{(-1)^{j}}{(2j)!}(tJ)^{2j}+i(\sigma_{z}\otimes\sigma_{z})\sum_{k}\frac{(-1^{k})}{(2k+1)!}(tJ)^{2k+1}\\
     &=\Id \cos{tJ} + i\sigma_{z}\otimes\sigma_{z}\sin{tJ}
 \end{align*}
-El estado de máxima entropía es invariante bajo la unitaria:
+El estado de máxima entropía compatible con un estado alineado en $z$ es invariante bajo la unitaria:
 \begin{align*}
-    \mcU_{t}\varrho_{max}\mcU_{t}^{\dag}&=(\Id \cos{tJ} + i\sigma_{z}\otimes\sigma_{z}\sin{tJ})\varrho_{max}(\Id \cos{tJ} - i\sigma_{z}\otimes\sigma_{z}\sin{tJ})\\
-    &=(\varrho_{max} \cos{tJ} + i\sigma_{z}\otimes\sigma_{z}\varrho_{max}\sin{tJ})(\Id \cos{tJ} - i\sigma_{z}\otimes\sigma_{z}\sin{tJ})\\
-    &=\varrho_{max} \cos^{2}{Jt}+i\sin{Jt}\cos{Jt}[\sigma_{z}\otimes\sigma_{z},\varrho_{max}]+(\sigma_{z}\otimes\sigma_{z}) \varrho_{max} (\sigma_{z}\otimes\sigma_{z}) \sin^{2}{Jt}\\
-    &=\varrho_{max}
+    \mcU_{t}\varrho_{max}^{z}\mcU_{t}^{\dag}&=(\Id \cos{tJ} + i\sigma_{z}\otimes\sigma_{z}\sin{tJ})\varrho_{max}^{z}(\Id \cos{tJ} - i\sigma_{z}\otimes\sigma_{z}\sin{tJ})\\
+    &=(\varrho_{max}^{z} \cos{tJ} + i\sigma_{z}\otimes\sigma_{z}\varrho_{max}^{z}\sin{tJ})(\Id \cos{tJ} - i\sigma_{z}\otimes\sigma_{z}\sin{tJ})\\
+    &=\varrho_{max}^{z} \cos^{2}{Jt}+i\sin{Jt}\cos{Jt}[\sigma_{z}\otimes\sigma_{z},\varrho_{max}^{z}]+(\sigma_{z}\otimes\sigma_{z}) \varrho_{max}^{z} (\sigma_{z}\otimes\sigma_{z}) \sin^{2}{Jt}\\
+    &=\varrho_{max}^{z}
 \end{align*}
-En la última línea se usa que $[\sigma_{z},e^{a\sigma_{z}}]=0$ (y por consiguiente $(\sigma_{z}\otimes\sigma_{z}) \varrho_{max} (\sigma_{z}\otimes\sigma_{z})=\varrho_{max}$). 
+En la última línea se usa que $[\sigma_{z},e^{a\sigma_{z}}]=0$ (y por consiguiente $(\sigma_{z}\otimes\sigma_{z}) \varrho_{max}^{z} (\sigma_{z}\otimes\sigma_{z})=\varrho_{max}^{z}$). Si usamos el estado de máxima entropía más general, y lo escribimos como $\varrho_{max}=\rho_{A}\otimes\rho_{B}$ (el estado de máxima entropía compatible con un $\rho$ arbitrario también es separable):
+\begin{align*}
+    \mcU_{t}\varrho_{max}\mcU_{t}^{\dag}&=\varrho_{max}\cos^{2}{Jt}+i\sin{Jt}\cos{Jt}[\sigma_{z}\otimes\sigma_{z},\varrho_{max}]+(\sigma_{z}\otimes\sigma_{z}) \varrho_{max} (\sigma_{z}\otimes\sigma_{z}) \sin^{2}{Jt}\\
+    &=\rho_{A}\otimes\rho_{B}\cos^{2}{Jt}+i\sin{Jt}\cos{Jt}[\sigma_{z}\otimes\sigma_{z},\rho_{A}\otimes\rho_{B}]+(\sigma_{z}\otimes\sigma_{z}) \rho_{A}\otimes\rho_{B} (\sigma_{z}\otimes\sigma_{z}) \sin^{2}{Jt}\\
+\end{align*}
+que, bajo la aplicación de grano grueso se convierte en
+\begin{equation}
+    \rho(t)=p\mcI_{t}(\rho_{A})+(1-p)\mcI_{t}(\rho_{B})
+\end{equation}
+donde 
+\begin{equation}
+    \mcI_{t}(\rho)=\rho cos^{2}(Jt)+i\sin(Jt)\cos(Jt)[\sigma,\rho]+\sigma_{z}\rho\sigma_{z}\sin^{2}(Jt)
+\end{equation}
