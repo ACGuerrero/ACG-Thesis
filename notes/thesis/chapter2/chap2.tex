@@ -6,7 +6,7 @@
 
 \subsection{Construcción del estado de máxima entropía}
 
-Sea $\rho\in\mcS(\hilbert_{2})$ el estado grueso accesible al observador, y sea $\{A_{i}\}$ con $A_{i}\mcL(\hilbert_{2})$ un conjunto de observables tomográficamente completo. Si $\rho$ es un estado grueso correspondiente a un estado fino $\varrho\in\mcS(\hilbert_{2}\otimes\hilbert_{2})$, de acuerdo con lo discutido en la sección (\ref{sec:CH1MaxEnt}), podemos asignar a $\varrho$ un estado que maximice la entropía de Von Neumann sin agregar información externa, y que satisfaga las restricciones $\expval{A_{i}}=\Tr(\rho A_{i})$. ¿Pero cómo se traducen dichas restricciones en el nivel microscópico? Naturalmente, esto dependerá de la relación entre $\varrho$ y $\rho$. Esto es, el estado de máxima entropía depende de la aplicación de grano grueso.
+Sea $\rho\in\mcS(\hilbert_{2})$ el estado grueso accesible al observador, y sea $\{A_{i}\}$ con $A_{i}\in\mcL(\hilbert_{2})$ un conjunto de observables tomográficamente completo. Si $\rho$ es un estado grueso correspondiente a un estado fino $\varrho\in\mcS(\hilbert_{2}\otimes\hilbert_{2})$, de acuerdo con lo discutido en la sección (\ref{sec:CH1MaxEnt}), podemos asignar a $\varrho$ un estado que maximice la entropía de Von Neumann sin agregar información externa, y que satisfaga las restricciones $\expval{A_{i}}=\Tr(\rho A_{i})$. ¿Pero cómo se traducen dichas restricciones en el nivel microscópico? Naturalmente, esto dependerá de la relación entre $\varrho$ y $\rho$. Esto es, el estado de máxima entropía depende de la aplicación de grano grueso.
 
 Escójase ${A_{i}}={\sigma_{i}}$, las matrices de Pauli, y la aplicación de grano grueso como (\ref{eq_CG}). Los valores esperados de los operadores se traducen como las componentes del vector de Bloch del operador $\rho$. Las restricciones a las que se ve sujeto el operador $\varrho_{max}$ son
 \begin{align*}
@@ -20,103 +20,103 @@ Definiendo
 \begin{equation}\label{eq:Ghat}
     \hat{G}_{i}=p\sigma_{i}\otimes\Id+(1-p)\Id\otimes\sigma_{i},
 \end{equation}
-las restricciones son
+las restricciones se pueden esribir como
 \begin{equation}\label{eq:MaxEntRestrictions}
-    r_{i}=\Tr[\hat{G}_{i}\varrho]
+    r_{i}=\Tr[\hat{G}_{i}\varrho].
 \end{equation}
-Dadas las restricciones, se utilizan multiplicadores de Lagrange para obtener el estado de maximiza la entropía. De acuerdo con la ecuación (\ref{eq:GeneralMaxEnt}), el estado de máxima entropía compatible con (\ref{eq:MaxEntRestrictions}) es
-\begin{equation}
+Una vez obtenidas las restricciones, se utilizan multiplicadores de Lagrange para obtener el estado de maximiza la entropía. De acuerdo con la ecuación (\ref{eq:GeneralMaxEnt}), el estado de máxima entropía compatible con (\ref{eq:MaxEntRestrictions}) es
+\begin{equation}\label{eq:MaxEntLagMult}
     \varrho_{\max}(\rho)=\frac{1}{Z}e^{-\sum_{i}\lambda_{i}\hat{G}_{i}}.
 \end{equation}
+Si se sustituye a $\varrho_{max}$ en las ecuaciones (\ref{eq:MaxEntRestrictions}), se obtienen las relaciones entre los multiplicadores de Lagrange y las coordenadas del estado macroscópico. Si se escribe $\abs{\lambda}=\sqrt{\lambda_{1}^{2}+\lambda_{2}^{2}+\lambda_{3}^{2}}$, los resultados son
+\begin{align}
+    \begin{split}\label{eq:MaxEntExpVals}
+    r_{1}&=\lambda_{1}f(\abs{\lambda}),\\
+    r_{2}&=\lambda_{2}f(\abs{\lambda}),\\
+    r_{3}&=\lambda_{3}f(\abs{\lambda}),
+    \end{split}
+\end{align}
+donde
+\begin{equation*}
+    f(\abs{\lambda})=\frac{(2 p-1) e^{2 \abs{\lambda}}+e^{2 p \abs{\lambda}}-e^{2 (p+1) \abs{\lambda}}+(1-2 p) e^{4 p \abs{\lambda}}}{\abs{\lambda}\left(e^{2 p \abs{\lambda}}+1\right) \left(e^{2 \abs{\lambda}}+e^{2 p \abs{\lambda}}\right)}.
+\end{equation*}
+Idealmente, la ecuación (\ref{eq:MaxEntLagMult}) está en términos de los valores de expectación $r_{i}=Tr(\sigma_{i}\rho_{c})$, y no de los multiplicadores de Lagrange. Aunque no es posible despejar a los multiplicadores de Lagrange de las ecuaciones (\ref{eq:MaxEntExpVals}), la función \notaAd{NO SE SI LAS FUNCIONES ri SON UNO A UNO NI NADA, LO TENGO QUE REVISAR BIEN}
 
 \subsection{Propiedades del estado de máxima entropía}
 
-\subsubsection{Relación unitaria}
+\subsubsection{Dos expresiones del estado de máxima entropía}
 
-Un operador unitario se traduce como una rotación en la esfera de Bloch. Entonces dos operadores están relacionados por una unitaria si sus vectores de Bloch tienen la misma norma euclidiana. Dicho de otra forma, dados $\rho_{1},\rho_{2}\in\mcS(\hilbert_{2})$, tales que $\text{Pu}(\rho_{1})=\text{Pu}(\rho_{2})$, entonces existe una matriz unitaria $V$ tal que
+
+Si se recuerda que un operador unitario se traduce como una rotación en la esfera de Bloch. Entonces dos operadores de densidad están relacionados por una unitaria si sus vectores de Bloch tienen la misma norma euclidiana. Dicho de otra forma, dados $\rho_{1},\rho_{2}\in\mcS(\hilbert_{2})$, que cumplan $\text{Pu}(\rho_{1})=\text{Pu}(\rho_{2})$, entonces existe una matriz unitaria $V$ tal que
 \begin{equation}
-    \rho_{1}=V\rho_{2}V^{\dag}
+    \rho_{1}=V\rho_{2}V^{\dag}.
 \end{equation}
 Así, si consideramos un estado sobre el eje z,
-
 \begin{equation}\label{eq:rhoz}
-\rho_{z}=\frac{1}{2}\qty(\Id+z\sigma_{z})
+\rho_{z}=\frac{1}{2}\qty(\Id+z\sigma_{z}),
 \end{equation}
+entonces este está relacionado mediante una unitaria a cualquier estado $\rho\in\mcS(\hilbert_2)$ tal que $\text{Pu}(\rho)=z$.
 
-entonces este está relacionado mediante una unitaria a cualquier estado $\rho\in\mcS(\hilbert_2)$ con vector de Bloch $\vec{r}$ tal que $\abs{\vec{r}}=z$.
-
-Considérese un estado grueso $\rho\in\mcS(\hilbert_2)$. Si el observador puede realizar mediciones de $\sigma_{i}$ en el estado grueso, entonces es posible reconstruir un estado de máxima entropía $\varrho_{max}\in\mcS(\hilbert_2 \otimes \hilbert_2)$ según
-\begin{equation}\label{eq:MaxEnt}
-\varrho_{max}=\frac{1}{\Tr(e^{\sum_{i}\lambda_{i}\hat{G}_{i}})}e^{\sum_{i}\lambda_{i}\hat{G}_{i}}
-\end{equation}
-donde $\lambda_{i}$ son los multiplicadores de Lagrange y $\hat{G}_{i}$ son operadores no tomográficamente completos \cite{MaxEnt}. Se puede demostrar que los operadores $\hat{G}_{i}$ son
-\begin{equation}\label{eq:Gop}
-\hat{G}_{i}=p\sigma_{i}\otimes\Id+(1-p)\Id\otimes\sigma_{i}
-\end{equation}
-
-Idealmente, la ecuación (\ref{eq:MaxEnt}) está en términos de los valores de expectación $r_{i}=Tr(\sigma_{i}\rho_{c})$, y no de los multiplicadores de Lagrange. Para simplificar el problema, se puedeescoger un estado grueso $\rho_{z}$ como en (\ref{eq:rhoz}), de tal forma que el exponente en (\ref{eq:MaxEnt}) tenga únicamente un término.
-
-\vspace{0.2cm}
-
-En las siguientes líneas se demuestra que para todo $\rho_{c}$ con vector de Bloch $\vec{r}$ es posible reconstruir el estado de máxima entropía a través del estado de máxima entropía asociado a un estado grueso alineado en $z$, $\rho_{z}$ y la unitaria $U$ que relaciona $\rho_{c}$ y $\rho_{z}$ (para que esta exista se debe cumplir que $\abs{\vec{r}}=z$).
-
-\vspace{0.2cm}
-
-Sea, pues $\rho$ tal que $\rho=U\rho_{z}U^{\dag}$, con $\varrho_{max}$ el estado de máxima entropía construído para  $\mcU=U\otimes U$. El valor de expectación de las $\sigma_{i}$ puede calcularse como
+Sea, pues $\rho$ tal que $\rho=V\rho_{z}V^{\dag}$, con $\varrho_{max}$ el estado de máxima entropía construído para  $\mcV=V\otimes V$. El valor de expectación de las $\sigma_{i}$ puede calcularse como
 \begin{align*}
-    r_{i}&=\Tr\{\sigma_{i}U\rho_{z}U^{\dag}\}\\
-    &=\Tr\{\sigma_{i}U\CG{\varrho_{max}^{z}}U^{\dag}\}\\
-    &=\Tr\{\sigma_{i}\CG{\mcU\varrho_{max}^{z}\mcU^{\dag}}\}\\
-    &=\Tr[\hat{G}_{i}\mcU\varrho_{max}^{z}\mcU^{\dag}]\\
-    &=\Tr[\mcU^{\dag}\hat{G}_{i}\mcU\varrho_{max}^{z}]\\
+    r_{i}&=\Tr\{\sigma_{i}V\rho_{z}V^{\dag}\},\\
+    &=\Tr\{\sigma_{i}V\CG{\varrho_{max}^{z}}V^{\dag}\},\\
+    &=\Tr\{\sigma_{i}\CG{\mcV\varrho_{max}^{z}\mcV^{\dag}}\},\\
+    &=\Tr[\hat{G}_{i}\mcV\varrho_{max}^{z}\mcV^{\dag}],\\
+    &=\Tr[\mcV^{\dag}\hat{G}_{i}\mcV\varrho_{max}^{z}].\\
     \end{align*}
 De esto, se sigue que el estado de máxima entropía asociado a $\rho_{z}$ se puede reconstruir como:
 \begin{align*}
-\varrho_{max}^{z}&=\frac{1}{\Tr(e^{\sum_{i}\lambda_{i}\mcU^{\dag}\hat{G}_{i}\mcU})}e^{\sum_{i}\lambda_{i}\mcU^{\dag}\hat{G}_{i}\mcU}\\
-&=\frac{1}{\Tr(e^{\mcU^{\dag}\qty(\sum_{i}\lambda_{i}\hat{G}_{i})\mcU^{\dag}})}e^{\mcU^{\dag}\qty(\sum_{i}\lambda_{i}\hat{G}_{i})\mcU^{\dag}}\\
-&=\frac{1}{\Tr(\mcU^{\dag}e^{\sum_{i}\lambda_{i}\hat{G}_{i}}\mcU)}\mcU^{\dag}\qty(e^{\sum_{i}\lambda_{i}\hat{G}_{i}})\mcU\\
-&=\frac{1}{\Tr(\mcU^{\dag}\qty(e^{\sum_{i}\lambda_{i}\hat{G}_{i}})\mcU)}\mcU^{\dag}\qty(e^{\sum_{i}\lambda_{i}\hat{G}_{i}})\mcU\\
-&=\frac{1}{\Tr(e^{\sum_{i}\lambda_{i}\hat{G}_{i}})}\mcU^{\dag}\qty(e^{\sum_{i}\lambda_{i}\hat{G}_{i}})\mcU\\
-&=\mcU^{\dag}\varrho_{max}\mcU
+\varrho_{max}^{z}&=\frac{1}{\Tr(e^{\sum_{i}\lambda_{i}\mcV^{\dag}\hat{G}_{i}\mcV})}e^{\sum_{i}\lambda_{i}\mcV^{\dag}\hat{G}_{i}\mcV},\\
+&=\frac{1}{\Tr(e^{\mcV^{\dag}\qty(\sum_{i}\lambda_{i}\hat{G}_{i})\mcV^{\dag}})}e^{\mcV^{\dag}\qty(\sum_{i}\lambda_{i}\hat{G}_{i})\mcV^{\dag}},\\
+&=\frac{1}{\Tr(e^{\sum_{i}\lambda_{i}\hat{G}_{i}})}\mcV^{\dag}\qty(e^{\sum_{i}\lambda_{i}\hat{G}_{i}})\mcV,\\
+&=\mcV^{\dag}\varrho_{max}\mcV.
 \end{align*}
-Esto significa que si somos capaces de hallar el estado de máxima entropía asociado a un estado alineado en $z$, podemos hallar el asociado a cualquier otro estado mediante:
+Por lo tanto, si somos capaces de hallar el estado de máxima entropía asociado a un estado alineado en $z$, podemos hallar el asociado a cualquier otro estado mediante:
 \begin{equation}
-\varrho_{max}=\mcU\varrho_{max}^{z}\mcU^{\dag}
+\varrho_{max}=\mcV\varrho_{max}^{z}\mcV^{\dag}.
 \end{equation}
-
-
-\subsubsection{Dos expresiones del estado de máxima entropía}
-
-A cada estado de dos niveles, $\rho$, lo definen tres parámetros: su pureza, $r$, y dos ángulos $\theta$, $\phi$. La unitaria que conecta $\rho$ con el estado alineado en $z$ de pureza $z=r$ es 
+Ahora, de las ecuaciones (\ref{eq:MaxEntExpVals}), puede verse que para que $r_{x}$ y $r_{y}$ se anulen sin que $r_{z}$ también se anule, debe cumplirse que $\lambda_{1}=\lambda_{2}=0$, por lo que el estado de máxima entropía compatible con un estado alineado en $z$ es 
+\begin{equation}
+    \varrho_{max}(\rho_{z})=\frac{1}{Z}e^{-\lambda_{3}\hat{G}_{3}}
+\end{equation}
+La unitaria $V$ que conecta $\rho$ y $\rho_{z}$ puede construirse recordando que a cada estado de dos niveles, $\rho$, lo definen tres parámetros: su pureza, $r$, y dos ángulos $\theta$, $\phi$. Siempre que $\text{Pu}(\rho)=z$, la unitaria que conecta $\rho$ con $\rho_{z}$ es
 \begin{equation}
   V=
   \begin{pmatrix}
       \cos{\theta} & e^{-i\phi}\sin{\theta}\\
       e^{i\phi}\sin{\theta}& \cos{\theta}\\
-  \end{pmatrix}
+  \end{pmatrix}.
 \end{equation}
-Construyendo $\mcV=V\otimes V$, podemos expresar al estado de máxima entropía de dos formas equivalentes,
-\begin{align}
-  \varrho_{max}(\rho)=\frac{1}{Z}\text{exp}(-\lambda_{3}\mcV\hat{G}_{3}\mcV^{\dag}) && \varrho_{max}(\rho)=\frac{1}{Z}\text{exp}(\sum_{i}\lambda_{i}\hat{G}_{i}).
-\end{align}
+Sabiendo esto, podemos expresar al estado de máxima entropía de dos formas equivalentes:
+
+\noindent\begin{minipage}{.5\linewidth}
+    \begin{equation}\label{eq:MaxEntUnitary}
+        \varrho_{max}(\rho)=\frac{1}{Z}e^{-\lambda_{3}\mcV\hat{G}_{3}\mcV^{\dag}}
+    \end{equation}
+    \end{minipage}%
+    \begin{minipage}{.5\linewidth}
+    \begin{equation}\label{eq:MaxEntLambdas}
+        \varrho_{max}(\rho)=\frac{1}{Z}e^{\sum_{i}\lambda_{i}\hat{G}_{i}}.
+    \end{equation}
+    \end{minipage}
 
 \subsubsection{Separabilidad del estado de máxima entropía}
-
-Sea $\rho$ como en (\ref{eq:rhoz}), entonces por (\ref{eq:MaxEnt}) el estado de máxima entropía es:
-\begin{equation}\label{eq:MaxEntUgly}
-\varrho_{max}=\frac{\text{exp}(-\lambda_{3}\hat{G}_{3})}{\Tr[\text{exp}(-\lambda_{3}\hat{G}_{3})]}
-\end{equation}
-donde $\hat{G}_{3}$ se define según (\ref{eq:Gop}). Como los dos términos que componen al operador comuntan entre sí, la exponencial puede separarse:
+Ya hemos visto que el estado de máxima entropía compatible con un estado alineado en $z$ tiene la forma (\ref{eq:MaxEntZ}). Ahora, como los dos términos que componen al operador $\hat{G}_{3}$ comuntan entre sí, entonces la exponencial puede separarse:
 \begin{align*}
 \varrho_{max}&=\frac{1}{Z}e^{-\lambda_{3}p\sigma_{z}\otimes\Id}e^{-\lambda_{3}(1-p)\Id\otimes\sigma_{z}}\\
 &=\frac{1}{Z}(e^{-\lambda_{3}p\sigma_{z}}\otimes\Id)( \Id\otimes e^{-\lambda_{3}(1-p)\sigma_{z}})\\
-&=\frac{1}{Z}(e^{-\lambda_{3}p\sigma_{z}}\otimes e^{-\lambda_{3}(1-p)\sigma_{z}})\\
+&=\frac{1}{Z}(e^{-\lambda_{3}p\sigma_{z}}\otimes e^{-\lambda_{3}(1-p)\sigma_{z}}).\\
 \end{align*}
-Si se separa a la función de partición como un producto de trazas $Z=Z_{1}Z_{2}$, al estado de máxima entropía se le puede escribir como:
+Si se separa a la función de partición como un producto de trazas $Z=Z_{1}Z_{2}$, el estado de máxima entropía toma la forma
 \begin{equation}\label{eq:MaxEntZ}
-\varrho_{max}=\frac{e^{-\lambda_{3}p\sigma_{z}}}{Z_{1}} \otimes \frac{e^{-\lambda_{3}(1-p)\sigma_{z}}}{Z_{2}}
+\varrho_{max}=\frac{e^{-\lambda_{3}p\sigma_{z}}}{Z_{1}} \otimes \frac{e^{-\lambda_{3}(1-p)\sigma_{z}}}{Z_{2}}.
 \end{equation}
-Esto es válido para el estado alineado en $z$, 
+De la ecuación (\ref{eq:MaxEntUnitary}) y de que $\mcV=V\otimes V$ se sigue que el estado de máxima entropía compatible un estado arbitrario $\rho\in\mcS(\hilbert_{2})$ tiene la forma
+\begin{equation}\label{eq:MaxEntSeparable}
+    \varrho_{max}=\frac{e^{-\lambda_{3}pV\sigma_{z}V^{\dag}}}{Z_{1}} \otimes \frac{e^{-\lambda_{3}(1-p)V\sigma_{z}V^{\dag}}}{Z_{2}}.
+\end{equation}
+
 \subsubsection{Generalización: N a M partículas}
 
 Sea $\ket{\psi}\in\hilbert_{2}^{\otimes n}$ y $\varrho=\dyad{\psi}$. La aplicación de grano grueso que resuelve un qubit donde hay $n$ qubits se puede escribir como
