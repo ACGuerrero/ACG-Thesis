@@ -19,3 +19,4 @@ TO DO LIST
  12. Finish first chapter's Purity and Evolution sections
  13. Fix signs in equations
  14. Explore relationship between the parts of the maxent and the effective state.
+ 15. Fix numerical lambda(rz)
