@@ -8,16 +8,125 @@ SetDirectory["/home/acastillo/Documents/tesis-adan/code"];
 
 (*Reconstrucci\[OAcute]n del MaxEnt*)
 $Assumptions=Element[{p,rz,\[Lambda],Z,t},Reals] && rz\[Element]Reals && 0<=rz<=1&&0<=p<=1&&0<=t<=1;
-A=-\[Lambda]*GObsMaxEnt[p,3];
+A=-Subscript[\[Lambda],3]*GObsMaxEnt[p,3];
 ExpMat=MatrixExp[A];
 Z=Tr[ExpMat];
 1/Z//FullSimplify;
 MaxEnt=ExpMat/Z;
-rz=ZCoordFromLagrangeMult[\[Lambda],p]
+rz=ZCoordFromLagrangeMult[\[Lambda],p];
+plot3=Plot[Evaluate[Table[rz/.{p->i},{i,0,0.5,0.1}]],{\[Lambda],-4,0},AxesLabel->{Style[Subscript[\[Lambda],3],FontSize->18],Style[Subscript[r,z],FontSize->18]},PlotLegends->{Table["p="<>ToString[i],{i,0,0.5,0.1}]}];
+trb=(IdentityMatrix[2]+Tanh[p*\[Lambda]]*PauliMatrix[3])/2;
+tra=(IdentityMatrix[2]+Tanh[\[Lambda]*(1-p)]*PauliMatrix[3])/2;
+eff=p*trb+(1-p)*tra;
+
+
+?RzLambdaTable
+
+
+LagrangeMultFromZCoord[\!\(\*
+StyleBox[
+RowBox[{"RzLambdaTable", "[", 
+RowBox[{"0.3", ",", 
+RowBox[{"-", "4"}], ",", "0.1", ",", "0.01"}], "]"}], "InformationUsageText",
+StripOnInput->False,
+LineSpacing->{1.5, 1.5, 3.}]\),0.6]
+
+
+\!\(\*
+StyleBox[
+RowBox[{"RzLambdaTable", "[", 
+RowBox[{
+StyleBox["0.3", "InformationUsageText",
+StripOnInput->False,
+LineSpacing->{1.5, 1.5, 3.}], 
+StyleBox[",", "InformationUsageText",
+StripOnInput->False,
+LineSpacing->{1.5, 1.5, 3.}], 
+RowBox[{
+StyleBox["-", "InformationUsageText",
+StripOnInput->False,
+LineSpacing->{1.5, 1.5, 3.}], 
+StyleBox["4", "InformationUsageText",
+StripOnInput->False,
+LineSpacing->{1.5, 1.5, 3.}]}], 
+StyleBox[",", "InformationUsageText",
+StripOnInput->False,
+LineSpacing->{1.5, 1.5, 3.}], 
+StyleBox["0.1", "InformationUsageText",
+StripOnInput->False,
+LineSpacing->{1.5, 1.5, 3.}], 
+StyleBox[",", "InformationUsageText",
+StripOnInput->False,
+LineSpacing->{1.5, 1.5, 3.}], "0.1"}], "]"}], "InformationUsageText",
+StripOnInput->False,
+LineSpacing->{1.5, 1.5, 3.}]\)
+
+
+Clear[p]
+z=0.6;
+\[Lambda]=LagrangeMultFromZCoord[\!\(\*
+StyleBox[
+RowBox[{"RzLambdaTable", "[", 
+RowBox[{"p", ",", 
+RowBox[{
+StyleBox[
+StyleBox["-", "InformationUsageText",
+StripOnInput->False,
+LineSpacing->{1.5, 1.5, 3.}], "InformationUsageText",
+StripOnInput->False,
+LineSpacing->{1.5, 1.5, 3.}], 
+StyleBox[
+StyleBox[
+StyleBox["4", "InformationUsageText",
+StripOnInput->False,
+LineSpacing->{1.5, 1.5, 3.}], "InformationUsageText",
+StripOnInput->False,
+LineSpacing->{1.5, 1.5, 3.}], "InformationUsageText",
+StripOnInput->False,
+LineSpacing->{1.5, 1.5, 3.}]}], ",", 
+StyleBox[
+StyleBox["0", "InformationUsageText",
+StripOnInput->False,
+LineSpacing->{1.5, 1.5, 3.}], "InformationUsageText",
+StripOnInput->False,
+LineSpacing->{1.5, 1.5, 3.}], ",", 
+StyleBox[
+RowBox[{
+StyleBox[
+StyleBox["0", "InformationUsageText",
+StripOnInput->False,
+LineSpacing->{1.5, 1.5, 3.}], "InformationUsageText",
+StripOnInput->False,
+LineSpacing->{1.5, 1.5, 3.}], ".01"}]]}], "]"}], "InformationUsageText",
+StripOnInput->False,
+LineSpacing->{1.5, 1.5, 3.}]\),z]
+za=Tanh[-\[Lambda]*(1-p)];
+zb=Tanh[-p*\[Lambda]];
+p*zb+(1-p)*za;
+Plot[{z,za,zb,z-za,zb-z},{p,0,1},PlotLegends->{"za","z","zb","z-za","z-zb"}]
+
+
+(* ::Input:: *)
+(*\[Cedilla]*)
+
+
 plot3=Plot[Evaluate[Table[rz/.{p->i},{i,0,0.5,0.1}]],{\[Lambda],-4,0},AxesLabel->{Style[Subscript[\[Lambda],3],FontSize->18],Style[Subscript[r,z],FontSize->18]},PlotLegends->{Table["p="<>ToString[i],{i,0,0.5,0.1}]}]
 
 
+
 Tr[SubMaxEnt1=MatrixExp[-\[Lambda]*p*PauliMatrix[3]]]//FullSimplify
+
+
+$Assumptions=Element[{p,rx,ry,rz,\[Lambda]1,\[Lambda]2,\[Lambda]3,Z,t},Reals] && rz\[Element]Reals && 0<=rz<=1&&0<=p<=1&&0<=t<=1;
+A=-(\[Lambda]1*GObsMaxEnt[p,1]+\[Lambda]2*GObsMaxEnt[p,2]+\[Lambda]3*GObsMaxEnt[p,3]);
+ExpMat=MatrixExp[A];
+Z=Tr[ExpMat];
+MaxEnt=(ExpMat/Z)/.{Sqrt[\[Lambda]1^2+\[Lambda]2^2+\[Lambda]3^2]->\[Lambda]}//FullSimplify;
+
+
+rx=Tr[GObsMaxEnt[p,1] . MaxEnt]/.{Sqrt[\[Lambda]1^2+\[Lambda]2^2+\[Lambda]3^2]->\[Lambda]}//FullSimplify;
+ry=Tr[GObsMaxEnt[p,2] . MaxEnt]/.{Sqrt[\[Lambda]1^2+\[Lambda]2^2+\[Lambda]3^2]->\[Lambda]}//FullSimplify;
+rz=Tr[GObsMaxEnt[p,3] . MaxEnt]/.{Sqrt[\[Lambda]1^2+\[Lambda]2^2+\[Lambda]3^2]->\[Lambda]}//FullSimplify;
 
 
 (* ::Input:: *)

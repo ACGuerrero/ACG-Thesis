@@ -27,9 +27,9 @@ CGMaxEntStateLM::usage="something"
 NearestPosition::usage="something"
 GObsMaxEnt::usage="something"
 CGMaxEntStateLM::usage="something"
-ZCoordFromLagrangeMult::usage="something"
-RzLambdaTable::usage="something"
-LagrangeMultFromZCoord::usage="something"
+ZCoordFromLagrangeMult::usage="ZCoordFromLagrangeMult[\[Lambda],p] obtains the z coordinate of the effective state given the lagrange multiplier"
+RzLambdaTable::usage="RzLambdaTable[p,low,up,step] a table of {z,\[Lambda]} with \[Lambda] ranging from low to up with step step."
+LagrangeMultFromZCoord::usage="Finds the lagrange multiplier associated with a p and z values. To be used along RzLambdaTable like LagrangeMultFromZCoord[RzLambdaTable[p,low,up,step],z]"
 MaxEntForStateNotInZ::usage="something"
 CGKrausOp::usage="something"
 CGKraus::usage="CGKraus[rho,p] applies the coarse graining map using its Kraus Operators"
@@ -124,7 +124,7 @@ Ubig . #&/@fdata
 (*All about the MaxEnt state*)
 GObsMaxEnt[p_,i_]:=p*KroneckerProduct[PauliMatrix[i],IdentityMatrix[2]]+(1-p)*KroneckerProduct[IdentityMatrix[2],PauliMatrix[i]];
 CGMaxEntStateLM[lambda_,p_]:=With[{ExpMat=MatrixExp[-lambda*GObsMaxEnt[p,3]]},ExpMat/Tr[ExpMat]]
-ZCoordFromLagrangeMult[l_,p_]:=-(1/2)*Sech[l*p]*Sech[l-p*l]*(Sinh[l]+(1-2 p)*Sinh[l-2 p*l])
+ZCoordFromLagrangeMult[l_,p_]:=-(p*Tanh[l*p]+(1-p)*Tanh[l*(1-p)]);
 RzLambdaTable[p_,low_,up_,step_]:=Transpose[Table[{ZCoordFromLagrangeMult[l,p],l},{l,low,up,step}]];
 LagrangeMultFromZCoord[data_,zcoord_]:=data[[2,NearestPosition[data[[1]],zcoord]]]
 MaxEntForStateNotInZ[cstate_,ZMaxEnt_]:=
