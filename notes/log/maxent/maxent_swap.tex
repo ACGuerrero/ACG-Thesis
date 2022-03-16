@@ -3,16 +3,20 @@ En esta sección se desarrollan resultados analíticos para una evolución unita
 
 \subsection{Evolución de $t=0$ a $t=1$}
 
-Utilizando la expresión (\ref{eq:MaxEntZ}), se puede pasar tanto a $\varrho_{max}$ como a $\varrho_{max}$ a través de la aplicación de grano grueso. El resultado $\CG{\varrho_{max}}$ corresponde al estado grueso inicial, pero en términos de $\lambda$. Así:
+Utilizando la expresión (\ref{eq:MaxEntSeparable}), se puede pasar tanto a $\varrho_{max}(0)$ como a $\varrho_{max}(1)$ a través de la aplicación de grano grueso. El resultado $\CG{\varrho_{max}(0)}$ corresponde al estado grueso inicial, pero en términos de $\lambda$. Así:
 \begin{equation}
-\rho(0)=\frac{1}{Z}\CG{\varrho_{max}}=\frac{e^{-\lambda_{3}p\sigma_{z}}}{Z_{1}}+(1-p)\frac{e^{-\lambda_{3}(1-p)\sigma_{z}}}{Z_{2}},
+\rho(0)=\frac{1}{2}[\Id+(\hat{r}_{\rho}\cdot\vec{\sigma})(p\tanh{-\lambda p}+(1-p)\tanh{-\lambda (1-p)})],
 \end{equation}
 \begin{equation}
-\rho(t=1)=\frac{1}{Z}\CG{S\varrho_{max} S}=p\frac{e^{-\lambda_{3}(1-p)\sigma_{z}}}{Z_{2}}+(1-p)\frac{e^{-\lambda_{3}p\sigma_{z}}}{Z_{1}}.
+\rho(t=1)=\frac{1}{2}[\Id+(\hat{r}_{\rho}\cdot\vec{\sigma})((p-1)\tanh{-\lambda p}+p\tanh{-\lambda (1-p)})].
 \end{equation}
-Tanto el estado grueso inicial como el final son estados que, en la base de Pauli, su única componente no nula es la $z$. Esto significa que podemos relacionar ambas coordenadas a través de un coeficiente de compresión:
+Vemos que ambos estados tienen la misma orientación pero pureza distinta. Esto significa que el efecto del \textsc{SWAP} subyacente sobre la esfera de Bloch es comprimir al estado efectivo inicial (esto puede comprobarse en los resultados numéricos mostrados en la figura \ref{fig:factornnum}.) con un coeficiente $\kappa_{1}$ tal que
 \begin{equation}\label{eq:SWAPFactor}
-            a=\frac{r_{z}(1)}{r_{z}(0)}=\left(\frac{2 \sinh (\lambda )}{\sinh (\lambda )+(1-2 p) \sinh (\lambda -2 \lambda  p)}-1\right)
+  \kappa_{1}=\frac{\text{Pu}(\rho(1))}{\text{Pu}(\rho(0))}=\frac{p\tanh{[-\lambda p]}+(1-p)\tanh{[-\lambda (1-p)]}}{(p-1)\tanh{[-\lambda p]}+p\tanh{[-\lambda (1-p)]}}
+\end{equation}
+Claro está, el factor de compresión depende del multiplicador de Lagrange, que a su vez es una función de la pureza del estado inicial. La figura \ref{fig:SWAPFactorP} muestra dicha dependencia. Si la dependencia del factor de compresión en el estado efectivo inicial se denota por un superíndice, la dinámica efectiva puede escribirse como
+\begin{equation}
+  \boxed{\frac{1}{2}(\Id+\vec{r}_{\rho}\cdot\vec{\sigma}) \xrightarrow{S} \frac{1}{2}(\Id+\kappa_{1}^{\rho}\vec{r}_{\rho}\cdot\vec{\sigma})}
 \end{equation}
 \begin{figure}[h!]
 \centering
@@ -35,7 +39,6 @@ Tanto el estado grueso inicial como el final son estados que, en la base de Paul
 \caption{Superficie del factor de compresión como función del multiplicador de Lagrange y del parámetro de probabilidad asociado a la aplicación de grano grueso. \notaAd{Parece haber una discontinuidad en $\lambda=0$ que valdría la pena estudiar}}
 \label{fig:SWAPFactorSup}
 \end{figure}
-Esto puede comprobarse en los resultados numéricos mostrados en la figura \ref{fig:factornnum}.
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.6\linewidth]{maxent/figures/MaxEnt_SWAP_t0vst1_n=5000_z=0.5_p=0.3_beta=150_delta=0.6.png}
@@ -43,15 +46,15 @@ Esto puede comprobarse en los resultados numéricos mostrados en la figura \ref{
 \label{fig:factornnum}
 \end{figure}
 
-Como el factor de compresión depende de $\lambda$, la dinámica no es lineal. Las operaciones cuánticas de un qubit se traducen como aplicaciones afines en la esfera de Bloch. Si quisiéramos ver el proceso asociado al $textsc{SWAP}$ subyacente como una transformación de la forma
+Como el factor de compresión depende de $\lambda$, la dinámica no es lineal. Las operaciones cuánticas de un qubit se traducen como aplicaciones afines en la esfera de Bloch. Si quisiéramos ver el proceso asociado al \textsc{SWAP} subyacente como una transformación de la forma
 \begin{equation*}
   \vec{r}\rightarrow M\vec{r}+\vec{c}
 \end{equation*}
-en la que $\vec{c}=0$, y $M=OS$ con $O=\Id$ y $S=a(\vec{r})\Id$, de tal forma que
+en la que $\vec{c}=0$, y $M=OS$ con $O=\Id$ y $S=\kappa_{1}(\vec{r})\Id$, de tal forma que
 \begin{equation*}
-  \vec{r}\rightarrow a(\vec{r})\vec{r}
+  \vec{r}\rightarrow \kappa_{1}(\vec{r})\vec{r}
 \end{equation*}
-nos daríamos cuenta que la transformación no es afín, y por esto, el proceso no puede ser descrito a través del formalismo de las operaciones cuánticas (no tiene representación en operadores de Kraus). \cite{Chuang}.
+nos daríamos cuenta que la transformación no es afín, y por esto, el proceso no puede ser descrito a través del formalismo de las operaciones cuánticas (no tiene representación en operadores de Kraus) \cite{Chuang}.
 \subsubsection{Caso $p=\frac{1}{2}$}
 
 Aunque es posible repetir todas las cuentas desde la contrucción del estado de máxima entropía, haciendo $p=\frac{1}{2}$, basta con ver que el factor (\eqref{eq:SWAPFactor}) es $1$ en dicho caso. Así, todos los estado gruesos son puntos fijos bajo una evolución subyacente SWAP con aplicación de grano grueso con parámetro $p=\frac{1}{2}$.

@@ -3,96 +3,95 @@
 
 
 \subsection{El estado de máxima entropía general: dos expresiones}
-He estado cometiendo un error terrible: creer que todos los estados de máxima entropía, independientemente de las componentes de Pauli del estado grueso con el que son compatibles, evolucionan de la misma manera que el estado de Máxima entropía compatibñe con un estado grueso alineado en $z$. Un ejemplo claro de este error es el de la unitaria generada por el hamiltoniano del modelo de Ising propuesto en la sección \ref{sec:Ising}. Es necesario, entonces, tener en cuenta la unitaria que conecta a un estado de máxima entropía compatible con un estado $\rho$ aribitrario y el estado alineado en $z$. La unitaria Puede constrirse en base a los parámetros del estado $\rho$. A cada estado de dos niveles, $\rho$, lo definen tres parámetros: su pureza, $r$, y dos ángulos $\alpha$, $\beta$. La unitaria que conecta $\rho$ con el estado alineado en $z$ de pureza $z=r$ es 
+Sea $\rho\in\mcS(\hilbert_{2})$ caracterizado por tres parámetros: su pureza y dos ángulos, $\alpha$ y $\beta$. Su vector de Bloch se puede escribir entonces como
+\begin{equation}
+  \vec{r}_{\rho}=\text{Pu}(\rho)\begin{pmatrix}
+    \cos{\beta}\sin{\alpha}\\
+    \sin{\beta}\sin{\alpha}\\
+    \cos{\alpha}\\
+  \end{pmatrix}=\text{Pu}(\rho)\hat{r}_{\rho}.
+\end{equation}
+Ahora, sea $\rho_{z}\in\mcS(\hilbert_{2})$ un estado solo con componente en $\sigma_{z}$. La unitaria $V$ tal que $V\rho_{z} V^{\dag}$ tiene la forma
 \begin{equation}
   V=
   \begin{pmatrix}
-      \cos{\alpha} & e^{-i\beta}\sin{\alpha}\\
-      e^{i\beta}\sin{\alpha}& \cos{\alpha}\\
-  \end{pmatrix}
+      \cos{\frac{\alpha}{2}} & e^{i\beta}\sin{\frac{\alpha}{2}}\\
+      -e^{-i\beta}\sin{\frac{\alpha}{2}}& \cos{\frac{\alpha}{2}},
+  \end{pmatrix},
+\end{equation}
+que en términos de la base de Pauli se ve como
+\begin{equation}
+  V=e^{i\alpha \hat{l}\cdot \vec{\sigma}}=\Id \cos{\frac{\alpha}{2}}+i(\hat{l}\cdot \vec{\sigma})\sin{\frac{\alpha}{2}},
+\end{equation}
+con $\hat{l}=(\sin{\beta},\cos{\beta},0)$, y satisface
+\begin{equation}\label{eq:VsigmazV}
+  V\sigma_{z}V^{\dag}=\sigma_{x}\cos{\beta}\sin{\alpha}+\sigma_{y}\sin{\beta}\sin{\alpha}+\sigma_{z}\cos{\alpha}=\hat{r}_{\rho}\cdot\vec{\sigma}.
 \end{equation}
 Construyendo $\mcV=V\otimes V$, podemos expresar al estado de máxima entropía de dos formas equivalentes,
 \begin{align}\label{eq:MaxEntTwoExpr}
-  \varrho_{max}(\rho)=\frac{1}{Z}\text{exp}(-\lambda_{3}\mcV\hat{G}_{3}\mcV^{\dag}) && \varrho_{max}(\rho)=\frac{1}{Z}\text{exp}(\sum_{i}\lambda_{i}\hat{G}_{i}).
+  \boxed{\varrho_{max}(\rho)=\frac{1}{Z}\text{exp}(-\lambda_{3}\mcV\hat{G}_{3}\mcV^{\dag})} && \boxed{\varrho_{max}(\rho)=\frac{1}{Z}\text{exp}(\sum_{i}\lambda_{i}\hat{G}_{i})}
 \end{align}
 
 \subsection{El estado máxima entropía es separable}
 
 Sea $\rho_{z}$ un estado alineado en $z$ como en (\ref{eq:rhoz}), entonces por (\ref{eq:MaxEnt}) el estado de máxima entropía es:
 \begin{equation}\label{eq:MaxEntUgly}
-\varrho_{max}^{z}=\frac{\text{exp}(-\lambda_{3}\hat{G}_{3})}{\Tr[\text{exp}(-\lambda_{3}\hat{G}_{3})]}
+\varrho_{max}^{z}=\frac{1}{Z}\text{exp}(-\lambda_{3}\hat{G}_{3}),
 \end{equation}
-donde $\hat{G}_{3}$ se define según (\ref{eq:Gop}). Como los dos términos que componen al operador comuntan entre sí, la exponencial puede separarse:
+donde $\hat{G}_{3}$ se define según (\ref{eq:Gop}). Como los dos términos que componen al operador comuntan entre sí, la exponencial puede separarse como
 \begin{align*}
 \varrho_{max}^{z}&=\frac{1}{Z}e^{-\lambda_{3}p\sigma_{z}\otimes\Id}e^{-\lambda_{3}(1-p)\Id\otimes\sigma_{z}}\\
 &=\frac{1}{Z}(e^{-\lambda_{3}p\sigma_{z}}\otimes\Id)( \Id\otimes e^{-\lambda_{3}(1-p)\sigma_{z}})\\
-&=\frac{1}{Z}(e^{-\lambda_{3}p\sigma_{z}}\otimes e^{-\lambda_{3}(1-p)\sigma_{z}})\\
+&=\frac{1}{Z}(e^{-\lambda_{3}p\sigma_{z}}\otimes e^{-\lambda_{3}(1-p)\sigma_{z}}).\\
 \end{align*}
 Si se separa a la función de partición como un producto de trazas $Z=Z_{1}Z_{2}$, al estado de máxima entropía se le puede escribir como:
 \begin{equation}\label{eq:MaxEntZ}
-\varrho_{max}^{z}=\frac{e^{-\lambda_{3}p\sigma_{z}}}{Z_{1}} \otimes \frac{e^{-\lambda_{3}(1-p)\sigma_{z}}}{Z_{2}}
+\varrho_{max}^{z}=\frac{e^{-\lambda_{3}p\sigma_{z}}}{Z_{1}} \otimes \frac{e^{-\lambda_{3}(1-p)\sigma_{z}}}{Z_{2}}.
 \end{equation}
-Esto es válido para el estado alineado en $z$, pero retomando el resultado (\ref{eq:MaxEntTwoExpr}), el estado de máxima entropía compatible con un estado grueso arbitrario es
+Esto es válido para el estado alineado en $z$, pero retomando el resultado (\ref{eq:MaxEntTwoExpr}) y la relación (\ref{eq:VsigmazV}), el estado de máxima entropía compatible con un estado grueso arbitrario es
 \begin{equation}\label{eq:MaxEntSeparable}
-  \boxed{\varrho_{max}=\frac{e^{-\lambda_{3}pV\sigma_{z}V^{\dag}}}{Z_{1}} \otimes \frac{e^{-\lambda_{3}(1-p)V\sigma_{z}V^{\dag}}}{Z_{2}}}
+  \boxed{\varrho_{max}=\frac{e^{-\lambda_{3}p(\hat{r}_{\rho}\cdot\vec{\sigma})}}{Z_{1}} \otimes \frac{e^{-\lambda_{3}(1-p)(\hat{r}_{\rho}\cdot\vec{\sigma})}}{Z_{2}}}
 \end{equation}
 Por lo que el estado de máxima entropía compatible con un estado $\rho$ arbitrario es separable.
 
 \subsection{El estado de máxima entropía bajo la aplicación de grano grueso}\label{sec:CG(MaxEnt)}
 
-El problema de la ecuación (\ref{eq:MaxEntZ}) es que el estado de máxima entropía está en términos del multiplicador de Lagrange que se usó para maximizar la entropía, en lugar de estar en términos de la cantidad medible $r_{z}$. Si por alguna razón tuviéramos que resignarnos a trabajar con el estado en términos de $\lambda_{3}$, será necesario conocer la expresión del estado efectivo. Para hallarla, basta con pasar (\ref{eq:MaxEntZ}) y (\ref{eq:MaxEntSeparable}) por la aplicación de grano grueso. Si el estado grueso está alineado en $z$, entonces tiene la forma
+El problema de la ecuación (\ref{eq:MaxEntZ}) es que el estado de máxima entropía está en términos del multiplicador de Lagrange que se usó para maximizar la entropía, en lugar de estar en términos de la cantidad medible $\Tr(\rho_{z}\sigma_{z})$. Si por alguna razón tuviéramos que resignarnos a trabajar con el estado en términos de $\lambda_{3}$, será necesario conocer la expresión del estado efectivo. Para hallarla, basta con pasar (\ref{eq:MaxEntZ}) y (\ref{eq:MaxEntSeparable}) por la aplicación de grano grueso. Si el estado grueso está alineado en $z$, entonces tiene la forma
 \begin{equation}\label{eq:CG(MaxEntZ)1}
-    \rho_{z}=\frac{1}{Z}\CG{\varrho_{max}^{z}}=p\frac{e^{-\lambda_{3}p\sigma_{z}}}{Z_{1}}+(1-p)\frac{e^{-\lambda_{3}(1-p)\sigma_{z}}}{Z_{2}},
-\end{equation}
-un estado arbitrario, por otro lado
-\begin{equation}\label{eq:CG(MaxEnt)1}
-  \rho=\frac{1}{Z}\CG{\varrho_{max}}=p\frac{e^{-\lambda_{3}pV\sigma_{z}V^{\dag}}}{Z_{1}}+(1-p)\frac{e^{-\lambda_{3}(1-p)V\sigma_{z}V^{z}}}{Z_{2}},
+    \rho_{z}=\frac{1}{Z}\CG{\varrho_{max}^{z}}=p\frac{e^{-\lambda_{3}p\sigma_{z}}}{Z_{1}}+(1-p)\frac{e^{-\lambda_{3}(1-p)\sigma_{z}}}{Z_{2}}.
 \end{equation}
 Las exponenciales de la ecuación (\ref{eq:CG(MaxEntZ)1}) pueden verse como $e^{a\hat{n}\cdot \vec{\sigma}}$. Si se desarollan las series se halla
 \begin{equation}\label{eq:PauliVectorExp}
-    e^{a\hat{n}\cdot \vec{\sigma}}=\Id \cosh{a}+(\hat{n}\cdot \vec{\sigma})\sinh{a}
+    e^{a\hat{n}\cdot \vec{\sigma}}=\Id \cosh{a}+(\hat{n}\cdot \vec{\sigma})\sinh{a}.
 \end{equation}
-así que, sustituyendo la ecuación (\ref{eq:PauliVectorExp}) en (\ref{eq:CG(MaxEntZ)1}) se encuentra la expresión del estado efectivo en términos de la base de Pauli
+Así que, sustituyendo la ecuación (\ref{eq:PauliVectorExp}) en (\ref{eq:CG(MaxEntZ)1}) se encuentra la expresión del estado efectivo en términos de la base de Pauli
 \begin{align*}
     \rho_{z}&=p\frac{\Id \cosh{\lambda_{3}p}-\sigma_{z}\sinh{\lambda_{3}p}}{Z_{1}}+(1-p)\frac{\Id \cosh{\lambda_{3}(1-p)}-\sigma_{z}\sinh{\lambda_{3}(1-p)}}{Z_{2}}\\
-    &=p\frac{1}{2}(\Id \frac{2\cosh{\lambda_{3}p}}{Z_{1}}-\sigma_{z}\frac{2\sinh{\lambda_{3}p}}{Z_{1}})+(1-p)\frac{1}{2}(\Id \frac{2\cosh{\lambda_{3}(1-p)}}{Z_{2}}-\sigma_{z}\frac{2\sinh{\lambda_{3}(1-p)}}{Z_{2}})
+    &=p\frac{1}{2}(\Id \frac{2\cosh{\lambda_{3}p}}{Z_{1}}-\sigma_{z}\frac{2\sinh{\lambda_{3}p}}{Z_{1}})+(1-p)\frac{1}{2}(\Id \frac{2\cosh{\lambda_{3}(1-p)}}{Z_{2}}-\sigma_{z}\frac{2\sinh{\lambda_{3}(1-p)}}{Z_{2}}).
 \end{align*}
-para que esto sea de la forma $\rho=\sum_{i}p_{i}\rho_{i}$ es necesario que $Z_{1}=2\cosh{\lambda p}$ y $Z_{2}=2\cosh{\lambda (1-p)}$ (cosa que se puede comprobar). El estado efectivo en términos de $\lambda_{3}$ es
+Para que esto sea de la forma $\rho=\sum_{i}p_{i}\rho_{i}$ es necesario que $Z_{1}=2\cosh{\lambda p}$ y $Z_{2}=2\cosh{\lambda (1-p)}$ (cosa que se puede comprobar). El estado efectivo en términos de $\lambda_{3}$ es
 \begin{equation}\label{eq:CG(MaxEntZ)2}
-    \rho_{z}=p\frac{1}{2}(\Id+\sigma_{z}\tanh{(-\lambda p)})+(1-p)\frac{1}{2}(\Id+\sigma_{z}\tanh{(-\lambda (1-p))})
+    \rho_{z}=p\frac{1}{2}(\Id+\sigma_{z}\tanh{(-\lambda p)})+(1-p)\frac{1}{2}(\Id+\sigma_{z}\tanh{(-\lambda (1-p))}).
 \end{equation}
-Naturalmente, el caso general es la ecuación anterior como $V$ aplicada en ella para obtener el estado rotado. Ahora, si se compara este resultado con la definición de la aplicación de grano grueso y el hecho que el estado de máxima entropía es separable, encontramos que
+Naturalmente, el caso general es la ecuación anterior como $V$ aplicada en ella para obtener el estado rotado. Explicitamente
+\begin{equation}\label{eq:CG(MaxEnt)}
+  \boxed{\rho=\frac{1}{2}[\Id+(\hat{r}_{\rho}\cdot\vec{\sigma})(p\tanh{-\lambda p}+(1-p)\tanh{-\lambda (1-p)})]}
+\end{equation}
+\notaAd{Esto lo metí en una nota porque no sé qué tan útil fue:
+
+Ahora, si se compara este resultado con la definición de la aplicación de grano grueso y el hecho que el estado de máxima entropía es separable, encontramos que
 \begin{align*}
-  \varrho_{max}&=\frac{1}{2}(\Id+\sigma_{z}\tanh{\lambda p})\otimes\frac{1}{2}(\Id+\sigma_{z}\tanh{\lambda (1-p)})\\
-  &  =\frac{1}{4}(\Id_{4}+\sigma_{z}\otimes\Id_{2}\tanh{\lambda p}+\sigma_{z}\otimes \Id_{2}\tanh{\lambda (1-p)}+\sigma_{z}\otimes \sigma_{z}\tanh{\lambda p}\tanh{\lambda (1-p)})
+  \varrho_{max}&=\frac{1}{2}(\Id+\sigma_{z}\tanh{(-\lambda p)})\otimes\frac{1}{2}(\Id+\sigma_{z}\tanh{(-\lambda (1-p))})\\
+  &  =\frac{1}{4}(\Id_{4}+\sigma_{z}\otimes\Id_{2}\tanh{(-\lambda p)}+\sigma_{z}\otimes \Id_{2}\tanh{(-\lambda (1-p))}+\sigma_{z}\otimes \sigma_{z}\tanh{-(\lambda p)}\tanh{(-\lambda (1-p))})
 \end{align*}
+}
+\subsection{El estado de máxima entropía en términos de la pureza}
 
-\subsection{El estado de máxima entropía en términos de $r_{z}$}
-
-La ecuación (\ref{eq:CG(MaxEntZ)2}) permite expresar la coordenada $r_{z}$ en términos del multiplicador de Lagrange complejo es
+La ecuación (\ref{eq:CG(MaxEnt)}) permite expresar la puerza $\text{Pu}(\rho)$ en términos del multiplicador de Lagrange $\lambda_{3}$. En el caso en el que el estado solo tiene componente en $\sigma_{z}$, esto es equivalente a encontrar $r_{z}=\text{Pu}(\rho_{z})$ en términos del multiplicador de Lagrange. Si nos limitamos a dicho caso,
 \begin{equation}\label{eq:RzTanh}
-    r_{z}=p\tanh{\lambda p}+(1-p)\tanh{\lambda (1-p)}.
+    \boxed{r_{z}=p\tanh{-\lambda p}+(1-p)\tanh{-\lambda (1-p)}}
 \end{equation}
-Esta expresión la obtuve después de ahaber desarollado los párrafos de discusión que siguen. 
-La forma matricial de este estado es:
-\begin{equation*}
-\left(
-\begin{array}{cccc}
- \frac{1}{4} e^{-\lambda_{3}} \text{sech}(\lambda_{3} p)
-   \text{sech}(\lambda_{3}-\lambda_{3} p) & 0 & 0 & 0 \\
- 0 & \frac{e^{2 \lambda_{3}}}{\left(e^{2 \lambda_{3}
-   p}+1\right) \left(e^{2 \lambda_{3}}+e^{2 \lambda_{3}
-   p}\right)} & 0 & 0 \\
- 0 & 0 & \frac{1}{\left(e^{2 \lambda_{3}}+1\right) e^{-2
-   \lambda_{3} p}+e^{2 \lambda_{3}-4 \lambda_{3}
-   p}+1} & 0 \\
- 0 & 0 & 0 & \frac{1}{4} e^{\lambda_{3}}
-   \text{sech}(\lambda_{3} p) \text{sech}(\lambda_{3}-\lambda_{3} p) \\
-\end{array}
-\right)
-\end{equation*}
-Hallar el valor de $\lambda_{
-3}$ en términos del valor $r_{z}$ implica resolver la ecuación:
+Esta expresión la obtuve después de haber desarollado los párrafos de discusión que siguen. Hallar el valor de $\lambda_{3}$ en términos del valor $r_{z}$ implica resolver la ecuación:
 \begin{equation}\label{eq:RZ}
 rz=-\frac{1}{2}\frac{\sinh(\lambda_{3})+(1-2p)\sinh((1-2p)\lambda_{3})}{\cosh(p\lambda_{3})\cosh((1-p)\lambda_{3})}
 \end{equation}

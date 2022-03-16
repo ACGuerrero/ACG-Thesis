@@ -4,6 +4,10 @@ Consideramos una unitaria $\mcU=U_{1}\otimes U_{2}$ que evoluciona en el tiempo 
     \CG{(U_{1}^{t}\otimes U_{2}^{t})\varrho_{max}(U_{1}^{t}\otimes U_{2}^{t})^{\dag}}&=p\frac{1}{Z_{1}}U_{1}^{t}V e^{-\lambda p \sigma_{z}}V^{\dag}(U_{1}^t)^{\dag}+(1-p)\frac{1}{Z_{2}}U_{2}^{t}Ve^{-\lambda (1-p)\sigma_{z}}V^{\dag}(U_{2}^t)^{\dag}\\
     &=p\frac{1}{Z_{1}}U_{1}^{t}V e^{-\lambda p \sigma_{z}}(U_{1}^tV)^{\dag}+(1-p)\frac{1}{Z_{2}}U_{2}^{t}Ve^{-\lambda (1-p)\sigma_{z}}(U_{2}^tV)^{\dag}\\
 \end{align*}
+Por un lado, podemos dejar a las unitarias $V$ dentro de las exponenciales, de tal forma que:
+\begin{equation}
+    \CG{(U_{1}^{t}\otimes U_{2}^{t})\varrho_{max}(U_{1}^{t}\otimes U_{2}^{t})^{\dag}}=p\frac{1}{2}(\Id+U_{1}^{t}(\hat{r}_{\rho}\cdot\vec{\sigma})(U_{1}^{t})^{\dag}\tanh{(-\lambda p)})+(1-p)\frac{1}{2}(\Id+U_{2}^{t}(\hat{r}_{\rho}\cdot\vec{\sigma})(U_{2}^{t})^{\dag}\tanh{(-\lambda (1-p))}).
+\end{equation}
 El resultado puede verse como las partes que componen al estado efectivo alineado en $z$ evolucionados por una composición de unitarias, que es otra unitaria. Las unitarias $U_{j}$ pueden escribirse como $e^{-i\theta_{j} \hat{n}_{j}\cdot\vec{\sigma}}$, mientras que $V=e^{i\alpha\hat{l}\cdot\vec{\sigma}}$ con $\hat{l}=(\cos{\beta},\sin{\beta},0)$, luego $U_{i}V=e^{i\zeta_{j} \hat{k}_{j}\cdot \vec{\sigma}}$ donde:
 \begin{align*}
     \cos{\zeta_{j} }&=\cos{\theta_{j}}\cos{\alpha}-\hat{n}_{j}\cdot \hat{l}\sin{\theta_{j}}\sin{\alpha}\\
