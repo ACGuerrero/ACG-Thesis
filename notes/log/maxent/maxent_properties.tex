@@ -91,10 +91,8 @@ La ecuación (\ref{eq:CG(MaxEnt)}) permite expresar la puerza $\text{Pu}(\rho)$ 
 \begin{equation}\label{eq:RzTanh}
     \boxed{r_{z}=p\tanh{-\lambda p}+(1-p)\tanh{-\lambda (1-p)}}
 \end{equation}
-Esta expresión la obtuve después de haber desarollado los párrafos de discusión que siguen. Hallar el valor de $\lambda_{3}$ en términos del valor $r_{z}$ implica resolver la ecuación:
-\begin{equation}\label{eq:RZ}
-rz=-\frac{1}{2}\frac{\sinh(\lambda_{3})+(1-2p)\sinh((1-2p)\lambda_{3})}{\cosh(p\lambda_{3})\cosh((1-p)\lambda_{3})}
-\end{equation}
+La ecuación anterior, fijada $p$, es una suma de dos funciones inyectivas, y como tal, es inyectiva también. Esto significa que existe la función inversa.
+
 No se ve ninguna forma sencilla de despejar al multiplicador de Lagrange \notaAd{la ecuación (\ref{eq:RzTanh}) y la ecuación (\ref{eq:RZ}) son completamente equivalentes, como debería de ser. La segunda siendo más fea que la primera. }. En realidad, esto solo se puede si la función $r_{z}(\lambda_{3})$ tiene inversa, y esto puede depender del parámetro $p$. Graficar la superficie (Figura \ref{fig:rzsurf}) puede aclarar algo el panorama.
 \begin{figure}[h!]
 \centering

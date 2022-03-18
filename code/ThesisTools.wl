@@ -159,7 +159,8 @@ ListPointPlot3D[
 BoxRatios->{1,1,1},
 PlotRange->{{-1.,1.},{-1.`,1.`},{-1.,1.}},
 PlotLegends->legend,
-PlotLabel->title
+PlotLabel->title,
+AxesLabel->{"x","y","z"}
 ],
 Graphics3D[{Opacity[0.2],GrayLevel[0.9],Sphere[]},BoxRatios->1,Axes->True]
 ]

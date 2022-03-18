@@ -6,8 +6,8 @@ maximum entropy state*)
 Needs["CoolTools`"]
 Needs["Carlos`"]
 Needs["Quantum`"]
-SetDirectory["/home/acastillo/Documents/tesis-adan/code"];
 Needs["ThesisTools`"]
+SetDirectory["/home/acastillo/Documents/tesis-adan/code"];
 
 
 (*
@@ -18,8 +18,8 @@ Needs["ThesisTools`"]
 
 (*There are two basic parameters for the coarse graining problem.
 The z coordinate of the state and the swap probability*)
-swapP = 0.99;
-zcoord = 0.8;
+swapP = 0.01;
+zcoord = 0.9;
 targetstate=(IdentityMatrix[2]+zcoord*PauliMatrix[3])/2;
 
 (*We then have to construct the maximum entropy state. Since we
@@ -54,10 +54,6 @@ Print["Relative error: ", 100*Abs[realfactor-thefactor]/thefactor, "%"]
 *)
 
 
-(* ::Input:: *)
-(*\.b4*)
-
-
 (*
 ===========================================
 ================  general  ================
@@ -66,11 +62,9 @@ Print["Relative error: ", 100*Abs[realfactor-thefactor]/thefactor, "%"]
 (*We create mixed states with a radius of zcoord, then we
 obtain their corresponding MaxEnt states*)
 MaxEntsNotInZ=MaxEntForStateNotInZ[#,ZMaxEnt]&/@UniformMixedStates[zcoord,1500];
-
-
-H=Pi/4*KroneckerProduct[PauliMatrix[3],PauliMatrix[3]];
-unitary=MatrixExp[I*H];
-
+(*H=Pi/4*KroneckerProduct[PauliMatrix[3],PauliMatrix[3]];
+unitary=MatrixExp[I*H];*)
+unitary=CNOT
 NewMaxEnt=unitary . ZMaxEnt . Dagger[unitary];
 NewMaxEntsNotInZ=unitary . # . Dagger[unitary]&/@MaxEntsNotInZ;
 CoarseMaxEntsNotInZ=Chop[CGKraus[#,swapP]]&/@MaxEntsNotInZ;
@@ -81,6 +75,29 @@ UnitaryEvolutionAss=ApplyUnitaryButSlowly[unitary,steps,assignements];
 CoarseEvolutionAss=Table[Map[coarseGraining2[#,swapP]&,UnitaryEvolutionAss[[i]]],{i,1,Length[UnitaryEvolutionAss]}];
 Histogram[#,{-2*Pi,2*Pi,0.05}]&/@Transpose[differences]*)
 PlotTwoCoarseSets[CoarseMaxEntsNotInZ,CoarseNewMaxEntsNotInZ,{"Initial states","Final states"},"Evolution of the Assignement Map"]
+
+
+lambdastep=0.05;
+lowerlambda=-4;
+upperlambda=0;
+unitary=swapGate;
+Do[Do[
+	rzlambdatable=RzLambdaTable[swapP,lowerlambda,upperlambda,lambdastep];
+	lagrangemult=LagrangeMultFromZCoord[rzlambdatable,z][[1]];
+	ZMaxEnt=CGMaxEntStateLM[lagrangemult,p];
+	MaxEntsNotInZ=MaxEntForStateNotInZ[#,ZMaxEnt]&/@UniformMixedStates[z,1500];
+	NewMaxEntsNotInZ=unitary . # . Dagger[unitary]&/@MaxEntsNotInZ;
+	CoarseMaxEntsNotInZ=Chop[CGKraus[#,p]]&/@MaxEntsNotInZ;
+	CoarseNewMaxEntsNotInZ=Chop[CGKraus[#,p]]&/@NewMaxEntsNotInZ;
+	Export["../figures/SWAP/"<>"MaxEnt_SWAP_t0vst1"<>"_p="<>ToString[NumberForm[p, {3, 2}]]<>"_z="<>ToString[NumberForm[z, {3, 2}]]<>".png",
+	PlotTwoCoarseSets[
+		CoarseMaxEntsNotInZ,CoarseNewMaxEntsNotInZ,
+		{"Initial states","Final states"},"Effective evolution SWAP, z="<>ToString[z]<>", p="<>ToString[p]]
+	];
+	,{z,0.05,0.95,0.05}],{p,0.05,0.95,0.05}]
+
+
+NumberForm[0.1, {3, 2}]
 
 
 (*Export["../figures/"<>"MaxEnt_SWAP_t0vst1_"<>"_n="<>ToString[n]<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>"_beta="<>ToString[beta]<>"_delta="<>ToString[delta]<>".png",
