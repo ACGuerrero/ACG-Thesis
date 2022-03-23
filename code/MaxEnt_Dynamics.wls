@@ -18,9 +18,9 @@ SetDirectory["/home/acastillo/Documents/tesis-adan/code"];
 
 (*There are two basic parameters for the coarse graining problem.
 The z coordinate of the state and the swap probability*)
-swapP = 0.01;
+swapP = 0.4;
 zcoord = 0.9;
-targetstate=(IdentityMatrix[2]+zcoord*PauliMatrix[3])/2;
+ztargetstate=(IdentityMatrix[2]+zcoord*PauliMatrix[3])/2;
 
 (*We then have to construct the maximum entropy state. Since we
 have acces to the rz coordinate, we obtain the lagrange mult by
@@ -97,7 +97,39 @@ Do[Do[
 	,{z,0.05,0.95,0.05}],{p,0.05,0.95,0.05}]
 
 
-NumberForm[0.1, {3, 2}]
+testTargetState=UniformMixedStates[zcoord,1][[1]];
+
+
+H=Pi/4*PauliMatrix[3];
+MEComp[p_]:=(p*Tanh[-p*lagrangemult]);
+unitary=KroneckerProduct[MatrixExp[I*H],IdentityMatrix[2]];
+testMaxEnt=MaxEntForStateNotInZ[testTargetState,ZMaxEnt];
+newtestMaxEnt=unitary . testMaxEnt . Dagger[unitary];
+neweffective=CGKraus[newtestMaxEnt,swapP];
+Norm/@densityMatrixToPoint[{testTargetState,neweffective},gellMannBasis[1]]
+With[
+{vecs=densityMatrixToPoint[{testTargetState,MEComp[swapP]*partialTraceB[testMaxEnt],MEComp[1-swapP]*partialTraceA[testMaxEnt],neweffective,MEComp[swapP]*partialTraceB[newtestMaxEnt],MEComp[1-swapP]*partialTraceA[newtestMaxEnt]},gellMannBasis[1]]},
+	ShowWithBlochSphere[
+		{
+		ListPointPlot3D[
+			{#}&/@vecs,
+			PlotStyle->{Red,Green,Blue,Darker[Red],Darker[Green],Darker[Blue]},
+			BoxRatios->{1, 1, 1},
+			PlotRange->{{-1.,1.},{-1.,1.},{-1.,1.}},
+			AxesOrigin->{0,0,0},
+			Ticks->None,
+			AxesLabel->{"x","y","z"},
+			PlotLegends->{HoldForm[Subscript[\[Rho],i]],HoldForm[Subscript[\[Rho],iA]],HoldForm[Subscript[\[Rho],iB]],HoldForm[Subscript[\[Rho],f]],HoldForm[Subscript[\[Rho],fA]],HoldForm[Subscript[\[Rho],fB]]}
+		],
+		Graphics3D[
+		{Arrowheads[Small],Sequence@@(Arrow[{{0,0,0},#}]&/@vecs)}
+		],
+		Graphics3D[
+		{Green,Arrowheads[Small],Arrow[{vecs[[3]],vecs[[2]]+vecs[[3]]}]}
+		]
+		}
+	]
+]
 
 
 (*Export["../figures/"<>"MaxEnt_SWAP_t0vst1_"<>"_n="<>ToString[n]<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>"_beta="<>ToString[beta]<>"_delta="<>ToString[delta]<>".png",
