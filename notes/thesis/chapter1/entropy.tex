@@ -1,6 +1,36 @@
 \section{Entropía}
-\begin{itemize}
-\item una página sobre la entropía de Shannon
-\item von Neuman como versión cuántica de la entropía de Shannon
-\item Propiedades de la entropía de von Neuman, revisar notas mías y de David semidefinida, traza unitaria, estados puros y estados mixtos, formula de pureza.
-\end{itemize}
+\subsection{Entropía de Shannon}
+A finales de los años cuarenta, Claude Shannon se preguntaba sobre una medida de la \textit{incertidumbre}, o de la \textit{información} asociada a un proceso cuyo resultado estuviera descrito por una variable aleatoria $X$ con distribución de probabilidad $p(x_{i})$.
+
+La cantidad de información provista por el producto de un experimento depende de la probabilidad asociada a dicho suceso. Al tirar un dado, por ejemplo, saber que un número no cayó es mucho menos informativo que conocer que dicho número cayó, ya que cada número tiene una probabilidad de $\frac{5}{6}$ de no caer, pero sólo $\frac{1}{6}$ de caer. Con la misma línea de razonamiento, conocer el resultado de un evento que ocurre con probabilidad $p=1$ no transmite ninguna información. Si a cada valor de $X$ se le puede asociar una cantidad de información, entoces debe poder calcularse la cantidad de información promedio: esta es la medida que buscaba Shanon. La forma de esta medida, denótese $S(p)$, vino de las propiedades que el matemático estadounidense afirmó que debía cumplir \cite{Shannon} \cite{Wilde}:
+\begin{enumerate}
+    \item $H(p)$ debe ser continua en $p$
+    \item $H(p)$ debe ser una función creciente monotónica de $n$ cuando $p_{i}=\frac{1}{n}$
+    \item si $X$ e $Y$ son procesos independientes, $H(p_{X}(x_{i}),p_{Y}(y_{j}))=H(p_{X}(x_{i}))+H(p_{Y}(y_{j}))$
+\end{enumerate}
+y demostró que
+\begin{equation}\label{eq:ShannonEntropy}
+    H=-K\sum_{p}p(x_{i})\log{p(x_{i})}.
+\end{equation}
+Fue a través de discusiones con Von Neumann que Shannon descubrió que su medida ya era ampliamente utilizada en física, y que llevaba el nombre de \textit{entropía} \cite{McIrvine}.
+
+La entropía de Shannon (\ref{eq:ShannonEntropy}) es máxima para distribuciones equiprobables. En el tiraje de un dado bien balanceado, no es posible tener más seguridad de que caiga un número que otro: la incertidumbre, o la entropía, es máxima.
+
+En teoría de información clásica, la entropía de Shannon se suele estudiar como la cantidad promedio de bits requerida para trasmitir un mensaje. Un ejemplo común es de la cadena de caracteres, cada caracter pudiendo ser A, B, C o D. Si la probabilidad de cada caracter sea cualquiera de las cuatro letras es $\frac{1}{4}$ (máxima entropía), entonces se requieren dos bits para indicar el valor de cada caracter en la cadena (cada letra codificada como 00, 01, 10, o 11). Sin embargo, si las probabilidades son $p(A)=\frac{1}{2}$, $p(B)=\frac{1}{4}$, $p(C)=\frac{1}{8}$, $p(D)=\frac{1}{8}$, pueden asignarse los valores 1, 10, 110, 111, a cada letra, respectivamente. En promedio, cada letra requerirá $1.75$ bits para ser transmitida \cite{Chuang}. 
+
+\subsection{Entropía de von Neumann}
+
+La entropía de von Neumann, a pesar de haber sido obtenida veinte años antes, puede verse como la extensión cuántica de la entropía clásica de Shannon. Von Neumann introdujo el concepto del operador de densidad de forma independendiente a L. Landau, y definió la entropía $S$ asociada a un sistema descrito por un operador de densidad $\rho$ como \cite{vonNeumann}
+\begin{equation}\label{eq:VonNeumannEntropy}
+    S(\rho)=-\Tr(\rho\ln{\rho}).
+\end{equation}
+La entropía de von Neumann puede interpretarse de manera similar a la entropía de Shannon. Si se desea transmitir un qubit preparado como $\ket{\psi_{i}}$ con probabilidad $p_{i}$, entonces el operador de densidad que representa al estado enviado es justamente $\rho=\sum p_{i}\dyad{\psi_{i}}$. La cantidad de información recibida, o la incertidumbre sobre el qubit enviado, es justamente $S(\rho)$. Debe hacerse incapié en el hecho que la entropía de un sistema cuántico debe es fundamentalmente diferente a la de un sistema clásico. El sistema cuántico presenta dos tipos de incertidumbres: la incertidumbre clásica, relacionada a nuestra falta de conocimiento relativa a un sistema, y la incertidumbre cuántica, una propiedad intrínseca a los sistemas ondulares, matemáticamente expresada a través del Principio de Incertidumbre de Heisemberg\cite{Wilde}.
+
+La entropía de von Neumann de un sistema descrito por un operador de densidad $\rho\in\mcS(\hilbert_{n})$ tiene las siguientes propiedades \cite{Chuang}:
+\begin{enumerate}
+    \item La entropía puede escribirse en términos de los eigenvalores de $\rho$, $\eta_{j}$, como $S(\rho)=-\sum_{j}\eta_{j}\ln{\eta_{j}}$.
+    \item La entropía es no negativa, y es nula si y sólo sí $\rho$ es de la forma $\dyad{\psi}$ con $\ket{\psi}\in\hilbert_{n}$
+    \item La entropía es máxima cuando $\rho=\frac{1}{n}\Id_{n}$, y $S(\rho)=n$.
+    \item La entropía de un estado producto es igual a la suma de las entropías de cada factor, $S(\rho_{A}\otimes\rho_{B})=S(\rho_{A})+S(\rho_{B})$. \notaAd{En ningún lado he visto que los factores tengan que tener la misma dimensión, ¿por qué está mal, entonces, comparar las entropías pre y post CG?}
+    \item \notaAd{Hay algunas otras propiedades que aún no he terminado de entender, ni sé aplicar}
+\end{enumerate}

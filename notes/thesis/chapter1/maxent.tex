@@ -1,7 +1,30 @@
-\section{El estado de máxima entropía}\label{sec:CH1MaxEnt}
-\begin{itemize}
-\item el caso clásico del estado de máxima entropía
-\item el caso cuántico a través de los papers de Jaunes
-\item el ejemplo sencillo
-\end{itemize}
+\section{El principio de máxima entropía}\label{sec:CH1MaxEnt}
 
+\subsection{El principio de máxima entropía clásico}
+
+Supóngase que los resultados de un proceso corresponden a los valores $x_{i}$ de una variable aleatoria $X$. Sea, además $f$, una función sobre $X$, de la que conocemos el valor esperado
+\begin{equation}\label{eq:JaynesRestrictions}
+    \expval{f(x)}=\sum_{i}p(x_{i})f(x_{i}).
+\end{equation}
+Con esta información, nos interesa hallar la distribución $p(x_{i})$. Introducimos así al Principio de Máxima Entropía.
+
+El principio de máxima entropía fue introducido por E. T. Jaynes en 1957. En su artículo, \textit{Information Theory and Statistical Mechanics}, Jaynes afirma que la distribución de probabilidad obtenida a través del principio de máxima entropía es la mejor estimación que se puede hacer a través de la información disponible, independientemente de si las predicciones coinciden, o no, con los resultados experimentales \cite{JaynesI}.
+
+El problema de hallar una distribución de probabilidad adecuada es también un problema de contaminación de la información accesible. Esta contaminación proviene de suposiciones arbitrarias, y sin sustento físico, que pueden hacerse sobre el sistema. El objetivo es, entonces, hallar la estimación de $p$ menos sesgada posible.
+
+Jaynes relaciona la teoría de información clásica con la mecánica estadística no por la simple coincidencia en la forma de las entropías de Shannon y de Gibbs, sino a través de una reinterpretación de la mecánica estadística como una forma de inferencia estadística. En este contexto, viendo la entropía física como una medida de la incertidumbre asociada a una distribución de probabilidad, una distribución $p$ que no maximice la entropía, es una distribución que introduce información arbitraria no incluída en las hipótesis iniciales.
+
+A través del método de multiplicadores de Lagrange, Jaynes demuestra que la distribución de probabilidad $p$ que maximiza la entropía de Shannon (\ref{eq:ShannonEntropy}), sujeta a las restricciones (\ref{eq:JaynesRestrictions}) es 
+\begin{equation}
+    p(x_{i})=e^{-\lambda-\mu f(x_{i})}
+\end{equation}
+
+Como ejemplo, supongamos que se tira un dado de seis caras $40$ veces, y el promedio de los tirajes es $\expval{X}=3.2$. Si tratáramos con un dado perfectamente equilibrado, y dispusiéramos del tiempo para hacer una infinidad de tirajes, hallaríamos que $\expval{X}=3.5$. Podríamos asumir, entonces, que el dado está bien equilibrado (una susposición de ergodicidad), y que el valor de expectación hallado experimentalmente difiere por simple falta de tirajes, pero esto equivale a hacer una suposición sobre algo que no sabemos a ciencia cierta.
+
+\notaAd{Aqui voy a sacar la distribución de máxima entropía. No es complicado.}
+
+\subsection{Extensión a la mecánica cuántica}
+
+En su segundo artículo, Jaynes
+
+\newpage

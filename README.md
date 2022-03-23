@@ -18,6 +18,8 @@ TO DO LIST
  16. Add sequence of compression to the SWAP section
  17. Try particular unitaries in the case UxV
  18. Solve the CNOT problem
+ 19. ~~Finish entropy section~~
+ 20. ~~Finish maxent section~~
  5. ~~Develop $U\otimes V$ using exponential of pauli vector~~&#x2611;[00ea8ab](https://github.com/ACGuerrero/tesis-adan/commit/542cc6bcd036544eca2d0139823e981164e34673)
  8. ~~Series of real exponential of a pauli vector: pauli coordinates in terms of lagrange mult~~ &#x2611; [c8b9d95](https://github.com/ACGuerrero/tesis-adan/commit/8371c7c6653dcdbee99a91017139cb5bcb551f91)
  13. ~~Fix signs in equations~~&#x2611;[f513d1a](https://github.com/ACGuerrero/tesis-adan/commit/8af07735f51b450b893da30d229130d2dd8ad774)
