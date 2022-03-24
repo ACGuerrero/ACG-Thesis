@@ -47,16 +47,20 @@ En términos del vector de Bloch, denotando $r_{A}=p\tan(-p\lambda_{3})$, $r_{B}
 \begin{equation}
     r\hat{r}_{\rho}\xrightarrow{\mcU=U_{1}\otimes \Id}r_{A}O\hat{r}_{\rho}+r_{B}\hat{r}_{\rho}=O(r\hat{r}_{\rho}-r_{B}\hat{r}_{\rho})+r_{B}\hat{r}_{\rho}
 \end{equation}\label{eq:SeparableDynamicsUxIBloch}
-El resultado es una rotación alrededor de una línea que no pasa por el origen. Notar que una transformación así no tendría por qué mantener a los estados dentro de la esfera de Bloch, por lo que esta debe depender del estado mismo. La traslación tiene una magnitud $r_{B}$ en la dirección opuesta a la del estado, y esta debe hacerse antes de la rotación, para deshacerse después. Así que, aunque esto podría parecer una transformación afín, no lo es, pues depende enteramente del estado.
-\subsubsection{Cambio de fase $H=t\sigma_{z}$}
-Considérese el hamiltoniano $H=t\sigma_{z}$. La rotación en la esfera debida a la unitaria generada por el hamiltoniano es una alrededor del eje $z$. La representación de esto, y de el resultado general (\ref{eq:SeparableDynamicsUxIBloch}) puede verse en la figura \ref{fig:ZRot}.
+El resultado es una rotación alrededor de una línea que no pasa por el origen. Una rotación de esta naturaleza puede descomponerse en una rotación a través de un eje que pasa por el origen $R$ y una traslación $T$ como $T^{-1}\circ R\circ T$. Notar que una transformación así no tendría por qué mantener a los estados dentro de la esfera de Bloch, por lo que esta debe depender del estado mismo. En efecto traslación tiene una magnitud $r_{B}$ en la dirección opuesta a la del estado (depende del estado tanto en magnitud como en dirección). Así que, aunque esto podría parecer una transformación afín, no lo es, pues depende enteramente del estado.
+
+De (\ref{eq:SeparableDynamicsUxIBloch}) también se ve que si $U=e^{it\hat{n}\cdot\vec{\sigma}}$ entonces se ve que cualquier estado con vector de Bloch $r\hat{n}$ será invariante bajo la transformación subyacente. Lo que es mejor, esto aplica para cualquiera de los casos $U_{1}=\Id$, $U_{2}=\Id$ o $U_{1}=U_{2}$.
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.6\linewidth]{maxent/figures/Ux1_H=sigmaz_sequence__z=0.9_p=0.4.png}
+    \includegraphics[width=0.6\linewidth]{maxent/figures/U1xU2_H1=sz_H2=Id_z=0.9_p=0.4_sequence.png}
     \caption{En rojo, la evolución temporal del estado efectivo. En verde y azul, $(r_{A}\hat{r}_{\rho})$ y $(r_{B}\hat{r}_{\rho})$ respectivamente.}
     \label{fig:ZRot}
 \end{figure}
+
+\subsubsection{Cambio de fase $H=\sigma_{z}$}
+Considérese el hamiltoniano $H=\sigma_{z}$. La rotación en la esfera debida a la unitaria generada por el hamiltoniano es una alrededor del eje $z$. La representación de esto, y de el resultado general (\ref{eq:SeparableDynamicsUxIBloch}) puede verse en la figura \ref{fig:ZRot}.
+
 
 En el espacio de operadores de densidad, esto equivale a insertar una fase relativa en el primer subsistema fino. En efecto, ignorando fases globales,
 \begin{equation}
@@ -70,7 +74,14 @@ El estado grueso siente el cambio de fase relativa en su primera componente \not
 \end{equation}
 
 
-\subsection{Tengo que ver cómo interpreto esta $H=a\sigma_{x}+b\sigma_{y}$}
+\subsubsection{Tengo que ver cómo interpreto esta $H=a\sigma_{x}+b\sigma_{y}$}
+La transformación es una rotación respecto al eje $(a,b,0)$. Al aplicarse sobre el primer subsistema, el resultado es una rotación de la primera componente del estado grueso. De nuevo, la condición de normalización entre dichas componentes asegura que el estado grueso se mantenga dentro de la esfera de Bloch. 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.6\linewidth]{maxent/figures/U1xU2_H1=sx+sy_H2=Id_z=0.9_p=0.4_sequence.png}
+    \caption{En rojo, la evolución temporal del estado efectivo. En verde y azul, $(r_{A}\hat{r}_{\rho})$ y $(r_{B}\hat{r}_{\rho})$ respectivamente. En este ejemplo, $H=\sigma_{x}+2\sigma_{y}$, mientras que $\hat{r}=\frac{0.9}{\sqrt{33}}(-2,-5,2)$}
+    \label{fig:XYRot}
+\end{figure}
 
 \subsection{El caso $U_{1}=U_{2}=U$}
 
@@ -80,5 +91,38 @@ Quizá el caso más sencillo. La simetría de la unitaria permite factorizarla:
 &=p\frac{1}{Z_{1}}U^{t}e^{-\lambda p \sigma_{z}}(U^t)^{\dag}+(1-p)\frac{1}{Z_{2}}U^{t}e^{-\lambda (1-p)\sigma_{z}}(U^t)^{\dag}\\
 &=U^{t}\qty(p\frac{1}{Z_{1}}e^{-\lambda p \sigma_{z}}+(1-p)\frac{1}{Z_{2}}e^{-\lambda (1-p)\sigma_{z}})(U^t)^{\dag}\\
 \end{align*}
+La dinámica efectiva tiene la forma:
+\begin{equation}
+    \rho\xrightarrow{U\otimes U}U\rho U^{\dagger}
+\end{equation}
+
+
+\subsection{Límite $(1-p)$ pequeña}
+El caso $p\rightarrow 1$ puede interpretarse como aquel en el que el aparato de medición tiene una baja probabilidad de fallar (poco ruido). Las evoluciones separables $U=U_{1}\otimes U_{2}$ pueden verse como una evolución gruesa $U_{1}$ más una perturbación. La perturbación, al ser unitaria, es también una rotación, así que lo que se observa es una especie de hélice. El estado precesa alrededor de una traslación de la que sería su trayectoria no perturbada. Siempre que $U_{2}=\Id$ lo que se observa es una traslación en dirección del estado con magnitud $r_{B}$. Si, por el contrario, $U_{1}=\Id$, una vez más el estado grueso se ve desplazado, para luego comenzar a girar según la rotación inducida por la unitaria $U_{2}$. 
+
+Algunos ejemplos pueden verse en las figuras siguientes.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.6\linewidth]{maxent/figures/U1xU2_H1=(sx+sy)_H2=Id_z=0.9_p=0.85_sequence.png}
+    \caption{Este es el caso $H_{1}=(\sigma_{x}+\sigma_{y})$ y $H_{2}=\Id$. El resultado de la perturbación es una traslación en la evolución del estado.}
+    \label{fig:SmallP1}
+\end{figure}
+
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.6\linewidth]{maxent/figures/U1xU2_H1=100(sx-sy)_H2=sz_z=0.9_p=0.85_sequence.png}
+    \caption{Este es el caso $H_{1}=100(\sigma_{x}-\sigma_{y})$ y $H_{2}=\sigma_{z}$. Las oscilaciones alrededor de la óribita desplazada son visibles.}
+    \label{fig:SmallP2}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.6\linewidth]{maxent/figures/U1xU2_H1=sz_H2=10*(sx+sy)_z=0.9_p=0.85_sequence.png}
+    \caption{Este es el caso $H_{1}=\sigma_{z}$ y $H_{2}=10(\sigma_{x}+\sigma_{y})$. Las oscilaciones alrededor de la óribita desplazada son visibles.}
+    \label{fig:SmallP3}
+\end{figure}
+
 
 \newpage

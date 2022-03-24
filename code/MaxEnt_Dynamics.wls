@@ -18,7 +18,7 @@ SetDirectory["/home/acastillo/Documents/tesis-adan/code"];
 
 (*There are two basic parameters for the coarse graining problem.
 The z coordinate of the state and the swap probability*)
-swapP = 0.4;
+swapP = 0.85;
 zcoord = 0.9;
 ztargetstate=(IdentityMatrix[2]+zcoord*PauliMatrix[3])/2;
 
@@ -97,10 +97,8 @@ Do[Do[
 	,{z,0.05,0.95,0.05}],{p,0.05,0.95,0.05}]
 
 
-testTargetState=(IdentityMatrix[2]+zcoord*Normalize[{1.,1.,3.}] . Rest[gellMannBasis[1]])/2;
-
-
-H=Pi/4*PauliMatrix[3];
+testTargetState=(IdentityMatrix[2]+zcoord*Normalize[{-2.,-5,2}] . Rest[gellMannBasis[1]])/2;
+H=Pi/4*(PauliMatrix[1]+PauliMatrix[2]);
 unitary=KroneckerProduct[MatrixExp[I*H],IdentityMatrix[2]];
 testMaxEnt=MaxEntForStateNotInZ[testTargetState,ZMaxEnt];
 newtestMaxEnt=unitary . testMaxEnt . Dagger[unitary];
@@ -138,11 +136,18 @@ With[
 ]
 
 
-Ham[t_]:=t*PauliMatrix[3];
-U[t_]:=KroneckerProduct[MatrixExp[I*Ham[t]],IdentityMatrix[2]];
-n=10;
-points=densityMatrixToPoint[Table[CGKraus[U[t] . testMaxEnt . Dagger[U[t]],swapP],{t,0,Pi,N[Pi/n]}],gellMannBasis[1]];
-points2=swapP*densityMatrixToPoint[(partialTraceB[#]&/@Table[U[t] . testMaxEnt . Dagger[U[t]],{t,0,Pi,N[Pi/n]}]),gellMannBasis[1]];
+a=1;
+b=-1;
+testTargetState=(IdentityMatrix[2]+zcoord*Normalize[{-0.3,-0.3,0.5}] . Rest[gellMannBasis[1]])/2;
+testMaxEnt=MaxEntForStateNotInZ[testTargetState,ZMaxEnt];
+Ham1=(a*PauliMatrix[1]+b*PauliMatrix[2]);
+Ham2=100*PauliMatrix[3];
+U1[t_]:=KroneckerProduct[MatrixExp[t*I*Ham1],MatrixExp[t*I*Ham2]];
+n=3000;
+end=3*Pi/4;
+points=densityMatrixToPoint[Table[CGKraus[U1[t] . testMaxEnt . Dagger[U1[t]],swapP],{t,0,end,N[end/n]}],gellMannBasis[1]];
+points2=swapP*densityMatrixToPoint[(partialTraceB[#]&/@Table[U1[t] . testMaxEnt . Dagger[U1[t]],{t,0,end,N[end/n]}]),gellMannBasis[1]];
+points3=(1-swapP)*densityMatrixToPoint[(partialTraceA[#]&/@Table[U1[t] . testMaxEnt . Dagger[U1[t]],{t,0,end,N[end/n]}]),gellMannBasis[1]];
 figure=With[
 	{vecs=densityMatrixToPoint[{testTargetState,swapP*partialTraceB[testMaxEnt],(1-swapP)*partialTraceA[testMaxEnt]},gellMannBasis[1]]},
 	ShowWithBlochSphere[{
@@ -157,6 +162,25 @@ figure=With[
 			AxesLabel->{"x","y","z"},
 			PlotLegends->{\[Rho],HoldForm[Subscript[\[Rho],A]],HoldForm[Subscript[\[Rho],B]]}
 		],
+		Graphics3D[{Darker[Blue],Thickness[0.001],Opacity[0.2],Line/@Transpose[{points2,points}]}],
+		Graphics3D[{Darker[Blue],Thickness[0.001],Opacity[0.5],Line/@Transpose[{Table[{0,0,0},Length[points3]],points3}]}],
+		Graphics3D[{Black,Line[{{0,0,0},vecs[[1]]}]}],
+		ListPointPlot3D[{points,points2,points3},PlotStyle->{{Darker[Red],Opacity[0.5]},{Darker[Green],Opacity[0.2]},{Darker[Blue],Opacity[0.2]}}]
+	}]
+]
+
+
+Export["../figures/"<>"U1xU2_H1=100(sx-sy)_H2=sz"<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>"_sequence"<>".png",figure]
+
+
+Show[Graphics3D[{Darker[Green],Opacity[1],Thickness[0.001],Line/@Transpose[{points3,points}]}],ListPointPlot3D[points3]]
+Graphics3D[{Darker[Red],Opacity[1],Thickness[0.001],Line/@Transpose[{Table[{0,0,0},Length[points]],points}]}]
+
+
+Export["../figures/"<>"Ux1_H=1x+2y_sequence"<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>".png",figure]
+
+
+
 		Graphics3D[
 		{Blue,Line[{{0,0,0},vecs[[3]]}]}
 		],
@@ -166,13 +190,6 @@ figure=With[
 		Graphics3D[
 		{Darker[Green],Sequence@@(Line[{{0,0,0},#}]&/@points2)}
 		],
-		ListPointPlot3D[{points,points2},PlotStyle->{Red,Darker[Green]}]
-	}]
-]
-Export["../figures/"<>"Ux1_H=sigmaz_sequence_"<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>".png",figure]
-
-
-MatrixExp[I*t*PauliMatrix[3]]
 
 
 (*Export["../figures/"<>"MaxEnt_SWAP_t0vst1_"<>"_n="<>ToString[n]<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>"_beta="<>ToString[beta]<>"_delta="<>ToString[delta]<>".png",
@@ -191,3 +208,6 @@ Export["../figures/"<>"MapAss_SWAP_t0vst1_"<>"_n="<>ToString[n]<>"_z="<>ToString
 	]
 ]
 *)
+
+
+FullSimplify[MatrixExp[I*t*(2*PauliMatrix[1]+PauliMatrix[2])]]//MatrixForm
