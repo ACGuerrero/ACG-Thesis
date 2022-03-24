@@ -17,10 +17,10 @@ TO DO LIST
  15. Fix numerical lambda(rz) (ThesisTools.m)
  16. Add sequence of compression to the SWAP section
  18. Solve the CNOT problem
- 17. ~~Try particular unitaries in the case UxV~~ [d2417b6](https://github.com/ACGuerrero/tesis-adan/commit/d2417b6104a94d028aaf8026f86667775adb2e32)
- 19. ~~Finish entropy section~~
- 20. ~~Finish maxent section~~
+ 17. ~~Try particular unitaries in the case UxV~~&#x2611; [d2417b6](https://github.com/ACGuerrero/tesis-adan/commit/d2417b6104a94d028aaf8026f86667775adb2e32)
+ 19. ~~Finish entropy section~~&#x2611;
+ 20. ~~Finish maxent section~~&#x2611;
  5. ~~Develop $U\otimes V$ using exponential of pauli vector~~&#x2611;[542cc6b](https://github.com/ACGuerrero/tesis-adan/commit/542cc6bcd036544eca2d0139823e981164e34673)
  8. ~~Series of real exponential of a pauli vector: pauli coordinates in terms of lagrange mult~~ &#x2611; [8371c7c](https://github.com/ACGuerrero/tesis-adan/commit/8371c7c6653dcdbee99a91017139cb5bcb551f91)
  13. ~~Fix signs in equations~~&#x2611;[8af0773](https://github.com/ACGuerrero/tesis-adan/commit/8af07735f51b450b893da30d229130d2dd8ad774)
- 7. ~~Read Jaynes' articles~~
+ 7. ~~Read Jaynes' articles~~&#x2611;
