@@ -45,8 +45,32 @@ Retomando a expresión (\ref{eq:SeparableDynamics}), y en virtud de (\ref{eq:Pau
 \end{equation}
 En términos del vector de Bloch, denotando $r_{A}=p\tan(-p\lambda_{3})$, $r_{B}=(1-p)\tan(-(1-p)\lambda_{3})$, y $O$ la rotación generada por $U_{1}$:
 \begin{equation}
-    r_{A}\hat{r}_{\rho}+r_{B}\hat{r}_{\rho}\xrightarrow{\mcU=U_{1}\otimes \Id}r_{A}O\hat{r}_{\rho}+r_{B}\hat{r}_{\rho}
+    r\hat{r}_{\rho}\xrightarrow{\mcU=U_{1}\otimes \Id}r_{A}O\hat{r}_{\rho}+r_{B}\hat{r}_{\rho}=O(r\hat{r}_{\rho}-r_{B}\hat{r}_{\rho})+r_{B}\hat{r}_{\rho}
+\end{equation}\label{eq:SeparableDynamicsUxIBloch}
+El resultado es una rotación alrededor de una línea que no pasa por el origen. Notar que una transformación así no tendría por qué mantener a los estados dentro de la esfera de Bloch, por lo que esta debe depender del estado mismo. La traslación tiene una magnitud $r_{B}$ en la dirección opuesta a la del estado, y esta debe hacerse antes de la rotación, para deshacerse después. Así que, aunque esto podría parecer una transformación afín, no lo es, pues depende enteramente del estado.
+\subsubsection{Cambio de fase $H=t\sigma_{z}$}
+Considérese el hamiltoniano $H=t\sigma_{z}$. La rotación en la esfera debida a la unitaria generada por el hamiltoniano es una alrededor del eje $z$. La representación de esto, y de el resultado general (\ref{eq:SeparableDynamicsUxIBloch}) puede verse en la figura \ref{fig:ZRot}.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.6\linewidth]{maxent/figures/Ux1_H=sigmaz_sequence__z=0.9_p=0.4.png}
+    \caption{En rojo, la evolución temporal del estado efectivo. En verde y azul, $(r_{A}\hat{r}_{\rho})$ y $(r_{B}\hat{r}_{\rho})$ respectivamente.}
+    \label{fig:ZRot}
+\end{figure}
+
+En el espacio de operadores de densidad, esto equivale a insertar una fase relativa en el primer subsistema fino. En efecto, ignorando fases globales,
+\begin{equation}
+    e^{it\sigma_{z}}=\begin{pmatrix}
+        1&0\\0&e^{-i2t}
+    \end{pmatrix}
 \end{equation}
+El estado grueso siente el cambio de fase relativa en su primera componente \notaAd{¿Qué son las trazas del MaxEnt?}.
+\begin{equation}
+    \rho\xrightarrow{\mcU=e^{it\sigma_{z}}\otimes \Id} p\frac{1}{Z_{1}}e^{it\sigma_{z}}e^{-\lambda_{3}p\hat{r}_{\rho}\cdot\vec{\sigma}}e^{-it\sigma_{z}}+(1-p)\frac{1}{Z_{2}}e^{-\lambda_{3}(1-p)\hat{r}_{\rho}\cdot\vec{\sigma}}
+\end{equation}
+
+
+\subsection{Tengo que ver cómo interpreto esta $H=a\sigma_{x}+b\sigma_{y}$}
 
 \subsection{El caso $U_{1}=U_{2}=U$}
 
@@ -56,4 +80,5 @@ Quizá el caso más sencillo. La simetría de la unitaria permite factorizarla:
 &=p\frac{1}{Z_{1}}U^{t}e^{-\lambda p \sigma_{z}}(U^t)^{\dag}+(1-p)\frac{1}{Z_{2}}U^{t}e^{-\lambda (1-p)\sigma_{z}}(U^t)^{\dag}\\
 &=U^{t}\qty(p\frac{1}{Z_{1}}e^{-\lambda p \sigma_{z}}+(1-p)\frac{1}{Z_{2}}e^{-\lambda (1-p)\sigma_{z}})(U^t)^{\dag}\\
 \end{align*}
+
 \newpage

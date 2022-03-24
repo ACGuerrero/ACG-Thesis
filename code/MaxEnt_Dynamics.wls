@@ -97,24 +97,24 @@ Do[Do[
 	,{z,0.05,0.95,0.05}],{p,0.05,0.95,0.05}]
 
 
-testTargetState=UniformMixedStates[zcoord,1][[1]];
+testTargetState=(IdentityMatrix[2]+zcoord*Normalize[{1.,1.,3.}] . Rest[gellMannBasis[1]])/2;
 
 
 H=Pi/4*PauliMatrix[3];
-MEComp[p_]:=(p*Tanh[-p*lagrangemult]);
 unitary=KroneckerProduct[MatrixExp[I*H],IdentityMatrix[2]];
 testMaxEnt=MaxEntForStateNotInZ[testTargetState,ZMaxEnt];
 newtestMaxEnt=unitary . testMaxEnt . Dagger[unitary];
 neweffective=CGKraus[newtestMaxEnt,swapP];
 Norm/@densityMatrixToPoint[{testTargetState,neweffective},gellMannBasis[1]]
 With[
-{vecs=densityMatrixToPoint[{testTargetState,MEComp[swapP]*partialTraceB[testMaxEnt],MEComp[1-swapP]*partialTraceA[testMaxEnt],neweffective,MEComp[swapP]*partialTraceB[newtestMaxEnt],MEComp[1-swapP]*partialTraceA[newtestMaxEnt]},gellMannBasis[1]]},
+{vecs=densityMatrixToPoint[{testTargetState,swapP*partialTraceB[testMaxEnt],(1-swapP)*partialTraceA[testMaxEnt],neweffective,swapP*partialTraceB[newtestMaxEnt],(1-swapP)*partialTraceA[newtestMaxEnt]},gellMannBasis[1]]},
 	ShowWithBlochSphere[
 		{
 		ListPointPlot3D[
 			{#}&/@vecs,
 			PlotStyle->{Red,Green,Blue,Darker[Red],Darker[Green],Darker[Blue]},
 			BoxRatios->{1, 1, 1},
+			Boxed->False,
 			PlotRange->{{-1.,1.},{-1.,1.},{-1.,1.}},
 			AxesOrigin->{0,0,0},
 			Ticks->None,
@@ -122,14 +122,57 @@ With[
 			PlotLegends->{HoldForm[Subscript[\[Rho],i]],HoldForm[Subscript[\[Rho],iA]],HoldForm[Subscript[\[Rho],iB]],HoldForm[Subscript[\[Rho],f]],HoldForm[Subscript[\[Rho],fA]],HoldForm[Subscript[\[Rho],fB]]}
 		],
 		Graphics3D[
-		{Arrowheads[Small],Sequence@@(Arrow[{{0,0,0},#}]&/@vecs)}
+		{Green,Arrowheads[Small],Arrow[{vecs[[3]],vecs[[2]]+vecs[[3]]}]}
 		],
 		Graphics3D[
-		{Green,Arrowheads[Small],Arrow[{vecs[[3]],vecs[[2]]+vecs[[3]]}]}
+		{Darker[Green],Arrowheads[Small],Arrow[{vecs[[3]],vecs[[3]]+vecs[[5]]}]}
+		],
+		Graphics3D[
+		{Blue,Arrowheads[Small],Arrow[{{0,0,0},vecs[[3]]}]}
+		],
+		Graphics3D[
+		{Darker[Green],Arrowheads[Small],Arrow[{{0,0,0},vecs[[5]]}]}
 		]
 		}
 	]
 ]
+
+
+Ham[t_]:=t*PauliMatrix[3];
+U[t_]:=KroneckerProduct[MatrixExp[I*Ham[t]],IdentityMatrix[2]];
+n=10;
+points=densityMatrixToPoint[Table[CGKraus[U[t] . testMaxEnt . Dagger[U[t]],swapP],{t,0,Pi,N[Pi/n]}],gellMannBasis[1]];
+points2=swapP*densityMatrixToPoint[(partialTraceB[#]&/@Table[U[t] . testMaxEnt . Dagger[U[t]],{t,0,Pi,N[Pi/n]}]),gellMannBasis[1]];
+figure=With[
+	{vecs=densityMatrixToPoint[{testTargetState,swapP*partialTraceB[testMaxEnt],(1-swapP)*partialTraceA[testMaxEnt]},gellMannBasis[1]]},
+	ShowWithBlochSphere[{
+		ListPointPlot3D[
+			{#}&/@vecs,
+			PlotStyle->{Red,Green,Blue},
+			BoxRatios->{1, 1, 1},
+			Boxed->False,
+			PlotRange->{{-1.,1.},{-1.,1.},{-1.,1.}},
+			AxesOrigin->{0,0,0},
+			Ticks->None,
+			AxesLabel->{"x","y","z"},
+			PlotLegends->{\[Rho],HoldForm[Subscript[\[Rho],A]],HoldForm[Subscript[\[Rho],B]]}
+		],
+		Graphics3D[
+		{Blue,Line[{{0,0,0},vecs[[3]]}]}
+		],
+		Graphics3D[
+		{Darker[Green],Sequence@@(Line[{vecs[[3]],#}]&/@points)}
+		],
+		Graphics3D[
+		{Darker[Green],Sequence@@(Line[{{0,0,0},#}]&/@points2)}
+		],
+		ListPointPlot3D[{points,points2},PlotStyle->{Red,Darker[Green]}]
+	}]
+]
+Export["../figures/"<>"Ux1_H=sigmaz_sequence_"<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>".png",figure]
+
+
+MatrixExp[I*t*PauliMatrix[3]]
 
 
 (*Export["../figures/"<>"MaxEnt_SWAP_t0vst1_"<>"_n="<>ToString[n]<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>"_beta="<>ToString[beta]<>"_delta="<>ToString[delta]<>".png",
