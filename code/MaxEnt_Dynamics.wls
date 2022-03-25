@@ -18,7 +18,7 @@ SetDirectory["/home/acastillo/Documents/tesis-adan/code"];
 
 (*There are two basic parameters for the coarse graining problem.
 The z coordinate of the state and the swap probability*)
-swapP = 0.85;
+swapP = 0.5;
 zcoord = 0.9;
 ztargetstate=(IdentityMatrix[2]+zcoord*PauliMatrix[3])/2;
 
@@ -35,7 +35,7 @@ lagrangemult=LagrangeMultFromZCoord[rzlambdatable,zcoord][[1]];
 ZMaxEnt=CGMaxEntStateLM[lagrangemult,swapP];
 
 Print["The maximum entropy state is: ", ZMaxEnt//MatrixForm]
-Print["Fidelity between the coarse maximum entropy state and the target state: ", fidelity[CGKraus[ZMaxEnt,swapP],targetstate]]
+Print["Fidelity between the coarse maximum entropy state and the target state: ", fidelity[CGKraus[ZMaxEnt,swapP],ztargetstate]]
 
 
 (*
@@ -59,14 +59,15 @@ Print["Relative error: ", 100*Abs[realfactor-thefactor]/thefactor, "%"]
 ================  general  ================
 ===========================================
 *)
+Clear[unitary]
 (*We create mixed states with a radius of zcoord, then we
 obtain their corresponding MaxEnt states*)
 MaxEntsNotInZ=MaxEntForStateNotInZ[#,ZMaxEnt]&/@UniformMixedStates[zcoord,1500];
 (*H=Pi/4*KroneckerProduct[PauliMatrix[3],PauliMatrix[3]];
 unitary=MatrixExp[I*H];*)
-unitary=CNOT
-NewMaxEnt=unitary . ZMaxEnt . Dagger[unitary];
-NewMaxEntsNotInZ=unitary . # . Dagger[unitary]&/@MaxEntsNotInZ;
+unitary[t_]:=MatrixExp[I*t*KroneckerProduct[PauliMatrix[3],PauliMatrix[3]]];
+NewMaxEnt=unitary . ZMaxEnt . Dagger[unitary[1]];
+NewMaxEntsNotInZ=unitary[1] . # . Dagger[unitary[1]]&/@MaxEntsNotInZ;
 CoarseMaxEntsNotInZ=Chop[CGKraus[#,swapP]]&/@MaxEntsNotInZ;
 CoarseNewMaxEntsNotInZ=Chop[CGKraus[#,swapP]]&/@NewMaxEntsNotInZ;
 (*
@@ -75,6 +76,45 @@ UnitaryEvolutionAss=ApplyUnitaryButSlowly[unitary,steps,assignements];
 CoarseEvolutionAss=Table[Map[coarseGraining2[#,swapP]&,UnitaryEvolutionAss[[i]]],{i,1,Length[UnitaryEvolutionAss]}];
 Histogram[#,{-2*Pi,2*Pi,0.05}]&/@Transpose[differences]*)
 PlotTwoCoarseSets[CoarseMaxEntsNotInZ,CoarseNewMaxEntsNotInZ,{"Initial states","Final states"},"Evolution of the Assignement Map"]
+
+
+MaxEntsNotInZ=MaxEntForStateNotInZ[#,ZMaxEnt]&/@UniformMixedStates[zcoord,1500];
+steps=100;
+end=N[Pi];
+pngset=Table[
+	ShowWithBlochSphere[{
+		ListPointPlot3D[
+			densityMatrixToPoint[Chop[CGKraus[#,swapP]&/@(unitary[t] . # . Dagger[unitary[t]]&/@MaxEntsNotInZ)],gellMannBasis[1]],
+			BoxRatios->{1, 1, 1},
+			Boxed->False,
+			PlotRange->{{-1.,1.},{-1.,1.},{-1.,1.}},
+			AxesOrigin->{0,0,0},
+			Ticks->None,
+			AxesLabel->{"x","y","z"}]
+	}],
+	{t,0,end,end/steps}];
+PNGSetToGif[set_]:=Export["../figures/"<>"ising_effevol"<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>".gif",
+Flatten[{set, Table[set[[i]], {i, Length[set]}]}]]
+PNGSetToGif[pngset]
+
+
+(*
+CoarseEvolutionPNGSet[zcoord_,swapP_,]:= With[
+{coarseev=Table[Map[coarseGraining2[#,swapP]&,ApplyUnitaryButSlowly[unitary,steps,assignements][[i]]],{i,1,Length[ApplyUnitaryButSlowly[unitary,steps,assignements]]}];
+},
+Table[
+Labeled[
+Show[
+ListPointPlot3D[densityMatrixToPoint[coarseev[[i]],gellMannBasis[1]],BoxRatios->{1, 1, 1},PlotRange->{{-1.,1.},{-1.,1.},{-1.,1.}}],
+Graphics3D[{Opacity[0.2],GrayLevel[0.9],Sphere[]},BoxRatios->1,Axes->True]
+],
+{"t="<>ToString[i],"Coarse evolution for p="<>ToString[swapP]<>", z="<>ToString[zcoord]},
+{Top,Bottom}], 
+{i,Length[coarseev]}]];
+
+PNGSetToGif[set_]:=Export["../figures/"<>"coarse_swap_evol_"<>ToString[steps]<>"steps"<>"_n="<>ToString[n]<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>"_beta="<>ToString[beta]<>"_delta="<>ToString[delta]<>".gif",
+Flatten[{gif, Table[gif[[i]], {i, Length[gif] }]}]]
+*)
 
 
 lambdastep=0.05;
@@ -140,11 +180,12 @@ a=1;
 b=-1;
 testTargetState=(IdentityMatrix[2]+zcoord*Normalize[{-0.3,-0.3,0.5}] . Rest[gellMannBasis[1]])/2;
 testMaxEnt=MaxEntForStateNotInZ[testTargetState,ZMaxEnt];
-Ham1=(a*PauliMatrix[1]+b*PauliMatrix[2]);
-Ham2=100*PauliMatrix[3];
-U1[t_]:=KroneckerProduct[MatrixExp[t*I*Ham1],MatrixExp[t*I*Ham2]];
-n=3000;
-end=3*Pi/4;
+Ham1=1*PauliMatrix[3];
+Ham2=10*PauliMatrix[3];
+(*U1[t_]:=KroneckerProduct[MatrixExp[t*I*Ham1],MatrixExp[t*I*Ham2]];*)
+U1[t_]:=MatrixExp[I*t*KroneckerProduct[PauliMatrix[3],PauliMatrix[3]]];
+n=300;
+end=Pi;
 points=densityMatrixToPoint[Table[CGKraus[U1[t] . testMaxEnt . Dagger[U1[t]],swapP],{t,0,end,N[end/n]}],gellMannBasis[1]];
 points2=swapP*densityMatrixToPoint[(partialTraceB[#]&/@Table[U1[t] . testMaxEnt . Dagger[U1[t]],{t,0,end,N[end/n]}]),gellMannBasis[1]];
 points3=(1-swapP)*densityMatrixToPoint[(partialTraceA[#]&/@Table[U1[t] . testMaxEnt . Dagger[U1[t]],{t,0,end,N[end/n]}]),gellMannBasis[1]];
@@ -181,17 +222,6 @@ Export["../figures/"<>"Ux1_H=1x+2y_sequence"<>"_z="<>ToString[zcoord]<>"_p="<>To
 
 
 
-		Graphics3D[
-		{Blue,Line[{{0,0,0},vecs[[3]]}]}
-		],
-		Graphics3D[
-		{Darker[Green],Sequence@@(Line[{vecs[[3]],#}]&/@points)}
-		],
-		Graphics3D[
-		{Darker[Green],Sequence@@(Line[{{0,0,0},#}]&/@points2)}
-		],
-
-
 (*Export["../figures/"<>"MaxEnt_SWAP_t0vst1_"<>"_n="<>ToString[n]<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>"_beta="<>ToString[beta]<>"_delta="<>ToString[delta]<>".png",
 	CompareTwoCoarseSets[
 		coarseassign,
@@ -208,6 +238,3 @@ Export["../figures/"<>"MapAss_SWAP_t0vst1_"<>"_n="<>ToString[n]<>"_z="<>ToString
 	]
 ]
 *)
-
-
-FullSimplify[MatrixExp[I*t*(2*PauliMatrix[1]+PauliMatrix[2])]]//MatrixForm
