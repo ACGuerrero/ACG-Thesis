@@ -1,7 +1,7 @@
 This is my license thesis' repository
 <p float="left">
-<img src="./figures/ising_effevol_z=0.9_p=0.95" width="250" height="250" />
-<img src="./figures/ising_effevol_z=0.9_p=0.5" width="250" height="250" />
+<img src="./figures/ising_effevol_z=0.9_p=0.95.gif" width="250" height="250" />
+<img src="./figures/ising_effevol_z=0.9_p=0.5.gif" width="250" height="250" />
 </p>
 
 TO DO LIST
