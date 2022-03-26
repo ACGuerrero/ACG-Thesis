@@ -12,11 +12,11 @@ TO DO LIST
  9. Use real exponential expansion to simplify results in SWAP section
  10. Explore $H=\sigma_{z}\otimes \sigma_{z}$  [9a04ece](https://github.com/ACGuerrero/tesis-adan/commit/274d771536b0b04ea4edca866fc06359d5e0b8b8)
  11. Obtain the separable form of the maximum entropy state in terms of three lagrange multipliers
- 12. Finish first chapter's Purity and Evolution sections
  14. Explore relationship between the parts of the maxent and the effective state.
  15. Fix numerical lambda(rz) (ThesisTools.m)
  16. Add sequence of compression to the SWAP section
  18. Solve the CNOT problem
+ 12. Finish first chapter's Purity and Evolution sections [800776b](https://github.com/ACGuerrero/tesis-adan/commit/800776b02a9f1b44c08d7509be9413000f6acc87)
  17. ~~Try particular unitaries in the case UxV~~&#x2611; [d2417b6](https://github.com/ACGuerrero/tesis-adan/commit/d2417b6104a94d028aaf8026f86667775adb2e32)
  19. ~~Finish entropy section~~&#x2611;
  20. ~~Finish maxent section~~&#x2611;
