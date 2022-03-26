@@ -3,25 +3,23 @@
 
 Los vectores de estado no pueden describir a todos los sistemas estudiables en el contexto de la mecánica cuántica. Por esto, y porque será particularmente útil para nuestro trabajo, introducimos el concepto del operador de densidad (también llamado, en el caso discreto, que es el que nos incumbe, matriz de densidad) de forma similar a como lo hizo L.D. Landau en 1927 \cite{Landau}.
 
-Considérese un sistema descrito por el vector de estado $\ket{\varphi}\in\hilbert_{n}$, con $\hilbert_{n}$ el espacio de Hilbert $\hilbert_{n}=\Complex^{n}$; y $A$ un observable (un operador hermítico). Se sabe que el valor de expectación del observable está dado por $\expval{A}=\bra{\varphi}A\ket{\varphi}$. Sin embargo, se puede manipular esta expresión a través de una base ortogonal $\{\ket{e_{k}}\}$ del espacio $\hilbert_{n}$:
+Considérese un sistema descrito por el vector de estado $\ket{\varphi}\in\hilbert_{n}$, con $\hilbert_{n}$ el espacio de Hilbert $\hilbert_{n}=\Complex^{n}$; y $A$ un observable (un operador hermítico). Se sabe que el valor de expectación del observable está dado por $\expval{A}=\bra{\varphi}A\ket{\varphi}$. Pues bien, esta expresión puede ser manipulada a través de una base ortogonal $\{\ket{e_{k}}\}$ del espacio $\hilbert_{n}$:
 \begin{align*}
-\expval{A}&=\qty(\sum_{i}\dyad{e_{i}})\bra{\varphi}A\ket{\varphi}\qty(\sum_{j}\dyad{e_{j}}),\\
-&=\bra{\varphi}\qty(\sum_{i}\dyad{e_{i}})A\qty(\sum_{j}\dyad{e_{j}})\ket{\varphi},\\
-&=\sum_{i,j}\bra{e_{j}}\ket{\varphi}\bra{\varphi}\ket{e_{i}}\bra{e_{i}}A\ket{e_{j}}.\\
+\expval{A}&=\qty(\sum_{i}\dyad{e_{i}})\bra{\varphi}A\ket{\varphi}\qty(\sum_{j}\dyad{e_{j}})\\
+&=\bra{\varphi}\qty(\sum_{i}\dyad{e_{i}})A\qty(\sum_{j}\dyad{e_{j}})\ket{\varphi}\\
+&=\sum_{i,j}\bra{e_{j}}\ket{\varphi}\bra{\varphi}\ket{e_{i}}\bra{e_{i}}A\ket{e_{j}}\rlap{.}\\
 \end{align*}
-Esta es una suma sobre los elementos de dos matrices: la del observable $A$ y la definida por $\dyad{\phi}$. 
-Sin embargo, esta expresión puede simplificarse, pues es posible deshacerse de uno de los proyectores introducidos:
+Esta es una suma sobre los elementos de dos matrices: la del observable $A$ y la definida por $\dyad{\varphi}$. Por completez de la base $\{\ket{e_{i}}\}$,
 \begin{align*}
-\expval{A}&=\sum_{j}\bra{e_{j}}\ket{\varphi}\bra{\varphi}\qty(\sum_{i}\dyad{e_{i}})A\ket{e_{j}},\\
-&=\sum_{j}\bra{e_{j}}\ket{\phi}\bra{\varphi}A\ket{e_{j}},\\
-&=\Tr(\dyad{\varphi}A),\\
+\expval{A}&=\sum_{j}\bra{e_{j}}\ket{\varphi}\bra{\varphi}\qty(\sum_{i}\dyad{e_{i}})A\ket{e_{j}}\\
+&=\sum_{j}\bra{e_{j}}\ket{\phi}\bra{\varphi}A\ket{e_{j}}\\
+&=\Tr(\dyad{\varphi}A)\rlap{,}
 \end{align*}
 donde definimos al operador de densidad $\rho$ para un sistema descrito por $\ket{\varphi}$ como
 \begin{equation}\label{eq:DensOpPure}
 \rho=\dyad{\varphi},
 \end{equation} 
-y vemos que es posible hallar el valor esperado de un observable respecto a un estado a través del operador 
-de desidad de este según
+y vemos que es posible hallar el valor esperado de un observable respecto a un estado a través del operador de densidad de este según
 \begin{equation}\label{eq:ExpValFromDensOp}
 \expval{A}=\Tr(A\rho).
 \end{equation}
@@ -41,29 +39,66 @@ Ahora vuélvase a considerar un observable $A$. El valor esperado de dicho obser
 \begin{equation}
 \expval{A}=\sum_{i}p_{i}\bra{\varphi_{i}}A\ket{\varphi_{i}}.
 \end{equation}
-Sea $\{\ket{e_{k}}\}$ una base ortogonal del espacio $\hilbert_{n}$.La expresión puede volver a manipularse:
+Sea $\{\ket{e_{k}}\}$ una base ortogonal del espacio $\hilbert_{n}$.La expresión puede manipularse de forma similar a como se hizo antes:
 \begin{align*}
-\expval{A}&=\sum_{i}p_{i}\bra{\varphi_{i}}A\ket{\varphi_{i}},\\
-&=\sum_{i,j,k}p_{i}\bra{e_{k}}\ket{\varphi_{i}}\bra{\varphi_{i}}\ket{e_{j}} \bra{e_{j}}A\ket{e_{k}}, \\
-&=\sum_{j,k}\bra{e_{k}}\qty(\sum_{i}p_{i}\dyad{\varphi_{i}})\ket{e_{j}} \bra{e_{j}}A\ket{e_{k}}, \\
-&=\sum_{k}\bra{e_{k}}\qty(\sum_{i}p_{i}\dyad{\varphi_{i}})A\ket{e_{k}}, \\
-&=\Tr[\qty(\sum_{i}p_{i}\dyad{\varphi_{i}})A], \\
+\expval{A}&=\sum_{i}p_{i}\bra{\varphi_{i}}A\ket{\varphi_{i}}\\
+&=\sum_{i,j,k}p_{i}\bra{e_{k}}\ket{\varphi_{i}}\bra{\varphi_{i}}\ket{e_{j}} \bra{e_{j}}A\ket{e_{k}}\\
+&=\sum_{j,k}\bra{e_{k}}\qty(\sum_{i}p_{i}\dyad{\varphi_{i}})\ket{e_{j}} \bra{e_{j}}A\ket{e_{k}}\\
+&=\sum_{k}\bra{e_{k}}\qty(\sum_{i}p_{i}\dyad{\varphi_{i}})A\ket{e_{k}}\\
+&=\Tr[\qty(\sum_{i}p_{i}\dyad{\varphi_{i}})A]\rlap{,}
 \end{align*}
-Con lo que la mezcla queda descrita por el operador de densidad $\rho$:
+Con lo que la mezcla queda descrita por el operador de densidad $\rho$ definido según
 \begin{equation}\label{eq:DensOpMix}
-\rho=\sum_{i}p_{i}\dyad{\varphi_{i}}
+\rho=\sum_{i}p_{i}\dyad{\varphi_{i}}.
 \end{equation}
 \subsection{Propiedades del operador de densidad}
+\subsubsection{Validez}
 De la definición del operador de densidad destilan algunas propiedades que permiten reconocer si un operador es un operador de densidad válido, o no \cite{Holevo}:
 \begin{enumerate}
     \item $\Tr(\rho)=1$
     \item $\bra{\varphi}\rho\ket{\varphi}\geq 0$ $\forall$ $\ket{\varphi}\in\hilbert_{n}$
 \end{enumerate}
-Estas dos propiedades funcionan como una deficinición alternatica del operador de densidad. La primera propiedad se deriva de la normalización de los estados $\ket{\varphi_{i}}$ que definen a la matriz de densidad. La segunda puede interpretarse como la necesidad de que la probabilidad de que $\rho$ se halle en el estado $\dyad{\varphi}$ sea mayor o igual a $0$.
+Estas dos propiedades funcionan como una definición alternatica del operador de densidad. La primera propiedad se deriva de la normalización de los estados $\ket{\varphi_{i}}$ que definen a la matriz de densidad. La segunda puede interpretarse como la necesidad de que la probabilidad de que $\rho$ se halle en el estado $\dyad{\varphi}$ sea mayor o igual a $0$.
 \subsubsection{Pureza}
-La ecuación (\ref{eq:DensOpMix}) es la definición del operador de densidad \cite{Chuang}. Es claro, al menos matemáticamente, que el operador $\rho$ no corresponde al operador de densidad $\dyad{\psi}$ del estado $\ket{\psi}=\sum_{i}\sqrt{p_{i}}\varphi_{i}$, que es, justamente, una superposición de los estados $\ket{\varphi_{i}}$ con coeficientes $\sqrt{p_{i}}$.  La diferencia física, como mencionado antes, viene de la incertidumbre asociada a la ignorancia.
+La diferencia entre una mezcla estadística y una superposición puede no ser del todo clara. ¿Cómo son diferentes un sistema que tiene una probabilidad $p_{i}$ de hallarse en el estado $\ket{\varphi_{i}}$ y otro que se halla en una superposición de cada estado $\ket{\varphi_{i}}$ con coeficientes $\sqrt{p_{i}}$? 
 
-\notaAd{Aqui viene un ejemplo de medición: si se mide respecto a una base en la que aparece $\ket{\psi}$, las probabilidades cambian}
+Para responder, considérense dos sistemas de dos niveles. El primero puede hallarse en cualquiera de los siguientes estados
+\begin{align*}
+    \ket{0}=\begin{pmatrix}
+        1\\
+        0
+    \end{pmatrix} && \text{y} && \ket{1}=\begin{pmatrix}
+        0\\
+        1
+    \end{pmatrix}\rlap{,}
+\end{align*}
+con la misma probabilidad $p=\frac{1}{2}$. Entonces el operador de densidad que describe al sistema es 
+\begin{equation*}
+    \rho=\frac{1}{2}(\dyad{0}+\dyad{1})=\frac{1}{2}\Id_{2}.
+\end{equation*}
+Por otro lado, el segundo sistema se halla en una superposción de los mismos estados, con coeficientes $\sqrt{p}$. El operador de densidad que describe al segundo sistema es 
+\begin{align*}
+    \dyad{\psi} && \text{con} && \ket{\psi}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})\rlap{.}
+\end{align*}
+Es claro, al menos matemáticamente, que los sistemas no se hallan en el mismo estado. Si nos propusiéramos calcular la probabilidad de cada uno de hallarse en el estado $\ket{0}$ encontraríamos que
+\begin{align*}
+    \bra{0}\rho\ket{0}=\frac{1}{2} && \text{y} &&\langle 0 \dyad{\psi} 0\rangle=\frac{1}{2}\rlap{.}
+\end{align*}
+y el resultado es el mismo si se hiciera con el estado $\ket{1}$. Parecería entonces que, experimentalmente, los sistemas se hallan en el mismo estado. Esto es falso. Si realizamos un cambio de base, de $\{\ket{1},\ket{2}\}$ a $\{\ket{+},\ket{-}\}$, donde
+\begin{align*}
+    \ket{+}=\frac{1}{\sqrt{2}}\begin{pmatrix}
+        1\\
+        1
+    \end{pmatrix} && \text{y} && \ket{-}=\frac{1}{\sqrt{2}}\begin{pmatrix}
+        1\\
+        -1
+    \end{pmatrix}\rlap{,}
+\end{align*}
+y calculamos la probabilidad de que cada sistema se halle en el estado $\ket{+}$ encontraremos
+\begin{align*}
+    \bra{+}\rho\ket{+}=\frac{1}{2} && \text{pero} &&\langle + \dyad{\psi} +\rangle=1\rlap{.}
+\end{align*}
+Este resultado puede interpretarse como que el sistema descrito por $\rho_{2}$ se halla en el estado $\ket{+}$, mientras que el sistema $\rho_{1}$ siempre tendrá una probabilidad $\frac{1}{2}$ de hallarse en cualquiera de los dos elementos de cualquier base ortogonal que escojamos. Esta es una propiedad del estado máximamente mezclado. La diferencia entre ambos sistemas es que ele elemento probabilístico asociado a las mediciones sobre $\dyad{\psi}$ es de naturaleza cuántica, y se debe a que el sistema se halla en una superposición de estados ortogonales, mietras que en el caso de $\rho$, el elemento probabilístico se debe a nuestra ignorancia sobre la preparación del estado \cite{Chuang}.
 
 Vemos, pues, que hay una diferencia fundamental entre los sistemas que pueden ser descritos por un vector de estado (para los que es posible contruir una matriz de densidad), y aquellos que no. Si para $\rho$ un operador de densidad,
 \begin{equation*}
@@ -75,9 +110,17 @@ se cumple que $\rho=\dyad{\varphi_{i}}$ $\forall i$, entonces decimos que $\rho$
     \item $\rho=\rho^{n}$
     \item $\Tr(\rho^{2})=1$
 \end{itemize}
-La pureza es una medida de qué tan puro es un estado, y se define como \notaAd{ANtes de poner la fórmula necesito una fuente, no voy a poner wikipedia}
+La pureza es una medida de qué tan puro es un estado, y, dado $\rho\in\mcS(\hilbert_{n})$, se define como \cite{Jaeger}
+\begin{equation}
+    \text{Pu}(\rho)=\Tr(\rho^{2}).
+\end{equation}
+Destilan de dicha definición las siguientes dos propiedades:
+\begin{itemize}
+    \item Un estado es puro si y sólo si $\text{Pu}(\rho)=1$.
+    \item Para todo estado, $\frac{1}{n}\geq \text{Pu}(\rho)\geq 1$.
+\end{itemize}
 \subsubsection{Evolución del operador de densidad}
-El postulado de la mecánica cuántica asociado al vector de estado puede reformularse para que funcione con operadores de densidad.
+El postulado de la mecánica cuántica asociado al vector de estado puede reformularse para que funcione con operadores de densidad.\cite{Breuer}
 
 \subsubsection{Parametrización del operador de densidad}
 Cualquier matriz de densidad puede descomponerse en términos de una base del espacio de matrices hermitianas de $n\times n$. Una elección común de base para el espacio es el de los generadores $\{\varsigma_{k}\}$ del grupo $\text{SU}(n)$, junto a la matriz identidad $\Id_{n}$. Aunque no está dentro del alcance de este trabajo estudiar las propiedades y caracterizaciones de lestos generadores, su utilizacion permite parametrizar a las matrices de densidad de forma vectorial \cite{Bruning}. En efecto, sea $\{\varsigma_{k}\}$ un conjunto de generadores de $\text{SU}(n)$ y $\rho$ una matriz de densidad $\rho\in\mcS(\hilbert_{n})$. Entonces $\rho$ está completamente descrita por el vector generalizado de Bloch de dimensión $2n^{2}-1$, $\vec{\gamma}$ definido según
