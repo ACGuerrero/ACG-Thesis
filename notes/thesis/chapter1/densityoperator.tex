@@ -31,14 +31,16 @@ E[A(x)]=\int A(x) \rho(x) dx.
 
 En este sentido, la matriz de densidad ocupa un rol similar al de la función de densidad.
 
+A partir de este momento se asume que todos los espacios de Hilbert con los que se trabaja son complejos y de dimension finita. Esto es, son todos del tipo $\hilbert_{n}=\Complex^{n}$. Al conjunto de operadores de densidad sobre un espacio de Hilbert $\hilbert_{n}$ particular se le denotará mediante $\mcS(\hilbert_{n})$. Además, al conjunto de operadores lineales hermitianos que actúan sobre el mismo espacio se le denotará $\mcL(\hilbert_{n})$. Como nos concentramos en espacios de dimension finita, los operadores tienen representación matricial. Los términos \textit{matriz de densidad} y \textit{operador de densidad} se consideran intercambiables. 
+
 \subsection{Mezclas estadísticas}
 
 Ahora que conocemos el operador de densidad para un sistema descrito por un vector de estado, supóngase que en lugar de estudiar un sistema que está completamente descrito por $\ket{\varphi}$, se trabaja con uno que está en el estado $\ket{\varphi_{i}}$ con probabilidad $p_{i}$, donde $\{\ket{\varphi_{i}}\}$ es un conjunto no necesariamente ortogonal de estados de $n$ niveles $\ket{\varphi_{i}}\in\hilbert_{n}$, y $\{p_{i}\}$ es un conjunto de números reales tales que $\sum_{i}p_{i}=1$. A este sistema se le llama ``mezlca estadística'', y no debe confundirse con una superposición de estados $\ket{\varphi_{i}}$ con coeficientes $\sqrt{p_{i}}$, ya que una superposición está bien caracterizada, y está completamente descrita por $\ket{\psi}=\sum_{i}\sqrt{p_{i}}\ket{\varphi_{i}}$, mientras que la mezcla no lo está: el elemento probabilístico está asociado a un grado de ignorancia sobre la preparación del sistema.
 
 Ahora vuélvase a considerar un observable $A$. El valor esperado de dicho observable con respecto al sistema será, justamente
-\begin{equation}
+\begin{equation*}
 \expval{A}=\sum_{i}p_{i}\bra{\varphi_{i}}A\ket{\varphi_{i}}.
-\end{equation}
+\end{equation*}
 Sea $\{\ket{e_{k}}\}$ una base ortogonal del espacio $\hilbert_{n}$.La expresión puede manipularse de forma similar a como se hizo antes:
 \begin{align*}
 \expval{A}&=\sum_{i}p_{i}\bra{\varphi_{i}}A\ket{\varphi_{i}}\\
@@ -52,7 +54,7 @@ Con lo que la mezcla queda descrita por el operador de densidad $\rho$ definido 
 \rho=\sum_{i}p_{i}\dyad{\varphi_{i}}.
 \end{equation}
 \subsection{Propiedades del operador de densidad}
-\subsubsection{Validez}
+\subsubsection{Caracterización}
 De la definición del operador de densidad destilan algunas propiedades que permiten reconocer si un operador es un operador de densidad válido, o no \cite{Holevo}:
 \begin{enumerate}
     \item $\Tr(\rho)=1$
@@ -111,17 +113,67 @@ se cumple que $\rho=\dyad{\varphi_{i}}$ $\forall i$, entonces decimos que $\rho$
     \item $\Tr(\rho^{2})=1$
 \end{itemize}
 La pureza es una medida de qué tan puro es un estado, y, dado $\rho\in\mcS(\hilbert_{n})$, se define como \cite{Jaeger}
-\begin{equation}
+\begin{equation*}
     \text{Pu}(\rho)=\Tr(\rho^{2}).
-\end{equation}
+\end{equation*}
 Destilan de dicha definición las siguientes dos propiedades:
 \begin{itemize}
     \item Un estado es puro si y sólo si $\text{Pu}(\rho)=1$.
     \item Para todo estado, $\frac{1}{n}\geq \text{Pu}(\rho)\geq 1$.
 \end{itemize}
-\subsubsection{Evolución del operador de densidad}
-El postulado de la mecánica cuántica asociado al vector de estado puede reformularse para que funcione con operadores de densidad.\cite{Breuer}
+\subsubsection{Matriz de densidad reducida}
+Para hablar de la matriz de densidad reducida, es necesario hablar primero de sistemas compuestos. Sean ,pues, $A$ y $B$ dos sistemas con espacios de Hilbert $\hilbert^{A}$ y $\hilbert^{B}$ respectivamente, y sea $C$ un sistema compuesto por $A$ y $B$. Entonces el producto tensorial de los espacios $\hilbert^{A}$ y $\hilbert^{B}$ es otro espacio de Hilbert, uno asociado al sistema $C$, compuesto por $A$ y $B$, de forma que
+ \begin{equation*}
+     \hilbert^{C}=\hilbert^{A}\otimes\hilbert^{B}.
+ \end{equation*}
+En este espacio,
+\begin{equation*}
+    \ket{\psi^{A}}\otimes\ket{\psi^{B}}\in\hilbert^{C}\,\; \; \forall\ket{\psi^{A}}\in\hilbert^{A},\ket{\psi^{B}}\in\hilbert^{B}
+\end{equation*}
+Si $A$ y $B$ representan dos particulas diferentes, entonces $C$ representa a las partículas como conjunto, como sistema de dos partículas. La dimensión del espacio de Hilbert del sistema compuesto cumple
+\begin{equation*}
+    \text{dim}(\hilbert^{C})=\text{dim}(\hilbert^{A})\text{dim}(\hilbert^{B}).
+\end{equation*}
+Sean $\{\varphi_{i}^{A}\}$ y $\{\varphi_{j}^{B}\}$ bases ortonormales de los espacios $\hilbert^{A}$ y $\hilbert^{B}$ respectivamente. Todo estado puro $\ket{\psi^{C}}$ del sistema compuesto puede escribirse como
+\begin{equation*}
+    \ket{\psi^{AB}}=\sum_{j,k}\alpha_{j,k}\ket{\varphi_{j}^{A}}\otimes\ket{\varphi_{k}^{B}}.
+\end{equation*}
+Si un estado puede escribirse como un producto tensorial de estados pertenecientes a los subsistemas del sistema compuesto, entonces se dice que es un estado \textit{producto} o \textit{separable}. Nótese que, en general, los estados del sistema compuesto no son estados separables. El significado físico de que un sistema se halle en un estado producto es que el sistema se halla en un estado en el que no hay correlaciones entre sus subsistemas. Ahora, sean $G^{A}$ y $G^{B}$ dos operadores que actúan en $\hilbert^{A}$ y $\hilbert^{B}$ respectivamente, correspondientes a observables de cada subsistema. Entonces se cumple:
+\begin{equation*}
+    G^{A}\ket{\psi^{A}}\otimes G^{B}\ket{\psi^{B}}=(G^{A}\otimes G^{B})\ket{\psi^{A}}\otimes\ket{\psi^{B}}.
+\end{equation*}
 
+El concepto de la matriz de densidad reducida surge en el caso en el que nos interesa únicamente uno de los subsistemas del sistema compuesto que se está estudiando. Si $\rho^{C}$ es la matriz de densidad del sistema compuesto por $A$ y $B$, entonces la matriz de densidad reducida del sistema $A$ es
+\begin{equation*}
+    \rho^{A}=\Tr^{B}(\rho^{C}),
+\end{equation*}
+donde $\Tr^{B}$ representa la operación de traza parcial con respeco al susbsistema $B$. Si la traza de $\rho^{C}$ es 
+\begin{equation*}
+    \Tr(\rho^{C})=\sum_{j}\bra{\varphi^{C}_{j}}\rho^{C}\ket{\varphi^{C}_{j}},
+\end{equation*}
+para toda base ortonormal $\{\ket{\varphi^{C}_{j}}\}$ de $\hilbert^{C}$, entonces, para toda base ortonormal $\{\ket{\varphi^{B}_{j}}\}$ de $\hilbert^{B}$  la traza parcial respecto a $B$ es
+\begin{equation*}
+    \Tr^{B}(\rho^{C})=\sum_{j}(\Id^{A}\otimes \bra{\varphi^{C}_{j}})\rho^{C}(\Id^{A}\otimes \ket{\varphi^{C}_{j}}).
+\end{equation*}
+Puede verse que el resultado de la operación es trazar sobre los elementos del sistema que no es de interés. La matriz reducida del sistema $A$, o traza parcial con respecto al sistema $B$, actúa como matriz de densidad de $A$, ya que contiene toda la descripción estadísitica de dicho subsistema.
+\subsubsection{Evolución del operador de densidad}
+Los postulados de la mecánica cuántica pueden adaptarse al formalismo de operadores de densidad. En particular, reconociendo que la evolución de un sistema cuántico cerrado descrito por un vector de estado $\ket{\psi}$ dada por la ecuación de Schrodinger \cite{Breuer},
+\begin{equation*}
+    i\hbar\frac{d}{dt}\ket{\psi(t)}=H\ket{\psi(t)},
+\end{equation*}
+puede ser representada a través de un operador unitario $U(t,t_{0})$ según
+\begin{align*}
+    \ket{\psi(t)}=U(t,t_{0})\ket{\psi(t_{0})} && \text{con} && U(t,t_{0})=e^{-iH(t-t_{0})/\hbar}\rlap{,}
+\end{align*}
+es posible afirmar que dado un operador de densidad $\rho(t_{0})$, este evoluciona de acuerdo a
+\begin{equation*}
+    \rho(t)=U(t,t_{0})\rho(t_{0})U^{\dagger}(t,t_{0}).
+\end{equation*}
+Derivando respecto al tiempo, se obtiene la \textit{ecuación de von Neumann}, que corresponde a la ecuación de evolución para operadores de densidad,
+\begin{equation}\label{eq:vonNeumann}
+    i\hbar\frac{d}{d t} \rho(t)=[H,\rho(t)]
+\end{equation}
+\notaAd{Esto es válido para sistemas cerrados, ¿debería meter la extesión a sistemas abiertos?}
 \subsubsection{Parametrización del operador de densidad}
 Cualquier matriz de densidad puede descomponerse en términos de una base del espacio de matrices hermitianas de $n\times n$. Una elección común de base para el espacio es el de los generadores $\{\varsigma_{k}\}$ del grupo $\text{SU}(n)$, junto a la matriz identidad $\Id_{n}$. Aunque no está dentro del alcance de este trabajo estudiar las propiedades y caracterizaciones de lestos generadores, su utilizacion permite parametrizar a las matrices de densidad de forma vectorial \cite{Bruning}. En efecto, sea $\{\varsigma_{k}\}$ un conjunto de generadores de $\text{SU}(n)$ y $\rho$ una matriz de densidad $\rho\in\mcS(\hilbert_{n})$. Entonces $\rho$ está completamente descrita por el vector generalizado de Bloch de dimensión $2n^{2}-1$, $\vec{\gamma}$ definido según
 \begin{equation}
@@ -131,5 +183,4 @@ Si $n=2$, los generadores corresponden a las matrices de Pauli $\sigma_{i}$. En 
 \begin{equation}
     \rho=\frac{1}{4}\sum_{i,j}\gamma_{ij}\sigma_{i}\otimes \sigma_{j} \ \ i,j\in\{0,1,2,3\},
 \end{equation}
-donde $\sigma_{0}=\Id$ y $\gamma_{i.j}=\sigma_{i}\otimes \sigma_{j}\Tr(\rho)$.
-\newpage
+donde $\sigma_{0}=\Id$ y $\gamma_{i.j}=\Tr(\sigma_{i}\otimes \sigma_{j}\rho)$.
