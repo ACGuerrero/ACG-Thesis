@@ -16,7 +16,7 @@ TO DO LIST
  15. Fix numerical lambda(rz) (ThesisTools.m)
  16. Add sequence of compression to the SWAP section
  18. Solve the CNOT problem
- 12. Finish first chapter's Purity and Evolution sections [800776b](https://github.com/ACGuerrero/tesis-adan/commit/800776b02a9f1b44c08d7509be9413000f6acc87)
+ 12. ~~Finish first chapter's Purity and Evolution sections~~&#x2611; [800776b](https://github.com/ACGuerrero/tesis-adan/commit/800776b02a9f1b44c08d7509be9413000f6acc87) [917ca38](https://github.com/ACGuerrero/tesis-adan/commit/917ca38cd526944531e9abafe18178cece1f13ef)
  17. ~~Try particular unitaries in the case UxV~~&#x2611; [d2417b6](https://github.com/ACGuerrero/tesis-adan/commit/d2417b6104a94d028aaf8026f86667775adb2e32)
  19. ~~Finish entropy section~~&#x2611;
  20. ~~Finish maxent section~~&#x2611;
