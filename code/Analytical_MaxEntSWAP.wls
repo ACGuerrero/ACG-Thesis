@@ -82,4 +82,29 @@ Print["The factor separating this states is: ", (contractionfactor=rhozttbv[[3]]
 (*\.b4*)
 
 
-SWAPContractionFactor[1,0.3,1]
+swapP=0.9;
+zcoord=0.9;
+lambdastep=0.05;
+lowerlambda=-4;
+upperlambda=0;
+rzlambdatable=RzLambdaTable[swapP,lowerlambda,upperlambda,lambdastep];
+lagrangemult=LagrangeMultFromZCoord[rzlambdatable,zcoord][[1]];
+contr=SWAPContractionFactor[t=1,swapP,lagrangemult]
+figure1= Show[ListPointPlot3D[{{0,0,0}},
+			BoxRatios->{1, 1, 1},
+			PlotRange->{{-1.,1.},{-1.,1.},{-1.,1.}},
+			AxesLabel->{"x","y","z"}],
+SphereMesh[zcoord]]
+figure2=Show[ListPointPlot3D[{{0,0,0}},
+			BoxRatios->{1, 1, 1},
+			PlotRange->{{-1.,1.},{-1.,1.},{-1.,1.}},
+			AxesLabel->{"x","y","z"}],
+SphereMesh[zcoord*contr]]
+Export["../figures/"<>"sphere_swapcontraction_t=0"<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>".png",figure1]
+Export["../figures/"<>"sphere_swapcontraction_t=1"<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>".png",figure2]
+
+
+SphereMesh[r_]:=ParametricPlot3D[{r*Sin[t] Cos[p], r*Sin[t] Sin[p], r*Cos[t]}, {t, 
+   0, \[Pi]}, {p, 0, 2 \[Pi]}, Lighting -> {"Neutral", White}, 
+  PlotStyle -> GrayLevel[.5], PlotTheme -> None]
+
