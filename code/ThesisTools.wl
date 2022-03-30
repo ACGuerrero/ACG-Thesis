@@ -35,6 +35,7 @@ CGKrausOp::usage="something"
 CGKraus::usage="CGKraus[rho,p] applies the coarse graining map using its Kraus Operators"
 SWAPContractionFactor::usage="SWAPContractionFactor[t,p,\[Lambda]] gives the contraction factor of the coarse system resulting from applying the swap gate to a MaxEnt state characterized by p,\[Lambda]."
 SWAP::usage="SWAP[t] applies the operator at a time t. t=1 is the full swap gate, while t=0 is the identity operator."
+SWAP2::usage="SWAP2[t] applies the operator at a time t. t=1 is the full swap gate, while t=0 is the identity operator."
 PlotTwoCoarseSets::usage="PlotTwoCoarseSets[set1,set2,legend,title] takes two sets of two level density operators and plots their bloch vectors."
 PlotTwoCoarseSetsWLine::usage="PlotTwoCoarseSets[set1,set2,legend,title] takes two sets of two level density operators and plots their bloch vectors, with a line joining corresponding points."
 ShowWithBlochSphere::usage="Acts like Show function, but appends a Graphics3D showing the bloch sphere. Also, argument is a list."
@@ -143,16 +144,10 @@ Sqrt[1-p]KroneckerProduct[IdentityMatrix[2],{0,1}] . swapGate
 
 CGKraus[rho_,p_]:=With[{kr=CGKrausOp[p]},Total[(# . rho . ConjugateTranspose[#])&/@kr]];
 
-SWAPContractionFactor[t_,p_,\[Lambda]_]:=((E^(-I \[Pi] t - \[Lambda] - 
-  2 p \[Lambda]) (2 E^(
-    I \[Pi] t + 2 p \[Lambda]) (-1 + E^(2 \[Lambda])) - 
-   E^(2 \[Lambda]) (1 + E^(2 I \[Pi] t)) (-1 + 2 p) + 
-   E^(4 p \[Lambda]) (1 + E^(2 I \[Pi] t)) (-1 + 
-      2 p)))/(4 (Sinh[\[Lambda]] + (1 - 2 p) Sinh[\[Lambda] - 
-      2 p \[Lambda]])))//Chop;
+SWAPContractionFactor[t_,p_,l_]:=((1-p)*Tanh[-l*p]+p*Tanh[-l*(1-p)])/(p*Tanh[-l*p]+(1-p)*Tanh[-l*(1-p)]);
 
-SWAP[t_]:={{1,0,0,0},{0,(1+Exp[I*Pi*t])/2,(1-Exp[I*Pi*t])/2,0},{0,(1-Exp[I*Pi*t])/2,(1+Exp[I*Pi*t])/2,0},{0,0,0,1}}
-
+SWAP[t_]:={{1,0,0,0},{0,Exp[I*Pi*t/2]*Cos[Pi*t/2],-I*Exp[I*Pi*t/2]*Sin[Pi*t/2],0},{0,-I*Exp[I*Pi*t/2]*Sin[Pi*t/2],Exp[I*Pi*t/2]*Cos[Pi*t/2],0},{0,0,0,1}}
+SWAP2[t_]:={{1,0,0,0},{0,(1+Exp[I*Pi*t])/2,(1-Exp[I*Pi*t])/2,0},{0,(1-Exp[I*Pi*t])/2,(1+Exp[I*Pi*t])/2,0},{0,0,0,1}};
 PlotTwoCoarseSets[set1_,set2_,legend_,title_]:=Show[
 ListPointPlot3D[
 {densityMatrixToPoint[set1,gellMannBasis[1]],densityMatrixToPoint[set2,gellMannBasis[1]]},

@@ -3,6 +3,7 @@
 
 Needs["ThesisTools`"]
 Needs["CoolTools`"]
+Needs["Quantum`"]
 SetDirectory["/home/acastillo/Documents/tesis-adan/code"];
 
 
@@ -11,21 +12,27 @@ $Assumptions=Element[{p,rz,\[Lambda],Z,t},Reals] && rz\[Element]Reals && 0<=rz<=
 A=-\[Lambda]*GObsMaxEnt[p,3];
 ExpMat=MatrixExp[A];
 Z=Tr[ExpMat];
-1/Z//FullSimplify
-MaxEnt=ExpMat/Z;
+1/Z//FullSimplify;
+MaxEnt=KroneckerProduct[(IdentityMatrix[2]+Tanh[-p*\[Lambda]]*PauliMatrix[3])/2,(IdentityMatrix[2]+Tanh[-(1-p)*\[Lambda]]*PauliMatrix[3])/2];
 
 (*Obtenci\[OAcute]n del factor de contracci\[OAcute]n*)
 rhoz0=(Refine[CGKraus[MaxEnt,p],{Element[p, Reals], Element[\[Lambda], Reals], 0<=p<=1}]//Expand);
-Print["The bloch vector of the last operator is: "]
+Print["The bloch vector of the initial operator is: "]
 rhoz0bv=densityMatrixToPoint[{rhoz0},gellMannBasis[1]][[1]]//FullSimplify
 rhozt=(Refine[CGKraus[swapGate . MaxEnt . swapGate,p],{Element[p, Reals], Element[\[Lambda], Reals], 0<=p<=1}]//Expand);
-Print["The bloch vector of the last operator is: ", rhoztbv]
+Print["The bloch vector of the final operator is: "];
 rhoztbv=densityMatrixToPoint[{rhozt},gellMannBasis[1]][[1]]//FullSimplify
-Print["The factor separating this states is: " (contractionfactor=rhoztbv[[3]]/rhoz0bv[[3]])//FullSimplify];
+Print["The factor separating this states is: ",(contractionfactor=rhoztbv[[3]]/rhoz0bv[[3]])//FullSimplify];
+
+
 plot1=Plot3D[contractionfactor,{p,0,1},{\[Lambda],-4,4},AxesLabel->{Style[p,FontSize->18],Style[\[Lambda],FontSize->18],Style[a,FontSize->18]},ColorFunction->GrayLevel,ViewPoint -> {3, 2.2, 2}]
-Export["../figures/ContractionFactorSWAP_3D_lambda-4to4.png",plot1]
-plot3=Plot[Evaluate[Table[contractionfactor/.{p->i},{i,0,0.5,0.1}]],{\[Lambda],-8,0},AxesLabel->{Style[\[Lambda],FontSize->18],Style[a,FontSize->18]},PlotLegends->{Table["p="<>ToString[i],{i,0,0.5,0.1}]}]
-Export["../figures/ContractionFactorSWAP_2D_lambda-8to0.png",plot3]
+Export["../figures/ContractionFactorSWAP_3D_lambda-4to4.png",plot1];
+plot3=Plot[Evaluate[Table[SWAPContractionFactor[1,p,\[Lambda]]/.{p->i},{i,0.1,0.5,0.2}]],{\[Lambda],0,8},PlotStyle->{{Thickness[0.003],Black},{Thickness[0.003],Dashing[Large],Red},{Thickness[0.003],DotDashed,Blue}},AxesStyle->Black,AxesLabel->{Style[\[Lambda],FontSize->15],Style[\[Kappa],FontSize->15]},PlotLegends->{Table["p="<>ToString[i],{i,0.1,0.5,0.2}]}]
+Export["../figures/ContractionFactorSWAP_2D_lambda0to8.png",plot3];
+
+
+plot4=Plot[Evaluate[Table[ZCoordFromLagrangeMult[\[Lambda],p]/.{p->i},{i,0.0,0.5,0.25}]],{\[Lambda],-8,8},PlotStyle->{{Thickness[0.003],Black},{Thickness[0.003],Dashing[Large],Red},{Thickness[0.003],DotDashed,Blue}},AxesStyle->Black,AxesLabel->{Style[\[Lambda],FontSize->15],Style[rz,FontSize->15]},PlotLegends->{Table["p="<>ToString[i],{i,0.0,0.5,0.25}]}]
+Export["../figures/rz(lambda)_lambda-8to8.png",plot4];
 
 
 Print[Subscript[\[Psi],"max"],"=", (MaxEnt//FullSimplify)//MatrixForm]
@@ -53,9 +60,6 @@ Print["The eigensystem of the swap unitary:"]
 Eigensystem[swapGate]
 
 
-
-
-
 Print["To develop the same results for a power of the unitary we need a analytical expression."]
 Print["The eigensystem of the swap unitary:"]
 P={{1,0,0,0},{0,1,1,0},{0,-1,1,0},{0,0,0,1}}
@@ -71,15 +75,19 @@ CoarseEvT=Refine[CGKraus[SwapedMaxEntT,p],
 {Element[p, Reals]}]
 
 
+SWAP[t]//MatrixForm
+
+
 rhoztt=(Refine[CGKraus[SWAP[t] . MaxEnt . ConjugateTranspose[SWAP[t]],p],{Element[p, Reals],Element[t, Reals], Element[\[Lambda], Reals], 0<=p<=1}]//Expand);
 Print["The bloch vector of the last operator is: ", 
-rhozttbv=densityMatrixToPoint[{rhoztt},gellMannBasis[1]][[1]]//FullSimplify]
-
+rhozttbv=densityMatrixToPoint[{rhoztt},gellMannBasis[1]][[1]]]
 Print["The factor separating this states is: ", (contractionfactor=rhozttbv[[3]]/rhoz0bv[[3]])//FullSimplify];
 
 
-(* ::Input:: *)
-(*\.b4*)
+rhozttt=(Refine[CGKraus[SWAP2[t] . MaxEnt . ConjugateTranspose[SWAP2[t]],p],{Element[p, Reals],Element[t, Reals], Element[\[Lambda], Reals], 0<=p<=1}]//Expand);
+Print["The bloch vector of the last operator is: ", 
+
+rhozttbv=densityMatrixToPoint[{rhozttt},gellMannBasis[1]][[1]]]
 
 
 swapP=0.9;
