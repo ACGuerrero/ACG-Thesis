@@ -4,5 +4,34 @@ Sea $\ket{\psi}\in\hilbert_{2}^{\otimes n}$ y $\varrho=\dyad{\psi}$. La aplicaci
 \begin{equation*}
     \CG{\varrho}=\Tr^{i}(\Fuzzy{\varrho})=\Tr^{1}(\Fuzzy{\varrho})
 \end{equation*}
-sin pérdida de generalidad, y donde $\Tr^{i}$ denota la traza parcial sobre todos menos el $i$-ésimo qubit. La aplicación borrosa permuta el primer qubit con el $j$-ésimo qubit con probabilidad $p_{j}$.
+sin pérdida de generalidad, y donde $\Tr^{i}$ denota la traza parcial sobre todos menos el $i$-ésimo qubit. La aplicación borrosa permuta el primer qubit con el $j$-ésimo qubit con probabilidad $p_{j}$. Denotando las matrices de permutación como $S_{1,j}$
+\begin{equation*}
+    \CG{\varrho}=\Tr^{1}\qty(p_{1}\varrho+\sum_{j=2}^{n}p_{j}(S_{1,j})\varrho(S_{1,j})^{\dagger})
+\end{equation*}
+Sea $\{A_{i}\}$ con $A_{i}\in\mcL(\hilbert_{2})$ un conjunto de observables tomográficamente completo. Podemos asignar a $\varrho$ un estado que maximice la entropía de Von Neumann sin agregar información externa, y que satisfaga las restricciones $\expval{A_{i}}=\Tr(\rho A_{i})$. Escójase ${A_{i}}={\sigma_{i}}$, las matrices de Pauli. Los valores esperados de los operadores se traducen como las componentes del vector de Bloch del operador $\rho$. Las restricciones a las que se ve sujeto el operador $\varrho_{max}$ son
+\begin{align*}
+    r_{i}&=\Tr[\sigma_{i}\rho]\\
+    &=\Tr[\sigma_{i}\CG{\varrho}]\\
+    &=\Tr[\sigma_{i}\Tr^{1}\qty(p_{1}\varrho+\sum_{j=2}^{n}p_{j}(S_{1,j})\varrho(S_{1,j})^{\dagger})]\\
+    &=\Tr[\sigma_{i}\otimes\Id_{2^{n-1}}\qty(p_{1}\varrho+\sum_{j=2}^{n}p_{j}(S_{1,j})\varrho(S_{1,j})^{\dagger})]\\
+    &=\Tr[\qty(p_{1}(\sigma_{i}\otimes\Id_{2^{n-1}})+\sum_{j=2}^{n}p_{j}(S_{1,j})^{\dagger}(\sigma_{i}\otimes\Id_{2^{n-1}})(S_{1,j}))\varrho]\\
+    &=\Tr[\qty(p_{1}(\sigma_{i}\otimes\Id_{2^{n-1}})+\sum_{j=2}^{n}p_{j}(\Id_{2^{j-1}}\otimes\sigma_{i}\otimes\Id_{2^{n-j}}))\varrho]\\
+    &=\Tr[\qty(\sum_{j=1}^{n}p_{j}(\Id_{2^{j-1}}\otimes\sigma_{i}\otimes\Id_{2^{n-j}}))\varrho].
+\end{align*}
+Definiendo
+\begin{equation}\label{eq:Ghat}
+    \hat{G}_{i}=\sum_{j=1}^{n}p_{j}(\Id_{2^{j-1}}\otimes\sigma_{i}\otimes\Id_{2^{n-j}}),
+\end{equation}
+las restricciones se pueden esribir como
+\begin{equation}\label{eq:MaxEntRestrictions}
+    r_{i}=\Tr[\hat{G}_{i}\varrho].
+\end{equation}
+Una vez obtenidas las restricciones, se utilizan multiplicadores de Lagrange para obtener el estado de maximiza la entropía. De acuerdo con la ecuación (\ref{eq:GeneralMaxEnt}), el estado de máxima entropía compatible con (\ref{eq:MaxEntRestrictions}) es
+\begin{equation}\label{eq:MaxEntLagMult}
+    \varrho_{max}(\rho)=\frac{1}{Z}e^{-\sum_{i}\lambda_{i}\hat{G}_{i}}.
+\end{equation}
+En principio, la ecuación anterior tiene la misma forma que se halló para el caso $m=2$. Aunque no lo he demosrado, conjeturo que:
+\begin{equation}
+    \rho_{max}=\Motimes_{j=1}^{n}\frac{1}{Z_{j}}\text{exp}\qty(-p_{j}\sum_{i}\lambda_{i}\sigma_{i})
+\end{equation}
 \newpage
