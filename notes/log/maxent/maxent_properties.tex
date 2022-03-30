@@ -5,11 +5,11 @@
 \subsection{El estado de máxima entropía general: dos expresiones}
 Sea $\rho\in\mcS(\hilbert_{2})$ caracterizado por tres parámetros: su pureza y dos ángulos, $\alpha$ y $\beta$. Su vector de Bloch se puede escribir entonces como
 \begin{equation}
-  \vec{r}_{\rho}=\text{Pu}(\rho)\begin{pmatrix}
+  \vec{r}_{\rho}=r_{\rho}\begin{pmatrix}
     \cos{\beta}\sin{\alpha}\\
     \sin{\beta}\sin{\alpha}\\
     \cos{\alpha}\\
-  \end{pmatrix}=\text{Pu}(\rho)\hat{r}_{\rho}.
+  \end{pmatrix}=r_{\rho}\hat{r}_{\rho} \; \; \; \; \text{con} \; \; \; \; r_{\rho}=\sqrt{2\text{Pu}(\rho)-1}
 \end{equation}
 Ahora, sea $\rho_{z}\in\mcS(\hilbert_{2})$ un estado solo con componente en $\sigma_{z}$. La unitaria $V$ tal que $V\rho_{z} V^{\dag}$ tiene la forma
 \begin{equation}
@@ -77,40 +77,17 @@ Naturalmente, el caso general es la ecuación anterior como $V$ aplicada en ella
 \begin{equation}\label{eq:CG(MaxEnt)}
   \boxed{\rho=\frac{1}{2}[\Id+(\hat{r}_{\rho}\cdot\vec{\sigma})(p\tanh{-\lambda p}+(1-p)\tanh{-\lambda (1-p)})]}
 \end{equation}
-\notaAd{Esto lo metí en una nota porque no sé qué tan útil fue:
-
-Ahora, si se compara este resultado con la definición de la aplicación de grano grueso y el hecho que el estado de máxima entropía es separable, encontramos que
-\begin{align*}
-  \varrho_{max}&=\frac{1}{2}(\Id+\sigma_{z}\tanh{(-\lambda p)})\otimes\frac{1}{2}(\Id+\sigma_{z}\tanh{(-\lambda (1-p))})\\
-  &  =\frac{1}{4}(\Id_{4}+\sigma_{z}\otimes\Id_{2}\tanh{(-\lambda p)}+\sigma_{z}\otimes \Id_{2}\tanh{(-\lambda (1-p))}+\sigma_{z}\otimes \sigma_{z}\tanh{-(\lambda p)}\tanh{(-\lambda (1-p))})
-\end{align*}
-}
+Todo lo anterior nos permite obtener otra expresión para $\varrho_{max}$:
+\begin{equation*}
+  \varrho_{max}=\frac{1}{2}(\Id+\sigma_{z}\tanh{(-\lambda p)})\otimes\frac{1}{2}(\Id+\sigma_{z}\tanh{(-\lambda (1-p))})
+\end{equation*}
 \subsection{El estado de máxima entropía en términos de la pureza}
 
 La ecuación (\ref{eq:CG(MaxEnt)}) permite expresar la puerza $\text{Pu}(\rho)$ en términos del multiplicador de Lagrange $\lambda_{3}$. En el caso en el que el estado solo tiene componente en $\sigma_{z}$, esto es equivalente a encontrar $r_{z}=\text{Pu}(\rho_{z})$ en términos del multiplicador de Lagrange. Si nos limitamos a dicho caso,
 \begin{equation}\label{eq:RzTanh}
-    \boxed{r_{z}=p\tanh{-\lambda p}+(1-p)\tanh{-\lambda (1-p)}}
+    \boxed{r_{z}=-(p\tanh{\lambda p}+(1-p)\tanh{\lambda (1-p)})}  
 \end{equation}
-La ecuación anterior, fijada $p$, es una suma de dos funciones inyectivas, y como tal, es inyectiva también. Esto significa que existe la función inversa.
-
-No se ve ninguna forma sencilla de despejar al multiplicador de Lagrange \notaAd{la ecuación (\ref{eq:RzTanh}) y la ecuación (\ref{eq:RZ}) son completamente equivalentes, como debería de ser. La segunda siendo más fea que la primera. }. En realidad, esto solo se puede si la función $r_{z}(\lambda_{3})$ tiene inversa, y esto puede depender del parámetro $p$. Graficar la superficie (Figura \ref{fig:rzsurf}) puede aclarar algo el panorama.
-\begin{figure}[h!]
-\centering
-\begin{subfigure}{0.475\textwidth}
-  \centering
-  \includegraphics[width=0.6\linewidth]{maxent/figures/LagrangeMult_lambda-8to8.png}
-  \caption{$-8<\lambda_{3}<8$}
-\end{subfigure}%
-\begin{subfigure}{0.475\textwidth}
-  \centering
-  \includegraphics[width=0.6\linewidth]{maxent/figures/LagrangeMult_lambda-4to0.png}
-  \caption{$-4<\lambda_{3}<0$}
-\end{subfigure}
-\caption{Superficie de $r_{z}$ según (\ref{eq:RZ}) para dos intervalos de $\lambda_{3}$. A valores $\lambda_{3}<0$ corresponden valores $r_{z}>0$ y viceversa.}
-\label{fig:rzsurf}
-\end{figure}
-
-Después de una breve inspección se concluyen las siguientes cosas:
+La ecuación anterior, fijada $p$, es una suma de dos funciones inyectivas, y como tal, es inyectiva también. Esto significa que existe la función inversa. La figura \ref{fig:rzinv} muestra la forma de $r_{z}(\lambda)$ para valores selectos de $p$. Después de una breve inspección de (\ref{eq:RzTanh}) se concluyen las siguientes cosas:
 \begin{itemize}
 \item la superficie es simétrica respecto al plano $p=0.5$
 \item la superficie es antisimétrica  respecto al plano $\lambda_{3}=0$ i.e. $r_{z
@@ -118,33 +95,28 @@ Después de una breve inspección se concluyen las siguientes cosas:
 }(-´\lambda_{3},p)$
 \item $\text{sgn}(\lambda_{3})=-\text{sgn}(r_{z})$
 \end{itemize}
-
-La simetría respecto al plano $p=0.5$ suguiere un cambio de variable $q=\abs{p-0.5}$. La ecuación (\ref{eq:RZ}) se reescribe como:
-\begin{equation}\label{eq:RZq}
-r_{z}=-\frac{1}{2}\frac{\sinh(\lambda_{3})+2q\sinh(2q\lambda_{3})}{\cosh((q+\frac{1}{2})\lambda_{3})\cosh((q-\frac{1}{2})\lambda_{3})}
-\end{equation}
-Y nos limitamos al dominio $\lambda_{3}\leq0$ y $0\leq q\leq\frac{1}{2}$. Podemos graficar la función (\ref{eq:RZq}) para diferentes valores de $q$ (Figura \ref{fig:rzinv}).
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.6\linewidth]{maxent/figures/rz_has_inverse_lambda-4to4.png}
+\includegraphics[width=0.6\linewidth]{maxent/figures/rz(lambda)_lambda-8to8.png}
 \caption{$r_{z}$ como función de $\lambda_{3}$ para diferentes valores de $q$. La apariencia uno a uno sugiere la existencia de una inversa.}
 \label{fig:rzinv}
 \end{figure}
 
 \subsubsection{Dos soluciones particulares}
 
-Considerando el caso $q=\frac{1}{2}$, la ecuación (\ref{eq:RZq}) se reduce a 
+Considerando el caso $p=0$ o $p=1$, la ecuación (\ref{eq:RzTanh}) se reduce a 
 \begin{equation}
-r_z=-\frac{1}{2}\frac{2\sinh(\lambda_{3})}{\cosh(\lambda_{3})}
+r_z=-\tanh{\lambda_{3}}
 \end{equation}
 de manera que $\lambda_{3}=-\text{arctanh}(rz)$.
 
-Si $q=0$, la ecuación (\ref{eq:RZq}) se reduce a
+Si $p=\frac{1}{2}$, la ecuación (\ref{eq:RzTanh}) se reduce a
 \begin{equation}
-r_z=-\frac{\sinh(\lambda_{3})}{\cosh(\lambda_{3}+1)}
+r_z=-\tanh\frac{1}{2}\lambda_{3}
 \end{equation}
-Mathematica sugiere la solución:
-\begin{equation}\label{eq:lambda0.5}
-\lambda_{3}=\log\qty(\frac{1-r_{z}}{1+r_{z}}).
+de manera que $\lambda_{3}=-\text{arctanh}(2r_{z})$.
+En el límite $(1-p)\rightarrow 0$,
+\begin{equation}
+  r_{z}=-(\tanh{\lambda_{3}}+p(\lambda_{3}\sech^{2}{\lambda_{3}}+\tanh{\lambda_{3}}))
 \end{equation}
 \newpage

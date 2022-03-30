@@ -8,58 +8,29 @@ Utilizando la expresión (\ref{eq:MaxEntSeparable}), se puede pasar tanto a $\va
 \rho(0)=\frac{1}{2}[\Id+(\hat{r}_{\rho}\cdot\vec{\sigma})(p\tanh{-\lambda p}+(1-p)\tanh{-\lambda (1-p)})],
 \end{equation}
 \begin{equation}
-\rho(t=1)=\frac{1}{2}[\Id+(\hat{r}_{\rho}\cdot\vec{\sigma})((p-1)\tanh{-\lambda p}+p\tanh{-\lambda (1-p)})].
+\rho(t=1)=\frac{1}{2}[\Id+(\hat{r}_{\rho}\cdot\vec{\sigma})((1-p)\tanh{-\lambda p}+p\tanh{-\lambda (1-p)})].
 \end{equation}
 Vemos que ambos estados tienen la misma orientación pero pureza distinta. Esto significa que el efecto del \textsc{SWAP} subyacente sobre la esfera de Bloch es comprimir al estado efectivo inicial (esto puede comprobarse en los resultados numéricos mostrados en la figura \ref{fig:factornnum}.) con un coeficiente $\kappa_{1}$ tal que
 \begin{equation}\label{eq:SWAPFactor}
-  \kappa_{1}=\frac{\text{Pu}(\rho(1))}{\text{Pu}(\rho(0))}=\frac{p\tanh{[-\lambda p]}+(1-p)\tanh{[-\lambda (1-p)]}}{(p-1)\tanh{[-\lambda p]}+p\tanh{[-\lambda (1-p)]}}
+  \kappa_{1}=\frac{r_{\rho(1)}}{r_{\rho(0)}}=\frac{(1-p)\tanh{\lambda p}+p\tanh{\lambda (1-p)}}{
+    p\tanh{\lambda p}+(1-p)\tanh{\lambda (1-p)}}
 \end{equation}
-Claro está, el factor de compresión depende del multiplicador de Lagrange, que a su vez es una función de la pureza del estado inicial. La figura \ref{fig:SWAPFactorP} muestra dicha dependencia. Si la dependencia del factor de compresión en el estado efectivo inicial se denota por un superíndice, la dinámica efectiva puede escribirse como
-\begin{equation}
+Claro está, el factor de compresión depende del multiplicador de Lagrange, que a su vez es una función de la pureza del estado inicial. La figura \ref{fig:SWAPFactor2D} muestra dicha dependencia. Si la dependencia del factor de compresión en el estado efectivo inicial se denota por un superíndice, la dinámica efectiva puede escribirse como
+\begin{equation}\label{eq:EffectiveSWAP1}
   \boxed{\frac{1}{2}(\Id+\vec{r}_{\rho}\cdot\vec{\sigma}) \xrightarrow{S} \frac{1}{2}(\Id+\kappa_{1}^{\rho}\vec{r}_{\rho}\cdot\vec{\sigma})}
 \end{equation}
-\begin{figure}[h!]
-  \centering
-  \begin{subfigure}{0.475\textwidth}
-    \centering
-    \includegraphics[width=0.6\linewidth]{maxent/figures/sphere_swapcontraction_t=0_z=0.9_p=0.9.png}
-    \caption{$t=0$}
-  \end{subfigure}%
-  \begin{subfigure}{0.475\textwidth}
-    \centering
-    \includegraphics[width=0.6\linewidth]{maxent/figures/sphere_swapcontraction_t=1_z=0.9_p=0.9.png}
-    \caption{$t=1$}
-  \end{subfigure}
-  \caption{Efecto de la evolución subyacente si $r_{z}=0.9$, $p=0.9$. La dramática contracción se asocia a una pérdida casi total de información.}
-  \label{fig:SWAPFactorP}
-  \end{figure}
+De las ecuaciónes (\ref{eq:SWAPFactor}) y (\ref{eq:EffectiveSWAP1}) distinguimos lo siguiente:
+\begin{itemize}
+  \item Si $p=0.5$, entonces $\kappa_{1}^{\rho}=1$. Esto se debe a que la aplicación borrosa es invariante bajo el $\textsc{SWAP}$ si $p=0.5$.
+  \item $\kappa_{1}^{\rho}$ no depende de la orientación del vector de Bloch, únicamente depende de la magnitud $r_{\rho(0)}$ y $p$.
+  \item En los casos extremos, $p=1$ o $p=0$, la esfera colapsa al origen.
+\end{itemize}
 
 \begin{figure}[h!]
-\centering
-\begin{subfigure}{0.475\textwidth}
   \centering
-  \includegraphics[width=0.6\linewidth]{maxent/figures/ContractionFactorSWAP_2D_lambda-4to0.png}
-  \caption{$-4<\lambda<0$}
-\end{subfigure}%
-\begin{subfigure}{0.475\textwidth}
-  \centering
-  \includegraphics[width=0.6\linewidth]{maxent/figures/ContractionFactorSWAP_2D_lambda-8to0.png}
-  \caption{$-8<\lambda<0$}
-\end{subfigure}
-\caption{Factor de compresión para diferentes valores de $p$, como función de $\lambda$. Notar el límite $\lambda\rightarrow \infty$}
-\label{fig:SWAPFactorP}
-\end{figure}
-\begin{figure}[h!]
-\centering
-\includegraphics[width=0.6\linewidth]{maxent/figures/ContractionFactorSWAP_3D_lambda-4to4.png}
-\caption{Superficie del factor de compresión como función del multiplicador de Lagrange y del parámetro de probabilidad asociado a la aplicación de grano grueso. \notaAd{Parece haber una discontinuidad en $\lambda=0$ que valdría la pena estudiar}}
-\label{fig:SWAPFactorSup}
-\end{figure}
-\begin{figure}[h!]
-\centering
-\includegraphics[width=0.6\linewidth]{maxent/figures/MaxEnt_SWAP_t0vst1_n=5000_z=0.5_p=0.3_beta=150_delta=0.6.png}
-\caption{Apreciación del factor de compresión \notaAd{aquí está bueno comparar la diferencia radial numérica con el factor analítico}}
-\label{fig:factornnum}
+  \includegraphics[width=0.6\linewidth]{maxent/figures/ContractionFactorSWAP_2D_lambda0to8.png}
+  \caption{Factor de compresión $\kappa_{1}$ como función de $\lambda$, para diferentes valores de $p$.}
+  \label{fig:SWAPFactor2D}
 \end{figure}
 
 Como el factor de compresión depende de $\lambda$, la dinámica no es lineal. Las operaciones cuánticas de un qubit se traducen como aplicaciones afines en la esfera de Bloch. Si quisiéramos ver el proceso asociado al \textsc{SWAP} subyacente como una transformación de la forma
@@ -92,13 +63,45 @@ S^{t}=\begin{pmatrix}
  0 & \frac{1}{2}(1+e^{i \pi t}) & \frac{1}{2} (1-e^{i \pi t}) & 0 \\
  0 & \frac{1}{2}(1-e^{i \pi t}) & \frac{1}{2}(1+e^{i \pi t}) & 0 \\
  0 & 0 & 0 & 1
-\end{pmatrix}
+\end{pmatrix}=\begin{pmatrix}
+  1 & 0 & 0 & 0 \\
+  0 & e^{i\frac{t\pi}{2}}\cos{\frac{t\pi}{2}} & -ie^{i\frac{t\pi}{2}}\sin{\frac{t\pi}{2}} & 0 \\
+  0 & -ie^{i\frac{t\pi}{2}}\sin{\frac{t\pi}{2}} & e^{i\frac{t\pi}{2}}\cos{\frac{t\pi}{2}}  & 0 \\
+  0 & 0 & 0 & 1
+ \end{pmatrix}
 \end{equation}
-\notaAd{Lo anterior se ve bien porque es una función periódica en 
-$t$ con periodo 1. Sinceramente aquí no sé que tanto deba detallar las cuentas, pero si se aplica la untaria $S^t$ al estado de máxima entropía, y si se pasa el resultado por la aplicación de grano grueso, el resultado es otro estado alineado en $z$. Esto seguro puede escribirse de forma elegante en notación de Dirac y pues me toca sacarlo bien. Haciendo cuentas a lo tonto uno puede hallar el factor de compresión para $t$ arbitrario:
+Con ayuda de Mathematica pude aplicar este operador para obtener que
 \begin{equation}
-a(\lambda,p,t)=\frac{e^{-\lambda -2 \lambda  p-i \pi  t} \left(2 \left(e^{2 \lambda }-1\right) e^{2 \lambda  p+i \pi  t}-e^{2 \lambda } (2 p-1) \left(1+e^{2 i \pi  t}\right)+(2 p-1) \left(1+e^{2 i \pi  t}\right) e^{4 \lambda  p}\right)}{4 (\sinh (\lambda )+(1-2 p) \sinh (\lambda -2 \lambda  p))}
+  \rho(t)=\frac{1}{2}\{\Id-(\hat{r_{\rho}}\cdot\vec{\sigma})[((1-p)\cos^{2}{\frac{\pi t}{2}}+p\sin^{2}{\frac{\pi t}{2}})\tanh{p\lambda}+(p\cos^{2}{\frac{\pi t}{2}}+(1-p)\sin^{2}{\frac{\pi t}{2}})\tanh{(1-p)\lambda}]\}.
 \end{equation}
-Aquí toca verificar que se recupera lo esperado para $t=0,1$. Además, toca ver si es creciente, decrececiente, y tal, para valores fijos de los otros dos parámetros. Una derivadita parcial should do the trick.
-}
+De esto, el factor de compresión dependiente del tiempo es
+\begin{equation}\label{eq:SWAPFactort}
+  \kappa_{t}^{\rho}=\frac{((1-p)\cos^{2}{\frac{\pi t}{2}}+p\sin^{2}{\frac{\pi t}{2}})\tanh{\lambda p}+(p\cos^{2}{\frac{\pi t}{2}}+(1-p)\sin^{2}{\frac{\pi t}{2}})\tanh{\lambda (1-p)}}{
+    p\tanh{\lambda p}+(1-p)\tanh{\lambda (1-p)}}
+\end{equation}
+
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}{0.475\textwidth}
+    \centering
+    \includegraphics[width=0.6\linewidth]{maxent/figures/sphere_swapcontraction_t=0_z=0.9_p=0.9.png}
+    \caption{$t=0$}
+  \end{subfigure}%
+  \begin{subfigure}{0.475\textwidth}
+    \centering
+    \includegraphics[width=0.6\linewidth]{maxent/figures/sphere_swapcontraction_t=1_z=0.9_p=0.9.png}
+    \caption{$t=1$}
+  \end{subfigure}
+  \caption{Efecto de la evolución subyacente si $r_{z}=0.9$, $p=0.9$. La dramática contracción se asocia a una pérdida casi total de información.}
+  \label{fig:SWAPFactorSequence}
+  \end{figure}
+En términos del valor esperado del observable $\sigma_{z}$, la evolución del estado se da como
+\begin{equation}
+  \expval{\sigma_{z}(t)}=\kappa_{t}^{\rho}\cos{\alpha}
+\end{equation}
+que puede escribirse, también, como las probabilidades de que $\rho(t)$ se halle en el estado $\ket{0}$ o $\ket{1}$
+ \begin{align}
+  \bra{0}\rho(t)\ket{0}=\frac{1}{2}(1+\kappa_{t}^{\rho}\cos{\alpha}) && \bra{1}\rho(t)\ket{1}=\frac{1}{2}(1-\kappa_{t}^{\rho}\cos{\alpha})
+ \end{align}
+ donde la dependencia temporal está completamente contenida dentro del factor $\kappa_{t}^{\rho}$. 
 \newpage
