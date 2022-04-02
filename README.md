@@ -12,6 +12,12 @@ TO DO LIST
  10. Explore $H=\sigma_{z}\otimes \sigma_{z}$  [9a04ece](https://github.com/ACGuerrero/tesis-adan/commit/274d771536b0b04ea4edca866fc06359d5e0b8b8)
  14. Explore relationship between the parts of the maxent and the effective state.
  18. Solve the CNOT problem
+ 21. Make spheres in swap sequence prettier
+ 22. Express MaxEnt as tensor product of matrix powers
+ 23. Study depolaizing channel
+ 24.Derive 1.10 equation in thesis' document
+ 25. Explain lambda and mu
+ 26. Move SWAP section into thesis
  11. ~~Obtain the separable form of the maximum entropy state in terms of three lagrange multipliers~~&#x2611;[ee3a015](https://github.com/ACGuerrero/tesis-adan/commit/ee3a0158e816816f808c2ecc06bc1f412434d948)
  9. ~~Use real exponential expansion to simplify results in SWAP section~~&#x2611;[654ba8d](https://github.com/ACGuerrero/tesis-adan/commit/654ba8dc64cde36e31ce3bc9441ffac0098d7bc5)
  16. ~~Add sequence of compression to the SWAP section~~&#x2611;[13269ca](https://github.com/ACGuerrero/tesis-adan/commit/13269ca00d8cde7d6a227597cadee13661861c82)
