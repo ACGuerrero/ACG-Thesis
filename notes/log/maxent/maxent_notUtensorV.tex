@@ -18,16 +18,25 @@ En la última línea se usa que $[\sigma_{z},e^{a\sigma_{z}}]=0$ (y por consigui
 \begin{align*}
     \mcU_{t}\varrho_{max}\mcU_{t}^{\dag}&=\varrho_{max}\cos^{2}{Jt}+i\sin{Jt}\cos{Jt}[\sigma_{z}\otimes\sigma_{z},\varrho_{max}]+(\sigma_{z}\otimes\sigma_{z}) \varrho_{max} (\sigma_{z}\otimes\sigma_{z}) \sin^{2}{Jt}\\
     &=\rho_{A}\otimes\rho_{B}\cos^{2}{Jt}+i\sin{Jt}\cos{Jt}[\sigma_{z}\otimes\sigma_{z},\rho_{A}\otimes\rho_{B}]+(\sigma_{z}\otimes\sigma_{z}) \rho_{A}\otimes\rho_{B} (\sigma_{z}\otimes\sigma_{z}) \sin^{2}{Jt}\\
+    &=\rho_{A}\otimes\rho_{B}\cos^{2}{Jt}+i\sin{Jt}\cos{Jt}(\sigma_{z}\rho_{A}\otimes\sigma_{z}\rho_{B} - \rho_{A}\sigma_{z}\otimes\rho_{B}\sigma_{z})+(\sigma_{z}\otimes\sigma_{z}) \rho_{A}\otimes\rho_{B} (\sigma_{z}\otimes\sigma_{z}) \sin^{2}{Jt}
 \end{align*}
-que, bajo la aplicación de grano grueso se convierte en
+que, bajo la aplicación de grano grueso,
+\begin{align*}
+    \CG{\varrho_{max}(t)}=&p\Tr_{B}(\varrho_{max}(t))+(1-p)\Tr_{A}(\varrho_{max}(t))\\
+    =&p(\rho_{A}\cos^{2}{Jt}+i\sin{Jt}\cos{Jt}(\sigma_{z}\rho_{A}- \rho_{A}\sigma_{z})+\sigma_{z}\rho_{A}\sigma_{z}\sin^{2}{Jt})\\
+    &+(1-p)(\rho_{B}\cos^{2}{Jt}+i\sin{Jt}\cos{Jt}(\sigma_{z}\rho_{B}- \rho_{B}\sigma_{z})+\sigma_{z}\rho_{B}\sigma_{z}\sin^{2}{Jt})\\
+    =&p(\rho_{A}\cos^{2}{Jt}+i\sin{Jt}\cos{Jt}[\sigma,\rho_{A}]+\sigma_{z}\rho_{A}\sigma_{z}\sin^{2}{Jt})\\
+    &+(1-p)(\rho_{B}\cos^{2}{Jt}+i\sin{Jt}\cos{Jt}[\sigma,\rho_{B}]+\sigma_{z}\rho_{B}\sigma_{z}\sin^{2}{Jt})\\
+\end{align*}
+defininiendo
+\begin{equation}
+    \mcI_{t}(\rho)=\rho cos^{2}(Jt)+i\sin(Jt)\cos(Jt)[\sigma,\rho]+\sigma_{z}\rho\sigma_{z}\sin^{2}(Jt)
+\end{equation}
+hallamos
 \begin{equation}
     \rho(t)=p\mcI_{t}(\rho_{A})+(1-p)\mcI_{t}(\rho_{B})=\mcI_{t}(p\rho_{A}+(1-p)\rho_{B})
 \end{equation}
-Entonces:
+y queda
 \begin{equation}
     \rho(t)=\mcI_{t}(\rho(0))
-\end{equation}
-donde 
-\begin{equation}
-    \mcI_{t}(\rho)=\rho cos^{2}(Jt)+i\sin(Jt)\cos(Jt)[\sigma,\rho]+\sigma_{z}\rho\sigma_{z}\sin^{2}(Jt)
 \end{equation}
