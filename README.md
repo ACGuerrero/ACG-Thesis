@@ -15,7 +15,7 @@ TO DO LIST
  21. Make spheres in swap sequence prettier
  22. Express MaxEnt as tensor product of matrix powers
  23. Study depolaizing channel
- 24.Derive 1.10 equation in thesis' document
+ 24. Derive 1.10 equation in thesis' document
  25. Explain lambda and mu
  26. Move SWAP section into thesis
  11. ~~Obtain the separable form of the maximum entropy state in terms of three lagrange multipliers~~&#x2611;[ee3a015](https://github.com/ACGuerrero/tesis-adan/commit/ee3a0158e816816f808c2ecc06bc1f412434d948)
