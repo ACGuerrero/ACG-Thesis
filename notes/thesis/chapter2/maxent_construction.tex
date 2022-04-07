@@ -1,0 +1,37 @@
+\section{Construcción de la asignación de máxima entropía}
+
+Sea $\rho\in\mcS(\hilbert_{2})$ el estado grueso accesible al observador, y sea $\{A_{i}\}$ con $A_{i}\in\mcL(\hilbert_{2})$ un conjunto de observables tomográficamente completo. Si $\rho$ es un estado grueso correspondiente a un estado fino $\varrho\in\mcS(\hilbert_{2}\otimes\hilbert_{2})$, de acuerdo con lo discutido en la sección (\ref{sec:CH1MaxEnt}), podemos asignar a $\varrho$ un estado que maximice la entropía de Von Neumann sin agregar información externa, y que satisfaga las restricciones $\expval{A_{i}}=\Tr(\rho A_{i})$. ¿Pero cómo se traducen dichas restricciones en el nivel microscópico? Naturalmente, esto dependerá de la relación entre $\varrho$ y $\rho$. Esto es, el estado de máxima entropía depende de la aplicación de grano grueso.
+
+Escójase ${A_{i}}={\sigma_{i}}$, las matrices de Pauli, y la aplicación de grano grueso como (\ref{eq:CG}). Los valores esperados de los operadores se traducen como las componentes del vector de Bloch del operador $\rho$. Las restricciones a las que se ve sujeto el operador $\varrho_{max}$ son
+\begin{align*}
+    r_{i}&=\Tr[\sigma_{i}\rho],\\
+    &=\Tr[\sigma_{i}\Lambda(\varrho)],\\
+    &=\Tr[\sigma_{i}\Tr_{2}(p\varrho+(1-p)S\varrho S^{\dag})],\\
+    &=\Tr[\sigma_{i}\otimes\Id(p\varrho+(1-p)S\varrho S^{\dag})],\\
+    &=\Tr[(p\sigma_{i}\otimes\Id+(1-p)\Id\otimes\sigma_{i})\varrho].
+\end{align*}
+Definiendo
+\begin{equation}\label{eq:Ghat}
+    \hat{G}_{i}=p\sigma_{i}\otimes\Id+(1-p)\Id\otimes\sigma_{i},
+\end{equation}
+las restricciones se pueden esribir como
+\begin{equation}\label{eq:MaxEntRestrictions}
+    r_{i}=\Tr[\hat{G}_{i}\varrho].
+\end{equation}
+Una vez obtenidas las restricciones, se utilizan multiplicadores de Lagrange para obtener el estado de maximiza la entropía. De acuerdo con la ecuación (\ref{eq:GeneralMaxEnt}), el estado de máxima entropía compatible con (\ref{eq:MaxEntRestrictions}) es
+\begin{equation}\label{eq:MaxEntLagMult}
+    \varrho_{\max}(\rho)=\frac{1}{Z}e^{-\sum_{i}\lambda_{i}\hat{G}_{i}}.
+\end{equation}
+Si se sustituye a $\varrho_{max}$ en las ecuaciones (\ref{eq:MaxEntRestrictions}), se obtienen las relaciones entre los multiplicadores de Lagrange y las coordenadas del estado macroscópico. Si se escribe $\abs{\lambda}=\sqrt{\lambda_{1}^{2}+\lambda_{2}^{2}+\lambda_{3}^{2}}$, los resultados son
+\begin{align}
+    \begin{split}\label{eq:MaxEntExpVals}
+    r_{1}&=\lambda_{1}f(\abs{\lambda}),\\
+    r_{2}&=\lambda_{2}f(\abs{\lambda}),\\
+    r_{3}&=\lambda_{3}f(\abs{\lambda}),
+    \end{split}
+\end{align}
+donde
+\begin{equation*}
+    f(\abs{\lambda})=\frac{(2 p-1) e^{2 \abs{\lambda}}+e^{2 p \abs{\lambda}}-e^{2 (p+1) \abs{\lambda}}+(1-2 p) e^{4 p \abs{\lambda}}}{\abs{\lambda}\left(e^{2 p \abs{\lambda}}+1\right) \left(e^{2 \abs{\lambda}}+e^{2 p \abs{\lambda}}\right)}.
+\end{equation*}
+Idealmente, la ecuación (\ref{eq:MaxEntLagMult}) está en términos de los valores de expectación $r_{i}=Tr(\sigma_{i}\rho_{c})$, y no de los multiplicadores de Lagrange. Aunque no es posible despejar a los multiplicadores de Lagrange de las ecuaciones (\ref{eq:MaxEntExpVals}), la función \notaAd{NO SE SI LAS FUNCIONES ri SON UNO A UNO NI NADA, LO TENGO QUE REVISAR BIEN}

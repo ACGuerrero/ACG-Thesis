@@ -1,130 +1,18 @@
-\chapter{Modelos de la dinámica efectiva}
+\chapter{Estado de máxima entropía \textit{borroso}}
 
-\section{A través del estado de máxima entropía}
+Con las bases asentadas, es posible pasar al estudio del problema propuesto por este trabajo: el estudio de la dinámica efectiva asociada a un modelo de grano grueso y a una aplicación se asignación.
 
-\notaAd{Por la forma en la que se está desarrollando el trabajo, este capítulo puede que deba ser renombrado, y centrarse en los resultados y propiedades generales del estado de máxima entropía}
+Supongamos que estudiamos un sistema cuántico de varias particulas, que hemos logrado aislarlo de forma que evolucione como un sistema cuántico cerrado, y que conocemosa ciencia cierta la forma de la evolución seguida por el sistema.
 
-\subsection{Construcción del estado de máxima entropía}
+En principio, parecería que no tendríamos ningún problema para conocer el estado del sistema a un tiempo arbitrario, dado que conozcamos el estado inicial del sistema. Sin embargo, nos damos cuenta de que, al comenzar a realizar mediciones sobre el sistema para poder hallar al estado inicial, nos damos cuenta de que nuestra instrumentación no sólo no puede resolver todos los grados de libertad del sistema, sino que tiene una probabilidad no nula de fallar.
 
-Sea $\rho\in\mcS(\hilbert_{2})$ el estado grueso accesible al observador, y sea $\{A_{i}\}$ con $A_{i}\in\mcL(\hilbert_{2})$ un conjunto de observables tomográficamente completo. Si $\rho$ es un estado grueso correspondiente a un estado fino $\varrho\in\mcS(\hilbert_{2}\otimes\hilbert_{2})$, de acuerdo con lo discutido en la sección (\ref{sec:CH1MaxEnt}), podemos asignar a $\varrho$ un estado que maximice la entropía de Von Neumann sin agregar información externa, y que satisfaga las restricciones $\expval{A_{i}}=\Tr(\rho A_{i})$. ¿Pero cómo se traducen dichas restricciones en el nivel microscópico? Naturalmente, esto dependerá de la relación entre $\varrho$ y $\rho$. Esto es, el estado de máxima entropía depende de la aplicación de grano grueso.
+Al no poder acceder a todas las dimensiones del sistema, nuetra descripción es, efectivamente, un modelo de grano grueso. ¿Cómo podemos describir la evolución del sistema que estamos estudiando? ¿Cómo evoluciona el estado efectivo accesible?
 
-Escójase ${A_{i}}={\sigma_{i}}$, las matrices de Pauli, y la aplicación de grano grueso como (\ref{eq_CG}). Los valores esperados de los operadores se traducen como las componentes del vector de Bloch del operador $\rho$. Las restricciones a las que se ve sujeto el operador $\varrho_{max}$ son
-\begin{align*}
-    r_{i}&=\Tr[\sigma_{i}\rho],\\
-    &=\Tr[\sigma_{i}\Lambda(\varrho)],\\
-    &=\Tr[\sigma_{i}\Tr_{2}(p\varrho+(1-p)S\varrho S^{\dag})],\\
-    &=\Tr[\sigma_{i}\otimes\Id(p\varrho+(1-p)S\varrho S^{\dag})],\\
-    &=\Tr[(p\sigma_{i}\otimes\Id+(1-p)\Id\otimes\sigma_{i})\varrho].
-\end{align*}
-Definiendo
-\begin{equation}\label{eq:Ghat}
-    \hat{G}_{i}=p\sigma_{i}\otimes\Id+(1-p)\Id\otimes\sigma_{i},
-\end{equation}
-las restricciones se pueden esribir como
-\begin{equation}\label{eq:MaxEntRestrictions}
-    r_{i}=\Tr[\hat{G}_{i}\varrho].
-\end{equation}
-Una vez obtenidas las restricciones, se utilizan multiplicadores de Lagrange para obtener el estado de maximiza la entropía. De acuerdo con la ecuación (\ref{eq:GeneralMaxEnt}), el estado de máxima entropía compatible con (\ref{eq:MaxEntRestrictions}) es
-\begin{equation}\label{eq:MaxEntLagMult}
-    \varrho_{\max}(\rho)=\frac{1}{Z}e^{-\sum_{i}\lambda_{i}\hat{G}_{i}}.
-\end{equation}
-Si se sustituye a $\varrho_{max}$ en las ecuaciones (\ref{eq:MaxEntRestrictions}), se obtienen las relaciones entre los multiplicadores de Lagrange y las coordenadas del estado macroscópico. Si se escribe $\abs{\lambda}=\sqrt{\lambda_{1}^{2}+\lambda_{2}^{2}+\lambda_{3}^{2}}$, los resultados son
-\begin{align}
-    \begin{split}\label{eq:MaxEntExpVals}
-    r_{1}&=\lambda_{1}f(\abs{\lambda}),\\
-    r_{2}&=\lambda_{2}f(\abs{\lambda}),\\
-    r_{3}&=\lambda_{3}f(\abs{\lambda}),
-    \end{split}
-\end{align}
-donde
-\begin{equation*}
-    f(\abs{\lambda})=\frac{(2 p-1) e^{2 \abs{\lambda}}+e^{2 p \abs{\lambda}}-e^{2 (p+1) \abs{\lambda}}+(1-2 p) e^{4 p \abs{\lambda}}}{\abs{\lambda}\left(e^{2 p \abs{\lambda}}+1\right) \left(e^{2 \abs{\lambda}}+e^{2 p \abs{\lambda}}\right)}.
-\end{equation*}
-Idealmente, la ecuación (\ref{eq:MaxEntLagMult}) está en términos de los valores de expectación $r_{i}=Tr(\sigma_{i}\rho_{c})$, y no de los multiplicadores de Lagrange. Aunque no es posible despejar a los multiplicadores de Lagrange de las ecuaciones (\ref{eq:MaxEntExpVals}), la función \notaAd{NO SE SI LAS FUNCIONES ri SON UNO A UNO NI NADA, LO TENGO QUE REVISAR BIEN}
-
-\subsection{Propiedades del estado de máxima entropía}
-
-\subsubsection{Dos expresiones del estado de máxima entropía}
+En este capítulo describiremos matemáticamente la aplicación de grano grueso con la que se trabajará, luego se utilizará el Principio de Máxima Entropía para hallar el mejor estimado posible dada nuestra descripción efectiva, y finalmente se propondrá el modelo de la dinámica efectiva. La dinámica efectiva siendo la evolución que el experimentalista observaría.
 
 
-Si se recuerda que un operador unitario se traduce como una rotación en la esfera de Bloch. Entonces dos operadores de densidad están relacionados por una unitaria si sus vectores de Bloch tienen la misma norma euclidiana. Dicho de otra forma, dados $\rho_{1},\rho_{2}\in\mcS(\hilbert_{2})$, que cumplan $\text{Pu}(\rho_{1})=\text{Pu}(\rho_{2})$, entonces existe una matriz unitaria $V$ tal que
-\begin{equation}
-    \rho_{1}=V\rho_{2}V^{\dag}.
-\end{equation}
-Así, si consideramos un estado sobre el eje z,
-\begin{equation}\label{eq:rhoz}
-\rho_{z}=\frac{1}{2}\qty(\Id+z\sigma_{z}),
-\end{equation}
-entonces este está relacionado mediante una unitaria a cualquier estado $\rho\in\mcS(\hilbert_2)$ tal que $\text{Pu}(\rho)=z$.
-
-Sea, pues $\rho$ tal que $\rho=V\rho_{z}V^{\dag}$, con $\varrho_{max}$ el estado de máxima entropía construído para  $\mcV=V\otimes V$. El valor de expectación de las $\sigma_{i}$ puede calcularse como
-\begin{align*}
-    r_{i}&=\Tr\{\sigma_{i}V\rho_{z}V^{\dag}\},\\
-    &=\Tr\{\sigma_{i}V\CG{\varrho_{max}^{z}}V^{\dag}\},\\
-    &=\Tr\{\sigma_{i}\CG{\mcV\varrho_{max}^{z}\mcV^{\dag}}\},\\
-    &=\Tr[\hat{G}_{i}\mcV\varrho_{max}^{z}\mcV^{\dag}],\\
-    &=\Tr[\mcV^{\dag}\hat{G}_{i}\mcV\varrho_{max}^{z}].\\
-    \end{align*}
-De esto, se sigue que el estado de máxima entropía asociado a $\rho_{z}$ se puede reconstruir como:
-\begin{align*}
-\varrho_{max}^{z}&=\frac{1}{\Tr(e^{\sum_{i}\lambda_{i}\mcV^{\dag}\hat{G}_{i}\mcV})}e^{\sum_{i}\lambda_{i}\mcV^{\dag}\hat{G}_{i}\mcV},\\
-&=\frac{1}{\Tr(e^{\mcV^{\dag}\qty(\sum_{i}\lambda_{i}\hat{G}_{i})\mcV^{\dag}})}e^{\mcV^{\dag}\qty(\sum_{i}\lambda_{i}\hat{G}_{i})\mcV^{\dag}},\\
-&=\frac{1}{\Tr(e^{\sum_{i}\lambda_{i}\hat{G}_{i}})}\mcV^{\dag}\qty(e^{\sum_{i}\lambda_{i}\hat{G}_{i}})\mcV,\\
-&=\mcV^{\dag}\varrho_{max}\mcV.
-\end{align*}
-Por lo tanto, si somos capaces de hallar el estado de máxima entropía asociado a un estado alineado en $z$, podemos hallar el asociado a cualquier otro estado mediante:
-\begin{equation}
-\varrho_{max}=\mcV\varrho_{max}^{z}\mcV^{\dag}.
-\end{equation}
-Ahora, de las ecuaciones (\ref{eq:MaxEntExpVals}), puede verse que para que $r_{x}$ y $r_{y}$ se anulen sin que $r_{z}$ también se anule, debe cumplirse que $\lambda_{1}=\lambda_{2}=0$, por lo que el estado de máxima entropía compatible con un estado alineado en $z$ es 
-\begin{equation}
-    \varrho_{max}(\rho_{z})=\frac{1}{Z}e^{-\lambda_{3}\hat{G}_{3}}
-\end{equation}
-La unitaria $V$ que conecta $\rho$ y $\rho_{z}$ puede construirse recordando que a cada estado de dos niveles, $\rho$, lo definen tres parámetros: su pureza, $r$, y dos ángulos $\theta$, $\phi$. Siempre que $\text{Pu}(\rho)=z$, la unitaria que conecta $\rho$ con $\rho_{z}$ es
-\begin{equation}
-  V=
-  \begin{pmatrix}
-      \cos{\theta} & e^{-i\phi}\sin{\theta}\\
-      e^{i\phi}\sin{\theta}& \cos{\theta}\\
-  \end{pmatrix}.
-\end{equation}
-Sabiendo esto, podemos expresar al estado de máxima entropía de dos formas equivalentes:
-
-\noindent\begin{minipage}{.5\linewidth}
-    \begin{equation}\label{eq:MaxEntUnitary}
-        \varrho_{max}(\rho)=\frac{1}{Z}e^{-\lambda_{3}\mcV\hat{G}_{3}\mcV^{\dag}}
-    \end{equation}
-    \end{minipage}%
-    \begin{minipage}{.5\linewidth}
-    \begin{equation}\label{eq:MaxEntLambdas}
-        \varrho_{max}(\rho)=\frac{1}{Z}e^{\sum_{i}\lambda_{i}\hat{G}_{i}}.
-    \end{equation}
-    \end{minipage}
-
-\subsubsection{Separabilidad del estado de máxima entropía}
-Ya hemos visto que el estado de máxima entropía compatible con un estado alineado en $z$ tiene la forma (\ref{eq:MaxEntZ}). Ahora, como los dos términos que componen al operador $\hat{G}_{3}$ comuntan entre sí, entonces la exponencial puede separarse:
-\begin{align*}
-\varrho_{max}&=\frac{1}{Z}e^{-\lambda_{3}p\sigma_{z}\otimes\Id}e^{-\lambda_{3}(1-p)\Id\otimes\sigma_{z}}\\
-&=\frac{1}{Z}(e^{-\lambda_{3}p\sigma_{z}}\otimes\Id)( \Id\otimes e^{-\lambda_{3}(1-p)\sigma_{z}})\\
-&=\frac{1}{Z}(e^{-\lambda_{3}p\sigma_{z}}\otimes e^{-\lambda_{3}(1-p)\sigma_{z}}).\\
-\end{align*}
-Si se separa a la función de partición como un producto de trazas $Z=Z_{1}Z_{2}$, el estado de máxima entropía toma la forma
-\begin{equation}\label{eq:MaxEntZ}
-\varrho_{max}=\frac{e^{-\lambda_{3}p\sigma_{z}}}{Z_{1}} \otimes \frac{e^{-\lambda_{3}(1-p)\sigma_{z}}}{Z_{2}}.
-\end{equation}
-De la ecuación (\ref{eq:MaxEntUnitary}) y de que $\mcV=V\otimes V$ se sigue que el estado de máxima entropía compatible un estado arbitrario $\rho\in\mcS(\hilbert_{2})$ tiene la forma
-\begin{equation}\label{eq:MaxEntSeparable}
-    \varrho_{max}=\frac{e^{-\lambda_{3}pV\sigma_{z}V^{\dag}}}{Z_{1}} \otimes \frac{e^{-\lambda_{3}(1-p)V\sigma_{z}V^{\dag}}}{Z_{2}}.
-\end{equation}
-
-\subsubsection{Generalización: N a M partículas}
-
-Sea $\ket{\psi}\in\hilbert_{2}^{\otimes n}$ y $\varrho=\dyad{\psi}$. La aplicación de grano grueso que resuelve un qubit donde hay $n$ qubits se puede escribir como
-\begin{equation*}
-    \CG{\varrho}=\Tr^{i}(\Fuzzy{\varrho})=\Tr^{1}(\Fuzzy{\varrho})
-\end{equation*}
-sin pérdida de generalidad, y donde $\Tr^{i}$ denota la traza parcial sobre todos menos el $i$-ésimo qubit. La aplicación borrosa permuta el primer qubit con el $j$-ésimo qubit con probabilidad $p_{j}$.
-
-\section{A través del mapeo de asignación promedio}
-
-\section{Partiendo del estado microscópico inicial}
+\input{chapter2/coarse_graining}
+\input{chapter2/maxent_construction}
+\input{chapter2/maxent_properties}
+\input{chapter2/dynamics_construction}
+\newpage

@@ -1,0 +1,42 @@
+\section{Grano grueso \textit{borroso}}
+
+
+Dentro del marco de la \textit{teoría de información cuántica}, especialmente en conexión con la parte experimental, es natural suponer que no siempre es posible disponer de toda la información sobre el \textit{estado} del sistema de interés. Esto ya sea por insuficiencia en la resolución de los aparatos de medición o por el inevitable error inherente a las herramientas de medición. Un prototipo sencillo de error consiste en el inducido por un aparato que no distingue diferentes conjuntos de partículas entre sí. El caso más simple corresponde a la permutación de dos partículas. Este intercambio accidental a la hora de la medición es una \textit{aplicación borrosa}~\cite{FuzzyMeasurements}.
+
+Para ilustrar lo anterior, considérese dicha aplicación borrosa sobre un sistema de dos partículas. Para simplificarlo un poco más, supongamos que cada partícula es un sistema de dos niveles, esto es, el sistema está compuesto por los qubits $A$ y $B$. El estado del sistema está caracterizado por un operador de densidad $\varrho_{AB} \in \mcS(\hilbert_2 \otimes \hilbert_2)$. La acción de la aplicación borrosa se escribe como sigue:
+\begin{align*}
+\mcF:&\mcS(\hilbert_2 \otimes \hilbert_2)\to \mcS(\hilbert_2 \otimes \hilbert_2)\nonumber\\
+&\varrho \mapsto (1-p)\varrho+pS\varrho S,
+\end{align*}
+donde $0<p<1$ es la probabilidad con la que el aparato de medición identifica erróneamente a los dos subsistemas y $S$ es el operador de transposición de dos partículas (llamado operador SWAP), definido como 
+\begin{equation*}
+    S\ket{\psi}\otimes \ket{\phi}=\ket{\phi}\otimes \ket{\psi} \ \ \forall \ket{\psi},\ket{\phi}\in \hilbert_2.
+\end{equation*}
+El estado resultante, $\Fuzzy{\varrho_{AB}}=p\varrho_{AB}+(1-p)\varrho_{BA}$, es una mezcla estadística del estado accesible con un detector perfecto, $\varrho_{AB}$, y el estado donde los qubits tienen las etiquetas equivocadas, $\varrho_{BA}:=S\varrho_{AB} S$. Así, si quisieramos hallar el valor esperado del observable $\sigma_{3}\otimes\Id$ (el valor esperado de $\sigma_{z}$ en la primer partícula), encontraríamos:
+\begin{equation*}
+    \expval{\sigma_{3}\otimes\Id}_{\mcF}=(1-p)\expval{\sigma_{3}\otimes\Id}+p\expval{\Id\otimes\sigma_{3}}
+\end{equation*}
+donde por $\expval{A}_{\mcF}$ nos referimos al valor esperado con respecto al sistema que a pasado por $\mcF$.
+
+Es importante notar que, auque la aplicación borrosa modela el error asociado al aparato de medición, no constituye por si misma un modelo de grano grueso, pues coserva la dimensión del sistema: el aparato resuelve todos los grados de libertad del sistema.
+
+
+Agreguemos al error, la falta de resolución. Una posibilidad es que el instrumento detece una partpicula en donde en realidad haya dos, y aún más, que en un sistema de dos partículas, este sea capaz de medir únicamente observables asociados al primer subsistema. El estado observado sería, de acuerdo con la sección \ref{sec:PartialTrace}, la matriz de densidad reducida de la primera partícula. Matemáticamente, la composición del error y de la falta de resolución puede escribirse como
+\begin{align*}
+\mcC:&\mcS(\hilbert_2 \otimes \hilbert_2)\to \mcS(\hilbert_2)\nonumber\\
+ &\rho_{AB} \mapsto p\rho_A+(1-p)\rho_B,
+\end{align*}
+donde $\rho_A=\tr_B \rho_{AB}$ y $\rho_B=\tr_A \rho_{AB}$, es decir, las matrices de densidad reducidas de la partículas $A$ y $B$, respectivamente.
+
+
+A diferencia de la aplicación borrosa, el modelo de grano grueso disminuye la dimensión del estado resultante. Además se puede mostrar que la ecuación anterior puede reescribirse en términos de la aplicación borrosa~\cite{FuzzyMeasurements},
+\begin{equation}\label{eq:CG}
+\CG{\rho}=(\Tr_{B}\circ\mcF)[\rho].
+\end{equation}
+En este contexto, diferenciamos al estado ``microscópico'' o ``fino'', denotado por $\varrho\in \mcS(\hilbert_2\otimes\hilbert_2)$, y al estado ``macroscópico'' o ``grueso'', denotado por $\rho\in \mcS(\hilbert_2)$, a través de la siguiente relación,
+\begin{equation*}
+    \rho=\CG{\varrho}.
+\end{equation*}
+Es extremadamente importante notar que la relación anterior no es invertible. Pueden existir una infinidad de estados $\varrho$ tales que su descripción gruesa coincida con $\rho$.
+
+Como conocemos la evolución unitaria subyacente, requerimos asignar a $\rho$ un estado microscópico que cumpla con todas las restricciones impuestas por nuestras mediciones. Asumiremos que dicho estado asignado es el que experimenta la evolución. 

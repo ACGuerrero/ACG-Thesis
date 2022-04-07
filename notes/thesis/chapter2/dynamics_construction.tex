@@ -1,0 +1,21 @@
+\section{Construcción de la dinámica}
+\notaAd{CORREGIR ESTA SECCIÓN}
+
+La meta del proyecto es la construcción y estudio de `dinámicas gruesas'', denotadas como $\Gamma_t$, basadas en la aplicación lineal de grano grueso descrita anteriormente sobre estados microscópicos asignados apropiadamente. Todo esto dada una dinámica microscópica unitaria, denotada por $\mcU_t$. Concretamente se construirá lo siguiente,
+\begin{align*}
+\Gamma_{t}:&\mcS(\hilbert_2)\rightarrow \mcS(\hilbert_2)\\
+&\rho_g(0) \mapsto \rho_g(t),
+\end{align*}
+donde la dinámica gruesa se define como la composición,
+\begin{equation*}
+\Gamma_t:=\mcC \circ \mcU_t \circ \mcA_\mcC.
+\end{equation*}
+El siguiente diagrama ilustra la ecuación anterior,
+\[\begin{tikzcd}[arrows={<-|}]
+\rho_{g}(0)  & \rho_{g}(t) \arrow{l}{\Gamma_{t}} \arrow{d}{\mcC}\\
+\rho_{f}(0) \arrow{u}{\mcA_{\mcC}} & \rho_{f}(t). \arrow{l}{\mcU_{t}}
+\end{tikzcd}
+\]
+Aquí $\mcA_\mcC$ denota una aplicación que asigna un estado fino $\rho_f(0)$ al estado $\rho_g(0)$. Como ya se mencionó, no hay una forma única de hacer dicha asignación. Usaremos el
+
+\notaAd{CORREGIR ESTA SECCIÓN}

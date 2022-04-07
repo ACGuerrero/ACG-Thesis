@@ -1,0 +1,9 @@
+\section{La dinámica analítica para el caso $\mcU=\textsc{CNOT}$}
+El operador \textsc{CNOT} puede expandirse de la siguiente manera:
+\begin{equation*}
+    \frac{1}{4}(\Id+\sigma_{3}\otimes\Id+\Id\otimes\sigma_{1}+\sigma_{3}\otimes\sigma_{1})
+\end{equation*}
+Escribiendo al estado de máxima entropía como $\varrho=\rho_{A}\otimes\rho_{B}$, la dinámica efectiva escribimos
+\begin{equation*}
+    \Gamma_{t}^{\mcM,\rho}[\rho(0)]=\frac{1}{2}[\rho(0)+p(\sigma_{3}\rho_{A}\sigma_{3}+\Tr{\sigma_{1}\rho_{B}}[\rho_{A}-\sigma_{3}\rho_{A}\sigma_{3}])+(1-p)(\sigma_{1}\rho_{B}\sigma_{1}+\Tr{\sigma_{3}\rho_{A}}[\rho_{B}-\sigma_{1}\rho_{B}\sigma_{1}])]
+\end{equation*}
