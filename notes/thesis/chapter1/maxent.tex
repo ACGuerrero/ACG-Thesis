@@ -42,15 +42,33 @@ Considerando lo anterior, el estimado para la distribución de probabilidad que 
     p(x)=\frac{e^{-\sum_{j}\lambda_{j}f_{j}(x_{i})}}{Z}.
 \end{equation}
 
-\subsubsection{El estimado de máxima entropía en mecánica estadísitica}
+\subsubsection{El estimado de máxima entropía en mecánica estadística}
 
 Si aplicáramos el principio de máxima entropía a un sistema físico como, por ejemplo, el de un conjunto de $N$ partículas idénticas pero distinguibles de energías $\epsilon_{i}$, del cual únicamente conocemos la energía promedio $E$, nos encontraríamos con que
 \begin{equation}\label{eq:Boltzman}
     p(x_{i})=\frac{e^{-\lambda\epsilon_{i}}}{Z},
 \end{equation}
-que reconocemos como la distribución de Boltzmann, en la que $\lambda=\beta=\frac{1}{k_{B}T}$
+que reconocemos como la distribución de Boltzmann, en la que $\lambda=\beta=\frac{1}{k_{B}T}$.
+
 \subsection{Extensión a la mecánica cuántica}
 
-En su segundo artículo, Jaynes
+En su segundo artículo, Jaynes extiende el Principio de máxima entropía a la mecánica cuántica \cite{JaynesII}. Para esto, identificamos al operador de densidad cuántico como la distribución de probabilidad que buscamos hallar, dados algunos resultados experimentales.
 
-\newpage
+Sean, pues, $\hat{A}_{j}$ $m$ operadores hermitianos que operan sobre $\hilbert_{n}$, con $m<n^{2}-1$, de tal forma que formen un conjunto no tomográficamente completo. Dados sus valores esperados,
+\begin{equation}\label{eq:QuantumRestrictions}
+    \expval{\hat{A}_{j}}=\Tr(\rho \hat{A}_{j}),
+\end{equation} 
+nos interesa hallar qué operador de densidad es el que mejor descibe a nuestro sistema. Invocando el Principio de máxima entropía, buscamos aquel que maximiza la entropía de von Neumann (\ref{eq:VonNeumannEntropy}). bajo las restricciones (\ref{eq:QuantumRestrictions}) además de
+\begin{equation}\label{eq:TraceRestriction}
+    \Tr(\rho)=1.
+\end{equation}
+Una vez más se utiliza el método de los multiplicadores de Lagrange, de manera análoga a como se hizo en el caso clásico. El estado de máxima entropía compatible con las observaciones experimentales es entonces
+\begin{equation*}
+    \rho=\frac{e^{-\sum_{j} \lambda_{j} \hat{A}_{j}}}{Z}.
+\end{equation*}
+\subsubsection{Caso termodinámico cuántico}
+\notaAd{Conocemos $\expval{H}$. El estado de máxima entropía es un estado estacionario. Entonces conmuta con $H$ y comparten eigenbase. ¿Los observables son $H_{kk}$ en la base diagonal? Asumo que esto es los valores esperados respecto a los elementos de la eigenbase. Entonces
+\begin{equation*}
+    \lambda_{k}=\frac{e^{-\beta H_{kk}}}{Z}
+\end{equation*}
+¿Y este es el k-ésimo eigenvalor de $\rho$?}
