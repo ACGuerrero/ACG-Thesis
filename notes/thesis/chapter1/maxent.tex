@@ -2,27 +2,53 @@
 
 \subsection{El principio de máxima entropía clásico}
 
-Supóngase que los resultados de un proceso corresponden a los valores $x_{i}$ de una variable aleatoria $X$. Sea, además $f$, una función sobre $X$, de la que conocemos el valor esperado
+Si se nos informa que el valor esperado de tirar un dado de seis caras particular es $3.5$. ¿Cuál es la probabilidad asociada a cada cara del dado? En principio, el problema no puede resolverse, porque la distribución de probabilidad que da como resultado el valor esperado de $3.5$ no es única. Sería igual de válido asumir que el dado está pesado de tal forma que cae la mitad de veces en $2$, y la otra mitad de veces en $5$, que suponer que todos los valores tienen una probabilidad $\frac{1}{6}$. La segunda opción, claro, parecería la más judiciosa. Esta opción es también la que más incertidumbre sobre cada resultado tiene asociada, y la que menos suposiciones sobre los pesos del dado hace. Aún más importante, asumir que todos los valores son igualmente probables equivale a escoger la distribución de probabilidad que maximiza la entropía.
+
+El principio de máxima entropía fue introducido por E. T. Jaynes en 1957. En su artículo, \textit{Information Theory and Statistical Mechanics}: Jaynes afirma que la distribución de probabilidad que maximice la entropía es la mejor estimación que se puede hacer a través de la información disponible, independientemente de si las predicciones coinciden, o no, con los resultados experimentales \cite{JaynesI}. La estimación obtenida a través de la maximización de la entropía es, además, aquella que introduce la menor cantidad de información externa al sistema.
+
+Jaynes relaciona la teoría de información clásica con la mecánica estadística no por la simple coincidencia en la forma de las entropías de Shannon y de Gibbs, sino a través de una reinterpretación de la mecánica estadística como una forma de inferencia estadística. En este contexto, viendo la entropía física como una medida de la incertidumbre asociada a una distribución de probabilidad, una distribución $p$ que no maximice la entropía, es una distribución que introduce información arbitraria no incluída en las hipótesis iniciales. En efecto, el problema de hallar una distribución de probabilidad adecuada es también un problema de contaminación de la información accesible. Esta contaminación proviene de suposiciones arbitrarias, y sin sustento físico, que pueden hacerse sobre el sistema. Utilizar el principio de máxima entropía permite hallar la distribución de probabilidad menos sesgada posible.
+
+Supóngase que los resultados de un proceso corresponden a los valores $x_{i}$ de una variable aleatoria $X$. Sean, además $f_{i}$, funciones sobre $X$, de las que conocemos su valor esperado. La información accesible se puede escribir como el conjunto de restricciones
 \begin{equation}\label{eq:JaynesRestrictions}
-    \expval{f(x)}=\sum_{i}p(x_{i})f(x_{i}).
+    \expval{f_{j}(x)}=\sum_{i}p(x_{i})f_{j}(x_{i}).
 \end{equation}
-Con esta información, nos interesa hallar la distribución $p(x_{i})$. Introducimos así al Principio de Máxima Entropía.
-
-El principio de máxima entropía fue introducido por E. T. Jaynes en 1957. En su artículo, \textit{Information Theory and Statistical Mechanics}, Jaynes afirma que la distribución de probabilidad obtenida a través del principio de máxima entropía es la mejor estimación que se puede hacer a través de la información disponible, independientemente de si las predicciones coinciden, o no, con los resultados experimentales \cite{JaynesI}.
-
-El problema de hallar una distribución de probabilidad adecuada es también un problema de contaminación de la información accesible. Esta contaminación proviene de suposiciones arbitrarias, y sin sustento físico, que pueden hacerse sobre el sistema. El objetivo es, entonces, hallar la estimación de $p$ menos sesgada posible.
-
-Jaynes relaciona la teoría de información clásica con la mecánica estadística no por la simple coincidencia en la forma de las entropías de Shannon y de Gibbs, sino a través de una reinterpretación de la mecánica estadística como una forma de inferencia estadística. En este contexto, viendo la entropía física como una medida de la incertidumbre asociada a una distribución de probabilidad, una distribución $p$ que no maximice la entropía, es una distribución que introduce información arbitraria no incluída en las hipótesis iniciales.
-
-A través del método de multiplicadores de Lagrange, Jaynes demuestra que la distribución de probabilidad $p$ que maximiza la entropía de Shannon (\ref{eq:ShannonEntropy}), sujeta a las restricciones (\ref{eq:JaynesRestrictions}) es 
-\begin{equation}
-    p(x_{i})=e^{-\lambda-\mu f(x_{i})}
+Buscamos $p$ tal que maximice la etropía de Shannon (\ref{eq:ShannonEntropy}), sujeta a las restricciones experimentales (\ref{eq:JaynesRestrictions}). Para esto, utilizamos el método de multiplicadores de Lagrange. A las restricciones anteriores debe añadirse 
+\begin{equation}\label{eq:NormalizationRestriction}
+    \sum_{i}p(x_{i})=1.
+\end{equation}
+Pedimos que la derivada con respecto a la distribución $p$ de la Lagrangiana
+\begin{equation*}
+    \mcL=-H(p)+\sum_{j}\lambda_{j}\qty(\sum_{i}p(x_{i})f_{j}(x_{i})-\expval{f_{j}(x)})+\mu\qty(\sum_{i}p(x_{i})-1)
+\end{equation*}
+se anule. En esta ecuación, $\lambda_{j}$ es el multiplicador de Lagrange que pesa a la $j$-ésima restrición. Derivando e igualando a cero se obtiene que
+\begin{gather*}
+    \frac{\partial \mcL}{\partial p}=-(1+\log{p(x_{i})})+\sum_{j}\lambda_{j}f_{j}(x_{i})+\mu=0\\
+    \Rightarrow p(x_{i})=e^{1-\mu-\sum_{j}\lambda_{j}f_{j}(x_{i})}.
+\end{gather*}
+Esta es la distribución que maximiza a la entropía. Respecto a los multiplicadores de Lagrange, nótese que por la restricción (\ref{eq:NormalizationRestriction}) se cumple que
+\begin{equation*}
+    \frac{1}{e^{1-\mu}}=\sum_{i}e^{-\sum_{j}\lambda_{j}f_{j}(x_{i})}.
+\end{equation*}
+A partir de esta relación se define a la función de partición,
+\begin{equation*}
+    Z=\sum_{i}e^{-\sum_{j}\lambda_{j}f_{j}(x_{i})},
+\end{equation*}
+que satisface
+\begin{equation*}
+    \expval{f_{j}(x)}=-\frac{\partial}{\partial \lambda_{j}}\ln{Z}.
+\end{equation*}
+Considerando lo anterior, el estimado para la distribución de probabilidad que maximiza la entropía, y que es compatible con las restricciones (\ref{eq:JaynesRestrictions}) tiene la forma 
+\begin{equation}\label{eq:MaxEntDist}
+    p(x)=\frac{e^{-\sum_{j}\lambda_{j}f_{j}(x_{i})}}{Z}.
 \end{equation}
 
-Como ejemplo, supongamos que se tira un dado de seis caras $40$ veces, y el promedio de los tirajes es $\expval{X}=3.2$. Si tratáramos con un dado perfectamente equilibrado, y dispusiéramos del tiempo para hacer una infinidad de tirajes, hallaríamos que $\expval{X}=3.5$. Podríamos asumir, entonces, que el dado está bien equilibrado (una susposición de ergodicidad), y que el valor de expectación hallado experimentalmente difiere por simple falta de tirajes, pero esto equivale a hacer una suposición sobre algo que no sabemos a ciencia cierta.
+\subsubsection{El estimado de máxima entropía en mecánica estadísitica}
 
-\notaAd{Aqui voy a sacar la distribución de máxima entropía. No es complicado.}
-
+Si aplicáramos el principio de máxima entropía a un sistema físico como, por ejemplo, el de un conjunto de $N$ partículas idénticas pero distinguibles de energías $\epsilon_{i}$, del cual únicamente conocemos la energía promedio $E$, nos encontraríamos con que
+\begin{equation}\label{eq:Boltzman}
+    p(x_{i})=\frac{e^{-\lambda\epsilon_{i}}}{Z},
+\end{equation}
+que reconocemos como la distribución de Boltzmann, en la que $\lambda=\beta=\frac{1}{k_{B}T}$
 \subsection{Extensión a la mecánica cuántica}
 
 En su segundo artículo, Jaynes
