@@ -145,15 +145,15 @@ Si un estado puede escribirse como un producto tensorial de estados pertenecient
 
 El concepto de la matriz de densidad reducida surge en el caso en el que nos interesa únicamente uno de los subsistemas del sistema compuesto que se está estudiando. Si $\rho^{C}$ es la matriz de densidad del sistema compuesto por $A$ y $B$, entonces la matriz de densidad reducida del sistema $A$ es
 \begin{equation*}
-    \rho^{A}=\Tr^{B}(\rho^{C}),
+    \rho^{A}=\Tr_{B}(\rho^{C}),
 \end{equation*}
-donde $\Tr^{B}$ representa la operación de traza parcial con respeco al susbsistema $B$. Si la traza de $\rho^{C}$ es 
+donde $\Tr_{B}$ representa la operación de traza parcial con respeco al susbsistema $B$. Si la traza de $\rho^{C}$ es 
 \begin{equation*}
     \Tr(\rho^{C})=\sum_{j}\bra{\varphi^{C}_{j}}\rho^{C}\ket{\varphi^{C}_{j}},
 \end{equation*}
 para toda base ortonormal $\{\ket{\varphi^{C}_{j}}\}$ de $\hilbert^{C}$, entonces, para toda base ortonormal $\{\ket{\varphi^{B}_{j}}\}$ de $\hilbert^{B}$  la traza parcial respecto a $B$ es
 \begin{equation*}
-    \Tr^{B}(\rho^{C})=\sum_{j}(\Id^{A}\otimes \bra{\varphi^{C}_{j}})\rho^{C}(\Id^{A}\otimes \ket{\varphi^{C}_{j}}).
+    \Tr_{B}(\rho^{C})=\sum_{j}(\Id^{A}\otimes \bra{\varphi^{C}_{j}})\rho^{C}(\Id^{A}\otimes \ket{\varphi^{C}_{j}}).
 \end{equation*}
 Puede verse que el resultado de la operación es trazar sobre los elementos del sistema que no es de interés. La matriz reducida del sistema $A$, o traza parcial con respecto al sistema $B$, actúa como matriz de densidad de $A$, ya que contiene toda la descripción estadísitica de dicho subsistema.
 \subsubsection{Evolución del operador de densidad}

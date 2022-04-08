@@ -2,11 +2,11 @@
 \subsection{$m=1$}
 Sea $\ket{\psi}\in\hilbert_{2}^{\otimes n}$ y $\varrho=\dyad{\psi}$. La aplicación de grano grueso que resuelve un qubit donde hay $n$ qubits se puede escribir como
 \begin{equation*}
-    \CG{\varrho}=\Tr^{i}(\Fuzzy{\varrho})=\Tr^{1}(\Fuzzy{\varrho})
+    \CG{\varrho}=\Tr_{\overline{i}}(\Fuzzy{\varrho})=\Tr^{1}(\Fuzzy{\varrho})
 \end{equation*}
-sin pérdida de generalidad, y donde $\Tr^{i}$ denota la traza parcial sobre todos menos el $i$-ésimo qubit. La aplicación borrosa permuta el primer qubit con el $j$-ésimo qubit con probabilidad $p_{j}$. Denotando las matrices de permutación como $S_{1,j}$
+sin pérdida de generalidad, y donde $\Tr_{\overline{i}}$ denota la traza parcial sobre todos menos el $i$-ésimo qubit. La aplicación borrosa permuta el primer qubit con el $j$-ésimo qubit con probabilidad $p_{j}$. Denotando las matrices de permutación como $S_{1,j}$
 \begin{equation*}
-    \CG{\varrho}=\Tr^{1}\qty(p_{1}\varrho+\sum_{j=2}^{n}p_{j}(S_{1,j})\varrho(S_{1,j})^{\dagger})
+    \CG{\varrho}=\Tr_{\overline{1}}\qty(p_{1}\varrho+\sum_{j=2}^{n}p_{j}(S_{1,j})\varrho(S_{1,j})^{\dagger})
 \end{equation*}
 Sea $\{A_{i}\}$ con $A_{i}\in\mcL(\hilbert_{2})$ un conjunto de observables tomográficamente completo. Podemos asignar a $\varrho$ un estado que maximice la entropía de Von Neumann sin agregar información externa, y que satisfaga las restricciones $\expval{A_{i}}=\Tr(\rho A_{i})$. Escójase ${A_{i}}={\sigma_{i}}$, las matrices de Pauli. Los valores esperados de los operadores se traducen como las componentes del vector de Bloch del operador $\rho$. Las restricciones a las que se ve sujeto el operador $\varrho_{max}$ son
 \begin{align*}
@@ -18,7 +18,7 @@ Sea $\{A_{i}\}$ con $A_{i}\in\mcL(\hilbert_{2})$ un conjunto de observables tomo
     &=\Tr[\qty(p_{1}(\sigma_{i}\otimes\Id_{2^{n-1}})+\sum_{j=2}^{n}p_{j}(\Id_{2^{j-1}}\otimes\sigma_{i}\otimes\Id_{2^{n-j}}))\varrho]\\
     &=\Tr[\qty(\sum_{j=1}^{n}p_{j}(\Id_{2^{j-1}}\otimes\sigma_{i}\otimes\Id_{2^{n-j}}))\varrho].
 \end{align*}
-\ddnote{me gustó mucho esta derivación, solo corregir lo de la notación de la traza}
+\ddnote{me gustó mucho esta derivación, solo corregir lo de la notación de la traza} \notaAd{Corregida}.
 Definiendo
 \begin{equation}\label{eq:Ghat}
     \hat{G}_{i}=\sum_{j=1}^{n}p_{j}(\Id_{2^{j-1}}\otimes\sigma_{i}\otimes\Id_{2^{n-j}}),
