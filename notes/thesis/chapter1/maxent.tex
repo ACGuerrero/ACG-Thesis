@@ -22,16 +22,16 @@ Pedimos que la derivada con respecto a la distribución $p$ de la Lagrangiana
 \end{equation*}
 se anule. En esta ecuación, $\lambda_{j}$ es el multiplicador de Lagrange que pesa a la $j$-ésima restrición. Derivando e igualando a cero se obtiene que
 \begin{gather*}
-    \frac{\partial \mcL}{\partial p}=-(1+\log{p(x_{i})})+\sum_{j}\lambda_{j}f_{j}(x_{i})+\mu=0\\
-    \Rightarrow p(x_{i})=e^{1-\mu-\sum_{j}\lambda_{j}f_{j}(x_{i})}.
+    \frac{\partial \mcL}{\partial p}=k(1+\log{p(x_{i})})+\sum_{j}\lambda_{j}f_{j}(x_{i})+\mu=0\\
+    \Rightarrow p(x_{i})=\exp[-(1+\frac{\mu}{k})-\frac{1}{k}\sum_{j}\lambda_{j}f_{j}(x_{i})].
 \end{gather*}
 Esta es la distribución que maximiza a la entropía. Respecto a los multiplicadores de Lagrange, nótese que por la restricción (\ref{eq:NormalizationRestriction}) se cumple que
 \begin{equation*}
-    \frac{1}{e^{1-\mu}}=\sum_{i}e^{-\sum_{j}\lambda_{j}f_{j}(x_{i})}.
+    \frac{1}{e^{-(1+\mu)}}=\sum_{i}\exp[-\frac{1}{k}\sum_{j}\lambda_{j}f_{j}(x_{i})].
 \end{equation*}
 A partir de esta relación se define a la función de partición,
 \begin{equation*}
-    Z=\sum_{i}e^{-\sum_{j}\lambda_{j}f_{j}(x_{i})},
+    Z=\sum_{i}\exp[-\frac{1}{k}\sum_{j}\lambda_{j}f_{j}(x_{i})],
 \end{equation*}
 que satisface
 \begin{equation*}
@@ -39,17 +39,27 @@ que satisface
 \end{equation*}
 Considerando lo anterior, el estimado para la distribución de probabilidad que maximiza la entropía, y que es compatible con las restricciones (\ref{eq:JaynesRestrictions}) tiene la forma 
 \begin{equation}\label{eq:MaxEntDist}
-    p(x)=\frac{e^{-\sum_{j}\lambda_{j}f_{j}(x_{i})}}{Z}.
+    p(x_{i})=\frac{1}{Z}\exp[-\frac{1}{k}\sum_{j}\lambda_{j}f_{j}(x_{i})].
 \end{equation}
 
 \subsubsection{El estimado de máxima entropía en mecánica estadística}
 
-Si aplicáramos el principio de máxima entropía a un sistema físico como, por ejemplo, el de un conjunto de $N$ partículas idénticas pero distinguibles de energías $\epsilon_{i}$, del cual únicamente conocemos la energía promedio $E$, nos encontraríamos con que
-\begin{equation}\label{eq:Boltzman}
-    p(x_{i})=\frac{e^{-\lambda\epsilon_{i}}}{Z},
+El método anterior puede aplicarse a toda una variedad de sistemas y procesos. Considérese, pues, de un conjunto de $N$ partículas idénticas pero distinguibles de energías $\epsilon_{i}$, del cual únicamente conocemos la energía promedio $E$. Nos interesa conocer la distribución de probabilidad de los posibles microestados $\epsilon_{i}$. Según lo discutido previamente, se busca maximizar la entropía,
+\begin{equation}\label{eq:GibbsEntropy}
+    S_{G}=-k_{B}\sum_{i}p(x_{i})\log{p(x_{i})},
 \end{equation}
-que reconocemos como la distribución de Boltzmann, en la que $\lambda=\beta=\frac{1}{k_{B}T}$.
-
+que es la entropía de Gibbs, con $k_{B}$ la constante de Boltzmann. Continuando con el procedimiento, se halla que la distribución de máxima entropía compatible con la restricción $\expval{\epsilon}=E$ es
+\begin{equation}\label{eq:Boltzmann}
+    p(x_{i})=\frac{e^{-\frac{\lambda}{k_{B}}\epsilon_{i}}}{Z}.
+\end{equation}
+Para discernir el significado físico de dicho resultado, se puede sustituir esta distribución en (\ref{eq:Boltzmann}), para encontrar que
+\begin{equation}
+    S_{G}=\lambda\expval{\epsilon}+k_{B}\ln{Z}.
+\end{equation}
+Recordando que, en la teoría de la termodinámica se define a la temperatura como el inverso del cambio de la entropía según la energía, se halla el significado físico del multiplicador de Lagrange, pues se tiene que cumplir que
+\begin{equation*}
+    \lambda=\frac{1}{T}.
+\end{equation*}
 \subsection{Extensión a la mecánica cuántica}
 
 En su segundo artículo, Jaynes extiende el Principio de máxima entropía a la mecánica cuántica \cite{JaynesII}. Para esto, identificamos al operador de densidad cuántico como la distribución de probabilidad que buscamos hallar, dados algunos resultados experimentales.
