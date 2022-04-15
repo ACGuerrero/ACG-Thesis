@@ -76,20 +76,25 @@ Con ayuda de Mathematica pude aplicar este operador para obtener que
 \end{equation}
 De esto, el factor de compresión dependiente del tiempo es
 \begin{equation}\label{eq:SWAPFactort}
-  \kappa_{t}^{\rho}=\frac{((1-p)\cos^{2}{\frac{\pi t}{2}}+p\sin^{2}{\frac{\pi t}{2}})\tanh{\lambda p}+(p\cos^{2}{\frac{\pi t}{2}}+(1-p)\sin^{2}{\frac{\pi t}{2}})\tanh{\lambda (1-p)}}{
+  \kappa_{t}^{\rho}=\frac{(p\cos^{2}{\frac{\pi t}{2}}+(1-p)\sin^{2}{\frac{\pi t}{2}})\tanh{\lambda p}+((1-p)\cos^{2}{\frac{\pi t}{2}}+p\sin^{2}{\frac{\pi t}{2}})\tanh{\lambda (1-p)}}{
     p\tanh{\lambda p}+(1-p)\tanh{\lambda (1-p)}}
 \end{equation}
 
 \begin{figure}[h!]
   \centering
-  \begin{subfigure}{0.475\textwidth}
+  \begin{subfigure}{0.32\textwidth}
     \centering
-    \includegraphics[width=0.6\linewidth]{maxent/figures/sphere_swapcontraction_t=0_z=0.9_p=0.9.png}
+    \includegraphics[width=0.9\linewidth]{maxent/figures/sphere_swapcontraction_t=0.0_z=0.9_p=0.9.png}
     \caption{$t=0$}
   \end{subfigure}%
-  \begin{subfigure}{0.475\textwidth}
+  \begin{subfigure}{0.32\textwidth}
     \centering
-    \includegraphics[width=0.6\linewidth]{maxent/figures/sphere_swapcontraction_t=1_z=0.9_p=0.9.png}
+    \includegraphics[width=0.9\linewidth]{maxent/figures/sphere_swapcontraction_t=0.5_z=0.9_p=0.9.png}
+    \caption{$t=0.5$}
+  \end{subfigure}
+  \begin{subfigure}{0.32\textwidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{maxent/figures/sphere_swapcontraction_t=1.0_z=0.9_p=0.9.png}
     \caption{$t=1$}
   \end{subfigure}
   \caption{Efecto de la evolución subyacente si $r_{z}=0.9$, $p=0.9$. La dramática contracción se asocia a una pérdida casi total de información.}

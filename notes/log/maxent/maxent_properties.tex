@@ -67,6 +67,12 @@ De tal forma que (\ref{eq:MaxEntSeparable}) puede escribirse en términos de los
 \begin{equation*}
 \varrho_{max}=\frac{e^{-p\sum_{i}\lambda_{i}\sigma_{i}}}{Z_{1}} \otimes \frac{e^{-(1-p)\sum_{i}\lambda_{i}\sigma_{i}}}{Z_{2}}
 \end{equation*}
+¿Qué significa que el estado de máxima entropía sea separable? ¿Qué interpretación tienen las matrices de densidad reducidad del estado de máxima entropía? La propiedad de separabilidad viene de que la información accesible al experimentalista no incluye las correlaciones entre los subsistemas. Los observables finos son combinaciones de operadores de la forma $\pauli{i}\otimes\Id$ y $\Id\otimes\pauli{j}$. Esto significa que lo que se reconstruye es una combinación lineal de las matrices de densidad reducidas correspondientes a cada subsistema. Por la construcción de la aplicación de grano grueso, cualquier sistema de matrices de densidad reducidas $\rho_{A}$ y $\rho_{B}$ da como resultado el mismo estado efectivo, sin importar qué tan factorizable o entrelazado esté (de nuevo, siempre y cuando las marices de densidad reducidas sean $\rho_{A}$ y $\rho_{B}$). Pues bien, como estas correlaciones se pierden a la hora de hacer las mediciones, en el estado de máxima entropía estas se hacen cero. En el caso estacionario esto no afecta, pero me preocupa que quizá no sea el mejor acercamiento para el caso dinámico. Me pregunto si habrá algo como una dinámica de máxima entropía. 
+
+Algo que queda en claro de esto es que el estado de máxima entropía es completamente dependiente de los observables que se usen en su contrucción. Después de todo, la maximización de la entropía se restringe de acuerdo a las observaciones experimentales, así que estados de máxima entropía que cumplan un conjunto particular de restricciones no tienen por qué (y probablemente no lo harán) satisfacer un conjunto diferente de restricciones, un conjunto mediante el cual se contruiría un estado de máxima entropía diferente.
+
+Hay algo interesante, y es que para el caso clásico, la distribución de máxima entropía parece converger a la distribución real cuando se conocen una infinidad de sus momentos. No lo he probado, y no lo haré, pero me parece importante escribirlo para tenerlo en mente.
+
 Ahora se usan dos cosas: que $\sum_{i}\lambda_{i}\sigma_{i}=\lambda(\hat{r}_{\rho}\cdot\vec{\sigma})$ con $\lambda=\sqrt{\sum \lambda_{i}^{2}}$, y que podemos subir $p$ y $(1-p)$ como potencias, así que
 \begin{align*}
   \varrho_{max}=&\frac{e^{-p\sum_{i}\lambda_{i}\sigma_{i}}}{Z_{1}} \otimes \frac{e^{-(1-p)\sum_{i}\lambda_{i}\sigma_{i}}}{Z_{2}}\\
@@ -86,6 +92,7 @@ de tal manera que
 \begin{equation}\label{eq:MaxEntSeparableLM}
   \boxed{\varrho_{max}=\frac{(\rho_{max})^{p}}{\Tr[ (\rho_{max})^{p}]}\otimes\frac{(\rho_{max})^{1-p}}{\Tr[(\rho_{max})^{1-p}]}}
 \end{equation}
+
 \subsection{El estado de máxima entropía bajo la aplicación de grano grueso}\label{sec:CG(MaxEnt)}
 El problema de la ecuación (\ref{eq:MaxEntSeparable}) es que el estado de máxima entropía está en términos de los multiplicadores de Lagrange (en particular, de $\lambda$), en lugar de cantidades medibles. Si por alguna razón tuviéramos que resignarnos a trabajar con el estado en términos de $\lambda$, será necesario conocer la expresión del estado efectivo. Para hallarla, basta con pasar (\ref{eq:MaxEntSeparableLM}) por la aplicación de grano grueso.
 \begin{equation}\label{eq:CG(MaxEntZ)1}
