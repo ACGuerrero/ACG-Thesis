@@ -5,19 +5,17 @@ This is my license thesis' repository
 </p>
 
 TO DO LIST
- 1. Find extended unitary
- 2. Try other observables to contruct the MaxEnt
- 3. Coordinate histograms for the AssMap under swap
- 6. Exploring general $U$ as $U=\sum_{ij}\alpha_{ij} U_{i}\otimes V_{j}$
+ 1. Fix UxV graphs. Add curve of no-error. Vi
+ 22. Find evolution of expectation values. Sa-Do
+ 31. Find evolution of entropy. Sa-Do
+ 29. Finish thermodynamic quantum maxent case. Lu
+ 27. Complete CG section on thesis. Mi
+ 23. Study depolarizing channel. Lu-Ma
+ 29. Study amplitude damping channel. Lu-Ma
  10. Explore $H=\sigma_{z}\otimes \sigma_{z}$  [9a04ece](https://github.com/ACGuerrero/tesis-adan/commit/274d771536b0b04ea4edca866fc06359d5e0b8b8), [b0ca78](https://github.com/ACGuerrero/tesis-adan/commit/5ac8796059e41a3cdf13e09a33feb95fcfb0ca78)
- 14. Explore relationship between the parts of the maxent and the effective state.
- 23. Study depolarizing channel
- 29. Study amplitude damping channel
- 27. Complete CG section on thesis
- 28. Fix UxV graphs. Add curve of no-error.
- 29. Finish thermodynamic quantum maxent case.
- 21. Make spheres in swap sequence prettier.
- 22. FInd evolution of expectation values.
+ 30. Find extended unitary
+ 6. Exploring general $U$ as $U=\sum_{ij}\alpha_{ij} U_{i}\otimes V_{j}$
+ 3. Coordinate histograms for the AssMap under swap
 
 COMPLETED TASKS
 
@@ -30,8 +28,11 @@ COMPLETED TASKS
  8. ~~Series of real exponential of a pauli vector: pauli coordinates in terms of lagrange mult~~ &#x2611; [8371c7c](https://github.com/ACGuerrero/tesis-adan/commit/8371c7c6653dcdbee99a91017139cb5bcb551f91)
  13. ~~Fix signs in equations~~&#x2611;[8af0773](https://github.com/ACGuerrero/tesis-adan/commit/8af07735f51b450b893da30d229130d2dd8ad774)
  7. ~~Read Jaynes' articles~~&#x2611;
- 18. ~~Solve the CNOT problem~~&#x2611;[5f6a99](https://github.com/ACGuerrero/tesis-adan/commit/60351dfcdc6810baabdd5efe01999aa4bb5f6a99)
- 22. ~~Express MaxEnt as tensor product of matrix powers~~&#x2611;[5f6a99](https://github.com/ACGuerrero/tesis-adan/commit/60351dfcdc6810baabdd5efe01999aa4bb5f6a99)
- 24. ~~Derive 1.10 equation in thesis' document~~&#x2611;[1d0e4d](https://github.com/ACGuerrero/tesis-adan/commit/5076c6737c54d080eebf4bd9de96693ea71d0e4d)
- 25. ~~Explain lambda and mu~~[1d0e4d](https://github.com/ACGuerrero/tesis-adan/commit/5076c6737c54d080eebf4bd9de96693ea71d0e4d)
- 26. ~~Move SWAP section into thesis~~&#x2611;[5f6a99](https://github.com/ACGuerrero/tesis-adan/commit/60351dfcdc6810baabdd5efe01999aa4bb5f6a99)
+ 18. ~~Solve the CNOT problem~~&#x2611;[60351df](https://github.com/ACGuerrero/tesis-adan/commit/60351dfcdc6810baabdd5efe01999aa4bb5f6a99)
+ 22. ~~Express MaxEnt as tensor product of matrix powers~~&#x2611;[60351df](https://github.com/ACGuerrero/tesis-adan/commit/60351dfcdc6810baabdd5efe01999aa4bb5f6a99)
+ 24. ~~Derive 1.10 equation in thesis' document~~&#x2611;[5076c67](https://github.com/ACGuerrero/tesis-adan/commit/5076c6737c54d080eebf4bd9de96693ea71d0e4d)
+ 25. ~~Explain lambda and mu~~[5076c67](https://github.com/ACGuerrero/tesis-adan/commit/5076c6737c54d080eebf4bd9de96693ea71d0e4d)
+ 26. ~~Move SWAP section into thesis~~&#x2611;[60351df](https://github.com/ACGuerrero/tesis-adan/commit/60351dfcdc6810baabdd5efe01999aa4bb5f6a99)
+ 28. ~~Make spheres in swap sequence prettier~~&#x2611;[9dd5d9b](https://github.com/ACGuerrero/tesis-adan/commit/9dd5d9b4b2cc6b84f930ab46a601a0d73985a985)
+ 14. ~~Explore relationship between the parts of the maxent and the effective state~~&#x2611;[9dd5d9b](https://github.com/ACGuerrero/tesis-adan/commit/9dd5d9b4b2cc6b84f930ab46a601a0d73985a985)
+ 2. ~~Maybe add comment on how different observables lead to different MaxEnts~~&#x2611;[9dd5d9b](https://github.com/ACGuerrero/tesis-adan/commit/9dd5d9b4b2cc6b84f930ab46a601a0d73985a985)
