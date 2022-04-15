@@ -140,7 +140,7 @@ Do[Do[
 
 
 testTargetState=(IdentityMatrix[2]+zcoord*Normalize[{-2.,-5,2}] . Rest[gellMannBasis[1]])/2;
-(H=Pi/4*(PauliMatrix[1]+PauliMatrix[2]);
+H=Pi/4*(PauliMatrix[1]+PauliMatrix[2]);
 unitary=KroneckerProduct[MatrixExp[I*H],IdentityMatrix[2]];
 testMaxEnt=MaxEntForStateNotInZ[testTargetState,ZMaxEnt];
 newtestMaxEnt=unitary . testMaxEnt . Dagger[unitary];
@@ -175,7 +175,7 @@ With[
 		]
 		}
 	]
-]
+];
 
 
 testTargetState=(IdentityMatrix[2]+zcoord*Normalize[{-0.3,-0.3,1.0}] . Rest[gellMannBasis[1]])/2;
@@ -185,7 +185,7 @@ Ham2=10*PauliMatrix[3];
 (*U1[t_]:=KroneckerProduct[MatrixExp[t*I*Ham1],MatrixExp[t*I*Ham2]];*)
 U1[t_]:=MatrixExp[I*t*KroneckerProduct[PauliMatrix[3],PauliMatrix[3]]];*)
 (*U1[t_]:=MatrixPower[CNOT,t]*)
-U1[t_]:=SWAP[t]
+U1[t_]:=SWAP[t];
 n=20;
 end=1;
 points=densityMatrixToPoint[Table[CGKraus[U1[t] . testMaxEnt . Dagger[U1[t]],swapP],{t,0,end,N[end/n]}],gellMannBasis[1]];
@@ -210,17 +210,17 @@ figure=With[
 		Graphics3D[{Black,Line[{{0,0,0},vecs[[1]]}]}],
 		ListPointPlot3D[{points,points2,points3},PlotStyle->{{Darker[Red],Opacity[0.5]},{Darker[Green],Opacity[0.2]},{Darker[Blue],Opacity[0.2]}}]
 	}]
-]
+];
 
 
-Export["../figures/"<>"U1xU2_H1=100(sx-sy)_H2=sz"<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>"_sequence"<>".png",figure]
+Export["../figures/"<>"U1xU2_H1=100(sx-sy)_H2=sz"<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>"_sequence"<>".png",figure];
+
+Show[Graphics3D[{Darker[Green],Opacity[1],Thickness[0.001],Line/@Transpose[{points3,points}]}],
+ListPointPlot3D[points3]],
+Graphics3D[{Darker[Red],Opacity[1],Thickness[0.001],Line/@Transpose[{Table[{0,0,0},Length[points]],points}]}];
 
 
-Show[Graphics3D[{Darker[Green],Opacity[1],Thickness[0.001],Line/@Transpose[{points3,points}]}],ListPointPlot3D[points3]]
-Graphics3D[{Darker[Red],Opacity[1],Thickness[0.001],Line/@Transpose[{Table[{0,0,0},Length[points]],points}]}]
-
-
-Export["../figures/"<>"Ux1_H=1x+2y_sequence"<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>".png",figure]
+Export["../figures/"<>"Ux1_H=1x+2y_sequence"<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>".png",figure];
 
 
 
@@ -240,9 +240,3 @@ Export["../figures/"<>"MapAss_SWAP_t0vst1_"<>"_n="<>ToString[n]<>"_z="<>ToString
 	]
 ]
 *)
-
-
-MatrixLog[CNOT]//MatrixForm
-
-
-densityMatrixToPoint[{MatrixLog[CNOT]},gellMannBasis[2]][[1]]//MatrixForm

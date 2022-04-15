@@ -39,6 +39,8 @@ SWAP2::usage="SWAP2[t] applies the operator at a time t. t=1 is the full swap ga
 PlotTwoCoarseSets::usage="PlotTwoCoarseSets[set1,set2,legend,title] takes two sets of two level density operators and plots their bloch vectors."
 PlotTwoCoarseSetsWLine::usage="PlotTwoCoarseSets[set1,set2,legend,title] takes two sets of two level density operators and plots their bloch vectors, with a line joining corresponding points."
 ShowWithBlochSphere::usage="Acts like Show function, but appends a Graphics3D showing the bloch sphere. Also, argument is a list."
+SphereMesh::usage="Draws a sphere mesh with latitudinal and longitudinal lines."
+TransformedSphereMesh::usage="Same as sphere mesh but accepts a transformation parameter. Transforms the sphere mesh using the given transformation."
 Begin["`Private`"]
 
 
@@ -144,8 +146,7 @@ Sqrt[1-p]KroneckerProduct[IdentityMatrix[2],{0,1}] . swapGate
 
 CGKraus[rho_,p_]:=With[{kr=CGKrausOp[p]},Total[(# . rho . ConjugateTranspose[#])&/@kr]];
 
-SWAPContractionFactor[t_,p_,l_]:=((1-p)*Tanh[-l*p]+p*Tanh[-l*(1-p)])/(p*Tanh[-l*p]+(1-p)*Tanh[-l*(1-p)]);
-
+SWAPContractionFactor[t_,p_,l_]:=((p*(Cos[Pi*t/2]^2)+(1-p)*(Sin[Pi*t/2]^2))*Tanh[-l*p]+((1-p)*(Cos[Pi*t/2]^2)+p*(Sin[Pi*t/2]^2))*Tanh[-l*(1-p)])/((p)*Tanh[-l*p]+(1-p)*Tanh[-l*(1-p)]);
 SWAP[t_]:={{1,0,0,0},{0,Exp[I*Pi*t/2]*Cos[Pi*t/2],-I*Exp[I*Pi*t/2]*Sin[Pi*t/2],0},{0,-I*Exp[I*Pi*t/2]*Sin[Pi*t/2],Exp[I*Pi*t/2]*Cos[Pi*t/2],0},{0,0,0,1}}
 SWAP2[t_]:={{1,0,0,0},{0,(1+Exp[I*Pi*t])/2,(1-Exp[I*Pi*t])/2,0},{0,(1-Exp[I*Pi*t])/2,(1+Exp[I*Pi*t])/2,0},{0,0,0,1}};
 PlotTwoCoarseSets[set1_,set2_,legend_,title_]:=Show[
@@ -168,6 +169,26 @@ Graphics3D[{Opacity[0.2],ColorData[1][1],Thickness[0.005],Line/@Transpose[points
 Graphics3D[{Opacity[0.2],GrayLevel[0.9],Sphere[]},BoxRatios->1,Axes->True]
 ]
 ]
+
+SphereMesh[r_]:=Show[
+	ParametricPlot3D[{r*Sin[t] Cos[p], r*Sin[t] Sin[p], r*Cos[t]}, {t, 0, \[Pi]}, {p, 0, 2 \[Pi]}, Lighting -> {"Neutral", White},
+	PlotStyle -> GrayLevel[.5], PlotTheme -> None,
+			BoxRatios->{1, 1, 1},
+			PlotRange->{{-1.,1.},{-1.,1.},{-1.,1.}},
+			AxesLabel->{Style["x", 16],Style["y", 16],Style["z", 16]},
+			LabelStyle->Black],
+	ParametricPlot3D[{r*Cos[t],r*Sin[t],0},{t,0,2*Pi},PlotStyle->Red],
+	ListPointPlot3D[{{0,0,r},{0,0,-r}},PlotStyle->{Red,PointSize[0.03]}]];
+	
+TransformedSphereMesh[r_,transformation_]:=Show[
+	ParametricPlot3D[transformation . {r*Sin[t] Cos[p], r*Sin[t] Sin[p], r*Cos[t]}, {t, 0, \[Pi]}, {p, 0, 2 \[Pi]}, Lighting -> {"Neutral", White},
+	PlotStyle -> GrayLevel[.5], PlotTheme -> None,
+			BoxRatios->{1, 1, 1},
+			PlotRange->{{-1.,1.},{-1.,1.},{-1.,1.}},
+			AxesLabel->{Style["x", 16],Style["y", 16],Style["z", 16]},
+			LabelStyle->Black],
+	ParametricPlot3D[transformation . {r*Cos[t],r*Sin[t],0},{t,0,2*Pi},PlotStyle->Red],
+	ListPointPlot3D[(Map[transformation . #&,{{0,0,r},{0,0,-r}}]),PlotStyle->{Red,PointSize[0.03]}]];
 
 
 ShowWithBlochSphere[args_]:=Show[
