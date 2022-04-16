@@ -78,6 +78,23 @@ Histogram[#,{-2*Pi,2*Pi,0.05}]&/@Transpose[differences]*)
 PlotTwoCoarseSets[CoarseMaxEntsNotInZ,CoarseNewMaxEntsNotInZ,{"Initial states","Final states"},"Evolution of the Assignement Map"]
 
 
+lambdastep=0.05;
+lowerlambda=-4;
+upperlambda=0;
+r=zcoord;
+swapP = 0.6;
+rltable=RzLambdaTable[r,lowerlambda,upperlambda,lambdastep];
+l=LagrangeMultFromZCoord[rltable,r][[1]];
+unit1[t_]:=MatrixExp[-I*t*Pi*(PauliMatrix[1]+PauliMatrix[2])/Sqrt[2]];
+unit2[t_]:=IdentityMatrix[2];
+rot1[t_]:=SU2ToSO3[unit1[t]];
+rot2[t_]:=SU2ToSO3[unit2[t]];
+transformation[t_]:=(swapP*Tanh[-l*swapP]*rot1[t]+(1-swapP)*Tanh[-l*(1-swapP)]*rot2[t])
+t=0.5;
+figure=TransformedSphereMesh[1,transformation[t]]
+Export["../figures/"<>"U1xU2_H1=Pi(sx+sy)_H2=Id"<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>"t="<>ToString[t]<>".png",figure]
+
+
 MaxEntsNotInZ=MaxEntForStateNotInZ[#,ZMaxEnt]&/@UniformMixedStates[zcoord,1500];
 steps=100;
 (*unitary[t_]:=MatrixPower[CNOT,t]*)
@@ -182,11 +199,13 @@ testTargetState=(IdentityMatrix[2]+zcoord*Normalize[{-0.3,-0.3,1.0}] . Rest[gell
 testMaxEnt=MaxEntForStateNotInZ[testTargetState,ZMaxEnt];
 (*Ham1=1*PauliMatrix[3];
 Ham2=10*PauliMatrix[3];
+U1[t_]:=SWAP[t];
 (*U1[t_]:=KroneckerProduct[MatrixExp[t*I*Ham1],MatrixExp[t*I*Ham2]];*)
 U1[t_]:=MatrixExp[I*t*KroneckerProduct[PauliMatrix[3],PauliMatrix[3]]];*)
 (*U1[t_]:=MatrixPower[CNOT,t]*)
-U1[t_]:=SWAP[t];
+U1[t_]:=MatrixExp[I*t*KroneckerProduct[PauliMatrix[3],IdentityMatrix[2]]];
 n=20;
+swapP = 0.9;
 end=1;
 points=densityMatrixToPoint[Table[CGKraus[U1[t] . testMaxEnt . Dagger[U1[t]],swapP],{t,0,end,N[end/n]}],gellMannBasis[1]];
 points2=swapP*densityMatrixToPoint[(partialTraceB[#]&/@Table[U1[t] . testMaxEnt . Dagger[U1[t]],{t,0,end,N[end/n]}]),gellMannBasis[1]];
@@ -210,7 +229,7 @@ figure=With[
 		Graphics3D[{Black,Line[{{0,0,0},vecs[[1]]}]}],
 		ListPointPlot3D[{points,points2,points3},PlotStyle->{{Darker[Red],Opacity[0.5]},{Darker[Green],Opacity[0.2]},{Darker[Blue],Opacity[0.2]}}]
 	}]
-];
+]
 
 
 Export["../figures/"<>"U1xU2_H1=100(sx-sy)_H2=sz"<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>"_sequence"<>".png",figure];
@@ -222,6 +241,47 @@ Graphics3D[{Darker[Red],Opacity[1],Thickness[0.001],Line/@Transpose[{Table[{0,0,
 
 Export["../figures/"<>"Ux1_H=1x+2y_sequence"<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>".png",figure];
 
+
+Chop[partialTraceB[testother]/2]//MatrixForm
+
+
+testTargetState=(IdentityMatrix[2]+zcoord*Normalize[{-0.3,-0.3,1.0}] . Rest[gellMannBasis[1]])/2;
+testMaxEnt=MaxEntForStateNotInZ[testTargetState,ZMaxEnt];
+testother=KroneckerProduct[testTargetState,IdentityMatrix[2]];
+(*
+U1[t_]:=MatrixExp[I*t*Pi*KroneckerProduct[PauliMatrix[3],IdentityMatrix[2]]];
+U1[t_]:=SWAP[t];
+(*U1[t_]:=KroneckerProduct[MatrixExp[t*I*Ham1],MatrixExp[t*I*Ham2]];*)
+U1[t_]:=MatrixExp[I*t*KroneckerProduct[PauliMatrix[3],PauliMatrix[3]]];*)
+(*U1[t_]:=MatrixPower[CNOT,t]*)
+Ham1=(-PauliMatrix[3]+PauliMatrix[1]);
+Ham2=100*(PauliMatrix[2]+PauliMatrix[1]);
+U1[t_]:=KroneckerProduct[MatrixExp[t*I*Pi*Ham1],MatrixExp[t*I*Pi*Ham2]];
+n=10000;
+swapP = 0.9;
+end=1;
+points=densityMatrixToPoint[Table[CGKraus[U1[t] . testMaxEnt . Dagger[U1[t]],swapP],{t,0,end,N[end/n]}],gellMannBasis[1]];
+points2=densityMatrixToPoint[((partialTraceB[#]/2)&/@Table[U1[t] . testother . Dagger[U1[t]],{t,0,end,N[end/n]}]),gellMannBasis[1]];
+figure=With[
+	{vecs=densityMatrixToPoint[{testTargetState,Chop[partialTraceB[testother]]/2},gellMannBasis[1]]},
+	ShowWithBlochSphere[{
+		ListPointPlot3D[
+			{#}&/@vecs,
+			PlotStyle->{Red,Black},
+			BoxRatios->{1, 1, 1},
+			Boxed->False,
+			PlotRange->{{-1.,1.},{-1.,1.},{-1.,1.}},
+			AxesOrigin->{0,0,0},
+			Ticks->None,
+			AxesLabel->{"x","y","z"},
+			PlotLegends->{\[Rho],HoldForm[Subscript[\[Rho],A]],HoldForm[Subscript[\[Rho],B]]}
+		],
+		ListPointPlot3D[{points,points2},PlotStyle->{{Darker[Red],Opacity[1],PointSize[0.005]},{Black,PointSize[0.005]}}]
+	}]
+]
+
+
+Export["../figures/"<>"U1xU2_H1=(sx-sy)_H2=100(sx+sy)"<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>".png",figure];
 
 
 (*Export["../figures/"<>"MaxEnt_SWAP_t0vst1_"<>"_n="<>ToString[n]<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>"_beta="<>ToString[beta]<>"_delta="<>ToString[delta]<>".png",
@@ -240,3 +300,6 @@ Export["../figures/"<>"MapAss_SWAP_t0vst1_"<>"_n="<>ToString[n]<>"_z="<>ToString
 	]
 ]
 *)
+
+
+

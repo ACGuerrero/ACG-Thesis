@@ -41,6 +41,7 @@ PlotTwoCoarseSetsWLine::usage="PlotTwoCoarseSets[set1,set2,legend,title] takes t
 ShowWithBlochSphere::usage="Acts like Show function, but appends a Graphics3D showing the bloch sphere. Also, argument is a list."
 SphereMesh::usage="Draws a sphere mesh with latitudinal and longitudinal lines."
 TransformedSphereMesh::usage="Same as sphere mesh but accepts a transformation parameter. Transforms the sphere mesh using the given transformation."
+SU2ToSO3::usage="Transforms a SU(2) matrix into a SO(3) matrix using the Pauli basis"
 Begin["`Private`"]
 
 
@@ -189,6 +190,11 @@ TransformedSphereMesh[r_,transformation_]:=Show[
 			LabelStyle->Black],
 	ParametricPlot3D[transformation . {r*Cos[t],r*Sin[t],0},{t,0,2*Pi},PlotStyle->Red],
 	ListPointPlot3D[(Map[transformation . #&,{{0,0,r},{0,0,-r}}]),PlotStyle->{Red,PointSize[0.03]}]];
+	
+SU2ToSO3[su2_]:=densityMatrixToPoint[Table[su2 . PauliMatrix[i] . Dagger[su2],{i,1,3}],gellMannBasis[1]/2];
+
+
+
 
 
 ShowWithBlochSphere[args_]:=Show[
