@@ -5,7 +5,7 @@ This is my license thesis' repository
 </p>
 
 TO DO LIST
- 1. Fix UxV graphs. Add curve of no-error. Vi
+ 1. Invert LagMult signs.
  22. Find evolution of expectation values. Sa-Do
  31. Find evolution of entropy. Sa-Do
  29. Finish thermodynamic quantum maxent case. Lu
@@ -36,3 +36,4 @@ COMPLETED TASKS
  28. ~~Make spheres in swap sequence prettier~~&#x2611;[9dd5d9b](https://github.com/ACGuerrero/tesis-adan/commit/9dd5d9b4b2cc6b84f930ab46a601a0d73985a985)
  14. ~~Explore relationship between the parts of the maxent and the effective state~~&#x2611;[9dd5d9b](https://github.com/ACGuerrero/tesis-adan/commit/9dd5d9b4b2cc6b84f930ab46a601a0d73985a985)
  2. ~~Maybe add comment on how different observables lead to different MaxEnts~~&#x2611;[9dd5d9b](https://github.com/ACGuerrero/tesis-adan/commit/9dd5d9b4b2cc6b84f930ab46a601a0d73985a985)
+ 32. ~~Fix UxV graphs. Add curve of no-error~~&#x2611;
