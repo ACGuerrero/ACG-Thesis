@@ -73,6 +73,26 @@ El estado grueso siente el cambio de fase relativa en su primera componente \not
     \rho\xrightarrow{\mcU=e^{it\sigma_{z}}\otimes \Id} p\frac{1}{Z_{1}}e^{it\sigma_{z}}e^{-\lambda_{3}p\hat{r}_{\rho}\cdot\vec{\sigma}}e^{-it\sigma_{z}}+(1-p)\frac{1}{Z_{2}}e^{-\lambda_{3}(1-p)\hat{r}_{\rho}\cdot\vec{\sigma}}
 \end{equation}
 
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}{0.32\textwidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{maxent/figures/U1xU2_H1=Pi(sz)_H2=Id_z=0.9_p=0.6t=0.png}
+      \caption{$t=0.0$}
+    \end{subfigure}%
+    \begin{subfigure}{0.32\textwidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{maxent/figures/U1xU2_H1=Pi(sz)_H2=Id_z=0.9_p=0.6t=0.25.png}
+      \caption{$t=0.25$}
+    \end{subfigure}
+    \begin{subfigure}{0.32\textwidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{maxent/figures/U1xU2_H1=Pi(sz)_H2=Id_z=0.9_p=0.6t=0.5.png}
+      \caption{$t=0.5$}
+    \end{subfigure}
+    \caption{Efecto de la evolución subyacente sobre la esfera de Bloch si $r_{z}=0.9$, $p=0.6$ y $U_{1}=e^{it\pi \pauli{3}}$.}
+    \label{fig:FaseChangeSequence}
+\end{figure}
 
 \subsubsection{Tengo que ver cómo interpreto esta $H=a\sigma_{x}+b\sigma_{y}$}
 La transformación es una rotación respecto al eje $(a,b,0)$. Al aplicarse sobre el primer subsistema, el resultado es una rotación de la primera componente del estado grueso. De nuevo, la condición de normalización entre dichas componentes asegura que el estado grueso se mantenga dentro de la esfera de Bloch. 
@@ -81,6 +101,27 @@ La transformación es una rotación respecto al eje $(a,b,0)$. Al aplicarse sobr
     \includegraphics[width=0.6\linewidth]{maxent/figures/U1xU2_H1=sx+sy_H2=Id_z=0.9_p=0.4_sequence.png}
     \caption{En rojo, la evolución temporal del estado efectivo. En verde y azul, $(r_{A}\hat{r}_{\rho})$ y $(r_{B}\hat{r}_{\rho})$ respectivamente. En este ejemplo, $H=\sigma_{x}+2\sigma_{y}$, mientras que $\hat{r}=\frac{0.9}{\sqrt{33}}(-2,-5,2)$}
     \label{fig:XYRot}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}{0.32\textwidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{maxent/figures/U1xU2_H1=Pi(sx+sy)_H2=Id_z=0.9_p=0.6t=0.png}
+      \caption{$t=0.0$}
+    \end{subfigure}%
+    \begin{subfigure}{0.32\textwidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{maxent/figures/U1xU2_H1=Pi(sx+sy)_H2=Id_z=0.9_p=0.6t=0.3.png}
+      \caption{$t=0.3$}
+    \end{subfigure}
+    \begin{subfigure}{0.32\textwidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{maxent/figures/U1xU2_H1=Pi(sx+sy)_H2=Id_z=0.9_p=0.6t=0.5.png}
+      \caption{$t=0.5$}
+    \end{subfigure}
+    \caption{Efecto de la evolución subyacente sobre la esfera de Bloch si $r_{z}=0.9$, $p=0.6$ y $U_{1}=e^{it\pi \frac{\pauli{1}+\pauli{2}}{\sqrt{2}}}$.}
+    \label{fig:SxSySequence}
 \end{figure}
 
 \subsection{El caso $U_{1}=U_{2}=U$}
@@ -101,6 +142,27 @@ La dinámica efectiva tiene la forma:
 El caso $p\rightarrow 1$ puede interpretarse como aquel en el que el aparato de medición tiene una baja probabilidad de fallar (poco ruido). Las evoluciones separables $U=U_{1}\otimes U_{2}$ pueden verse como una evolución gruesa $U_{1}$ más una perturbación. La perturbación, al ser unitaria, es también una rotación, así que lo que se observa es una especie de hélice. El estado precesa alrededor de una traslación de la que sería su trayectoria no perturbada. Siempre que $U_{2}=\Id$ lo que se observa es una traslación en dirección del estado con magnitud $r_{B}$. Si, por el contrario, $U_{1}=\Id$, una vez más el estado grueso se ve desplazado, para luego comenzar a girar según la rotación inducida por la unitaria $U_{2}$. 
 
 Algunos ejemplos pueden verse en las figuras siguientes.
+
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}{0.32\textwidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{maxent/figures/U1xU2_H1=(sy-sz)_H2=10(2sx-sy)_z=0.9_p=0.9.png}
+      \caption{$t=0.0$}
+    \end{subfigure}%
+    \begin{subfigure}{0.32\textwidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{maxent/figures/U1xU2_H1=(sx-sy)_H2=100(sx+sy)_z=0.9_p=0.9.png}
+      \caption{$t=0.3$}
+    \end{subfigure}
+    \begin{subfigure}{0.32\textwidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{maxent/figures/U1xU2_H1=sz_H2=10(sx+sy)_z=0.9_p=0.9.png}
+      \caption{$t=0.5$}
+    \end{subfigure}
+    \caption{Efecto de la evolución subyacente sobre la esfera de Bloch si $r_{z}=0.9$, $p=0.6$ y $U_{1}=e^{it\pi \frac{\pauli{1}+\pauli{2}}{\sqrt{2}}}$.}
+    \label{fig:NoErrorEvolution}
+\end{figure}
 
 \begin{figure}[h!]
     \centering
