@@ -84,7 +84,13 @@ nos interesa hallar qué operador de densidad es el que mejor descibe a nuestro 
 \begin{equation}\label{eq:TraceRestriction}
     \Tr(\rho)=1.
 \end{equation}
-Una vez más se utiliza el método de los multiplicadores de Lagrange, de manera análoga a como se hizo en el caso clásico. El estado de máxima entropía compatible con las observaciones experimentales es entonces
+Una vez más se utiliza el método de los multiplicadores de Lagrange, de manera análoga a como se hizo en el caso clásico. Esta vez, la Lagrangiana
+\begin{equation*}
+    \mcL=-S(\rho)+\sum_{j}\lambda_{j}\qty(\expval{\hat{A}_{j}}-\Tr(\rho \hat{A}_{j}))+\mu\qty(\Tr(\rho)-1)
+\end{equation*}
+
+
+El estado de máxima entropía compatible con las observaciones experimentales es entonces
 \begin{equation*}
     \rho=\frac{e^{-\sum_{j} \lambda_{j} \hat{A}_{j}}}{Z}.
 \end{equation*}

@@ -5,10 +5,10 @@ En esta sección se desarrollan resultados analíticos para una evolución unita
 
 Utilizando la expresión (\ref{eq:MaxEntSeparable}), se puede pasar tanto a $\varrho_{max}(0)$ como a $\varrho_{max}(1)$ a través de la aplicación de grano grueso. El resultado $\CG{\varrho_{max}(0)}$ corresponde al estado grueso inicial, pero en términos de $\lambda$. Así:
 \begin{equation}
-\rho(0)=\frac{1}{2}[\Id+(\hat{r}_{\rho}\cdot\vec{\sigma})(p\tanh{-\lambda p}+(1-p)\tanh{-\lambda (1-p)})],
+\rho(0)=\frac{1}{2}[\Id+(\hat{r}_{\rho}\cdot\vec{\sigma})(p\tanh{\lambda p}+(1-p)\tanh{\lambda (1-p)})],
 \end{equation}
 \begin{equation}
-\rho(t=1)=\frac{1}{2}[\Id+(\hat{r}_{\rho}\cdot\vec{\sigma})((1-p)\tanh{-\lambda p}+p\tanh{-\lambda (1-p)})].
+\rho(t=1)=\frac{1}{2}[\Id+(\hat{r}_{\rho}\cdot\vec{\sigma})((1-p)\tanh{\lambda p}+p\tanh{\lambda (1-p)})].
 \end{equation}
 Vemos que ambos estados tienen la misma orientación pero pureza distinta. Esto significa que el efecto del \textsc{SWAP} subyacente sobre la esfera de Bloch es comprimir al estado efectivo inicial con un coeficiente $\kappa_{1}$ tal que
 \begin{equation}\label{eq:SWAPFactor}
@@ -42,6 +42,12 @@ en la que $\vec{c}=0$, y $M=OS$ con $O=\Id$ y $S=\kappa_{1}(\vec{r})\Id$, de tal
   \vec{r}\rightarrow \kappa_{1}(\vec{r})\vec{r}
 \end{equation*}
 nos daríamos cuenta que la transformación no es afín, y por esto, el proceso no puede ser descrito a través del formalismo de las operaciones cuánticas (no tiene representación en operadores de Kraus) \cite{Chuang}.
+  \begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.9\linewidth]{maxent/figures/ContractionFactorSWAP_2D_both.png}
+    \caption{Factor de compresión $\kappa_{1}$ como función de $r_{\rho}$ (der.) y como función de $\lambda$ (izq.), para diferentes valores de $p$.}
+    \label{fig:SWAPFactor2Drl}
+  \end{figure}
 \subsubsection{Caso $p=\frac{1}{2}$}
 
 Aunque es posible repetir todas las cuentas desde la contrucción del estado de máxima entropía, haciendo $p=\frac{1}{2}$, basta con ver que el factor (\eqref{eq:SWAPFactor}) es $1$ en dicho caso. Así, todos los estado gruesos son puntos fijos bajo una evolución subyacente SWAP con aplicación de grano grueso con parámetro $p=\frac{1}{2}$.
@@ -72,7 +78,7 @@ S^{t}=\begin{pmatrix}
 \end{equation}
 Con ayuda de Mathematica pude aplicar este operador para obtener que
 \begin{equation}
-  \rho(t)=\frac{1}{2}\{\Id-(\hat{r_{\rho}}\cdot\vec{\sigma})[((1-p)\cos^{2}{\frac{\pi t}{2}}+p\sin^{2}{\frac{\pi t}{2}})\tanh{p\lambda}+(p\cos^{2}{\frac{\pi t}{2}}+(1-p)\sin^{2}{\frac{\pi t}{2}})\tanh{(1-p)\lambda}]\}.
+  \rho(t)=\frac{1}{2}\{\Id+(\hat{r_{\rho}}\cdot\vec{\sigma})[((1-p)\cos^{2}{\frac{\pi t}{2}}+p\sin^{2}{\frac{\pi t}{2}})\tanh{p\lambda}+(p\cos^{2}{\frac{\pi t}{2}}+(1-p)\sin^{2}{\frac{\pi t}{2}})\tanh{(1-p)\lambda}]\}.
 \end{equation}
 De esto, el factor de compresión dependiente del tiempo es
 \begin{equation}\label{eq:SWAPFactort}
@@ -102,11 +108,11 @@ De esto, el factor de compresión dependiente del tiempo es
   \end{figure}
 En términos del valor esperado del observable $\sigma_{z}$, la evolución del estado se da como
 \begin{equation}
-  \expval{\sigma_{z}(t)}=\kappa_{t}^{\rho}\cos{\alpha}
+  \expval{\sigma_{z}(t)}=\kappa_{t}^{\rho}\expval{\sigma_{z}(0)}
 \end{equation}
 que puede escribirse, también, como las probabilidades de que $\rho(t)$ se halle en el estado $\ket{0}$ o $\ket{1}$
  \begin{align}
-  \bra{0}\rho(t)\ket{0}=\frac{1}{2}(1+\kappa_{t}^{\rho}\cos{\alpha}) && \bra{1}\rho(t)\ket{1}=\frac{1}{2}(1-\kappa_{t}^{\rho}\cos{\alpha})
+  \bra{0}\rho(t)\ket{0}=\frac{1}{2}(1+\kappa_{t}^{\rho}\expval{\sigma_{z}(0)}) && \bra{1}\rho(t)\ket{1}=\frac{1}{2}(1-\kappa_{t}^{\rho}\expval{\sigma_{z}(0)}
  \end{align}
  donde la dependencia temporal está completamente contenida dentro del factor $\kappa_{t}^{\rho}$. 
 \newpage

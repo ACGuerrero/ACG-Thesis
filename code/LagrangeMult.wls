@@ -8,7 +8,7 @@ SetDirectory["/home/acastillo/Documents/tesis-adan/code"];
 
 (*Reconstrucci\[OAcute]n del MaxEnt*)
 $Assumptions=Element[{p,rz,\[Lambda],Z,t},Reals] && rz\[Element]Reals && 0<=rz<=1&&0<=p<=1&&0<=t<=1;
-A=-Subscript[\[Lambda],3]*GObsMaxEnt[p,3];
+A=Subscript[\[Lambda],3]*GObsMaxEnt[p,3];
 ExpMat=MatrixExp[A];
 Z=Tr[ExpMat];
 1/Z//FullSimplify;
@@ -20,98 +20,18 @@ tra=(IdentityMatrix[2]+Tanh[\[Lambda]*(1-p)]*PauliMatrix[3])/2;
 eff=p*trb+(1-p)*tra;
 
 
-?RzLambdaTable
-
-
-LagrangeMultFromZCoord[\!\(\*
-StyleBox[
-RowBox[{"RzLambdaTable", "[", 
-RowBox[{"0.3", ",", 
-RowBox[{"-", "4"}], ",", "0.1", ",", "0.01"}], "]"}], "InformationUsageText",
-StripOnInput->False,
-LineSpacing->{1.5, 1.5, 3.}]\),0.6]
-
-
-\!\(\*
-StyleBox[
-RowBox[{"RzLambdaTable", "[", 
-RowBox[{
-StyleBox["0.3", "InformationUsageText",
-StripOnInput->False,
-LineSpacing->{1.5, 1.5, 3.}], 
-StyleBox[",", "InformationUsageText",
-StripOnInput->False,
-LineSpacing->{1.5, 1.5, 3.}], 
-RowBox[{
-StyleBox["-", "InformationUsageText",
-StripOnInput->False,
-LineSpacing->{1.5, 1.5, 3.}], 
-StyleBox["4", "InformationUsageText",
-StripOnInput->False,
-LineSpacing->{1.5, 1.5, 3.}]}], 
-StyleBox[",", "InformationUsageText",
-StripOnInput->False,
-LineSpacing->{1.5, 1.5, 3.}], 
-StyleBox["0.1", "InformationUsageText",
-StripOnInput->False,
-LineSpacing->{1.5, 1.5, 3.}], 
-StyleBox[",", "InformationUsageText",
-StripOnInput->False,
-LineSpacing->{1.5, 1.5, 3.}], "0.1"}], "]"}], "InformationUsageText",
-StripOnInput->False,
-LineSpacing->{1.5, 1.5, 3.}]\)
-
-
-Clear[p]
-z=0.6;
-\[Lambda]=LagrangeMultFromZCoord[\!\(\*
-StyleBox[
-RowBox[{"RzLambdaTable", "[", 
-RowBox[{"p", ",", 
-RowBox[{
-StyleBox[
-StyleBox["-", "InformationUsageText",
-StripOnInput->False,
-LineSpacing->{1.5, 1.5, 3.}], "InformationUsageText",
-StripOnInput->False,
-LineSpacing->{1.5, 1.5, 3.}], 
-StyleBox[
-StyleBox[
-StyleBox["4", "InformationUsageText",
-StripOnInput->False,
-LineSpacing->{1.5, 1.5, 3.}], "InformationUsageText",
-StripOnInput->False,
-LineSpacing->{1.5, 1.5, 3.}], "InformationUsageText",
-StripOnInput->False,
-LineSpacing->{1.5, 1.5, 3.}]}], ",", 
-StyleBox[
-StyleBox["0", "InformationUsageText",
-StripOnInput->False,
-LineSpacing->{1.5, 1.5, 3.}], "InformationUsageText",
-StripOnInput->False,
-LineSpacing->{1.5, 1.5, 3.}], ",", 
-StyleBox[
-RowBox[{
-StyleBox[
-StyleBox["0", "InformationUsageText",
-StripOnInput->False,
-LineSpacing->{1.5, 1.5, 3.}], "InformationUsageText",
-StripOnInput->False,
-LineSpacing->{1.5, 1.5, 3.}], ".01"}]]}], "]"}], "InformationUsageText",
-StripOnInput->False,
-LineSpacing->{1.5, 1.5, 3.}]\),z]
-za=Tanh[-\[Lambda]*(1-p)];
-zb=Tanh[-p*\[Lambda]];
-p*zb+(1-p)*za;
-Plot[{z,za,zb,z-za,zb-z},{p,0,1},PlotLegends->{"za","z","zb","z-za","z-zb"}]
-
-
-(* ::Input:: *)
-(*\[Cedilla]*)
-
-
-plot3=Plot[Evaluate[Table[rz/.{p->i},{i,0,0.5,0.1}]],{\[Lambda],-4,0},AxesLabel->{Style[Subscript[\[Lambda],3],FontSize->18],Style[Subscript[r,z],FontSize->18]},PlotLegends->{Table["p="<>ToString[i],{i,0,0.5,0.1}]}]
-
+plot4=Plot[
+	Evaluate[
+		Table[ZCoordFromLagrangeMult[\[Lambda],p]/.{p->i},{i,0.0,0.5,0.25}]
+		],
+		{\[Lambda],-8,8},
+	PlotStyle->{
+		{Thickness[0.003],Black},
+		{Thickness[0.003],Dashing[Large],Red},
+		{Thickness[0.003],DotDashed,Blue}},
+	AxesStyle->Black,AxesLabel->{Style[\[Lambda],FontSize->15],Style[Subscript[r,\[Rho]],FontSize->15]},
+	PlotLegends->Placed[{Table["p="<>ToString[i],{i,0.0,0.5,0.25}]},{0.2,0.8}]]
+	Export["../figures/rz(lambda)_lambda-8to8.png",plot4];
 
 
 Tr[SubMaxEnt1=MatrixExp[-\[Lambda]*p*PauliMatrix[3]]]//FullSimplify

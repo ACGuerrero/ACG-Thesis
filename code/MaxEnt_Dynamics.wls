@@ -245,7 +245,7 @@ Export["../figures/"<>"Ux1_H=1x+2y_sequence"<>"_z="<>ToString[zcoord]<>"_p="<>To
 Chop[partialTraceB[testother]/2]//MatrixForm
 
 
-testTargetState=(IdentityMatrix[2]+zcoord*Normalize[{-0.3,-0.3,1.0}] . Rest[gellMannBasis[1]])/2;
+testTargetState=(IdentityMatrix[2]+zcoord*Normalize[{0.3,-0.6,0.80}] . Rest[gellMannBasis[1]])/2;
 testMaxEnt=MaxEntForStateNotInZ[testTargetState,ZMaxEnt];
 testother=KroneckerProduct[testTargetState,IdentityMatrix[2]];
 (*
@@ -254,12 +254,12 @@ U1[t_]:=SWAP[t];
 (*U1[t_]:=KroneckerProduct[MatrixExp[t*I*Ham1],MatrixExp[t*I*Ham2]];*)
 U1[t_]:=MatrixExp[I*t*KroneckerProduct[PauliMatrix[3],PauliMatrix[3]]];*)
 (*U1[t_]:=MatrixPower[CNOT,t]*)
-Ham1=(-PauliMatrix[3]+PauliMatrix[1]);
-Ham2=100*(PauliMatrix[2]+PauliMatrix[1]);
+Ham1=(-PauliMatrix[3]+PauliMatrix[2]);
+Ham2=10*(-PauliMatrix[2]+2PauliMatrix[1]);
 U1[t_]:=KroneckerProduct[MatrixExp[t*I*Pi*Ham1],MatrixExp[t*I*Pi*Ham2]];
-n=10000;
+n=5000;
 swapP = 0.9;
-end=1;
+end=1.;
 points=densityMatrixToPoint[Table[CGKraus[U1[t] . testMaxEnt . Dagger[U1[t]],swapP],{t,0,end,N[end/n]}],gellMannBasis[1]];
 points2=densityMatrixToPoint[((partialTraceB[#]/2)&/@Table[U1[t] . testother . Dagger[U1[t]],{t,0,end,N[end/n]}]),gellMannBasis[1]];
 figure=With[
@@ -281,7 +281,7 @@ figure=With[
 ]
 
 
-Export["../figures/"<>"U1xU2_H1=(sx-sy)_H2=100(sx+sy)"<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>".png",figure];
+Export["../figures/"<>"U1xU2_H1=(sy-sz)_H2=10(2sx-sy)"<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>".png",%];
 
 
 (*Export["../figures/"<>"MaxEnt_SWAP_t0vst1_"<>"_n="<>ToString[n]<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>"_beta="<>ToString[beta]<>"_delta="<>ToString[delta]<>".png",

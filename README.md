@@ -5,8 +5,7 @@ This is my license thesis' repository
 </p>
 
 TO DO LIST
- 1. Invert LagMult signs.
- 22. Find evolution of expectation values. Sa-Do
+ 1. Find evolution of expectation values. Sa-Do
  31. Find evolution of entropy. Sa-Do
  29. Finish thermodynamic quantum maxent case. Lu
  27. Complete CG section on thesis. Mi
@@ -37,3 +36,4 @@ COMPLETED TASKS
  14. ~~Explore relationship between the parts of the maxent and the effective state~~&#x2611;[9dd5d9b](https://github.com/ACGuerrero/tesis-adan/commit/9dd5d9b4b2cc6b84f930ab46a601a0d73985a985)
  2. ~~Maybe add comment on how different observables lead to different MaxEnts~~&#x2611;[9dd5d9b](https://github.com/ACGuerrero/tesis-adan/commit/9dd5d9b4b2cc6b84f930ab46a601a0d73985a985)
  32. ~~Fix UxV graphs. Add curve of no-error~~&#x2611;
+ 22. ~~Invert LagMult signs~~&#x2611;

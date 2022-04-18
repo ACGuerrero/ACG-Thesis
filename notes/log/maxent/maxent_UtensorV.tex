@@ -1,12 +1,13 @@
 \section{Evolución unitaria separable $\mcU=U_{1}\otimes U_{2}$}
+
 Consideramos una unitaria $\mcU=U_{1}\otimes U_{2}$ que evoluciona en el tiempo como $\mcU_{t}=(U_{1}\otimes U_{2})^{t}=U_{1}^{t}\otimes U_{2}^{t}$. Retomando la ecuación (\ref{eq:MaxEntSeparable}), el estado efectivo evolucionado, en términos de un multiplicador de Lagrange y la unitaria $V$ que lo relaciona a un estado alineado en $z$ con la misma pureza es
 \begin{align*}
-    \CG{(U_{1}^{t}\otimes U_{2}^{t})\varrho_{max}(U_{1}^{t}\otimes U_{2}^{t})^{\dag}}&=p\frac{1}{Z_{1}}U_{1}^{t}V e^{-\lambda p \sigma_{z}}V^{\dag}(U_{1}^t)^{\dag}+(1-p)\frac{1}{Z_{2}}U_{2}^{t}Ve^{-\lambda (1-p)\sigma_{z}}V^{\dag}(U_{2}^t)^{\dag}\\
-    &=p\frac{1}{Z_{1}}U_{1}^{t}V e^{-\lambda p \sigma_{z}}(U_{1}^tV)^{\dag}+(1-p)\frac{1}{Z_{2}}U_{2}^{t}Ve^{-\lambda (1-p)\sigma_{z}}(U_{2}^tV)^{\dag}\\
+    \CG{(U_{1}^{t}\otimes U_{2}^{t})\varrho_{max}(U_{1}^{t}\otimes U_{2}^{t})^{\dag}}&=p\frac{1}{Z_{1}}U_{1}^{t}V e^{\lambda p \sigma_{z}}V^{\dag}(U_{1}^t)^{\dag}+(1-p)\frac{1}{Z_{2}}U_{2}^{t}Ve^{\lambda (1-p)\sigma_{z}}V^{\dag}(U_{2}^t)^{\dag}\\
+    &=p\frac{1}{Z_{1}}U_{1}^{t}V e^{\lambda p \sigma_{z}}(U_{1}^tV)^{\dag}+(1-p)\frac{1}{Z_{2}}U_{2}^{t}Ve^{\lambda (1-p)\sigma_{z}}(U_{2}^tV)^{\dag}\\
 \end{align*}
 Por un lado, podemos dejar a las unitarias $V$ dentro de las exponenciales, de tal forma que:
 \begin{equation}
-    \CG{(U_{1}^{t}\otimes U_{2}^{t})\varrho_{max}(U_{1}^{t}\otimes U_{2}^{t})^{\dag}}=p\frac{1}{2}(\Id+U_{1}^{t}(\hat{r}_{\rho}\cdot\vec{\sigma})(U_{1}^{t})^{\dag}\tanh{(-\lambda p)})+(1-p)\frac{1}{2}(\Id+U_{2}^{t}(\hat{r}_{\rho}\cdot\vec{\sigma})(U_{2}^{t})^{\dag}\tanh{(-\lambda (1-p))}).
+    \CG{(U_{1}^{t}\otimes U_{2}^{t})\varrho_{max}(U_{1}^{t}\otimes U_{2}^{t})^{\dag}}=p\frac{1}{2}(\Id+U_{1}^{t}(\hat{r}_{\rho}\cdot\vec{\sigma})(U_{1}^{t})^{\dag}\tanh{(\lambda p)})+(1-p)\frac{1}{2}(\Id+U_{2}^{t}(\hat{r}_{\rho}\cdot\vec{\sigma})(U_{2}^{t})^{\dag}\tanh{(\lambda (1-p))}).
 \end{equation}
 El resultado puede verse como las partes que componen al estado efectivo alineado en $z$ evolucionados por una composición de unitarias, que es otra unitaria. Las unitarias $U_{j}$ pueden escribirse como $e^{-i\theta_{j} \hat{n}_{j}\cdot\vec{\sigma}}$, mientras que $V=e^{i\alpha\hat{l}\cdot\vec{\sigma}}$ con $\hat{l}=(\cos{\beta},\sin{\beta},0)$, luego $U_{i}V=e^{i\zeta_{j} \hat{k}_{j}\cdot \vec{\sigma}}$ donde:
 \begin{align*}
@@ -19,12 +20,12 @@ Total que la dinámica se ve como
 \end{equation}
 Donde $W_{j}=U_{j}V$. Cada parte del estado efectivo se ve rotado de manera diferente. Las partes que se rotan son las partes que surgen al pasar al estado de máxima entropía por la aplicación de grano grueso. Pensando en esto, \notaAd{Regresar a la parte correspondiente: \ref{sec:CG(MaxEnt)}}. Aunque a mi me gusta la forma
 \begin{equation}\label{eq:SeparableDynamics}
-    \boxed{\rho\xrightarrow{\mcU=U_{1}\otimes U_{2}} p\frac{1}{Z_{1}}U_{1}e^{-\lambda_{3}p\hat{r}_{\rho}\cdot\vec{\sigma}}U_{1}^{\dag}+(1-p)\frac{1}{Z_{2}}U_{2}e^{-\lambda_{3}(1-p)\hat{r}_{\rho}\cdot\vec{\sigma}}U_{2}^{\dag}}.
+    \boxed{\rho\xrightarrow{\mcU=U_{1}\otimes U_{2}} p\frac{1}{Z_{1}}U_{1}e^{\lambda_{3}p\hat{r}_{\rho}\cdot\vec{\sigma}}U_{1}^{\dag}+(1-p)\frac{1}{Z_{2}}U_{2}e^{\lambda_{3}(1-p)\hat{r}_{\rho}\cdot\vec{\sigma}}U_{2}^{\dag}}.
 \end{equation}
 
 Si el estado inicial tiene componente en $z$ nomás
 \begin{equation}\label{eq:SeparableZDynamics}
-\CG{(U_{1}^{t}\otimes U_{2}^{t})\varrho_{max}(U_{1}^{t}\otimes U_{2}^{t})^{\dag}}=p\frac{1}{Z_{1}}e^{-\lambda p U_{1}^{t}\sigma_{z}(U_{1}^t)^{\dag}}+(1-p)\frac{1}{Z_{2}}e^{-\lambda (1-p)U_{2}^{t}\sigma_{z}(U_{2}^t)^{\dag}}
+\CG{(U_{1}^{t}\otimes U_{2}^{t})\varrho_{max}(U_{1}^{t}\otimes U_{2}^{t})^{\dag}}=p\frac{1}{Z_{1}}e^{\lambda p U_{1}^{t}\sigma_{z}(U_{1}^t)^{\dag}}+(1-p)\frac{1}{Z_{2}}e^{\lambda (1-p)U_{2}^{t}\sigma_{z}(U_{2}^t)^{\dag}}
 \end{equation}
 Incluyendo el tiempo y haciendo el cambio $t\theta\rightarrow t$, los exponentes dentro de (\ref{eq:SeparableDynamics}) se desarrollan como:
 \begin{align*}
@@ -41,9 +42,9 @@ A notar que si $t=0$ no hay evolución. Luego, en el límite $t\ll 1$:
 \subsection{El caso $U_{1}=\Id$ o $U_{2}=\Id$}
 Retomando a expresión (\ref{eq:SeparableDynamics}), y en virtud de (\ref{eq:PauliVectorExp}), vemos que el estado efectivo inicial $\rho$ puede verse como una combinación de dos operadores con vector de Bloch con dirección $\hat{r}_{\rho}$. El vector de Bloch de $\rho$ se ve modificado al ser una de sus dos componentes (paralelas) rotada. La rotación siendo $U_{1}$ \notaAd{Creo que dependo mucho de las parametrizaciones de Bloch para entender lo que está pasadno, ¿qué sucede en el espacio de operadores de densidad?}. En general:
 \begin{equation}\label{eq:SeparableDynamicsUxI}
-    \rho\xrightarrow{\mcU=U_{1}\otimes \Id} p\frac{1}{Z_{1}}U_{1}e^{-\lambda_{3}p\hat{r}_{\rho}\cdot\vec{\sigma}}U_{1}^{\dag}+(1-p)\frac{1}{Z_{2}}e^{-\lambda_{3}(1-p)\hat{r}_{\rho}\cdot\vec{\sigma}}
+    \rho\xrightarrow{\mcU=U_{1}\otimes \Id} p\frac{1}{Z_{1}}U_{1}e^{\lambda p\hat{r}_{\rho}\cdot\vec{\sigma}}U_{1}^{\dag}+(1-p)\frac{1}{Z_{2}}e^{\lambda(1-p)\hat{r}_{\rho}\cdot\vec{\sigma}}
 \end{equation}
-En términos del vector de Bloch, denotando $r_{A}=p\tan(-p\lambda_{3})$, $r_{B}=(1-p)\tan(-(1-p)\lambda_{3})$, y $O$ la rotación generada por $U_{1}$:
+En términos del vector de Bloch, denotando $r_{A}=p\tan(p\lambda)$, $r_{B}=(1-p)\tan((1-p)\lambda)$, y $O$ la rotación generada por $U_{1}$:
 \begin{equation}
     r\hat{r}_{\rho}\xrightarrow{\mcU=U_{1}\otimes \Id}r_{A}O\hat{r}_{\rho}+r_{B}\hat{r}_{\rho}=O(r\hat{r}_{\rho}-r_{B}\hat{r}_{\rho})+r_{B}\hat{r}_{\rho}
 \end{equation}\label{eq:SeparableDynamicsUxIBloch}
@@ -70,7 +71,7 @@ En el espacio de operadores de densidad, esto equivale a insertar una fase relat
 \end{equation}
 El estado grueso siente el cambio de fase relativa en su primera componente \notaAd{¿Qué son las trazas del MaxEnt?}.
 \begin{equation}
-    \rho\xrightarrow{\mcU=e^{it\sigma_{z}}\otimes \Id} p\frac{1}{Z_{1}}e^{it\sigma_{z}}e^{-\lambda_{3}p\hat{r}_{\rho}\cdot\vec{\sigma}}e^{-it\sigma_{z}}+(1-p)\frac{1}{Z_{2}}e^{-\lambda_{3}(1-p)\hat{r}_{\rho}\cdot\vec{\sigma}}
+    \rho\xrightarrow{\mcU=e^{it\sigma_{z}}\otimes \Id} p\frac{1}{Z_{1}}e^{it\sigma_{z}}e^{\lambda_{3}p\hat{r}_{\rho}\cdot\vec{\sigma}}e^{-it\sigma_{z}}+(1-p)\frac{1}{Z_{2}}e^{\lambda_{3}(1-p)\hat{r}_{\rho}\cdot\vec{\sigma}}
 \end{equation}
 
 \begin{figure}[h!]
@@ -128,9 +129,9 @@ La transformación es una rotación respecto al eje $(a,b,0)$. Al aplicarse sobr
 
 Quizá el caso más sencillo. La simetría de la unitaria permite factorizarla:
 \begin{align*}
-\CG{(U^{t}\otimes U^{t})\varrho_{max}(U^{t}\otimes U^{t})^{\dag}}&=p\frac{1}{Z_{1}}e^{-\lambda p U^{t}\sigma_{z}(U^t)^{\dag}}+(1-p)\frac{1}{Z_{2}}e^{-\lambda (1-p)U^{t}\sigma_{z}(U^t)^{\dag}}\\
-&=p\frac{1}{Z_{1}}U^{t}e^{-\lambda p \sigma_{z}}(U^t)^{\dag}+(1-p)\frac{1}{Z_{2}}U^{t}e^{-\lambda (1-p)\sigma_{z}}(U^t)^{\dag}\\
-&=U^{t}\qty(p\frac{1}{Z_{1}}e^{-\lambda p \sigma_{z}}+(1-p)\frac{1}{Z_{2}}e^{-\lambda (1-p)\sigma_{z}})(U^t)^{\dag}\\
+\CG{(U^{t}\otimes U^{t})\varrho_{max}(U^{t}\otimes U^{t})^{\dag}}&=p\frac{1}{Z_{1}}e^{\lambda p U^{t}\sigma_{z}(U^t)^{\dag}}+(1-p)\frac{1}{Z_{2}}e^{\lambda (1-p)U^{t}\sigma_{z}(U^t)^{\dag}}\\
+&=p\frac{1}{Z_{1}}U^{t}e^{\lambda p \sigma_{z}}(U^t)^{\dag}+(1-p)\frac{1}{Z_{2}}U^{t}e^{\lambda (1-p)\sigma_{z}}(U^t)^{\dag}\\
+&=U^{t}\qty(p\frac{1}{Z_{1}}e^{\lambda p \sigma_{z}}+(1-p)\frac{1}{Z_{2}}e^{\lambda (1-p)\sigma_{z}})(U^t)^{\dag}\\
 \end{align*}
 La dinámica efectiva tiene la forma:
 \begin{equation}

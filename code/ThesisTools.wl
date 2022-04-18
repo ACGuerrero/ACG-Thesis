@@ -128,7 +128,7 @@ Ubig . #&/@fdata
 (*All about the MaxEnt state*)
 GObsMaxEnt[p_,i_]:=p*KroneckerProduct[PauliMatrix[i],IdentityMatrix[2]]+(1-p)*KroneckerProduct[IdentityMatrix[2],PauliMatrix[i]];
 CGMaxEntStateLM[lambda_,p_]:=With[{ExpMat=MatrixExp[-lambda*GObsMaxEnt[p,3]]},ExpMat/Tr[ExpMat]]
-ZCoordFromLagrangeMult[l_,p_]:=-(p*Tanh[l*p]+(1-p)*Tanh[l*(1-p)]);
+ZCoordFromLagrangeMult[l_,p_]:=(p*Tanh[l*p]+(1-p)*Tanh[l*(1-p)]);
 RzLambdaTable[p_,low_,up_,step_]:=Transpose[Table[{ZCoordFromLagrangeMult[l,p],l},{l,low,up,step}]];
 LagrangeMultFromZCoord[data_,zcoord_]:=data[[2,NearestPosition[data[[1]],zcoord]]]
 MaxEntForStateNotInZ[cstate_,ZMaxEnt_]:=

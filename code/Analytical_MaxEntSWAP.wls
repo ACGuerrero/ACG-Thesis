@@ -25,14 +25,55 @@ rhoztbv=densityMatrixToPoint[{rhozt},gellMannBasis[1]][[1]]//FullSimplify
 Print["The factor separating this states is: ",(contractionfactor=rhoztbv[[3]]/rhoz0bv[[3]])//FullSimplify];
 
 
-plot1=Plot3D[contractionfactor,{p,0,1},{\[Lambda],-4,4},AxesLabel->{Style[p,FontSize->18],Style[\[Lambda],FontSize->18],Style[a,FontSize->18]},ColorFunction->GrayLevel,ViewPoint -> {3, 2.2, 2}]
+plot1=Plot3D[contractionfactor,{p,0,1},{\[Lambda],-4,4},AxesLabel->{Style[p,FontSize->18],Style[\[Lambda],FontSize->18],Style[a,FontSize->18]},ColorFunction->GrayLevel,ViewPoint -> {3, 2.2, 2}];
 Export["../figures/ContractionFactorSWAP_3D_lambda-4to4.png",plot1];
-plot3=Plot[Evaluate[Table[SWAPContractionFactor[1,p,\[Lambda]]/.{p->i},{i,0.1,0.5,0.2}]],{\[Lambda],0,8},PlotStyle->{{Thickness[0.003],Black},{Thickness[0.003],Dashing[Large],Red},{Thickness[0.003],DotDashed,Blue}},AxesStyle->Black,AxesLabel->{Style[\[Lambda],FontSize->15],Style[\[Kappa],FontSize->15]},PlotLegends->{Table["p="<>ToString[i],{i,0.1,0.5,0.2}]}]
-Export["../figures/ContractionFactorSWAP_2D_lambda0to8.png",plot3];
+plot3=Plot[
+	Evaluate[
+		Map[(SWAPContractionFactor[1,p,\[Lambda]]/.{p->#})&,{0.1,0.2,0.3,0.5}]],
+	{\[Lambda],0,20},
+	PlotStyle->{{Thickness[0.003],Black},{Thickness[0.003],Dashing[Large],Red},{Thickness[0.003],Dashed,Blue},{Thickness[0.003],DotDashed,Darker[Green]}},
+	AxesStyle->Black,
+	AxesLabel->{Style[\[Lambda],FontSize->15],Style[\[Kappa],FontSize->15]},
+	PlotLegends->Placed[{Map["p="<>ToString[#]&,{0.1,0.2,0.3,0.5}]},{0.8,0.5}]]
 
 
-plot4=Plot[Evaluate[Table[ZCoordFromLagrangeMult[\[Lambda],p]/.{p->i},{i,0.0,0.5,0.25}]],{\[Lambda],-8,8},PlotStyle->{{Thickness[0.003],Black},{Thickness[0.003],Dashing[Large],Red},{Thickness[0.003],DotDashed,Blue}},AxesStyle->Black,AxesLabel->{Style[\[Lambda],FontSize->15],Style[rz,FontSize->15]},PlotLegends->{Table["p="<>ToString[i],{i,0.0,0.5,0.25}]}]
-Export["../figures/rz(lambda)_lambda-8to8.png",plot4];
+Export["../figures/ContractionFactorSWAP_2D_lambda0to20.png",plot3];
+
+
+l[r_,p_,lo_,up_,st_]:=First@LagrangeMultFromZCoord[
+	RzLambdaTable[p,lo,up,st],
+	r];
+data=Map[Table[{r,SWAPContractionFactor[1,#,l[r,#,low=0.,up=20.,ste=0.002]]},{r,0.01,0.99,0.01}]&,{0.1,0.2,0.3,0.5}];
+
+
+plot4=ListLinePlot[data,
+	PlotStyle->{{Thickness[0.003],Black},{Thickness[0.003],Dashing[Large],Red},{Thickness[0.003],Dashed,Blue},{Thickness[0.003],DotDashed,Darker[Green]}},
+	AxesStyle->Black,
+	AxesLabel->{Style[Subscript[r,\[Rho]],FontSize->15],Style[\[Kappa],FontSize->15]}]
+
+
+Export["../figures/ContractionFactorSWAP_2D_r0to1_nolegend.png",plot4];
+
+
+plot5=With[{size = 200}, 
+ Row[Show[#, ImageSize -> {Automatic, size}, 
+     ImagePadding -> 20] & /@ {plot4, plot3}]];
+     Export["../figures/ContractionFactorSWAP_2D_both.png",plot5];
+
+
+rz=0.9;
+sp=0.8;
+low=0.;
+up=20;
+ste=0.002;
+Print["%Error: ",100*Abs[ZCoordFromLagrangeMult[l[rz,sp,low,up,ste],sp]-rz]/rz]
+ListLinePlot[Table[{l[r,sp,low,up,ste],r},{r,0.01,0.99,0.01}]]
+
+
+LagrangeMultFromZCoord[]
+
+
+?contractionfactor
 
 
 Print[Subscript[\[Psi],"max"],"=", (MaxEnt//FullSimplify)//MatrixForm]
