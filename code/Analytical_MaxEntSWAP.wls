@@ -70,12 +70,6 @@ Print["%Error: ",100*Abs[ZCoordFromLagrangeMult[l[rz,sp,low,up,ste],sp]-rz]/rz]
 ListLinePlot[Table[{l[r,sp,low,up,ste],r},{r,0.01,0.99,0.01}]]
 
 
-LagrangeMultFromZCoord[]
-
-
-?contractionfactor
-
-
 Print[Subscript[\[Psi],"max"],"=", (MaxEnt//FullSimplify)//MatrixForm]
 Print["Notice that:"]
 Print[Subscript[\[Psi],"max"],"=", (partialTraceB[MaxEnt]//FullSimplify)//MatrixForm,"xox",(partialTraceA[MaxEnt]//FullSimplify)//MatrixForm]

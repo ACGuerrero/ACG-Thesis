@@ -5,12 +5,12 @@ This is my license thesis' repository
 </p>
 
 TO DO LIST
- 1. Find evolution of expectation values. Sa-Do
- 31. Find evolution of entropy. Sa-Do
- 29. Finish thermodynamic quantum maxent case. Lu
- 27. Complete CG section on thesis. Mi
- 23. Study depolarizing channel. Lu-Ma
- 29. Study amplitude damping channel. Lu-Ma
+ 1. Find evolution of expectation values. Ma-Mi
+ 31. Find evolution of entropy. Ma-Mi
+ 29. Finish thermodynamic quantum maxent case. Ju
+ 27. Complete CG section on thesis. Vi
+ 23. Study depolarizing channel.
+ 29. Study amplitude damping channel.
  10. Explore $H=\sigma_{z}\otimes \sigma_{z}$  [9a04ece](https://github.com/ACGuerrero/tesis-adan/commit/274d771536b0b04ea4edca866fc06359d5e0b8b8), [b0ca78](https://github.com/ACGuerrero/tesis-adan/commit/5ac8796059e41a3cdf13e09a33feb95fcfb0ca78)
  30. Find extended unitary
  6. Exploring general $U$ as $U=\sum_{ij}\alpha_{ij} U_{i}\otimes V_{j}$

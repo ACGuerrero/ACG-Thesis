@@ -19,18 +19,18 @@ SetDirectory["/home/acastillo/Documents/tesis-adan/code"];
 (*There are two basic parameters for the coarse graining problem.
 The z coordinate of the state and the swap probability*)
 swapP = 0.8;
-zcoord = 0.9;
+zcoord = 0.6;
 ztargetstate=(IdentityMatrix[2]+zcoord*PauliMatrix[3])/2;
 
 (*We then have to construct the maximum entropy state. Since we
 have acces to the rz coordinate, we obtain the lagrange mult by
 numerically approximating the inverse value*)
 lambdastep=0.05;
-lowerlambda=-4;
-upperlambda=0;
+lowerlambda=0.1;
+upperlambda=4.;
 
 rzlambdatable=RzLambdaTable[swapP,lowerlambda,upperlambda,lambdastep];
-lagrangemult=LagrangeMultFromZCoord[rzlambdatable,zcoord][[1]];
+lagrangemult=LagrangeMultFromZCoord[rzlambdatable,zcoord][[1]]
 
 ZMaxEnt=CGMaxEntStateLM[lagrangemult,swapP];
 
@@ -95,10 +95,18 @@ figure=TransformedSphereMesh[1,transformation[t]]
 Export["../figures/"<>"U1xU2_H1=Pi(sx+sy)_H2=Id"<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>"t="<>ToString[t]<>".png",figure]
 
 
+swapP = 0.7;
+zcoord = 0.8;
+lambdastep=0.05;
+lowerlambda=0.1;
+upperlambda=4.;
+rzlambdatable=RzLambdaTable[swapP,lowerlambda,upperlambda,lambdastep];
+lagrangemult=LagrangeMultFromZCoord[rzlambdatable,zcoord][[1]]
+ZMaxEnt=CGMaxEntStateLM[lagrangemult,swapP];
 MaxEntsNotInZ=MaxEntForStateNotInZ[#,ZMaxEnt]&/@UniformMixedStates[zcoord,1500];
 steps=100;
-(*unitary[t_]:=MatrixPower[CNOT,t]*)
-unitary[t_]:=MatrixExp[I*t*KroneckerProduct[PauliMatrix[3],PauliMatrix[3]]];
+(*unitary[t_]:=MatrixExp[I*t*KroneckerProduct[PauliMatrix[3],PauliMatrix[3]]];*)
+unitary[t_]:=MatrixPower[CNOT,t]
 end=N[Pi];
 pngset=Table[
 	ShowWithBlochSphere[{
@@ -109,12 +117,19 @@ pngset=Table[
 			PlotRange->{{-1.,1.},{-1.,1.},{-1.,1.}},
 			AxesOrigin->{0,0,0},
 			Ticks->None,
-			AxesLabel->{"x","y","z"}]
+			AxesLabel->{"x","y","z"},ViewPoint->Front]
 	}],
 	{t,0,end,end/steps}];
-PNGSetToGif[set_]:=Export["../figures/"<>"ising_effevol"<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>".gif",
+PNGSetToGif[set_]:=Export["../figures/"<>"CNOT_effevol_FRONT"<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>".gif",
 Flatten[{set, Table[set[[i]], {i, Length[set]}]}]]
 PNGSetToGif[pngset]
+
+
+H=Pi*(IdentityMatrix[4]-
+	KroneckerProduct[PauliMatrix[3],IdentityMatrix[2]]-
+	KroneckerProduct[IdentityMatrix[2],PauliMatrix[1]]+
+	KroneckerProduct[PauliMatrix[3],PauliMatrix[1]])/4;
+MatrixExp[-I*H]//MatrixForm
 
 
 (*
@@ -300,6 +315,49 @@ Export["../figures/"<>"MapAss_SWAP_t0vst1_"<>"_n="<>ToString[n]<>"_z="<>ToString
 	]
 ]
 *)
+
+
+
+
+
+l[r_,p_,lo_,up_,st_]:=First@LagrangeMultFromZCoord[
+	RzLambdaTable[p,lo,up,st],
+	r];
+r=0.8;
+sp=0.95;
+runi=Normalize[{-1,1,1}];
+rvec=r*runi;
+lag=l[r,sp,low=0.,up=6.,ste=0.002];
+ra=Tanh[lag*sp]*runi;
+rb=Tanh[lag*(1-sp)]*runi;
+transformation2[r_]:=With[{
+	runi=Normalize[r],
+	ra=Tanh[lag*sp],
+	rb=Tanh[lag*(1-sp)]},
+	{rb*(sp*ra*runi[[1]]^2+(1-sp)*runi[[1]]),
+	rb*ra*(sp*runi[[1]]*runi[[2]]+(1-sp)*runi[[2]]*runi[[3]]),
+	ra*(sp*runi[[3]]+(1-sp)*rb*runi[[3]]^2)}
+	];
+Export["../figures/CNOT/"<>"sphere_CNOT_t=0.0"<>"_z="<>ToString[r]<>"_p="<>ToString[sp]<>".png",FunctionSphereMesh[r,(IdentityMatrix[3] . #)&,0.5]]
+Export["../figures/CNOT/"<>"sphere_CNOT_t=1.0"<>"_z="<>ToString[r]<>"_p="<>ToString[sp]<>".png",FunctionSphereMesh[r,transformation2,0.5]]
+
+
+Clear[unitary]
+swapP=0.8;
+zcoord=0.9;
+lambdastep=0.05;
+lowerlambda=0.1;
+upperlambda=4.;
+rzlambdatable=RzLambdaTable[swapP,lowerlambda,upperlambda,lambdastep];
+lagrangemult=LagrangeMultFromZCoord[rzlambdatable,zcoord][[1]]
+ZMaxEnt=CGMaxEntStateLM[lagrangemult,swapP];
+MaxEntsNotInZ=MaxEntForStateNotInZ[#,ZMaxEnt]&/@UniformMixedStates[zcoord,1500];
+unitary[t_]:=CNOT
+NewMaxEnt=unitary . ZMaxEnt . Dagger[unitary[1]];
+NewMaxEntsNotInZ=unitary[1] . # . Dagger[unitary[1]]&/@MaxEntsNotInZ;
+CoarseMaxEntsNotInZ=Chop[CGKraus[#,swapP]]&/@MaxEntsNotInZ;
+CoarseNewMaxEntsNotInZ=Chop[CGKraus[#,swapP]]&/@NewMaxEntsNotInZ;
+PlotTwoCoarseSets[CoarseMaxEntsNotInZ,CoarseNewMaxEntsNotInZ,{"Initial states","Final states"},"Evolution of the MaxEnt"]
 
 
 

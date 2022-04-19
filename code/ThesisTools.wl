@@ -42,6 +42,7 @@ ShowWithBlochSphere::usage="Acts like Show function, but appends a Graphics3D sh
 SphereMesh::usage="Draws a sphere mesh with latitudinal and longitudinal lines."
 TransformedSphereMesh::usage="Same as sphere mesh but accepts a transformation parameter. Transforms the sphere mesh using the given transformation."
 SU2ToSO3::usage="Transforms a SU(2) matrix into a SO(3) matrix using the Pauli basis"
+FunctionSphereMesh::usage="Same as sphere mesh but accepts a function parameter. Transforms the sphere mesh using the given function."
 Begin["`Private`"]
 
 
@@ -127,7 +128,7 @@ Ubig . #&/@fdata
 
 (*All about the MaxEnt state*)
 GObsMaxEnt[p_,i_]:=p*KroneckerProduct[PauliMatrix[i],IdentityMatrix[2]]+(1-p)*KroneckerProduct[IdentityMatrix[2],PauliMatrix[i]];
-CGMaxEntStateLM[lambda_,p_]:=With[{ExpMat=MatrixExp[-lambda*GObsMaxEnt[p,3]]},ExpMat/Tr[ExpMat]]
+CGMaxEntStateLM[lambda_,p_]:=With[{ExpMat=MatrixExp[lambda*GObsMaxEnt[p,3]]},ExpMat/Tr[ExpMat]]
 ZCoordFromLagrangeMult[l_,p_]:=(p*Tanh[l*p]+(1-p)*Tanh[l*(1-p)]);
 RzLambdaTable[p_,low_,up_,step_]:=Transpose[Table[{ZCoordFromLagrangeMult[l,p],l},{l,low,up,step}]];
 LagrangeMultFromZCoord[data_,zcoord_]:=data[[2,NearestPosition[data[[1]],zcoord]]]
@@ -194,7 +195,15 @@ TransformedSphereMesh[r_,transformation_]:=Show[
 SU2ToSO3[su2_]:=densityMatrixToPoint[Table[su2 . PauliMatrix[i] . Dagger[su2],{i,1,3}],gellMannBasis[1]/2];
 
 
-
+FunctionSphereMesh[r_,function_,opa_:1.]:=Show[
+	ParametricPlot3D[function[{r*Sin[t] Cos[p], r*Sin[t] Sin[p], r*Cos[t]}], {t, 0, \[Pi]}, {p, 0, 2 \[Pi]}, Lighting -> {"Neutral", White},
+	PlotStyle -> {GrayLevel[.5],Opacity[opa]}, PlotTheme -> None,
+			BoxRatios->{1, 1, 1},
+			PlotRange->{{-1.,1.},{-1.,1.},{-1.,1.}},
+			AxesLabel->{Style["x", 16],Style["y", 16],Style["z", 16]},
+			LabelStyle->Black],
+	ParametricPlot3D[function[{r*Cos[t],r*Sin[t],0}],{t,0,2*Pi},PlotStyle->Red],
+	ListPointPlot3D[(Map[function[#]&,{{0,0,r},{0,0,-r}}]),PlotStyle->{Red,PointSize[0.03]}]]
 
 
 ShowWithBlochSphere[args_]:=Show[
