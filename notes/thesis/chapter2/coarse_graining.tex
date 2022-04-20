@@ -1,7 +1,7 @@
-\section{Grano grueso \textit{borroso}}
+\section{Grano grueso y medición borrosa}
 
 
-Dentro del marco de la \textit{teoría de información cuántica}, especialmente en conexión con la parte experimental, es natural suponer que no siempre es posible disponer de toda la información sobre el \textit{estado} del sistema de interés. Esto ya sea por insuficiencia en la resolución de los aparatos de medición o por el inevitable error inherente a las herramientas de medición. Un prototipo sencillo de error consiste en el inducido por un aparato que no distingue diferentes conjuntos de partículas entre sí. El caso más simple corresponde a la permutación de dos partículas. Este intercambio accidental a la hora de la medición es una \textit{aplicación borrosa}~\cite{FuzzyMeasurements}.
+Dentro del marco de la \textit{teoría de información cuántica}, especialmente en conexión con la parte experimental, es natural suponer que no siempre es posible disponer de toda la información sobre el \textit{estado} del sistema de interés. Esto ya sea por insuficiencia en la resolución de los aparatos de medición o por el inevitable error inherente a las herramientas de medición. Un prototipo sencillo de error consiste en el inducido por un aparato que no distingue diferentes conjuntos de partículas entre sí. El caso más simple corresponde a la permutación de dos partículas. Este intercambio accidental a la hora de la medición es una \textit{aplicación borrosa} \cite{FuzzyMeasurements}.
 
 Para ilustrar lo anterior, considérese dicha aplicación borrosa sobre un sistema de dos partículas. Para simplificarlo un poco más, supongamos que cada partícula es un sistema de dos niveles, esto es, el sistema está compuesto por los qubits $A$ y $B$. El estado del sistema está caracterizado por un operador de densidad $\varrho_{AB} \in \mcS(\hilbert_2 \otimes \hilbert_2)$. La acción de la aplicación borrosa se escribe como sigue:
 \begin{align*}
@@ -29,7 +29,7 @@ Agreguemos al error, la falta de resolución. Una posibilidad es que el instrume
 donde $\rho_A=\tr_B \rho_{AB}$ y $\rho_B=\tr_A \rho_{AB}$, es decir, las matrices de densidad reducidas de la partículas $A$ y $B$, respectivamente.
 
 
-A diferencia de la aplicación borrosa, el modelo de grano grueso disminuye la dimensión del estado resultante. Además se puede mostrar que la ecuación anterior puede reescribirse en términos de la aplicación borrosa~\cite{FuzzyMeasurements},
+A diferencia de la aplicación borrosa, el modelo de grano grueso disminuye la dimensión del estado resultante. Además se puede mostrar que la ecuación anterior puede reescribirse en términos de la aplicación borrosa \cite{FuzzyMeasurements},
 \begin{equation}\label{eq:CG}
 \CG{\rho}=(\Tr_{B}\circ\mcF)[\rho].
 \end{equation}

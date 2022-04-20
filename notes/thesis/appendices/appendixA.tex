@@ -1,15 +1,54 @@
-\chapter{Tablas}
+\chapter{Demostraciones de relaciones frecuentemente socorridas}
 
-\begin{table}
-\caption{Ejemplo de tabla}
-\label{arm:table}
-\begin{center}
-\begin{tabular}{||l|l||}\hline
-Ejemplo & de \\\hline
-tabla	   & supongo \\\hline
-\end{tabular}
-\end{center}
-\end{table}
+\subsubsection{Cuadrado de vector de pauli}
+Se cumple que
+\begin{align*}
+    (\paulivec{r})(\paulivec{r})=&\sum_{j}r_{j}\pauli{j}\sum_{k}r_{k}\pauli{k}\\
+    =&\sum_{j}r_{j}\sum_{k}r_{k}\pauli{j}\pauli{k}\\
+    =&\sum_{j}r_{j}\sum_{k}r_{k}(\Id\delta_{jk}+i\epsilon_{jkl}\pauli{l})\\
+    =&\sum_{j}r_{j}\sum_{k}r_{k}(\Id\delta_{jk})+i\sum_{j}r_{j}\sum_{k}r_{k}\epsilon_{jkl}\pauli{l})\\
+    =&\Id
+\end{align*}
+Donde en la última línea se ha utilizado la antisimetría del tensor de Lévi-Civita. Se sigue que para todo entero positivo $p$
+\begin{equation}\label{ap:PauliSquare}
+    (\paulivec{n})^{2p}=\Id
+\end{equation}
 
-\clearpage
-\newpage
+\subsubsection{Exponencial real de vector de Pauli}
+Si se expande la serie de Taylor usando como argumento un vector de pauli $r\paulivec{r}$,
+\begin{align*}
+    e^{r\paulivec{r}}=&\sum_{k=0}^{\infty}\frac{1}{k!}(r\paulivec{r})^k\\
+    =&\sum_{k}\frac{r^{2k}(\paulivec{r})^{2k}}{(2k)!}+\sum_{k}\frac{r^{2k+1}(\paulivec{r})^{2k+1}}{(2k+1)!},
+\end{align*}
+se puede usar (\ref{ap:PauliSquare}) para ver que
+\begin{align*}
+    e^{r\paulivec{r}}=&\Id\sum_{k}\frac{r^{2k}}{(2k)!}+\paulivec{r}\sum_{k}\frac{r^{2k+1}}{(2k+1)!},
+\end{align*}
+que, claro está, corresponde a
+\begin{equation}\label{ap:PauliRealExp}
+    e^{r\paulivec{r}}=\Id\cosh{r}+\paulivec{r}\sinh{r}
+\end{equation}
+\subsubsection{Exponencial compleja de un vector de Pauli}
+
+\subsubsection{Unitaria generada por un operador hermítico}
+Toda unitaria de $2\times 2$ puede generarse a través de un operador hermítico $H$ como
+\begin{equation*}
+    U=e^{-iH}
+\end{equation*}
+Pues bien, como el conjunto de las matrices de Pauli, junto a la identidad, forman una base del espacio de operadores (respecto al producto interno de Hilbert-Schmidt), $H$ puede expandirse como $H=r_{0}\Id+r_{x}\pauli{x}+r_{y}+\pauli{y}+r_{z}\pauli{z}$. Si se utiliza este para construir una unitaria, desarrollando la serie se encuentra que
+\notaAd{NO SÉ POR QUÉ ME SALIÓ UN MENOS JUNTO A LA IDENTIDAD}
+\begin{align*}
+    e^{-iH}=&e^{-i(r_{0}\Id+r\paulivec{r})}\\
+    =&e^{-i r_{0}\Id}e^{-ir\paulivec{r}}\\
+    =&e^{-ir\paulivec{r}}\\
+    =&\sum_{k=0}^{\infty}\frac{1}{k!}(-ir\paulivec{r})^k\\
+    =&\sum_{k}(i)^{2k}(-1)^{2k}\frac{r^{2k}(\paulivec{r})^{2k}}{(2k)!}+\sum_{k}(i)^{2k+1}(-1)^{2k+1}\frac{r^{2k+1}(\paulivec{r})^{2k+1}}{(2k+1)!}\\
+    =&-\Id\sum_{k}(-1)^{2k}\frac{r^{2k}}{(2k)!}-i(\paulivec{r})\sum_{k}(-1)^{2k}\frac{r^{2k+1}}{(2k+1)!}\\
+    =&-\Id \cos{r}-i(\paulivec{r})\sin{r}
+\end{align*}
+\subsubsection{Vector de Pauli sobre vector de Pauli}
+Si se aplica un vector de Pauli sobre otro se halla lo siguiente
+
+\begin{align*}
+    (\hat{n}\cdot\vec{\sigma})(\hat{m}\cdot\vec{\sigma})
+\end{align*}

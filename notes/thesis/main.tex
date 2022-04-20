@@ -43,12 +43,16 @@
 \newcommand{\mcP}{\mathcal{P}}
 \newcommand{\Complex}{\mathbb{C}} %Para escribir al espacio de hilbert complejo
 \newcommand{\Id}{\mathds{1}}% Para escribir el op. indentidad con notación chida
-\newcommand{\CNOT}{\textsc{CNOT}}% CNOT
 \newcommand{\CG}[1]{\mcC\left[#1\right]}
 \newcommand{\Fuzzy}[1]{\mcF\left[#1\right]}
 \newcommand{\nota}[1]{{\color{red} [#1]}}
 \newcommand{\notaAd}[1]{{\color{blue} [#1]}} %Notas pero mías
 %%Fixnote
+\newcommand{\pauli}[1]{\sigma_{#1}} %Para las matrices de pauli
+\newcommand{\paulivec}[1]{\hat{#1}\cdot\vec{\sigma}} %Para vectores de Pauli unitarios
+\newcommand{\cnot}{\text{C}_{\text{NOT}}} %Para el CNOT
+\newcommand{\purity}[1]{\text{Pu}(#1)} %la pureza
+\DeclareMathOperator*{\Motimes}{\text{\raisebox{0.25ex}{\scalebox{0.8}{$\bigotimes$}}}} %para los productos tensoriales
 \usepackage[draft,inline,nomargin]{fixme} \fxsetup{theme=color}
 \newcommand\dsone{\mathds{1}}
 \FXRegisterAuthor{ac}{acc}{\color{red}AC}
@@ -67,7 +71,6 @@
 \cleardoublepage
 
 \section*{Dedicatoria}
-
 \cleardoublepage
 
 \section*{Agradecimientos}
@@ -81,6 +84,7 @@
 \listoffigures
 \newpage
 \listoftables
+\include{intro}
 \include{chapter1/chap1}
 \include{chapter2/chap2}
 \include{chapter3/chap3}

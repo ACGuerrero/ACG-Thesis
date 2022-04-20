@@ -1,5 +1,7 @@
 \section{El principio de máxima entropía}\label{sec:CH1MaxEnt}
 
+
+
 \subsection{El principio de máxima entropía clásico}
 
 Si se nos informa que el valor esperado de tirar un dado de seis caras particular es $3.5$. ¿Cuál es la probabilidad asociada a cada cara del dado? En principio, el problema no puede resolverse, porque la distribución de probabilidad que da como resultado el valor esperado de $3.5$ no es única. Sería igual de válido asumir que el dado está pesado de tal forma que cae la mitad de veces en $2$, y la otra mitad de veces en $5$, que suponer que todos los valores tienen una probabilidad $\frac{1}{6}$. La segunda opción, claro, parecería la más judiciosa. Esta opción es también la que más incertidumbre sobre cada resultado tiene asociada, y la que menos suposiciones sobre los pesos del dado hace. Aún más importante, asumir que todos los valores son igualmente probables equivale a escoger la distribución de probabilidad que maximiza la entropía.
@@ -95,9 +97,9 @@ y la derivada queda
 \notaAd{No }
 
 El estado de máxima entropía compatible con las observaciones experimentales es entonces
-\begin{equation*}
+\begin{equation}\label{eq:GeneralMaxEnt}
     \rho=\frac{e^{-\sum_{j} \lambda_{j} \hat{A}_{j}}}{Z}.
-\end{equation*}
+\end{equation}
 \subsubsection{Caso termodinámico cuántico}
 \notaAd{Conocemos $\expval{H}$. El estado de máxima entropía es un estado estacionario. Entonces conmuta con $H$ y comparten eigenbase. ¿Los observables son $H_{kk}$ en la base diagonal? Asumo que esto es los valores esperados respecto a los elementos de la eigenbase. Entonces
 \begin{equation*}

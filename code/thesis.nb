@@ -1,0 +1,355 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     12049,        345]
+NotebookOptionsPosition[     10279,        303]
+NotebookOutlinePosition[     10671,        319]
+CellTagsIndexPosition[     10628,        316]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Functions and exports", "Subtitle",
+ CellChangeTimes->{{3.85936652086769*^9, 
+  3.859366525086912*^9}},ExpressionUUID->"fe6e5635-cccc-4c69-8483-\
+4b9bf6e24a62"],
+
+Cell[BoxData[{
+ RowBox[{"Needs", "[", "\"\<CoolTools`\>\"", "]"}], "\n", 
+ RowBox[{"Needs", "[", "\"\<Carlos`\>\"", "]"}], "\n", 
+ RowBox[{"Needs", "[", "\"\<Quantum`\>\"", "]"}], "\n", 
+ RowBox[{"Needs", "[", "\"\<ThesisTools`\>\"", "]"}], "\n", 
+ RowBox[{
+  RowBox[{
+  "SetDirectory", "[", "\"\</home/acastillo/Documents/tesis-adan/code\>\"", 
+   "]"}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellLabel->"In[1]:=",ExpressionUUID->"948f4800-b534-400d-8f1c-6cf610442443"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"PNGSetToGif", "[", 
+     RowBox[{"set_", ",", "name_"}], "]"}], ":=", 
+    RowBox[{"Export", "[", 
+     RowBox[{
+      RowBox[{"\"\<../figures/\>\"", "<>", "name", "<>", "\"\<.gif\>\""}], 
+      ",", "\n", 
+      RowBox[{"Flatten", "[", 
+       RowBox[{"{", 
+        RowBox[{"set", ",", " ", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"set", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], ",", " ", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", " ", 
+             RowBox[{"Length", "[", "set", "]"}]}], "}"}]}], "]"}]}], "}"}], 
+       "]"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"l", "[", 
+    RowBox[{"r_", ",", "p_", ",", "lo_", ",", "up_", ",", "st_"}], "]"}], ":=", 
+   RowBox[{"First", "@", 
+    RowBox[{"LagrangeMultFromZCoord", "[", "\n", "\t", 
+     RowBox[{
+      RowBox[{"RzLambdaTable", "[", 
+       RowBox[{"p", ",", "lo", ",", "up", ",", "st"}], "]"}], ",", "\n", "\t",
+       "r"}], "]"}]}]}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.8593665542265778`*^9, 3.859366608122987*^9}, {
+  3.8593666465037003`*^9, 3.859366648068783*^9}},
+ CellLabel->"In[8]:=",ExpressionUUID->"1f776568-4246-4954-b862-2ef85c9572bd"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["SWAP Dynamics", "Subtitle",
+ CellChangeTimes->{{3.859366207216239*^9, 
+  3.859366261398419*^9}},ExpressionUUID->"ec464118-70ea-429d-94b6-\
+1a2c05670541"],
+
+Cell[CellGroupData[{
+
+Cell["MaxEnt Construction", "Section",
+ CellChangeTimes->{{3.8593662651745872`*^9, 
+  3.8593662839909363`*^9}},ExpressionUUID->"363b329d-e74a-41ad-bb63-\
+b3c094b1a5a5"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+   "There", " ", "are", " ", "two", " ", "basic", " ", "parameters", " ", 
+    "for", " ", "the", " ", "coarse", " ", "graining", " ", 
+    RowBox[{"problem", ".", "\n", "The"}], " ", "norm", " ", "of", " ", "the",
+     " ", "Bloch", " ", "vector", " ", "and", " ", "the", " ", "swap", " ", 
+    "probability"}], "*)"}], "\n", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"r", "=", " ", "0.8"}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"sp", "=", " ", "0.6"}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"ztargetstate", "=", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"IdentityMatrix", "[", "2", "]"}], "+", 
+        RowBox[{"r", "*", 
+         RowBox[{"PauliMatrix", "[", "3", "]"}]}]}], ")"}], "/", "2"}]}], 
+    ";"}], "\n", "\n", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+     "We", " ", "then", " ", "have", " ", "to", " ", "construct", " ", "the", 
+      " ", "maximum", " ", "entropy", " ", 
+      RowBox[{"state", ".", " ", "Since"}], " ", "we", "\n", "have", " ", 
+      "acces", " ", "to", " ", "the", " ", "rz", " ", "coordinate"}], ",", 
+     " ", 
+     RowBox[{
+     "we", " ", "obtain", " ", "the", " ", "lagrange", " ", "mult", " ", "by",
+       "\n", "numerically", " ", "approximating", " ", "the", " ", "inverse", 
+      " ", "value"}]}], "*)"}], "\n", 
+   RowBox[{
+    RowBox[{"lstep", "=", "0.002"}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"llow", "=", "0."}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"lup", "=", "6."}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"lagmult", "=", 
+     RowBox[{"l", "[", 
+      RowBox[{"r", ",", "sp", ",", "llow", ",", "lup", ",", "lstep"}], 
+      "]"}]}], ";"}], "\n", "\n", 
+   RowBox[{
+    RowBox[{"ZMaxEnt", "=", 
+     RowBox[{"CGMaxEntStateLM", "[", 
+      RowBox[{"lagmult", ",", "sp"}], "]"}]}], ";"}], "\n", "\n", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<The maximum entropy state is: \>\"", ",", " ", 
+     RowBox[{"ZMaxEnt", "//", "MatrixForm"}]}], "]"}], "\n", 
+   RowBox[{"Print", "[", 
+    RowBox[{
+    "\"\<Fidelity between the coarse maximum entropy state and the target \
+state: \>\"", ",", " ", 
+     RowBox[{"fidelity", "[", 
+      RowBox[{
+       RowBox[{"CGKraus", "[", 
+        RowBox[{"ZMaxEnt", ",", "sp"}], "]"}], ",", "ztargetstate"}], "]"}]}],
+     "]"}]}]}]], "Input",
+ CellChangeTimes->{
+  3.8593663046585484`*^9, {3.859366763697137*^9, 3.859366926961841*^9}},
+ CellLabel->"In[30]:=",ExpressionUUID->"304616da-1258-4039-a9e5-4d209587c523"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The maximum entropy state is: \"\>", "\[InvisibleSpace]", 
+   TagBox[
+    RowBox[{"(", "\[NoBreak]", GridBox[{
+       {"0.7938508916318353`", "0.`", "0.`", "0.`"},
+       {"0.`", "0.13833740290179797`", "0.`", "0.`"},
+       {"0.`", "0.`", "0.057748400364201626`", "0.`"},
+       {"0.`", "0.`", "0.`", "0.010063305102165018`"}
+      },
+      GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.7]}, 
+          Offset[0.27999999999999997`]}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.4]}, 
+          Offset[0.2]}}], "\[NoBreak]", ")"}],
+    Function[BoxForm`e$, 
+     MatrixForm[BoxForm`e$]]]}],
+  SequenceForm["The maximum entropy state is: ", 
+   MatrixForm[{{0.7938508916318353, 0., 0., 0.}, {0., 0.13833740290179797`, 
+    0., 0.}, {0., 0., 0.057748400364201626`, 0.}, {0., 0., 0., 
+    0.010063305102165018`}}]],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.859366897738611*^9, 3.859366929909096*^9}},
+ CellLabel->
+  "During evaluation of \
+In[30]:=",ExpressionUUID->"94d8da43-7a01-4a11-b2e7-09e624332db7"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Fidelity between the coarse maximum entropy state and the \
+target state: \"\>", "\[InvisibleSpace]", "0.9999999937849087`"}],
+  SequenceForm[
+  "Fidelity between the coarse maximum entropy state and the target state: ", 
+   0.9999999937849087],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.859366897738611*^9, 3.8593669299628363`*^9}},
+ CellLabel->
+  "During evaluation of \
+In[30]:=",ExpressionUUID->"c222c776-f4f3-46e0-acbe-7b602c7edf04"]
+}, Open  ]]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Numerical", "Section",
+ CellChangeTimes->{{3.859366955397182*^9, 3.859366956590522*^9}, {
+  3.859367038720489*^9, 
+  3.859367039855755*^9}},ExpressionUUID->"694143bf-a7c4-467c-9782-\
+7de07a977dbb"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "unitary", "]"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+    "We", " ", "create", " ", "mixed", " ", "states", " ", "with", " ", "a", 
+     " ", "radius", " ", "of", " ", "zcoord"}], ",", " ", 
+    RowBox[{
+    "then", " ", "we", "\n", "obtain", " ", "their", " ", "corresponding", 
+     " ", "MaxEnt", " ", "states"}]}], "*)"}], "\n"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"MaxEntsNotInZ", "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"MaxEntForStateNotInZ", "[", 
+       RowBox[{"#", ",", "ZMaxEnt"}], "]"}], "&"}], "/@", 
+     RowBox[{"UniformMixedStates", "[", 
+      RowBox[{"r", ",", "1500"}], "]"}]}]}], ";"}], 
+  "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"unitary", "[", "t_", "]"}], ":=", 
+   RowBox[{"SWAP", "[", "t", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"NewMaxEnt", "=", 
+   RowBox[{"unitary", " ", ".", " ", "ZMaxEnt", " ", ".", " ", 
+    RowBox[{"Dagger", "[", 
+     RowBox[{"unitary", "[", "1", "]"}], "]"}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"NewMaxEntsNotInZ", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"unitary", "[", "1", "]"}], " ", ".", " ", "#", " ", ".", " ", 
+      RowBox[{"Dagger", "[", 
+       RowBox[{"unitary", "[", "1", "]"}], "]"}]}], "&"}], "/@", 
+    "MaxEntsNotInZ"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"CoarseMaxEntsNotInZ", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Chop", "[", 
+      RowBox[{"CGKraus", "[", 
+       RowBox[{"#", ",", "sp"}], "]"}], "]"}], "&"}], "/@", 
+    "MaxEntsNotInZ"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"CoarseNewMaxEntsNotInZ", "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Chop", "[", 
+       RowBox[{"CGKraus", "[", 
+        RowBox[{"#", ",", "sp"}], "]"}], "]"}], "&"}], "/@", 
+     "NewMaxEntsNotInZ"}]}], ";"}], "\n"}], "\n", 
+ RowBox[{
+  RowBox[{"PlotTwoCoarseSets", "[", 
+   RowBox[{"CoarseMaxEntsNotInZ", ",", "CoarseNewMaxEntsNotInZ", ",", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Initial states\>\"", ",", "\"\<Final states\>\""}], "}"}], 
+    ",", "\"\<Evolution of the Assignement Map\>\""}], "]"}], ";"}]}], "Input",\
+
+ CellChangeTimes->{{3.859367110311902*^9, 
+  3.859367175498414*^9}},ExpressionUUID->"56c2b746-0028-4f22-83c4-\
+0d8e7460b090"]
+}, Closed]],
+
+Cell["Analytical", "Section",
+ CellChangeTimes->{{3.859367048038597*^9, 
+  3.8593670601166697`*^9}},ExpressionUUID->"76c2670b-02be-419d-97b9-\
+d19c67c33ecd"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["CNOT Dynamics", "Subtitle",
+ CellChangeTimes->{{3.859366381105575*^9, 
+  3.859366386346353*^9}},ExpressionUUID->"4d288cc2-50f0-4f0d-8eae-\
+55e3c44db100"],
+
+Cell["Separable Dynamics", "Subtitle",
+ CellChangeTimes->{{3.8593663890803957`*^9, 
+  3.859366398654264*^9}},ExpressionUUID->"9ff1690a-20cc-4701-b49e-\
+3627021766ef"]
+}, Open  ]]
+},
+WindowSize->{960, 492},
+WindowMargins->{{0, Automatic}, {0, Automatic}},
+FrontEndVersion->"12.3 for Linux x86 (64-bit) (July 9, 2021)",
+StyleDefinitions->"ReverseColor.nb",
+ExpressionUUID->"c1e67f5a-d03a-47dc-954d-84c384851e49"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 166, 3, 53, "Subtitle",ExpressionUUID->"fe6e5635-cccc-4c69-8483-4b9bf6e24a62"],
+Cell[749, 27, 478, 10, 129, "Input",ExpressionUUID->"948f4800-b534-400d-8f1c-6cf610442443",
+ InitializationCell->True],
+Cell[1230, 39, 1317, 35, 149, "Input",ExpressionUUID->"1f776568-4246-4954-b862-2ef85c9572bd",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2584, 79, 159, 3, 53, "Subtitle",ExpressionUUID->"ec464118-70ea-429d-94b6-1a2c05670541"],
+Cell[CellGroupData[{
+Cell[2768, 86, 168, 3, 68, "Section",ExpressionUUID->"363b329d-e74a-41ad-bb63-b3c094b1a5a5"],
+Cell[CellGroupData[{
+Cell[2961, 93, 2482, 64, 403, "Input",ExpressionUUID->"304616da-1258-4039-a9e5-4d209587c523"],
+Cell[CellGroupData[{
+Cell[5468, 161, 1199, 28, 72, "Print",ExpressionUUID->"94d8da43-7a01-4a11-b2e7-09e624332db7"],
+Cell[6670, 191, 497, 11, 23, "Print",ExpressionUUID->"c222c776-f4f3-46e0-acbe-7b602c7edf04"]
+}, Open  ]]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[7228, 209, 203, 4, 54, "Section",ExpressionUUID->"694143bf-a7c4-467c-9782-7de07a977dbb"],
+Cell[7434, 215, 2292, 66, 319, "Input",ExpressionUUID->"56c2b746-0028-4f22-83c4-0d8e7460b090"]
+}, Closed]],
+Cell[9741, 284, 157, 3, 54, "Section",ExpressionUUID->"76c2670b-02be-419d-97b9-d19c67c33ecd"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9935, 292, 159, 3, 53, "Subtitle",ExpressionUUID->"4d288cc2-50f0-4f0d-8eae-55e3c44db100"],
+Cell[10097, 297, 166, 3, 53, "Subtitle",ExpressionUUID->"9ff1690a-20cc-4701-b49e-3627021766ef"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

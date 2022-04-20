@@ -1,82 +1,81 @@
 \section{Propiedades del estado de máxima entropía}
 
-\subsection{Dos expresiones del estado de máxima entropía}
-
-
-Si se recuerda que un operador unitario se traduce como una rotación en la esfera de Bloch. Entonces dos operadores de densidad están relacionados por una unitaria si sus vectores de Bloch tienen la misma norma euclidiana. Dicho de otra forma, dados $\rho_{1},\rho_{2}\in\mcS(\hilbert_{2})$, que cumplan $\text{Pu}(\rho_{1})=\text{Pu}(\rho_{2})$, entonces existe una matriz unitaria $V$ tal que
-\begin{equation}
-    \rho_{1}=V\rho_{2}V^{\dag}.
-\end{equation}
-Así, si consideramos un estado sobre el eje z,
-\begin{equation}\label{eq:rhoz}
-\rho_{z}=\frac{1}{2}\qty(\Id+z\sigma_{z}),
-\end{equation}
-entonces este está relacionado mediante una unitaria a cualquier estado $\rho\in\mcS(\hilbert_2)$ tal que $\text{Pu}(\rho)=z$.
-
-Sea, pues $\rho$ tal que $\rho=V\rho_{z}V^{\dag}$, con $\varrho_{max}$ el estado de máxima entropía construído para  $\mcV=V\otimes V$. El valor de expectación de las $\sigma_{i}$ puede calcularse como
-\begin{align*}
-    r_{i}&=\Tr\{\sigma_{i}V\rho_{z}V^{\dag}\},\\
-    &=\Tr\{\sigma_{i}V\CG{\varrho_{max}^{z}}V^{\dag}\},\\
-    &=\Tr\{\sigma_{i}\CG{\mcV\varrho_{max}^{z}\mcV^{\dag}}\},\\
-    &=\Tr[\hat{G}_{i}\mcV\varrho_{max}^{z}\mcV^{\dag}],\\
-    &=\Tr[\mcV^{\dag}\hat{G}_{i}\mcV\varrho_{max}^{z}].\\
-    \end{align*}
-De esto, se sigue que el estado de máxima entropía asociado a $\rho_{z}$ se puede reconstruir como:
-\begin{align*}
-\varrho_{max}^{z}&=\frac{1}{\Tr(e^{\sum_{i}\lambda_{i}\mcV^{\dag}\hat{G}_{i}\mcV})}e^{\sum_{i}\lambda_{i}\mcV^{\dag}\hat{G}_{i}\mcV},\\
-&=\frac{1}{\Tr(e^{\mcV^{\dag}\qty(\sum_{i}\lambda_{i}\hat{G}_{i})\mcV^{\dag}})}e^{\mcV^{\dag}\qty(\sum_{i}\lambda_{i}\hat{G}_{i})\mcV^{\dag}},\\
-&=\frac{1}{\Tr(e^{\sum_{i}\lambda_{i}\hat{G}_{i}})}\mcV^{\dag}\qty(e^{\sum_{i}\lambda_{i}\hat{G}_{i}})\mcV,\\
-&=\mcV^{\dag}\varrho_{max}\mcV.
-\end{align*}
-Por lo tanto, si somos capaces de hallar el estado de máxima entropía asociado a un estado alineado en $z$, podemos hallar el asociado a cualquier otro estado mediante:
-\begin{equation}
-\varrho_{max}=\mcV\varrho_{max}^{z}\mcV^{\dag}.
-\end{equation}
-Ahora, de las ecuaciones (\ref{eq:MaxEntExpVals}), puede verse que para que $r_{x}$ y $r_{y}$ se anulen sin que $r_{z}$ también se anule, debe cumplirse que $\lambda_{1}=\lambda_{2}=0$, por lo que el estado de máxima entropía compatible con un estado alineado en $z$ es 
-\begin{equation}
-    \varrho_{max}(\rho_{z})=\frac{1}{Z}e^{-\lambda_{3}\hat{G}_{3}}
-\end{equation}
-La unitaria $V$ que conecta $\rho$ y $\rho_{z}$ puede construirse recordando que a cada estado de dos niveles, $\rho$, lo definen tres parámetros: su pureza, $r$, y dos ángulos $\theta$, $\phi$. Siempre que $\text{Pu}(\rho)=z$, la unitaria que conecta $\rho$ con $\rho_{z}$ es
-\begin{equation}
-  V=
-  \begin{pmatrix}
-      \cos{\theta} & e^{-i\phi}\sin{\theta}\\
-      e^{i\phi}\sin{\theta}& \cos{\theta}\\
-  \end{pmatrix}.
-\end{equation}
-Sabiendo esto, podemos expresar al estado de máxima entropía de dos formas equivalentes:
-
-\noindent\begin{minipage}{.5\linewidth}
-    \begin{equation}\label{eq:MaxEntUnitary}
-        \varrho_{max}(\rho)=\frac{1}{Z}e^{-\lambda_{3}\mcV\hat{G}_{3}\mcV^{\dag}}
-    \end{equation}
-    \end{minipage}%
-    \begin{minipage}{.5\linewidth}
-    \begin{equation}\label{eq:MaxEntLambdas}
-        \varrho_{max}(\rho)=\frac{1}{Z}e^{\sum_{i}\lambda_{i}\hat{G}_{i}}.
-    \end{equation}
-    \end{minipage}
-
 \subsection{Separabilidad del estado de máxima entropía}
-Ya hemos visto que el estado de máxima entropía compatible con un estado alineado en $z$ tiene la forma (\ref{eq:MaxEntZ}). Ahora, como los dos términos que componen al operador $\hat{G}_{3}$ comuntan entre sí, entonces la exponencial puede separarse:
+Una pequeña manipulación de la ecuación (\ref{eq:MaxEntLagMult}),nos permite ver que el argumento de la exponencial se comporta de dos operadores que conmutan entre sí. A notar que
 \begin{align*}
-\varrho_{max}&=\frac{1}{Z}e^{-\lambda_{3}p\sigma_{z}\otimes\Id}e^{-\lambda_{3}(1-p)\Id\otimes\sigma_{z}}\\
-&=\frac{1}{Z}(e^{-\lambda_{3}p\sigma_{z}}\otimes\Id)( \Id\otimes e^{-\lambda_{3}(1-p)\sigma_{z}})\\
-&=\frac{1}{Z}(e^{-\lambda_{3}p\sigma_{z}}\otimes e^{-\lambda_{3}(1-p)\sigma_{z}}).\\
+    \sum_{i}\lambda_{i}\hat{G}_{i}=&\sum_{i}\lambda_{i}(p\pauli{i}\otimes\Id+(1-p)\Id\otimes\pauli{i})\\
+    =&p\sum_{i}\lambda_{i}\pauli{i}\otimes\Id+(1-p)\sum_{i}\lambda_{i}\Id\otimes\pauli{i}\\
+    =&p\qty(\sum_{i}\lambda_{i}\pauli{i})\otimes\Id+(1-p)\Id\otimes\qty(\sum_{i}\lambda_{i}\pauli{i}).
 \end{align*}
-Si se separa a la función de partición como un producto de trazas $Z=Z_{1}Z_{2}$, el estado de máxima entropía toma la forma
-\begin{equation}\label{eq:MaxEntZ}
-\varrho_{max}=\frac{e^{-\lambda_{3}p\sigma_{z}}}{Z_{1}} \otimes \frac{e^{-\lambda_{3}(1-p)\sigma_{z}}}{Z_{2}}.
-\end{equation}
-De la ecuación (\ref{eq:MaxEntUnitary}) y de que $\mcV=V\otimes V$ se sigue que el estado de máxima entropía compatible un estado arbitrario $\rho\in\mcS(\hilbert_{2})$ tiene la forma
+Por supuesto, los operadores 
+\begin{align*}
+    \qty(\sum_{i}\lambda_{i}\pauli{i})\otimes\Id && \text{y} && \Id\otimes\qty(\sum_{i}\lambda_{i}\pauli{i})
+\end{align*} 
+conmutan entre sí, así que la exponencial de la ecuación (\ref{eq:MaxEntLagMult}) se puede separar, quedando
+\begin{align*}
+    \varrho_{\max}=&\frac{1}{Z}e^{\qty(\sum_{i}\lambda_{i}\pauli{i})\otimes\Id }e^{\Id\otimes\qty(\sum_{i}\lambda_{i}\pauli{i})}\\
+    &=\frac{1}{Z}e^{p\sum_{i}\lambda_{i}\pauli{i}}\otimes e^{(1-p)\sum_{i}\lambda_{i}\pauli{i}}.
+\end{align*}
+Hemos obtenido, de esta forma, la expresión separable del estado de máxima entropía,
 \begin{equation}\label{eq:MaxEntSeparable}
-    \varrho_{max}=\frac{e^{-\lambda_{3}pV\sigma_{z}V^{\dag}}}{Z_{1}} \otimes \frac{e^{-\lambda_{3}(1-p)V\sigma_{z}V^{\dag}}}{Z_{2}}.
+    \varrho_{\max}=\frac{e^{p\sum_{i}\lambda_{i}\sigma_{i}}}{Z_{1}} \otimes \frac{e^{(1-p)\sum_{i}\lambda_{i}\sigma_{i}}}{Z_{2}}.
 \end{equation}
+\notaAd{
+En lo siguiente me gustaría añadir explícitamente que el CG elimina las correlaciones entre las pártículas
 
+Este resultado propiciará el surgimiento de diferentes preguntas: ¿qué significa que el estado de máxima entropía sea separable? ¿Qué interpretación tienen las matrices de densidad reducidas del estado de máxima entropía? Pues bien, propiedad de separabilidad viene de que la información accesible al experimentalista no incluye las correlaciones entre los subsistemas. Los observables finos son combinaciones de operadores de la forma $\pauli{i}\otimes\Id$ y $\Id\otimes\pauli{j}$. Esto significa que lo que se reconstruye es una combinación lineal de las matrices de densidad reducidas correspondientes a cada subsistema. Por la construcción de la aplicación de grano grueso, cualquier sistema de matrices de densidad reducidas $\rho_{A}$ y $\rho_{B}$ da como resultado el mismo estado efectivo, sin importar qué tan factorizable o entrelazado esté (de nuevo, siempre y cuando las marices de densidad reducidas sean $\rho_{A}$ y $\rho_{B}$). Pues bien, como estas correlaciones se pierden a la hora de hacer las mediciones, en el estado de máxima entropía estas se hacen cero. En el caso estacionario esto no afecta, pero me preocupa que quizá no sea el mejor acercamiento para el caso dinámico. Me pregunto si habrá algo como una dinámica de máxima entropía. 
+
+Algo que queda en claro de esto es que el estado de máxima entropía es completamente dependiente de los observables que se usen en su contrucción. Después de todo, la maximización de la entropía se restringe de acuerdo a las observaciones experimentales, así que estados de máxima entropía que cumplan un conjunto particular de restricciones no tienen por qué (y probablemente no lo harán) satisfacer un conjunto diferente de restricciones, un conjunto mediante el cual se contruiría un estado de máxima entropía diferente.}
+
+
+\subsection{Otra expresión del estado de máxima entropía}
+
+La expresión (\ref{eq:MaxEntSeparable}) es un producto tensorial de dos estados válidos, a los que denotaremos como $\rho_{A}$ y $\rho_{B}$, con $\rho_{A}, \rho_{B}\in\mcL(\hilbert_{2})$. Aún más, nótese que ambos factores pueden reescribirse como la exponencial real de un vector de Pauli $\lambda\paulivec{\lambda}$ con $\hat{\lambda}_{i}=\frac{\lambda_{i}}{\lambda}$. Ahora, en virtud de la relación (\ref{ap:PauliRealExp}) hallamos
+\begin{align*}
+    \rho_{A}=\frac{1}{Z_{1}}\qty(\Id\cosh{p\lambda}+\paulivec{\lambda}\sinh{p\lambda}), && \rho_{B}=\frac{1}{Z_{2}}\qty(\Id\cosh{(1-p)\lambda}+\paulivec{\lambda}\sinh{(1-p)\lambda})\rlap{.}
+\end{align*}
+Para que ambas matrices reducidas representen estados válidos, las funciones de partición $Z_{1}$ y $Z_{2}$ deben valer
+\begin{align*}
+    2\cosh{p\lambda} && \text{y} && 2\cosh{(1-p)\lambda}
+\end{align*}
+respectivamente. Las matrices de densidad reducidas del estado de máxima entropía tienen la forma
+\begin{align}
+    \rho_{A}=\frac{1}{2}\qty(\Id+\paulivec{\lambda}\tanh{p\lambda}) && \text{y} && \rho_{B}=\frac{1}{2}\qty(\Id+\paulivec{\lambda}\tanh{(1-p)\lambda})\rlap{.}
+\end{align}
 \subsection{Generalización: N a M partículas}
 
+\subsubsection{$m=1$}
 Sea $\ket{\psi}\in\hilbert_{2}^{\otimes n}$ y $\varrho=\dyad{\psi}$. La aplicación de grano grueso que resuelve un qubit donde hay $n$ qubits se puede escribir como
 \begin{equation*}
-    \CG{\varrho}=\Tr^{i}(\Fuzzy{\varrho})=\Tr^{1}(\Fuzzy{\varrho})
+    \CG{\varrho}=\Tr_{\overline{i}}(\Fuzzy{\varrho})=\Tr^{1}(\Fuzzy{\varrho})
 \end{equation*}
-sin pérdida de generalidad, y donde $\Tr^{i}$ denota la traza parcial sobre todos menos el $i$-ésimo qubit. La aplicación borrosa permuta el primer qubit con el $j$-ésimo qubit con probabilidad $p_{j}$.
+sin pérdida de generalidad, y donde $\Tr_{\overline{i}}$ denota la traza parcial sobre todos menos el $i$-ésimo qubit. La aplicación borrosa permuta el primer qubit con el $j$-ésimo qubit con probabilidad $p_{j}$. Denotando las matrices de permutación como $S_{1,j}$
+\begin{equation*}
+    \CG{\varrho}=\Tr_{\overline{1}}\qty(p_{1}\varrho+\sum_{j=2}^{n}p_{j}(S_{1,j})\varrho(S_{1,j})^{\dagger})
+\end{equation*}
+Sea $\{A_{i}\}$ con $A_{i}\in\mcL(\hilbert_{2})$ un conjunto de observables tomográficamente completo. Podemos asignar a $\varrho$ un estado que maximice la entropía de Von Neumann sin agregar información externa, y que satisfaga las restricciones $\expval{A_{i}}=\Tr(\rho A_{i})$. Escójase ${A_{i}}={\sigma_{i}}$, las matrices de Pauli. Los valores esperados de los operadores se traducen como las componentes del vector de Bloch del operador $\rho$. Las restricciones a las que se ve sujeto el operador $\varrho_{max}$ son
+\begin{align*}
+    r_{i}&=\Tr[\sigma_{i}\rho]\\
+    &=\Tr[\sigma_{i}\CG{\varrho}]\\
+    &=\Tr[\sigma_{i}\Tr^{1}\qty(p_{1}\varrho+\sum_{j=2}^{n}p_{j}(S_{1,j})\varrho(S_{1,j})^{\dagger})]\\
+    &=\Tr[\sigma_{i}\otimes\Id_{2^{n-1}}\qty(p_{1}\varrho+\sum_{j=2}^{n}p_{j}(S_{1,j})\varrho(S_{1,j})^{\dagger})]\\
+    &=\Tr[\qty(p_{1}(\sigma_{i}\otimes\Id_{2^{n-1}})+\sum_{j=2}^{n}p_{j}(S_{1,j})^{\dagger}(\sigma_{i}\otimes\Id_{2^{n-1}})(S_{1,j}))\varrho]\\
+    &=\Tr[\qty(p_{1}(\sigma_{i}\otimes\Id_{2^{n-1}})+\sum_{j=2}^{n}p_{j}(\Id_{2^{j-1}}\otimes\sigma_{i}\otimes\Id_{2^{n-j}}))\varrho]\\
+    &=\Tr[\qty(\sum_{j=1}^{n}p_{j}(\Id_{2^{j-1}}\otimes\sigma_{i}\otimes\Id_{2^{n-j}}))\varrho].
+\end{align*}
+Definiendo
+\begin{equation}\label{eq:Ghat}
+    \hat{G}_{i}=\sum_{j=1}^{n}p_{j}(\Id_{2^{j-1}}\otimes\sigma_{i}\otimes\Id_{2^{n-j}}),
+\end{equation}
+las restricciones se pueden esribir como
+\begin{equation}\label{eq:MaxEntRestrictionsNM}
+    r_{i}=\Tr[\hat{G}_{i}\varrho].
+\end{equation}
+Una vez obtenidas las restricciones, se utilizan multiplicadores de Lagrange para obtener el estado de maximiza la entropía. De acuerdo con la ecuación (\ref{eq:GeneralMaxEnt}), el estado de máxima entropía compatible con (\ref{eq:MaxEntRestrictionsNM}) es
+\begin{equation}\label{eq:MaxEntLagMult}
+    \varrho_{max}(\rho)=\frac{1}{Z}e^{-\sum_{i}\lambda_{i}\hat{G}_{i}}.
+\end{equation}
+Nuevamente el argumento puede separarse en una suma de $n$ operadores que conmuntan entres sí. Esto significa que el estado de máxima entropía es separable y tiene exactamente $n$ factores. Explícitamente, tiene la forma
+\begin{equation}
+    \rho_{max}=\Motimes_{j=1}^{n}\frac{1}{Z_{j}}\text{exp}\qty(-p_{j}\sum_{i}\lambda_{i}\sigma_{i}).
+\end{equation}
