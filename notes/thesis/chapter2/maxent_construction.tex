@@ -25,9 +25,9 @@ Una vez obtenidas las restricciones, se utilizan multiplicadores de Lagrange par
 Si se sustituye a $\varrho_{\max}$ en las ecuaciones (\ref{eq:MaxEntRestrictions}) (cosa nada recomendable), se obtienen las relaciones entre los multiplicadores de Lagrange y los valores esperados de los observables utilizados para la tomografía. Si se escribe $\lambda=\sqrt{\lambda_{1}^{2}+\lambda_{2}^{2}+\lambda_{3}^{2}}$, los resultados son
 \begin{align}\label{eq:MaxEntExpVals}
     \begin{split}
-    \expval{\pauli{1}}&=\lambda_{1}f(\lambda),\\
-    \expval{\pauli{2}}&=\lambda_{2}f(\lambda),\\
-    \expval{\pauli{3}}&=\lambda_{3}f(\lambda),
+    \expval{\pauli{1}}&=\lambda_{1}\rfroml(\lambda),\\
+    \expval{\pauli{2}}&=\lambda_{2}\rfroml(\lambda),\\
+    \expval{\pauli{3}}&=\lambda_{3}\rfroml(\lambda),
     \end{split}
 \end{align}
-donde $f(\lambda)$ es una función biyectiva de $\lambda$, y cuya forma será derivada en la siguiente sección. Idealmente, la ecuación (\ref{eq:MaxEntLagMult}) está en términos de los valores de expectación $r_{i}=Tr(\sigma_{i}\rho_{c})$, y no de los multiplicadores de Lagrange. Aunque no es posible despejar a los multiplicadores de Lagrange de las ecuaciones de manera algebráica, la naturaleza de $f(\lambda)$ nos permite asegurar que las relaciones son uno a uno y que tienen inversa.
+donde $\rfroml(\lambda)$ es una función biyectiva de $\lambda$, y cuya forma será derivada en la siguiente sección. Idealmente, la ecuación (\ref{eq:MaxEntLagMult}) está en términos de los valores de expectación $r_{i}=Tr(\sigma_{i}\rho_{c})$, y no de los multiplicadores de Lagrange. Aunque no es posible despejar a los multiplicadores de Lagrange de las ecuaciones de manera algebráica, la naturaleza de $\rfroml(\lambda)$ nos permite asegurar que las relaciones son uno a uno y que tienen inversa.

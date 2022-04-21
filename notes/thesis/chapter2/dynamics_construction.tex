@@ -16,6 +16,20 @@ El siguiente diagrama ilustra la ecuación anterior,
 \rho_{f}(0) \arrow{u}{\mcA_{\mcC}} & \rho_{f}(t). \arrow{l}{\mcU_{t}}
 \end{tikzcd}
 \]
-Aquí $\mcA_\mcC$ denota una aplicación que asigna un estado fino $\rho_f(0)$ al estado $\rho_g(0)$. Como ya se mencionó, no hay una forma única de hacer dicha asignación. Usaremos el
+Aquí $\mcA_\mcC$ denota una aplicación que asigna un estado fino $\rho_f(0)$ al estado $\rho_g(0)$. Como ya se mencionó, no hay una forma única de hacer dicha asignación. Usaremos el estado de máxima entropía compatible con un conjunto de mediciones tomográficamente completas sobre el estado grueso como asignación.
+
+¿Es justificable usar al estado de máxima entropía? Previamente comentamos que este resulta ser separable, y aunque en el caso estacionario esto no afecta, las correlaciones, que resultan ser cero en esta asginación, sí afectan la forma en que un sistema evoluciona.
+
+Algo que queda en claro de esto es que el estado de máxima entropía es completamente dependiente de los observables que se usen en su contrucción. Después de todo, la maximización de la entropía se restringe de acuerdo a las observaciones experimentales, así que estados de máxima entropía que cumplan un conjunto particular de restricciones no tienen por qué (y probablemente no lo harán) satisfacer un conjunto diferente de restricciones, un conjunto mediante el cual se contruiría un estado de máxima entropía diferente. Esto tiene la siguiente consecuencia: el estado de máxima entropía compatible con un estado evolucionado a través de una dinámica efectiva obtenida de un estado de máxima entropía compatible con un estado efectivo inicial, no tiene por qué ser igual al estado de máxima entropía inicial evolucionado. Esto es, no tiene por que cumplirse que
+\begin{equation*}
+    (\mcU_{t}\circ\mcA_\mcC)(\rho) = (\mcA_\mcC\circ\mcC \circ \mcU_t \circ \mcA_\mcC)(\rho).
+\end{equation*}
+Y la razón de esto es que
+\begin{equation*}
+    \mcA_\mcC\neq\mcC^{-1}
+\end{equation*}
+
+Pregunta interesante: ¿qué representa mejor a todo el conjunto de estados compatibles? ¿La asginación promedio o el estado de máxima entropía?
+
 
 \notaAd{CORREGIR ESTA SECCIÓN}
