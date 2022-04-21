@@ -1,24 +1,25 @@
-\section{Construcción de la dinámica}
-\notaAd{CORREGIR ESTA SECCIÓN}
+\section{Construcción de la dinámica}\label{sec:ch2dycon}
 
-La meta del proyecto es la construcción y estudio de `dinámicas gruesas'', denotadas como $\Gamma_t$, basadas en la aplicación lineal de grano grueso descrita anteriormente sobre estados microscópicos asignados apropiadamente. Todo esto dada una dinámica microscópica unitaria, denotada por $\mcU_t$. Concretamente se construirá lo siguiente,
-\begin{align*}
-\Gamma_{t}:&\mcS(\hilbert_2)\rightarrow \mcS(\hilbert_2)\\
-&\rho_g(0) \mapsto \rho_g(t),
-\end{align*}
-donde la dinámica gruesa se define como la composición,
+Ahora que hemos establecido que usaremos como modelo de grano grueso uno que incluye tanto problemas de resolución como errores de permutación, y que hemos contruído nuestra aplicación de asignación a través del Principio de Máxima Entropía, podemos preguntarnos sobre la evolución del sistema efectivo, la ``dinámica gruesa'', denotada como $\Gamma_t$.
+
+La dinámica efectiva es la evolución que observaría el experimentalista. Más concretamente, dado un estado efectivo inicial $\rho(0)$
+\begin{gather*}
+\Gamma_{t}:\mcS(\hilbert_2)\rightarrow \mcS(\hilbert_2)\\
+\rho \mapsto \rho(t)\rlap{.}
+\end{gather*}
+Debido que asumimos que el estado que se propaga debido a la evolución subyacente es justamente el estado de máxima entropía, a la dinámica gruesa la definimos como la composición
 \begin{equation*}
 \Gamma_t:=\mcC \circ \mcU_t \circ \mcA_\mcC.
 \end{equation*}
-El siguiente diagrama ilustra la ecuación anterior,
+Donde $\mcA_\mcC$ denota a la aplicación que asigna un estado microscópico $\varrho$ al estado efectivo $\rho$. A la aplicación de asignación desarrolada previamente la denotaremos por medio de $\mcA_{\mcC}^{\max}$. El siguiente diagrama ilustra la ecuación anterior,
 \[\begin{tikzcd}[arrows={<-|}]
 \rho_{g}(0)  & \rho_{g}(t) \arrow{l}{\Gamma_{t}} \arrow{d}{\mcC}\\
-\rho_{f}(0) \arrow{u}{\mcA_{\mcC}} & \rho_{f}(t). \arrow{l}{\mcU_{t}}
+\rho_{f}(0) \arrow{u}{\mcA_{\mcC}^{\max}} & \rho_{f}(t). \arrow{l}{\mcU_{t}}
 \end{tikzcd}
 \]
-Aquí $\mcA_\mcC$ denota una aplicación que asigna un estado fino $\rho_f(0)$ al estado $\rho_g(0)$. Como ya se mencionó, no hay una forma única de hacer dicha asignación. Usaremos el estado de máxima entropía compatible con un conjunto de mediciones tomográficamente completas sobre el estado grueso como asignación.
+\acnote{CORREGIR ESTA SECCIÓN}
 
-¿Es justificable usar al estado de máxima entropía? Previamente comentamos que este resulta ser separable, y aunque en el caso estacionario esto no afecta, las correlaciones, que resultan ser cero en esta asginación, sí afectan la forma en que un sistema evoluciona.
+¿Es justificable usar al estado de máxima entropía? Previamente demostramos que en nuetro caso particular, este resulta ser separable, y aunque en el caso estacionario esto no afecta, las correlaciones, que se anulan en esta asginación, sí afectan la forma en que un sistema evoluciona.
 
 Algo que queda en claro de esto es que el estado de máxima entropía es completamente dependiente de los observables que se usen en su contrucción. Después de todo, la maximización de la entropía se restringe de acuerdo a las observaciones experimentales, así que estados de máxima entropía que cumplan un conjunto particular de restricciones no tienen por qué (y probablemente no lo harán) satisfacer un conjunto diferente de restricciones, un conjunto mediante el cual se contruiría un estado de máxima entropía diferente. Esto tiene la siguiente consecuencia: el estado de máxima entropía compatible con un estado evolucionado a través de una dinámica efectiva obtenida de un estado de máxima entropía compatible con un estado efectivo inicial, no tiene por qué ser igual al estado de máxima entropía inicial evolucionado. Esto es, no tiene por que cumplirse que
 \begin{equation*}
@@ -32,4 +33,4 @@ Y la razón de esto es que
 Pregunta interesante: ¿qué representa mejor a todo el conjunto de estados compatibles? ¿La asginación promedio o el estado de máxima entropía?
 
 
-\notaAd{CORREGIR ESTA SECCIÓN}
+\acnote{CORREGIR ESTA SECCIÓN}
