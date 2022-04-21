@@ -1,11 +1,13 @@
-\section{Construcción de la asignación de máxima entropía}
+\section{Construcción del estado de máxima entropía}
 
-Sea $\rho\in\mcS(\hilbert_{2})$ el estado grueso accesible al observador, y sea $\{A_{i}\}$ con $A_{i}\in\mcL(\hilbert_{2})$ un conjunto de observables tomográficamente completo. Si $\rho$ es un estado grueso correspondiente a un estado fino $\varrho\in\mcS(\hilbert_{2}\otimes\hilbert_{2})$, de acuerdo con lo discutido en el capítulo anterior, podemos asignar a $\varrho$ un estado que maximice la entropía de Von Neumann sin agregar información externa, y que satisfaga las restricciones $\expval{A_{i}}=\Tr(\rho A_{i})$. ¿Pero cómo se traducen dichas restricciones en el nivel microscópico? Naturalmente, esto dependerá de la relación entre $\varrho$ y $\rho$. Esto es, el estado de máxima entropía depende de la aplicación de grano grueso.
-
-Escójase ${A_{i}}={\pauli{i}}$, las matrices de Pauli, y la aplicación de grano grueso como (\ref{eq:CG}). Los valores esperados de los operadores se traducen como las componentes del vector de Bloch del operador $\rho$. Las restricciones a las que se ve sujeto el operador $\varrho_{max}$ son
+Sea $\rho\in\mcS(\hilbert_{2})$ el estado grueso accesible al observador, y sea $\{A_{i}\}$ con $A_{i}\in\obspace{2}$ un conjunto de observables tomográficamente completo. Si $\rho$ es un estado grueso correspondiente a un estado fino $\varrho\in\mcS(\hilbert_{2}\otimes\hilbert_{2})$, de acuerdo con lo discutido en el capítulo anterior, podemos asignar a $\varrho$ un estado que maximice la entropía de Von Neumann sin agregar información externa, y que satisfaga las restricciones $\expval{A_{i}}=\Tr(\rho A_{i})$.
+Escójase ${A_{i}}={\pauli{i}}$, las matrices de Pauli, y la aplicación de grano grueso desarrollada en la sección anterior, aquella del grano grueso y borroso dada por (\ref{eq:CG}). Los valores esperados de los operadores se traducen como las componentes del vector de Bloch del operador $\rho$. Las restricciones a las que se ve sujeto el operador $\varrho_{\max}$ son
+\begin{equation*}
+    r_{i}=\Tr[\pauli{i}\rho]
+\end{equation*}
+Aquí hay un problema: el estado que maximiza la entropía pertenece al espacio $\densityspace{4}$, mientras que las restricciones están definidas para un operador de densidad en $\densityspace{2}$. Entonces, ¿cómo se traducen dichas restricciones en el nivel microscópico? Naturalmente, esto dependerá de la relación entre $\varrho$ y $\rho$. Esto es, el estado de máxima entropía depende de la aplicación de grano grueso. Sustituyendo la relación entre algún estado microscópico compatible $\varrho$ y el estado efectivo $\rho$ en la ecuación anterior, y manipulando un poco se halla que
 \begin{align*}
-    r_{i}&=\Tr[\pauli{i}\rho],\\
-    &=\Tr[\pauli{i}\Lambda(\varrho)],\\
+    r_{i}&=\Tr[\pauli{i}\mcC(\varrho)],\\
     &=\Tr[\pauli{i}\Tr_{2}(p\varrho+(1-p)S\varrho S^{\dag})],\\
     &=\Tr[\pauli{i}\otimes\Id(p\varrho+(1-p)S\varrho S^{\dag})],\\
     &=\Tr[(p\pauli{i}\otimes\Id+(1-p)\Id\otimes\pauli{i})\varrho].
@@ -18,7 +20,7 @@ las restricciones se pueden esribir como
 \begin{equation}\label{eq:MaxEntRestrictions}
     r_{i}=\Tr[\hat{G}_{i}\varrho].
 \end{equation}
-Una vez obtenidas las restricciones, se utilizan multiplicadores de Lagrange para obtener el estado de maximiza la entropía. De acuerdo con la ecuación (\ref{eq:GeneralMaxEnt}), el estado de máxima entropía compatible con (\ref{eq:MaxEntRestrictions}) es
+Estas restricciones ya se hallan en términos de observables y un operador de densidad que actúan sobre $\hilbert_{4}$. Entonces se utilizan multiplicadores de Lagrange para obtener el estado de maximiza la entropía. De acuerdo con la ecuación (\ref{eq:GeneralMaxEnt}), el estado de máxima entropía compatible con (\ref{eq:MaxEntRestrictions}) es
 \begin{equation}\label{eq:MaxEntLagMult}
     \varrho_{\max}(\rho)=\frac{1}{Z}e^{\sum_{i}\lambda_{i}\hat{G}_{i}}.
 \end{equation}
@@ -30,4 +32,6 @@ Si se sustituye a $\varrho_{\max}$ en las ecuaciones (\ref{eq:MaxEntRestrictions
     \expval{\pauli{3}}&=\lambda_{3}\rfroml(\lambda),
     \end{split}
 \end{align}
-donde $\rfroml(\lambda)$ es una función biyectiva de $\lambda$, y cuya forma será derivada en la siguiente sección. Idealmente, la ecuación (\ref{eq:MaxEntLagMult}) está en términos de los valores de expectación $r_{i}=Tr(\sigma_{i}\rho_{c})$, y no de los multiplicadores de Lagrange. Aunque no es posible despejar a los multiplicadores de Lagrange de las ecuaciones de manera algebráica, la naturaleza de $\rfroml(\lambda)$ nos permite asegurar que las relaciones son uno a uno y que tienen inversa.
+donde $\rfroml(\lambda)$ es una función biyectiva de $\lambda$, y cuya forma será derivada en la siguiente sección de una forma que requiere muchas menos cuentas. Idealmente, la ecuación (\ref{eq:MaxEntLagMult}) está en términos de los valores de expectación $r_{i}=Tr(\sigma_{i}\rho_{c})$, y no de los multiplicadores de Lagrange. Aunque no es posible despejar a los multiplicadores de Lagrange de las ecuaciones de manera algebráica, la naturaleza de $\rfroml(\lambda)$ nos permite asegurar que las relaciones son uno a uno y que tienen inversa.
+
+A partir de este momento, cada vez que se hable del \textit{estado de máxima entropía}, se entiende que se hace referencia al estado dado por la ecuación (\ref{eq:MaxEntLagMult}). Esto es, al estado de máxima entropía que es compatible con un estado efectivo inducido por nuestro modelo de grano grueso particular.

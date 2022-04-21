@@ -1,7 +1,7 @@
-\section{Grano grueso y medición borrosa}
+\section{Un modelo de grano grueso y borroso}
 
 
-Dentro del marco de la \textit{teoría de información cuántica}, especialmente en conexión con la parte experimental, es natural suponer que no siempre es posible disponer de toda la información sobre el \textit{estado} del sistema de interés. Esto ya sea por insuficiencia en la resolución de los aparatos de medición o por el inevitable error inherente a las herramientas de medición. Un prototipo sencillo de error consiste en el inducido por un aparato que no distingue diferentes conjuntos de partículas entre sí. El caso más simple corresponde a la permutación de dos partículas. Este intercambio accidental a la hora de la medición es una \textit{aplicación borrosa} \cite{FuzzyMeasurements}.
+Como se discutió previamente, es natural suponer que no siempre es posible disponer de toda la información sobre el \textit{estado} del sistema de interés. Esto ya sea por insuficiencia en la resolución de los aparatos de medición o por el inevitable error inherente a las herramientas de medición. Un prototipo sencillo de error consiste en el inducido por un aparato que no distingue diferentes conjuntos de partículas entre sí. El caso más simple corresponde a la permutación de dos partículas. Este intercambio accidental a la hora de la medición es una \textit{aplicación borrosa} \cite{FuzzyMeasurements}.
 
 Para ilustrar lo anterior, considérese dicha aplicación borrosa sobre un sistema de dos partículas. Para simplificarlo un poco más, supongamos que cada partícula es un sistema de dos niveles, esto es, el sistema está compuesto por los qubits $A$ y $B$. El estado del sistema está caracterizado por un operador de densidad $\varrho_{AB} \in \mcS(\hilbert_2 \otimes \hilbert_2)$. La acción de la aplicación borrosa se escribe como sigue:
 \begin{align*}
@@ -16,16 +16,15 @@ El estado resultante, $\Fuzzy{\varrho_{AB}}=p\varrho_{AB}+(1-p)\varrho_{BA}$, es
 \begin{equation*}
     \expval{\sigma_{3}\otimes\Id}_{\mcF}=(1-p)\expval{\sigma_{3}\otimes\Id}+p\expval{\Id\otimes\sigma_{3}}
 \end{equation*}
-donde por $\expval{A}_{\mcF}$ nos referimos al valor esperado con respecto al sistema que a pasado por $\mcF$.
+donde por $\expval{A}_{\mcF}$ nos referimos al valor esperado con respecto al estado del sistema descrito a través de $\mcF$.
 
-Es importante notar que, auque la aplicación borrosa modela el error asociado al aparato de medición, no constituye por si misma un modelo de grano grueso, pues coserva la dimensión del sistema: el aparato resuelve todos los grados de libertad del sistema.
+Es importante notar que, auque la aplicación borrosa modela el error asociado al aparato de medición, no constituye por si misma un modelo de grano grueso, pues conserva la dimensión del sistema: el aparato resuelve todos los grados de libertad.
 
-
-Agreguemos al error, la falta de resolución. Una posibilidad es que el instrumento detece una partpicula en donde en realidad haya dos, y aún más, que en un sistema de dos partículas, este sea capaz de medir únicamente observables asociados al primer subsistema. El estado observado sería, de acuerdo con la sección \ref{sec:PartialTrace}, la matriz de densidad reducida de la primera partícula. Matemáticamente, la composición del error y de la falta de resolución puede escribirse como
-\begin{align*}
-\mcC:&\mcS(\hilbert_2 \otimes \hilbert_2)\to \mcS(\hilbert_2)\nonumber\\
- &\rho_{AB} \mapsto p\rho_A+(1-p)\rho_B,
-\end{align*}
+Agreguemos al error por permutación la falta de resolución. Una posibilidad es que el instrumento detecte una partícula en donde en realidad haya dos, y aún más, que en un sistema de dos partículas, este sea capaz de medir únicamente observables asociados al primer subsistema. El estado observado sería, de acuerdo con la sección \ref{sec:PartialTrace}, la matriz de densidad reducida de la primera partícula. Matemáticamente, la composición del error y de la falta de resolución puede escribirse como
+\begin{gather*}
+    \mcC:\mcS(\hilbert_2 \otimes \hilbert_2)\to \mcS(\hilbert_2)\nonumber\\
+    \rho_{AB} \mapsto p\rho_A+(1-p)\rho_B\rlap{,}
+\end{gather*}
 donde $\rho_A=\tr_B \rho_{AB}$ y $\rho_B=\tr_A \rho_{AB}$, es decir, las matrices de densidad reducidas de la partículas $A$ y $B$, respectivamente.
 
 
@@ -33,10 +32,10 @@ A diferencia de la aplicación borrosa, el modelo de grano grueso disminuye la d
 \begin{equation}\label{eq:CG}
 \CG{\rho}=(\Tr_{B}\circ\mcF)[\rho].
 \end{equation}
-En este contexto, diferenciamos al estado ``microscópico'' o ``fino'', denotado por $\varrho\in \mcS(\hilbert_2\otimes\hilbert_2)$, y al estado ``macroscópico'' o ``grueso'', denotado por $\rho\in \mcS(\hilbert_2)$, a través de la siguiente relación,
+En este contexto, diferenciamos al estado ``microscópico'' o ``fino'', denotado por $\varrho\in \mcS(\hilbert_2\otimes\hilbert_2)$, y al estado ``macroscópico'', ``grueso'', o  ``efectivo'' denotado por $\rho\in \mcS(\hilbert_2)$, a través de la relación
 \begin{equation*}
     \rho=\CG{\varrho}.
 \end{equation*}
-Es extremadamente importante notar que la relación anterior no es invertible. Pueden existir una infinidad de estados $\varrho$ tales que su descripción gruesa coincida con $\rho$.
+Es extremadamente importante notar que la expresión anterior no es invertible. Pueden existir una infinidad de estados $\varrho$ tales que su descripción gruesa coincida con $\rho$. Como ejemplo, supóngase que el estado efectivo está descrito por $\rho=\frac{1}{2}\Id$, el estado máximamente mezclado. Entonces cualquier sistema fino que se halle en un estado máximamente mezclado será compatible con la descripción efectiva $\frac{1}{2}\Id$.
 
-Como conocemos la evolución unitaria subyacente, requerimos asignar a $\rho$ un estado microscópico que cumpla con todas las restricciones impuestas por nuestras mediciones. Asumiremos que dicho estado asignado es el que experimenta la evolución. 
+Pues bien, como se ha asumido que conocemos la evolución unitaria subyacente, requerimos asignar a $\rho$ un estado microscópico que cumpla con todas las restricciones impuestas por nuestras mediciones. Asumiremos que dicho estado asignado es el que experimenta la evolución. 
