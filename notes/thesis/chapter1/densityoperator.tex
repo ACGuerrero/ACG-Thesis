@@ -1,7 +1,5 @@
 \section{El operador de densidad}
 
-
-
 \subsection{Mezclas estadísticas}
 
 Los vectores de estado no pueden describir a todos los sistemas estudiables en el contexto de la mecánica cuántica. Por esto, y porque será particularmente útil para nuestro trabajo, introducimos el concepto del operador de densidad (también llamado, en el caso discreto, que es el que nos incumbe, matriz de densidad).
@@ -113,45 +111,6 @@ De esta definición es posible afirmar que
 
 
 
-\subsection{Sistemas compuestos}\label{sec:PartialTrace}
-
-Hasta ahora hemos hablado de sistemas descritos por operadores de densidad en $\densityspace{n}$, pero, ¿qué sucede si el sistema que estudiamos está conformado por dos subsistemas, cada uno descrito a través de sus respectivos espacios de Hilbert? Sean, pues, $A$ y $B$ dos sistemas con espacios de Hilbert $\hilbert^{A}$ y $\hilbert^{B}$, y sea $C$ un sistema compuesto por $A$ y $B$. Entonces el producto tensorial de los espacios $\hilbert^{A}$ y $\hilbert^{B}$ es otro espacio de Hilbert, uno asociado al sistema $C$:
- \begin{equation*}
-     \hilbert^{C}=\hilbert^{A}\otimes\hilbert^{B}.
- \end{equation*}
- La dimensión del espacio de Hilbert del sistema compuesto cumple
-\begin{equation*}
-    \text{dim}(\hilbert^{C})=\text{dim}(\hilbert^{A})\text{dim}(\hilbert^{B}).
-\end{equation*}
-Si $A$ y $B$ representaran dos particulas diferentes, entonces $C$ representa a las partículas como conjunto, como sistema de dos partículas. Si cada una de las particulas puede ser descrita mediante un vector de estado, el estado del sistema es simplemente el producto tensorial de dichos vectores de estado:
-\begin{equation*}
-    \ket{\psi^{A}}\otimes\ket{\psi^{B}}\in\hilbert^{C}\,\; \; \forall\ket{\psi^{A}}\in\hilbert^{A},\ket{\psi^{B}}\in\hilbert^{B}.
-\end{equation*}
-Si un estado puede escribirse como un producto tensorial de estados pertenecientes a los subsistemas del sistema compuesto, entonces se dice que es un estado \textit{producto} o \textit{separable}. Nótese que, en general, los estados del sistema compuesto no son estados separables. En realidad, dadas $\{\varphi_{i}^{A}\}$ y $\{\varphi_{j}^{B}\}$ bases ortonormales de los espacios $\hilbert^{A}$ y $\hilbert^{B}$ respectivamente, podemos escribit a todo estado puro $\ket{\psi^{C}}$ del sistema compuesto como
-\begin{equation*}
-    \ket{\psi^{AB}}=\sum_{j,k}\alpha_{j,k}\ket{\varphi_{j}^{A}}\otimes\ket{\varphi_{k}^{B}}.
-\end{equation*}
-El significado físico de que un sistema se halle en un estado producto es que el sistema se halla en un estado en el que no hay correlaciones entre sus subsistemas (de esto que puedan separarse). Un estado que no puede separarse tiene cierto grado de entrelazamiento, y por esto deja de tener sentido hablar de vectores de estado individuales a cada partícula. Ahora, sean $G^{A}$ y $G^{B}$ dos operadores que actúan en $\hilbert^{A}$ y $\hilbert^{B}$ respectivamente, correspondientes a observables de cada subsistema. Entonces se cumple:
-\begin{equation*}
-    G^{A}\ket{\psi^{A}}\otimes G^{B}\ket{\psi^{B}}=(G^{A}\otimes G^{B})\ket{\psi^{A}}\otimes\ket{\psi^{B}}.
-\end{equation*}
-
-¿Qué sucede si al científico no le interesa sino uno de los subsistemas? Es en este caso en el que surge el concepto de la matriz de densidad reducida. Si $\rho^{C}$ es la matriz de densidad del sistema compuesto por $A$ y $B$, entonces la matriz de densidad reducida del sistema $A$ es
-\begin{equation*}
-    \rho^{A}=\Tr_{B}(\rho^{C}),
-\end{equation*}
-donde $\Tr_{B}$ representa la operación de traza parcial con respeco al susbsistema $B$. Si la traza de $\rho^{C}$ es 
-\begin{equation*}
-    \Tr(\rho^{C})=\sum_{j}\bra{\varphi^{C}_{j}}\rho^{C}\ket{\varphi^{C}_{j}},
-\end{equation*}
-para toda base ortonormal $\{\ket{\varphi^{C}_{j}}\}$ de $\hilbert^{C}$, entonces, para toda base ortonormal $\{\ket{\varphi^{B}_{j}}\}$ de $\hilbert^{B}$  la traza parcial respecto a $B$ es
-\begin{equation*}
-    \Tr_{B}(\rho^{C})=\sum_{j}(\Id^{A}\otimes \bra{\varphi^{C}_{j}})\rho^{C}(\Id^{A}\otimes \ket{\varphi^{C}_{j}}).
-\end{equation*}
-Puede verse que el resultado de la operación es trazar sobre los elementos del sistema que no es de interés. La matriz reducida del sistema $A$, o traza parcial con respecto al sistema $B$, actúa como matriz de densidad de $A$, ya que contiene toda la descripción estadísitica de dicho subsistema.
-
-
-
 \subsection{Evolución y parametrización}
 
 \subsubsection{La evolución del operador de densidad}
@@ -182,3 +141,42 @@ Si $n=2$, los generadores corresponden a las matrices de Pauli $\sigma_{i}$. En 
     \rho=\frac{1}{4}\sum_{i,j}\gamma_{ij}\sigma_{i}\otimes \sigma_{j} \ \ i,j\in\{0,1,2,3\},
 \end{equation}
 donde $\sigma_{0}=\Id$ y $\gamma_{i.j}=\Tr(\sigma_{i}\otimes \sigma_{j}\rho)$.
+
+
+
+\subsection{Sistemas compuestos}\label{sec:Ch1PartialTrace}
+
+Hasta ahora hemos hablado de sistemas descritos por operadores de densidad en $\densityspace{n}$, pero, ¿qué sucede si el sistema que estudiamos está conformado por dos subsistemas, cada uno descrito a través de sus respectivos espacios de Hilbert? Sean, pues, $A$ y $B$ dos sistemas con espacios de Hilbert $\hilbert^{A}$ y $\hilbert^{B}$, y sea $C$ un sistema compuesto por $A$ y $B$. Entonces el producto tensorial de los espacios $\hilbert^{A}$ y $\hilbert^{B}$ es otro espacio de Hilbert, uno asociado al sistema $C$:
+ \begin{equation*}
+     \hilbert^{C}=\hilbert^{A}\otimes\hilbert^{B}.
+ \end{equation*}
+ La dimensión del espacio de Hilbert del sistema compuesto cumple
+\begin{equation*}
+    \text{dim}(\hilbert^{C})=\text{dim}(\hilbert^{A})\text{dim}(\hilbert^{B}).
+\end{equation*}
+Si $A$ y $B$ representaran dos particulas diferentes, entonces $C$ representa a las partículas como conjunto, como sistema de dos partículas. Si cada una de las particulas puede ser descrita mediante un vector de estado, el estado del sistema es simplemente el producto tensorial de dichos vectores de estado:
+\begin{equation*}
+    \ket{\psi^{A}}\otimes\ket{\psi^{B}}\in\hilbert^{C}\,\; \; \forall\ket{\psi^{A}}\in\hilbert^{A},\ket{\psi^{B}}\in\hilbert^{B}.
+\end{equation*}
+Si un estado puede escribirse como un producto tensorial de estados pertenecientes a los subsistemas del sistema compuesto, entonces se dice que es un estado \textit{producto} o \textit{separable}. Nótese que, en general, los estados del sistema compuesto no son estados separables. En realidad, dadas $\{\varphi_{i}^{A}\}$ y $\{\varphi_{j}^{B}\}$ bases ortonormales de los espacios $\hilbert^{A}$ y $\hilbert^{B}$ respectivamente, podemos escribit a todo estado puro $\ket{\psi^{C}}$ del sistema compuesto como
+\begin{equation*}
+    \ket{\psi^{AB}}=\sum_{j,k}\alpha_{j,k}\ket{\varphi_{j}^{A}}\otimes\ket{\varphi_{k}^{B}}.
+\end{equation*}
+El significado físico de que un sistema se halle en un estado producto es que el sistema se halla en un estado en el que no hay correlaciones entre sus subsistemas (de esto que puedan separarse). Un estado que no puede separarse tiene cierto grado de entrelazamiento, y por esto deja de tener sentido hablar de vectores de estado individuales a cada partícula. Ahora, sean $G^{A}$ y $G^{B}$ dos operadores que actúan en $\hilbert^{A}$ y $\hilbert^{B}$ respectivamente, correspondientes a observables de cada subsistema. Entonces se cumple:
+\begin{equation*}
+    G^{A}\ket{\psi^{A}}\otimes G^{B}\ket{\psi^{B}}=(G^{A}\otimes G^{B})\ket{\psi^{A}}\otimes\ket{\psi^{B}}.
+\end{equation*}
+
+¿Qué sucede si al científico no le interesa sino uno de los subsistemas? Es en este caso en el que surge el concepto de la matriz de densidad reducida. Si $\rho^{C}$ es la matriz de densidad del sistema compuesto por $A$ y $B$, entonces la matriz de densidad reducida del sistema $A$ es
+\begin{equation*}
+    \rho^{A}=\Tr_{B}(\rho^{C}),
+\end{equation*}
+donde $\Tr_{B}$ representa la operación de traza parcial con respeco al susbsistema $B$. Si la traza de $\rho^{C}$ es 
+\begin{equation*}
+    \Tr(\rho^{C})=\sum_{j}\bra{\varphi^{C}_{j}}\rho^{C}\ket{\varphi^{C}_{j}},
+\end{equation*}
+para toda base ortonormal $\{\ket{\varphi^{C}_{j}}\}$ de $\hilbert^{C}$. Entonces, para toda base ortonormal $\{\ket{\varphi^{B}_{j}}\}$ de $\hilbert^{B}$  la traza parcial respecto a $B$ es \cite{Hardy}
+\begin{equation*}
+    \Tr_{B}(\rho^{C})=\sum_{j}(\Id^{A}\otimes \bra{\varphi^{B}_{j}})\rho^{C}(\Id^{A}\otimes \ket{\varphi^{B}_{j}}).
+\end{equation*}
+Puede verse que el resultado de la operación es trazar sobre los elementos del sistema que no es de interés. La matriz reducida del sistema $A$, o traza parcial con respecto al sistema $B$, actúa como matriz de densidad de $A$, ya que contiene toda la descripción estadísitica de dicho subsistema.

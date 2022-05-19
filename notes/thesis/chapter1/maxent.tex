@@ -46,10 +46,6 @@ Considerando lo anterior, el estimado para la distribución de probabilidad que 
 
 \subsubsection{El estimado de máxima entropía en mecánica estadística}
 
-\acnote{Creo que así queda mejor está sección}
-
-=============================================
-
 El método anterior puede aplicarse a toda una variedad de sistemas y procesos. Considérese, pues, de un conjunto de $N$ partículas idénticas pero distinguibles de energías $\epsilon_{i}$, del cual únicamente conocemos la energía promedio $E$, y que se halla en equilibrio térmico con un entorno que actúa como baño de calor a una temperatura $T$. Nos interesa conocer la distribución de probabilidad de los posibles microestados $\epsilon_{i}$. Según lo discutido previamente, se busca maximizar la entropía,
 \begin{equation}\label{eq:GibbsEntropy}
     S_{G}=-k_{B}\sum_{i}p(x_{i})\log{p(x_{i})},
@@ -62,53 +58,43 @@ Para discernir el significado físico de dicho resultado, se puede sustituir est
 \begin{equation}
     S_{G}=\lambda\expval{\epsilon}+k_{B}\ln{Z}.
 \end{equation}
-Recordando que, en la teoría de la termodinámica se define a la temperatura como el inverso del cambio de la entropía según la energía, se halla el significado físico del multiplicador de Lagrange, pues se tiene que cumplir que
+Recordando que, en la teoría de la termodinámica se define a la temperatura como el inverso del cambio de la entropía según la energía \cite{Greiner}, se halla el significado físico del multiplicador de Lagrange, pues se tiene que cumplir que
 \begin{equation*}
     \lambda=\frac{1}{T}.
 \end{equation*}
 
-=============================================
-
-Si aplicáramos el principio de máxima entropía a un sistema físico \ddnote{Ten cuidado aqui, uno siemple aplica esto a sistemas fisicos, la particularidad a resaltar aqui es que se trata de un sistema en equilibrio termico.} como, por ejemplo, el de un conjunto de $N$ partículas idénticas pero distinguibles de energías $\epsilon_{i}$, del cual únicamente conocemos la energía promedio $E$, nos encontraríamos con que
-\begin{equation}\label{eq:Boltzman}
-    p(x_{i})=\frac{e^{-\lambda\epsilon_{i}}}{Z},
-\end{equation}
-que reconocemos como la distribución de Boltzmann, en la que $\lambda=\beta=\frac{1}{k_{B}T}$. \ddnote{La idea aqui es que no solo sabemos el promedio de la energia está fijo en la teória), sino que las fluctuaciones alrededor de ese valor son negligibles, debido a que el sistema está en equilibrio térmico y el sistema está además en el límite termódinamico. Bajo esas condiciones es que uno puede hacer la identificación del multiplicador de Lagrange con la temperatura. Dale una leídita al Greiner.}
 \subsection{Extensión a la mecánica cuántica}
 
-En su segundo artículo, Jaynes extiende el Principio de máxima entropía a la mecánica cuántica \cite{JaynesII}. Para esto, identificamos al operador de densidad cuántico como la distribución de probabilidad que buscamos hallar, dados algunos resultados experimentales.
-
-Sean, pues, $\hat{A}_{j}$ $m$ operadores hermitianos que operan sobre $\hilbert_{n}$, con $m<n^{2}-1$, de tal forma que formen un conjunto no tomográficamente completo. Dados sus valores esperados,
-\begin{equation}\label{eq:QuantumRestrictions}
-    \expval{\hat{A}_{j}}=\Tr(\rho \hat{A}_{j}),
-\end{equation} 
-nos interesa hallar qué operador de densidad es el que mejor descibe a nuestro sistema. Invocando el Principio de máxima entropía, buscamos aquel que maximiza la entropía de von Neumann (\ref{eq:VonNeumannEntropy}). bajo las restricciones (\ref{eq:QuantumRestrictions}) además de
-\begin{equation}\label{eq:TraceRestriction}
-    \Tr(\rho)=1.
+En su segundo artículo, Jaynes extiende el Principio de máxima entropía a la mecánica cuántica \cite{JaynesII}. Para hacerlo, en este trabajo identificamos al operador de densidad cuántico como la distribución de probabilidad que buscamos hallar, y a valores esperados de operadores hermíticos como los resultados experimentales usados en las restricciones sobre la distribución. Considérese, en un primer momento, el caso en el que se conoce el valor esperado de la energía, $\expval{H}$, para un sistema termodinámico en el que no esperamos que el estado de máxima entropía varíe con el tiempo. Esta calidad de estado estacionario nos permite afirmar que
+\begin{equation*}
+    [\rho,H]=0.
+\end{equation*}
+Gracias a esto podemos afirmar que existe una base en la que tanto $\rho$ como $H$ son diagonales. Sea $\{\ket{e_{k}}\}$ dicha base, y $E_{k}$ y $\eta_{k}$ los $k-$ésimos elementos diagonales del hamiltoniano $H$ y del operador $\rho$ en ella, respectivamente. La entropía de von Neumann puede escribirse en términos de los eigenvalores de $\rho$ como
+\begin{equation*}
+    S=-\sum_{k}\eta_{k}\log{\eta_{k}}.
+\end{equation*}
+Para maximizarla, volvemos a aplicar el método de los multiplicadores de Lagrange. La lagrangiana es
+\begin{equation*}
+    \mcL=\sum_{k}\eta_{k}\log{\eta_{k}}+\lambda_{0}\qty(\sum_{k}\eta_{k}-1)+\lambda_{1}\qty(\sum_{k}\eta_{k}E_{k}-\expval{H}),
+\end{equation*}
+en donde la primera restricción es la normalización del estado $\rho$, $\Tr(\rho)=1$, y la segunda corresponde a la información experimental conocida. Si se deriva e iguala a cero:
+\begin{align*}
+    \frac{\partial \mcL}{\partial \eta_{k}}=(1+\log{\eta_{k}})+\lambda_{0}+\lambda_{1}E_{k}=0 & & \Longrightarrow  & &\eta_{k}=-e^{(\lambda_{0}+1+\lambda_{1}E_{k})}.
+\end{align*}
+Nuevamente, debido a que $\sum_{k}\eta_{k}=1$, podemos definir a la función de partición notando que
+\begin{equation*}
+    e^{1+\lambda_{0}}=\sum_{k}e^{-\lambda_{1}E_{k}}.
+\end{equation*}
+Así que la expresión de los eigenvalores del estado que maximiza a la entropía, $\rho$, en términos de los eigenvalores de $H$, $E_{k}$ es
+\begin{equation*}
+    \eta_{k}=\frac{1}{Z}e^{-\lambda E_{k}}.
+\end{equation*}
+Utilizando notación de Dirac, $\rho=\eta_{k}\dyad{e_{k}}$, podemos hallar el resultado independiente de la elección de la base:
+\begin{equation}
+    \rho=\frac{1}{Z}e^{-\lambda H}
 \end{equation}
-Una vez más se utiliza el método de los multiplicadores de Lagrange, de manera análoga a como se hizo en el caso clásico. Esta vez, la Lagrangiana es
-\begin{equation*}
-    \mcL=-S(\rho)+\sum_{j}\lambda_{j}\qty(\expval{\hat{A}_{j}}-\Tr(\rho \hat{A}_{j}))+\mu\qty(\Tr(\rho)-1)
-\end{equation*}
-y la derivada queda
-\begin{equation*}
-    \frac{\partial}{\partial \rho}\mcL=
-\end{equation*}
-\notaAd{No }
-
-El estado de máxima entropía compatible con las observaciones experimentales es entonces
-\begin{equation}\label{eq:GeneralMaxEnt}
-    \rho=\frac{e^{-\sum_{j} \lambda_{j} \hat{A}_{j}}}{Z}.
+Este resultado es fácilmente generalizable al caso en que contemos con un  conjunto $\{A_{j}\}$ de $N$ observables tales que $[A_{j},\rho]=0$ de los que conozcamos sus valores esperados. En general, la expresión del estado de máxima entropía es
+\begin{equation}
+    \rho=\frac{1}{Z}e^{-\sum_{k}\lambda_{k} A_{k}}
 \end{equation}
-\subsubsection{Caso termodinámico cuántico}
-\notaAd{Conocemos $\expval{H}$. El estado de máxima entropía es un estado estacionario. Entonces conmuta con $H$ y comparten eigenbase. ¿Los observables son $H_{kk}$ en la base diagonal? Asumo que esto es los valores esperados respecto a los elementos de la eigenbase. Entonces
-\begin{equation*}
-    \lambda_{k}=\frac{e^{-\beta H_{kk}}}{Z}
-\end{equation*}
-¿Y este es el k-ésimo eigenvalor de $\rho$?}
-\ddnote{Si, $\lambda_k$ es el $k$-ésimo eigenvalor de $\rho$, pero eso tu lo impones, pues usas la eigenbase de $\rho$. De pronto expliqué esto un poco revuelto. Naturalmente uno puede sustituir $H_{kk}$ por $E_k$ (los eigenvalores de $H$) y la cosa es más clara. La observable es la misma de arriba, la energía $E=\sum_l \lambda_k E_k$, de pronto también te expliqué esto con las patas. La idea entonces, es que una vez tengas los $\lambda_k$, resueltos, uses la notación bra-ket para escribir al final el resultado con los operadores (ahora si independiente de labase).} 
-%
-\ddnote{Para el argumento de que $[H,\rho]=0$ no olvides usar el argumento de la estacionariedad de $\rho$, dado que no solo se considera un estado de maxima entropía, sino termodinámico como en el caso clásico, uno espera que el estado no cambie respecto al tiempo, por lo tanto conmuta con el Hamiltoniano. Ese es el truco para sacar este estado. También puedes mencionar que siempre que tengas una colección de observables $A_k$ que conmutan con $\rho$ y conoces sus promedios, también puedes calcular el estado MaxEnt. El caso complicado, y es el que mencionarás que derivan en la referencia y que aquí solo mencionamos el resultado, es el caso cuando los $A_k$ no conmutan con $rho$.}
-
-\ddnote{Por fas comienza a usar el comando siguiente:}
-\acnote{nota de Adán aquí}
+El caso en que los observables no conmutan con el operador de densidad $\rho$ es un tanto más complicado, y, aunque el resultado es el mismo \cite{FormalJaynes}, en este trabajo no lo demostraremos.
