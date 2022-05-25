@@ -6,7 +6,6 @@ This is my license thesis' repository
 
 TO DO LIST
  1. Find evolution of expectation values. Mi-Lu
- 34. Finish SWAP section. Mi
  32. Finish CNOT section. Ju
  29. Finish AmpDamp section. Vi
  35. Finish depolarizing section. Sa
@@ -38,3 +37,4 @@ COMPLETED TASKS
  22. ~~Invert LagMult signs~~&#x2611;[0b6c71f](https://github.com/ACGuerrero/tesis-adan/commit/bf84df212ca95cd2324cb6221f246a08e0b6c71f)
  27. ~~Complete CG section on thesis~~&#x2611;[957fde5](https://github.com/ACGuerrero/tesis-adan/commit/f67e798e8c6a2217435875df2fe5ba74e957fde5)
  29. ~~Finish thermodynamic quantum maxent case~~&#x2611;[957fde5](https://github.com/ACGuerrero/tesis-adan/commit/f67e798e8c6a2217435875df2fe5ba74e957fde5)
+ 34. ~~Finish SWAP section~~&#x2611;[cedb469](https://github.com/ACGuerrero/tesis-adan/commit/f588e0b150ff8df65387e303b20162b90cedb469)
