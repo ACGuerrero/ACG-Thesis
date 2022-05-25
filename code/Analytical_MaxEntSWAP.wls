@@ -27,6 +27,8 @@ Print["The factor separating this states is: ",(contractionfactor=rhoztbv[[3]]/r
 
 plot1=Plot3D[contractionfactor,{p,0,1},{\[Lambda],-4,4},AxesLabel->{Style[p,FontSize->18],Style[\[Lambda],FontSize->18],Style[a,FontSize->18]},ColorFunction->GrayLevel,ViewPoint -> {3, 2.2, 2}];
 Export["../figures/ContractionFactorSWAP_3D_lambda-4to4.png",plot1];
+
+
 plot3=Plot[
 	Evaluate[
 		Map[(SWAPContractionFactor[1,p,\[Lambda]]/.{p->#})&,{0.1,0.2,0.3,0.5}]],
@@ -59,6 +61,19 @@ plot5=With[{size = 200},
  Row[Show[#, ImageSize -> {Automatic, size}, 
      ImagePadding -> 20] & /@ {plot4, plot3}]];
      Export["../figures/ContractionFactorSWAP_2D_both.png",plot5];
+
+
+plot6=Plot[
+	Evaluate[
+		MapThread[(SWAPContractionFactor[t,#1,#2])&,{{0.1,0.2,0.3,0.5},{1.492,1.9040,2.118,2.198}}]],
+	{t,0,2},
+	PlotStyle->{{Thickness[0.003],Black},{Thickness[0.003],Dashing[Large],Red},{Thickness[0.003],Dashed,Blue},{Thickness[0.003],DotDashed,Darker[Green]}},
+	AxesStyle->Black,
+	AxesLabel->{Style[t,FontSize->15],Style[\[Kappa],FontSize->15]},
+	PlotLegends->Placed[{Map["p="<>ToString[#]&,{0.1,0.2,0.3,0.5}]},{0.88,0.33}]]
+
+
+Export["../figures/ContractionFactorSWAP_z=0.8_t=0_to_t=2.png",plot6];
 
 
 rz=0.9;
