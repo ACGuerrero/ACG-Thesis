@@ -22,7 +22,7 @@ rhoz0bv=densityMatrixToPoint[{rhoz0},gellMannBasis[1]][[1]]//FullSimplify
 rhozt=(Refine[CGKraus[swapGate . MaxEnt . swapGate,p],{Element[p, Reals], Element[\[Lambda], Reals], 0<=p<=1}]//Expand);
 Print["The bloch vector of the final operator is: "];
 rhoztbv=densityMatrixToPoint[{rhozt},gellMannBasis[1]][[1]]//FullSimplify
-Print["The factor separating this states is: ",(contractionfactor=rhoztbv[[3]]/rhoz0bv[[3]])//FullSimplify];
+Print["The factor separating these states is: ",(contractionfactor=rhoztbv[[3]]/rhoz0bv[[3]])//FullSimplify];
 
 
 plot1=Plot3D[contractionfactor,{p,0,1},{\[Lambda],-4,4},AxesLabel->{Style[p,FontSize->18],Style[\[Lambda],FontSize->18],Style[a,FontSize->18]},ColorFunction->GrayLevel,ViewPoint -> {3, 2.2, 2}];
@@ -125,7 +125,12 @@ CoarseEvT=Refine[CGKraus[SwapedMaxEntT,p],
 {Element[p, Reals]}]
 
 
-SWAP[t]//MatrixForm
+t=0
+CNOTedMaxEntT=Refine[CNOT[t] . MaxEnt . ConjugateTranspose[CNOT[t]],
+{Element[t, Reals]}];
+CoarseEvT=Refine[CGKraus[CNOTedMaxEntT,p],
+{Element[p, Reals]}];
+MatrixForm[Flatten[CoarseEvT]]
 
 
 rhoztt=(Refine[CGKraus[SWAP[t] . MaxEnt . ConjugateTranspose[SWAP[t]],p],{Element[p, Reals],Element[t, Reals], Element[\[Lambda], Reals], 0<=p<=1}]//Expand);

@@ -105,9 +105,12 @@ nos daríamos cuenta que la transformación no es afín, y por esto, el proceso 
 
 \subsubsection{Evolución continua}
 Utilizando la forma dependiente del tiempo del operador $S$ dada por la ecuación (\ref{eq:SWAP(t)}), puede seguirse el mismo proceso para hallar una expresión del estado efectivo evolucionado como función del tiempo y en términos de los operadores de Lagrange:
-\begin{equation}
-  \rho(t)=\frac{1}{2}\{\Id-(\hat{r_{\rho}}\cdot\vec{\sigma})[((1-p)\cos^{2}{\frac{\pi t}{2}}+p\sin^{2}{\frac{\pi t}{2}})\tanh{p\lambda}+(p\cos^{2}{\frac{\pi t}{2}}+(1-p)\sin^{2}{\frac{\pi t}{2}})\tanh{(1-p)\lambda}]\}.
-\end{equation}
+\begin{align}
+  \begin{split}
+  \rho(t)=\frac{1}{2}\{\Id-(\hat{r_{\rho}}\cdot\vec{\sigma})[&((1-p)\cos^{2}{\frac{\pi t}{2}}+p\sin^{2}{\frac{\pi t}{2}})\tanh{p\lambda}\\
+  &+(p\cos^{2}{\frac{\pi t}{2}}+(1-p)\sin^{2}{\frac{\pi t}{2}})\tanh{(1-p)\lambda}]\}.
+  \end{split}
+\end{align}
 
 El estado efectivo inicial siendo el mismo, el estado final vuelve a tener la misma orientación, y entonces es posible calcular el factor de compresión como la razón entre las normas de los vectores de Bloch de los estados inicial y final:
 \begin{equation}\label{eq:SWAPFactort}
@@ -166,26 +169,48 @@ que puede escribirse, también, como las probabilidades de que $\rho(t)$ se hall
  donde la dependencia temporal está completamente contenida dentro del factor $\kappa_{t}^{\rho}$. 
 
 
-\subsection{La compuerta cuántica CNOT}
+\subsection{La compuerta cuántica controlled not}
 
-La compuerta \textit{controlled not}, o CNOT, es el análogo cuántico de la compuerta lógica XOR \notaAd{CITA}. La compuerta XOR recibe como entrada dos bits, y arroja uno que puede ser $0$ si los bits de entrada tienen el mismo valor, o $1$ si tienen valores diferentes. Por otro lado, la compuerta cuántica CNOT actúa sobre un sistema de dos qubits, aplicando sobre el segundo qubit la compuerta $\sigma_{1}$ (NOT) si el primer qubit se halla en el estado $\ket{1}$, o dejándolo invariante si el primer qubit se halla en el estado $\ket{0}$. Esto es, cumple que \notaAd{CITA}
+La compuerta \textit{controlled not}, o CNOT, es el análogo cuántico de la compuerta lógica XOR. La compuerta XOR recibe como entrada dos bits, y arroja uno que puede ser $0$ si los bits de entrada tienen el mismo valor, o $1$ si tienen valores diferentes. Por otro lado, la compuerta cuántica CNOT actúa sobre un sistema de dos qubits, aplicando sobre el segundo qubit la compuerta $\sigma_{1}$ (NOT) si el primer qubit se halla en el estado $\ket{1}$, o dejándolo invariante si el primer qubit se halla en el estado $\ket{0}$. Esto es, cumple que \cite{Chuang}
 \begin{align*}
-    \ket{0}\otimes\ket{0}\xrightarrow{\cnot}\ket{0}\otimes\ket{0}\\
-    \ket{0}\otimes\ket{1}\xrightarrow{\cnot}\ket{0}\otimes\ket{1}\\
-    \ket{1}\otimes\ket{0}\xrightarrow{\cnot}\ket{1}\otimes\ket{1}\\
-    \ket{1}\otimes\ket{1}\xrightarrow{\cnot}\ket{1}\otimes\ket{0} \rlap{.}
+    \ket{0}\otimes\ket{0}\mapsto\ket{0}\otimes\ket{0}\\
+    \ket{0}\otimes\ket{1}\mapsto\ket{0}\otimes\ket{1}\\
+    \ket{1}\otimes\ket{0}\mapsto\ket{1}\otimes\ket{1}\\
+    \ket{1}\otimes\ket{1}\mapsto\ket{1}\otimes\ket{0} \rlap{.}
 \end{align*}
-La compuerta puede representarse como una matriz de permutación
+En la base de los eigenestados de $\pauli{3}\otimes\pauli{3}$, la compuerta puede representarse como la matriz de permutación
 \begin{equation*}
     \cnot=\begin{pmatrix}
         1&0&0&0\\
         0&1&0&0\\
         0&0&0&1\\
         0&0&1&0
-    \end{pmatrix}
+    \end{pmatrix}.
 \end{equation*}
+Claro está, esta matriz corresponde a la evolución discreta. Para hallar la extensión a cualquier tiempo $t$, notamos que los eigenestados de este operador son $\ket{01}$, $\ket{00}$, $\ket{+}_{\cnot}$ y $\ket{-}_{\cnot}$ donde se definen
+\begin{align*}
+  \ket{+}_{\cnot}=\frac{\ket{10}+\ket{11}}{\sqrt{2}} & & \text{y} & & \ket{-}_{\cnot}=\frac{\ket{10}-\ket{11}}{\sqrt{2}}.
+\end{align*}
+Con esto es posible escribir la descomposición espectral del operador, y luego potenciarla 
+\begin{align*}
+\cnot=&P(\dyad{00}+\dyad{01}+\dyad{+}_{\cnot}-\dyad{-}_{\cnot})P^{\dag}\\
+\Rightarrow \cnot^{t}=&P(\dyad{00}+\dyad{11}+\dyad{+}_{\cnot}+e^{i \pi t}\dyad{-}_{\cnot})P^{\dag}.
+\end{align*}
+La forma matricial del operador controlled not a un tiempo $t$ es análoga a la del operador SWAP:
+\begin{equation}\label{eq:CNOT(t)}
+\cnot^{t}=\begin{pmatrix}
+ 1 & 0 & 0 & 0 \\
+ 0 & 1 & 0 & 0 \\
+ 0 & 0 & \frac{1}{2}(1+e^{i \pi t}) & \frac{1}{2} (1-e^{i \pi t}) \\
+ 0 & 0 & \frac{1}{2}(1-e^{i \pi t}) & \frac{1}{2}(1+e^{i \pi t})
+\end{pmatrix}=\begin{pmatrix}
+  1 & 0 & 0 & 0 \\
+  0 & 1 & 0 & 0 \\
+  0 & 0 & e^{i\frac{t\pi}{2}}\cos{\frac{t\pi}{2}} & -ie^{i\frac{t\pi}{2}}\sin{\frac{t\pi}{2}}\\
+  0 & 0 & -ie^{i\frac{t\pi}{2}}\sin{\frac{t\pi}{2}} & e^{i\frac{t\pi}{2}}\cos{\frac{t\pi}{2}}
+ \end{pmatrix}
+\end{equation}
 
-\subsubsection{CNOT completo efectivo}
 El operador \textsc{CNOT} puede expandirse de la siguiente manera:
 \begin{equation*}
         \cnot=\frac{1}{4}(\Id+\pauli{3}\otimes\Id+\Id\otimes\pauli{1}-\pauli{3}\otimes\pauli{1}).
@@ -200,6 +225,9 @@ que por ser una suma de operadores que conmutan entre sí, nos permite ver al co
     &=e^{-i\frac{\pi}{4}} (e^{i\frac{\pi}{4}\pauli{3}}\otimes \Id) (\Id \otimes e^{i\frac{\pi}{4}\pauli{1}}) e^{-i\frac{\pi}{4}\pauli{3}\otimes\pauli{1}}.
 \end{align*}
 De momento no le vi como sacarle jugo a esto, pero será útil para la extensión a tiempo arbitrario.
+
+
+\subsubsection{CNOT completo efectivo}
 Escribiendo al estado de máxima entropía como $\varrho=\rho_{A}\otimes\rho_{B}$, la dinámica efectiva escribimos
 \begin{equation*}
     \Gamma_{t}^{\mcM,\rho}[\rho(0)]=\frac{1}{2}[\rho(0)+p(\sigma_{3}\rho_{A}\sigma_{3}+\Tr{\sigma_{1}\rho_{B}}[\rho_{A}-\sigma_{3}\rho_{A}\sigma_{3}])+(1-p)(\sigma_{1}\rho_{B}\sigma_{1}+\Tr{\sigma_{3}\rho_{A}}[\rho_{B}-\sigma_{1}\rho_{B}\sigma_{1}])]
@@ -216,5 +244,3 @@ En términos del vector de Bloch, que es una forma rápida de obtener el cambio 
   De momento tengo que ver esto en términos de matrices. El controlled not es una aplicación consecutiva de 3 unitarias, así que no debería ser demasiado complicado obtener la transformación de forma más elegante.
 
 \subsubsection{CNOT efectivo a un tiempo arbitrario}
-
-Lo haré igual que para el SWAP. Los eigenestados del CNOT son $\ket{01}$, $\ket{00}$, $\frac{\ket{10}+\ket{11}}{\sqrt{2}}$ y $\frac{\ket{10}-\ket{11}}{\sqrt{2}}$

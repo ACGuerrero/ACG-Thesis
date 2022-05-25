@@ -5,7 +5,8 @@ Needs["CoolTools`"]
 Needs["Carlos`"]
 Needs["Quantum`"]
 Pauli2Basis::usage="something"
-CNOT::usage="something"
+cnotGate::usage="Controlled not gate"
+CNOT::usage="CNOT[t] evaluates the controlled not gate at a time t."
 MatrixToLatex::usage="something"
 ShowOperatorsWithSphere::usage="something"
 KetsToBlochVector::usage="something"
@@ -52,7 +53,9 @@ Begin["`Private`"]
 
 
 Pauli2Basis=Flatten[Table[Pauli[{i,j}],{i,0,3},{j,0,3}],1];
-CNOT={{1,0,0,0},{0,1,0,0},{0,0,0,1},{0,0,1,0}};
+cnotGate={{1,0,0,0},{0,1,0,0},{0,0,0,1},{0,0,1,0}};
+CNOT[t_]:={{1,0,0,0},{0,1,0,0},{0,0,Exp[I*Pi*t/2]*Cos[Pi*t/2],-I*Exp[I*Pi*t/2]*Sin[Pi*t/2]},{0,0,-I*Exp[I*Pi*t/2]*Sin[Pi*t/2],Exp[I*Pi*t/2]*Cos[Pi*t/2]}}
+
 NearestPosition[haystack_,value_]:= With[{ f = Nearest[haystack -> Range@Length@haystack]},f[value, 1]];
 
 MatrixToLatex[matrix_]:=
