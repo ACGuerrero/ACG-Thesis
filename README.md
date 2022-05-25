@@ -5,16 +5,15 @@ This is my license thesis' repository
 </p>
 
 TO DO LIST
- 1. Find evolution of expectation values. Ma-Mi
- 31. Find evolution of entropy. Ma-Mi
- 29. Finish thermodynamic quantum maxent case. Ju
- 27. Complete CG section on thesis. Vi
- 23. Study depolarizing channel.
- 29. Study amplitude damping channel.
+ 1. Find evolution of expectation values. Mi-Lu
+ 34. Finish SWAP section. Mi
+ 32. Finish CNOT section. Ju
+ 29. Finish AmpDamp section. Vi
+ 35. Finish depolarizing section. Sa
+ 31. Find evolution of entropy. Mi-Lu
  10. Explore $H=\sigma_{z}\otimes \sigma_{z}$  [9a04ece](https://github.com/ACGuerrero/tesis-adan/commit/274d771536b0b04ea4edca866fc06359d5e0b8b8), [b0ca78](https://github.com/ACGuerrero/tesis-adan/commit/5ac8796059e41a3cdf13e09a33feb95fcfb0ca78)
  30. Find extended unitary
- 6. Exploring general $U$ as $U=\sum_{ij}\alpha_{ij} U_{i}\otimes V_{j}$
- 3. Coordinate histograms for the AssMap under swap
+ 6. Explore general $U$ as $U=\sum_{ij}\alpha_{ij} U_{i}\otimes V_{j}$
 
 COMPLETED TASKS
 
@@ -35,5 +34,7 @@ COMPLETED TASKS
  28. ~~Make spheres in swap sequence prettier~~&#x2611;[9dd5d9b](https://github.com/ACGuerrero/tesis-adan/commit/9dd5d9b4b2cc6b84f930ab46a601a0d73985a985)
  14. ~~Explore relationship between the parts of the maxent and the effective state~~&#x2611;[9dd5d9b](https://github.com/ACGuerrero/tesis-adan/commit/9dd5d9b4b2cc6b84f930ab46a601a0d73985a985)
  2. ~~Maybe add comment on how different observables lead to different MaxEnts~~&#x2611;[9dd5d9b](https://github.com/ACGuerrero/tesis-adan/commit/9dd5d9b4b2cc6b84f930ab46a601a0d73985a985)
- 32. ~~Fix UxV graphs. Add curve of no-error~~&#x2611;
- 22. ~~Invert LagMult signs~~&#x2611;
+ 32. ~~Fix UxV graphs. Add curve of no-error~~&#x2611;[5568f76](https://github.com/ACGuerrero/tesis-adan/commit/a87d6951e3926cbd85785cce103c812545568f76)
+ 22. ~~Invert LagMult signs~~&#x2611;[0b6c71f](https://github.com/ACGuerrero/tesis-adan/commit/bf84df212ca95cd2324cb6221f246a08e0b6c71f)
+ 27. ~~Complete CG section on thesis~~&#x2611;[957fde5](https://github.com/ACGuerrero/tesis-adan/commit/f67e798e8c6a2217435875df2fe5ba74e957fde5)
+ 29. ~~Finish thermodynamic quantum maxent case~~&#x2611;[957fde5](https://github.com/ACGuerrero/tesis-adan/commit/f67e798e8c6a2217435875df2fe5ba74e957fde5)

@@ -1,14 +1,19 @@
 \section{Compuertas de cómputo cuántico}
-\notaAd{USAR MAPSTO EN LUGAR DE XRIGHTARROW}
+
+Las compuertas cuánticas son el análogo cuántico de las compuertas lógicas utilizadas en cómputo clásico. En un circuito cuántico, las compuertas permiten manipular la información (qubits). Una compuerta $U$ válida es un operador de evolución unitario que actúa sobre el espacio generado por $n$ qubits (esto es, actúa sobre $\hilbert_{2^{n}}$):
+\begin{equation*}
+  U:\hilbert_{2^{n}}\rightarrow\hilbert_{2^{n}}.
+\end{equation*}
+Compuertas de un qubit comunes icluyen a los operadores de Pauli, mientras que para dos qubits existen compuertas como el SWAP, el controlled-not (CNOT), y la compuerta de Hadamard. Como una primera aplicación del formalismo descrito en las secciones anteriores, en este trabajo se analizará la evolución efectiva bajo evoluciones subyacentes descritas por las compuertas SWAP y CNOT. 
+
 \subsection{La compuerta cuántica SWAP}
 
-\subsubsection{Acción de la compuerta}
-La compuerta SWAP, $S$, actúa sobre dos qubits y los \textit{voltea}. Su acción sobre la base de $\hilbert_{4}$ contruida mediante los eigenestados de $\sigma_{3}\otimes\sigma_{3}$ es
+La compuerta SWAP, $S$, actúa sobre dos qubits permutándolos. Su acción sobre la base de $\hilbert_{4}$ contruida mediante los eigenestados de $\pauli{3}\otimes\pauli{3}$ es
 \begin{align*}
-    \ket{0}\otimes\ket{0}\xrightarrow{S}\ket{0}\otimes\ket{0}\\
-    \ket{0}\otimes\ket{1}\xrightarrow{S}\ket{1}\otimes\ket{0}\\
-    \ket{1}\otimes\ket{0}\xrightarrow{S}\ket{0}\otimes\ket{1}\\
-    \ket{1}\otimes\ket{1}\xrightarrow{S}\ket{1}\otimes\ket{0} \rlap{.}
+    \ket{0}\otimes\ket{0}\mapsto\ket{0}\otimes\ket{0}\\
+    \ket{0}\otimes\ket{1}\mapsto\ket{1}\otimes\ket{0}\\
+    \ket{1}\otimes\ket{0}\mapsto\ket{0}\otimes\ket{1}\\
+    \ket{1}\otimes\ket{1}\mapsto\ket{1}\otimes\ket{0} \rlap{.}
 \end{align*}
 Si un sistema está descrito por un operador de densidad separable, $\varrho=\rho_{A}\otimes\rho_{B}$, entonces el efecto de la compuerta SWAP es 
 \begin{equation*}
@@ -21,29 +26,68 @@ La compuerta puede representarse como una matriz de permutación
         0&0&1&0\\
         0&1&0&0\\
         0&0&0&1
-    \end{pmatrix}
+    \end{pmatrix}.
 \end{equation*}
-\subsubsection{SWAP completo efectivo}
+Descrito de esta manera, el operador SWAP es un operador de evolución \textit{discreto}. Esto es, lleva un estado $\varrho$ a otro $\varrho'$ sin considerar ninguna dependencia temporal ni ningún estado intermedio. Sin embargo, como esta evolución es unitaria, puede generalizarse a cualquier tiempo de acuerdo con la ecuación (\ref{eq:UnitaryTimeDependence}). Para extenderlo, utilizamos la acción de $S$ sobre la base de $\pauli{3}\otimes\pauli{3}$ y reconocemos que el operador deja invariantes (hasta un factor) a los estados $\ket{00}$, $\ket{11}$, $\ket{+_{2}}=\frac{\ket{01}+\ket{10}}{\sqrt{2}}$ y $\ket{-_{2}}=\frac{\ket{01}-\ket{10}}{\sqrt{2}}$. Dados estos eigenestados (y eigenvalores), la descomposición espectral del operador es
+\begin{equation*}
+S=P(\dyad{00}+\dyad{11}+\dyad{+_{2}}-\dyad{-_{2}})P^{\dag}.
+\end{equation*}
+donde $P$ es la matriz formada por los eigenestados del operador, y cumple que $P^{\dag}P=\Id$. Potenciando se halla que
+\begin{align*}
+S^{t}&=P(\dyad{00}+\dyad{11}+\dyad{+_{2}}+(-)^{t}\dyad{-_{2}})P^{\dag}\\
+&=P(\dyad{00}+\dyad{11}+\dyad{+_{2}}+e^{i \pi t}\dyad{-_{2}})P^{\dag}.
+\end{align*}
+La forma matricial del operador \textsc{SWAP} a un tiempo $t$ es
+\begin{equation}\label{eq:SWAP(t)}
+S^{t}=\begin{pmatrix}
+ 1 & 0 & 0 & 0 \\
+ 0 & \frac{1}{2}(1+e^{i \pi t}) & \frac{1}{2} (1-e^{i \pi t}) & 0 \\
+ 0 & \frac{1}{2}(1-e^{i \pi t}) & \frac{1}{2}(1+e^{i \pi t}) & 0 \\
+ 0 & 0 & 0 & 1
+\end{pmatrix}=\begin{pmatrix}
+  1 & 0 & 0 & 0 \\
+  0 & e^{i\frac{t\pi}{2}}\cos{\frac{t\pi}{2}} & -ie^{i\frac{t\pi}{2}}\sin{\frac{t\pi}{2}} & 0 \\
+  0 & -ie^{i\frac{t\pi}{2}}\sin{\frac{t\pi}{2}} & e^{i\frac{t\pi}{2}}\cos{\frac{t\pi}{2}}  & 0 \\
+  0 & 0 & 0 & 1
+ \end{pmatrix}
+\end{equation}
 
-Utilizando la expresión (\ref{eq:MaxEntSeparable}), se puede pasar tanto a $\varrho_{max}(0)$ como a $\varrho_{max}(1)$ a través de la aplicación de grano grueso. El resultado $\CG{\varrho_{max}(0)}$ corresponde al estado grueso inicial, pero en términos de $\lambda$. Así:
+\subsubsection{Evolución discreta}
+
+Para estudiar la dinámica efectiva de una evolución subyacente descrita por el operador SWAP, primero analizaremos el caso en que no se ha introducido la dependencia temporal. Sea $\rho\in\densityspace{2}$ el estado efectivo y $\varrho_{\max}\in\densityspace{4}$ el estado de máxima entropía compatible con $\rho$ y la aplicación de grano grueso descrita en la sección \ref{sec:CH2CG} según $\mcA_{\mcC}^{\max}(\rho)=\varrho_{\max}$. Estudiaremos la asignación
+\begin{equation}
+  \rho\mapsto \mcC(S \varrho_{\max} S^{\dag}).
+\end{equation}
+Por comodidad, los cálculos se expresarán en términos de los multiplicadores de Lagrange. Como el estado de máxima entropía es separable, la acción del operador SWAP sobre este es
+\begin{equation*}
+  \frac{e^{p\sum_{i}\lambda_{i}\sigma_{i}}}{Z_{1}} \otimes \frac{e^{(1-p)\sum_{i}\lambda_{i}\sigma_{i}}}{Z_{2}}\mapsto\frac{e^{(1-p)\sum_{i}\lambda_{i}\sigma_{i}}}{Z_{2}}\otimes\frac{e^{p\sum_{i}\lambda_{i}\sigma_{i}}}{Z_{1}}.
+\end{equation*}
+El estado de la izquierda corresponde a $\varrho_{\max}(t=0)$, mientras que el de la derecha corresponde a $\varrho_{\max}(t=1)$. Con esto, basta con aplicar la aplicación de grano grueso a ambos estados para hallar a los estados efectivos inicial y final en términos de los multiplicadores de Lagrange:
 \begin{equation}
 \rho(0)=\frac{1}{2}[\Id+(\hat{r}_{\rho}\cdot\vec{\sigma})(p\tanh{-\lambda p}+(1-p)\tanh{-\lambda (1-p)})],
 \end{equation}
 \begin{equation}
 \rho(t=1)=\frac{1}{2}[\Id+(\hat{r}_{\rho}\cdot\vec{\sigma})((1-p)\tanh{-\lambda p}+p\tanh{-\lambda (1-p)})].
 \end{equation}
-Vemos que ambos estados tienen la misma orientación pero pureza distinta. Esto significa que el efecto del \textsc{SWAP} subyacente sobre la esfera de Bloch es comprimir al estado efectivo inicial con un coeficiente $\kappa_{1}$ tal que
+Vemos que ambos estados tienen la misma orientación (orientación significando la dirección del vector de Bloch) pero pureza distinta. Esto significa que el efecto del \textsc{SWAP} subyacente sobre la esfera de Bloch es comprimir al estado efectivo inicial con un coeficiente $\kappa_{1}$ definido según
 \begin{equation}\label{eq:SWAPFactor}
   \kappa_{1}=\frac{r_{\rho(1)}}{r_{\rho(0)}}=\frac{(1-p)\tanh{\lambda p}+p\tanh{\lambda (1-p)}}{
-    p\tanh{\lambda p}+(1-p)\tanh{\lambda (1-p)}}
+    p\tanh{\lambda p}+(1-p)\tanh{\lambda (1-p)}}.
 \end{equation}
-Claro está, el factor de compresión depende del multiplicador de Lagrange, que a su vez es una función de la pureza del estado inicial. La figura \ref{fig:SWAPFactor2D} muestra dicha dependencia. Si la dependencia del factor de compresión en el estado efectivo inicial se denota por un superíndice, la dinámica efectiva puede escribirse como
+Claro está, el factor de compresión depende del multiplicador de Lagrange, que a su vez es una función de la pureza del estado inicial. La figura \ref{fig:SWAPFactor2Drl} muestra dicha dependencia. Si la dependencia del factor de compresión en el estado efectivo inicial se denota por un superíndice, la dinámica efectiva puede escribirse como
 \begin{equation}\label{eq:EffectiveSWAP1}
-  \boxed{\frac{1}{2}(\Id+\vec{r}_{\rho}\cdot\vec{\sigma}) \xrightarrow{S} \frac{1}{2}(\Id+\kappa_{1}^{\rho}\vec{r}_{\rho}\cdot\vec{\sigma})}
+  \boxed{\frac{1}{2}(\Id+\vec{r}_{\rho}\cdot\vec{\sigma}) \mapsto \frac{1}{2}(\Id+\kappa_{1}^{\rho}\vec{r}_{\rho}\cdot\vec{\sigma})}
 \end{equation}
-De las ecuaciónes (\ref{eq:SWAPFactor}) y (\ref{eq:EffectiveSWAP1}) distinguimos lo siguiente:
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.9\linewidth]{chapter3/figures_toy/ContractionFactorSWAP_2D_both.png}
+  \caption{Factor de compresión $\kappa_{1}$ como función de $r_{\rho}$ (der.) y como función de $\lambda$ (izq.), para diferentes valores de $p$.}
+  \label{fig:SWAPFactor2Drl}
+\end{figure}
+
+De las ecuaciones (\ref{eq:SWAPFactor}) y (\ref{eq:EffectiveSWAP1}) distinguimos lo siguiente:
 \begin{itemize}
-  \item Si $p=0.5$, entonces $\kappa_{1}^{\rho}=1$. Esto se debe a que la aplicación borrosa es invariante bajo el $\textsc{SWAP}$ si $p=0.5$.
+  \item Si $p=\frac{1}{2}$, entonces $\kappa_{1}^{\rho}=1$. Esto se debe a que la aplicación borrosa es invariante bajo el $\textsc{SWAP}$ si $p=0.5$. Así, todos los estado gruesos son puntos fijos bajo una evolución subyacente SWAP con aplicación de grano grueso con parámetro $p=\frac{1}{2}$.
   \item $\kappa_{1}^{\rho}$ no depende de la orientación del vector de Bloch, únicamente depende de la magnitud $r_{\rho(0)}$ y $p$.
   \item En los casos extremos, $p=1$ o $p=0$, la esfera colapsa al origen.
 \end{itemize}
@@ -58,56 +102,71 @@ en la que $\vec{c}=0$, y $M=OS$ con $O=\Id$ y $S=\kappa_{1}(\vec{r})\Id$, de tal
   \vec{r}\rightarrow \kappa_{1}(\vec{r})\vec{r}
 \end{equation*}
 nos daríamos cuenta que la transformación no es afín, y por esto, el proceso no puede ser descrito a través del formalismo de las operaciones cuánticas (no tiene representación en operadores de Kraus) \cite{Chuang}.
-\subsubsection{Caso $p=\frac{1}{2}$}
 
-Aunque es posible repetir todas las cuentas desde la contrucción del estado de máxima entropía, haciendo $p=\frac{1}{2}$, basta con ver que el factor (\eqref{eq:SWAPFactor}) es $1$ en dicho caso. Así, todos los estado gruesos son puntos fijos bajo una evolución subyacente SWAP con aplicación de grano grueso con parámetro $p=\frac{1}{2}$.
-
-\subsubsection{SWAP efectivo a un tiempo arbitrario}
-Siendo \textsc{SWAP} un operador unitario, anteriormente se denotó el estado inicial y final como $\varrho(0)$ y $\varrho(1)$, de acuerdo a lo establecido en la ecuación (\ref{eq:TimeDepenenceUnitary}). Para extender los resultados a un tiempo arbitrario en el intervalo $[0,1]$, es necesaria una expresión analítica del operador. El operador SWAP deja intactos a los estados $\ket{00}$ y $\ket{11}$, e intercambia $\ket{01}$ con $\ket{1,0}$. De esto, el operador también dejará invariantes (hasta un factor) a los estados $\ket{+_{2}}=\frac{\ket{01}+\ket{10}}{\sqrt{2}}$ y $\ket{-_{2}}\frac{\ket{01}-\ket{10}}{\sqrt{2}}$. Dados estos eigenestados (y eigenvalores), la descomposición espectral del operador es
-\begin{equation}\label{eq:SWAPSpectral}
-S=P(\dyad{00}+\dyad{11}+\dyad{+_{2}}-\dyad{-_{2}})P^{\dag}.
-\end{equation}
-donde $P$ es la matriz formada por los eigenestados del operador. Potenciando se halla que
-\begin{align}\label{eq:SWAPPower}
-S^{t}&=P(\dyad{00}+\dyad{11}+\dyad{+_{2}}+(-)^{t}\dyad{-_{2}})P^{\dag}\\
-&=P(\dyad{00}+\dyad{11}+\dyad{+_{2}}+e^{i \pi t}\dyad{-_{2}})P^{\dag}
-\end{align}
-La forma matricial del operador \textsc{SWAP} a un tiempo $t$ es
-\begin{equation}
-S^{t}=\begin{pmatrix}
- 1 & 0 & 0 & 0 \\
- 0 & \frac{1}{2}(1+e^{i \pi t}) & \frac{1}{2} (1-e^{i \pi t}) & 0 \\
- 0 & \frac{1}{2}(1-e^{i \pi t}) & \frac{1}{2}(1+e^{i \pi t}) & 0 \\
- 0 & 0 & 0 & 1
-\end{pmatrix}=\begin{pmatrix}
-  1 & 0 & 0 & 0 \\
-  0 & e^{i\frac{t\pi}{2}}\cos{\frac{t\pi}{2}} & -ie^{i\frac{t\pi}{2}}\sin{\frac{t\pi}{2}} & 0 \\
-  0 & -ie^{i\frac{t\pi}{2}}\sin{\frac{t\pi}{2}} & e^{i\frac{t\pi}{2}}\cos{\frac{t\pi}{2}}  & 0 \\
-  0 & 0 & 0 & 1
- \end{pmatrix}
-\end{equation}
-Con ayuda de Mathematica pude aplicar este operador para obtener que
+\subsubsection{Evolución continua}
+Utilizando la forma dependiente del tiempo del operador $S$ dada por la ecuación (\ref{eq:SWAP(t)}), puede seguirse el mismo proceso para hallar una expresión del estado efectivo evolucionado como función del tiempo y en términos de los operadores de Lagrange:
 \begin{equation}
   \rho(t)=\frac{1}{2}\{\Id-(\hat{r_{\rho}}\cdot\vec{\sigma})[((1-p)\cos^{2}{\frac{\pi t}{2}}+p\sin^{2}{\frac{\pi t}{2}})\tanh{p\lambda}+(p\cos^{2}{\frac{\pi t}{2}}+(1-p)\sin^{2}{\frac{\pi t}{2}})\tanh{(1-p)\lambda}]\}.
 \end{equation}
-De esto, el factor de compresión dependiente del tiempo es
+
+El estado efectivo inicial siendo el mismo, el estado final vuelve a tener la misma orientación, y entonces es posible calcular el factor de compresión como la razón entre las normas de los vectores de Bloch de los estados inicial y final:
 \begin{equation}\label{eq:SWAPFactort}
   \kappa_{t}^{\rho}=\frac{((1-p)\cos^{2}{\frac{\pi t}{2}}+p\sin^{2}{\frac{\pi t}{2}})\tanh{\lambda p}+(p\cos^{2}{\frac{\pi t}{2}}+(1-p)\sin^{2}{\frac{\pi t}{2}})\tanh{\lambda (1-p)}}{
     p\tanh{\lambda p}+(1-p)\tanh{\lambda (1-p)}}
 \end{equation}
-En términos del valor esperado del observable $\sigma_{z}$, la evolución del estado se da como
+
+Nuevamente, el factor de compresión (y por consiguiente, toda la evolución) depende de la pureza del estado efectivo incial, codificada en los multiplicadores de Lagrange. El efecto gradual de la evolución sobre la esfera de Bloch puede verse en la figura \ref{fig:SWAPFactorSequence}. La dinámica efectiva puede escribirse como
+\begin{equation}\label{eq:EffectiveSWAPt}
+  \boxed{\frac{1}{2}(\Id+\vec{r}_{\rho}\cdot\vec{\sigma}) \mapsto \frac{1}{2}(\Id+\kappa_{t}^{\rho}\vec{r}_{\rho}\cdot\vec{\sigma})}
+\end{equation}
+
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}{0.32\textwidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{chapter3/figures_toy/sphere_swapcontraction_t=0.0_z=0.9_p=0.9.png}
+    \caption{$t=0$}
+  \end{subfigure}%
+  \begin{subfigure}{0.32\textwidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{chapter3/figures_toy/sphere_swapcontraction_t=0.5_z=0.9_p=0.9.png}
+    \caption{$t=0.5$}
+  \end{subfigure}
+  \begin{subfigure}{0.32\textwidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{chapter3/figures_toy/sphere_swapcontraction_t=1.0_z=0.9_p=0.9.png}
+    \caption{$t=1$}
+  \end{subfigure}
+  \caption{Efecto de la evolución subyacente si $r_{z}=0.9$, $p=0.9$. La dramática contracción se asocia a una pérdida casi total de información.}
+  \label{fig:SWAPFactorSequence}
+  \end{figure}
+
+De las ecuaciones (\ref{eq:SWAPFactort}) y (\ref{eq:EffectiveSWAPt}) es posible concluir:
+\begin{itemize}
+  \item $\kappa_{t}^{\rho}$ es una función periódica del tiempo, y su periodo es de $T=2$ (observable en la figura \ref{fig:SWAPFactor2Dt}). Esto viene de que el operador SWAP, además de ser unitario, es hermitiano, i.e. $SS=\Id$.
+  \item $\kappa_{t}^{\rho}$ es una función decreciente en $0\leq t\leq 1$.
+  \item Se cumplen las observaciones hechas para el caso discreto: la esfera colapsa al origen si $p=1$ o $p=0$, y los puntos se mantienen fijos si $p=\frac{1}{2}$.
+\end{itemize}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.6\linewidth]{chapter3/figures_toy/ContractionFactorSWAP_z=0.8_t=0_to_t=2.png}
+  \caption{Factor de compresión $\kappa_{t}$ como función de $t$, para diferentes valores de $p$ y $r_{\rho(0)}=0.8$.}
+  \label{fig:SWAPFactor2Dt}
+\end{figure}
+
+En términos del valor esperado del observable $\sigma_{3}$, la evolución del estado se da como
 \begin{equation}
-  \expval{\sigma_{z}(t)}=\kappa_{t}^{\rho}\cos{\alpha}
+  \expval{\sigma_{3}(t)}=\kappa_{t}^{\rho}\expval{\pauli{3}(0)}
 \end{equation}
 que puede escribirse, también, como las probabilidades de que $\rho(t)$ se halle en el estado $\ket{0}$ o $\ket{1}$
  \begin{align}
-  \bra{0}\rho(t)\ket{0}=\frac{1}{2}(1+\kappa_{t}^{\rho}\cos{\alpha}) && \bra{1}\rho(t)\ket{1}=\frac{1}{2}(1-\kappa_{t}^{\rho}\cos{\alpha})
+  \bra{0}\rho(t)\ket{0}=\frac{1}{2}(1+\kappa_{t}^{\rho}\expval{\pauli{3}(0)}) && \bra{1}\rho(t)\ket{1}=\frac{1}{2}(1-\kappa_{t}^{\rho}\expval{\pauli{3}(0)})
  \end{align}
  donde la dependencia temporal está completamente contenida dentro del factor $\kappa_{t}^{\rho}$. 
 
-\subsection{La compuerta cuántica CNOT}
 
-\subsubsection{Acción de la compuerta}
+\subsection{La compuerta cuántica CNOT}
 
 La compuerta \textit{controlled not}, o CNOT, es el análogo cuántico de la compuerta lógica XOR \notaAd{CITA}. La compuerta XOR recibe como entrada dos bits, y arroja uno que puede ser $0$ si los bits de entrada tienen el mismo valor, o $1$ si tienen valores diferentes. Por otro lado, la compuerta cuántica CNOT actúa sobre un sistema de dos qubits, aplicando sobre el segundo qubit la compuerta $\sigma_{1}$ (NOT) si el primer qubit se halla en el estado $\ket{1}$, o dejándolo invariante si el primer qubit se halla en el estado $\ket{0}$. Esto es, cumple que \notaAd{CITA}
 \begin{align*}
@@ -145,6 +204,7 @@ Escribiendo al estado de máxima entropía como $\varrho=\rho_{A}\otimes\rho_{B}
 \begin{equation*}
     \Gamma_{t}^{\mcM,\rho}[\rho(0)]=\frac{1}{2}[\rho(0)+p(\sigma_{3}\rho_{A}\sigma_{3}+\Tr{\sigma_{1}\rho_{B}}[\rho_{A}-\sigma_{3}\rho_{A}\sigma_{3}])+(1-p)(\sigma_{1}\rho_{B}\sigma_{1}+\Tr{\sigma_{3}\rho_{A}}[\rho_{B}-\sigma_{1}\rho_{B}\sigma_{1}])]
 \end{equation*}
+
 En términos del vector de Bloch, que es una forma rápida de obtener el cambio de los observables y de la esfera, la dinámica se ve como
 \begin{equation*}
     \vec{r}_{\rho}=(pr_{A}+(1-p)r_{B})\hat{r}_{\rho}\mapsto\begin{pmatrix}
@@ -156,3 +216,5 @@ En términos del vector de Bloch, que es una forma rápida de obtener el cambio 
   De momento tengo que ver esto en términos de matrices. El controlled not es una aplicación consecutiva de 3 unitarias, así que no debería ser demasiado complicado obtener la transformación de forma más elegante.
 
 \subsubsection{CNOT efectivo a un tiempo arbitrario}
+
+Lo haré igual que para el SWAP. Los eigenestados del CNOT son $\ket{01}$, $\ket{00}$, $\frac{\ket{10}+\ket{11}}{\sqrt{2}}$ y $\frac{\ket{10}-\ket{11}}{\sqrt{2}}$

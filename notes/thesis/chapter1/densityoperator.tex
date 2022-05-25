@@ -4,9 +4,9 @@
 
 Los vectores de estado no pueden describir a todos los sistemas estudiables\ddnote{realizables} en el contexto de la mecánica cuántica. Por esto, y porque será particularmente útil para nuestro trabajo, introducimos el concepto del operador de densidad (también llamado, en el caso discreto, que es el que nos incumbe, matriz de densidad).
 
-Supóngase que en lugar de estudiar un sistema que está completamente descrito por $\ket{\varphi}\in\hilbert_{n}$, con $\hilbert_{n}$ el espacio de Hilbert $\hilbert_{n}=\Complex^{n}$; se trabaja con uno que está en el estado $\ket{\varphi_{i}}$ con probabilidad $p_{i}$, donde $\{\ket{\varphi_{i}}\}$ es un conjunto no necesariamente ortogonal de estados de $n$ niveles $\ket{\varphi_{i}}\in\hilbert_{n}$, y $\{p_{i}\}$ es un conjunto de números reales \ddnote{reales no negativos} tales que $\sum_{i}p_{i}=1$.
+Supóngase que en lugar de estudiar un sistema que está completamente descrito por $\ket{\varphi}\in\hilbert_{n}$, con $\hilbert_{n}$ el espacio de Hilbert $\hilbert_{n}=\Complex^{n}$; se trabaja con uno que está en el estado $\ket{\varphi_{i}}$ con probabilidad $p_{i}$, donde $\{\ket{\varphi_{i}}\}$ es un conjunto no necesariamente ortogonal de estados de $n$ niveles $\ket{\varphi_{i}}\in\hilbert_{n}$, y $\{p_{i}\}$ es un conjunto de números reales no negativos tales que $\sum_{i}p_{i}=1$.
 
-A este sistema se le llama ``mezlca estadística''\ddnote{En este caso se dice que el estado del sistema es una ``mexcla estadística''}, y no debe confundirse con una superposición de estados $\ket{\varphi_{i}}$ con coeficientes $\sqrt{p_{i}}$, ya que una superposición está bien caracterizada, y está completamente descrita por $\ket{\psi}=\sum_{i}\sqrt{p_{i}}\ket{\varphi_{i}}$, mientras que la mezcla no lo está: el elemento probabilístico está asociado a un grado de ignorancia sobre la preparación del sistema. La mezcla estadísitica, en este sentido, toma en cuenta no sólo la probabilidad intrínseca a cada estado cuántico, sino una probabilidad más \ddnote{este más está de más} clásica, $p_{i}$. Consideremos ahora una observable descrita por un operador hermítico $A$, se sabe que el valor de expectación del observable, con respecto a un estado $\ket{\varphi_{i}}$, está dado por $\expval{A}=\bra{\varphi_{i}}A\ket{\varphi_{i}}$ \ddnote{cambié la redacción de la frase anterior}. El valor esperado de dicho observable con respecto a la mezcla estadística será, justamente, la combinación probabilística de los valores esperados respecto a los elementos de la mezcla:
+De este sistema se dice que se halla en un estado de \textit{mezcla estadística}, y no debe confundirse con que el sistema se halle en una superposición de estados $\ket{\varphi_{i}}$ con coeficientes $\sqrt{p_{i}}$, ya que una superposición está bien caracterizada, y está completamente descrita por $\ket{\psi}=\sum_{i}\sqrt{p_{i}}\ket{\varphi_{i}}$, mientras que la mezcla no lo está: el elemento probabilístico está asociado a un grado de ignorancia sobre la preparación del sistema. La mezcla estadísitica, en este sentido, toma en cuenta no sólo la probabilidad intrínseca a cada estado cuántico, sino una probabilidad clásica, $p_{i}$. Consideremos ahora una observable descrita por un operador hermítico $A$, se sabe que el valor de expectación del observable, con respecto a un estado $\ket{\varphi_{i}}$, está dado por $\expval{A}=\bra{\varphi_{i}}A\ket{\varphi_{i}}$. El valor esperado de dicho observable con respecto a la mezcla estadística será, justamente, la combinación probabilística de los valores esperados respecto a los elementos de la mezcla:
 \begin{equation*}
 \expval{A}=\sum_{i}p_{i}\bra{\varphi_{i}}A\ket{\varphi_{i}}.
 \end{equation*}
@@ -144,13 +144,13 @@ donde $\sigma_{0}=\Id$ y $\gamma_{i.j}=\Tr(\sigma_{i}\otimes \sigma_{j}\rho)$.
 
 
 
-\subsection{Sistemas compuestos}\label{sec:Ch1PartialTrace}
-\ddnote{titulo mejor: sistemas multipartitos}
+\subsection{Sistemas multipartitos}\label{sec:Ch1PartialTrace}
+
 Hasta ahora hemos hablado de sistemas descritos por operadores de densidad en $\densityspace{n}$, pero, ¿qué sucede si el sistema que estudiamos está conformado por dos subsistemas, cada uno descrito a través de sus respectivos espacios de Hilbert? Sean, pues, $A$ y $B$ dos sistemas con espacios de Hilbert $\hilbert^{A}$ y $\hilbert^{B}$, y sea $C$ un sistema compuesto por $A$ y $B$. Entonces el producto tensorial de los espacios $\hilbert^{A}$ y $\hilbert^{B}$ es otro espacio de Hilbert, uno asociado al sistema $C$:
  \begin{equation*}
      \hilbert^{C}=\hilbert^{A}\otimes\hilbert^{B}.
  \end{equation*}
- La dimensión del espacio de Hilbert del sistema compuesto cumple
+ La dimensión del espacio de Hilbert del sistema multipartito cumple
 \begin{equation*}
     \text{dim}(\hilbert^{C})=\text{dim}(\hilbert^{A})\text{dim}(\hilbert^{B}).
 \end{equation*}
@@ -158,7 +158,7 @@ Si $A$ y $B$ representaran dos particulas diferentes, entonces $C$ representa a 
 \begin{equation*}
     \ket{\psi^{A}}\otimes\ket{\psi^{B}}\in\hilbert^{C}\,\; \; \forall\ket{\psi^{A}}\in\hilbert^{A},\ket{\psi^{B}}\in\hilbert^{B}.
 \end{equation*}
-Si un estado puede escribirse como un producto tensorial de estados pertenecientes a los subsistemas del sistema compuesto, entonces se dice que es un estado \textit{producto} o \textit{separable}. Nótese que, en general, los estados del sistema compuesto no son estados separables. En realidad, dadas $\{\varphi_{i}^{A}\}$ y $\{\varphi_{j}^{B}\}$ bases ortonormales de los espacios $\hilbert^{A}$ y $\hilbert^{B}$ respectivamente, podemos escribit a todo estado puro $\ket{\psi^{C}}$ del sistema compuesto como
+Si un estado puede escribirse como un producto tensorial de estados pertenecientes a los subsistemas del sistema multipartito, entonces se dice que es un estado \textit{producto} o \textit{separable}. Nótese que, en general, los estados del sistema compuesto no son estados separables. En realidad, dadas $\{\varphi_{i}^{A}\}$ y $\{\varphi_{j}^{B}\}$ bases ortonormales de los espacios $\hilbert^{A}$ y $\hilbert^{B}$ respectivamente, podemos escribit a todo estado puro $\ket{\psi^{C}}$ del sistema multipartito como
 \begin{equation*}
     \ket{\psi^{AB}}=\sum_{j,k}\alpha_{j,k}\ket{\varphi_{j}^{A}}\otimes\ket{\varphi_{k}^{B}}.
 \end{equation*}

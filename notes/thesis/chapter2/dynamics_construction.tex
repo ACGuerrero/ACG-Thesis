@@ -17,6 +17,11 @@ Donde $\mcA_\mcC$ denota a la aplicación que asigna un estado microscópico $\v
 \rho_{f}(0) \arrow{u}{\mcA_{\mcC}^{\max}} & \rho_{f}(t). \arrow{l}{\mcU_{t}}
 \end{tikzcd}
 \]
+En el siguiente capítulo se analizarán dinámicas efectivas generadas por diferentes dinámicas subyacentes. A veces, la dependencia temporal de la evolución microscópica $\mcU_{t}$ no es explícita (como en el caso de las compuertas de uso común en cómputo cuántico), y debe ser incluída de forma manual. En estos casos, dada una evolución unitaria fina discreta $\mcU$, introducimos la dependencia temporal a través de \acnote{Quizá aquí convenga desarrollar esto un poco más, e incluir al hamiltoniano que genera a la unitaria}
+\begin{equation}\label{eq:UnitaryTimeDependence}
+    \mcU_{t}=\mcU^{t}
+\end{equation}
+donde comprobamos que $\mcU_{0}=\Id_{n}$ y $\mcU_{1}=\mcU$.
 \acnote{CORREGIR ESTA SECCIÓN}
 
 ¿Es justificable usar al estado de máxima entropía? Previamente demostramos que en nuetro caso particular, este resulta ser separable, y aunque en el caso estacionario esto no afecta, las correlaciones, que se anulan en esta asginación, sí afectan la forma en que un sistema evoluciona.
