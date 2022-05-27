@@ -199,11 +199,6 @@ Con esto es posible escribir la descomposición espectral del operador, y luego 
 La forma matricial del operador controlled not a un tiempo $t$ es análoga a la del operador SWAP:
 \begin{equation}\label{eq:CNOT(t)}
 \cnot^{t}=\begin{pmatrix}
- 1 & 0 & 0 & 0 \\
- 0 & 1 & 0 & 0 \\
- 0 & 0 & \frac{1}{2}(1+e^{i \pi t}) & \frac{1}{2} (1-e^{i \pi t}) \\
- 0 & 0 & \frac{1}{2}(1-e^{i \pi t}) & \frac{1}{2}(1+e^{i \pi t})
-\end{pmatrix}=\begin{pmatrix}
   1 & 0 & 0 & 0 \\
   0 & 1 & 0 & 0 \\
   0 & 0 & e^{i\frac{t\pi}{2}}\cos{\frac{t\pi}{2}} & -ie^{i\frac{t\pi}{2}}\sin{\frac{t\pi}{2}}\\
@@ -213,7 +208,7 @@ La forma matricial del operador controlled not a un tiempo $t$ es análoga a la 
 
 El operador \textsc{CNOT} puede expandirse de la siguiente manera:
 \begin{equation*}
-        \cnot=\frac{1}{4}(\Id+\pauli{3}\otimes\Id+\Id\otimes\pauli{1}-\pauli{3}\otimes\pauli{1}).
+        \cnot=\frac{1}{2}(\Id+\pauli{3}\otimes\Id+\Id\otimes\pauli{1}-\pauli{3}\otimes\pauli{1}).
 \end{equation*}
 Si se calcula el logaritmo de la compuerta es posible hallar el hamiltoniano generador de la unitaria,
 \begin{equation*}
@@ -228,11 +223,20 @@ De momento no le vi como sacarle jugo a esto, pero será útil para la extensió
 
 
 \subsubsection{CNOT completo efectivo}
-Escribiendo al estado de máxima entropía como $\varrho=\rho_{A}\otimes\rho_{B}$, la dinámica efectiva escribimos
-\begin{equation*}
-    \Gamma_{t}^{\mcM,\rho}[\rho(0)]=\frac{1}{2}[\rho(0)+p(\sigma_{3}\rho_{A}\sigma_{3}+\Tr{\sigma_{1}\rho_{B}}[\rho_{A}-\sigma_{3}\rho_{A}\sigma_{3}])+(1-p)(\sigma_{1}\rho_{B}\sigma_{1}+\Tr{\sigma_{3}\rho_{A}}[\rho_{B}-\sigma_{1}\rho_{B}\sigma_{1}])]
-\end{equation*}
 
+Para estudiar la dinámica efectiva del operador $\cnot$ son particularmente útiles las expresiones (\ref{eq:rhoArhoB}). Como el estado de máxima entropía compatible con la aplicación de grano grueso puede escribirse como $\varrho_{\max}=\rho_{A}\otimes\rho_{B}$, entonces hallar el estado efectivo final es un problema de álgebra, en efecto,
+\begin{align*}
+    \rho(t=1)=\frac{1}{2}[&p(\rho(0)+\sigma_{3}\rho_{A}\sigma_{3}+\Tr{\sigma_{1}\rho_{B}}[\rho_{A}-\sigma_{3}\rho_{A}\sigma_{3}])\\
+    &+(1-p)(\rho(0)+\sigma_{1}\rho_{B}\sigma_{1}+\Tr{\sigma_{3}\rho_{A}}[\rho_{B}-\sigma_{1}\rho_{B}\sigma_{1}])].
+\end{align*}
+La estructura del estado final es una consecuencia directa de la aplicación borrosa. Para entender el significado de cada uno de los términos, considérese el caso en que el aparato de medición no tiene un error asociado ($p=1$). En dicho caso, a través del principio de máxima entropía, se esperaría que el estado efectivo final fuera
+\begin{equation*}
+  \rho(t=1)=\rho(0)+\pauli{3}\rho(0)\pauli{3}=\frac{1}{2}(\Id+r_{3}\pauli{3})
+\end{equation*}.
+Este resultado viene del hecho que, en el caso $p=1$, el estado de máxima entropía es simplemente $\rho\otimes\frac{1}{2}$. Si se conociera la preparación microscópica del estado inicial, el resultado de aplicar la compuerta de controlled not seguido de trazar al segundo sistema sería
+\begin{equation*}
+  \rho(t=1)=
+\end{equation*}
 En términos del vector de Bloch, que es una forma rápida de obtener el cambio de los observables y de la esfera, la dinámica se ve como
 \begin{equation*}
     \vec{r}_{\rho}=(pr_{A}+(1-p)r_{B})\hat{r}_{\rho}\mapsto\begin{pmatrix}
