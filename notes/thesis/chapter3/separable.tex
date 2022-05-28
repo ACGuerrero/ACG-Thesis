@@ -1,5 +1,32 @@
 \section{Dinámicas separables}
 
+En la sección \ref{sec:Ch1PartialTrace} se habló de estados separables como aquellos estados que, descritos por un operador de densidad $\rho\in\densityspace{n}$, tienen la forma
+\begin{equation*}
+    \rho=\rho_{A}\otimes\rho_{B}
+\end{equation*}
+donde $\rho_{A}\in\densityspace{m}$, $\rho_{B}\in\densityspace{l}$ y $l+m=n$. Siguiendo esta línea de pensamiento, con \textit{dinámicas separables} nos referimos a dinámicas unitarias descritas por operadores $U\in\unitaryspace{n}$ que pueden reescribirse como
+\begin{equation*}
+    U=U_{A}\otimes U_{B}
+\end{equation*}
+donde, una vez más, $U_{A}\in\unitaryspace{m}$, $U_{B}\in\unitaryspace{l}$ y $l+m=n$. Los operadores separables están compuestos por operadores que actúan de forma independiente sobre diferentes subsistemas del sistema en custión. En el caso de un sistema compuesto por dos subsistemas de dos niveles, el operador separable está compuesto por dos unitarias que actúan sobre $\hilbert_{2}$. Como el estado de máxima entropía resulta ser separable, las dinámicas separables son una muy buena primera forma de aplicar el formalismo descrito en las secciones anteriores.
+
+\subsection{Caso general}
+
+Consideramos una unitaria $\mcU=U_{1}\otimes U_{2}$ que evoluciona en el tiempo como $\mcU_{t}=(U_{1}\otimes U_{2})^{t}=U_{1}^{t}\otimes U_{2}^{t}$. Retomando la ecuación (\ref{eq:MaxEntSeparable}), la evolución del estado de máxima entropía es simplemente
+\begin{equation*}
+    \varrho_{\max}(t)=U_{1}^{t}\rho_{A}(U_{1}^{t})^{\dag}\otimes U_{2}^{t}\rho_{B} (U_{2}^{t})^{\dag}.
+\end{equation*}
+De esto, el estado efectivo evolucionado obtenido del principio de máxima entropía, en términos de los multiplicadores de Lagrange es
+\begin{equation*}
+    \rho(t)=pU_{1}^{t}\rho_{A}(U_{1}^{t})^{\dag}+(1-p)U_{2}^{t}\rho_{B} (U_{2}^{t})^{\dag}
+\end{equation*}
+
+Por supuesto, esta expresión puede expandirse en términos de exponenciales o de funciones hiperbólicas del vector de Bloch del estado efecivo incial, $\vec{r}_{\rho}$. Si se hace esto para hallar la evolución de un observable $\pauli{i}\in\obspace{2}$ se encuentra que
+\begin{equation*}
+    \expval{\pauli{i}(t)}=\frac{p\tanh(p\lambda)}{2}\Tr[\pauli{i}U_{1}^{t}(\paulivec{r_{\rho}})(U_{1}^{t})^{\dag}]+\frac{p\tanh((1-p)\lambda)}{2}\Tr[\pauli{i}U_{2}^{t}(\paulivec{r_{\rho}})(U_{2}^{t})^{\dag}]
+\end{equation*}
+En la evolución de los observables (que, depués de todo, son las cantidades que permiten describir al sistema efectivo), se observan, de nueva cuenta, dos términos: el primero está asociado a la evolución de grano grueso sin error. Como el modelo toma en cuenta únicamente a la primera partícula, se espera observar únicamente la acción de la primera parte del operador de evolución separable. El primer término contiene un coeficiente de peso $p\tanh(p\lambda)$ inducido por la aplicación de grano grueso, y el elemento de valor esperado, que depende únicamente de la dirección del vector de Bloch del estado efectivo inicial y de la primera parte del operador de evolución. En contraste, el segundo término contiene la evolución generada por $U_{2}^{t}$, y depende de $(1-p)$, la probabilidad de error. Por esto, este es el término de ruido. Por la naturaleza separable y unitaria de la evolución, se verá que el ruido son oscilaciones periódicas, pero esto es más claro si se toman en cuenta ejemplos particulares.
+
 \subsection{Dinámica simétrica}
 
 Comenzamos con el caso en el que la dinámica separable simétrica, esto es, de una unitaria $mcU\in\text{U}(4)$ de la forma
@@ -17,49 +44,6 @@ La dinámica efectiva tiene la forma:
     \rho\xrightarrow{U\otimes U}U\rho U^{\dagger}
 \end{equation}
 Así como demostramos previamente que si el estado efectivo es puro, entonces el único estado de máxima entropía compatible es justamente el producto tensorial del estado efectivo consigo mismo, podemos mostrar que si la evolución efectiva es unitaria, la dinámica subyacente es el producto tensorial de dicha dinámica consigo misma:
-
-\subsection{El caso general}
-
-
-Consideramos una unitaria $\mcU=U_{1}\otimes U_{2}$ que evoluciona en el tiempo como $\mcU_{t}=(U_{1}\otimes U_{2})^{t}=U_{1}^{t}\otimes U_{2}^{t}$. Retomando la ecuación (\ref{eq:MaxEntSeparable}), el estado efectivo evolucionado, en términos de un multiplicador de Lagrange y la unitaria $V$ que lo relaciona a un estado alineado en $z$ con la misma pureza es
-\begin{align*}
-    \CG{(U_{1}^{t}\otimes U_{2}^{t})\varrho_{max}(U_{1}^{t}\otimes U_{2}^{t})^{\dag}}&=p\frac{1}{Z_{1}}U_{1}^{t}V e^{\lambda p \sigma_{z}}V^{\dag}(U_{1}^t)^{\dag}+(1-p)\frac{1}{Z_{2}}U_{2}^{t}Ve^{\lambda (1-p)\sigma_{z}}V^{\dag}(U_{2}^t)^{\dag}\\
-    &=p\frac{1}{Z_{1}}U_{1}^{t}V e^{\lambda p \sigma_{z}}(U_{1}^tV)^{\dag}+(1-p)\frac{1}{Z_{2}}U_{2}^{t}Ve^{\lambda (1-p)\sigma_{z}}(U_{2}^tV)^{\dag}\\
-\end{align*}
-Por un lado, podemos dejar a las unitarias $V$ dentro de las exponenciales, de tal forma que:
-\begin{equation}
-    \CG{(U_{1}^{t}\otimes U_{2}^{t})\varrho_{max}(U_{1}^{t}\otimes U_{2}^{t})^{\dag}}=p\frac{1}{2}(\Id+U_{1}^{t}(\hat{r}_{\rho}\cdot\vec{\sigma})(U_{1}^{t})^{\dag}\tanh{(\lambda p)})+(1-p)\frac{1}{2}(\Id+U_{2}^{t}(\hat{r}_{\rho}\cdot\vec{\sigma})(U_{2}^{t})^{\dag}\tanh{(\lambda (1-p))}).
-\end{equation}
-El resultado puede verse como las partes que componen al estado efectivo alineado en $z$ evolucionados por una composición de unitarias, que es otra unitaria. Las unitarias $U_{j}$ pueden escribirse como $e^{-i\theta_{j} \hat{n}_{j}\cdot\vec{\sigma}}$, mientras que $V=e^{i\alpha\hat{l}\cdot\vec{\sigma}}$ con $\hat{l}=(\cos{\beta},\sin{\beta},0)$, luego $U_{i}V=e^{i\zeta_{j} \hat{k}_{j}\cdot \vec{\sigma}}$ donde:
-\begin{align*}
-    \cos{\zeta_{j} }&=\cos{\theta_{j}}\cos{\alpha}-\hat{n}_{j}\cdot \hat{l}\sin{\theta_{j}}\sin{\alpha}\\
-    \hat{k}_{j} &=\frac{1}{\sin{\zeta}}(\hat{n}_{j}\sin{\theta_{j}}\cos{\alpha}+\hat{l}\cos{\theta_{j}}\sin{\alpha}-\hat{n}_{j}\times \hat{l}\sin{\theta_{j}}\sin{\alpha})
-\end{align*}
-Total que la dinámica se ve como
-\begin{equation}
-    \boxed{V\CG{\varrho_{max}^{z}}V^{\dag} \xrightarrow{\mcU=U_{1}\otimes U_{2}} pW_{1}\Tr_{2}(\varrho_{max}^{z})W_{1}^{\dag}+(1-p)W_{2}\Tr_{1}(\varrho_{max}^{z})W_{2}^{\dag}}.
-\end{equation}
-Donde $W_{j}=U_{j}V$. Cada parte del estado efectivo se ve rotado de manera diferente. Las partes que se rotan son las partes que surgen al pasar al estado de máxima entropía por la aplicación de grano grueso. Pensando en esto, \notaAd{Regresar a la parte correspondiente: \ref{sec:CG(MaxEnt)}}. Aunque a mi me gusta la forma
-\begin{equation}\label{eq:SeparableDynamics}
-    \boxed{\rho\xrightarrow{\mcU=U_{1}\otimes U_{2}} p\frac{1}{Z_{1}}U_{1}e^{\lambda_{3}p\hat{r}_{\rho}\cdot\vec{\sigma}}U_{1}^{\dag}+(1-p)\frac{1}{Z_{2}}U_{2}e^{\lambda_{3}(1-p)\hat{r}_{\rho}\cdot\vec{\sigma}}U_{2}^{\dag}}.
-\end{equation}
-
-Si el estado inicial tiene componente en $z$ nomás
-\begin{equation}\label{eq:SeparableZDynamics}
-\CG{(U_{1}^{t}\otimes U_{2}^{t})\varrho_{max}(U_{1}^{t}\otimes U_{2}^{t})^{\dag}}=p\frac{1}{Z_{1}}e^{\lambda p U_{1}^{t}\sigma_{z}(U_{1}^t)^{\dag}}+(1-p)\frac{1}{Z_{2}}e^{\lambda (1-p)U_{2}^{t}\sigma_{z}(U_{2}^t)^{\dag}}
-\end{equation}
-Incluyendo el tiempo y haciendo el cambio $t\theta\rightarrow t$, los exponentes dentro de (\ref{eq:SeparableDynamics}) se desarrollan como:
-\begin{align*}
-    e^{-i\theta \hat{n}\cdot\vec{\sigma}}\sigma_{z}e^{i\theta \hat{n}\cdot\vec{\sigma}}&=(\Id\cos{t}-i\hat{n}\cdot\vec{\sigma}\sin{t})\sigma_{z}(\Id\cos{t}+i\hat{n}\cdot\vec{\sigma}\sin{t})\\
-    &=\sigma_{z}\cos^{2}{t}+i[\sigma_{z},\hat{n}\cdot\vec{\sigma}]\sin{t}\cos{t}+(\hat{n}\cdot\vec{\sigma})\sigma_{z}(\hat{n}\cdot\vec{\sigma})\sin^{2}{t}\\
-    &=\sigma_{z}+2\sin{t}\qty((n_{x}\sigma_{y}-n_{y}\sigma_{x})\cos{t}+n_{z}(\hat{n}\cdot\vec{\sigma})\sin{t})
-\end{align*}
-A notar que si $t=0$ no hay evolución. Luego, en el límite $t\ll 1$:
-\begin{equation*}
-    e^{-i\theta \hat{n}\cdot\vec{\sigma}}\sigma_{z}e^{i\theta \hat{n}\cdot\vec{\sigma}}=\sigma_{z}+2t(n_{x}\sigma_{y}-n_{y}\sigma_{x})
-\end{equation*}
-\notaAd{Aún tengo que darle interpretación a esto. Si defino $T=\theta^{-1}$ entonces este límite corresponde justamente a $T$ alta. Mañana voy a desarrollar esto como exponencial real de un vector de Pauli. La expresión es la misma que para la exponencial compleja, pero sin unidad imaginaria e intercambiano las funciones trigonométricas por hiperbólicas}
-
 
 \subsection{Identidad de un lado}
 
