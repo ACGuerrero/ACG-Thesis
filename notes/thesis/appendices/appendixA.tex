@@ -28,8 +28,22 @@ que, claro está, corresponde a
 \begin{equation}\label{ap:PauliRealExp}
     e^{r\paulivec{r}}=\Id\cosh{r}+\paulivec{r}\sinh{r}
 \end{equation}
-\subsubsection{Exponencial compleja de un vector de Pauli}
 
+
+\subsubsection{Exponencial compleja de un vector de Pauli}
+Si se expande la serie de Taylor usando como argumento un vector de pauli $r\paulivec{r}$,
+\begin{align*}
+    e^{-ir\paulivec{r}}=&\sum_{k=0}^{\infty}\frac{1}{k!}(r\paulivec{r})^k\\
+    =&\sum_{k}\frac{r^{2k}(\paulivec{r})^{2k}}{(2k)!}+\sum_{k}\frac{r^{2k+1}(\paulivec{r})^{2k+1}}{(2k+1)!},
+\end{align*}
+se puede usar (\ref{ap:PauliSquare}) para ver que
+\begin{align*}
+    e^{r\paulivec{r}}=&\Id\sum_{k}\frac{r^{2k}}{(2k)!}+\paulivec{r}\sum_{k}\frac{r^{2k+1}}{(2k+1)!},
+\end{align*}
+que, claro está, corresponde a
+\begin{equation}\label{ap:PauliCompExp}
+    e^{-ir\paulivec{r}}=\Id\cos{r}-i\paulivec{r}\sin{r}
+\end{equation}
 \subsubsection{Unitaria generada por un operador hermítico}
 Toda unitaria de $2\times 2$ puede generarse a través de un operador hermítico $H$ como
 \begin{equation*}
