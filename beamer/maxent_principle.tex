@@ -1,0 +1,57 @@
+
+\section{Maximum entropy principle}
+
+\begin{frame}{Classical maximum entropy state}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            Supose we have access to a expected value $\expval{f(x)}$. Our task is to find the probablity density function $p(x)$ such that:
+            \begin{equation*}
+                \expval{f(x)}=\sum_{i}p(x_{i})f(x_{i}).
+            \end{equation*}
+            Such function is not unique. We choose the one that maximizes entropy.
+                \begin{equation*}
+                    H=-K\sum_{p}p(x_{i})\log{p(x_{i})}.
+                \end{equation*}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+                Entropy is a measure of the average quantity of information. \\
+                \vspace{0.2cm}
+                \begin{tcolorbox}
+                    Chain of characters $\{A,B,C,D\}$\\
+                    If $p(x)=\frac{1}{4}$\\
+                    $\rightarrow$ assign $\{00, 01, 10, 11\}$\\
+                    $\rightarrow$ $2$ bits average\\
+                    \\
+                    If $p(x)=\{\frac{1}{2},\frac{1}{4},\frac{1}{8},\frac{1}{8}\}$\\
+                    $\rightarrow$ assign $\{1, 10, 110, 111\}$\\
+                    $\rightarrow$ $1.75$  bits average
+                \end{tcolorbox}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Classical maximum entropy principle}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            The entropy can be maximized by the method of the Lagrange multipliers. Use $\lambda$ and $\mu$
+            along with the restriction
+            \begin{equation*}
+                \expval{f(x)}=\sum_{i}p(x_{i})f(x_{i}).
+            \end{equation*}
+            Solution is
+            \begin{equation*}
+                p(x_{i})=e^{-\lambda-\mu f(x_{i})}
+            \end{equation*}
+            That is the maximum entropy density function.
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            Notice that the only assumption made by the estimate is that of the restriction of $\expval{f(x)}$.
+            \begin{itemize}
+                \item The estimate doesn't need to predict measurements. It's an estimate.
+                \item Little information (restrictions) leads to poor estimates.
+                \item MaxEnt is the best possible estimate given a number of experimental restricions.
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
