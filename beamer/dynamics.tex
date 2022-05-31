@@ -1,23 +1,155 @@
 \section{Effective dynamics}
-\begin{frame}{Dynamics in quantum mechanics}
-    Closed quantum systems evolution is described by the von Neumann equation
+
+\subsection{Separable dynamics}
+
+\begin{frame}{General solution}
+    Separable unitary dynamics are of the form $\mcU_{t}=U_{1}^{t}\otimes U_{2}^{t}$. Since $\rho_{max}$ state is of the form $\rho_{A}\otimes\rho_{B}$. The effective evolved state looks like
     \begin{equation*}
-        i\hbar\frac{d}{d t} \varrho(t)=[H,\rho(t)].
+        \rho\mapsto pU_{1}^{t}\rho_{A}(U_{1}^{t})^{\dag}+(1-p)U_{2}^{t}\rho_{B} (U_{2}^{t})^{\dag}.
     \end{equation*}
-    Solution being an unitary evolution operator $\mcU_{t}=e^{-iH(t)/\hbar}$ such that
-    \begin{equation*}
-        \varrho(t)=\mcU_{t}\varrho(0)\mcU_{t}^{\dag}.
-    \end{equation*}
-    We assume that the microscopic state is closed. The effective dynamics are
-    \begin{equation*}
-        \Gamma_{t}^{\mcM,\rho}[\rho]=(\Tr_{2}\circ\mcF\circ\mcU\circ\mcM)[\rho].
-    \end{equation*}
-        Here, $\mcM$ sends a coarse state $\rho$ to the compatible maximum entropy state $\varrho_{max}$.
+    The expected values of observables $\pauli{i}$ evolve as
+    \begin{align*}
+        \begin{split}
+            \expval{\pauli{i}(t)}=&\frac{p\tanh(p\lambda)}{2}\Tr[\pauli{i}U_{1}^{t}(\paulivec{r_{\rho}})(U_{1}^{t})^{\dag}]\\
+        &+\frac{p\tanh((1-p)\lambda)}{2}\Tr[\pauli{i}U_{2}^{t}(\paulivec{r_{\rho}})(U_{2}^{t})^{\dag}].
+        \end{split}
+      \end{align*}
 \end{frame}
 
-\subsection{Toy dynamics}
+\begin{frame}{Two cases}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item Asume $U_{1}= U_{2}=U$.
+                \item Thanks to symmetry, the evolution may be factored as
+                \begin{align*}
+                    \rho(t)&=pU^{t}\rho_{A}(U^{t})^{\dag}+(1-p)U^{t}\rho_{B}(U^{t})^{\dag} \\
+                    &=U^{t}(p\rho_{A}+(1-p)\rho_{B})(U^{t})^{\dag}\\
+                    &=U^{t}\rho(0)(U^{t})^{\dag}.
+                    \end{align*}
+                \item The effective dynamics are    
+                \begin{equation*}
+                    \rho\mapsto U^{t}\rho(U^{t})^{\dag}.
+                \end{equation*}
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item Asume either $U_{1}=\Id$ or $U_{2}=\Id$.
+                \item Let $r_{A}\hat{r}_{\rho}$ and $r_{B}\hat{r}_{\rho}$ be the Bloch vectors of $\rho_{A}$ and $\rho_{B}$. Let $O_{i}$ be the rotation induced by $U_{i}$
+                \item If $U_{2}=\Id$ then:
+                \begin{equation*}
+                    r\hat{r}_{\rho}\mapsto O_{1}(r\hat{r}_{\rho}-(1-p)r_{B}\hat{r}_{\rho})+(1-p)r_{B}\hat{r}_{\rho}.
+                \end{equation*}
+                \item If $U_{1}=\Id$ then:
+                \begin{equation*}
+                    r\hat{r}_{\rho}\mapsto r\hat{r}_{\rho}+(1-p)(O_{2}(r_{B}\hat{r}_{\rho})-r_{B}\hat{r}_{\rho}).
+                \end{equation*}
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
 
-\begin{frame}{SWAP gate}
+\begin{frame}{Effect on the Bloch Sphere}
+    \begin{figure}[h!]
+        \centering
+        \begin{subfigure}{0.32\textwidth}
+            \centering
+            \includegraphics[width=0.9\linewidth]{figures/U1xU2_H1=Pi(sz)_H2=Id_z=0.9_p=0.6t=0.png}
+            \caption{$t=0.0$}
+        \end{subfigure}%
+        \begin{subfigure}{0.32\textwidth}
+            \centering
+            \includegraphics[width=0.9\linewidth]{figures/U1xU2_H1=Pi(sz)_H2=Id_z=0.9_p=0.6t=0.25.png}
+            \caption{$t=0.25$}
+        \end{subfigure}
+        \begin{subfigure}{0.32\textwidth}
+            \centering
+            \includegraphics[width=0.9\linewidth]{figures/U1xU2_H1=Pi(sz)_H2=Id_z=0.9_p=0.6t=0.5.png}
+            \caption{$t=0.5$}
+        \end{subfigure}
+        \caption{Effect on the Bloch sphere. $r=0.9$, $p=0.6$, $U_{1}=e^{it\pi \pauli{3}}$ and $U_{2}=\Id$}
+    \end{figure}
+\end{frame}
+
+
+
+\begin{frame}{One example}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            Let's consider an effective state
+                \begin{equation*}
+                    \rho=\frac{1}{2}(\Id+r_{z}\pauli{3}),
+                \end{equation*}
+            and an evolution $\mcU_{t}=e^{-itH_{1}}\otimes e^{-itH_{2}}$ where
+                \begin{align*}
+                    H_{1}=\pauli{3} & & \text{and} & & H_{2}=\frac{\omega}{\sqrt{2}}(\pauli{1}-\pauli{2}).
+                \end{align*}
+            We may solve this by using the formula
+                \begin{equation*}
+                    \rho\mapsto pU_{1}^{t}\rho_{A}(U_{1}^{t})^{\dag}+(1-p)U_{2}^{t}\rho_{B} (U_{2}^{t})^{\dag}.
+                \end{equation*}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            The unitaries might be written as
+                \begin{equation*}
+                    U_{1}^{t}=\Id\cos(\omega t) - i \pauli{3} \sin(\omega t),
+                \end{equation*}
+                \begin{equation*}
+                    U_{2}^{t}=\Id\cos(\omega t) - \frac{i}{\sqrt{2}} (\pauli{1}-\pauli{2}) \sin(\omega t).
+                \end{equation*}
+                In a no-error scenario, we expect $\expval{\pauli{3}}=r_{z}$. Here, it is found to be:
+                \begin{equation*}
+                    \expval{\pauli{3}(t)}=\expval{\pauli{3}(0)}+(1-p)r_{B}(\cos(2\omega t)-1).
+                \end{equation*}
+            Note that $\expval{\pauli{3}(0)}$ is nothing but $r_{z}$.
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Effect on the Bloch Sphere}
+    \begin{figure}[h!]
+        \centering
+        \begin{subfigure}{0.44\textwidth}
+            \centering
+            \includegraphics[width=0.9\linewidth]{figures/U1xU2_H1=(sz)_H2=15(sx-sy)_z=0.8_p=0.9_far.png}
+        \end{subfigure}%
+        \begin{subfigure}{0.44\textwidth}
+            \centering
+            \includegraphics[width=0.9\linewidth]{figures/U1xU2_H1=(sz)_H2=15(sx-sy)_z=0.8_p=0.9.png}
+        \end{subfigure}
+        \caption{Graphical interpretation. The effective state $\rho$ oscillates near $\rho_{A}$, the subsystem of interest.}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Other states}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            This oscillation is observable even if the initial efective state, $\rho$, is not invariant under the unitary $U_{1}$.
+            
+            Let $\rho$ be
+            \begin{equation*}
+                \rho=\frac{1}{2}\qty[\Id+\frac{4}{5\sqrt{2}}\qty(\frac{1}{2}\pauli{1}+\frac{1}{2}\pauli{2}+\pauli{3})]
+            \end{equation*}
+            Clearly, this state is not invariant under 
+            \begin{equation*}
+                U_{1}^{t}=\Id\cos(\omega t) - i \pauli{3} \sin(\omega t).
+            \end{equation*}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{figure}[h!]
+                \includegraphics[width=0.8\columnwidth]{figures/U1xU2_H1=(sz)_H2=15(sx-sy)_z=0.8_p=0.9_wXY=0.5.png}%
+                \caption{Small oscillations around the no-error trajectory. Here, $r=0.8$ $p=0.9$ and $\omega=15$. }
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+
+\subsection{Quantum computing gates}
+
+\begin{frame}{Effective SWAP}
     State before and after the SWAP evolution is
     \begin{align*}
         \rho(0)&=\frac{1}{2}[\Id+(\hat{r}_{\rho}\cdot\vec{\sigma})(p\tanh{-\lambda p}+(1-p)\tanh{-\lambda (1-p)})],\\
@@ -34,29 +166,11 @@
       \end{equation*}
 \end{frame}
 
-\begin{frame}{SWAP gate}
+\begin{frame}{The contraction factor}
     \begin{figure}[h!]
         \centering
-        \begin{subfigure}{0.475\textwidth}
-          \centering
-          \includegraphics[width=0.6\linewidth]{../notes/log/maxent/figures/sphere_swapcontraction_t=0_z=0.9_p=0.9.png}
-          \caption{$t=0$}
-        \end{subfigure}%
-        \begin{subfigure}{0.475\textwidth}
-          \centering
-          \includegraphics[width=0.6\linewidth]{../notes/log/maxent/figures/sphere_swapcontraction_t=1_z=0.9_p=0.9.png}
-          \caption{$t=1$}
-        \end{subfigure}
-        \caption{Effect on the Bloch sphere if $r_{z}=0.9$, $p=0.9$. The dramatic size compression can be seen as a loss of information.}
-        \label{fig:SWAPFactorSequence}
-    \end{figure}
-\end{frame}
-
-\begin{frame}{SWAP gate}
-    \begin{figure}[h!]
-        \centering
-        \includegraphics[width=0.6\linewidth]{../notes/log/maxent/figures/ContractionFactorSWAP_2D_lambda0to8.png}
-        \caption{$\kappa_{1}$ as a function of $\lambda$, for different values of $p$.}
+        \includegraphics[width=0.9\linewidth]{figures/ContractionFactorSWAP_2D_both.png}
+        \caption{$\kappa_{1}$ as a function of the initial purity $r_{\rho}$ (left) and as a function of the Lagrange multipliers $\lambda$ (right), for different values of $p$.}
         \label{fig:SWAPFactor2D}
       \end{figure}
 \end{frame}
@@ -77,94 +191,117 @@ Or, in terms of the probability of getting either $\ket{0}$ or $\ket{1}$ as
  \end{align}
  where both non linearity and time dependency is contained inside the contraction factor $\kappa_{t}^{\rho}$. 
 \end{frame}
-
-\subsection{Separable dynamics}
-
-\begin{frame}{Solution}
-    Separable dynamics are of the form $\mcU_{t}=U_{1}\otimes U_{2}$. Since $\rho_{max}$ state is of the form $\rho_{A}\otimes\rho_{B}$. The effective state might be written as 
-    \begin{equation*}
-        \rho=p\rho_{A}+\rho_{B}
-    \end{equation*}
-    Meaning that the evolution looks like
-    \begin{equation*}
-        \rho\xrightarrow{\mcU=U_{1}\otimes U_{2}} pU_{1}\rho_{A}U_{1}^{\dag}+(1-p)U_{2}\rho_{B}U_{2}^{\dag}
-    \end{equation*}
-    We recognize two special cases:
-    \begin{align*}
-        U_{2}=\Id&&U_{1}=U_{2}
-    \end{align*}
-\end{frame}
-
-\begin{frame}{$U_{1}=U_{2}$}
-    The simplest case, it is possible to factor the unitary
-    \begin{align*}
-    \CG{(U^{t}\otimes U^{t})\varrho_{max}(U^{t}\otimes U^{t})^{\dag}}&=p\frac{1}{Z_{1}}e^{-\lambda p U^{t}\sigma_{z}(U^t)^{\dag}}+(1-p)\frac{1}{Z_{2}}e^{-\lambda (1-p)U^{t}\sigma_{z}(U^t)^{\dag}}\\
-    &=p\frac{1}{Z_{1}}U^{t}e^{-\lambda p \sigma_{z}}(U^t)^{\dag}+(1-p)\frac{1}{Z_{2}}U^{t}e^{-\lambda (1-p)\sigma_{z}}(U^t)^{\dag}\\
-    &=U^{t}\qty(p\frac{1}{Z_{1}}e^{-\lambda p \sigma_{z}}+(1-p)\frac{1}{Z_{2}}e^{-\lambda (1-p)\sigma_{z}})(U^t)^{\dag}\\
-    \end{align*}
-    The evolution looks like
-    \begin{equation}
-        \rho\xrightarrow{U\otimes U}U\rho U^{\dagger}
-    \end{equation}
-\end{frame}
-
-\begin{frame}{$U_{2}=\Id$}
-\begin{columns}
-    \begin{column}{0.5\textwidth}
-        Effective evolution looks like
-        \begin{equation*}
-            \rho\xrightarrow{\mcU=U_{1}\otimes U_{2}} pU_{1}\rho_{A}U_{1}^{\dag}+(1-p)\rho_{B}.
-        \end{equation*}
-        Using the Bloch vectors:
-        \begin{equation*}
-            r\hat{r}_{\rho}\xrightarrow{\mcU=U_{1}\otimes \Id}r_{A}O\hat{r}_{\rho}+r_{B}\hat{r}_{\rho}=O(r\hat{r}_{\rho}-r_{B}\hat{r}_{\rho})+r_{B}\hat{r}_{\rho}
-        \end{equation*}
-        i.e. $T^{-1}\circ R\circ T$, with $T$ a translation and $R$ a rotation. Note that $T$ depends on $\rho$. It is non-linear!
-    \end{column}
-    \begin{column}{0.5\textwidth}
-        \begin{figure}[h!]
-            \includegraphics[width=0.8\linewidth]{../notes/log/maxent/figures/U1xU2_H1=sz_H2=Id_z=0.9_p=0.4_sequence.png}
-            \caption{The effective state $\rho$ \textit{feels} the rotation induced by $U_{1}$}
-            \label{fig:ZRot}
-        \end{figure}
-    \end{column}
-\end{columns}
-\end{frame}
-
-
-\begin{frame}{The $(1-p)\rightarrow 0$ regime}
-    \begin{columns}
-        \begin{column}{0.5\textwidth}
-            \begin{itemize}
-                \item  Can be interpreted as the error induced by the instrument being small.
-                \item  Because the unitary is of the form $\mcU_{t}=U_{1}\otimes U_{2}$, we expect to see a $U_{1}$ evolution, but perturbed by a small $U_{2}$ evolution
-            \end{itemize}
-        \end{column}
-        \begin{column}{0.5\textwidth}
-            \begin{itemize}
-                \item Because both unitares are rotations, the result is a helix around what should be the observed evolution.
-                \item Expected values evolve accordingly.
-            \end{itemize}
-        \end{column}
-    \end{columns}
-\end{frame}
-
-\begin{frame}{The $(1-p)\rightarrow 0$ regime}
+\begin{frame}{Effect on the Bloch sphere}
     \begin{figure}[h!]
         \centering
-        \begin{subfigure}{0.5\textwidth}
+        \begin{subfigure}{0.32\textwidth}
             \centering
-            \includegraphics[width=0.6\linewidth]{../notes/log/maxent/figures/U1xU2_H1=100(sx-sy)_H2=sz_z=0.9_p=0.85_sequence.png}
-            \caption{Values $H_{1}=100(\sigma_{x}-\sigma_{y})$ and $H_{2}=\sigma_{z}$.}
+            \includegraphics[width=0.9\linewidth]{figures/sphere_swapcontraction_t=0.0_z=0.9_p=0.9.png}
+            \caption{$t=0.0$}
         \end{subfigure}%
-        \begin{subfigure}{0.5\textwidth}
+        \begin{subfigure}{0.32\textwidth}
             \centering
-            \includegraphics[width=0.6\linewidth]{../notes/log/maxent/figures/U1xU2_H1=sz_H2=10*(sx+sy)_z=0.9_p=0.85_sequence.png}
-            \caption{Values $H_{1}=\sigma_{z}$ and $H_{2}=10(\sigma_{x}+\sigma_{y})$.}
+            \includegraphics[width=0.9\linewidth]{figures/sphere_swapcontraction_t=0.5_z=0.9_p=0.9.png}
+            \caption{$t=0.5$}
         \end{subfigure}
+        \begin{subfigure}{0.32\textwidth}
+            \centering
+            \includegraphics[width=0.9\linewidth]{figures/sphere_swapcontraction_t=1.0_z=0.9_p=0.9.png}
+            \caption{$t=1.$}
+        \end{subfigure}
+        \caption{Effect on the Bloch sphere. $r=0.9$, $p=0.9$. The dramatic contraction can be associated with the near total loss of information.}
+    \end{figure}
+\end{frame}
+\begin{frame}{Periodicity of the effective SWAP gate}
+    \begin{figure}[h!]
+        \includegraphics[width=0.5\columnwidth]{figures/ContractionFactorSWAP_z=0.8_t=0_to_t=2.png}%
+        \caption{The contraction factor as a function of $t$, for different values of $p$ and $r=0.8$. Note the periodic nature of the effective evolution.}
     \end{figure}
 \end{frame}
 
+
+\begin{frame}{CNOT gate}
+    The controlled not gatis generated by a hamiltonian
+    \begin{equation*}
+        H_{\cnot}=\frac{\pi}{4}\qty(\Id-\pauli{3}\otimes\Id-\Id\otimes\pauli{1}+\pauli{3}\otimes\pauli{1}),
+    \end{equation*}
+    From this, it is possible to expand the gate as three succesive unitary operators
+    \begin{align*}
+        \cnot&=e^{-i\frac{\pi}{4}\Id}e^{i\frac{\pi}{4}\pauli{3}\otimes\Id}e^{i\frac{\pi}{4}\Id\otimes\pauli{1}}e^{-i\frac{\pi}{4}\pauli{3}\otimes\pauli{1}}\\
+        &=e^{-i\frac{\pi}{4}} (e^{i\frac{\pi}{4}\pauli{3}}\otimes \Id) (\Id \otimes e^{i\frac{\pi}{4}\pauli{1}}) e^{-i\frac{\pi}{4}\pauli{3}\otimes\pauli{1}}.
+    \end{align*}
+    While the usual CNOT interpretation of the gate might be blurry, another one arises: the CNOT gate induces correlations between the $\pauli{3}$ component of the first subsystem and the $\pauli{1}$ component of the second subsystem.
+\end{frame}
+
+\begin{frame}{Effective CNOT}
+    Let's suppose for a moment than $p=1$. The evolved effective state will be
+    \begin{equation*}
+      \rho(t=1)=\rho(0)+\pauli{3}\rho(0)\pauli{3}=\frac{1}{2}(\Id+r_{3}\pauli{3}).
+    \end{equation*}
+    This is because the MaxEnt state will be $\rho\otimes\frac{1}{2}$. The $\pauli{1}$ and $\pauli{2}$ components are lost because the CNOT gate applies a $\pauli{3}$ gate on the first particle depending on the value of the second particle in the $\pauli{1}$ basis. If the second particicle finds itself on the state $\frac{1}{2}\Id$, the \textit{application rate} of the $\pauli{3}$ gate (that changes the $\pauli{1}$ and $\pauli{3}$ components) will be equally random: the information is lost.
+\end{frame}
+
+\begin{frame}{Effective CNOT}
+    State before and after the SWAP evolution is
+    \begin{align*}
+        \rho(0)=&\frac{1}{2}[\Id+(\hat{r}_{\rho}\cdot\vec{\sigma})(p\tanh{-\lambda p}+(1-p)\tanh{-\lambda (1-p)})],\\
+        \rho(t=1)=&\frac{1}{2}[p(\rho(0)+\sigma_{3}\rho_{A}\sigma_{3}+\Tr{\sigma_{1}\rho_{B}}[\rho_{A}-\sigma_{3}\rho_{A}\sigma_{3}])\\
+    &+(1-p)(\rho(0)+\sigma_{1}\rho_{B}\sigma_{1}+\Tr{\sigma_{3}\rho_{A}}[\rho_{B}-\sigma_{1}\rho_{B}\sigma_{1}])].
+        \end{align*}
+    Notice the similarity between this expression and the previous one. The CNOT gate induces correlations between both subsystems. These corrleations are completely dependent on the $\pauli{3}$ and $\pauli{1}$ components of the first and second subsystem.
+    The second term shows the action of the \textit{target} qubit over the \textit{control} qubit on the $\pauli{1}$ basis.
+\end{frame}
+
+\begin{frame}{Effective CNOT}
+    State before and after the SWAP evolution is
+    \begin{align*}
+        \rho(0)=&\frac{1}{2}[\Id+(\hat{r}_{\rho}\cdot\vec{\sigma})(p\tanh{-\lambda p}+(1-p)\tanh{-\lambda (1-p)})],\\
+        \rho(t=1)=&\frac{1}{2}[p(\rho(0)+\sigma_{3}\rho_{A}\sigma_{3}+\Tr{\sigma_{1}\rho_{B}}[\rho_{A}-\sigma_{3}\rho_{A}\sigma_{3}])\\
+    &+(1-p)(\rho(0)+\sigma_{1}\rho_{B}\sigma_{1}+\Tr{\sigma_{3}\rho_{A}}[\rho_{B}-\sigma_{1}\rho_{B}\sigma_{1}])].
+        \end{align*}
+      This evolution can be written as
+      \begin{equation*}
+        \vec{r}_{\rho}=(pr_{A}+(1-p)r_{B})\hat{r}_{\rho}\mapsto\begin{pmatrix}
+            r_{B}(pr_{A}(\hat{r}_{\rho,1})^2+(1-p)\hat{r}_{\rho,1})\\
+            r_{B}r_{A}(p\hat{r}_{\rho,1}\hat{r}_{\rho,2}+(1-p)\hat{r}_{\rho,2}\hat{r}_{\rho,3})\\
+            r_{A}(p\hat{r}_{\rho,3}+(1-p)r_{A}(\hat{r}_{\rho,3})^{2})
+        \end{pmatrix}.
+      \end{equation*}
+\end{frame}
+
+\begin{frame}{Effective CNOT on the Bloch sphere}
+    \begin{figure}[h!]
+        \centering
+        \begin{subfigure}{0.32\textwidth}
+            \centering
+            \includegraphics[width=0.9\linewidth]{figures/sphere_CNOT_t=0.0_z=0.8_p=0.95.png}
+            \caption{$t=0.0$}
+        \end{subfigure}%
+        \begin{subfigure}{0.32\textwidth}
+            \centering
+            \includegraphics[width=0.9\linewidth]{figures/sphere_CNOT_t=1.0_z=0.8_p=0.95.png}
+            \caption{$t=0.5$}
+        \end{subfigure}
+        \caption{Effect on the Bloch sphere. $r=0.8$, $p=0.95$.}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Effective CNOT on the Bloch sphere}
+    \begin{figure}[h!]
+        \centering
+        \begin{subfigure}{0.32\textwidth}
+            \centering
+            \includegraphics[width=0.9\linewidth]{figures/sphere_CNOT_t=0.0_z=0.8_p=0.6.png}
+            \caption{$t=0.0$}
+        \end{subfigure}%
+        \begin{subfigure}{0.32\textwidth}
+            \centering
+            \includegraphics[width=0.9\linewidth]{figures/sphere_CNOT_t=1.0_z=0.8_p=0.6.png}
+            \caption{$t=0.5$}
+        \end{subfigure}
+        \caption{Effect on the Bloch sphere. $r=0.8$, $p=0.6$.}
+    \end{figure}
+\end{frame}
 
 \subsection{Special Dynamics}
 

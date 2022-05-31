@@ -25,6 +25,19 @@
 \newcommand{\Id}{\mathds{1}}% Para escribir el op. indentidad con notación chida
 \newcommand{\CG}[1]{\mcC\left[#1\right]}
 \newcommand{\Fuzzy}[1]{\mcF\left[#1\right]}
+\newcommand{\nota}[1]{{\color{red} [#1]}}
+\newcommand{\notaAd}[1]{{\color{gray} [#1]}} %Notas pero mías
+%%Fixnote
+\newcommand{\pauli}[1]{\sigma_{#1}} %Para las matrices de pauli
+\newcommand{\paulivec}[1]{\hat{#1}\cdot\vec{\sigma}} %Para vectores de Pauli unitarios
+\newcommand{\cnot}{\text{C}_{\text{X}}} %Para el CNOT
+\newcommand{\purity}[1]{\text{Pu}(#1)} %la pureza
+\newcommand{\Abs}{\text{abs}} %abs
+\newcommand{\rfroml}{f} %la función r(lambda)
+\newcommand{\densityspace}[1]{\mcS(\hilbert_{#1})} %el espacio de operadores de densidad
+\newcommand{\unitaryspace}[1]{\text{U}(\hilbert_{#1})} %el espacio de operadores unitarios
+\newcommand{\obspace}[1]{\mcL(\hilbert_{#1})} %el espacio de observables
+\DeclareMathOperator*{\Motimes}{\text{\raisebox{0.25ex}{\scalebox{0.8}{$\bigotimes$}}}} %para los productos tensoriales
 \title{Effective dynamics of a coarse grained system}
 \subtitle{Using the maximum entropy principle}
 \author[Adán Castillo Guerrero]{Adán Castillo Guerrero}
@@ -36,13 +49,14 @@
 
 \maketitle
 
+\cutoc
+
 \include{intro}
 \include{problem_statement}
 \include{maxent_principle}
 \include{maxent_state}
 \include{dynamics}
 
-\cutoc
 
 \appendix
 
