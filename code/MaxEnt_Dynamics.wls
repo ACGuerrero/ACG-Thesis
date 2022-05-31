@@ -19,7 +19,7 @@ SetDirectory["/home/acastillo/Documents/tesis-adan/code"];
 (*There are two basic parameters for the coarse graining problem.
 The z coordinate of the state and the swap probability*)
 swapP = 0.8;
-zcoord = 0.6;
+zcoord = 0.8;
 ztargetstate=(IdentityMatrix[2]+zcoord*PauliMatrix[3])/2;
 
 (*We then have to construct the maximum entropy state. Since we
@@ -130,6 +130,13 @@ H=Pi*(IdentityMatrix[4]-
 	KroneckerProduct[IdentityMatrix[2],PauliMatrix[1]]+
 	KroneckerProduct[PauliMatrix[3],PauliMatrix[1]])/4;
 MatrixExp[-I*H]//MatrixForm
+
+
+rzlambdatable=RzLambdaTable[0.9,0,20,lambdastep];
+lagrangemult=LagrangeMultFromZCoord[rzlambdatable,0.9][[1]]
+
+
+Tanh[0.9*2.4]
 
 
 (*
@@ -260,7 +267,8 @@ Export["../figures/"<>"Ux1_H=1x+2y_sequence"<>"_z="<>ToString[zcoord]<>"_p="<>To
 Chop[partialTraceB[testother]/2]//MatrixForm
 
 
-testTargetState=(IdentityMatrix[2]+zcoord*Normalize[{0.3,-0.6,0.80}] . Rest[gellMannBasis[1]])/2;
+zcoord=0.8;
+testTargetState=(IdentityMatrix[2]+zcoord*Normalize[{0.001,0.001,1.}] . Rest[gellMannBasis[1]])/2;
 testMaxEnt=MaxEntForStateNotInZ[testTargetState,ZMaxEnt];
 testother=KroneckerProduct[testTargetState,IdentityMatrix[2]];
 (*
@@ -269,8 +277,8 @@ U1[t_]:=SWAP[t];
 (*U1[t_]:=KroneckerProduct[MatrixExp[t*I*Ham1],MatrixExp[t*I*Ham2]];*)
 U1[t_]:=MatrixExp[I*t*KroneckerProduct[PauliMatrix[3],PauliMatrix[3]]];*)
 (*U1[t_]:=MatrixPower[CNOT,t]*)
-Ham1=(-PauliMatrix[3]+PauliMatrix[2]);
-Ham2=10*(-PauliMatrix[2]+2PauliMatrix[1]);
+Ham1=(-PauliMatrix[3]);
+Ham2=15*(-PauliMatrix[2]+2PauliMatrix[1])/Sqrt[2];
 U1[t_]:=KroneckerProduct[MatrixExp[t*I*Pi*Ham1],MatrixExp[t*I*Pi*Ham2]];
 n=5000;
 swapP = 0.9;
@@ -296,7 +304,7 @@ figure=With[
 ]
 
 
-Export["../figures/"<>"U1xU2_H1=(sy-sz)_H2=10(2sx-sy)"<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>".png",%];
+Export["../figures/"<>"U1xU2_H1=(sz)_H2=15(sx-sy)"<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>"_far.png",%];
 
 
 (*Export["../figures/"<>"MaxEnt_SWAP_t0vst1_"<>"_n="<>ToString[n]<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>"_beta="<>ToString[beta]<>"_delta="<>ToString[delta]<>".png",
