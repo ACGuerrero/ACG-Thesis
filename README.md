@@ -5,14 +5,12 @@ This is my license thesis' repository
 </p>
 
 TO DO LIST
- 1. Find evolution of expectation values. Mi-Lu
- 32. Finish CNOT section. Ju
+ 1.  Finish CNOT section. Ju
  29. Finish AmpDamp section. Vi
  35. Finish depolarizing section. Sa
  31. Find evolution of entropy. Mi-Lu
  10. Explore $H=\sigma_{z}\otimes \sigma_{z}$  [9a04ece](https://github.com/ACGuerrero/tesis-adan/commit/274d771536b0b04ea4edca866fc06359d5e0b8b8), [b0ca78](https://github.com/ACGuerrero/tesis-adan/commit/5ac8796059e41a3cdf13e09a33feb95fcfb0ca78)
  30. Find extended unitary
- 6. Explore general $U$ as $U=\sum_{ij}\alpha_{ij} U_{i}\otimes V_{j}$
 
 COMPLETED TASKS
 
@@ -38,3 +36,5 @@ COMPLETED TASKS
  27. ~~Complete CG section on thesis~~&#x2611;[957fde5](https://github.com/ACGuerrero/tesis-adan/commit/f67e798e8c6a2217435875df2fe5ba74e957fde5)
  29. ~~Finish thermodynamic quantum maxent case~~&#x2611;[957fde5](https://github.com/ACGuerrero/tesis-adan/commit/f67e798e8c6a2217435875df2fe5ba74e957fde5)
  34. ~~Finish SWAP section~~&#x2611;[cedb469](https://github.com/ACGuerrero/tesis-adan/commit/f588e0b150ff8df65387e303b20162b90cedb469)
+ 36. ~~Find evolution of expectation values~~&#x2611;[686678a](https://github.com/ACGuerrero/tesis-adan/commit/97627928705507862a6d0931212919e1f686678a)
+ 37. ~~Finish separable section~~&#x2611;[686678a](https://github.com/ACGuerrero/tesis-adan/commit/97627928705507862a6d0931212919e1f686678a)
