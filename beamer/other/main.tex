@@ -1,4 +1,5 @@
 \documentclass{cubeamer}
+\usepackage[all,cmtip]{xy}
 \newcommand{\mcU}{\mathcal{U}}
 \newcommand{\mcO}{\mathcal{O}}
 \newcommand{\mcI}{\mathcal{I}}
@@ -40,9 +41,9 @@
 \DeclareMathOperator*{\Motimes}{\text{\raisebox{0.25ex}{\scalebox{0.8}{$\bigotimes$}}}} %para los productos tensoriales
 \title{Effective dynamics of a coarse grained system}
 \subtitle{Using the maximum entropy principle}
-\author[Adán Castillo Guerrero]{A. Castillo, D. Dávalos, E. Navarrete, C. Pineda, K. Urioasegui}
-\date{April, 2022} % or whatever the date you are presenting in is
-\institute[National Autonomous University of Mexico]{National Autonomous University of Mexico}
+\author[A. Castillo, D. Dávalos, E. Navarrete, C. Pineda, K. Uriostegui]{A. Castillo, D. Dávalos, E. Navarrete, C. Pineda, K. Uriostegui}
+\date{June, 2022} % or whatever the date you are presenting in is
+\institute[Physics Institute, National Autonomous University of Mexico]{Physics Institute, National Autonomous University of Mexico}
 % \copyrightnotice{Published by the American Institute of Aeronautics and Astronautics, Inc., with permission}
 
 \begin{document}
@@ -53,7 +54,6 @@
 
 \include{intro}
 \include{problem_statement}
-\include{maxent_principle}
 \include{maxent_state}
 \include{dynamics}
 
@@ -66,5 +66,7 @@
 \bibitem OSilva, P. \& Concha, P. \& Vallejos, R. \& de Melo, F. (2020).\textit{Macro-to-micro quantum mapping and the emergence of nonlinearity}. PsyArXiv. DOI:10.1103/PhysRevA.103.052210
 \end{thebibliography}
 \end{frame}
+
+\include{apendices}
 
 \end{document}

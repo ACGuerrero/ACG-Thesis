@@ -190,7 +190,7 @@
             \quad
             \textbullet
             \quad
-            \insertsubtitle
+            \inserttitle
             \quad
             |
             \quad

@@ -3,11 +3,11 @@
 \subsection{Separable dynamics}
 
 \begin{frame}{General solution}
-    Separable unitary dynamics are of the form $\mcU_{t}=U_{1}^{t}\otimes U_{2}^{t}$. Since $\rho_{max}$ state is of the form $\rho_{A}\otimes\rho_{B}$. The effective evolved state looks like
-    \begin{equation*}
-        \rho\mapsto pU_{1}^{t}\rho_{A}(U_{1}^{t})^{\dag}+(1-p)U_{2}^{t}\rho_{B} (U_{2}^{t})^{\dag}.
-    \end{equation*}
-    The expected values of observables $\pauli{i}$ evolve as
+    Factorizable unitary dynamics are of the form $\mcU_{t}=U_{1}^{t}\otimes U_{2}^{t}$.
+    \begin{align*}
+        \text{Since } \varrho=\rho_{A}\otimes\rho_{B} & & \Longrightarrow & &\rho\mapsto pU_{1}^{t}\rho_{A}(U_{1}^{t})^{\dag}+(1-p)U_{2}^{t}\rho_{B} (U_{2}^{t})^{\dag}.
+    \end{align*}
+    Expected values evolve as
     \begin{align*}
         \begin{split}
             \expval{\pauli{i}(t)}=&\frac{p\tanh(p\lambda)}{2}\Tr[\pauli{i}U_{1}^{t}(\paulivec{r_{\rho}})(U_{1}^{t})^{\dag}]\\
@@ -50,27 +50,6 @@
     \end{columns}
 \end{frame}
 
-\begin{frame}{Effect on the Bloch Sphere}
-    \begin{figure}[h!]
-        \centering
-        \begin{subfigure}{0.32\textwidth}
-            \centering
-            \includegraphics[width=0.9\linewidth]{figures/U1xU2_H1=Pi(sz)_H2=Id_z=0.9_p=0.6t=0.png}
-            \caption{$t=0.0$}
-        \end{subfigure}%
-        \begin{subfigure}{0.32\textwidth}
-            \centering
-            \includegraphics[width=0.9\linewidth]{figures/U1xU2_H1=Pi(sz)_H2=Id_z=0.9_p=0.6t=0.25.png}
-            \caption{$t=0.25$}
-        \end{subfigure}
-        \begin{subfigure}{0.32\textwidth}
-            \centering
-            \includegraphics[width=0.9\linewidth]{figures/U1xU2_H1=Pi(sz)_H2=Id_z=0.9_p=0.6t=0.5.png}
-            \caption{$t=0.5$}
-        \end{subfigure}
-        \caption{Effect on the Bloch sphere. $r=0.9$, $p=0.6$, $U_{1}=e^{it\pi \pauli{3}}$ and $U_{2}=\Id$}
-    \end{figure}
-\end{frame}
 
 
 
@@ -105,21 +84,6 @@
             Note that $\expval{\pauli{3}(0)}$ is nothing but $r_{z}$.
         \end{column}
     \end{columns}
-\end{frame}
-
-\begin{frame}{Effect on the Bloch Sphere}
-    \begin{figure}[h!]
-        \centering
-        \begin{subfigure}{0.44\textwidth}
-            \centering
-            \includegraphics[width=0.9\linewidth]{figures/U1xU2_H1=(sz)_H2=15(sx-sy)_z=0.8_p=0.9_far.png}
-        \end{subfigure}%
-        \begin{subfigure}{0.44\textwidth}
-            \centering
-            \includegraphics[width=0.9\linewidth]{figures/U1xU2_H1=(sz)_H2=15(sx-sy)_z=0.8_p=0.9.png}
-        \end{subfigure}
-        \caption{Graphical interpretation. The effective state $\rho$ oscillates near $\rho_{A}$, the subsystem of interest.}
-    \end{figure}
 \end{frame}
 
 \begin{frame}{Other states}
@@ -191,6 +155,14 @@ Or, in terms of the probability of getting either $\ket{0}$ or $\ket{1}$ as
  \end{align}
  where both non linearity and time dependency is contained inside the contraction factor $\kappa_{t}^{\rho}$. 
 \end{frame}
+
+\begin{frame}{Periodicity of the effective SWAP gate}
+    \begin{figure}[h!]
+        \includegraphics[width=0.5\columnwidth]{figures/ContractionFactorSWAP_z=0.8_t=0_to_t=2.png}%
+        \caption{The contraction factor as a function of $t$, for different values of $p$ and $r=0.8$. Note the periodic nature of the effective evolution.}
+    \end{figure}
+\end{frame}
+
 \begin{frame}{Effect on the Bloch sphere}
     \begin{figure}[h!]
         \centering
@@ -218,6 +190,7 @@ Or, in terms of the probability of getting either $\ket{0}$ or $\ket{1}$ as
         \caption{The contraction factor as a function of $t$, for different values of $p$ and $r=0.8$. Note the periodic nature of the effective evolution.}
     \end{figure}
 \end{frame}
+
 
 
 \begin{frame}{CNOT gate}
@@ -250,23 +223,6 @@ Or, in terms of the probability of getting either $\ket{0}$ or $\ket{1}$ as
         \end{align*}
     Notice the similarity between this expression and the previous one. The CNOT gate induces correlations between both subsystems. These corrleations are completely dependent on the $\pauli{3}$ and $\pauli{1}$ components of the first and second subsystem.
     The second term shows the action of the \textit{target} qubit over the \textit{control} qubit on the $\pauli{1}$ basis.
-\end{frame}
-
-\begin{frame}{Effective CNOT}
-    State before and after the CNOT evolution is
-    \begin{align*}
-        \rho(0)=&\frac{1}{2}[\Id+(\hat{r}_{\rho}\cdot\vec{\sigma})(p\tanh{-\lambda p}+(1-p)\tanh{-\lambda (1-p)})],\\
-        \rho(t=1)=&\frac{1}{2}[p(\rho(0)+\sigma_{3}\rho_{A}\sigma_{3}+\Tr{\sigma_{1}\rho_{B}}[\rho_{A}-\sigma_{3}\rho_{A}\sigma_{3}])\\
-    &+(1-p)(\rho(0)+\sigma_{1}\rho_{B}\sigma_{1}+\Tr{\sigma_{3}\rho_{A}}[\rho_{B}-\sigma_{1}\rho_{B}\sigma_{1}])].
-        \end{align*}
-      This evolution can be written as
-      \begin{equation*}
-        \vec{r}_{\rho}=(pr_{A}+(1-p)r_{B})\hat{r}_{\rho}\mapsto\begin{pmatrix}
-            r_{B}(pr_{A}(\hat{r}_{\rho,1})^2+(1-p)\hat{r}_{\rho,1})\\
-            r_{B}r_{A}(p\hat{r}_{\rho,1}\hat{r}_{\rho,2}+(1-p)\hat{r}_{\rho,2}\hat{r}_{\rho,3})\\
-            r_{A}(p\hat{r}_{\rho,3}+(1-p)r_{A}(\hat{r}_{\rho,3})^{2})
-        \end{pmatrix}.
-      \end{equation*}
 \end{frame}
 
 \begin{frame}{Effective CNOT on the Bloch sphere}

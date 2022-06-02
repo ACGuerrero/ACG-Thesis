@@ -1,23 +1,36 @@
 \section{Problem statement}
+
 \begin{frame}{Blurry, low resolution measurement tool}
+    \begin{itemize}
+        \item Faulty instrumentation.
+        \item Can only resolve one particle.
+        \item May measure the wrong particle.
+    \end{itemize}
+    \begin{equation*}
+        \mcC[\varrho]=\Tr_{2}[(1-p)\varrho+pS\varrho S^{\dag}].
+    \end{equation*}
+\end{frame}
+
+\begin{frame}{Effective dynamics}
     \begin{columns}
         \begin{column}{0.5\textwidth}
             \begin{itemize}
-                \item  Faulty instrumentation. It isn't able to distinguish two different particles:
-                \begin{equation*}
-                    \mcF[\varrho]=p\varrho+(1-p)S\varrho S^{\dag}.
-                \end{equation*}
-                \item Also, it cannot properly resolve both particles. It sees only the first particle.
-                \begin{equation*}
-                    \mcC[\varrho]=\Tr_{2}(p\varrho+(1-p)S\varrho S^{\dag}).
-                \end{equation*}
+                \item Microscopic evolution is known.
+                \item \textbf{Objective:} study the \textit{observable} dynamics.
+                \item Estimate of microscopic state is needed (not unique!). 
             \end{itemize}
         \end{column}
         \begin{column}{0.5\textwidth}
-            \begin{itemize}
-                \item We know how the microscopic state evolves. We are interested in the \textit{macroscopic} dynamics.
-                \item To find them we need an estimate of the microscopic state. This \textit{assignement map} is denoted by $\mcA_\mcC$. 
-                \item The dynamics are
+            \begin{displaymath}
+                \xymatrix{
+                  {\rho(0)} \ar[rr]^{\Gamma_{t}} \ar[d]^{\mcA}
+                  && {\rho(t)}\\
+                  {\varrho(0)} \ar[rr]^{\mcU_{t}}
+                  && {\varrho(t)} \ar[u]^{\mcC}
+                }
+              \end{displaymath}
+              \begin{itemize}
+              \item Effective dynamical map:
                 \begin{equation*}
                     \Gamma_t[\rho]:=(\mcC \circ \mcU_t \circ \mcA_\mcC)[\rho].
                 \end{equation*}
