@@ -56,7 +56,7 @@ Print["Relative error: ", 100*Abs[realfactor-thefactor]/thefactor, "%"]
 
 (*
 ===========================================
-================  general  ================
+==  Numerical evolution of MaxEnt states  ==
 ===========================================
 *)
 Clear[unitary]
@@ -78,23 +78,11 @@ Histogram[#,{-2*Pi,2*Pi,0.05}]&/@Transpose[differences]*)
 PlotTwoCoarseSets[CoarseMaxEntsNotInZ,CoarseNewMaxEntsNotInZ,{"Initial states","Final states"},"Evolution of the Assignement Map"]
 
 
-lambdastep=0.05;
-lowerlambda=-4;
-upperlambda=0;
-r=zcoord;
-swapP = 0.6;
-rltable=RzLambdaTable[r,lowerlambda,upperlambda,lambdastep];
-l=LagrangeMultFromZCoord[rltable,r][[1]];
-unit1[t_]:=MatrixExp[-I*t*Pi*(PauliMatrix[1]+PauliMatrix[2])/Sqrt[2]];
-unit2[t_]:=IdentityMatrix[2];
-rot1[t_]:=SU2ToSO3[unit1[t]];
-rot2[t_]:=SU2ToSO3[unit2[t]];
-transformation[t_]:=(swapP*Tanh[-l*swapP]*rot1[t]+(1-swapP)*Tanh[-l*(1-swapP)]*rot2[t])
-t=0.5;
-figure=TransformedSphereMesh[1,transformation[t]]
-Export["../figures/"<>"U1xU2_H1=Pi(sx+sy)_H2=Id"<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>"t="<>ToString[t]<>".png",figure]
-
-
+(*
+===========================================
+==  Numerical evolution of MaxEnt states GIF!  ==
+===========================================
+*)
 swapP = 0.7;
 zcoord = 0.8;
 lambdastep=0.05;
@@ -123,20 +111,6 @@ pngset=Table[
 PNGSetToGif[set_]:=Export["../figures/"<>"CNOT_effevol_FRONT"<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>".gif",
 Flatten[{set, Table[set[[i]], {i, Length[set]}]}]]
 PNGSetToGif[pngset]
-
-
-H=Pi*(IdentityMatrix[4]-
-	KroneckerProduct[PauliMatrix[3],IdentityMatrix[2]]-
-	KroneckerProduct[IdentityMatrix[2],PauliMatrix[1]]+
-	KroneckerProduct[PauliMatrix[3],PauliMatrix[1]])/4;
-MatrixExp[-I*H]//MatrixForm
-
-
-rzlambdatable=RzLambdaTable[0.9,0,20,lambdastep];
-lagrangemult=LagrangeMultFromZCoord[rzlambdatable,0.9][[1]]
-
-
-Tanh[0.9*2.4]
 
 
 (*
@@ -217,6 +191,65 @@ With[
 ];
 
 
+(*
+===========================================
+ Effective state as sum of partial traces
+===========================================
+*)
+
+
+(*There are two basic parameters for the coarse graining problem.
+The z coordinate of the state and the swap probability*)
+swapP = 0.8;
+zcoord = 0.8;
+ztargetstate=(IdentityMatrix[2]+zcoord*PauliMatrix[3])/2;
+
+(*We then have to construct the maximum entropy state. Since we
+have acces to the rz coordinate, we obtain the lagrange mult by
+numerically approximating the inverse value*)
+lambdastep=0.05;
+lowerlambda=0.1;
+upperlambda=4.;
+
+rzlambdatable=RzLambdaTable[swapP,lowerlambda,upperlambda,lambdastep];
+lagrangemult=LagrangeMultFromZCoord[rzlambdatable,zcoord][[1]];
+
+ZMaxEnt=CGMaxEntStateLM[lagrangemult,swapP];
+
+
+testTargetState=(IdentityMatrix[2]+zcoord*Normalize[{4.,4,7}] . Rest[gellMannBasis[1]])/2;
+testMaxEnt=MaxEntForStateNotInZ[testTargetState,ZMaxEnt];
+
+EffAsSum=With[
+{vecs=densityMatrixToPoint[{testTargetState,swapP*partialTraceB[testMaxEnt],(1-swapP)*partialTraceA[testMaxEnt]},gellMannBasis[1]]},
+	ShowWithBlochSphere[
+		{
+		ListPointPlot3D[
+			{#}&/@vecs,
+			PlotStyle->{{Red,PointSize[0.02]},{Darker[Green],PointSize[0.001]},{Darker[Blue],PointSize[0.001]}},
+			BoxRatios->{1, 1, 1},
+			Boxed->False,
+			PlotRange->{{0,1.},{0,1.},{0,1.}},
+			AxesOrigin->{0,0,0},
+			Ticks->Automatic,
+			AxesLabel->{"x","y","z"},
+			LabelStyle->Black,
+			PlotLegends->Placed[{HoldForm[\[Rho]],HoldForm[Subscript[\[Rho],A]],HoldForm[Subscript[\[Rho],B]]},{0.7,0.7}],
+ ViewPoint -> {0.4, -1.7, 0.5}
+		],
+		Graphics3D[
+		{Darker[Green],Arrowheads[0.03], Thickness[0.003], Arrow[{{0,0,0},vecs[[2]]}]}
+		],
+		Graphics3D[
+		{Darker[Blue],Arrowheads[0.03],Thickness[0.003],Arrow[{vecs[[2]],vecs[[2]]+vecs[[3]]}]}
+		]
+		}
+	]
+];
+
+Export["../figures/"<>"effective_state_as_sum"<>".png",EffAsSum];
+
+
 testTargetState=(IdentityMatrix[2]+zcoord*Normalize[{-0.3,-0.3,1.0}] . Rest[gellMannBasis[1]])/2;
 testMaxEnt=MaxEntForStateNotInZ[testTargetState,ZMaxEnt];
 (*Ham1=1*PauliMatrix[3];
@@ -267,8 +300,14 @@ Export["../figures/"<>"Ux1_H=1x+2y_sequence"<>"_z="<>ToString[zcoord]<>"_p="<>To
 Chop[partialTraceB[testother]/2]//MatrixForm
 
 
+(*
+===========================================
+Small oscilations around no error trayectory
+===========================================
+*)
+
 zcoord=0.8;
-testTargetState=(IdentityMatrix[2]+zcoord*Normalize[{0.001,0.001,1.}] . Rest[gellMannBasis[1]])/2;
+testTargetState=(IdentityMatrix[2]+zcoord*Normalize[{1,1,2}] . Rest[gellMannBasis[1]])/2;
 testMaxEnt=MaxEntForStateNotInZ[testTargetState,ZMaxEnt];
 testother=KroneckerProduct[testTargetState,IdentityMatrix[2]];
 (*
@@ -280,7 +319,7 @@ U1[t_]:=MatrixExp[I*t*KroneckerProduct[PauliMatrix[3],PauliMatrix[3]]];*)
 Ham1=(-PauliMatrix[3]);
 Ham2=15*(-PauliMatrix[2]+2PauliMatrix[1])/Sqrt[2];
 U1[t_]:=KroneckerProduct[MatrixExp[t*I*Pi*Ham1],MatrixExp[t*I*Pi*Ham2]];
-n=5000;
+n=6000;
 swapP = 0.9;
 end=1.;
 points=densityMatrixToPoint[Table[CGKraus[U1[t] . testMaxEnt . Dagger[U1[t]],swapP],{t,0,end,N[end/n]}],gellMannBasis[1]];
@@ -290,19 +329,20 @@ figure=With[
 	ShowWithBlochSphere[{
 		ListPointPlot3D[
 			{#}&/@vecs,
-			PlotStyle->{Red,Black},
+			PlotStyle->{{Darker[Red],PointSize[0.002]},{Black,PointSize[0.002]}},
 			BoxRatios->{1, 1, 1},
 			Boxed->False,
-			PlotRange->{{-1.,1.},{-1.,1.},{-1.,1.}},
+			PlotRange->{{-1.1,1.1},{-1.1,1.1},{-1.1,1.1}},
 			AxesOrigin->{0,0,0},
 			Ticks->None,
 			AxesLabel->{"x","y","z"},
-			PlotLegends->{\[Rho],HoldForm[Subscript[\[Rho],A]],HoldForm[Subscript[\[Rho],B]]}
+			LabelStyle->Black,
+			PlotLegends->Placed[{\[Rho][t],HoldForm[Subscript[\[Rho],A][t]],HoldForm[Subscript[\[Rho],B]]},{0.9,0.7}],
+			ViewPoint -> {-0.4, -0.4, 0.5}
 		],
 		ListPointPlot3D[{points,points2},PlotStyle->{{Darker[Red],Opacity[1],PointSize[0.005]},{Black,PointSize[0.005]}}]
 	}]
 ]
-
 
 Export["../figures/"<>"U1xU2_H1=(sz)_H2=15(sx-sy)"<>"_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>"_far.png",%];
 

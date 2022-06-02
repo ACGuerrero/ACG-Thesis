@@ -212,9 +212,8 @@ FunctionSphereMesh[r_,function_,opa_:1.]:=Show[
 ShowWithBlochSphere[args_]:=Show[
 Sequence@@args,
 Graphics3D[{Opacity[0.2],GrayLevel[0.9],Sphere[]},BoxRatios->1,Axes->True,
-AxesLabel->{"x","y","z"},AxesOrigin->{0,0,0},
-			Ticks->None,
-			AxesLabel->{"x","y","z"}]
+AxesLabel->{"x","y","z"},AxesOrigin->{0,0,0}, AxesStyle->Black,
+			Ticks->Automatic]
 ]
 
 

@@ -1,117 +1,69 @@
 \section{Effective dynamics}
 
-\subsection{Separable dynamics}
+\subsection{Factorizable dynamics}
 
 \begin{frame}{General solution}
     Factorizable unitary dynamics are of the form $\mcU_{t}=U_{1}^{t}\otimes U_{2}^{t}$.
     \begin{align*}
-        \text{Since } \varrho=\rho_{A}\otimes\rho_{B} & & \Longrightarrow & &\rho\mapsto pU_{1}^{t}\rho_{A}(U_{1}^{t})^{\dag}+(1-p)U_{2}^{t}\rho_{B} (U_{2}^{t})^{\dag}.
+        \text{Since } \varrho=\rho_{A}\otimes\rho_{B} & & \Longrightarrow & &\rho\mapsto (1-p)U_{1}^{t}\rho_{A}(U_{1}^{t})^{\dag}+pU_{2}^{t}\rho_{B} (U_{2}^{t})^{\dag}.
     \end{align*}
     Expected values evolve as
-    \begin{align*}
-        \begin{split}
-            \expval{\pauli{i}(t)}=&\frac{p\tanh(p\lambda)}{2}\Tr[\pauli{i}U_{1}^{t}(\paulivec{r_{\rho}})(U_{1}^{t})^{\dag}]\\
-        &+\frac{p\tanh((1-p)\lambda)}{2}\Tr[\pauli{i}U_{2}^{t}(\paulivec{r_{\rho}})(U_{2}^{t})^{\dag}].
-        \end{split}
-      \end{align*}
+    \begin{equation*}
+            \expval{\pauli{i}(t)}=(1-p)\Tr[\pauli{i}U_{1}^{t}\rho_{A}(U_{1}^{t})^{\dag}]+p\Tr[\pauli{i}U_{2}^{t}\rho_{B}(U_{2}^{t})^{\dag}].
+      \end{equation*}
 \end{frame}
 
-\begin{frame}{Two cases}
+
+\begin{frame}{One example}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            Let
+            \begin{equation*}
+                \rho=\frac{1}{2}\qty[\Id+\frac{4}{5\sqrt{2}}\qty(\frac{1}{2}\pauli{1}+\frac{1}{2}\pauli{2}+\pauli{3})],
+            \end{equation*}
+            and $\mcU_{t}=e^{-itH_{1}}\otimes e^{-itH_{2}}$ where
+                \begin{align*}
+                    H_{1}=\pauli{3} & & \text{and} & & H_{2}=\frac{\omega}{\sqrt{2}}(\pauli{1}-\pauli{2}).
+                \end{align*}
+            Solution:
+            \begin{equation*}
+                \expval{\pauli{3}(t)}=\expval{\pauli{3}(0)}+pr_{B}(\cos(2\omega t)-1).
+            \end{equation*}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{figure}[h!]
+                \includegraphics[width=0.7\columnwidth]{figures/U1xU2_H1=(sz)_H2=15(sx-sy)_z=0.8_p=0.9_far.png}%
+                \caption{Oscillations near no-error trajectory.\\ $r=0.8$ $p=0.9$ and $\omega=15$. }
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Two less specific cases}
+    Asume either $U_{1}=\Id$ or $U_{2}=\Id$.
+    Let $r_{A}\hat{r}_{\rho}$ and $r_{B}\hat{r}_{\rho}$ be the Bloch vectors of $\rho_{A}$ and $\rho_{B}$. Let $O_{i}$ be the rotation induced by $U_{i}$
     \begin{columns}
         \begin{column}{0.5\textwidth}
             \begin{itemize}
-                \item Asume $U_{1}= U_{2}=U$.
-                \item Thanks to symmetry, the evolution may be factored as
-                \begin{align*}
-                    \rho(t)&=pU^{t}\rho_{A}(U^{t})^{\dag}+(1-p)U^{t}\rho_{B}(U^{t})^{\dag} \\
-                    &=U^{t}(p\rho_{A}+(1-p)\rho_{B})(U^{t})^{\dag}\\
-                    &=U^{t}\rho(0)(U^{t})^{\dag}.
-                    \end{align*}
-                \item The effective dynamics are    
-                \begin{equation*}
-                    \rho\mapsto U^{t}\rho(U^{t})^{\dag}.
-                \end{equation*}
-            \end{itemize}
-        \end{column}
-        \begin{column}{0.5\textwidth}
-            \begin{itemize}
-                \item Asume either $U_{1}=\Id$ or $U_{2}=\Id$.
-                \item Let $r_{A}\hat{r}_{\rho}$ and $r_{B}\hat{r}_{\rho}$ be the Bloch vectors of $\rho_{A}$ and $\rho_{B}$. Let $O_{i}$ be the rotation induced by $U_{i}$
-                \item If $U_{2}=\Id$ then:
-                \begin{equation*}
-                    r\hat{r}_{\rho}\mapsto O_{1}(r\hat{r}_{\rho}-(1-p)r_{B}\hat{r}_{\rho})+(1-p)r_{B}\hat{r}_{\rho}.
-                \end{equation*}
                 \item If $U_{1}=\Id$ then:
                 \begin{equation*}
                     r\hat{r}_{\rho}\mapsto r\hat{r}_{\rho}+(1-p)(O_{2}(r_{B}\hat{r}_{\rho})-r_{B}\hat{r}_{\rho}).
                 \end{equation*}
             \end{itemize}
         \end{column}
-    \end{columns}
-\end{frame}
-
-
-
-
-\begin{frame}{One example}
-    \begin{columns}
         \begin{column}{0.5\textwidth}
-            Let's consider an effective state
+            \begin{itemize}
+                \item If $U_{2}=\Id$ then:
                 \begin{equation*}
-                    \rho=\frac{1}{2}(\Id+r_{z}\pauli{3}),
+                    r\hat{r}_{\rho}\mapsto O_{1}(r\hat{r}_{\rho}-(1-p)r_{B}\hat{r}_{\rho})+(1-p)r_{B}\hat{r}_{\rho}.
                 \end{equation*}
-            and an evolution $\mcU_{t}=e^{-itH_{1}}\otimes e^{-itH_{2}}$ where
-                \begin{align*}
-                    H_{1}=\pauli{3} & & \text{and} & & H_{2}=\frac{\omega}{\sqrt{2}}(\pauli{1}-\pauli{2}).
-                \end{align*}
-            We may solve this by using the formula
-                \begin{equation*}
-                    \rho\mapsto pU_{1}^{t}\rho_{A}(U_{1}^{t})^{\dag}+(1-p)U_{2}^{t}\rho_{B} (U_{2}^{t})^{\dag}.
-                \end{equation*}
-        \end{column}
-        \begin{column}{0.5\textwidth}
-            The unitaries might be written as
-                \begin{equation*}
-                    U_{1}^{t}=\Id\cos(\omega t) - i \pauli{3} \sin(\omega t),
-                \end{equation*}
-                \begin{equation*}
-                    U_{2}^{t}=\Id\cos(\omega t) - \frac{i}{\sqrt{2}} (\pauli{1}-\pauli{2}) \sin(\omega t).
-                \end{equation*}
-                In a no-error scenario, we expect $\expval{\pauli{3}}=r_{z}$. Here, it is found to be:
-                \begin{equation*}
-                    \expval{\pauli{3}(t)}=\expval{\pauli{3}(0)}+(1-p)r_{B}(\cos(2\omega t)-1).
-                \end{equation*}
-            Note that $\expval{\pauli{3}(0)}$ is nothing but $r_{z}$.
-        \end{column}
-    \end{columns}
-\end{frame}
-
-\begin{frame}{Other states}
-    \begin{columns}
-        \begin{column}{0.5\textwidth}
-            This oscillation is observable even if the initial efective state, $\rho$, is not invariant under the unitary $U_{1}$.
-            
-            Let $\rho$ be
-            \begin{equation*}
-                \rho=\frac{1}{2}\qty[\Id+\frac{4}{5\sqrt{2}}\qty(\frac{1}{2}\pauli{1}+\frac{1}{2}\pauli{2}+\pauli{3})]
-            \end{equation*}
-            Clearly, this state is not invariant under 
-            \begin{equation*}
-                U_{1}^{t}=\Id\cos(\omega t) - i \pauli{3} \sin(\omega t).
-            \end{equation*}
-        \end{column}
-        \begin{column}{0.5\textwidth}
-            \begin{figure}[h!]
-                \includegraphics[width=0.8\columnwidth]{figures/U1xU2_H1=(sz)_H2=15(sx-sy)_z=0.8_p=0.9_wXY=0.5.png}%
-                \caption{Small oscillations around the no-error trajectory. Here, $r=0.8$ $p=0.9$ and $\omega=15$. }
-            \end{figure}
+            \end{itemize}
         \end{column}
     \end{columns}
 \end{frame}
 
 
-
-\subsection{Quantum computing gates}
+\subsection{SWAP gate}
 
 \begin{frame}{Effective SWAP}
     State before and after the SWAP evolution is
@@ -191,7 +143,7 @@ Or, in terms of the probability of getting either $\ket{0}$ or $\ket{1}$ as
     \end{figure}
 \end{frame}
 
-
+\subsection{CNOT gate}
 
 \begin{frame}{CNOT gate}
     The controlled not gatis generated by a hamiltonian
