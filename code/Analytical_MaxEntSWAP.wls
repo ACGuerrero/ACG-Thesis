@@ -51,10 +51,12 @@ data=Map[Table[{r,SWAPContractionFactor[1,#,l[r,#,low=0.,up=20.,ste=0.002]]},{r,
 plot4=ListLinePlot[data,
 	PlotStyle->{{Thickness[0.003],Black},{Thickness[0.003],Dashing[Large],Red},{Thickness[0.003],Dashed,Blue},{Thickness[0.003],DotDashed,Darker[Green]}},
 	AxesStyle->Black,
-	AxesLabel->{Style[Subscript[r,\[Rho]],FontSize->15],Style[\[Kappa],FontSize->15]}]
+	PlotRange->{{0,1.4},{0,1}},
+	AxesLabel->{Style[Subscript[r,\[Rho]],FontSize->15],Style[\[Kappa],FontSize->15]},
+	PlotLegends->Placed[{Map["p="<>#&,{"0.1; 0.9","0.2; 0.8","0.3; 0.7","0.5"}]},{0.85,0.3}]]
 
 
-Export["../figures/ContractionFactorSWAP_2D_r0to1_nolegend.png",plot4];
+Export["../figures/ContractionFactorSWAP_2D_r0to1_legend.png",plot4];
 
 
 plot5=With[{size = 200}, 

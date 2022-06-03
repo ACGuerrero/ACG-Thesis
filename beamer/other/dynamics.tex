@@ -33,31 +33,38 @@
         \begin{column}{0.5\textwidth}
             \begin{figure}[h!]
                 \includegraphics[width=0.7\columnwidth]{figures/U1xU2_H1=(sz)_H2=15(sx-sy)_z=0.8_p=0.9_far.png}%
-                \caption{Oscillations near no-error trajectory.\\ $r=0.8$ $p=0.9$ and $\omega=15$. }
+                \caption{Oscillations near no-error trajectory.\\ $r=0.8$ $p=0.1$ and $\omega=15$. }
             \end{figure}
         \end{column}
     \end{columns}
 \end{frame}
 
 \begin{frame}{Two less specific cases}
-    Asume either $U_{1}=\Id$ or $U_{2}=\Id$.
-    Let $r_{A}\hat{r}_{\rho}$ and $r_{B}\hat{r}_{\rho}$ be the Bloch vectors of $\rho_{A}$ and $\rho_{B}$. Let $O_{i}$ be the rotation induced by $U_{i}$
+     $r_{A}\hat{r}_{\rho}$ and $r_{B}\hat{r}_{\rho}$ are the Bloch vectors of $\rho_{A}$ and $\rho_{B}$. $O_{i}$ is the rotation induced by $U_{i}$.
     \begin{columns}
         \begin{column}{0.5\textwidth}
             \begin{itemize}
                 \item If $U_{1}=\Id$ then:
                 \begin{equation*}
-                    r\hat{r}_{\rho}\mapsto r\hat{r}_{\rho}+(1-p)(O_{2}(r_{B}\hat{r}_{\rho})-r_{B}\hat{r}_{\rho}).
+                    r\hat{r}_{\rho}\mapsto r\hat{r}_{\rho}+p(O_{2}(r_{B}\hat{r}_{\rho})-r_{B}\hat{r}_{\rho}).
                 \end{equation*}
             \end{itemize}
+            \begin{figure}[h!]
+                \includegraphics[width=0.6\columnwidth]{figures/U1xU2_H1=Id_H2=sz_z=0.8_p=0.6_sequence.png}%
+                \caption{Oscillations near no-error trajectory.\\ $r=0.8$ $p=0.9$ and $\omega=15$. }
+            \end{figure}
         \end{column}
         \begin{column}{0.5\textwidth}
             \begin{itemize}
                 \item If $U_{2}=\Id$ then:
                 \begin{equation*}
-                    r\hat{r}_{\rho}\mapsto O_{1}(r\hat{r}_{\rho}-(1-p)r_{B}\hat{r}_{\rho})+(1-p)r_{B}\hat{r}_{\rho}.
+                    r\hat{r}_{\rho}\mapsto O_{1}(r\hat{r}_{\rho}-pr_{B}\hat{r}_{\rho})+pr_{B}\hat{r}_{\rho}.
                 \end{equation*}
             \end{itemize}
+            \begin{figure}[h!]
+                \includegraphics[width=0.6\columnwidth]{figures/U1xU2_H1=sz_H2=Id_z=0.8_p=0.7_sequence.png}%
+                \caption{Oscillations near no-error trajectory.\\ $r=0.8$ $p=0.1$ and $\omega=15$. }
+            \end{figure}
         \end{column}
     \end{columns}
 \end{frame}
@@ -66,54 +73,33 @@
 \subsection{SWAP gate}
 
 \begin{frame}{Effective SWAP}
-    State before and after the SWAP evolution is
-    \begin{align*}
-        \rho(0)&=\frac{1}{2}[\Id+(\hat{r}_{\rho}\cdot\vec{\sigma})(p\tanh{-\lambda p}+(1-p)\tanh{-\lambda (1-p)})],\\
-        \rho(t=1)&=\frac{1}{2}[\Id+(\hat{r}_{\rho}\cdot\vec{\sigma})((1-p)\tanh{-\lambda p}+p\tanh{-\lambda (1-p)})].
-        \end{align*}
-    Both states have the same orientation, but different purity. The effective dynamics are described by a contraction of the Bloch sphere. Contraction factor depends on $\lambda(\rho)$:
-    \begin{equation*}
-        \kappa_{1}=\frac{r_{\rho(1)}}{r_{\rho(0)}}=\frac{(1-p)\tanh{\lambda p}+p\tanh{\lambda (1-p)}}{
-          p\tanh{\lambda p}+(1-p)\tanh{\lambda (1-p)}}.
-      \end{equation*}
-      This evolution can be written as
-      \begin{equation*}
-        \boxed{\frac{1}{2}(\Id+\vec{r}_{\rho}\cdot\vec{\sigma}) \xrightarrow{S} \frac{1}{2}(\Id+\kappa_{1}^{\rho}\vec{r}_{\rho}\cdot\vec{\sigma})}
-      \end{equation*}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            Effective state before and after:
+            \begin{align*}
+                \rho(0)&=(1-p)\rho_{A}+p\rho_{B},\\
+                \rho(t=1)&=p\rho_{A}+(1-p)\rho_{B}.
+                \end{align*}
+                Contraction!:
+                \begin{equation*}
+                    \kappa_{t}=\frac{r_{\rho(1)}}{r_{\rho(0)}}.
+                  \end{equation*}
+                  Non linear depolarizing channel:
+                  \begin{equation*}
+                      \boxed{\rho\mapsto\kappa_{t}^{\rho}\rho+(1-\kappa_{t}^{\rho})\frac{1}{2}\Id}
+                    \end{equation*}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{figure}[h!]
+                \centering
+                \includegraphics[width=0.9\linewidth]{figures/ContractionFactorSWAP_2D_r0to1_legend.png}
+                \caption{Depolarizing coefficient as a function of $r_{\rho(0)}$ for different values of $p$.}
+                \label{fig:SWAPFactor2D}
+              \end{figure}
+        \end{column}
+    \end{columns}
 \end{frame}
 
-\begin{frame}{The contraction factor}
-    \begin{figure}[h!]
-        \centering
-        \includegraphics[width=0.9\linewidth]{figures/ContractionFactorSWAP_2D_both.png}
-        \caption{$\kappa_{1}$ as a function of the initial purity $r_{\rho}$ (left) and as a function of the Lagrange multipliers $\lambda$ (right), for different values of $p$.}
-        \label{fig:SWAPFactor2D}
-      \end{figure}
-\end{frame}
-
-\begin{frame}{Generalized SWAP gate}
-    SWAP gate might be extended to an arbitrary time as $S^{t}$. In this case, 
-    \begin{equation*}
-        \kappa_{t}^{\rho}=\frac{((1-p)\cos^{2}{\frac{\pi t}{2}}+p\sin^{2}{\frac{\pi t}{2}})\tanh{\lambda p}+(p\cos^{2}{\frac{\pi t}{2}}+(1-p)\sin^{2}{\frac{\pi t}{2}})\tanh{\lambda (1-p)}}{
-          p\tanh{\lambda p}+(1-p)\tanh{\lambda (1-p)}}.
-      \end{equation*}
-      In terms of the spin observable $\sigma_{z}$, evolution looks like
-\begin{equation}
-  \expval{\sigma_{z}(t)}=\kappa_{t}^{\rho}\expval{\sigma_{z}(0)}.
-\end{equation}
-Or, in terms of the probability of getting either $\ket{0}$ or $\ket{1}$ as
- \begin{align}
-  \bra{0}\rho(t)\ket{0}=\frac{1}{2}(1+\kappa_{t}^{\rho}\expval{\sigma_{z}(0)}) && \bra{1}\rho(t)\ket{1}=\frac{1}{2}(1-\kappa_{t}^{\rho}\expval{\sigma_{z}(0)}),
- \end{align}
- where both non linearity and time dependency is contained inside the contraction factor $\kappa_{t}^{\rho}$. 
-\end{frame}
-
-\begin{frame}{Periodicity of the effective SWAP gate}
-    \begin{figure}[h!]
-        \includegraphics[width=0.5\columnwidth]{figures/ContractionFactorSWAP_z=0.8_t=0_to_t=2.png}%
-        \caption{The contraction factor as a function of $t$, for different values of $p$ and $r=0.8$. Note the periodic nature of the effective evolution.}
-    \end{figure}
-\end{frame}
 
 \begin{frame}{Effect on the Bloch sphere}
     \begin{figure}[h!]
@@ -133,51 +119,81 @@ Or, in terms of the probability of getting either $\ket{0}$ or $\ket{1}$ as
             \includegraphics[width=0.9\linewidth]{figures/sphere_swapcontraction_t=1.0_z=0.9_p=0.9.png}
             \caption{$t=1.$}
         \end{subfigure}
-        \caption{Effect on the Bloch sphere. $r=0.9$, $p=0.9$. The dramatic contraction can be associated with the near total loss of information.}
-    \end{figure}
-\end{frame}
-\begin{frame}{Periodicity of the effective SWAP gate}
-    \begin{figure}[h!]
-        \includegraphics[width=0.5\columnwidth]{figures/ContractionFactorSWAP_z=0.8_t=0_to_t=2.png}%
-        \caption{The contraction factor as a function of $t$, for different values of $p$ and $r=0.8$. Note the periodic nature of the effective evolution.}
+        \caption{Effect on the Bloch sphere. $r=0.9$, $p=0.1$. $r(t)\leq r(0) \forall t$ since $\Gamma_{t}$ not reversible.}
     \end{figure}
 \end{frame}
 
 \subsection{CNOT gate}
 
-\begin{frame}{CNOT gate}
-    The controlled not gatis generated by a hamiltonian
+\begin{frame}{Effective CNOT}
+    We study
     \begin{equation*}
-        H_{\cnot}=\frac{\pi}{4}\qty(\Id-\pauli{3}\otimes\Id-\Id\otimes\pauli{1}+\pauli{3}\otimes\pauli{1}),
+        \rho(t)=\CG{\cnot \mcA_{\mcC}^{max}[\rho(0)](\cnot)^{\dag}}
     \end{equation*}
-    From this, it is possible to expand the gate as three succesive unitary operators
+    Initial efective state is
+    \begin{equation*}
+        \rho(0)=(1-p)\rho_{A}+p\rho_{B}.
+    \end{equation*}
+    Final efective state is
     \begin{align*}
-        \cnot&=e^{-i\frac{\pi}{4}\Id}e^{i\frac{\pi}{4}\pauli{3}\otimes\Id}e^{i\frac{\pi}{4}\Id\otimes\pauli{1}}e^{-i\frac{\pi}{4}\pauli{3}\otimes\pauli{1}}\\
-        &=e^{-i\frac{\pi}{4}} (e^{i\frac{\pi}{4}\pauli{3}}\otimes \Id) (\Id \otimes e^{i\frac{\pi}{4}\pauli{1}}) e^{-i\frac{\pi}{4}\pauli{3}\otimes\pauli{1}}.
+        \rho(t=1)=&\frac{1}{2}[(1-p)(\rho(0)+\sigma_{3}\rho_{A}\sigma_{3}+\Tr{\sigma_{1}\rho_{B}}[\rho_{A}-\sigma_{3}\rho_{A}\sigma_{3}])\\
+        &+p(\rho(0)+\sigma_{1}\rho_{B}\sigma_{1}+\Tr{\sigma_{3}\rho_{A}}[\rho_{B}-\sigma_{1}\rho_{B}\sigma_{1}])]
+    \end{align*}.
+\end{frame}
+
+\begin{frame}{Phase flip channel}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            Let's suppose $p=0$. The evolved effective state:
+            \begin{equation*}
+              \rho(t=1)=\frac{1}{2}\rho(0)+\frac{1}{2}\pauli{3}\rho(0)\pauli{3}.
+            \end{equation*}
+            This is a phase flip channel!
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{figure}[h!]
+                \centering
+                \includegraphics[width=0.7\linewidth]{figures/sphere_PF_t=1.0_z=0.8_p=0.6.png}
+                \caption{Phase flip map}
+                \label{fig:SWAPFactor2D}
+              \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Bit flip channel}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            Let's suppose $p=1$. The evolved effective state:
+            \begin{equation*}
+              \rho(t=1)=\frac{1}{2}\rho(0)+\frac{1}{2}\pauli{1}\rho(0)\pauli{1}.
+            \end{equation*}
+        
+            This is a bit flip channel!
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{figure}[h!]
+                \centering
+                \includegraphics[width=0.7\linewidth]{figures/sphere_BitF_t=1.0_z=0.8_p=0.6.png}
+                \caption{Bit flip map}
+                \label{fig:SWAPFactor2D}
+              \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+\begin{frame}{Effective CNOT}
+    Back to our expression:
+    \begin{align*}
+        \rho(t=1)=&\frac{1}{2}\rho(0)\\
+        &+\frac{(1-p)}{2}\qty[\expval{\pauli{1}}_{\rho_{B}}\rho_{A}+(1-\expval{\pauli{1}}_{\rho_{B}})\pauli{3}\rho_{A}\pauli{3}]\\
+        &+\frac{p}{2}\qty[\expval{\pauli{3}}_{\rho_{A}}\rho_{A}+(1-\expval{\pauli{3}}_{\rho_{A}})\pauli{1}\rho_{B}\pauli{1}].
     \end{align*}
-    While the usual CNOT interpretation of the gate might be blurry, another one arises: the CNOT gate induces correlations between the $\pauli{3}$ component of the first subsystem and the $\pauli{1}$ component of the second subsystem.
+    Mix of a non linear bit flip channel and a non linear phase flip channel
 \end{frame}
 
-\begin{frame}{Effective CNOT}
-    Let's suppose for a moment than $p=1$. The evolved effective state will be
-    \begin{equation*}
-      \rho(t=1)=\rho(0)+\pauli{3}\rho(0)\pauli{3}=\frac{1}{2}(\Id+r_{3}\pauli{3}).
-    \end{equation*}
-    This is because the MaxEnt state will be $\rho\otimes\frac{1}{2}$. The $\pauli{1}$ and $\pauli{2}$ components are lost because the CNOT gate applies a $\pauli{3}$ gate on the first particle depending on the value of the second particle in the $\pauli{1}$ basis. If the second particicle finds itself on the state $\frac{1}{2}\Id$, the \textit{application rate} of the $\pauli{3}$ gate (that changes the $\pauli{1}$ and $\pauli{3}$ components) will be equally random: the information is lost.
-\end{frame}
-
-\begin{frame}{Effective CNOT}
-    State before and after the CNOT evolution is
-    \begin{align*}
-        \rho(0)=&\frac{1}{2}[\Id+(\hat{r}_{\rho}\cdot\vec{\sigma})(p\tanh{-\lambda p}+(1-p)\tanh{-\lambda (1-p)})],\\
-        \rho(t=1)=&\frac{1}{2}[p(\rho(0)+\sigma_{3}\rho_{A}\sigma_{3}+\Tr{\sigma_{1}\rho_{B}}[\rho_{A}-\sigma_{3}\rho_{A}\sigma_{3}])\\
-    &+(1-p)(\rho(0)+\sigma_{1}\rho_{B}\sigma_{1}+\Tr{\sigma_{3}\rho_{A}}[\rho_{B}-\sigma_{1}\rho_{B}\sigma_{1}])].
-        \end{align*}
-    Notice the similarity between this expression and the previous one. The CNOT gate induces correlations between both subsystems. These corrleations are completely dependent on the $\pauli{3}$ and $\pauli{1}$ components of the first and second subsystem.
-    The second term shows the action of the \textit{target} qubit over the \textit{control} qubit on the $\pauli{1}$ basis.
-\end{frame}
-
-\begin{frame}{Effective CNOT on the Bloch sphere}
+\begin{frame}{Almost a phase flip}
     \begin{figure}[h!]
         \centering
         \begin{subfigure}{0.32\textwidth}
@@ -188,7 +204,24 @@ Or, in terms of the probability of getting either $\ket{0}$ or $\ket{1}$ as
         \begin{subfigure}{0.32\textwidth}
             \centering
             \includegraphics[width=0.9\linewidth]{figures/sphere_CNOT_t=1.0_z=0.8_p=0.95.png}
-            \caption{$t=0.5$}
+            \caption{$t=1.0$}
+        \end{subfigure}
+        \caption{Effect on the Bloch sphere. $r=0.8$, $p=0.05$.}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Almost a bit flip}
+    \begin{figure}[h!]
+        \centering
+        \begin{subfigure}{0.32\textwidth}
+            \centering
+            \includegraphics[width=0.9\linewidth]{figures/sphere_CNOT_t=0.0_z=0.8_p=0.05.png}
+            \caption{$t=0.0$}
+        \end{subfigure}%
+        \begin{subfigure}{0.32\textwidth}
+            \centering
+            \includegraphics[width=0.9\linewidth]{figures/sphere_CNOT_t=1.0_z=0.8_p=0.05.png}
+            \caption{$t=1.0$}
         \end{subfigure}
         \caption{Effect on the Bloch sphere. $r=0.8$, $p=0.95$.}
     \end{figure}
@@ -205,13 +238,13 @@ Or, in terms of the probability of getting either $\ket{0}$ or $\ket{1}$ as
         \begin{subfigure}{0.32\textwidth}
             \centering
             \includegraphics[width=0.9\linewidth]{figures/sphere_CNOT_t=1.0_z=0.8_p=0.6.png}
-            \caption{$t=0.5$}
+            \caption{$t=1.0$}
         \end{subfigure}
-        \caption{Effect on the Bloch sphere. $r=0.8$, $p=0.6$.}
+        \caption{Effect on the Bloch sphere. $r=0.8$, $p=0.4$.}
     \end{figure}
 \end{frame}
 
-\subsection{Special Dynamics}
+\subsection{Current work: an Ising model}
 
 \begin{frame}{Ising Model}
     We consider the following hamiltonian:
