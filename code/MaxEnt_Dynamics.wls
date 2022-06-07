@@ -381,6 +381,8 @@ l[r_,p_,lo_,up_,st_]:=First@LagrangeMultFromZCoord[
 	r];
 r=0.8;
 sp=0.05;
+Do[
+sp=i;
 runi=Normalize[{-1,1,1}];
 rvec=r*runi;
 lag=l[r,sp,low=0.,up=6.,ste=0.002];
@@ -394,8 +396,31 @@ transformation2[r_]:=With[{
 	rb*ra*(sp*runi[[1]]*runi[[2]]+(1-sp)*runi[[2]]*runi[[3]]),
 	ra*(sp*runi[[3]]+(1-sp)*rb*runi[[3]]^2)}
 	];
-Export["../figures/CNOT/"<>"sphere_CNOT_t=0.0"<>"_z="<>ToString[r]<>"_p="<>ToString[sp]<>".png",FunctionSphereMesh[r,(IdentityMatrix[3] . #)&,0.5]]
-Export["../figures/CNOT/"<>"sphere_CNOT_t=1.0"<>"_z="<>ToString[r]<>"_p="<>ToString[sp]<>".png",FunctionSphereMesh[r,transformation2,0.5]]
+Export["../figures/CNOT/"<>"sphere_CNOT_t=1.0"<>"_z="<>ToString[r]<>"_p="<>ToString[i*100]<>".png",FunctionSphereMesh[r,transformation2,0.5,sp,{0.5,0.5}]],
+{i,0.0,1.0,0.02}
+]
+
+
+
+\.b4Labeled[set[[1]],"p",Top]
+
+
+?Labeled
+
+
+set=Table[Import["../figures/CNOT/"<>"sphere_CNOT_t=1.0"<>"_z="<>ToString[r]<>"_p="<>ToString[i*100]<>".png"],{i,0.0,1.0,0.02}];
+
+
+PNGSetToGif[set_]:=Export["../figures/"<>"CNOT_GIF_p_evol"<>"_r="<>ToString[r]<>".gif",
+Flatten[{set, Table[set[[i]], {i, Length[set]}]}]]
+PNGSetToGif[set]
+
+
+(* ::Input:: *)
+(*\.b4*)
+
+
+ToString[0.02*100]
 
 
 r=0.8;
@@ -404,12 +429,14 @@ runi=Normalize[{-1,1,1}];
 rvec=r*runi;
 transformation2[r_]:=With[{
 	runi=Normalize[r]},
-	{(1-2*sp)*runi[[1]],
+	{runi[[1]],
 	(1-2*sp)*runi[[2]],
-	runi[[3]]}
+	(1-2*sp)*runi[[3]]}
 	];
-Export["../figures/"<>"sphere_PF_t=0.0"<>"_z="<>ToString[r]<>"_p="<>ToString[sp]<>".png",FunctionSphereMesh[r,(IdentityMatrix[3] . #)&,0.5]]
-Export["../figures/"<>"sphere_PF_t=1.0"<>"_z="<>ToString[r]<>"_p="<>ToString[sp]<>".png",FunctionSphereMesh[r,transformation2,0.5]]
+Export["../figures/"<>"sphere_BitF_t=1.0"<>"_z="<>ToString[r]<>"_p="<>ToString[sp]<>".png",FunctionSphereMesh[r,transformation2,0.5]]
+
+
+
 
 
 Clear[unitary]

@@ -188,7 +188,7 @@
     \begin{align*}
         \rho(t=1)=&\frac{1}{2}\rho(0)\\
         &+\frac{(1-p)}{2}\qty[\expval{\pauli{1}}_{\rho_{B}}\rho_{A}+(1-\expval{\pauli{1}}_{\rho_{B}})\pauli{3}\rho_{A}\pauli{3}]\\
-        &+\frac{p}{2}\qty[\expval{\pauli{3}}_{\rho_{A}}\rho_{A}+(1-\expval{\pauli{3}}_{\rho_{A}})\pauli{1}\rho_{B}\pauli{1}].
+        &+\frac{p}{2}\qty[\expval{\pauli{3}}_{\rho_{A}}\rho_{B}+(1-\expval{\pauli{3}}_{\rho_{A}})\pauli{1}\rho_{B}\pauli{1}].
     \end{align*}
     Mix of a non linear bit flip channel and a non linear phase flip channel
 \end{frame}
@@ -244,17 +244,8 @@
     \end{figure}
 \end{frame}
 
-\subsection{Current work: an Ising model}
-
-\begin{frame}{Ising Model}
-    We consider the following hamiltonian:
-    \begin{align*}
-        H=J\sigma_{z}\otimes\sigma_{z} && \Rightarrow && \mcU_{t}=\Id \cos{tJ} + i\sigma_{z}\otimes\sigma_{z}\sin{tJ}
-    \end{align*}
-    The evolved effective state looks like
-    \begin{align*}
-        \mcC{\varrho_{max}(t)}=&\rho(0)\cos^{2}{Jt}+\sigma_{3}\rho(0)\sigma_{3}\sin^{2}{Jt}\\
-        &-i\frac{\lambda_{3}}{\lambda}\sin{Jt}\cos{Jt}[\sigma_{3},p\tanh((1-p)\lambda)\rho_{A}+(1-p)\tanh(p\lambda)\rho_{B}]
-    \end{align*}
-    Two important terms arise: the first is linear and independent of the coarse graining parameters, and the second one carries the non-linearity of the evolution, as it includes the Lagrange variable $\lambda$.
+\begin{frame}{Video}
+    \begin{figure}
+        \movie[width=0.2\textwidth,borderwidth=5pt,showcontrols=true,autostart]{}{figures/CNOT_GIF_p_evol_r_0.8.avi}
+    \end{figure}
 \end{frame}

@@ -185,16 +185,16 @@ SphereMesh[r_]:=Show[
 	ParametricPlot3D[{r*Cos[t],r*Sin[t],0},{t,0,2*Pi},PlotStyle->Red],
 	ListPointPlot3D[{{0,0,r},{0,0,-r}},PlotStyle->{Red,PointSize[0.03]}]];
 	
-TransformedSphereMesh[r_,transformation_]:=Show[
+TransformedSphereMesh[r_,transformation_,legend_,pos_]:=Show[
 	ParametricPlot3D[transformation . {r*Sin[t] Cos[p], r*Sin[t] Sin[p], r*Cos[t]}, {t, 0, \[Pi]}, {p, 0, 2 \[Pi]}, Lighting -> {"Neutral", White},
 	PlotStyle -> GrayLevel[.5], PlotTheme -> None,
 			BoxRatios->{1, 1, 1},
-			PlotRange->{{-1.,1.},{-1.,1.},{-1.,1.}},
+			PlotRange->{{-1.,1.},{-1.,1.},{-1.,1.}},\.b4
 			AxesLabel->{Style["x", 16],Style["y", 16],Style["z", 16]},
-			LabelStyle->Black],
+			LabelStyle->Black,
+			Placed[PlotLabel[legend],pos]],
 	ParametricPlot3D[transformation . {r*Cos[t],r*Sin[t],0},{t,0,2*Pi},PlotStyle->Red],
 	ListPointPlot3D[(Map[transformation . #&,{{0,0,r},{0,0,-r}}]),PlotStyle->{Red,PointSize[0.03]}]];
-	
 SU2ToSO3[su2_]:=densityMatrixToPoint[Table[su2 . PauliMatrix[i] . Dagger[su2],{i,1,3}],gellMannBasis[1]/2];
 
 
