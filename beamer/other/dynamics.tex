@@ -86,7 +86,7 @@
                   \end{equation*}
                   Non linear depolarizing channel:
                   \begin{equation*}
-                      \boxed{\rho\mapsto\kappa_{t}^{\rho}\rho+(1-\kappa_{t}^{\rho})\frac{1}{2}\Id}
+                      \boxed{\rho\mapsto\kappa_{1}^{\rho}\rho+(1-\kappa_{1}^{\rho})\frac{1}{2}\Id}
                     \end{equation*}
         \end{column}
         \begin{column}{0.5\textwidth}
@@ -128,7 +128,7 @@
 \begin{frame}{Effective CNOT}
     We study
     \begin{equation*}
-        \rho(t)=\CG{\cnot \mcA_{\mcC}^{max}[\rho(0)](\cnot)^{\dag}}
+        \rho(t=1)=\CG{\cnot \mcA_{\mcC}^{max}[\rho(0)](\cnot)^{\dag}}
     \end{equation*}
     Initial efective state is
     \begin{equation*}
@@ -241,11 +241,5 @@
             \caption{$t=1.0$}
         \end{subfigure}
         \caption{Effect on the Bloch sphere. $r=0.8$, $p=0.4$.}
-    \end{figure}
-\end{frame}
-
-\begin{frame}{Video}
-    \begin{figure}
-        \movie[width=0.2\textwidth,borderwidth=5pt,showcontrols=true,autostart]{}{figures/CNOT_GIF_p_evol_r_0.8.avi}
     \end{figure}
 \end{frame}

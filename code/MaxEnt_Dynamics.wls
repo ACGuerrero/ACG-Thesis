@@ -247,6 +247,7 @@ EffAsSum=With[
 	]
 ];
 
+
 Export["../figures/"<>"effective_state_as_sum"<>".png",EffAsSum];
 
 
@@ -396,16 +397,24 @@ transformation2[r_]:=With[{
 	rb*ra*(sp*runi[[1]]*runi[[2]]+(1-sp)*runi[[2]]*runi[[3]]),
 	ra*(sp*runi[[3]]+(1-sp)*rb*runi[[3]]^2)}
 	];
-Export["../figures/CNOT/"<>"sphere_CNOT_t=1.0"<>"_z="<>ToString[r]<>"_p="<>ToString[i*100]<>".png",FunctionSphereMesh[r,transformation2,0.5,sp,{0.5,0.5}]],
-{i,0.0,1.0,0.02}
+	Export["../figures/CNOT/"<>"sphere_CNOT_t=1.0"<>"_z="<>ToString[r]<>"_p="<>ToString[i*100]<>".png",FunctionSphereMesh2[r,transformation2,0.5]],
+{i,0.0,1.0,0.01}
 ]
 
 
+FunctionSphereMesh2[r_,function_,opa_:1.]:=Show[
+	ParametricPlot3D[function[{r*Sin[t] Cos[p], r*Sin[t] Sin[p], r*Cos[t]}], {t, 0, \[Pi]}, {p, 0, 2 \[Pi]}, Lighting -> {"Neutral", White},
+	PlotStyle -> {GrayLevel[.5],Opacity[opa]}, PlotTheme -> None,
+			BoxRatios->{1, 1, 1},
+			PlotRange->{{-1.,1.},{-1.,1.},{-1.,1.}},
+			AxesLabel->{Style["x", 16],Style["y", 16],Style["z", 16]},
+			LabelStyle->Black,
+			PlotLegends->Placed[Style["p="<>ToString[sp],16],{0.65,0.9}]],
+	ParametricPlot3D[function[{r*Cos[t],r*Sin[t],0}],{t,0,2*Pi},PlotStyle->Red],
+	ListPointPlot3D[(Map[function[#]&,{{0,0,r},{0,0,-r}}]),PlotStyle->{Red,PointSize[0.03]}]]
 
-\.b4Labeled[set[[1]],"p",Top]
 
-
-?Labeled
+FunctionSphereMesh2[r,transformation2,0.5]
 
 
 set=Table[Import["../figures/CNOT/"<>"sphere_CNOT_t=1.0"<>"_z="<>ToString[r]<>"_p="<>ToString[i*100]<>".png"],{i,0.0,1.0,0.02}];

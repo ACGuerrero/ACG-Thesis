@@ -4,7 +4,7 @@
     \begin{columns}
         \begin{column}{0.5\textwidth}
             \begin{itemize}
-                \item \textbf{Scenario}: no accesible TCSO.
+                \item \textbf{Scenario}: no tomographically complete set of obsevables.
                 \item Instead we know $\expval{\hat{G}_{i}}$
             \end{itemize}
             \begin{equation*}
@@ -14,7 +14,7 @@
 
             \textbf{Maximum Entropy Principle}
             \begin{tcolorbox}
-                The density operator that maximizes the entropy is the best estimate of the system' state
+                The density operator that maximizes the entropy is the best estimate of the system's state given some prior data
             \end{tcolorbox}
             \vspace{0.5cm}
         \end{column}
@@ -55,7 +55,11 @@
             \begin{equation*}
                 \varrho_{max}=\frac{e^{\lambda (1-p)(\hat{r}_{\rho}\cdot\vec{\sigma})}}{Z_{A}} \otimes \frac{e^{\lambda p(\hat{r}_{\rho}\cdot\vec{\sigma})}}{Z_{B}}.
             \end{equation*}
-            Where $\hat{r}_{\rho}$ is $\rho$'s unit Bloch vector, and $\lambda=\sqrt{\lambda^{2}_{1}+\lambda^{2}_{2}+\lambda^{2}_{3}}$.
+            Where:
+            \begin{itemize}
+                \item $\hat{r}_{\rho}$ is $\rho$'s unit Bloch vector
+                \item $\lambda=\sqrt{\lambda^{2}_{1}+\lambda^{2}_{2}+\lambda^{2}_{3}}$
+            \end{itemize}
         \end{column}
     \end{columns}
 \end{frame}
