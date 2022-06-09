@@ -44,6 +44,9 @@ SphereMesh::usage="Draws a sphere mesh with latitudinal and longitudinal lines."
 TransformedSphereMesh::usage="Same as sphere mesh but accepts a transformation parameter. Transforms the sphere mesh using the given transformation."
 SU2ToSO3::usage="Transforms a SU(2) matrix into a SO(3) matrix using the Pauli basis"
 FunctionSphereMesh::usage="Same as sphere mesh but accepts a function parameter. Transforms the sphere mesh using the given function."
+PauliVector::usage="List of the pauli matrices"
+LagrangeMultFromPurity::usage="Used as LagrangeMultFromPurity[r_,p_,lo_,up_,st_]. "
+MaxEntAss::usage="MaxEntAss[rho,p] calculates the maximum entropy state given a non pure density matrix"
 Begin["`Private`"]
 
 
@@ -55,6 +58,7 @@ Begin["`Private`"]
 Pauli2Basis=Flatten[Table[Pauli[{i,j}],{i,0,3},{j,0,3}],1];
 cnotGate={{1,0,0,0},{0,1,0,0},{0,0,0,1},{0,0,1,0}};
 CNOT[t_]:={{1,0,0,0},{0,1,0,0},{0,0,Exp[I*Pi*t/2]*Cos[Pi*t/2],-I*Exp[I*Pi*t/2]*Sin[Pi*t/2]},{0,0,-I*Exp[I*Pi*t/2]*Sin[Pi*t/2],Exp[I*Pi*t/2]*Cos[Pi*t/2]}}
+PauliVector=Table[PauliMatrix[i],{i,3}];
 
 NearestPosition[haystack_,value_]:= With[{ f = Nearest[haystack -> Range@Length@haystack]},f[value, 1]];
 
@@ -141,6 +145,16 @@ With[
 },
 Ubig . ZMaxEnt . Dagger[Ubig]
 ]
+
+LagrangeMultFromPurity[r_,p_,lo_,up_,st_]:=First@LagrangeMultFromZCoord[
+	RzLambdaTable[p,lo,up,st],
+	r];
+	
+MaxEntAss[rho_,sp_]:=With[
+{lstep=0.002,llow=0.,lup=6.,vec=densityMatrixToPoint[{rho},gellMannBasis[1]][[1]],r=Norm[densityMatrixToPoint[{rho},gellMannBasis[1]][[1]]]},
+lagmult=LagrangeMultFromPurity[r,sp,llow,lup,lstep];
+A=KroneckerProduct[MatrixExp[sp*lagmult*(Normalize[vec] . PauliVector)],MatrixExp[(1-sp)*lagmult*(Normalize[vec] . PauliVector)]];
+Return[A/Tr[A]]]
 
 CGKrausOp[p_]:={
 Sqrt[p]KroneckerProduct[IdentityMatrix[2],{1,0}],

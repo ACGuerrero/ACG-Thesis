@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     12049,        345]
-NotebookOptionsPosition[     10279,        303]
-NotebookOutlinePosition[     10671,        319]
-CellTagsIndexPosition[     10628,        316]
+NotebookDataLength[     22788,        638]
+NotebookOptionsPosition[     20003,        580]
+NotebookOutlinePosition[     20447,        597]
+CellTagsIndexPosition[     20404,        594]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -35,7 +35,7 @@ Cell[BoxData[{
   "SetDirectory", "[", "\"\</home/acastillo/Documents/tesis-adan/code\>\"", 
    "]"}], ";"}]}], "Input",
  InitializationCell->True,
- CellLabel->"In[1]:=",ExpressionUUID->"948f4800-b534-400d-8f1c-6cf610442443"],
+ CellLabel->"In[8]:=",ExpressionUUID->"948f4800-b534-400d-8f1c-6cf610442443"],
 
 Cell[BoxData[{
  RowBox[{
@@ -72,7 +72,7 @@ Cell[BoxData[{
  InitializationCell->True,
  CellChangeTimes->{{3.8593665542265778`*^9, 3.859366608122987*^9}, {
   3.8593666465037003`*^9, 3.859366648068783*^9}},
- CellLabel->"In[8]:=",ExpressionUUID->"1f776568-4246-4954-b862-2ef85c9572bd"]
+ CellLabel->"In[6]:=",ExpressionUUID->"1f776568-4246-4954-b862-2ef85c9572bd"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -202,8 +202,13 @@ target state: \"\>", "\[InvisibleSpace]", "0.9999999937849087`"}],
   "During evaluation of \
 In[30]:=",ExpressionUUID->"c222c776-f4f3-46e0-acbe-7b602c7edf04"]
 }, Open  ]]
-}, Open  ]]
-}, Closed]],
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.863719852259251*^9, 
+  3.8637198571436787`*^9}},ExpressionUUID->"13c5f043-c9b1-40da-8166-\
+6d5d2f085f0c"]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -215,8 +220,7 @@ Cell["Numerical", "Section",
 
 Cell[BoxData[{
  RowBox[{
-  RowBox[{"Clear", "[", "unitary", "]"}], "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
+  RowBox[{"Clear", "[", "unitary", "]"}], "\[IndentingNewLine]", "\n", 
   RowBox[{"(*", 
    RowBox[{
     RowBox[{
@@ -224,7 +228,8 @@ Cell[BoxData[{
      " ", "radius", " ", "of", " ", "zcoord"}], ",", " ", 
     RowBox[{
     "then", " ", "we", "\n", "obtain", " ", "their", " ", "corresponding", 
-     " ", "MaxEnt", " ", "states"}]}], "*)"}], "\n"}], "\n", 
+     " ", "MaxEnt", " ", "states"}]}], "*)"}], "\n"}], "\[IndentingNewLine]", 
+
  RowBox[{
   RowBox[{
    RowBox[{"MaxEntsNotInZ", "=", 
@@ -234,7 +239,7 @@ Cell[BoxData[{
        RowBox[{"#", ",", "ZMaxEnt"}], "]"}], "&"}], "/@", 
      RowBox[{"UniformMixedStates", "[", 
       RowBox[{"r", ",", "1500"}], "]"}]}]}], ";"}], 
-  "\n"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"unitary", "[", "t_", "]"}], ":=", 
@@ -280,7 +285,7 @@ Cell[BoxData[{
  CellChangeTimes->{{3.859367110311902*^9, 
   3.859367175498414*^9}},ExpressionUUID->"56c2b746-0028-4f22-83c4-\
 0d8e7460b090"]
-}, Closed]],
+}, Open  ]],
 
 Cell["Analytical", "Section",
  CellChangeTimes->{{3.859367048038597*^9, 
@@ -298,11 +303,284 @@ Cell["CNOT Dynamics", "Subtitle",
 Cell["Separable Dynamics", "Subtitle",
  CellChangeTimes->{{3.8593663890803957`*^9, 
   3.859366398654264*^9}},ExpressionUUID->"9ff1690a-20cc-4701-b49e-\
-3627021766ef"]
+3627021766ef"],
+
+Cell[CellGroupData[{
+
+Cell["Step by stem evolution", "Section",
+ CellChangeTimes->{{3.8637113119995127`*^9, 
+  3.863711319967884*^9}},ExpressionUUID->"affd7ee4-56c0-4345-acbf-\
+420fae44357e"],
+
+Cell[CellGroupData[{
+
+Cell["SWAP example", "Subsubsection",
+ CellChangeTimes->{{3.863711337570109*^9, 
+  3.863711368683375*^9}},ExpressionUUID->"708565d5-125d-4045-9d7d-\
+8a7a782055f8"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"n", "=", "2"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ti", "=", "0.0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"tf", "=", "1.0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r", "=", " ", "0.8"}], ";"}], "\n", 
+ RowBox[{"zstate", "=", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"IdentityMatrix", "[", "2", "]"}], "+", 
+     RowBox[{"r", "*", 
+      RowBox[{"PauliMatrix", "[", "3", "]"}]}]}], ")"}], "/", 
+   "2"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"sp", "=", " ", "0.6"}], ";"}], "\n", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+    "We", " ", "then", " ", "have", " ", "to", " ", "construct", " ", "the", 
+     " ", "maximum", " ", "entropy", " ", 
+     RowBox[{"state", ".", " ", "Since"}], " ", "we", "\n", "have", " ", 
+     "acces", " ", "to", " ", "the", " ", "rz", " ", "coordinate"}], ",", " ", 
+    RowBox[{
+    "we", " ", "obtain", " ", "the", " ", "lagrange", " ", "mult", " ", "by", 
+     "\n", "numerically", " ", "approximating", " ", "the", " ", "inverse", 
+     " ", "value"}]}], "*)"}]}], "\n", 
+ RowBox[{
+  RowBox[{"lstep", "=", "0.002"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"llow", "=", "0."}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"lup", "=", "6."}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"lagmult", "=", 
+    RowBox[{"l", "[", 
+     RowBox[{"r", ",", "sp", ",", "llow", ",", "lup", ",", "lstep"}], "]"}]}],
+    ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ZMaxEnt", "=", 
+   RowBox[{"CGMaxEntStateLM", "[", 
+    RowBox[{"lagmult", ",", "sp"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"MaxEntsNotInZ", "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"MaxEntForStateNotInZ", "[", 
+       RowBox[{"#", ",", "ZMaxEnt"}], "]"}], "&"}], "/@", 
+     RowBox[{"UniformMixedStates", "[", 
+      RowBox[{"r", ",", "1500"}], "]"}]}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"unitary", "[", "t_", "]"}], ":=", 
+   RowBox[{"SWAP", "[", "t", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"NewMaxEnt", "=", 
+   RowBox[{"unitary", " ", ".", " ", "ZMaxEnt", " ", ".", " ", 
+    RowBox[{"Dagger", "[", 
+     RowBox[{"unitary", "[", "1", "]"}], "]"}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"NewMaxEntsNotInZ", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"unitary", "[", "1", "]"}], " ", ".", " ", "#", " ", ".", " ", 
+      RowBox[{"Dagger", "[", 
+       RowBox[{"unitary", "[", "1", "]"}], "]"}]}], "&"}], "/@", 
+    "MaxEntsNotInZ"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"CoarseMaxEntsNotInZ", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Chop", "[", 
+      RowBox[{"CGKraus", "[", 
+       RowBox[{"#", ",", "sp"}], "]"}], "]"}], "&"}], "/@", 
+    "MaxEntsNotInZ"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"CoarseNewMaxEntsNotInZ", "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Chop", "[", 
+       RowBox[{"CGKraus", "[", 
+        RowBox[{"#", ",", "sp"}], "]"}], "]"}], "&"}], "/@", 
+     "NewMaxEntsNotInZ"}]}], ";"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"MaxEntState", "=", 
+    RowBox[{"CGMaxEntStateLM", "[", 
+     RowBox[{"lagmult", ",", "sp"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"step", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"tf", "-", "ti"}], ")"}], "/", "n"}]}], ";"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+    "We", " ", "create", " ", "mixed", " ", "states", " ", "with", " ", "a", 
+     " ", "radius", " ", "of", " ", "r"}], ",", " ", 
+    RowBox[{
+    "then", " ", "we", "\n", "obtain", " ", "their", " ", "corresponding", 
+     " ", "MaxEnt", " ", "states"}]}], "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"OriginalStates", "=", 
+   RowBox[{"UniformMixedStates", "[", 
+    RowBox[{"r", ",", "2"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"MaxEnts", "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"MaxEntAss", "[", 
+       RowBox[{"#", ",", "sp"}], "]"}], "&"}], "/@", "OriginalStates"}]}], 
+   ";"}], "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"unitary", "[", "t_", "]"}], ":=", 
+    RowBox[{"SWAP", "[", "t", "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Do", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"MaxEntsT", "=", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"unitary", "[", "step", "]"}], " ", ".", " ", "#", " ", ".",
+           " ", 
+          RowBox[{"Dagger", "[", 
+           RowBox[{"unitary", "[", "step", "]"}], "]"}]}], "&"}], "/@", 
+        "MaxEnts"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"CoarseStates", "=", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Chop", "[", 
+          RowBox[{"CGKraus", "[", 
+           RowBox[{"#", ",", "sp"}], "]"}], "]"}], "&"}], "/@", 
+        "MaxEntsT"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"MaxEnts", "=", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"MaxEntAss", "[", 
+          RowBox[{"#", ",", "sp"}], "]"}], "&"}], "/@", "CoarseStates"}]}], 
+      ";"}], "\n", ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{"PlotTwoCoarseSets", "[", 
+   RowBox[{"OriginalStates", ",", "CoarseStates", ",", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Initial states\>\"", ",", "\"\<Final states\>\""}], "}"}], 
+    ",", "\"\<Evolution of the Assignement Map\>\""}], "]"}], ";"}]}], "Input",\
+
+ CellChangeTimes->{{3.8637113724581823`*^9, 3.863711508681984*^9}, {
+   3.863712049817457*^9, 3.863712157281748*^9}, {3.863712455779093*^9, 
+   3.863712484739236*^9}, {3.863712635391427*^9, 3.863712644655285*^9}, {
+   3.86371270617028*^9, 3.8637127323651457`*^9}, 3.863719883710424*^9, 
+   3.863719928550292*^9, {3.863720042546507*^9, 3.863720066429805*^9}, {
+   3.863720148937307*^9, 3.8637202544643297`*^9}, {3.8637204190840263`*^9, 
+   3.863720492676187*^9}, {3.8637205548163347`*^9, 3.8637207475939198`*^9}, {
+   3.863721071567078*^9, 3.863721079106204*^9}, {3.863721290977366*^9, 
+   3.863721303044395*^9}, {3.8637213689354057`*^9, 3.863721369864326*^9}, {
+   3.863721421346306*^9, 3.863721421489502*^9}, {3.863722235693859*^9, 
+   3.863722236161216*^9}, {3.863722365276402*^9, 3.863722369780809*^9}, {
+   3.8637224862303133`*^9, 
+   3.863722560462739*^9}},ExpressionUUID->"e06d33ab-d4ed-4f89-9a06-\
+12d436ad34a6"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"OriginalStates", "=", 
+  RowBox[{"UniformMixedStates", "[", 
+   RowBox[{"r", ",", "2"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"MaxEnts", "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"MaxEntAss", "[", 
+     RowBox[{"#", ",", "sp"}], "]"}], "&"}], "/@", 
+   "OriginalStates"}]}]}], "Input",
+ CellChangeTimes->{{3.863722394537037*^9, 
+  3.863722394671715*^9}},ExpressionUUID->"d7992e24-a1b4-4a7d-9c2e-\
+946da6fa1171"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"0.631426760860912`", "\[VeryThinSpace]", "+", 
+        RowBox[{"0.`", " ", "\[ImaginaryI]"}]}], ",", 
+       RowBox[{"0.34587684114572126`", "\[VeryThinSpace]", "+", 
+        RowBox[{"0.15197439681955044`", " ", "\[ImaginaryI]"}]}]}], "}"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"0.34587684114572126`", "\[VeryThinSpace]", "-", 
+        RowBox[{"0.15197439681955044`", " ", "\[ImaginaryI]"}]}], ",", 
+       RowBox[{"0.368573239139088`", "\[VeryThinSpace]", "+", 
+        RowBox[{"0.`", " ", "\[ImaginaryI]"}]}]}], "}"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"0.8112144751189305`", "\[VeryThinSpace]", "+", 
+        RowBox[{"0.`", " ", "\[ImaginaryI]"}]}], ",", 
+       RowBox[{"0.021636514285624176`", "\[VeryThinSpace]", "+", 
+        RowBox[{"0.25035457200941363`", " ", "\[ImaginaryI]"}]}]}], "}"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"0.021636514285624176`", "\[VeryThinSpace]", "-", 
+        RowBox[{"0.25035457200941363`", " ", "\[ImaginaryI]"}]}], ",", 
+       RowBox[{"0.18878552488106953`", "\[VeryThinSpace]", "+", 
+        RowBox[{"0.`", " ", "\[ImaginaryI]"}]}]}], "}"}]}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.863721412891149*^9, 3.863722376615803*^9},
+ CellLabel->"Out[40]=",ExpressionUUID->"c4b34be5-6ab7-4af3-bf7b-57727b35a153"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"MaxEntForStateNotInZ", "[", 
+    RowBox[{"#", ",", "ZMaxEnt"}], "]"}], "&"}], "/@", 
+  RowBox[{"UniformMixedStates", "[", 
+   RowBox[{"r", ",", "1500"}], "]"}]}]], "Input",ExpressionUUID->"1653ec4c-\
+57ce-41e0-adc5-0a1a0477bbd1"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.86372241403758*^9, 
+  3.863722421317462*^9}},ExpressionUUID->"a20753ff-356d-4b99-879a-\
+681b7bdf8200"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.863716848695259*^9, 3.863716856154743*^9}},
+ CellLabel->"",ExpressionUUID->"8ddfbf47-b850-4774-87e1-a77ba17c0c8d"]
+}, Open  ]]
+}, Open  ]]
 }, Open  ]]
 },
-WindowSize->{960, 492},
+WindowSize->{1440, 762},
 WindowMargins->{{0, Automatic}, {0, Automatic}},
+TaggingRules->Association["TryRealOnly" -> False],
 FrontEndVersion->"12.3 for Linux x86 (64-bit) (July 9, 2021)",
 StyleDefinitions->"ReverseColor.nb",
 ExpressionUUID->"c1e67f5a-d03a-47dc-954d-84c384851e49"
@@ -330,26 +608,39 @@ Cell[2584, 79, 159, 3, 53, "Subtitle",ExpressionUUID->"ec464118-70ea-429d-94b6-1
 Cell[CellGroupData[{
 Cell[2768, 86, 168, 3, 68, "Section",ExpressionUUID->"363b329d-e74a-41ad-bb63-b3c094b1a5a5"],
 Cell[CellGroupData[{
-Cell[2961, 93, 2482, 64, 403, "Input",ExpressionUUID->"304616da-1258-4039-a9e5-4d209587c523"],
+Cell[2961, 93, 2482, 64, 382, "Input",ExpressionUUID->"304616da-1258-4039-a9e5-4d209587c523"],
 Cell[CellGroupData[{
 Cell[5468, 161, 1199, 28, 72, "Print",ExpressionUUID->"94d8da43-7a01-4a11-b2e7-09e624332db7"],
 Cell[6670, 191, 497, 11, 23, "Print",ExpressionUUID->"c222c776-f4f3-46e0-acbe-7b602c7edf04"]
 }, Open  ]]
-}, Open  ]]
-}, Closed]],
-Cell[CellGroupData[{
-Cell[7228, 209, 203, 4, 54, "Section",ExpressionUUID->"694143bf-a7c4-467c-9782-7de07a977dbb"],
-Cell[7434, 215, 2292, 66, 319, "Input",ExpressionUUID->"56c2b746-0028-4f22-83c4-0d8e7460b090"]
-}, Closed]],
-Cell[9741, 284, 157, 3, 54, "Section",ExpressionUUID->"76c2670b-02be-419d-97b9-d19c67c33ecd"]
+}, Open  ]],
+Cell[7194, 206, 154, 3, 29, "Input",ExpressionUUID->"13c5f043-c9b1-40da-8166-6d5d2f085f0c"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9935, 292, 159, 3, 53, "Subtitle",ExpressionUUID->"4d288cc2-50f0-4f0d-8eae-55e3c44db100"],
-Cell[10097, 297, 166, 3, 53, "Subtitle",ExpressionUUID->"9ff1690a-20cc-4701-b49e-3627021766ef"]
+Cell[7385, 214, 203, 4, 68, "Section",ExpressionUUID->"694143bf-a7c4-467c-9782-7de07a977dbb"],
+Cell[7591, 220, 2290, 66, 298, "Input",ExpressionUUID->"56c2b746-0028-4f22-83c4-0d8e7460b090"]
+}, Open  ]],
+Cell[9896, 289, 157, 3, 68, "Section",ExpressionUUID->"76c2670b-02be-419d-97b9-d19c67c33ecd"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10090, 297, 159, 3, 53, "Subtitle",ExpressionUUID->"4d288cc2-50f0-4f0d-8eae-55e3c44db100"],
+Cell[10252, 302, 166, 3, 53, "Subtitle",ExpressionUUID->"9ff1690a-20cc-4701-b49e-3627021766ef"],
+Cell[CellGroupData[{
+Cell[10443, 309, 169, 3, 68, "Section",ExpressionUUID->"affd7ee4-56c0-4345-acbf-420fae44357e"],
+Cell[CellGroupData[{
+Cell[10637, 316, 163, 3, 45, "Subsubsection",ExpressionUUID->"708565d5-125d-4045-9d7d-8a7a782055f8"],
+Cell[10803, 321, 6595, 182, 858, "Input",ExpressionUUID->"e06d33ab-d4ed-4f89-9a06-12d436ad34a6"],
+Cell[CellGroupData[{
+Cell[17423, 507, 440, 12, 51, "Input",ExpressionUUID->"d7992e24-a1b4-4a7d-9c2e-946da6fa1171"],
+Cell[17866, 521, 1486, 35, 33, "Output",ExpressionUUID->"c4b34be5-6ab7-4af3-bf7b-57727b35a153"]
+}, Open  ]],
+Cell[19367, 559, 276, 7, 29, "Input",ExpressionUUID->"1653ec4c-57ce-41e0-adc5-0a1a0477bbd1"],
+Cell[19646, 568, 151, 3, 29, "Input",ExpressionUUID->"a20753ff-356d-4b99-879a-681b7bdf8200"],
+Cell[19800, 573, 163, 2, 29, "Input",ExpressionUUID->"8ddfbf47-b850-4774-87e1-a77ba17c0c8d"]
+}, Open  ]]
+}, Open  ]]
 }, Open  ]]
 }
 ]
 *)
-
-(* End of internal cache information *)
 
