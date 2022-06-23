@@ -4,7 +4,48 @@ Considérese, para empezar, una aplicación de grano grueso con parámetro $p=\f
 \begin{equation*}
     \varrho(0)=\rho(0)\otimes\rho(0).
 \end{equation*}
-Además, sea $\mcU_{t}=\Id\otimes e^{-i\pauli{3}t}$ la unitaria microscópica. Bajo estos supuestos, la dinámica efectiva es:
+Además, sea $\mcU_{t}=\Id\otimes e^{-i\pauli{k}t}$ la unitaria microscópica. Bajo estos supuestos, la dinámica efectiva es:
 \begin{equation*}
-    \Gamma_{t}(\rho(0))=\frac{1}{2}\qty(\rho(0)+e^{-i\pauli{3}t}\rho(0)e^{i\pauli{3}t})
+    \Gamma_{t}(\rho(0))=\frac{1}{2}\qty(\rho(0)+e^{-i\pauli{k}t}\rho(0)e^{i\pauli{k}t}).
 \end{equation*}
+Cuando $k=3$, el resultado es un canal de desfasamiento (\textit{dephasing channel}) gradual. Al tiempo $t=\frac{\pi}{2}$ se completa el desfasamiento y toda la esfera de Bloch se ve contraída al eje $z$. El efecto de esta dinámica sobre el vector de Bloch del estado efectivo es
+\begin{align*}
+    \vec{r}(t)=T(t)\vec{r}(0) & & \text{donde} & & T(t)=\frac{1}{2}(\Id+R_{k}(2t)).
+\end{align*}
+Reconociendo que la dinámica es unitaria para el sistema micróscopico, entonces, usando la asignación de máxima entropía, esta se ve descrita por la ecuación de von Neumann
+\begin{equation*}
+    \frac{\partial \varrho_{\max}(t)}{\partial t}=-\frac{i}{\hbar}\qty[H,\varrho_{\max}(t)].
+\end{equation*}
+Si se pasa la ecuación por la aplicación de grano grueso, se obtiene la derivada temporal de la matriz del estado efectivo del lado izquierdo, mientras que del lado derecho queda une expresión en términos del estado fino $\varrho_{\max}(t)$. Recordando que $\varrho_{\max}(t)=\mcU_{t}(\varrho_{\max}(0))$, y que $\varrho_{\max}(0)=\mcA_{\max}(\rho(0))$, podemos hallar una ecuación diferencial siempre que la dinámica efectiva $\Gamma_{t}$ sea invertible:
+\begin{equation*}
+    \frac{\partial \rho(t)}{\partial t}=\mcC\qty([H,\mcU_{t}\circ\mcA_{\max}\circ\Gamma_{t}^{-1}(\rho(t))])
+\end{equation*}
+En este caso particular la dinámica es invertible, en términos del vector de Bloch, la dinámica inversa es (si $k=3$)
+\begin{equation*}
+    T^{-1}(t)=\begin{pmatrix}
+        1 & \tan(t) & 0 \\
+        -\tan(t) & 1 & 0 \\
+        0 & 0 & 1
+     \end{pmatrix}.
+\end{equation*}
+Esto es apropiado. La inversa no está definida para tiempos $t=\frac{(2n+1)\pi}{2}$, que son los tiempos en los que la dinámica manda diferentes estados al mismo punto (todo se manda al eje de la dirección de compresión). Con esto, podemos hallar la ecuación diferencial para el vector de Bloch de la matriz de densidad, y es ($para k=3$)
+\begin{equation*}
+    \frac{\partial \vec{r}(t)}{\partial t}= \begin{pmatrix}
+        -\tan(t) & 1 & 0 \\
+        -1 & -\tan(t) & 0 \\
+        0 & 0 & 0
+     \end{pmatrix}\vec{r}.
+\end{equation*}
+Considerese, por otro lado, las dinámicas:
+\begin{align*}
+    \frac{\partial \rho(t)}{\partial t}=-\frac{i}{\hbar}[\pauli{k},\rho(t)]& & \text{y} & & \frac{\partial \rho(t)}{\partial t}=\frac{1}{2}\gamma(t)\qty(\pauli{k}\rho(t)\pauli{k}-\rho(t)).
+\end{align*}
+Resulta que, en términos del vector de Bloch, se traducen en 
+\begin{equation*}
+    sol
+\end{equation*}
+y reconociendo $\gamma(t)=\tan(t)$, obtenemos una ecuación diferencial para la dinámica efectiva:
+\begin{equation*}
+    \frac{\partial \rho(t)}{\partial t}=i[\pauli{k},\rho(t)]-\frac{1}{2}\tan(t)\qty[\pauli{k}\rho(t)\pauli{k}-\rho(t)].
+\end{equation*}
+Esta es una ecuación de tipo Lindbland, en la que los coeficientes de difusión son dependientes del tiempo, revelando la naturaleza no markoviana del proceso.
