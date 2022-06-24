@@ -83,8 +83,8 @@ PlotTwoCoarseSets[CoarseMaxEntsNotInZ,CoarseNewMaxEntsNotInZ,{"Initial states","
 ==  Numerical evolution of MaxEnt states GIF!  ==
 ===========================================
 *)
-swapP = 0.7;
-zcoord = 0.8;
+swapP = 0.5;
+zcoord = 1.;
 lambdastep=0.05;
 lowerlambda=0.1;
 upperlambda=4.;
@@ -94,7 +94,7 @@ ZMaxEnt=CGMaxEntStateLM[lagrangemult,swapP];
 MaxEntsNotInZ=MaxEntForStateNotInZ[#,ZMaxEnt]&/@UniformMixedStates[zcoord,1500];
 steps=100;
 (*unitary[t_]:=MatrixExp[I*t*KroneckerProduct[PauliMatrix[3],PauliMatrix[3]]];*)
-unitary[t_]:=MatrixPower[CNOT,t]
+unitary[t_]:=MatrixExp[-I*t*{{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,1}}]
 end=N[Pi];
 pngset=Table[
 	ShowWithBlochSphere[{
