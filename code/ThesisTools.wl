@@ -47,6 +47,7 @@ FunctionSphereMesh::usage="Same as sphere mesh but accepts a function parameter.
 PauliVector::usage="List of the pauli matrices"
 LagrangeMultFromPurity::usage="Used as LagrangeMultFromPurity[r_,p_,lo_,up_,st_]. "
 MaxEntAss::usage="MaxEntAss[rho,p] calculates the maximum entropy state given a non pure density matrix"
+DirProd::usage="It's just the Kronecker Producto. I will fix it for vectors later"
 Begin["`Private`"]
 
 
@@ -59,7 +60,7 @@ Pauli2Basis=Flatten[Table[Pauli[{i,j}],{i,0,3},{j,0,3}],1];
 cnotGate={{1,0,0,0},{0,1,0,0},{0,0,0,1},{0,0,1,0}};
 CNOT[t_]:={{1,0,0,0},{0,1,0,0},{0,0,Exp[I*Pi*t/2]*Cos[Pi*t/2],-I*Exp[I*Pi*t/2]*Sin[Pi*t/2]},{0,0,-I*Exp[I*Pi*t/2]*Sin[Pi*t/2],Exp[I*Pi*t/2]*Cos[Pi*t/2]}}
 PauliVector=Table[PauliMatrix[i],{i,3}];
-
+DirProd[rho_,varrho_]:=KroneckerProduct[rho,varrho];
 NearestPosition[haystack_,value_]:= With[{ f = Nearest[haystack -> Range@Length@haystack]},f[value, 1]];
 
 MatrixToLatex[matrix_]:=

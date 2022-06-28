@@ -74,9 +74,9 @@ Vemos que ambos estados tienen la misma orientación (orientación significando 
   \kappa_{1}=\frac{r_{\rho(1)}}{r_{\rho(0)}}=\frac{(1-p)\tanh{\lambda p}+p\tanh{\lambda (1-p)}}{
     p\tanh{\lambda p}+(1-p)\tanh{\lambda (1-p)}}.
 \end{equation}
-Claro está, el factor de compresión depende del multiplicador de Lagrange, que a su vez es una función de la pureza del estado inicial. La figura \ref{fig:SWAPFactor2Drl} muestra dicha dependencia. Si la dependencia del factor de compresión en el estado efectivo inicial se denota por un superíndice, la dinámica efectiva puede escribirse como
+Claro está, el factor de compresión depende del multiplicador de Lagrange, que a su vez es una función de la pureza del estado inicial. La figura \ref{fig:SWAPFactor2Drl} muestra dicha dependencia. Como la dependencia en el estado inicial incluye únicamente la pureza del mismo, por lo que la compresión no depende de la dirección. Esta dinámica no es si no un canal de despolarización no lineal. Si la dependencia del factor de compresión en el estado efectivo inicial se denota por un superíndice, la dinámica efectiva puede escribirse como
 \begin{equation}\label{eq:EffectiveSWAP1}
-  \boxed{\frac{1}{2}(\Id+\vec{r}_{\rho}\cdot\vec{\sigma}) \mapsto \frac{1}{2}(\Id+\kappa_{1}^{\rho}\vec{r}_{\rho}\cdot\vec{\sigma})}
+  \boxed{\Gamma_{t=1}[\rho]=\kappa_{1}^{\rho}\rho+(1-\kappa_{1}^{\rho})\frac{1}{2}\Id}
 \end{equation}
 \begin{figure}[h!]
   \centering
@@ -120,7 +120,7 @@ El estado efectivo inicial siendo el mismo, el estado final vuelve a tener la mi
 
 Nuevamente, el factor de compresión (y por consiguiente, toda la evolución) depende de la pureza del estado efectivo incial, codificada en los multiplicadores de Lagrange. El efecto gradual de la evolución sobre la esfera de Bloch puede verse en la figura \ref{fig:SWAPFactorSequence}. La dinámica efectiva puede escribirse como
 \begin{equation}\label{eq:EffectiveSWAPt}
-  \boxed{\frac{1}{2}(\Id+\vec{r}_{\rho}\cdot\vec{\sigma}) \mapsto \frac{1}{2}(\Id+\kappa_{t}^{\rho}\vec{r}_{\rho}\cdot\vec{\sigma})}
+  \boxed{\Gamma_{t}[\rho]=\kappa_{t}^{\rho}\rho+(1-\kappa_{t}^{\rho})\frac{1}{2}\Id}
 \end{equation}
 
 \begin{figure}[h!]
@@ -166,7 +166,7 @@ que puede escribirse, también, como las probabilidades de que $\rho(t)$ se hall
  \begin{align}
   \bra{0}\rho(t)\ket{0}=\frac{1}{2}(1+\kappa_{t}^{\rho}\expval{\pauli{3}(0)}) && \bra{1}\rho(t)\ket{1}=\frac{1}{2}(1-\kappa_{t}^{\rho}\expval{\pauli{3}(0)})
  \end{align}
- donde la dependencia temporal está completamente contenida dentro del factor $\kappa_{t}^{\rho}$. 
+ donde la dependencia temporal está completamente contenida dentro del factor $\kappa_{t}^{\rho}$. Nótese que el efecto del canal de despolarización es hacer a los estados menos reconocibles entre sí.
 
 
 \subsection{La compuerta cuántica controlled not}
@@ -208,9 +208,9 @@ La forma matricial del operador controlled not a un tiempo $t$ es análoga a la 
 
 El operador \textsc{CNOT} puede expandirse de la siguiente manera:
 \begin{equation*}
-        \cnot=\frac{1}{2}(\Id+\pauli{3}\otimes\Id+\Id\otimes\pauli{1}-\pauli{3}\otimes\pauli{1}).
+        \cnot=\frac{1}{2}(\Id+\pauli{3}\otimes\Id+\Id\otimes\pauli{1}-\pauli{3}\otimes\pauli{1}),
 \end{equation*}
-Si se calcula el logaritmo de la compuerta es posible hallar el hamiltoniano generador de la unitaria,
+que es claramente generado por el hamiltoniano
 \begin{equation*}
     H_{\cnot}=\frac{\pi}{4}\qty(\Id-\pauli{3}\otimes\Id-\Id\otimes\pauli{1}+\pauli{3}\otimes\pauli{1}),
 \end{equation*}
@@ -229,14 +229,27 @@ Para estudiar la dinámica efectiva del operador $\cnot$ son particularmente út
     \rho(t=1)=\frac{1}{2}[&p(\rho(0)+\sigma_{3}\rho_{A}\sigma_{3}+\Tr{\sigma_{1}\rho_{B}}[\rho_{A}-\sigma_{3}\rho_{A}\sigma_{3}])\\
     &+(1-p)(\rho(0)+\sigma_{1}\rho_{B}\sigma_{1}+\Tr{\sigma_{3}\rho_{A}}[\rho_{B}-\sigma_{1}\rho_{B}\sigma_{1}])].
 \end{align*}
-La estructura del estado final es una consecuencia directa de la aplicación borrosa. Para entender el significado de cada uno de los términos, considérese el caso en que el aparato de medición no tiene un error asociado ($p=1$). En dicho caso, a través del principio de máxima entropía, se esperaría que el estado efectivo final fuera
+La estructura del estado final es una consecuencia directa de la aplicación borrosa. Para entender el significado de cada uno de los términos, considérense dos casos extremos: primero, el caso en que el aparato de medición no tiene un error asociado ($p=1$). En dicho caso, a través del principio de máxima entropía, se esperaría que el estado efectivo final fuera
 \begin{equation*}
-  \rho(t=1)=\rho(0)+\pauli{3}\rho(0)\pauli{3}=\frac{1}{2}(\Id+r_{3}\pauli{3})
-\end{equation*}.
-Este resultado viene del hecho que, en el caso $p=1$, el estado de máxima entropía es simplemente $\rho\otimes\frac{1}{2}$. Si se conociera la preparación microscópica del estado inicial, el resultado de aplicar la compuerta de controlled not seguido de trazar al segundo sistema sería
+  \rho(t=1)=\rho(0)+\pauli{3}\rho(0)\pauli{3}
+\end{equation*},
+que reconocemos como un canal de despolarización total. Este resultado viene del hecho que, en el caso $p=1$, el estado de máxima entropía es simplemente $\rho\otimes\frac{1}{2}$. De manera similar, en el caso $p=0$, la dinámica efectiva es
 \begin{equation*}
-  \rho(t=1)=
+  \rho(t=1)=\rho(0)+\pauli{1}\rho(0)\pauli{1}
 \end{equation*}
+que no es más que un canal de \textit{bit flip} (que equivale a un canal de despolarización total si se trabaja en la base de los eigenestados de $\pauli{1}$). Sabiendo esto, es posible reacomodar la expresión de la dinámica efectiva para recuperar la transición entre estos casos extremos:
+\begin{align*}
+  \rho(t=1)=&\frac{1}{2}\rho(0)\\
+  &+\frac{(1-p)}{2}\qty[\expval{\pauli{1}}_{\rho_{B}}\rho_{A}+(1-\expval{\pauli{1}}_{\rho_{B}})\pauli{3}\rho_{A}\pauli{3}]\\
+  &+\frac{p}{2}\qty[\expval{\pauli{3}}_{\rho_{A}}\rho_{B}+(1-\expval{\pauli{3}}_{\rho_{A}})\pauli{1}\rho_{B}\pauli{1}].
+\end{align*}
+
+De esta forma, el efecto de la dinámica efectiva es una combinación de dos canales no lineales: un canal de despolarización total en el que los coeficientes probabilísticos dependen del estado inicial, y un canal de \textit{bit flip} total con la misma caracterísitca. 
+
+
+
+
+
 En términos del vector de Bloch, que es una forma rápida de obtener el cambio de los observables y de la esfera, la dinámica se ve como
 \begin{equation*}
     \vec{r}_{\rho}=(pr_{A}+(1-p)r_{B})\hat{r}_{\rho}\mapsto\begin{pmatrix}
@@ -245,6 +258,4 @@ En términos del vector de Bloch, que es una forma rápida de obtener el cambio 
         r_{A}(p\hat{r}_{\rho,3}+(1-p)r_{A}(\hat{r}_{\rho,3})^{2})
     \end{pmatrix}.
   \end{equation*}
-  De momento tengo que ver esto en términos de matrices. El controlled not es una aplicación consecutiva de 3 unitarias, así que no debería ser demasiado complicado obtener la transformación de forma más elegante.
-
 \subsubsection{CNOT efectivo a un tiempo arbitrario}
