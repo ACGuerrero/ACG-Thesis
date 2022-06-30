@@ -389,7 +389,7 @@ rvec=r*runi;
 lag=l[r,sp,low=0.,up=6.,ste=0.002];
 ra=Tanh[lag*sp]*runi;
 rb=Tanh[lag*(1-sp)]*runi;
-transformation2[r_]:=With[{
+transformationCNOTC[r_]:=With[{
 	runi=Normalize[r],
 	ra=Tanh[lag*sp],
 	rb=Tanh[lag*(1-sp)]},
@@ -397,9 +397,19 @@ transformation2[r_]:=With[{
 	rb*ra*(sp*runi[[1]]*runi[[2]]+(1-sp)*runi[[2]]*runi[[3]]),
 	ra*(sp*runi[[3]]+(1-sp)*rb*runi[[3]]^2)}
 	];
-	Export["../figures/CNOT/"<>"sphere_CNOT_t=1.0"<>"_z="<>ToString[r]<>"_p="<>ToString[i*100]<>".png",FunctionSphereMesh2[r,transformation2,0.5]],
+	Export["../figures/CNOT/"<>"sphere_CNOT_t=1.0"<>"_z="<>ToString[r]<>"_p="<>ToString[i*100]<>".png",FunctionSphereMesh2[r,transformationCNOTC,0.5]],
 {i,0.0,1.0,0.01}
 ]
+
+
+transformationCNOT[r_]:=With[{
+	runi=Normalize[r],
+	ra=Tanh[lag*sp],
+	rb=Tanh[lag*(1-sp)]},
+	r*(Cos[freq*tim]^4+Sin[freq*tim]^4)
+	+2*sp*Sin[freq*tim]*Cos[freq*tim]*ra*(Sin[freq*tim]*Cos[freq*tim]*(rb*runi[[1]]*runi+(1-rb*runi[[1]])*{-runi[[1]],-runi[[2]],runi[[3]]})-(Cos[freq*tim]^2-Sin[freq*tim]^2)*(1+rb*runi[[1]])*{-runi[[2]],runi[[1]],0})
+	+2*(1-sp)*Sin[freq*tim]*Cos[freq*tim]*rb*(Sin[freq*tim]*Cos[freq*tim]*(ra*runi[[3]]*runi+(1-ra*runi[[3]])*{runi[[1]],-runi[[2]],-runi[[3]]})-(Cos[freq*tim]^2-Sin[freq*tim]^2)*(1+ra*runi[[3]])*{0,-runi[[1]],runi[[2]]})
+	];
 
 
 FunctionSphereMesh2[r_,function_,opa_:1.]:=Show[
@@ -412,9 +422,6 @@ FunctionSphereMesh2[r_,function_,opa_:1.]:=Show[
 			PlotLegends->Placed[Style["p="<>ToString[sp],16],{0.65,0.9}]],
 	ParametricPlot3D[function[{r*Cos[t],r*Sin[t],0}],{t,0,2*Pi},PlotStyle->Red],
 	ListPointPlot3D[(Map[function[#]&,{{0,0,r},{0,0,-r}}]),PlotStyle->{Red,PointSize[0.03]}]]
-
-
-FunctionSphereMesh2[r,transformation2,0.5]
 
 
 set=Table[Import["../figures/CNOT/"<>"sphere_CNOT_t=1.0"<>"_z="<>ToString[r]<>"_p="<>ToString[i*100]<>".png"],{i,0.0,1.0,0.02}];
@@ -432,20 +439,54 @@ PNGSetToGif[set]
 ToString[0.02*100]
 
 
-r=0.8;
-sp=0.6;
-runi=Normalize[{-1,1,1}];
+r=0.9;
+sp=0.1;
+runi=Normalize[{1,0.01,0.01}];
 rvec=r*runi;
-transformation2[r_]:=With[{
+lag=l[r,sp,low=0.,up=6.,ste=0.002];
+ra=Tanh[lag*sp]*runi;
+rb=Tanh[lag*(1-sp)]*runi;
+freq=Pi/4;
+tim=0.0;
+transformationBitFli[r_]:=With[{
 	runi=Normalize[r]},
 	{runi[[1]],
 	(1-2*sp)*runi[[2]],
 	(1-2*sp)*runi[[3]]}
 	];
-Export["../figures/"<>"sphere_BitF_t=1.0"<>"_z="<>ToString[r]<>"_p="<>ToString[sp]<>".png",FunctionSphereMesh[r,transformation2,0.5]]
+transformationCNOT[r_]:=With[{
+	runi=Normalize[r],
+	ra=Tanh[lag*sp],
+	rb=Tanh[lag*(1-sp)]},
+	r*(Cos[freq*tim]^4+Sin[freq*tim]^4)
+	+2*sp*Sin[freq*tim]*Cos[freq*tim]*ra*(Sin[freq*tim]*Cos[freq*tim]*(rb*runi[[1]]*runi+(1-rb*runi[[1]])*{-runi[[1]],-runi[[2]],runi[[3]]})-(Cos[freq*tim]^2-Sin[freq*tim]^2)*(1+rb*runi[[1]])*{-runi[[2]],runi[[1]],0})
+	+2*(1-sp)*Sin[freq*tim]*Cos[freq*tim]*rb*(Sin[freq*tim]*Cos[freq*tim]*(ra*runi[[3]]*runi+(1-ra*runi[[3]])*{runi[[1]],-runi[[2]],-runi[[3]]})-(Cos[freq*tim]^2-Sin[freq*tim]^2)*(1+ra*runi[[3]])*{0,-runi[[1]],runi[[2]]})
+	];
+Export["../../figures/CNOT/"<>"sphere_CNOT_t="<>ToString[tim]<>"_r="<>ToString[r]<>"_p="<>ToString[sp]<>".png",FunctionSphereMesh[r,transformationCNOT,0.5]]
 
 
+l[r_,p_,lo_,up_,st_]:=First@LagrangeMultFromZCoord[
+	RzLambdaTable[p,lo,up,st],
+	r];
+r=0.9;
+sp=0.5;
+runi=Normalize[{-1,1,1}];
+rvec=r*runi;
+lag=l[r,sp,low=0.,up=6.,ste=0.002];
+ra=Tanh[lag*sp]*runi;
+rb=Tanh[lag*(1-sp)]*runi;
+transformationCNOTC[r_]:=With[{
+	runi=Normalize[r],
+	ra=Tanh[lag*sp],
+	rb=Tanh[lag*(1-sp)]},
+	{rb*(sp*ra*runi[[1]]^2+(1-sp)*runi[[1]]),
+	rb*ra*(sp*runi[[1]]*runi[[2]]+(1-sp)*runi[[2]]*runi[[3]]),
+	ra*(sp*runi[[3]]+(1-sp)*rb*runi[[3]]^2)}
+	];
+Export["../../figures/CNOT/"<>"sphere_CNOT_t=1.0"<>"_z="<>ToString[r]<>"_p="<>ToString[sp]<>".png",FunctionSphereMesh2[r,transformationCNOTC,0.5]];
 
+
+Norm[transformationCNOT[runi]]
 
 
 Clear[unitary]

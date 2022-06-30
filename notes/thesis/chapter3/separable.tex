@@ -1,10 +1,10 @@
-\section{Dinámicas separables}
+\section{Dinámicas factorizables}
 
 En la sección \ref{sec:Ch1PartialTrace} se habló de estados separables como aquellos estados que, descritos por un operador de densidad $\rho\in\densityspace{n}$, tienen la forma
 \begin{equation*}
     \rho=\rho_{A}\otimes\rho_{B},
 \end{equation*}
-donde $\rho_{A}\in\densityspace{m}$, $\rho_{B}\in\densityspace{l}$ y $l+m=n$. Siguiendo esta línea de pensamiento, con \textit{dinámicas separables} nos referimos a dinámicas unitarias generadas por hamiltonianos que no contienen un término de interacción (esto es , hamiltonianos de la forma $\mcH=H_{1}\otimes\Id+\Id\otimes H_{2}$), y que por lo mismo son descritas por operadores $\mcU\in\unitaryspace{n}$ que pueden reescribirse como
+donde $\rho_{A}\in\densityspace{m}$, $\rho_{B}\in\densityspace{l}$ y $l+m=n$. Siguiendo esta línea de pensamiento, con \textit{dinámicas factorizables} nos referimos a dinámicas unitarias generadas por hamiltonianos que no contienen un término de interacción (esto es , hamiltonianos de la forma $\mcH=H_{1}\otimes\Id+\Id\otimes H_{2}$), y que por lo mismo son descritas por operadores $\mcU\in\unitaryspace{n}$ que pueden reescribirse como
 \begin{equation*}
     \mcU=U_{A}\otimes U_{B}.
 \end{equation*}
@@ -65,7 +65,7 @@ Esta expresión parece no dar demasiada información: es simplemente la combinac
 \end{equation*}
 El resultado es una rotación alrededor de una línea que no pasa por el origen. Una rotación de esta naturaleza puede descomponerse en una rotación a través de un eje que pasa por el origen $R$ y una traslación $T$ como $T^{-1}\circ R\circ T$. Notar que una transformación así no tendría por qué mantener a los estados dentro de la esfera de Bloch, por lo que esta debe depender del estado mismo. En efecto, la traslación tiene una magnitud $(1-p)r_{B}$ (a notar que la traslación es pequeña, y corresponde al término de ruido) en la dirección opuesta a la del estado (depende del estado tanto en magnitud como en dirección). Así que, aunque esto podría parecer una transformación afín, no lo es, pues depende enteramente del estado. Como tal, la evolución efectiva no es lineal, y no tiene expresión en términos de operadores de Kraus. La figura \ref{fig:FaseChangeSequence} muestra el efecto que una dinámica de este estilo tiene sobre la esfera de Bloch (en particular, el caso $U=e^{it\pi \pauli{3}}$). La contracción a lo largo del eje $z$ es un resultado del alto valor de $(1-p)$ (0.4), y no sería visible si $p\rightarrow 1$.
 
-\begin{figure}[h!]
+\begin{figure}[ht!]
     \centering
     \begin{subfigure}{0.32\textwidth}
       \centering
@@ -134,7 +134,7 @@ En el caso en que no hubiera error, uno esperaría que el valor esperado de $\pa
 \begin{equation*}
     \expval{\pauli{3}(t)}=r+(1-p)r_{B}(\cos(2\omega t)-1).
 \end{equation*}
-\begin{figure}[h!]
+\begin{figure}[ht!]
     \centering
     \begin{subfigure}{0.5\textwidth}
       \centering
@@ -149,9 +149,9 @@ En el caso en que no hubiera error, uno esperaría que el valor esperado de $\pa
     \caption{Oscilaciones cercanas al valor esperado, para cuando $r=r_{z}=0.8$, $p=0.9$ y $\omega=15$. }\label{fig:EvolutionOscilations}
 \end{figure}
 
-Este resultado puede observarse en la figura \ref{fig:EvolutionOscilations}, donde se observa que la evolución efectiva se ve como oscilaciones alrededor de un punto cercano al estado del primer subsistema, $\rho_{A}$. Aunque en este caso, el primer subsistema no experimenta cambios, pues es invariante bajo la unitaria $U_{1}$, estas oscilaciones son visibles en casos más generales, como puede observarse en la figura \ref{}.
+Este resultado puede observarse en la figura \ref{fig:EvolutionOscilations}, donde se observa que la evolución efectiva se ve como oscilaciones alrededor de un punto cercano al estado del primer subsistema, $\rho_{A}$. Aunque en este caso, el primer subsistema no experimenta cambios, pues es invariante bajo la unitaria $U_{1}$, estas oscilaciones son visibles en casos más generales, como puede observarse en la figura \ref{fig:GeneralOscilations1}.
 
-\begin{figure}[h!]
+\begin{figure}[ht!]
     \centering
     \includegraphics[width=0.6\linewidth]{chapter3/figures_separable/U1xU2_H1=(sz)_H2=15(sx-sy)_z=0.8_p=0.9_wXY=0.5.png}
     \caption{Oscilaciones cercanas al valor esperado. En este caso, el estado inicial no se halla alineado en $z$, por lo que $U_{1}$ lo rota alrededor de dicho eje. Aquí, $r=0.8$ $p=0.9$ y $\omega=15$. }

@@ -28,16 +28,11 @@ La compuerta puede representarse como una matriz de permutación
         0&0&0&1
     \end{pmatrix}.
 \end{equation*}
-Descrito de esta manera, el operador SWAP es un operador de evolución \textit{discreto}. Esto es, lleva un estado $\varrho$ a otro $\varrho'$ sin considerar ninguna dependencia temporal ni ningún estado intermedio. Sin embargo, como esta evolución es unitaria, puede generalizarse a cualquier tiempo de acuerdo con la ecuación (\ref{eq:UnitaryTimeDependence}). Para extenderlo, utilizamos la acción de $S$ sobre la base de $\pauli{3}\otimes\pauli{3}$ y reconocemos que el operador deja invariantes (hasta un factor) a los estados $\ket{00}$, $\ket{11}$, $\ket{+_{2}}=\frac{\ket{01}+\ket{10}}{\sqrt{2}}$ y $\ket{-_{2}}=\frac{\ket{01}-\ket{10}}{\sqrt{2}}$. Dados estos eigenestados (y eigenvalores), la descomposición espectral del operador es
+Descrito de esta manera, el operador SWAP es un operador de evolución \textit{discreto}. Esto es, lleva un estado $\varrho$ a otro $\varrho'$ sin considerar ninguna dependencia temporal ni ningún estado intermedio. Sin embargo, como esta evolución es unitaria, puede generalizarse a cualquier tiempo, dado el hamiltoniano adecuado. Consideramos entonces
 \begin{equation*}
-S=P(\dyad{00}+\dyad{11}+\dyad{+_{2}}-\dyad{-_{2}})P^{\dag}.
+  H_{S}=\omega\sum_{i=1}^{3}\pauli{i}\otimes\pauli{i}
 \end{equation*}
-donde $P$ es la matriz formada por los eigenestados del operador, y cumple que $P^{\dag}P=\Id$. Potenciando se halla que
-\begin{align*}
-S^{t}&=P(\dyad{00}+\dyad{11}+\dyad{+_{2}}+(-)^{t}\dyad{-_{2}})P^{\dag}\\
-&=P(\dyad{00}+\dyad{11}+\dyad{+_{2}}+e^{i \pi t}\dyad{-_{2}})P^{\dag}.
-\end{align*}
-La forma matricial del operador \textsc{SWAP} a un tiempo $t$ es
+que, tomando $\omega=\frac{\pi}{4}$ genera una compuerta SWAP al tiempo $t=1$. Dado este Hamiltoniano, la forma matricial del operador \textsc{SWAP} a un tiempo $t$ es
 \begin{equation}\label{eq:SWAP(t)}
 S^{t}=\begin{pmatrix}
  1 & 0 & 0 & 0 \\
@@ -104,6 +99,7 @@ en la que $\vec{c}=0$, y $M=OS$ con $O=\Id$ y $S=\kappa_{1}(\vec{r})\Id$, de tal
 nos daríamos cuenta que la transformación no es afín, y por esto, el proceso no puede ser descrito a través del formalismo de las operaciones cuánticas (no tiene representación en operadores de Kraus) \cite{Chuang}.
 
 \subsubsection{Evolución continua}
+
 Utilizando la forma dependiente del tiempo del operador $S$ dada por la ecuación (\ref{eq:SWAP(t)}), puede seguirse el mismo proceso para hallar una expresión del estado efectivo evolucionado como función del tiempo y en términos de los operadores de Lagrange:
 \begin{align}
   \begin{split}
@@ -123,7 +119,7 @@ Nuevamente, el factor de compresión (y por consiguiente, toda la evolución) de
   \boxed{\Gamma_{t}[\rho]=\kappa_{t}^{\rho}\rho+(1-\kappa_{t}^{\rho})\frac{1}{2}\Id}
 \end{equation}
 
-\begin{figure}[h!]
+\begin{figure}[ht!]
   \centering
   \begin{subfigure}{0.32\textwidth}
     \centering
@@ -151,7 +147,7 @@ De las ecuaciones (\ref{eq:SWAPFactort}) y (\ref{eq:EffectiveSWAPt}) es posible 
   \item Se cumplen las observaciones hechas para el caso discreto: la esfera colapsa al origen si $p=1$ o $p=0$, y los puntos se mantienen fijos si $p=\frac{1}{2}$.
 \end{itemize}
 
-\begin{figure}[h!]
+\begin{figure}[ht!]
   \centering
   \includegraphics[width=0.6\linewidth]{chapter3/figures_toy/ContractionFactorSWAP_z=0.8_t=0_to_t=2.png}
   \caption{Factor de compresión $\kappa_{t}$ como función de $t$, para diferentes valores de $p$ y $r_{\rho(0)}=0.8$.}
@@ -187,56 +183,55 @@ En la base de los eigenestados de $\pauli{3}\otimes\pauli{3}$, la compuerta pued
         0&0&1&0
     \end{pmatrix}.
 \end{equation*}
-Claro está, esta matriz corresponde a la evolución discreta. Para hallar la extensión a cualquier tiempo $t$, notamos que los eigenestados de este operador son $\ket{01}$, $\ket{00}$, $\ket{+}_{\cnot}$ y $\ket{-}_{\cnot}$ donde se definen
-\begin{align*}
-  \ket{+}_{\cnot}=\frac{\ket{10}+\ket{11}}{\sqrt{2}} & & \text{y} & & \ket{-}_{\cnot}=\frac{\ket{10}-\ket{11}}{\sqrt{2}}.
-\end{align*}
-Con esto es posible escribir la descomposición espectral del operador, y luego potenciarla 
-\begin{align*}
-\cnot=&P(\dyad{00}+\dyad{01}+\dyad{+}_{\cnot}-\dyad{-}_{\cnot})P^{\dag}\\
-\Rightarrow \cnot^{t}=&P(\dyad{00}+\dyad{11}+\dyad{+}_{\cnot}+e^{i \pi t}\dyad{-}_{\cnot})P^{\dag}.
-\end{align*}
-La forma matricial del operador controlled not a un tiempo $t$ es análoga a la del operador SWAP:
-\begin{equation}\label{eq:CNOT(t)}
-\cnot^{t}=\begin{pmatrix}
-  1 & 0 & 0 & 0 \\
-  0 & 1 & 0 & 0 \\
-  0 & 0 & e^{i\frac{t\pi}{2}}\cos{\frac{t\pi}{2}} & -ie^{i\frac{t\pi}{2}}\sin{\frac{t\pi}{2}}\\
-  0 & 0 & -ie^{i\frac{t\pi}{2}}\sin{\frac{t\pi}{2}} & e^{i\frac{t\pi}{2}}\cos{\frac{t\pi}{2}}
- \end{pmatrix}
-\end{equation}
-
-El operador \textsc{CNOT} puede expandirse de la siguiente manera:
+Claro está, esta matriz corresponde a la evolución discreta. Considérese el Hamiltoniano
 \begin{equation*}
-        \cnot=\frac{1}{2}(\Id+\pauli{3}\otimes\Id+\Id\otimes\pauli{1}-\pauli{3}\otimes\pauli{1}),
+  H_{\cnot}=\omega(\pauli{3}\otimes\Id+\Id\otimes\pauli{1}+\pauli{3}\otimes\pauli{1}),
 \end{equation*}
-que es claramente generado por el hamiltoniano
-\begin{equation*}
-    H_{\cnot}=\frac{\pi}{4}\qty(\pauli{3}\otimes\Id+\Id\otimes\pauli{1}-\pauli{3}\otimes\pauli{1}),
-\end{equation*}
-que por ser una suma de operadores que conmutan entre sí, nos permite ver al controlled not como una aplicación consecutiva de tres unitarias diferentes
-\begin{align*}
-    \cnot&=e^{-i\frac{\pi}{4}\Id}e^{i\frac{\pi}{4}\pauli{3}\otimes\Id}e^{i\frac{\pi}{4}\Id\otimes\pauli{1}}e^{-i\frac{\pi}{4}\pauli{3}\otimes\pauli{1}}\\
-    &=e^{-i\frac{\pi}{4}} (e^{i\frac{\pi}{4}\pauli{3}}\otimes \Id) (\Id \otimes e^{i\frac{\pi}{4}\pauli{1}}) e^{-i\frac{\pi}{4}\pauli{3}\otimes\pauli{1}}.
-\end{align*}
-De momento no le vi como sacarle jugo a esto, pero será útil para la extensión a tiempo arbitrario.
+que genera la compuerta CNOT al tiempo $t=1$ cuando $\omega=\frac{\pi}{4}$. Nótese que, por estar conformado por tres operadores que conmutan entre sí, la compuerta puede escribirse como lo acción consecutiva de tres operadores unitarios que conmutan entre sí:
 
+\begin{equation*}
+  \cnot=(e^{i\omega\pauli{3}}\otimes \Id) (\Id \otimes e^{i\omega\pauli{1}}) e^{-i\omega\pauli{3}\otimes\pauli{1}}.
+\end{equation*}
 
 \subsubsection{CNOT completo efectivo}
 
-Para estudiar la dinámica efectiva del operador $\cnot$ son particularmente útiles las expresiones (\ref{eq:rhoArhoB}). Como el estado de máxima entropía compatible con la aplicación de grano grueso puede escribirse como $\varrho_{\max}=\rho_{A}\otimes\rho_{B}$, entonces hallar el estado efectivo final es un problema de álgebra, en efecto,
+Para estudiar la dinámica efectiva del operador $\cnot$ son particularmente útiles las expresiones (\ref{eq:rhoArhoB}). Como el estado de máxima entropía compatible con la aplicación de grano grueso puede escribirse como $\varrho_{\max}=\rho_{A}\otimes\rho_{B}$, entonces hallar el estado efectivo final es un problema de álgebra. En efecto,
 \begin{align*}
-    \rho(t=1)=\frac{1}{2}[&p(\rho(0)+\sigma_{3}\rho_{A}\sigma_{3}+\Tr{\sigma_{1}\rho_{B}}[\rho_{A}-\sigma_{3}\rho_{A}\sigma_{3}])\\
-    &+(1-p)(\rho(0)+\sigma_{1}\rho_{B}\sigma_{1}+\Tr{\sigma_{3}\rho_{A}}[\rho_{B}-\sigma_{1}\rho_{B}\sigma_{1}])].
+    \Gamma_{t=1}(\rho)=&\frac{p}{2}(\rho+\sigma_{3}\rho_{A}\sigma_{3}+\Tr{\sigma_{1}\rho_{B}}[\rho_{A}-\sigma_{3}\rho_{A}\sigma_{3}])\\
+    &+\frac{(1-p)}{2}(\rho+\sigma_{1}\rho_{B}\sigma_{1}+\Tr{\sigma_{3}\rho_{A}}[\rho_{B}-\sigma_{1}\rho_{B}\sigma_{1}]).
 \end{align*}
 La estructura del estado final es una consecuencia directa de la aplicación borrosa. Para entender el significado de cada uno de los términos, considérense dos casos extremos: primero, el caso en que el aparato de medición no tiene un error asociado ($p=1$). En dicho caso, a través del principio de máxima entropía, se esperaría que el estado efectivo final fuera
 \begin{equation*}
-  \rho(t=1)=\rho(0)+\pauli{3}\rho(0)\pauli{3}
+  \Gamma_{t=1}(\rho)=\frac{1}{2}\qty(\rho+\pauli{3}\rho\pauli{3})
 \end{equation*},
-que reconocemos como un canal de despolarización total. Este resultado viene del hecho que, en el caso $p=1$, el estado de máxima entropía es simplemente $\rho\otimes\frac{1}{2}$. De manera similar, en el caso $p=0$, la dinámica efectiva es
+\begin{figure}[ht!]
+  \centering
+  \begin{subfigure}{0.5\textwidth}
+    \centering
+    \includegraphics[width=0.6\linewidth]{chapter3/figures_toy/sphere_swapcontraction_t=0.0_z=0.9_p=0.9.png}
+  \end{subfigure}%
+  \begin{subfigure}{0.5\textwidth}
+    \centering
+    \includegraphics[width=0.6\linewidth]{chapter3/figures_toy/sphere_PF_t=1.0_z=0.8_p=0.6.png}
+  \end{subfigure}
+  \caption{Efecto de un canal de desfasamiento sobre la esfera de Bloch.}\label{fig:PhaseFlip}
+\end{figure}
+que reconocemos como un canal de desfasamiento total. Este resultado viene del hecho que, en el caso $p=1$, el estado de máxima entropía es simplemente $\rho\otimes\frac{1}{2}$. De manera similar, en el caso $p=0$, la dinámica efectiva es
 \begin{equation*}
-  \rho(t=1)=\rho(0)+\pauli{1}\rho(0)\pauli{1}
+  \Gamma_{t=1}(\rho)=\frac{1}{2}\qty(\rho+\pauli{1}\rho\pauli{1})
 \end{equation*}
+\begin{figure}[ht!]
+  \centering
+  \begin{subfigure}{0.5\textwidth}
+    \centering
+    \includegraphics[width=0.6\linewidth]{chapter3/figures_toy/sphere_swapcontraction_t=0.0_z=0.9_p=0.9.png}
+  \end{subfigure}%
+  \begin{subfigure}{0.5\textwidth}
+    \centering
+    \includegraphics[width=0.6\linewidth]{chapter3/figures_toy/sphere_BitF_t=1.0_z=0.8_p=0.6.png}
+  \end{subfigure}
+  \caption{Efecto del canal de \textit{bit flip} sobre la esfera de Bloch.}\label{fig:BitFlip}
+\end{figure}
 que no es más que un canal de \textit{bit flip} (que equivale a un canal de despolarización total si se trabaja en la base de los eigenestados de $\pauli{1}$). Sabiendo esto, es posible reacomodar la expresión de la dinámica efectiva para recuperar la transición entre estos casos extremos:
 \begin{align*}
   \rho(t=1)=&\frac{1}{2}\rho(0)\\
@@ -244,20 +239,7 @@ que no es más que un canal de \textit{bit flip} (que equivale a un canal de des
   &+\frac{p}{2}\qty[\expval{\pauli{3}}_{\rho_{A}}\rho_{B}+(1-\expval{\pauli{3}}_{\rho_{A}})\pauli{1}\rho_{B}\pauli{1}].
 \end{align*}
 
-De esta forma, el efecto de la dinámica efectiva es una combinación de dos canales no lineales: un canal de despolarización total en el que los coeficientes probabilísticos dependen del estado inicial, y un canal de \textit{bit flip} total con la misma caracterísitca. 
-
-
-
-
-
-En términos del vector de Bloch, que es una forma rápida de obtener el cambio de los observables y de la esfera, la dinámica se ve como
-\begin{equation*}
-    \vec{r}_{\rho}=(pr_{A}+(1-p)r_{B})\hat{r}_{\rho}\mapsto\begin{pmatrix}
-        r_{B}(pr_{A}(\hat{r}_{\rho,1})^2+(1-p)\hat{r}_{\rho,1})\\
-        r_{B}r_{A}(p\hat{r}_{\rho,1}\hat{r}_{\rho,2}+(1-p)\hat{r}_{\rho,2}\hat{r}_{\rho,3})\\
-        r_{A}(p\hat{r}_{\rho,3}+(1-p)r_{A}(\hat{r}_{\rho,3})^{2})
-    \end{pmatrix}.
-  \end{equation*}
+De esta forma, el efecto de la dinámica efectiva es una combinación de dos canales no lineales: un canal de despolarización total en el que los coeficientes probabilísticos dependen del estado inicial, y un canal de \textit{bit flip} total con la misma característica. 
 
 \subsubsection{CNOT efectivo a un tiempo arbitrario}
 
@@ -271,3 +253,66 @@ Si se utiliza el mismo Hamiltoniano y se propaga al estado de máxima entropía 
   &+(1-p)\{2\sin^{2}(\omega t)\cos^{2}(\omega t)\qty[\expval{\pauli{3}}_{A}\rho_{B}+(1-\expval{\pauli{3}}_{A})\pauli{1}\rho_{B}\pauli{1}]\\
   &\ \ \ \ \ \ \ \ \ \ \ \ \ +i\sin(\omega t)\cos(\omega t)(\cos^{2}(\omega t)-\sin^{2}(\omega t))(1+\expval{\pauli{3}}_{A})[\pauli{1},\rho_{B}]\}
 \end{align*} 
+
+\begin{figure}[ht!]
+  \centering
+  \begin{subfigure}{0.32\textwidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{chapter3/figures_toy/sphere_CNOT_t=0._r=0.9_p=0.1.png}
+    \caption{$t=0$}
+  \end{subfigure}%
+  \begin{subfigure}{0.32\textwidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{chapter3/figures_toy/sphere_CNOT_t=0.5_r=0.9_p=0.1.png}
+    \caption{$t=0.5$}
+  \end{subfigure}
+  \begin{subfigure}{0.32\textwidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{chapter3/figures_toy/sphere_CNOT_t=1._r=0.9_p=0.1.png}
+    \caption{$t=1$}
+  \end{subfigure}
+  \caption{Efecto de la evolución subyacente si $r_{z}=0.9$, $p=0.1$. Nótese que a tiempo $t=1$ se recupera el \textit{casi} canal de \textit{bit flip}}
+  \label{fig:AlmostBitFlipSequence}
+  \end{figure}
+
+  \begin{figure}[ht!]
+    \centering
+    \begin{subfigure}{0.32\textwidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_toy/sphere_CNOT_t=0._r=0.9_p=0.1.png}
+      \caption{$t=0$}
+    \end{subfigure}%
+    \begin{subfigure}{0.32\textwidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_toy/sphere_CNOT_t=0.5_r=0.9_p=0.9.png}
+      \caption{$t=0.5$}
+    \end{subfigure}
+    \begin{subfigure}{0.32\textwidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_toy/sphere_CNOT_t=1._r=0.9_p=0.9.png}
+      \caption{$t=1$}
+    \end{subfigure}
+    \caption{Efecto de la evolución subyacente si $r_{z}=0.9$, $p=0.9$. Nótese que a tiempo $t=1$ se recupera el \textit{casi} canal de desfasamiento.}
+    \label{fig:AlmostPhaseFlipSequence}
+    \end{figure}
+
+    \begin{figure}[ht!]
+      \centering
+      \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{chapter3/figures_toy/sphere_CNOT_t=0._r=0.9_p=0.1.png}
+        \caption{$t=0$}
+      \end{subfigure}%
+      \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{chapter3/figures_toy/sphere_CNOT_t=0.5_r=0.9_p=0.5.png}
+        \caption{$t=0.5$}
+      \end{subfigure}
+      \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{chapter3/figures_toy/sphere_CNOT_t=1._r=0.9_p=0.5.png}
+        \caption{$t=1$}
+      \end{subfigure}
+      \caption{Efecto de la evolución subyacente si $r_{z}=0.9$, $p=0.5$. La deformación (y rompimiento) de la esfera de Bloch es consecuencia de la combinación de dos canales no lineales.}
+      \label{fig:CNOTSequence}
+      \end{figure}
