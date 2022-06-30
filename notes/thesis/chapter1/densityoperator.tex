@@ -2,11 +2,11 @@
 
 \subsection{Mezclas estadísticas}
 
-Los vectores de estado no pueden describir a todos los sistemas estudiables\ddnote{realizables} en el contexto de la mecánica cuántica. Por esto, y porque será particularmente útil para nuestro trabajo, introducimos el concepto del operador de densidad (también llamado, en el caso discreto, que es el que nos incumbe, matriz de densidad).
+Los vectores de estado no pueden describir a todos los sistemas estudiables\ddnote{realizables} \acnote{¿cuál era la diferencia entre realizable y estudiable?} en el contexto de la mecánica cuántica. Por esto, y porque será particularmente útil para nuestro trabajo, introducimos el concepto del operador de densidad (también llamado, en el caso discreto, que es el que nos incumbe, matriz de densidad).
 
 Supóngase que en lugar de estudiar un sistema que está completamente descrito por $\ket{\varphi}\in\hilbert_{n}$, con $\hilbert_{n}$ el espacio de Hilbert $\hilbert_{n}=\Complex^{n}$; se trabaja con uno que está en el estado $\ket{\varphi_{i}}$ con probabilidad $p_{i}$, donde $\{\ket{\varphi_{i}}\}$ es un conjunto no necesariamente ortogonal de estados de $n$ niveles $\ket{\varphi_{i}}\in\hilbert_{n}$, y $\{p_{i}\}$ es un conjunto de números reales no negativos tales que $\sum_{i}p_{i}=1$.
 
-De este sistema se dice que se halla en un estado de \textit{mezcla estadística}, y no debe confundirse con que el sistema se halle en una superposición de estados $\ket{\varphi_{i}}$ con coeficientes $\sqrt{p_{i}}$, ya que una superposición está bien caracterizada, y está completamente descrita por $\ket{\psi}=\sum_{i}\sqrt{p_{i}}\ket{\varphi_{i}}$, mientras que la mezcla no lo está: el elemento probabilístico está asociado a un grado de ignorancia sobre la preparación del sistema. La mezcla estadísitica, en este sentido, toma en cuenta no sólo la probabilidad intrínseca a cada estado cuántico, sino una probabilidad clásica, $p_{i}$. Consideremos ahora una observable descrita por un operador hermítico $A$, se sabe que el valor de expectación del observable, con respecto a un estado $\ket{\varphi_{i}}$, está dado por $\expval{A}=\bra{\varphi_{i}}A\ket{\varphi_{i}}$. El valor esperado de dicho observable con respecto a la mezcla estadística será, justamente, la combinación probabilística de los valores esperados respecto a los elementos de la mezcla:
+De este sistema se dice que se halla en un estado de \textit{mezcla estadística}, y no debe confundirse con que el sistema se halle en una superposición de estados $\ket{\varphi_{i}}$ con coeficientes $\sqrt{p_{i}}$, ya que una superposición está bien caracterizada, y está completamente descrita por $\ket{\psi}=\sum_{i}\sqrt{p_{i}}\ket{\varphi_{i}}$, mientras que la mezcla no lo está: el elemento probabilístico está asociado a un grado de ignorancia sobre la preparación del sistema. La mezcla estadística, en este sentido, toma en cuenta no sólo la probabilidad intrínseca a cada estado cuántico, sino una probabilidad clásica, $p_{i}$. Consideremos ahora un observable descrita por un operador hermítico $A$, se sabe que el valor de expectación del observable, con respecto a un estado $\ket{\varphi_{i}}$, está dado por $\expval{A}=\bra{\varphi_{i}}A\ket{\varphi_{i}}$. El valor esperado de dicho observable con respecto a la mezcla estadística será, justamente, la combinación probabilística de los valores esperados respecto a los elementos de la mezcla:
 \begin{equation*}
 \expval{A}=\sum_{i}p_{i}\bra{\varphi_{i}}A\ket{\varphi_{i}}.
 \end{equation*}
@@ -21,29 +21,28 @@ Esta es una suma sobre los elementos de la matriz del observador $A$ y las de la
 &=\sum_{k}\bra{e_{k}}\qty(\sum_{i}p_{i}\dyad{\varphi_{i}})A\ket{e_{k}}\\
 &=\Tr[\qty(\sum_{i}p_{i}\dyad{\varphi_{i}})A]\rlap{,}
 \end{align*}
-\ddnote{Esta derivación es correcta y está bien dejarla así. Solo te dejo un trucazo: la traza de un número es el mismo número (son isomorfos a las matrices de $1\times 1$), entonces $\bra{\phi}A\ket{\phi}=\tr (\bra{\phi}A\ket{\phi})=\tr (A \ket{\phi}\bra{\phi})$ (usando la propiedad cíclica de la traza)}
+\ddnote{Esta derivación es correcta y está bien dejarla así. Solo te dejo un trucazo: la traza de un número es el mismo número (son isomorfos a las matrices de $1\times 1$), entonces $\bra{\phi}A\ket{\phi}=\tr (\bra{\phi}A\ket{\phi})=\tr (A \ket{\phi}\bra{\phi})$ (usando la propiedad cíclica de la traza)} \acnote{Buenísimo}
 Con lo que la mezcla queda descrita por el operador de densidad $\rho$ definido según
 \begin{equation}\label{eq:DensOpMix}
 \rho=\sum_{i}p_{i}\dyad{\varphi_{i}}.
 \end{equation}
-y vemos que es posible hallar el valor esperado de un observable respecto a un sistema\ddnote{he visto varias veces que intercambias estado por sistema, ten cuidado, checa en todos lados donde usas sistema a ver si lo usas correctamente} a través del operador de densidad que lo describe mediante
+y vemos que es posible hallar el valor esperado de un observable respecto a un sistema\ddnote{he visto varias veces que intercambias estado por sistema, ten cuidado, checa en todos lados donde usas sistema a ver si lo usas correctamente} \acnote{pues entiendo que no son intercambiables: el sistema está en un estado, y el estado está descrito por el operador de densidad. Cuando se habla del valor esperado, ¿es el valor esperado de un observable respecto al sistema o respecto al estado?} a través del operador de densidad que lo describe mediante
 \begin{equation}\label{eq:ExpValFromDensOp}
 \expval{A}=\Tr(A\rho).
 \end{equation}
 
-El nombre ``operador de densidad'' puede resultar más claro comparando la ecuación (\ref{eq:ExpValFromDensOp}) con el valor esperado en estadística. Si $X$ es una variable aleatoria cuya función de densidad de probabilidad es $\rho(x)$, entonces el valor esperado de una función $A$ de los valores de $X$ es
+El nombre ``operador de densidad'' puede resultar más claro comparando la ecuación (\ref{eq:ExpValFromDensOp}) con el valor esperado en estadística. Si $X$ es una variable aleatoria discreta cuya función de densidad de probabilidad es $\rho(x)$, entonces el valor esperado de una función $A$ de los valores de $X$ es
 \begin{equation*}
-E[A(x)]=\int A(x) \rho(x) dx.
+E[A(X)]=\sum_{i} A(x_{i}) \rho(x_{i}).
 \end{equation*}
-\ddnote{Es mas directo y claro si mejor comparas el caso cuántico con el caso clásico discreto, pues el caso cuántico que usas es también discreto. Si quieres mencionar el continuo está bien, pero que sea secundario.}
-Si se asocia la operación traza (la suma sobre los elementos diagonales de la matriz $A$) con la integral (la suma continua sobre los valores de $A(x)$)\ddnote{esta explicación tiene problemas, es por eso que es mejor usar el caso discreto. Que es una suma continua? (usar heuristica no es malo, solo hay q decir q es heuristica o algún sinínimo, pero mejor usa el caso discreto)}, es posible ver que la matriz de densidad ocupa un rol similar al de la función de densidad.
+Reconociendo que la operación traza no es sino la suma sobre los elementos diagonales de la matriz, es posible ver que la matriz de densidad ocupa un rol similar al de la función de densidad. \acnote{Toda la razón, no sé por qué no pensé en el caso discreto}
 
 Ahora, es necesario ser capaz de distinguir si un operador cualquiera corresponde a un operador de la forma (\ref{eq:DensOpMix}). De esta definición destilan dos propiedades que permiten reconocer si un operador arbitrario es un operador de densidad válido, o no \cite{Holevo}:
 \begin{enumerate}
     \item $\Tr(\rho)=1$
     \item $\bra{\varphi}\rho\ket{\varphi}\geq 0$ $\forall$ $\ket{\varphi}\in\hilbert_{n}$
 \end{enumerate}
-La primera propiedad se deriva de la normalización de los estados $\ket{\varphi_{i}}$ que definen al sistema. \ddnote{Edité la siguiente línea:}{\blue La segunda establece que $\rho$ es una matriz positiva semidefinida y puede interpretarse [...]} La segunda, llamada la semidefinición positiva de $\rho$, puede interpretarse como la necesidad de que la probabilidad de que el sistema descrito por $\rho$ se halle en el estado $\dyad{\varphi}$ sea mayor o igual a $0$. Un operador es un operador de densidad si y solo si cumple con estas propiedades. Por esto, estos dos puntos funcionan como una definición alternativa al operador de densidad.
+La primera propiedad se deriva de la normalización de los estados $\ket{\varphi_{i}}$ que definen al sistema. La segunda establece que $\rho$ es una matriz positiva semidefinida y puede interpretarse como la necesidad de que la probabilidad de que el sistema descrito por $\rho$ se halle en el estado $\dyad{\varphi}$ sea mayor o igual a $0$. Un operador es un operador de densidad si y solo si cumple con estas propiedades. Por esto, estos dos puntos funcionan como una definición alternativa al operador de densidad.
 
 A partir de este momento se asume que todos los espacios de Hilbert con los que se trabaja son complejos y de dimension finita. Esto es, son todos del tipo $\hilbert_{n}=\Complex^{n}$. Al conjunto de operadores de densidad sobre un espacio de Hilbert $\hilbert_{n}$ particular se le denotará mediante $\mcS(\hilbert_{n})$. Además, al conjunto de operadores lineales hermitianos que actúan sobre el mismo espacio se le denotará $\mcL(\hilbert_{n})$. Como nos concentramos en espacios de dimension finita, los operadores tienen representación matricial. Los términos \textit{matriz de densidad} y \textit{operador de densidad} se consideran intercambiables. 
 
@@ -98,7 +97,7 @@ Vemos, pues, que hay una diferencia fundamental entre los sistemas que pueden se
 se cumple que $\rho=\dyad{\varphi_{i}}$ $\forall i$, entonces decimos que $\rho$ es un estado puro, y está completamente caracterizado por el vector de estado $\ket{\varphi}=\ket{\varphi_{i}}$. Así, los estados puros (aquellos que están descritos por un vector de estado, i.e. su operador de densidad es un proyector) son los puntos extremos del conjunto convexo de operadores de densidad. Estos estados cumplen que
 \begin{itemize}
     \item $\rho=\dyad{\psi}$ para algún vector de estado $\ket{\psi}$.
-    \item $\rho=\rho^{2}$\ddnote{cambié $n$ por $2$}.
+    \item $\rho=\rho^{2}$.
     \item $\Tr(\rho^{2})=1$.
 \end{itemize}
 Según esto, definimos a la pureza como una medida de qué tan puro es un estado y, dado $\rho\in\mcS(\hilbert_{n})$, se escibe como \cite{Jaeger}
@@ -110,41 +109,6 @@ De esta definición es posible afirmar que
     \item Un estado es puro si y sólo si $\text{Pu}(\rho)=1$.
     \item Para todo estado, $\frac{1}{n}\geq \text{Pu}(\rho)\geq 1$.
 \end{itemize}
-
-
-
-\subsection{Evolución y parametrización}
-
-\subsubsection{La evolución del operador de densidad}
-Los postulados de la mecánica cuántica pueden adaptarse al formalismo de operadores de densidad. En particular, reconociendo que la evolución de un sistema cuántico cerrado descrito por un vector de estado $\ket{\psi}$ dada por la ecuación de Schrodinger \cite{Breuer},
-\begin{equation*}
-    i\hbar\frac{d}{dt}\ket{\psi(t)}=H\ket{\psi(t)},
-\end{equation*}
-puede ser representada a través de un operador unitario $U(t,t_{0})$ según
-\begin{align*}
-    \ket{\psi(t)}=U(t,t_{0})\ket{\psi(t_{0})} && \text{con} && U(t,t_{0})=e^{-iH(t-t_{0})/\hbar}\rlap{,}
-\end{align*}
-es posible afirmar que dado un operador de densidad $\rho(t_{0})$, este evoluciona de acuerdo a
-\begin{equation*}
-    \rho(t)=U(t,t_{0})\rho(t_{0})U^{\dagger}(t,t_{0}).
-\end{equation*}
-Derivando respecto al tiempo, se obtiene la \textit{ecuación de von Neumann}, que corresponde a la ecuación de evolución para operadores de densidad,
-\begin{equation}\label{eq:vonNeumann}
-    i\hbar\frac{d}{d t} \rho(t)=[H,\rho(t)]
-\end{equation}
-
-\subsubsection{Parametrización del operador de densidad}
-Cualquier matriz de densidad puede descomponerse en términos de una base del espacio de matrices hermitianas de $n\times n$. Una elección común de base para el espacio es el de los generadores $\{\varsigma_{k}\}$ del grupo $\text{SU}(n)$, junto a la matriz identidad $\Id_{n}$. Aunque no está dentro del alcance de este trabajo estudiar las propiedades y caracterizaciones de lestos generadores, su utilizacion permite parametrizar a las matrices de densidad de forma vectorial \cite{Bruning}. En efecto, sea $\{\varsigma_{k}\}$ un conjunto de generadores de $\text{SU}(n)$ y $\rho$ una matriz de densidad $\rho\in\mcS(\hilbert_{n})$. Entonces $\rho$ está completamente descrita por el vector generalizado de Bloch de dimensión $2n^{2}-1$, $\vec{\gamma}$ definido según
-\begin{equation}
-    \rho=\frac{1}{n}\Id_{n}+\frac{1}{2}\vec{\gamma}\cdot\vec{\varsigma}.
-\end{equation}
-Si $n=2$, los generadores corresponden a las matrices de Pauli $\sigma_{i}$. En tal caso, el conjunto de vectores de Bloch corresponde a la bola unitaria tridimensional, con los estados puros en la superficie y las mezclas en el interior. Para casos en los que la dimensión es una potencia de $k$, es posible obtener nuevos generadores a través de los productos tensoriales de las matrices de Pauli consigo mismas y con la matriz identidad correspondiente. El caso $n=4$, por ejemplo \cite{Chuang}:
-\begin{equation}\label{eq::BlochParametrization4}
-    \rho=\frac{1}{4}\sum_{i,j}\gamma_{ij}\sigma_{i}\otimes \sigma_{j} \ \ i,j\in\{0,1,2,3\},
-\end{equation}
-donde $\sigma_{0}=\Id$ y $\gamma_{i.j}=\Tr(\sigma_{i}\otimes \sigma_{j}\rho)$.
-
-
 
 \subsection{Sistemas multipartitos}\label{sec:Ch1PartialTrace}
 
@@ -182,3 +146,45 @@ para toda base ortonormal $\{\ket{\varphi^{C}_{j}}\}$ de $\hilbert^{C}$. Entonce
     \Tr_{B}(\rho^{C})=\sum_{j}(\Id^{A}\otimes \bra{\varphi^{B}_{j}})\rho^{C}(\Id^{A}\otimes \ket{\varphi^{B}_{j}}).
 \end{equation*}
 Puede verse que el resultado de la operación es trazar sobre los elementos del sistema que no es de interés. La matriz reducida del sistema $A$, o traza parcial con respecto al sistema $B$, actúa como matriz de densidad de $A$, ya que contiene toda la descripción estadísitica de dicho subsistema.
+
+\subsection{Evolución y parametrización}
+
+\subsubsection{La evolución del operador de densidad}
+Los postulados de la mecánica cuántica pueden adaptarse al formalismo de operadores de densidad. En particular, reconociendo que la evolución de un sistema cuántico cerrado descrito por un vector de estado $\ket{\psi}$ dada por la ecuación de Schrodinger \cite{Breuer},
+\begin{equation*}
+    i\hbar\frac{d}{dt}\ket{\psi(t)}=H\ket{\psi(t)},
+\end{equation*}
+puede ser representada a través de un operador unitario $U(t,t_{0})$ según
+\begin{align*}
+    \ket{\psi(t)}=U(t,t_{0})\ket{\psi(t_{0})} && \text{con} && U(t,t_{0})=e^{-iH(t-t_{0})/\hbar}\rlap{,}
+\end{align*}
+es posible afirmar que dado un operador de densidad $\rho(t_{0})$, este evoluciona de acuerdo a
+\begin{equation*}
+    \rho(t)=U(t,t_{0})\rho(t_{0})U^{\dagger}(t,t_{0}).
+\end{equation*}
+Derivando respecto al tiempo, se obtiene la \textit{ecuación de Liouville-von Neumann}, que corresponde a la ecuación de evolución para operadores de densidad,
+\begin{equation}\label{eq:vonNeumann}
+    i\hbar\frac{d}{d t} \rho(t)=[H,\rho(t)]
+\end{equation}
+
+Si, por otro lado, se piensa que el sistema estudiado se halla acoplado a un entorno (de tal forma que el conjunto sea un sistema multipartito), y que el conjunto de estos dos conforma un sistema cerrado descrito por el operador de densidad $\rho$, entonces es posible afirmar que la evolución conjunta es de naturaleza unitaria. De acuerdo con nuestra discusión sobre sistemas multipartitos, el sistema y el entrono se ven desritos por operadores de densidad
+\begin{align*}
+    \rho_{S}=\Tr_{E}(\rho) & & \text{y} & & \rho_{E}=\Tr_{S}(\rho)
+\end{align*}
+respectivamente. Siendo $\rho_{S}$ el estado de interés, podemos trazar ambos lados de la ecuación de Liouville-von Neumann para hallar una ecuación de la dinámica del sistema,
+\begin{align*}
+    i\hbar\frac{d}{d t} \rho_{S}(t)=\Tr_{S}([H,\rho(t)])
+\end{align*}
+en donde el claro problema es que el lado derecho de la ecuación, que está en términos de el conjunto y no del sistema de interés. La dinámica del sistema $S$ no será, en general, unitaria, y las diferentes aproximaciones a la dinámica de sistemas abiertos, entre las que se hallan las ecuaciones maestras, quedan por fuera del alcance de este trabajo.
+
+
+\subsubsection{Parametrización del operador de densidad}
+Cualquier matriz de densidad puede descomponerse en términos de una base del espacio de matrices hermitianas de $n\times n$. Una elección común de base para el espacio es el de los generadores $\{\varsigma_{k}\}$ del grupo $\text{SU}(n)$, junto a la matriz identidad $\Id_{n}$. Esto es particularmente útil, pues permite parametrizar a las matrices de densidad de forma vectorial \cite{Bruning}. En efecto, sea $\{\varsigma_{k}\}$ un conjunto de generadores de $\text{SU}(n)$ y $\rho$ una matriz de densidad $\rho\in\mcS(\hilbert_{n})$. Entonces $\rho$ está completamente descrita por el vector generalizado de Bloch de dimensión $2n^{2}-1$, $\vec{\gamma}$ definido según
+\begin{equation}
+    \rho=\frac{1}{n}\Id_{n}+\frac{1}{2}\vec{\gamma}\cdot\vec{\varsigma}.
+\end{equation}
+Si $n=2$, los generadores corresponden a las matrices de Pauli $\sigma_{i}$. En tal caso, el conjunto de vectores de Bloch corresponde a la bola unitaria tridimensional, con los estados puros en la superficie y las mezclas en el interior. Para casos en los que la dimensión es una potencia de $k$, es posible obtener nuevos generadores a través de los productos tensoriales de las matrices de Pauli consigo mismas y con la matriz identidad correspondiente. El caso $n=4$, por ejemplo \cite{Chuang}:
+\begin{equation}\label{eq::BlochParametrization4}
+    \rho=\frac{1}{4}\sum_{i,j}\gamma_{ij}\sigma_{i}\otimes \sigma_{j} \ \ i,j\in\{0,1,2,3\},
+\end{equation}
+donde $\sigma_{0}=\Id$ y $\gamma_{i.j}=\Tr(\sigma_{i}\otimes \sigma_{j}\rho)$.

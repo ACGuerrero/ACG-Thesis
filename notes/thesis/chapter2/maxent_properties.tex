@@ -165,37 +165,6 @@ El estado que máximiza la entropía y satisface las restricciones anteriores es
     \varrho_{max}(\rho)=\frac{1}{Z}e^{-\sum_{i}\lambda_{i}\hat{G}_{i}}.
 \end{equation}
 Nuevamente, el argumento de la exponencial puede verse como una suma de $n$ operadores que conmuntan entre sí. Esto significa que el estado de máxima entropía es separable y tiene exactamente $n$ factores. Explícitamente,
-\begin{equation}
+\begin{equation}\label{eq:GeneralMaxEnt}
     \rho_{max}=\Motimes_{j=1}^{n}\frac{1}{Z_{j}}\text{exp}\qty(-p_{j}\sum_{i}\lambda_{i}\sigma_{i}).
 \end{equation}
-
-\subsubsection{De N qubits a M qubits}\label{subsec:ch2NM}
-\notaAd{
-La siguiente extensión corresponde al caso en que detectamos $M$ qubits en lugar de $N$, con $M<N$. Una diferencia inmediata al caso $M=1$ es que, por tener acceso a las correlaciones entre $M$ de las $N$ partículas, el estado que maximiza la entropía no es necesariamente separable.
-Primero, utilizamos la aplicación borrosa que permuta cada una de las primeras $M$ partículas con las otras $N-1$. Esta aplicación tiene la forma
-\begin{equation*}
-    \Fuzzy{\varrho}=p_{0}\varrho+\sum_{m=1}^{M}\sum_{n=m+1}^{N}p_{m,n}(S_{m,n})\varrho(S_{m,n})^{\dagger}.
-\end{equation*}
-Luego, la herramienta de medición detecta únicamente $M$ partículas, y denotamos esto como $\Tr_{\overline{M}}$. El modelo de grano grueso Es
-\begin{equation*}
-    \CG{\varrho}=\Tr_{\overline{M}}\qty(p_{0}\varrho+\sum_{m=1}^{M}\sum_{n=m+1}^{N}p_{m,n}(S_{m,n})\varrho(S_{m,n})^{\dagger})
-\end{equation*}
-
-Asumiendo que tenemos acceso a un conjunto tomográficamente completo de $m^{2}-1$ observables, $\{A_{i}\}$ con $A_{i}\in\mcL(\hilbert_{2}^{\otimes m})$, podemos hallar las restricciones del estado de máxima entropía compatible. Una posible elección de estos observables son los productos tensoriales de los operadores de Pauli,
-\begin{equation*}
-    A_{\vec{v}}=\pauli{v_{1}}\otimes\pauli{v_{2}}\otimes...\otimes\pauli{v_{m}}
-\end{equation*}
-donde las entradas $v_{i}$ del vector $\vec{v}$ toman valores 0, 1, 2, 3.
-Las restricciones a las que se verá sujeto el operador $\varrho_{\max}$ son
-\begin{equation*}
-    \expval{A_{\vec{v}}}=Tr(\pauli{v_{1}}\otimes\pauli{v_{2}}\otimes...\otimes\pauli{v_{n}}\rho)
-\end{equation*}
-Para traducir estas restricciones al espacio $\densityspace{2}^{\otimes N}$,
-\begin{align*}
-    &=\Tr[A_{\vec{v}}\mcC(\varrho)]\\
-    &=\Tr[A_{\vec{v}}\Tr_{\overline{M}}\qty(p_{0}\varrho+\sum_{m=1}^{M}\sum_{n=m+1}^{N}p_{m,n}(S_{m,n})\varrho(S_{m,n})^{\dagger})]\\
-    &=\Tr[A_{\vec{v}}\otimes\Id_{2^{n-m}}\qty(p_{0}\varrho+\sum_{m=1}^{M}\sum_{n=m+1}^{N}p_{m,n}(S_{m,n})\varrho(S_{m,n})^{\dagger})]\\
-    &=\Tr[\qty(p_{0}(A_{\vec{v}}\otimes\Id_{2^{n-m}})+\sum_{m=1}^{M}\sum_{n=m+1}^{N}p_{m,n}(S_{m,n})^{\dagger}(A_{\vec{v}}\otimes\Id_{2^{n-m}})(S_{m,n}))\varrho].
-\end{align*}
-}
-\acnote{Aquí me quedé, no sé si deba dejar esto. Además, y ahora que lo pienso, no sé bien ni qué se debe permutar con qué}
