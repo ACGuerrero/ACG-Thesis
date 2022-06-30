@@ -212,7 +212,7 @@ El operador \textsc{CNOT} puede expandirse de la siguiente manera:
 \end{equation*}
 que es claramente generado por el hamiltoniano
 \begin{equation*}
-    H_{\cnot}=\frac{\pi}{4}\qty(\Id-\pauli{3}\otimes\Id-\Id\otimes\pauli{1}+\pauli{3}\otimes\pauli{1}),
+    H_{\cnot}=\frac{\pi}{4}\qty(\pauli{3}\otimes\Id+\Id\otimes\pauli{1}-\pauli{3}\otimes\pauli{1}),
 \end{equation*}
 que por ser una suma de operadores que conmutan entre sí, nos permite ver al controlled not como una aplicación consecutiva de tres unitarias diferentes
 \begin{align*}
@@ -258,4 +258,16 @@ En términos del vector de Bloch, que es una forma rápida de obtener el cambio 
         r_{A}(p\hat{r}_{\rho,3}+(1-p)r_{A}(\hat{r}_{\rho,3})^{2})
     \end{pmatrix}.
   \end{equation*}
+
 \subsubsection{CNOT efectivo a un tiempo arbitrario}
+
+Si se utiliza el mismo Hamiltoniano y se propaga al estado de máxima entropía compatible con el estado inicial con la unitaria generada por dicho Hamiltoniano, para luego pasar el resultado por la aplicación de grano grueso, la dinámica efectiva a un tiempo $t$ arbitrario tiene la forma
+
+\begin{align*}
+  \Gamma_{t}(\rho)=&\rho(\cos^{4}(\omega t)+\sin^{4}(\omega t))\\
+  &+p\{2\sin^{2}(\omega t)\cos^{2}(\omega
+  t)\qty[\expval{\pauli{1}}_{B}\rho_{A}+(1-\expval{\pauli{1}}_{B})\pauli{3}\rho_{A}\pauli{3}]\\
+  & \ \ \ \ \ \ +i\sin(\omega t)\cos(\omega t)(\cos^{2}(\omega t)-\sin^{2}(\omega t))(1+\expval{\pauli{1}}_{B})[\pauli{3},\rho_{A}]\}\\
+  &+(1-p)\{2\sin^{2}(\omega t)\cos^{2}(\omega t)\qty[\expval{\pauli{3}}_{A}\rho_{B}+(1-\expval{\pauli{3}}_{A})\pauli{1}\rho_{B}\pauli{1}]\\
+  &\ \ \ \ \ \ \ \ \ \ \ \ \ +i\sin(\omega t)\cos(\omega t)(\cos^{2}(\omega t)-\sin^{2}(\omega t))(1+\expval{\pauli{3}}_{A})[\pauli{1},\rho_{B}]\}
+\end{align*} 
