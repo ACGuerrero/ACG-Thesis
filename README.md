@@ -5,9 +5,8 @@ This is my license thesis' repository
 </p>
 
 TO DO LIST
- 1.  Finish CNOT section. Ju
+ 1.  Finish CNOT section. [440cb67](https://github.com/ACGuerrero/tesis-adan/commit/135d4e81fdef43255ee8346ca5d050d4f440cb67), [1fb160](https://github.com/ACGuerrero/tesis-adan/commit/3d50a834289a732acf3a9f894ac6b740411fb160)
  29. Finish AmpDamp section. Vi
- 35. Finish depolarizing section. Sa
  31. Find evolution of entropy. Mi-Lu
  10. Explore $H=\sigma_{z}\otimes \sigma_{z}$  [9a04ece](https://github.com/ACGuerrero/tesis-adan/commit/274d771536b0b04ea4edca866fc06359d5e0b8b8), [b0ca78](https://github.com/ACGuerrero/tesis-adan/commit/5ac8796059e41a3cdf13e09a33feb95fcfb0ca78)
  30. Find extended unitary
@@ -38,3 +37,4 @@ COMPLETED TASKS
  34. ~~Finish SWAP section~~&#x2611;[cedb469](https://github.com/ACGuerrero/tesis-adan/commit/f588e0b150ff8df65387e303b20162b90cedb469)
  36. ~~Find evolution of expectation values~~&#x2611;[686678a](https://github.com/ACGuerrero/tesis-adan/commit/97627928705507862a6d0931212919e1f686678a)
  37. ~~Finish separable section~~&#x2611;[686678a](https://github.com/ACGuerrero/tesis-adan/commit/97627928705507862a6d0931212919e1f686678a)
+ 35. ~~Finish depolarizing section~~
