@@ -4,66 +4,92 @@ En la sección \ref{sec:Ch1PartialTrace} se habló de estados separables como aq
 \begin{equation*}
     \rho=\rho_{A}\otimes\rho_{B},
 \end{equation*}
-donde $\rho_{A}\in\densityspace{m}$, $\rho_{B}\in\densityspace{l}$ y $l+m=n$. Siguiendo esta línea de pensamiento, con \textit{dinámicas factorizables} nos referimos a dinámicas unitarias generadas por hamiltonianos que no contienen un término de interacción (esto es , hamiltonianos de la forma $\mcH=H_{1}\otimes\Id+\Id\otimes H_{2}$), y que por lo mismo son descritas por operadores $\mcU\in\unitaryspace{n}$ que pueden reescribirse como
+donde $\rho_{A}\in\densityspace{m}$, $\rho_{B}\in\densityspace{l}$ y $l+m=n$. Siguiendo esta línea de pensamiento, con \textit{dinámicas factorizables} nos referimos a dinámicas unitarias generadas por Hamiltonianos que no contienen un término de interacción (que en el caso de dos partículas son Hamiltonianos de la forma $\mcH=H_{1}\otimes\Id+\Id\otimes H_{2}$), y que por lo mismo son descritas por operadores $\mcU\in\unitaryspace{n}$ que pueden reescribirse como
 \begin{equation*}
     \mcU=U_{A}\otimes U_{B}.
 \end{equation*}
 Aquí, una vez más, $U_{A}\in\unitaryspace{m}$, $U_{B}\in\unitaryspace{l}$ y $l+m=n$. Los operadores separables están compuestos por operadores que actúan de forma independiente sobre diferentes subsistemas del sistema en custión. En el caso de un sistema compuesto por dos subsistemas de dos niveles, el operador separable está compuesto por dos unitarias que actúan sobre $\hilbert_{2}$. Como el estado de máxima entropía resulta ser separable, las dinámicas separables son una muy buena primera forma de aplicar el formalismo descrito en las secciones anteriores.
 
+Considérese, pues, la aplicación de grano grueso de $n$ a $1$ partículas definida según (\ref{eq:CGNto1}), un estado efectivo $\rho\in\densityspace{2}$ y la aplicación de máxima entropía compatible dada por (\ref{eq:GeneralMaxEnt}). Si la evolución microscópica es factorizable entonces es generada por un Hamiltoniano de la forma
+\begin{equation*}
+    \mcH=\sum_{k=1}^{n}\omega_{k}\Id_{2^{k-1}}\otimes H_{i} \otimes \Id_{2^{n-k}},
+\end{equation*}
+siendo la unitaria 
+\begin{equation}\label{eq:NFactorUnitaries}
+    \mcU_{t}=\Motimes_{k=1}^{n}\text{exp}\qty(-i\omega_{k}H_{k}t)=\Motimes_{k=1}^{n} U_{k}(t)
+\end{equation}
+
+
 \subsection{Caso general}
 
-Consideramos una unitaria $\mcU=U_{1}\otimes U_{2}$ que evoluciona en el tiempo como $\mcU_{t}=(U_{1}\otimes U_{2})^{t}=U_{1}^{t}\otimes U_{2}^{t}$. Retomando la ecuación (\ref{eq:MaxEntSeparable}), la evolución del estado de máxima entropía es simplemente
+Si se considera una evolución unitaria de la forma (\ref{eq:NFactorUnitaries}), y se propaga a la aplicación de máxima entropía dada por (\ref{eq:GeneralMaxEnt}), el estado evolucionado toma la forma
 \begin{equation*}
-    \varrho_{\max}(t)=U_{1}^{t}\rho_{A}(U_{1}^{t})^{\dag}\otimes U_{2}^{t}\rho_{B} (U_{2}^{t})^{\dag}.
+    \varrho_{\max}(t)=\Motimes_{k=1}^{n}\frac{1}{Z_{k}}U_{k}(t) e^{\qty(p_{k}\sum_{j}\lambda_{j}\pauli{j})} (U_{k}(t))^{\dag}
 \end{equation*}
 De esto, el estado efectivo evolucionado obtenido del principio de máxima entropía, en términos de los multiplicadores de Lagrange es
 \begin{equation}\label{eq:SeparableEvolution}
-    \rho(t)=pU_{1}^{t}\rho_{A}(U_{1}^{t})^{\dag}+(1-p)U_{2}^{t}\rho_{B} (U_{2}^{t})^{\dag}.
+    \Gamma_{t}(\rho)=\sum_{k=1}^{n}p_{k} U_{k}(t) \rho_{k} (U_{k}(t))^{\dag}.
 \end{equation}
+donde hemos denotado $\rho_{k}=\frac{1}{Z_{k}}e^{\qty(p_{k}\sum_{j}\lambda_{j}\pauli{j})}$. 
 
 Por supuesto, esta expresión puede expandirse en términos de exponenciales o de funciones hiperbólicas del vector de Bloch del estado efecivo incial, $\vec{r}_{\rho}$. Si se hace esto para hallar la evolución de un observable $\pauli{i}\in\obspace{2}$ se encuentra que
-\begin{align}\label{eq:SeparableEvolutionExpVal}
-    \begin{split}
-        \expval{\pauli{i}(t)}=&\frac{p\tanh(p\lambda)}{2}\Tr[\pauli{i}U_{1}^{t}(\paulivec{r_{\rho}})(U_{1}^{t})^{\dag}]\\
-    &+\frac{p\tanh((1-p)\lambda)}{2}\Tr[\pauli{i}U_{2}^{t}(\paulivec{r_{\rho}})(U_{2}^{t})^{\dag}].
-    \end{split}
-  \end{align}
-En la evolución de los observables (que, depués de todo, son las cantidades que permiten describir al sistema efectivo), se observan, de nueva cuenta, dos términos: el primero está asociado a la evolución de grano grueso sin error. Como el modelo toma en cuenta únicamente a la primera partícula, se espera observar únicamente la acción de la primera parte del operador de evolución separable. El primer término contiene un coeficiente de peso $p\tanh(p\lambda)$ inducido por la aplicación de grano grueso, y el elemento de valor esperado, que depende únicamente de la dirección del vector de Bloch del estado efectivo inicial y de la primera parte del operador de evolución. En contraste, el segundo término contiene la evolución generada por $U_{2}^{t}$, y depende de $(1-p)$, la probabilidad de error. Por esto, este es el término de ruido. Por la naturaleza separable y unitaria de la evolución, se verá que el ruido son oscilaciones periódicas, pero esto es más claro desarrollando algunos ejemplos.
+\begin{equation}\label{eq:SeparableEvolutionExpVal}
+    \expval{\pauli{i}(t)}=\frac{1}{2}\sum_{k=1}^{n}p_{k}\tanh(p_{k}\lambda)\Tr[\pauli{i}U_{k}(t) (\hat{r}_{\rho}\cdot\vec{\sigma}) (U_{k}(t))^{\dag}]
+\end{equation}
+
+Si se interpreta a la aplicación de grano grueso como en el contexto de la medición de una partícula con probabilidad de error, entoces esperamos que  $p_{1}>\sum_{k=2}^{n}p_{j}$. Reconocemos, pues, dos términos: uno asociado a la evolución esperada de nuestro sistema, descrita por el operador unitario $U_{1}(t)$, y un término de ruido. Si se considera únicamente dos partículas, entonces dicho error tiene peso $(1-p_{1})\tanh((1-p_{1})\lambda)$. Por la naturaleza separable y unitaria de la evolución, se verá que el ruido son oscilaciones periódicas, pero esto es más claro desarrollando algunos ejemplos.
 
 \subsection{Ejemplos particulares}
 
 \subsubsection{Dinámica simétrica}
 
-Comenzamos con el caso en el que la dinámica separable simétrica, esto es, de una unitaria $\mcU\in\unitaryspace{4}$ de la forma
+Comenzamos con el caso en el que la dinámica separable simétrica, esto es, de una unitaria $\mcU\in\unitaryspace{2^{n}}$ de la forma
 \begin{equation*}
-    \mcU_{t}=(U \otimes U)^{t},
+    \mcU_{t}=\Motimes_{k=1}^{n}U(t),
 \end{equation*}
-donde $U\in\unitaryspace{2}$. Se realiza el mismo proceso: aplicamos la evolución al estado de máxima entropía compatible con un conjunto de observables tomográficamente completos en $\hilbert_{2}$ y propagamos al estado con la unitaria subytacente, para luego pasarlo por la aplicación de grano grueso y recuperar el estado efectivo evolucionado. Este caso es quizá el más sencillo, pues la simetría de la unitaria permite factorizarla:
+donde $U(t)\in\unitaryspace{2}$. Se realiza el mismo proceso: aplicamos la evolución al estado de máxima entropía compatible con un conjunto de observables tomográficamente completos en $\hilbert_{2}$ y propagamos al estado con la unitaria subytacente, para luego pasarlo por la aplicación de grano grueso y recuperar el estado efectivo evolucionado. Este caso es quizá el más sencillo, pues la simetría de la unitaria permite factorizarla:
 \begin{align*}
-\CG{(U^{t}\otimes U^{t})\varrho_{max}(U^{t}\otimes U^{t})^{\dag}}&=pU^{t}\rho_{A}(U^{t})^{\dag}+(1-p)U^{t}\rho_{B}(U^{t})^{\dag} \\
-&=U^{t}(p\rho_{A}+(1-p)\rho_{B})(U^{t})^{\dag}\\
-&=U^{t}\rho(0)(U^{t})^{\dag}.
+\mcC\qty[\Motimes_{k=1}^{n}U(t) \rho_{k} (U(t))^{\dag}]&=\sum_{k=1}^{n}p_{k} U(t) \rho_{k} (U(t))^{\dag} \\
+&=U(t)\qty(\sum_{k=1}^{n}p_{k} \rho_{k}) (U(t))^{\dag}\\
+&=U(t)\rho(U^{\dag}(t))^{\dag}.
 \end{align*}
-La dinámica efectiva tiene la forma:
+La dinámica efectiva tiene la forma
 \begin{equation}
-    \rho\mapsto U^{t}\rho(U^{t})^{\dag}.
+    \Gamma_{t}(\rho)=U(t)\rho(U^{\dag}(t))^{\dag}.
 \end{equation}
+Este resultado es natural. No solo no hay interacción entre los diferentes subsistemas, significando esto que no se \textit{filtra} ningún tipo de información entre la partícula de interés y el resto, sino que cada parte evoluciona de manera idéntica: bajo la aplicación de grano grueso, incluso los términos de error arrojan la evolución esperada.
 
-\subsubsection{Identidad de un lado}
+\subsubsection{Entorno invariante}
 
-Si una de las unitarias que componen a la evolución subyacente es el operador de identidad, el efecto visible en la evolución del estado efectivo depende de la posición de dicha identidad. Supongamos que la evolución microscópica es de la forma $\mcU=U^{t}\otimes\Id$, y que, por lo tanto, deja invariante a la segunda partícula. El estado efectivo se ve como:
-\begin{equation}
-    \rho\mapsto pU^{t}\rho_{A}(U^{t})^{\dag}+(1-p)\rho_{B}.
-\end{equation}
-En términos del vector de Bloch del estado efectivo inicial, denotando $r_{A}=\tan(p\lambda)$, $r_{B}=\tan((1-p)\lambda)$, y $O$ la rotación generada por $U$:
+Centrémonos, momentaneamente, en el régimen $p_{1}>\sum_{k=2}^{n}p_{j}$. Asúmase que la probabilidad de detectar a la $k$-ésima partícula es la misma para todas excepto la primera. Entonces
 \begin{equation*}
-    r\hat{r}_{\rho}\mapsto pr_{A}O\hat{r}_{\rho}+(1-p)r_{B}\hat{r}_{\rho}.
+    p_{k}=\frac{(1-p_{1})}{n-1}\text{ }\forall k\neq 1.
 \end{equation*}
-Esta expresión parece no dar demasiada información: es simplemente la combinación lineal de dos vectores de Bloch, uno que ha sido rotado y otro al que no se le ha hecho nada, pero recordando que el vector de Bloch del estado efectivo inicial cumple $r=pr_{A}+(1-p)r_{B}$, esta puede ser manipulada para ver que
+El estado de máxima entropía compatible con un estado efectivo $\rho$ tiene la forma
 \begin{equation*}
-    r\hat{r}_{\rho}\mapsto O(r\hat{r}_{\rho}-(1-p)r_{B}\hat{r}_{\rho})+(1-p)r_{B}\hat{r}_{\rho}.
+    \varrho_{\max}=\rho_{1}\otimes\qty(\Motimes_{k=2}^{n}\frac{1}{Z_{k}}e^{\frac{(1-p_{1})}{n-1}\sum_{j}\lambda_{j}\pauli{j}})
 \end{equation*}
-El resultado es una rotación alrededor de una línea que no pasa por el origen. Una rotación de esta naturaleza puede descomponerse en una rotación a través de un eje que pasa por el origen $R$ y una traslación $T$ como $T^{-1}\circ R\circ T$. Notar que una transformación así no tendría por qué mantener a los estados dentro de la esfera de Bloch, por lo que esta debe depender del estado mismo. En efecto, la traslación tiene una magnitud $(1-p)r_{B}$ (a notar que la traslación es pequeña, y corresponde al término de ruido) en la dirección opuesta a la del estado (depende del estado tanto en magnitud como en dirección). Así que, aunque esto podría parecer una transformación afín, no lo es, pues depende enteramente del estado. Como tal, la evolución efectiva no es lineal, y no tiene expresión en términos de operadores de Kraus. La figura \ref{fig:FaseChangeSequence} muestra el efecto que una dinámica de este estilo tiene sobre la esfera de Bloch (en particular, el caso $U=e^{it\pi \pauli{3}}$). La contracción a lo largo del eje $z$ es un resultado del alto valor de $(1-p)$ (0.4), y no sería visible si $p\rightarrow 1$.
+donde, para todo $k$ se cumple que
+\begin{equation*}
+    \frac{1}{Z_{k}}e^{\frac{1-p_{1}}{n-1}\sum_{j}\lambda_{j}\pauli{j}}=\frac{1}{2}\qty(\Id+\tanh(\frac{1-p_{1}}{n-1}\lambda)\hat{r}_{\rho}\cdot\vec{\sigma})\equiv \rho_{2}.
+\end{equation*}
+De esto, definimos un entorno efectivo de $n$ partículas idénticas según
+\begin{equation*}
+    \rho_{E}\equiv\rho_{2}^{\otimes(n-1)}.
+\end{equation*}
+Si el entorno no varía, mientras que el susbsistema de interés se propaga de forma unitaria (esto es, la dinámica subyacente es de la forma $\mcU_{t}=U\otimes\Id_{2^{n-1}}$), entonces la dinámica efectiva es
+\begin{equation*}
+    \Gamma_{t}(\rho)=p_{1}U(t)\rho_{1}(U(t))^{\dag}+(1-p_{1})\rho_{2}.
+\end{equation*}
+En términos del vector de Bloch del estado efectivo inicial, denotando $r_{1}=\tan(p_{1}\lambda)$, $r_{2}=\tan((1-p_{1})\lambda)$, y $R$ la rotación generada por $U$:
+\begin{equation*}
+    r\hat{r}_{\rho}\mapsto p_{1}r_{1}R\hat{r}_{\rho}+(1-p_{1})r_{2}\hat{r}_{\rho}.
+\end{equation*}
+Esta expresión parece no dar demasiada información: es simplemente la combinación lineal de dos vectores de Bloch, uno que ha sido rotado y otro al que no se le ha hecho nada, pero recordando que el vector de Bloch del estado efectivo inicial cumple $r=p_{1}r_{1}+(1-p_{1})r_{2}$, esta puede ser manipulada para ver que
+\begin{equation*}
+    r\hat{r}_{\rho}\mapsto R(r\hat{r}_{\rho}-(1-p_{1})r_{2}\hat{r}_{\rho})+(1-p_{1})r_{2}\hat{r}_{\rho}.
+\end{equation*}
+El resultado es una rotación alrededor de una línea que no pasa por el origen. Una rotación de esta naturaleza puede descomponerse en una rotación a través de un eje que pasa por el origen $R_{0}$ y una traslación $T$ como $T^{-1}\circ R_{0}\circ T$. Nótese que una transformación así no tendría por qué mantener a los estados dentro de la esfera de Bloch, por lo que esta debe depender del estado mismo. En efecto, la traslación tiene una magnitud $(1-p)r_{B}$ (a notar que la traslación es pequeña, y corresponde al término de ruido) en la dirección opuesta a la del estado (depende del estado tanto en magnitud como en dirección). Así que, aunque esto podría parecer una transformación afín, no lo es, pues depende enteramente del estado. Como tal, la evolución efectiva no es lineal, y no tiene expresión en términos de operadores de Kraus. La figura \ref{fig:FaseChangeSequence} muestra el efecto que una dinámica de este estilo tiene sobre la esfera de Bloch (en particular, el caso $U=e^{-i\omega t \pauli{3}}$). La contracción a lo largo del eje $z$ es un resultado del alto valor de $(1-p_{1})$ (0.4), y no sería visible si $p_{1}\rightarrow 1$.
 
 \begin{figure}[ht!]
     \centering
@@ -82,9 +108,18 @@ El resultado es una rotación alrededor de una línea que no pasa por el origen.
       \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/U1xU2_H1=Pi(sz)_H2=Id_z=0.9_p=0.6t=0.5.png}
       \caption{$t=0.5$}
     \end{subfigure}
-    \caption{Efecto de la evolución subyacente sobre la esfera de Bloch si $r=0.9$, $p=0.6$ y $U_{1}=e^{it\pi \pauli{3}}$. La dramática contracción a lo largo de $z$ se asocia al alto valor de $1-p$.}
+    \caption{Efecto de la evolución subyacente sobre la esfera de Bloch si $r=0.9$, $p_{1}=0.6$ y $U=e^{-i\pi t \pauli{3}}$. La dramática contracción a lo largo de $z$ se asocia al alto valor de $1-p$.}
     \label{fig:FaseChangeSequence}
 \end{figure}
+
+En efecto, si $p_{1}\approx\frac{1}{2}$, entonces $\rho_{1}\approx\rho_{2}\approx\rho$ y la dinámica efectiva se conviertiría en un canal de despolarización:
+
+\begin{align*}
+    \Gamma_{\rho}=&p_{1}e^{-i\omega t \pauli{3}}\rho_{1}e^{i\omega t \pauli{3}}+(1-p_{1})p_{2}\\
+    \approx&\frac{1}{2}(\rho+e^{-i\omega t \pauli{3}}\rho e^{i\omega t \pauli{3}})
+\end{align*}
+
+\subsubsection{Sistema invariante}
 
 Si, por otro lado, la dinámica es de la forma $\mcU=\Id\otimes U^{t}$, esta puede ser escrita en términos de los vectores de Bloch como
 \begin{equation*}

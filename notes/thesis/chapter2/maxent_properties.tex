@@ -136,9 +136,9 @@ La discusión anterior giró alrededor del caso en que el modelo de grano grueso
     \CG{\varrho}=\Tr_{\overline{i}}(\Fuzzy{\varrho})=\Tr^{1}(\Fuzzy{\varrho}).
 \end{equation*}
 Sin pérdida de generalidad, y donde $\Tr_{\overline{i}}$ denota la traza parcial sobre todos menos el $i$-ésimo qubit. La aplicación borrosa permuta el primer qubit con el $j$-ésimo qubit con probabilidad $p_{j}$. Denotando las matrices de permutación como $S_{1,j}$,
-\begin{equation*}
+\begin{equation}\label{eq:CGNto1}
     \CG{\varrho}=\Tr_{\overline{1}}\qty(p_{1}\varrho+\sum_{j=2}^{n}p_{j}(S_{1,j})\varrho(S_{1,j})^{\dagger}).
-\end{equation*}
+\end{equation}
 Sea $\{A_{i}\}$ con $A_{i}\in\mcL(\hilbert_{2})$ un conjunto de observables tomográficamente completo. Las restricciones a las que se verá sujeto el operador $\varrho_{\max}$ son
 \begin{equation*}
     r_{i}=\Tr[\sigma_{i}\rho].

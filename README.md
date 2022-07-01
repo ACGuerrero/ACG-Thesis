@@ -36,5 +36,5 @@ COMPLETED TASKS
  34. ~~Finish SWAP section~~&#x2611;[cedb469](https://github.com/ACGuerrero/tesis-adan/commit/f588e0b150ff8df65387e303b20162b90cedb469)
  36. ~~Find evolution of expectation values~~&#x2611;[686678a](https://github.com/ACGuerrero/tesis-adan/commit/97627928705507862a6d0931212919e1f686678a)
  37. ~~Finish separable section~~&#x2611;[686678a](https://github.com/ACGuerrero/tesis-adan/commit/97627928705507862a6d0931212919e1f686678a)
- 35. ~~Finish depolarizing section~~
- 36. 1.  ~~Finish CNOT section~~ [440cb67](https://github.com/ACGuerrero/tesis-adan/commit/135d4e81fdef43255ee8346ca5d050d4f440cb67), [11fb160](https://github.com/ACGuerrero/tesis-adan/commit/3d50a834289a732acf3a9f894ac6b740411fb160), [eb60bbc](https://github.com/ACGuerrero/tesis-adan/commit/5422fac6608b5ec8ff5f48e86a47494c7eb60bbc)
+ 35. ~~Finish depolarizing section~~&#x2611;
+ 36. ~~Finish CNOT section~~&#x2611; [440cb67](https://github.com/ACGuerrero/tesis-adan/commit/135d4e81fdef43255ee8346ca5d050d4f440cb67), [11fb160](https://github.com/ACGuerrero/tesis-adan/commit/3d50a834289a732acf3a9f894ac6b740411fb160), [eb60bbc](https://github.com/ACGuerrero/tesis-adan/commit/5422fac6608b5ec8ff5f48e86a47494c7eb60bbc)
