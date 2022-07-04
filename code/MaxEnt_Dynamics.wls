@@ -486,7 +486,46 @@ transformationCNOTC[r_]:=With[{
 Export["../../figures/CNOT/"<>"sphere_CNOT_t=1.0"<>"_z="<>ToString[r]<>"_p="<>ToString[sp]<>".png",FunctionSphereMesh2[r,transformationCNOTC,0.5]];
 
 
+l[r_,p_,lo_,up_,st_]:=First@LagrangeMultFromZCoord[
+	RzLambdaTable[p,lo,up,st],
+	r];
+r=0.9;
+sp=0.5;
+runi=Normalize[{-1,1,1}];
+rvec=r*runi;
+lag=l[r,sp,low=0.,up=6.,ste=0.002];
+ra=Tanh[lag*sp]*runi;
+rb=Tanh[lag*(1-sp)]*runi;
+transformationCNOTC[r_]:=With[{
+	runi=Normalize[r],
+	ra=Tanh[lag*sp],
+	rb=Tanh[lag*(1-sp)]},
+	{rb*(sp*ra*runi[[1]]^2+(1-sp)*runi[[1]]),
+	rb*ra*(sp*runi[[1]]*runi[[2]]+(1-sp)*runi[[2]]*runi[[3]]),
+	ra*(sp*runi[[3]]+(1-sp)*rb*runi[[3]]^2)}
+	];
+Export["../../figures/CNOT/"<>"sphere_CNOT_t=1.0"<>"_z="<>ToString[r]<>"_p="<>ToString[sp]<>".png",FunctionSphereMesh2[r,transformationCNOTC,0.5]];
+
+
 Norm[transformationCNOT[runi]]
+
+
+r=0.9;
+sp=0.5;
+omega=Pi/4;
+tim=1.;
+transformationIsingp2[r_]:=With[{
+	runi=Normalize[r]},
+	{r[[1]]*Cos[2*omega*tim]-r[[3]]*r[[2]]*Sin[2*omega*tim],
+	r[[2]]*Cos[2*omega*tim]+r[[3]]*r[[1]]*Sin[2*omega*tim],
+	r[[3]]}
+	];
+Export["../../figures/Ising/"<>"sphere_Ising_t="<>ToString[tim]<>"_z="<>ToString[r]<>"_p="<>ToString[sp]<>".png",FunctionSphereMesh2[r,transformationIsingp2,1.]];
+
+
+{r[[1]]*Cos[2*omega*t]-r[[3]]*r[[2]]*Sin[2*omega*t],
+	r[[2]]*Cos[2*omega*t]+r[[3]]*r[[1]]*Sin[2*omega*t],
+	r[[3]]}
 
 
 Clear[unitary]
