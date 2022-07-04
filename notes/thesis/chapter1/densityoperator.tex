@@ -2,7 +2,10 @@
 
 \subsection{Mezclas estadísticas}
 
-Los vectores de estado no pueden describir a todos los sistemas estudiables\ddnote{realizables} \acnote{¿cuál era la diferencia entre realizable y estudiable?} en el contexto de la mecánica cuántica. Por esto, y porque será particularmente útil para nuestro trabajo, introducimos el concepto del operador de densidad (también llamado, en el caso discreto, que es el que nos incumbe, matriz de densidad).
+En el contexto de la mecánica cuántica nos enfrentamos a dos tipos de probabilidades. La primera, la probabilidad cuántica, está codificada dentro de los vectores de estado que se utilizan para describir el estado en el que se puede hallar un sistema. Sin embargo, los vectores de estado no incluyen el segundo tipo de probabilidad: la asociada a la ignorancia. Esra no es una probabilidad cuática, sino una clásica. Por esto, y porque será particularmente útil para nuestro trabajo, introducimos el concepto del operador de densidad (también llamado, en el caso discreto, que es el que nos incumbe, matriz de densidad).
+
+\ddnote{Reescrito lo de sistemas realizables/estudiables}
+\acnote{Reescrito lo de sistemas realizables/estudiables}
 
 Supóngase que en lugar de estudiar un sistema que está completamente descrito por $\ket{\varphi}\in\hilbert_{n}$, con $\hilbert_{n}$ el espacio de Hilbert $\hilbert_{n}=\Complex^{n}$; se trabaja con uno que está en el estado $\ket{\varphi_{i}}$ con probabilidad $p_{i}$, donde $\{\ket{\varphi_{i}}\}$ es un conjunto no necesariamente ortogonal de estados de $n$ niveles $\ket{\varphi_{i}}\in\hilbert_{n}$, y $\{p_{i}\}$ es un conjunto de números reales no negativos tales que $\sum_{i}p_{i}=1$.
 
@@ -33,9 +36,9 @@ y vemos que es posible hallar el valor esperado de un observable respecto a un s
 
 El nombre ``operador de densidad'' puede resultar más claro comparando la ecuación (\ref{eq:ExpValFromDensOp}) con el valor esperado en estadística. Si $X$ es una variable aleatoria discreta cuya función de densidad de probabilidad es $\rho(x)$, entonces el valor esperado de una función $A$ de los valores de $X$ es
 \begin{equation*}
-E[A(X)]=\sum_{i} A(x_{i}) \rho(x_{i}).
+E[A]=\sum_{i} A(x_{i}) \rho(x_{i}).
 \end{equation*}
-Reconociendo que la operación traza no es sino la suma sobre los elementos diagonales de la matriz, es posible ver que la matriz de densidad ocupa un rol similar al de la función de densidad. \acnote{Toda la razón, no sé por qué no pensé en el caso discreto}
+Reconociendo que la operación traza no es sino la suma sobre los elementos diagonales de la matriz, es posible ver que la matriz de densidad ocupa un rol similar al de la función de densidad. \acnote{Corregido de caso continuo a caso discreto} \ddnote{Corregido de caso continuo a caso discreto}
 
 Ahora, es necesario ser capaz de distinguir si un operador cualquiera corresponde a un operador de la forma (\ref{eq:DensOpMix}). De esta definición destilan dos propiedades que permiten reconocer si un operador arbitrario es un operador de densidad válido, o no \cite{Holevo}:
 \begin{enumerate}
@@ -100,6 +103,7 @@ se cumple que $\rho=\dyad{\varphi_{i}}$ $\forall i$, entonces decimos que $\rho$
     \item $\rho=\rho^{2}$.
     \item $\Tr(\rho^{2})=1$.
 \end{itemize}
+\ddnote{Cambiado $n$ por 2}
 Según esto, definimos a la pureza como una medida de qué tan puro es un estado y, dado $\rho\in\mcS(\hilbert_{n})$, se escibe como \cite{Jaeger}
 \begin{equation*}
     \text{Pu}(\rho)=\Tr(\rho^{2}).
@@ -107,7 +111,7 @@ Según esto, definimos a la pureza como una medida de qué tan puro es un estado
 De esta definición es posible afirmar que
 \begin{itemize}
     \item Un estado es puro si y sólo si $\text{Pu}(\rho)=1$.
-    \item Para todo estado, $\frac{1}{n}\geq \text{Pu}(\rho)\geq 1$.
+    \item Para todo estado, $\frac{1}{n}\leq \text{Pu}(\rho)\leq 1$.
 \end{itemize}
 
 \subsection{Sistemas multipartitos}\label{sec:Ch1PartialTrace}
