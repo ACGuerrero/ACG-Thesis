@@ -1,5 +1,58 @@
 \chapter{Con algo de suerte, ecuaciones diferenciales}
-\section{Caso simétrico, unitaria factorizable}
+
+Para la aplicación de grano grueso de $n$ a una paricula, el estado de máxima entropía compatible con un estado efectivo es
+\begin{equation}\label{eq:GeneralMaxEnt}
+    \rho_{\max}=\Motimes_{j=1}^{n}\frac{1}{Z_{j}}\text{exp}\qty(-p_{j}\sum_{i}\lambda_{i}\sigma_{i}),
+\end{equation}
+que puede escribirse como
+\begin{equation*}
+    \varrho_{\max}=\Motimes_{j=1}^{n}p_{j}\rho_{j}
+\end{equation*}
+
+\section{Asignación de Boltzmannn}
+
+
+
+\section{Partícula preferencial}
+
+\subsection{¿Boltzmann? ¿Qué haces tú aquí?}
+
+Sea $p_{j}=\frac{1}{n}$ para todas las partículas. Evoluciónese a cada una localmente a través de un Hamiltoniano
+
+\begin{equation*}
+    \mcH=\sum_{j=2}^{n}\Id_{2^{j-1}}\otimes H_{j} \otimes \Id_{2^{N-j}}.
+\end{equation*}
+
+Entonces la dinámica efectiva es un anal cuántico:
+
+\begin{equation*}
+    \Gamma_{t}(\rho)=\frac{1}{N}\sum_{j}U_{j}\rho U_{j}^{\dag}
+\end{equation*}
+
+del cual se puede obtener, con algo de álgebra, una ecuación de Lindbland.
+
+Sea la primera partícula la partícula preferencial, con $p=\frac{1}{2}$ y $p_{k}=\frac{1}{2(n-1)}$ para el resto de las partículas. El estado de máxima entropía es
+\begin{equation*}
+    \varrho_{\max}=\rho_{1}\Motimes_{j=2}^{n}\rho_{2}
+\end{equation*}
+donde $\rho_{2}=\frac{e^{(\sum \lambda_{i}\sigma_{i})/2(n-1)}}{Z_{2}}$. Si se pasa este estado por la aplicación de grano grueso se recupera
+\begin{equation*}
+    \CG{\varrho_{\max}}=\frac{1}{2}(\rho_{1}+\rho_{2}),
+\end{equation*}
+significando que 
+\begin{equation*}
+    \varrho_{\max}=\rho^{\otimes n}.
+\end{equation*}
+¡La asignación de Boltzmann! Pues bien, considérese el Hamiltoniano
+\begin{equation*}
+    \mcH=\sum_{j=2}^{n}\Id_{2^{j-1}}\otimes H \otimes \Id_{2^{N-j}},
+\end{equation*}
+que deja a la primera partícula invariante y al resto las evoluciona localmente a través de un mismo Hamiltoniano $H$. La dinámica efectiva que se recupera no es otra sino
+\begin{equation*}
+    \Gamma_{t}(\rho)=\frac{1}{2}(\rho+e^{-itH}\rho e^{itH})
+\end{equation*}
+que es un canal de desfasamiento en la dirección del Hamiltoniano $H$.
+\subsection{Caso simétrico, unitaria factorizable}
 Considérese, para empezar, una aplicación de grano grueso con parámetro $p=\frac{1}{2}$. Esta simetría asegura que la asignación de máxima entropía es simplemente $\rho(0)\otimes\rho(0)$ donde $\rho(0)$ es le estado efectivo incial. En este caso particular, el estado de máxima entropía compatible con los observables del estado efectivo coincide con el estado asignado por el mapeo de clonación, que a todo estado $\rho$ asigna el estado $\rho\otimes\rho$. Así pues,
 \begin{equation*}
     \varrho(0)=\rho(0)\otimes\rho(0).
