@@ -6,24 +6,18 @@ Para la aplicación de grano grueso de $n$ a una paricula, el estado de máxima 
 \end{equation}
 que puede escribirse como
 \begin{equation*}
-    \varrho_{\max}=\Motimes_{j=1}^{n}p_{j}\rho_{j}
+    \varrho_{\max}=\Motimes_{j=1}^{n}\rho_{j}
 \end{equation*}
 
-\section{Asignación de Boltzmannn}
-
-
-
-\section{Partícula preferencial}
-
-\subsection{¿Boltzmann? ¿Qué haces tú aquí?}
+\section{Caja de gas - partículas idénticas}
 
 Sea $p_{j}=\frac{1}{n}$ para todas las partículas. Evoluciónese a cada una localmente a través de un Hamiltoniano
 
 \begin{equation*}
-    \mcH=\sum_{j=2}^{n}\Id_{2^{j-1}}\otimes H_{j} \otimes \Id_{2^{N-j}}.
+    \mcH=\sum_{j=1}^{n}\Id_{2^{j-1}}\otimes H_{j} \otimes \Id_{2^{N-j}}.
 \end{equation*}
 
-Entonces la dinámica efectiva es un anal cuántico:
+Entonces la dinámica efectiva es un canal cuántico:
 
 \begin{equation*}
     \Gamma_{t}(\rho)=\frac{1}{N}\sum_{j}U_{j}\rho U_{j}^{\dag}
@@ -31,9 +25,13 @@ Entonces la dinámica efectiva es un anal cuántico:
 
 del cual se puede obtener, con algo de álgebra, una ecuación de Lindbland.
 
+\section{Mediciones borrosas - partícula preferencial}
+
+\subsection{¿Otra vez todas iguales?}
+
 Sea la primera partícula la partícula preferencial, con $p=\frac{1}{2}$ y $p_{k}=\frac{1}{2(n-1)}$ para el resto de las partículas. El estado de máxima entropía es
 \begin{equation*}
-    \varrho_{\max}=\rho_{1}\Motimes_{j=2}^{n}\rho_{2}
+    \varrho_{\max}=\rho_{1}\otimes\Motimes_{j=2}^{n}\rho_{2}
 \end{equation*}
 donde $\rho_{2}=\frac{e^{(\sum \lambda_{i}\sigma_{i})/2(n-1)}}{Z_{2}}$. Si se pasa este estado por la aplicación de grano grueso se recupera
 \begin{equation*}
@@ -52,7 +50,48 @@ que deja a la primera partícula invariante y al resto las evoluciona localmente
     \Gamma_{t}(\rho)=\frac{1}{2}(\rho+e^{-itH}\rho e^{itH})
 \end{equation*}
 que es un canal de desfasamiento en la dirección del Hamiltoniano $H$.
+
+\subsection{Cphase}
+
+Considérese el Hamiltoniano
+\begin{equation*}
+    H=-\omega \pauli{3}\otimes\pauli{3}.
+\end{equation*}
+
+Propagar al estado asignando a través del Principio de Máxima Entropía con dicha evolución y luego tomar la descripción dada por la aplicación de grano grueso resulta en la dinámica efectiva
+\begin{align*}
+    \Gamma_{t}^{p}(\rho)=&\rho \cos^{2}(\omega)+\pauli{3} \rho \pauli{3} \sin^{2}(\omega t)\\
+    & + i\sin(\omega t)\cos(\omega t)\qty(p\expval{\pauli{3}}_{B}[\pauli{3},\rho_{A}]+(1-p)\expval{\pauli{3}}_{A}[\pauli{3},\rho_{B}]).
+\end{align*}
+Reconocemos dos términos: uno lineal y uno no lineal. El primero tiene forma de canal de desfasamiento sobre el estado efectivo. El segundo depende de los parámetros de la aplicación de grano grueso y de los valores esperados con respecto a los operadores de densidad reducidos del estado de máxima entropía. En efecto, el caso límite $p=1$ o $p=1$ simplemente reduce la dinámica a un canal de desfasamiento:
+
+\begin{equation*}
+    \Gamma_{t}^{p=1}(\rho)=\rho \cos^{2}(\omega)+\pauli{3} \rho \pauli{3} \sin^{2}(\omega t).
+\end{equation*}
+
+mientras que el caso $p=\frac{1}{2}$ revela el efecto del término no lineal:
+
+\begin{equation*}
+    \Gamma_{t}^{p=\frac{1}{2}}(\rho)=\rho \cos^{2}(\omega)+\pauli{3} \rho \pauli{3} \sin^{2}(\omega t) + i\expval{\pauli{3}} \qty[\pauli{3},\rho] \sin(\omega t)\cos(\omega t).
+\end{equation*}
+
+Nótese que, si del factor $\expval{\pauli{3}}=1$, la dinámica sería no solo lineal, sino unitaria, y correspondería a una rotación respecto al eje $z$, de no ser que los únicos estados tales que $\expval{\pauli{3}}=1$ son invariantes bajo dichas rotaciones. En realidad, lo que se observa es que la dinámica efectiva es una rotación respecto a $z$ que depende de la componente en $z$ del estado efectivo inicial. Cuando $\expval{\pauli{3}}=0$, la dinámica es un canal de despolarización que manda a todos los estados al eje $z$ (a un tiempo $\omega t =\frac{\pi}{4}$). 
+
+
+La despolarización dependiente de la componente en $z$ inicial es más clara si se observa el efecto de la evolución sobre el vector de Bloch. Abusando un poco de la notación se nota que 
+
+\begin{equation*}
+    \Gamma_{t}^{p=\frac{1}{2}}(\vec{r}_{\rho})=\begin{pmatrix}
+        x\cos(2\omega t)-yz\sin(2\omega t)\\
+        y\cos(2\omega t)+xz(2\omega t)\\
+        z\\
+    \end{pmatrix}
+\end{equation*}
+
+
 \subsection{Caso simétrico, unitaria factorizable}
+
+
 Considérese, para empezar, una aplicación de grano grueso con parámetro $p=\frac{1}{2}$. Esta simetría asegura que la asignación de máxima entropía es simplemente $\rho(0)\otimes\rho(0)$ donde $\rho(0)$ es le estado efectivo incial. En este caso particular, el estado de máxima entropía compatible con los observables del estado efectivo coincide con el estado asignado por el mapeo de clonación, que a todo estado $\rho$ asigna el estado $\rho\otimes\rho$. Así pues,
 \begin{equation*}
     \varrho(0)=\rho(0)\otimes\rho(0).

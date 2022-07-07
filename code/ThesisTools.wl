@@ -34,6 +34,7 @@ LagrangeMultFromZCoord::usage="Finds the lagrange multiplier associated with a p
 MaxEntForStateNotInZ::usage="something"
 CGKrausOp::usage="something"
 CGKraus::usage="CGKraus[rho,p] applies the coarse graining map using its Kraus Operators"
+CGNto1::usage="CGNto1[rho,p] takes an n qubit density matrix and applies the CG from N to 1 particle. p must be a probability vector"
 SWAPContractionFactor::usage="SWAPContractionFactor[t,p,\[Lambda]] gives the contraction factor of the coarse system resulting from applying the swap gate to a MaxEnt state characterized by p,\[Lambda]."
 SWAP::usage="SWAP[t] applies the operator at a time t. t=1 is the full swap gate, while t=0 is the identity operator."
 SWAP2::usage="SWAP2[t] applies the operator at a time t. t=1 is the full swap gate, while t=0 is the identity operator."
@@ -156,6 +157,8 @@ MaxEntAss[rho_,sp_]:=With[
 lagmult=LagrangeMultFromPurity[r,sp,llow,lup,lstep];
 A=KroneckerProduct[MatrixExp[sp*lagmult*(Normalize[vec] . PauliVector)],MatrixExp[(1-sp)*lagmult*(Normalize[vec] . PauliVector)]];
 Return[A/Tr[A]]]
+
+CGNto1[rho_,p_]:=Sum[p[[k]]*PartialTrace[rho,2^(k-1)],{k,1,Length[p]}]
 
 CGKrausOp[p_]:={
 Sqrt[p]KroneckerProduct[IdentityMatrix[2],{1,0}],

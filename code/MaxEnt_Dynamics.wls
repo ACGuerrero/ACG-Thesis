@@ -380,26 +380,29 @@ Export["../figures/"<>"MapAss_SWAP_t0vst1_"<>"_n="<>ToString[n]<>"_z="<>ToString
 l[r_,p_,lo_,up_,st_]:=First@LagrangeMultFromZCoord[
 	RzLambdaTable[p,lo,up,st],
 	r];
-r=0.8;
-sp=0.05;
-Do[
-sp=i;
-runi=Normalize[{-1,1,1}];
-rvec=r*runi;
+r=0.9;
+sp=0.9;
 lag=l[r,sp,low=0.,up=6.,ste=0.002];
-ra=Tanh[lag*sp]*runi;
-rb=Tanh[lag*(1-sp)]*runi;
-transformationCNOTC[r_]:=With[{
+Do[
+tim=i;
+omega=Pi/4;
+transformationIsing[r_]:=With[{
 	runi=Normalize[r],
 	ra=Tanh[lag*sp],
 	rb=Tanh[lag*(1-sp)]},
-	{rb*(sp*ra*runi[[1]]^2+(1-sp)*runi[[1]]),
-	rb*ra*(sp*runi[[1]]*runi[[2]]+(1-sp)*runi[[2]]*runi[[3]]),
-	ra*(sp*runi[[3]]+(1-sp)*rb*runi[[3]]^2)}
+	{r[[1]]*Cos[omega*tim]^2-r[[1]]*Sin[omega*tim]^2-Sin[omega*tim]*Cos[omega*tim]*(sp*rb*runi[[3]]*(-ra*runi[[2]])+(1-sp)*ra*runi[[3]]*(-rb*runi[[2]])),
+	r[[2]]*Cos[omega*tim]^2-r[[2]]*Sin[omega*tim]^2-Sin[omega*tim]*Cos[omega*tim]*(sp*rb*runi[[3]]*(ra*runi[[1]])+(1-sp)*ra*runi[[3]]*(rb*runi[[1]])),
+	r[[3]]}
 	];
-	Export["../figures/CNOT/"<>"sphere_CNOT_t=1.0"<>"_z="<>ToString[r]<>"_p="<>ToString[i*100]<>".png",FunctionSphereMesh2[r,transformationCNOTC,0.5]],
-{i,0.0,1.0,0.01}
+	Export["../figures/Ising/"<>"sphere_Ising_t="<>ToString[i*100]<>"_r="<>ToString[r]<>"_p="<>ToString[sp]<>".png",FunctionSphereMesh2[r,transformationIsing,0.5]],
+{i,0.0,1.0,0.1}
 ]
+
+
+set=Table[Import["../figures/Ising/"<>"sphere_Ising_t="<>ToString[i*100]<>"_r="<>ToString[r]<>"_p="<>ToString[sp]<>".png"],{i,0.0,1.0,0.1}];
+PNGSetToGif[set_]:=Export["../figures/"<>"Ising_GIF_t_evol"<>"_r="<>ToString[r]<>"_p="<>ToString[sp]<>".gif",
+Flatten[{set, Table[set[[i]], {i, Length[set]}]}]]
+PNGSetToGif[set]
 
 
 transformationCNOT[r_]:=With[{
@@ -409,6 +412,14 @@ transformationCNOT[r_]:=With[{
 	r*(Cos[freq*tim]^4+Sin[freq*tim]^4)
 	+2*sp*Sin[freq*tim]*Cos[freq*tim]*ra*(Sin[freq*tim]*Cos[freq*tim]*(rb*runi[[1]]*runi+(1-rb*runi[[1]])*{-runi[[1]],-runi[[2]],runi[[3]]})-(Cos[freq*tim]^2-Sin[freq*tim]^2)*(1+rb*runi[[1]])*{-runi[[2]],runi[[1]],0})
 	+2*(1-sp)*Sin[freq*tim]*Cos[freq*tim]*rb*(Sin[freq*tim]*Cos[freq*tim]*(ra*runi[[3]]*runi+(1-ra*runi[[3]])*{runi[[1]],-runi[[2]],-runi[[3]]})-(Cos[freq*tim]^2-Sin[freq*tim]^2)*(1+ra*runi[[3]])*{0,-runi[[1]],runi[[2]]})
+	];
+transformationCNOTC[r_]:=With[{
+	runi=Normalize[r],
+	ra=Tanh[lag*sp],
+	rb=Tanh[lag*(1-sp)]},
+	{rb*(sp*ra*runi[[1]]^2+(1-sp)*runi[[1]]),
+	rb*ra*(sp*runi[[1]]*runi[[2]]+(1-sp)*runi[[2]]*runi[[3]]),
+	ra*(sp*runi[[3]]+(1-sp)*rb*runi[[3]]^2)}
 	];
 
 
