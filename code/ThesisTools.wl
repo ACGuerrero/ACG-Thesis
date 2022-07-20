@@ -158,7 +158,7 @@ lagmult=LagrangeMultFromPurity[r,sp,llow,lup,lstep];
 A=KroneckerProduct[MatrixExp[sp*lagmult*(Normalize[vec] . PauliVector)],MatrixExp[(1-sp)*lagmult*(Normalize[vec] . PauliVector)]];
 Return[A/Tr[A]]]
 
-CGNto1[rho_,p_]:=Sum[p[[k]]*PartialTrace[rho,2^(k-1)],{k,1,Length[p]}]
+CGNto1[rho_,p_]:=Sum[p[[k]]*PartialTrace[rho,2^(Length[p]-k)],{k,1,Length[p]}];
 
 CGKrausOp[p_]:={
 Sqrt[p]KroneckerProduct[IdentityMatrix[2],{1,0}],
