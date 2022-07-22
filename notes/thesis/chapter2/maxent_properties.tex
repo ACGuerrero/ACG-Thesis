@@ -1,24 +1,14 @@
 \section{Análisis del estado de máxima entropía}
 
 \subsection{Separabilidad}
-Una pequeña manipulación de la ecuación (\ref{eq:MaxEntLagMult}),nos permite ver que el argumento de la exponencial se comporta de dos operadores que conmutan entre sí. A notar que
-\begin{align*}
-    \sum_{i}\lambda_{i}\hat{G}_{i}=&\sum_{i}\lambda_{i}(p\pauli{i}\otimes\Id+(1-p)\Id\otimes\pauli{i})\\
-    =&p\sum_{i}\lambda_{i}\pauli{i}\otimes\Id+(1-p)\sum_{i}\lambda_{i}\Id\otimes\pauli{i}\\
-    =&p\qty(\sum_{i}\lambda_{i}\pauli{i})\otimes\Id+(1-p)\Id\otimes\qty(\sum_{i}\lambda_{i}\pauli{i}).
-\end{align*}
-Por supuesto, los operadores 
-\begin{align*}
-    \qty(\sum_{i}\lambda_{i}\pauli{i})\otimes\Id && \text{y} && \Id\otimes\qty(\sum_{i}\lambda_{i}\pauli{i})
-\end{align*} 
-conmutan entre sí, así que la exponencial de la ecuación (\ref{eq:MaxEntLagMult}) se puede separar, quedando
-\begin{align*}
-    \varrho_{\max}=&\frac{1}{Z}e^{\qty(\sum_{i}\lambda_{i}\pauli{i})\otimes\Id }e^{\Id\otimes\qty(\sum_{i}\lambda_{i}\pauli{i})}\\
-    &=\frac{1}{Z}e^{p\sum_{i}\lambda_{i}\pauli{i}}\otimes e^{(1-p)\sum_{i}\lambda_{i}\pauli{i}}.
-\end{align*}
-Hemos obtenido, de esta forma, la expresión separable del estado de máxima entropía,
+
+Nótese que el argumento de la exponencial en la ecuación (\ref{eq:MaxEntLagMult}) está conformado por operadores que conmutan entre sí:
+\begin{equation*}
+    \sum_{i=1}^{3}\lambda_{i}\hat{G}_{i=1}^{3}=\sum_{i}\lambda_{i}\sum_{j=1}^{n}p_{j}(\Id_{2^{j-1}}\otimes\sigma_{i}\otimes\Id_{2^{n-j}}).
+\end{equation*}
+Esto significa que el estado de máxima entropía es separable y tiene exactamente $n$ factores. Explícitamente,
 \begin{equation}\label{eq:MaxEntSeparable}
-    \varrho_{\max}=\frac{e^{p\sum_{i}\lambda_{i}\sigma_{i}}}{Z_{1}} \otimes \frac{e^{(1-p)\sum_{i}\lambda_{i}\sigma_{i}}}{Z_{2}}.
+    \rho_{max}=\Motimes_{j=1}^{n}\frac{1}{Z_{j}}\text{exp}\qty(p_{j}\sum_{i}\lambda_{i}\sigma_{i}).
 \end{equation}
 
 Un resultado así puede parecer demasiado sencillo, y puede propiciar preguntas como: ¿qué significa que el estado de máxima entropía sea separable? ¿Qué interpretación tienen las matrices de densidad reducidas del estado de máxima entropía? Pues bien, primero hace falta ver que la información accesible al experimentalista no incluye las correlaciones entre los subsistemas. Si queda alguna duda sobre esto, considérese la parametrización de Bloch de un estado fino $\varrho\in\mcL(\hilbert_{4})$ como propuesta en (\ref{eq::BlochParametrization4}). La acción de la aplicación sobre la matriz de densidad es
@@ -28,29 +18,29 @@ Un resultado así puede parecer demasiado sencillo, y puede propiciar preguntas 
 \end{align*}
 De esto nos damos cuenta que a través de la aplicación de grano grueso se pierden todas las correlaciones, pues estas corresponden a las componentes $\gamma_{i,j}$ con $i,j\in\{1,2,3\}$. Por la construcción de la aplicación de grano grueso, cualquier sistema de matrices de densidad reducidas $\rho_{A}$ y $\rho_{B}$ da como resultado el mismo estado efectivo, sin importar qué tan factorizable o entrelazado esté (de nuevo, siempre y cuando las marices de densidad reducidas sean $\rho_{A}$ y $\rho_{B}$, pues un sistema máximamente entrelazado arroja como ambas trazas parciales al estado máximamente mezclado). Pues bien, como estas correlaciones se pierden a la hora de hacer las mediciones, en el estado de máxima entropía estas se hacen cero, ya que no se hace ninguna suposición al respecto. 
 
-La expresión (\ref{eq:MaxEntSeparable}) es un producto tensorial de dos operadores de densidad, a los que denotaremos como $\rho_{A}$ y $\rho_{B}$, con $\rho_{A}, \rho_{B}\in\mcL(\hilbert_{2})$. Aún más, nótese que ambos factores pueden reescribirse como la exponencial real de un vector de Pauli $\lambda\paulivec{\lambda}$ con $\hat{\lambda}_{i}=\frac{\lambda_{i}}{\lambda}$ pesado por un factor probabilístico. Ahora, en virtud de la relación (\ref{ap:PauliRealExp}) hallamos
-\begin{align*}
-    \rho_{A}=\frac{1}{Z_{1}}\qty(\Id\cosh{p\lambda}+\paulivec{\lambda}\sinh{p\lambda}), && \rho_{B}=\frac{1}{Z_{2}}\qty(\Id\cosh{(1-p)\lambda}+\paulivec{\lambda}\sinh{(1-p)\lambda})\rlap{.}
-\end{align*}
-Para que ambas matrices reducidas representen estados válidos, las funciones de partición $Z_{1}$ y $Z_{2}$ deben valer
-\begin{align*}
-    2\cosh{p\lambda} && \text{y} && 2\cosh{(1-p)\lambda}
-\end{align*}
-respectivamente. Las matrices de densidad reducidas del estado de máxima entropía tienen la forma
-\begin{align}\label{eq:rhoArhoB}
-    \rho_{A}=\frac{1}{2}\qty(\Id+\paulivec{\lambda}\tanh{p\lambda}) && \text{y} && \rho_{B}=\frac{1}{2}\qty(\Id+\paulivec{\lambda}\tanh{(1-p)\lambda})\rlap{.}
-\end{align}
+La expresión (\ref{eq:MaxEntSeparable}) es un producto tensorial de $n$ operadores de densidad, a los que denotaremos como $\rho_{j}$, con $\rho_{j}\in\mcL(\hilbert_{2})$. Aún más, nótese que todos los factores pueden reescribirse como la exponencial real de un vector de Pauli $\lambda\paulivec{\lambda}$ con $\hat{\lambda}_{i}=\frac{\lambda_{i}}{\lambda}$ pesado por un factor probabilístico. Ahora, en virtud de la relación (\ref{ap:PauliRealExp}) hallamos
+\begin{equation*}
+    \rho_{j}=\frac{1}{Z_{j}}\qty(\Id\cosh{p_{j}\lambda}+\paulivec{\lambda}\sinh{p_{j}\lambda}).
+\end{equation*}
+Para que las matrices reducidas representen estados válidos, las funciones de partición $Z_{j}$ deben valer
+\begin{equation*}
+    Z_{j}=2\cosh{p_{j}\lambda}.
+\end{equation*}
+Las matrices de densidad reducidas del estado de máxima entropía tienen la forma
+\begin{equation}\label{eq:rhoArhoB}
+    \rho_{j}=\frac{1}{2}\qty(\Id+\paulivec{\lambda}\tanh{p_{j}\lambda}).
+\end{equation}
 
 \subsection{La relación entre multiplicadores y mediciones}
 
 
 El problema de la ecuación (\ref{eq:MaxEntSeparable}) es que el estado de máxima entropía está en términos de los multiplicadores de Lagrange, en lugar de cantidades medibles. Si por alguna razón tuviéramos que resignarnos a trabajar con el estado en términos de los $\lambda_{i}$, será necesario conocer la expresión del estado macroscópico. Para hallarla, basta con pasar al estado de máxima entropía por la aplicación de grano grueso. Por contrucción 
 \begin{equation*}
-    \rho=\frac{1}{Z}\CG{\varrho_{max}}=p\rho_{A}+(1-p)\rho_{B}.
+    \rho=\frac{1}{Z}\CG{\varrho_{max}}=\sum_{j=1}^{n}p_{j}\rho_{j}.
 \end{equation*}
-Sustiyendo las fórmulas de $\rho_{A}$ y $\rho_{B}$, obtenemos al estado grueso en términos de los multiplicadores de Lagrange.
+Sustiyendo las fórmulas de $\rho_{j}$, obtenemos al estado grueso en términos de los multiplicadores de Lagrange.
 \begin{equation}\label{eq:CG(MaxEnt)}
-  \rho=\frac{1}{2}[\Id+(\paulivec{\lambda})(p\tanh{\lambda p}+(1-p)\tanh{\lambda (1-p)})].
+  \rho=\frac{1}{2}\qty[\Id+(\paulivec{\lambda})\qty(\sum_{j=1}^{n}p_{j}\tanh(p_{j}\lambda))].
 \end{equation}
 Pues bien, el estado efectivo tiene su propia parametrización de Bloch, y es
 \begin{equation}\label{eq:EffectiveState}
@@ -58,7 +48,7 @@ Pues bien, el estado efectivo tiene su propia parametrización de Bloch, y es
 \end{equation}
 Si se comparan las ecuaciones (\ref*{eq:CG(MaxEnt)}) y (\ref*{eq:EffectiveState}), se verá que es posible expresar la pureza $\purity{\rho}$ en términos de $\lambda$. Esto es importante porque la pureza del estado es una cantidad que se puede calcular a través de los valores esperados de los tres observables $\pauli{i}$, según $\text{Pu}(\rho)=\frac{1}{2}(r_{\rho}^{2}+1)$. Esta relación uno a uno entre la pureza del estado de un sistema de dos niveles y la norma de su vector de Bloch será referenciada constantemente a lo largo de este trabajo, en el que la norma de dicho vector será llamada \textit{pureza} de vez en cuando. Definiendo
 \begin{equation}\label{eq:r(lambda)}
-    \rfroml(\lambda)=p\tanh{\lambda p}+(1-p)\tanh{\lambda (1-p)}
+    \rfroml(\lambda)=\sum_{j=1}^{n}p_{j}\tanh(p_{j}\lambda)
 \end{equation}
 obtenemos tanto el radio del vector de Bloch del estado en términos de $\lambda$,
 \begin{equation*}
@@ -72,15 +62,12 @@ Con estas dos ecuaciones deducimos la relación entre las cantidades medibles $\
 \begin{equation}
     \expval{\pauli{i}}=\rfroml(\lambda)(\hat{\lambda})_{i}.
 \end{equation}
-La función $\rfroml$ es precisamente la hallada en (\ref{eq:MaxEntExpVals}). Ahora, la ecuación (\ref{eq:r(lambda)}), fijada $p$, es una suma de dos funciones inyectivas, y como tal, es inyectiva también. Esto significa que existe la función inversa. La figura \ref{fig:r(lambda)} muestra la forma de $\rfroml(\lambda)$ para valores selectos de $p$. Después de una breve inspección de (\ref{eq:r(lambda)}) se concluyen las siguientes cosas:
-\begin{itemize}
-\item la superficie es simétrica respecto al plano $p=0.5$
-\item los estados puros corresponden al caso límite $\lambda\rightarrow+\infty$
-\end{itemize}
+La función $\rfroml$ es precisamente la hallada en (\ref{eq:MaxEntExpVals}). Ahora, la ecuación (\ref{eq:r(lambda)}), fijadas $p_{j}$, es una suma de $n$ funciones inyectivas, y como tal, es inyectiva también. Esto significa que existe la función inversa. La figura \ref{fig:r(lambda)} muestra la forma de $\rfroml(\lambda)$ para valores selectos de $p_{1}$ en el caso en que $n=2$. Después de una breve inspección de (\ref{eq:r(lambda)}) se concluye que los estados puros corresponden al caso límite $\lambda\rightarrow+\infty$.
+
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.6\linewidth]{chapter2/figures/r(lambda).png}
-    \caption{$r_{\rho}$ como función de $\lambda$ para diferentes valores de $p$}
+    \caption{$r_{\rho}$ como función de $\lambda$ para diferentes valores de $p_{1}$ en el caso en que $n=2$.}
     \label{fig:r(lambda)}
 \end{figure}
 Cada multiplicador de Lagrange queda determinado de forma única a través de cantidades experimentales según 
@@ -92,19 +79,6 @@ y, por supuesto,
     \lambda=\rfroml^{-1}(r_{\rho})
 \end{equation*}
 Aunque siempre exista, no es posible hallar una expresión de $\rfroml^{-1}$ para cualquier valor de $p$ debido a que la ecuación (\ref{eq:r(lambda)}) es una ecuación trascendental. Por esto, para escribir al estado de máxima entropía como una función de cantidades medibles, nos tendremos que conformar con llamar a $\rfroml^{-1}$ de manera explícita.
-
-\subsubsection{Dos soluciones particulares}
-
-Hay al menos dos casos en las que $\rfroml^{-1}$ tiene una expresión sencilla. Primero, considerando el caso $p=0$ o $p=1$, la ecuación (\ref{eq:r(lambda)}) se reduce a 
-\begin{align*}
-\rfroml(\lambda)=&\tanh{\lambda}\\
-\Rightarrow\rfroml^{-1}(r_{\rho})=&\text{arctanh}(r_{\rho}).
-\end{align*}
-Luego, si $p=\frac{1}{2}$, la ecuación (\ref{eq:r(lambda)}) se reduce a
-\begin{align*}
-    \rfroml(\lambda)=&\tanh{\frac{1}{2}\lambda}\\
-    \Rightarrow\rfroml^{-1}(r_{\rho})=&2\text{arctanh}(r_{z}).
-\end{align*}
 
 \subsection{Otra expresión del estado de máxima entropía}
 
@@ -130,43 +104,32 @@ de tal manera que
   \varrho_{\max}=\frac{(\Xi_{\max})^{p}}{\Tr[ (\Xi_{\max})^{p}]}\otimes\frac{(\Xi{\max})^{1-p}}{\Tr[(\Xi_{\max})^{1-p}]}
 \end{equation}
 
-\subsection{Generalización: N a M sistemas de dos niveles}
+\subsection{La asignación de máxima entropía}
 
-\subsubsection{De n qubits a un qubit}
-La discusión anterior giró alrededor del caso en que el modelo de grano grueso reduce un espacio de dos qubits a uno de un solo qubit. Esto puede generalizarse al caso en que el aparato de medición sólo detecta una partícula cuando el sistema microscópico comporta $n$ partículas. En particular, consideramos, nuevamente, subsistemas de dos niveles (qubits), de tal forma que $\varrho\in\densityspace{2}^{\otimes n}$. Primero, veamos que la aplicación de grano grueso que resuelve un qubit donde hay $n$ qubits se puede escribir como
+El estado de máxima entropía nos otorga una herramienta de asignación para los estados accesibles. Sea $\rho\in\densityspace{2}$ un estado effectivo, entonces la acción de la aplicación de asignación de máxima entropía es
+\begin{gather*}
+    \mcA_{\mcC}^{\max}:\densityspace{2}\rightarrow\densityspace{2^{n}}\\
+    \rho \mapsto \Motimes_{j=1}^{n}\frac{1}{Z_{j}}\text{exp}\qty(p_{j}\sum_{i}\lambda_{i}\sigma_{i}).
+\end{gather*}
+donde la dependencia de la asignación en el modelo de grano grueso se indica mediante un subíndice. Nótese que según los valores que puedan tomar las diferentes probabilidades, el \textit{estado asignado} tendrá diferentes propiedades. En dos casos partículares, la aplicación de asignación es lineal: cuando $p_{1}=1$ y cuando $p_{j}=\frac{1}{n}\forall j$.
+
+Si $p_{1}=1$ entonces se eliminan los términos de error, y el estado de máxima entropía es simplemente
 \begin{equation*}
-    \CG{\varrho}=\Tr_{\overline{i}}(\Fuzzy{\varrho})=\Tr^{1}(\Fuzzy{\varrho}).
+    \varrho_{\max}=\rho\otimes\Id.
 \end{equation*}
-Sin pérdida de generalidad, y donde $\Tr_{\overline{i}}$ denota la traza parcial sobre todos menos el $i$-ésimo qubit. La aplicación borrosa permuta el primer qubit con el $j$-ésimo qubit con probabilidad $p_{j}$. Denotando las matrices de permutación como $S_{1,j}$,
-\begin{equation}\label{eq:CGNto1}
-    \CG{\varrho}=\Tr_{\overline{1}}\qty(p_{1}\varrho+\sum_{j=2}^{n}p_{j}(S_{1,j})\varrho(S_{1,j})^{\dagger}).
-\end{equation}
-Sea $\{A_{i}\}$ con $A_{i}\in\mcL(\hilbert_{2})$ un conjunto de observables tomográficamente completo. Las restricciones a las que se verá sujeto el operador $\varrho_{\max}$ son
+Si, por otro lado, $p_{j}=\frac{1}{n}\forall j$, entonces el estado de máxima entropía es
 \begin{equation*}
-    r_{i}=\Tr[\sigma_{i}\rho].
+    \varrho_{\max}=\qty[\frac{1}{Z}\text{exp}\qty(\frac{1}{n}\sum_{i}\lambda_{i}\sigma_{i})]^{\otimes n}=(\rho_{\max})^{\otimes n}.
 \end{equation*}
-Como antes, las restricciones parecen estar definidas en un espacio diferente al del estado microscópico, pero las podemos expresar en términos de operadores que actúan sobre $\hilbert_{2}^{\otimes n}$ como
-\begin{align*}
-    r_{i}&=\Tr[\sigma_{i}\CG{\varrho}]\\
-    &=\Tr[\sigma_{i}\Tr_{\overline{1}}\qty(p_{1}\varrho+\sum_{j=2}^{n}p_{j}(S_{1,j})\varrho(S_{1,j})^{\dagger})]\\
-    &=\Tr[\sigma_{i}\otimes\Id_{2^{n-1}}\qty(p_{1}\varrho+\sum_{j=2}^{n}p_{j}(S_{1,j})\varrho(S_{1,j})^{\dagger})]\\
-    &=\Tr[\qty(p_{1}(\sigma_{i}\otimes\Id_{2^{n-1}})+\sum_{j=2}^{n}p_{j}(S_{1,j})^{\dagger}(\sigma_{i}\otimes\Id_{2^{n-1}})(S_{1,j}))\varrho]\\
-    &=\Tr[\qty(p_{1}(\sigma_{i}\otimes\Id_{2^{n-1}})+\sum_{j=2}^{n}p_{j}(\Id_{2^{j-1}}\otimes\sigma_{i}\otimes\Id_{2^{n-j}}))\varrho]\\
-    &=\Tr[\qty(\sum_{j=1}^{n}p_{j}(\Id_{2^{j-1}}\otimes\sigma_{i}\otimes\Id_{2^{n-j}}))\varrho].
-\end{align*}
-Si definimos
-\begin{equation}\label{eq:GhatNM}
-    \hat{G}_{i}=\sum_{j=1}^{n}p_{j}(\Id_{2^{j-1}}\otimes\sigma_{i}\otimes\Id_{2^{n-j}}),
-\end{equation}
-las restricciones experimentales leen
-\begin{equation}\label{eq:MaxEntRestrictionsNM}
-    r_{i}=\Tr[\hat{G}_{i}\varrho].
-\end{equation}
-El estado que máximiza la entropía y satisface las restricciones anteriores es
-\begin{equation}\label{eq:MaxEntLagMultNM}
-    \varrho_{max}(\rho)=\frac{1}{Z}e^{-\sum_{i}\lambda_{i}\hat{G}_{i}}.
-\end{equation}
-Nuevamente, el argumento de la exponencial puede verse como una suma de $n$ operadores que conmuntan entre sí. Esto significa que el estado de máxima entropía es separable y tiene exactamente $n$ factores. Explícitamente,
-\begin{equation}\label{eq:GeneralMaxEnt}
-    \rho_{max}=\Motimes_{j=1}^{n}\frac{1}{Z_{j}}\text{exp}\qty(-p_{j}\sum_{i}\lambda_{i}\sigma_{i}).
-\end{equation}
+Si se pasa este estado por la aplicación de grano grueso correspondiente el resultado es 
+\begin{equation*}
+    \mcC[\varrho_{\max}]=\sum_{j=1}^{n}\frac{1}{n}\rho_{\max}=\rho_{\max},
+\end{equation*}
+de  lo que se conluye que
+\begin{equation*}
+    \rho_{\max}=\rho,
+\end{equation*}
+y que por lo tanto el estado asignado es simplemente
+\begin{equation*}
+    \mcA_{\mcC}^{\max}(\rho)=\rho^{\otimes n}.
+\end{equation*}

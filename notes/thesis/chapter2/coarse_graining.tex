@@ -1,6 +1,5 @@
 \section{Un modelo de grano grueso y borroso}\label{sec:CH2CG}
 
-
 Como se discutió previamente, es natural suponer que no siempre es posible disponer de toda la información sobre el \textit{estado} del sistema de interés. Esto ya sea por insuficiencia en la resolución de los aparatos de medición o por el inevitable error inherente a las herramientas de medición. Un prototipo sencillo de error consiste en el inducido por un aparato que no distingue diferentes conjuntos de partículas entre sí. El caso más simple corresponde a la permutación de dos partículas. Este intercambio accidental a la hora de la medición es una \textit{aplicación borrosa} \cite{FuzzyMeasurements}.
 
 Para ilustrar lo anterior, considérese dicha aplicación borrosa sobre un sistema de dos partículas. Para simplificarlo un poco más, supongamos que cada partícula es un sistema de dos niveles, esto es, el sistema está compuesto por los qubits $A$ y $B$. El estado del sistema está caracterizado por un operador de densidad $\varrho_{AB} \in \mcS(\hilbert_2 \otimes \hilbert_2)$. La acción de la aplicación borrosa se escribe como sigue:
@@ -39,3 +38,16 @@ En este contexto, diferenciamos al estado ``microscópico'' o ``fino'', denotado
 Es extremadamente importante notar que la expresión anterior no es invertible. Pueden existir una infinidad de estados $\varrho$ tales que su descripción gruesa coincida con $\rho$. Como ejemplo, supóngase que el estado efectivo está descrito por $\rho=\frac{1}{2}\Id$, el estado máximamente mezclado. Entonces cualquier sistema fino que se halle en un estado máximamente entrelazado será compatible con la descripción efectiva $\frac{1}{2}\Id$.
 
 Pues bien, como se ha asumido que conocemos la evolución unitaria subyacente, requerimos asignar a $\rho$ un estado microscópico que cumpla con todas las restricciones impuestas por nuestras mediciones. Asumiremos que dicho estado asignado es el que experimenta la evolución. 
+
+
+La discusión anterior giró alrededor del caso en que el modelo de grano grueso reduce un espacio de dos qubits a uno de un solo qubit. Esto puede generalizarse al caso en que el aparato de medición sólo detecta una partícula cuando el sistema microscópico comporta $n$ partículas. En particular, consideramos, nuevamente, subsistemas de dos niveles (qubits), de tal forma que $\varrho\in\mcS\qty( \hilbert_{2}^{\otimes n})$, donde $\hilbert_{2}^{\otimes n}$ representa el producto tensorial del espacio $\hilbert_{2}$ consigo mismo $k$ veces. Sean $p_{i}$ las probabilidades de medir cada una de las partículas. La aplicación borrosa pasa de ser un intercambio de dos partículas, a una serie de permutaciones entre la partícula de interés y el resto (sin pérdida de generalidad, asumiremos que la partícula de interés es la primera). Considerando un sistema de $n$ subsistemas de dos niveles (qubits), la aplicación borrosa se convierte en
+\begin{gather*}
+    \mcF:\mcS\qty( \hilbert_{2}^{\otimes n})\to \mcS\qty( \hilbert_{2}^{\otimes n})\nonumber\\
+    \varrho \mapsto p_{1}\varrho+\sum_{j=2}^{n}p_{j}(S_{1,j})\varrho(S_{1,j})^{\dagger},
+\end{gather*}
+donde $S_{1,j}$ es el operador que permuta la primera y la $j$-ésima partícula. De esta manera, donde $\Tr_{\overline{i}}$ denota la traza parcial sobre todos menos el $i$-ésimo qubit, la aplicación de grano grueso que resuelve un qubit donde hay $n$ qubits es
+\begin{gather*}
+    \mcC:\mcS( \hilbert_{2}^{\otimes n})\to \mcS(\hilbert_{2})\nonumber\\
+    \varrho\mapsto\Tr_{\overline{1}}(\Fuzzy{\varrho}).
+\end{gather*}
+Reconocemos, según los valores de las probabilidades $p_{j}$ dos tipos de regímenes. El primero corresponde a nuestra discusión: si $p_{1}>p_{j}\forall j\neq 1$ se dice que el modelo tiene una partícula preferencial. Si $p_{j}=\frac{1}{n}\forall j$ entonces no existe ninguna partícula preferencial, y se puede ver al sistema como una caja de gas en la que medir a cualquier partícula es igual de probable.
