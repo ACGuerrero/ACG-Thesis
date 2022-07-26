@@ -7,8 +7,6 @@ This is my license thesis' repository
 TO DO LIST
  1. Finish Ising model  [9a04ece](https://github.com/ACGuerrero/tesis-adan/commit/274d771536b0b04ea4edca866fc06359d5e0b8b8), [b0ca78](https://github.com/ACGuerrero/tesis-adan/commit/5ac8796059e41a3cdf13e09a33feb95fcfb0ca78)
  10. Finish AmpDamp section.
- 37. What's up with the power of the states?
- 38. Add discusion on p=0,1, 0.5 cases.
 
 
 COMPLETED TASKS
@@ -39,3 +37,5 @@ COMPLETED TASKS
  37. ~~Finish separable section~~&#x2611;[686678a](https://github.com/ACGuerrero/tesis-adan/commit/97627928705507862a6d0931212919e1f686678a)
  35. ~~Finish depolarizing section~~&#x2611;
  36. ~~Finish CNOT section~~&#x2611; [440cb67](https://github.com/ACGuerrero/tesis-adan/commit/135d4e81fdef43255ee8346ca5d050d4f440cb67), [11fb160](https://github.com/ACGuerrero/tesis-adan/commit/3d50a834289a732acf3a9f894ac6b740411fb160), [eb60bbc](https://github.com/ACGuerrero/tesis-adan/commit/5422fac6608b5ec8ff5f48e86a47494c7eb60bbc)
+ 37. ~~What's up with the power of the states?~~&#x2611;[f824900](https://github.com/ACGuerrero/tesis-adan/commit/4629e6f21b7987f38e5fdda4d0790a879f824900)
+ 38. ~~Add discusion on p=0,1, 0.5 cases~~&#x2611;[f824900](https://github.com/ACGuerrero/tesis-adan/commit/4629e6f21b7987f38e5fdda4d0790a879f824900)

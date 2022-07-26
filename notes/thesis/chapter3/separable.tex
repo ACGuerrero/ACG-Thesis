@@ -42,9 +42,8 @@ Si se interpreta a la aplicación de grano grueso como en el contexto de la medi
     \expval{\pauli{i}(t)}=&\frac{1}{2}p_{1}\tanh(p_{1}\lambda)\Tr[\pauli{i}U_{1}(t) (\hat{r}_{\rho}\cdot\vec{\sigma}) (U_{1}(t))^{\dag}]+\frac{1}{2}\sum_{k=2}^{n}p_{k}\tanh(p_{k}\lambda)\Tr[\pauli{i}U_{k}(t) (\hat{r}_{\rho}\cdot\vec{\sigma}) (U_{k}(t))^{\dag}]\\
     =_{p_{1}\rightarrow 1}&\frac{1}{2}p_{1}\tanh(p_{1}\lambda)\Tr[\pauli{i}U_{1}(t) (\hat{r}_{\rho}\cdot\vec{\sigma}) (U_{1}(t))^{\dag}]+\frac{1}{2}\lambda p_{k}^{2}\Tr[\pauli{i}U_{k}(t) (\hat{r}_{\rho}\cdot\vec{\sigma}) (U_{k}(t))^{\dag}]
 \end{align*}
-Reconocemos, pues, dos términos: uno asociado a la evolución esperada de nuestro sistema, descrita por el operador unitario $U_{1}(t)$, y un término de ruido. Si se considera únicamente dos partículas, entonces dicho error tiene peso $(1-p_{1})\tanh((1-p_{1})\lambda)$. Por la naturaleza separable y unitaria de la evolución, se verá que el ruido son oscilaciones periódicas, pero esto es más claro desarrollando algunos ejemplos.
+Reconocemos, pues, dos términos: uno asociado a la evolución esperada de nuestro sistema, descrita por el operador unitario $U_{1}(t)$, y un término de ruido. La acción de este término dependerá tanto de la naturaleza de las evoluciones locales del entorno, como del número de partículas en este.
 
-\acnote{Lo anterior es falsísimo! Lo que pasa es que me fui con la finta cuando usé solo 2 partículas. Pero ya tengo resultados numéricos que corrigen mis errores}
 
 Por otro lado, en el caso de $n$ partículas idénticas \acnote{No me gusta decirle el caso de las $n$ partículas idéndicas} ($p_{j}=\frac{1}{n}\forall j$), la relación entre la magnitud del vector de Bloch del estado efectivo y los multiplicadores de Lagrange es $\lambda=n\tanh^{-1}(r)$. Esto significa que los observables evolucionan como
 \begin{equation*}
@@ -136,12 +135,27 @@ En efecto, si $p_{1}\approx\frac{1}{2}$, entonces $\rho_{1}\approx\rho_{2}\appro
 
 \subsubsection{Sistema invariante}
 
-Ahora asumamos que es el sistema preferencial el que no evoluciona, mientras que las demás partículas sí lo hacen. 
-
-Si, por otro lado, la dinámica es de la forma $\mcU=\Id\otimes U^{t}$, esta puede ser escrita en términos de los vectores de Bloch como
+Ahora asumamos que es el sistema preferencial el que no evoluciona, mientras que las demás partículas sí lo hacen. Existen diferentes formas de abordar este problema, según la elección de las probabilidades y de la naturaleza de la evolución del entorno. Quizá el caso más sencillo es aquel en el que todas las partículas no preferenciales evolucionan de la misma forma. Esto es, una evolución generada por un Hamiltoniano de la forma
 \begin{equation*}
-    r\hat{r}_{\rho}\mapsto pr_{A}O\hat{r}_{\rho}+(1-p)r_{B}\hat{r}_{\rho}.
+    \mcH=\omega\sum_{k=2}^{n}\Id_{2^{k-1}}\otimes H \otimes \Id_{2^{n-k}}.
 \end{equation*}
+Por simplicidad, tómese $H=\pauli{3}$. Recordando la ecuación (\ref{eq:rhoArhoB}), se espera que los observables del sistema efectivo evolucionen según
+\begin{align*}
+    \expval{\pauli{1}(t)}=&p_{1} \expval{\sigma_{1}(0)}_{1}+\sum_{k=2}^{n}p_{k}\Tr[\pauli{1}e^{-it\pauli{3}} \rho_{k} e^{it\pauli{3}}]\\
+    \expval{\pauli{2}(t)}=&p_{1} \expval{\sigma_{2}(0)}_{1}+\sum_{k=2}^{n}p_{k}\Tr[\pauli{2}e^{-it\pauli{3}} \rho_{k} e^{it\pauli{3}}]\\
+    \expval{\pauli{3}(t)}=&\expval{\pauli{3}(0)},
+\end{align*}
+que quizá sea más clara escribiéndose en términos de las componentes de los vectores de Bloch de cada partícula (el primer subíndice indica la componente del vector, mientras que el segundo denota la partícula a la que pertenece):
+\begin{align*}
+    r_{1}(t)=&r_{1,1}(0)+\sum_{k=2}^{n}p_{k}(r_{1,k}\cos(2t)+r_{2,k}\sin(2t))\\
+    r_{2}(t)=&r_{2,1}(0)+\sum_{k=2}^{n}p_{k}(r_{2,k}\cos(2t)-r_{1,k}\sin(2t))\\
+    r_{3}(t)=&r_{3}(0).
+\end{align*}
+Esto no es más que la aplicación de la misma rotación sobre todos los vectores de Bloch, a excepción del primero. Reescribiendo,
+\begin{equation*}
+    \vec{r}(t)=p_{1}r_{1}+R_{z}(2t)\vec{r}_{e},
+\end{equation*}
+donde $\vec{r}_{e}\sum_{k=2}^{n}p_{k}\vec{r}_{k}$.
 Con algunas manipulaciones, la evolución toma una forma más clara:
 \begin{equation*}
     r\hat{r}_{\rho}\mapsto r\hat{r}_{\rho}+(1-p)(O(r_{B}\hat{r}_{\rho})-r_{B}\hat{r}_{\rho}).
