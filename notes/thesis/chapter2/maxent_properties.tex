@@ -84,16 +84,16 @@ Aunque siempre exista, no es posible hallar una expresión de $\rfroml^{-1}$ par
 
 \acnote{Revisar si la rama principal es justificación suficiente para agarrar la potencia}
 
-La ecuación (\ref{eq:MaxEntSeparable}) sugiere que el estado de máxima entropía puede expresarse como producto tensorial de potencias de un mismo estado. En efecto,
-\begin{align*}
-  \varrho_{\max}=&\frac{e^{p\sum_{i}\lambda_{i}\pauli{i}}}{Z_{1}} \otimes \frac{e^{(1-p)\sum_{i}\lambda_{i}\pauli{i}}}{Z_{2}}\\
-  =&\frac{\qty(e^{\sum_{i}\lambda_{i}\pauli{i}})^{p} }{Z_{1}}\otimes \frac{\qty(e^{\sum_{i}\lambda_{i}\pauli{i}})^{1-p}}{Z_{2}}\\
-  =&\frac{\qty(e^{\lambda(\paulivec{r_{\rho}})})^{p}}{Z_{1}} \otimes \frac{\qty(e^{\lambda(\paulivec{r_{\rho}})})^{1-p}}{Z_{2}}.
-\end{align*}
+\acnote{Revisado, como las matrices son semidefinidas positivas, su logaritmo es único.}
+
+La ecuación (\ref{eq:MaxEntSeparable}) sugiere que el estado de máxima entropía puede expresarse como producto tensorial de potencias de un mismo estado. En efecto, dado un real $q$ y una matriz cuadrada $A$, la potenciación $A^{q}$ puede escribirse como $e^{q \ln A}$. Como las matrices $e^{\sum_{i}\lambda_{i}\pauli{i}}$ son semidefinidas positivas, su logaritmo es único. Entonces,
+\begin{equation*}
+    \varrho_{\max}=\Motimes_{j=1}^{n}\frac{1}{Z_{j}}e^{p_{j}\sum_{i}\lambda_{i}\pauli{i}}=\Motimes_{j=1}^{n}\frac{1}{Z_{j}}\qty(e^{\sum_{i}\lambda_{i}\pauli{i}})^{p_{j}}.
+\end{equation*}
 En virtud de (\ref*{ap:PauliRealExp}), se cumple que
 \begin{align*}
-  \varrho_{\max}=&\frac{\qty(\cosh{\lambda}(\Id+\tanh{\lambda}(\paulivec{r_{\rho}})))^{p}}{\Tr[\qty(\cosh{\lambda}(\Id+\tanh{\lambda}(\paulivec{r_{\rho}})))^{p}]} \otimes \frac{\qty(\cosh{\lambda}(\Id+\tanh{\lambda}(\paulivec{r_{\rho}})))^{1-p}}{\Tr[\qty(\cosh{\lambda}(\Id+\tanh{\lambda}(\paulivec{r_{\rho}})))^{1-p}]}\\
-  =&\frac{\qty(\Id+\tanh{\lambda}(\paulivec{r_{\rho}}))^{p}}{\Tr[\qty(\Id+\tanh{\lambda}(\paulivec{r_{\rho}}))^{p}]} \otimes \frac{\qty(\Id+\tanh{\lambda}(\paulivec{r_{\rho}}))^{1-p}}{\Tr[\qty(\Id+\tanh{\lambda}(\paulivec{r_{\rho}}))^{1-p}]}.
+  \varrho_{\max}=&\Motimes_{j=1}^{n}\frac{\qty(\cosh{\lambda}(\Id+\tanh{\lambda}(\paulivec{r_{\rho}})))^{p_{j}}}{\Tr[\qty(\cosh{\lambda}(\Id+\tanh{\lambda}(\paulivec{r_{\rho}})))^{p_{j}}]}\\
+  =&\Motimes_{j=1}^{n}\frac{\qty(\Id+\tanh{\lambda}(\paulivec{r_{\rho}}))^{p_{j}}}{\Tr[\qty(\Id+\tanh{\lambda}(\paulivec{r_{\rho}}))^{p_{j}}]}.
 \end{align*}
 Definimos
 \begin{equation}\label{eq:Xi}
@@ -101,21 +101,22 @@ Definimos
 \end{equation}
 de tal manera que 
 \begin{equation}\label{eq:MaxEntSeparablePower}
-  \varrho_{\max}=\frac{(\Xi_{\max})^{p}}{\Tr[ (\Xi_{\max})^{p}]}\otimes\frac{(\Xi{\max})^{1-p}}{\Tr[(\Xi_{\max})^{1-p}]}
+  \varrho_{\max}=\Motimes_{j=1}^{n}\frac{(\Xi_{\max})^{p_{j}}}{\Tr[ (\Xi_{\max})^{p_{j}}]}
 \end{equation}
 
 \subsection{La asignación de máxima entropía}
 
-El estado de máxima entropía nos otorga una herramienta de asignación para los estados accesibles. Sea $\rho\in\densityspace{2}$ un estado effectivo, entonces la acción de la aplicación de asignación de máxima entropía es
-\begin{gather*}
-    \mcA_{\mcC}^{\max}:\densityspace{2}\rightarrow\densityspace{2^{n}}\\
+El estado de máxima entropía nos otorga una herramienta de asignación para los estados accesibles. Después de todo, requerimos de una asignación razonable que pueda ser propagada según la dinámica microscópica conocida. Sea $\rho\in\densityspace{2}$ un estado efectivo, entonces definimos a la aplicación de asigncación de máxima entropía como
+
+\begin{gather}\label{eq:MaxEntAss}
+    \mcA_{\mcC}^{\max}:\densityspace{2}\rightarrow\densityspace{2^{n}}\nonumber\\
     \rho \mapsto \Motimes_{j=1}^{n}\frac{1}{Z_{j}}\text{exp}\qty(p_{j}\sum_{i}\lambda_{i}\sigma_{i}).
-\end{gather*}
+\end{gather}
 donde la dependencia de la asignación en el modelo de grano grueso se indica mediante un subíndice. Nótese que según los valores que puedan tomar las diferentes probabilidades, el \textit{estado asignado} tendrá diferentes propiedades. En dos casos partículares, la aplicación de asignación es lineal: cuando $p_{1}=1$ y cuando $p_{j}=\frac{1}{n}\forall j$.
 
 Si $p_{1}=1$ entonces se eliminan los términos de error, y el estado de máxima entropía es simplemente
 \begin{equation*}
-    \varrho_{\max}=\rho\otimes\Id.
+    \varrho_{\max}=\rho\otimes\Id^{2^{n-1}}.
 \end{equation*}
 Si, por otro lado, $p_{j}=\frac{1}{n}\forall j$, entonces el estado de máxima entropía es
 \begin{equation*}
@@ -133,3 +134,4 @@ y que por lo tanto el estado asignado es simplemente
 \begin{equation*}
     \mcA_{\mcC}^{\max}(\rho)=\rho^{\otimes n}.
 \end{equation*}
+El caso $p_{1}=1$ debe verse como un caso límite: aquel en el que la medición no es borrosa. Este trabajo estudiará el límite $p_{1}\rightarrow 1$ como el escenario en el que la probabilidad de detectar la partícula equivocada es pequeña. Por otro lado, si $p_{j}=\frac{1}{n}\forall j$, la asignación de máxima entropía resulta en $n$ partículas idénticas.

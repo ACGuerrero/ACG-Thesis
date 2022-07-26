@@ -10,7 +10,7 @@ donde $\rho_{A}\in\densityspace{m}$, $\rho_{B}\in\densityspace{l}$ y $l+m=n$. Si
 \end{equation*}
 Aquí, una vez más, $U_{A}\in\unitaryspace{m}$, $U_{B}\in\unitaryspace{l}$ y $l+m=n$. Los operadores separables están compuestos por operadores que actúan de forma independiente sobre diferentes subsistemas del sistema en custión. En el caso de un sistema compuesto por dos subsistemas de dos niveles, el operador separable está compuesto por dos unitarias que actúan sobre $\hilbert_{2}$. Como el estado de máxima entropía resulta ser separable, las dinámicas separables son una muy buena primera forma de aplicar el formalismo descrito en las secciones anteriores.
 
-Considérese, pues, la aplicación de grano grueso de $n$ a $1$ partículas definida según (\ref{eq:CGNto1}), un estado efectivo $\rho\in\densityspace{2}$ y la aplicación de máxima entropía compatible dada por (\ref{eq:GeneralMaxEnt}). Si la evolución microscópica es factorizable entonces es generada por un Hamiltoniano de la forma
+Considérese, pues, la aplicación de grano grueso de $n$ a $1$ partículas definida según (\ref{eq:CG}), un estado efectivo $\rho\in\densityspace{2}$ y la aplicación de máxima entropía compatible dada por (\ref{eq:MaxEntAss}). Si la evolución microscópica es factorizable entonces es generada por un Hamiltoniano de la forma
 \begin{equation*}
     \mcH=\sum_{k=1}^{n}\omega_{k}\Id_{2^{k-1}}\otimes H_{i} \otimes \Id_{2^{n-k}},
 \end{equation*}
@@ -22,7 +22,7 @@ siendo la unitaria
 
 \subsection{Caso general}
 
-Si se considera una evolución unitaria de la forma (\ref{eq:NFactorUnitaries}), y se propaga a la aplicación de máxima entropía dada por (\ref{eq:GeneralMaxEnt}), el estado evolucionado toma la forma
+Si se considera una evolución unitaria de la forma (\ref{eq:NFactorUnitaries}), y se propaga al estado obtenido de la aplicación de máxima entropía, el estado evolucionado toma la forma
 \begin{equation*}
     \varrho_{\max}(t)=\Motimes_{k=1}^{n}\frac{1}{Z_{k}}U_{k}(t) e^{\qty(p_{k}\sum_{j}\lambda_{j}\pauli{j})} (U_{k}(t))^{\dag}
 \end{equation*}
@@ -37,8 +37,20 @@ Por supuesto, esta expresión puede expandirse en términos de exponenciales o d
     \expval{\pauli{i}(t)}=\frac{1}{2}\sum_{k=1}^{n}p_{k}\tanh(p_{k}\lambda)\Tr[\pauli{i}U_{k}(t) (\hat{r}_{\rho}\cdot\vec{\sigma}) (U_{k}(t))^{\dag}]
 \end{equation}
 
-Si se interpreta a la aplicación de grano grueso como en el contexto de la medición de una partícula con probabilidad de error, entoces esperamos que  $p_{1}>\sum_{k=2}^{n}p_{j}$. Reconocemos, pues, dos términos: uno asociado a la evolución esperada de nuestro sistema, descrita por el operador unitario $U_{1}(t)$, y un término de ruido. Si se considera únicamente dos partículas, entonces dicho error tiene peso $(1-p_{1})\tanh((1-p_{1})\lambda)$. Por la naturaleza separable y unitaria de la evolución, se verá que el ruido son oscilaciones periódicas, pero esto es más claro desarrollando algunos ejemplos.
+Si se interpreta a la aplicación de grano grueso como en el contexto de la medición de una partícula con probabilidad de error, entoces esperamos que  $p_{1}>\sum_{k=2}^{n}p_{j}$ (o, aún más, $p_{1}\rightarrow 1$). En tal caso, \acnote{Aquí no estuve seguro de qué términos deshechar en la expansión de Taylor}
+\begin{align*}
+    \expval{\pauli{i}(t)}=&\frac{1}{2}p_{1}\tanh(p_{1}\lambda)\Tr[\pauli{i}U_{1}(t) (\hat{r}_{\rho}\cdot\vec{\sigma}) (U_{1}(t))^{\dag}]+\frac{1}{2}\sum_{k=2}^{n}p_{k}\tanh(p_{k}\lambda)\Tr[\pauli{i}U_{k}(t) (\hat{r}_{\rho}\cdot\vec{\sigma}) (U_{k}(t))^{\dag}]\\
+    =_{p_{1}\rightarrow 1}&\frac{1}{2}p_{1}\tanh(p_{1}\lambda)\Tr[\pauli{i}U_{1}(t) (\hat{r}_{\rho}\cdot\vec{\sigma}) (U_{1}(t))^{\dag}]+\frac{1}{2}\lambda p_{k}^{2}\Tr[\pauli{i}U_{k}(t) (\hat{r}_{\rho}\cdot\vec{\sigma}) (U_{k}(t))^{\dag}]
+\end{align*}
+Reconocemos, pues, dos términos: uno asociado a la evolución esperada de nuestro sistema, descrita por el operador unitario $U_{1}(t)$, y un término de ruido. Si se considera únicamente dos partículas, entonces dicho error tiene peso $(1-p_{1})\tanh((1-p_{1})\lambda)$. Por la naturaleza separable y unitaria de la evolución, se verá que el ruido son oscilaciones periódicas, pero esto es más claro desarrollando algunos ejemplos.
 
+\acnote{Lo anterior es falsísimo! Lo que pasa es que me fui con la finta cuando usé solo 2 partículas. Pero ya tengo resultados numéricos que corrigen mis errores}
+
+Por otro lado, en el caso de $n$ partículas idénticas \acnote{No me gusta decirle el caso de las $n$ partículas idéndicas} ($p_{j}=\frac{1}{n}\forall j$), la relación entre la magnitud del vector de Bloch del estado efectivo y los multiplicadores de Lagrange es $\lambda=n\tanh^{-1}(r)$. Esto significa que los observables evolucionan como
+\begin{equation*}
+    \expval{\pauli{i}(t)}=\frac{1}{2n}\sum_{k=1}^{n}\Tr[\pauli{i}U_{k}(t) (\vec{r}_{\rho}\cdot\vec{\sigma}) (U_{k}(t))^{\dag}].
+\end{equation*}
+que no es más que una combinación lineal de las mismas componentes evolucionadas de formas diferentes.
 \subsection{Ejemplos particulares}
 
 \subsubsection{Dinámica simétrica}
@@ -54,9 +66,9 @@ donde $U(t)\in\unitaryspace{2}$. Se realiza el mismo proceso: aplicamos la evolu
 &=U(t)\rho(U^{\dag}(t))^{\dag}.
 \end{align*}
 La dinámica efectiva tiene la forma
-\begin{equation}
+\begin{equation*}
     \Gamma_{t}(\rho)=U(t)\rho(U^{\dag}(t))^{\dag}.
-\end{equation}
+\end{equation*}
 Este resultado es natural. No solo no hay interacción entre los diferentes subsistemas, significando esto que no se \textit{filtra} ningún tipo de información entre la partícula de interés y el resto, sino que cada parte evoluciona de manera idéntica: bajo la aplicación de grano grueso, incluso los términos de error arrojan la evolución esperada.
 
 \subsubsection{Entorno invariante}
@@ -73,7 +85,7 @@ donde, para todo $k$ se cumple que
 \begin{equation*}
     \frac{1}{Z_{k}}e^{\frac{1-p_{1}}{n-1}\sum_{j}\lambda_{j}\pauli{j}}=\frac{1}{2}\qty(\Id+\tanh(\frac{1-p_{1}}{n-1}\lambda)\hat{r}_{\rho}\cdot\vec{\sigma})\equiv \rho_{2}.
 \end{equation*}
-De esto, definimos un entorno efectivo de $n$ partículas idénticas según
+De esto, definimos un entorno efectivo de $n-1$ partículas idénticas según
 \begin{equation*}
     \rho_{E}\equiv\rho_{2}^{\otimes(n-1)}.
 \end{equation*}
@@ -89,7 +101,7 @@ Esta expresión parece no dar demasiada información: es simplemente la combinac
 \begin{equation*}
     r\hat{r}_{\rho}\mapsto R(r\hat{r}_{\rho}-(1-p_{1})r_{2}\hat{r}_{\rho})+(1-p_{1})r_{2}\hat{r}_{\rho}.
 \end{equation*}
-El resultado es una rotación alrededor de una línea que no pasa por el origen. Una rotación de esta naturaleza puede descomponerse en una rotación a través de un eje que pasa por el origen $R_{0}$ y una traslación $T$ como $T^{-1}\circ R_{0}\circ T$. Nótese que una transformación así no tendría por qué mantener a los estados dentro de la esfera de Bloch, por lo que esta debe depender del estado mismo. En efecto, la traslación tiene una magnitud $(1-p)r_{B}$ (a notar que la traslación es pequeña, y corresponde al término de ruido) en la dirección opuesta a la del estado (depende del estado tanto en magnitud como en dirección). Así que, aunque esto podría parecer una transformación afín, no lo es, pues depende enteramente del estado. Como tal, la evolución efectiva no es lineal, y no tiene expresión en términos de operadores de Kraus. La figura \ref{fig:FaseChangeSequence} muestra el efecto que una dinámica de este estilo tiene sobre la esfera de Bloch (en particular, el caso $U=e^{-i\omega t \pauli{3}}$). La contracción a lo largo del eje $z$ es un resultado del alto valor de $(1-p_{1})$ (0.4), y no sería visible si $p_{1}\rightarrow 1$.
+El resultado es una rotación alrededor de una línea que no pasa por el origen. Una rotación de esta naturaleza puede descomponerse en una rotación a través de un eje que pasa por el origen $R_{0}$ y una traslación $T$ como $T^{-1}\circ R_{0}\circ T$. Nótese que una transformación así no tendría por qué mantener a los estados dentro de la esfera de Bloch, por lo que esta debe depender del estado mismo. 
 
 \begin{figure}[ht!]
     \centering
@@ -112,14 +124,19 @@ El resultado es una rotación alrededor de una línea que no pasa por el origen.
     \label{fig:FaseChangeSequence}
 \end{figure}
 
-En efecto, si $p_{1}\approx\frac{1}{2}$, entonces $\rho_{1}\approx\rho_{2}\approx\rho$ y la dinámica efectiva se conviertiría en un canal de despolarización:
+En efecto, la traslación tiene una magnitud $(1-p)r_{B}$ (a notar que la traslación es pequeña, y corresponde al término de ruido) en la dirección opuesta a la del estado (depende del estado tanto en magnitud como en dirección). Así que, aunque esto podría parecer una transformación afín, no lo es, pues depende enteramente del estado. Como tal, la evolución efectiva no es lineal, y no tiene expresión en términos de operadores de Kraus. La figura \ref{fig:FaseChangeSequence} muestra el efecto que una dinámica de este estilo tiene sobre la esfera de Bloch (en particular, el caso $U=e^{-i\omega t \pauli{3}}$). La contracción a lo largo del eje $z$ es un resultado del alto valor de $(1-p_{1})$ (0.4), y no sería visible si $p_{1}\rightarrow 1$.
+
+
+En efecto, si $p_{1}\approx\frac{1}{2}$, entonces $\rho_{1}\approx\rho_{2}\approx\rho$ y la dinámica efectiva se conviertiría en un canal de desfasamiento:
 
 \begin{align*}
-    \Gamma_{\rho}=&p_{1}e^{-i\omega t \pauli{3}}\rho_{1}e^{i\omega t \pauli{3}}+(1-p_{1})p_{2}\\
-    \approx&\frac{1}{2}(\rho+e^{-i\omega t \pauli{3}}\rho e^{i\omega t \pauli{3}})
+    \Gamma_{\rho}=&p_{1}e^{-i\omega t \pauli{3}}\rho_{1}e^{i\omega t \pauli{3}}+(1-p_{1})\rho_{2}\\
+    \approx&\frac{1}{2}(\rho+e^{-i\omega t \pauli{3}}\rho e^{i\omega t \pauli{3}}).
 \end{align*}
 
 \subsubsection{Sistema invariante}
+
+Ahora asumamos que es el sistema preferencial el que no evoluciona, mientras que las demás partículas sí lo hacen. 
 
 Si, por otro lado, la dinámica es de la forma $\mcU=\Id\otimes U^{t}$, esta puede ser escrita en términos de los vectores de Bloch como
 \begin{equation*}
