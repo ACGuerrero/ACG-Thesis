@@ -152,15 +152,28 @@ que quizá sea más clara escribiéndose en términos de las componentes de los 
     r_{3}(t)=&r_{3}(0).
 \end{align*}
 Esto no es más que la aplicación de la misma rotación sobre todos los vectores de Bloch, a excepción del primero. Reescribiendo,
-\begin{equation*}
-    \vec{r}(t)=p_{1}r_{1}+R_{z}(2t)\vec{r}_{e},
-\end{equation*}
+\begin{align*}
+    \vec{r}(t)=&p_{1}\vec{r}_{1}+R_{z}(2t)\vec{r}_{e}\\
+    =&\vec{r}(0)+(R_{z}(2t)-\Id)\vec{r}_{e}
+\end{align*}
 donde $\vec{r}_{e}\sum_{k=2}^{n}p_{k}\vec{r}_{k}$.
-Con algunas manipulaciones, la evolución toma una forma más clara:
-\begin{equation*}
-    r\hat{r}_{\rho}\mapsto r\hat{r}_{\rho}+(1-p)(O(r_{B}\hat{r}_{\rho})-r_{B}\hat{r}_{\rho}).
-\end{equation*}
 En este caso, el primer término es el término invariante, y sería lo único visible en el caso en que el aparato de medición no fallara, mientras que el segundo término corresponde a pequeñas oscilaciones completamente dependientes del estado efectivo inicial. Estas pequeñas oscilaciones son el término de ruido, y por su dependencia en el estado inicial, vuelve a suceder que la evolución no es lineal, y que no tiene representación en términos de operadores de Kraus.
+
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}{0.5\textwidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/spheretraject_sameHam_difprob_n=2_p=0.95_both.png}
+      \caption{Entorno de una partícula.}
+    \end{subfigure}%
+    \begin{subfigure}{0.5\textwidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/spheretraject_sameHam_difprob_n=8_p=0.95_both.png}
+      \caption{Entorno de ocho partículas.}
+    \end{subfigure}
+    \caption{Oscilaciones periódicas cercanas al valor esperado. La periodicidad no depende de los pesos probabilísticos de cada partícula.}\label{fig:EvolutionOscilations}
+\end{figure}
+
 
 \subsubsection{Cambio de fase con oscilaciones}
 
