@@ -141,23 +141,23 @@ Ahora asumamos que es el sistema preferencial el que no evoluciona, mientras que
 \end{equation*}
 Por simplicidad, tómese $H=\pauli{3}$. Recordando la ecuación (\ref{eq:rhoArhoB}), se espera que los observables del sistema efectivo evolucionen según
 \begin{align*}
-    \expval{\pauli{1}(t)}=&p_{1} \expval{\sigma_{1}(0)}_{1}+\sum_{k=2}^{n}p_{k}\Tr[\pauli{1}e^{-it\pauli{3}} \rho_{k} e^{it\pauli{3}}]\\
-    \expval{\pauli{2}(t)}=&p_{1} \expval{\sigma_{2}(0)}_{1}+\sum_{k=2}^{n}p_{k}\Tr[\pauli{2}e^{-it\pauli{3}} \rho_{k} e^{it\pauli{3}}]\\
+    \expval{\pauli{1}(t)}=&p_{1} \expval{\sigma_{1}(0)}_{1}+\sum_{k=2}^{n}p_{k}\Tr[\pauli{1}e^{-i\omega t\pauli{3}} \rho_{k} e^{i\omega t\pauli{3}}]\\
+    \expval{\pauli{2}(t)}=&p_{1} \expval{\sigma_{2}(0)}_{1}+\sum_{k=2}^{n}p_{k}\Tr[\pauli{2}e^{-i\omega t\pauli{3}} \rho_{k} e^{i\omega t\pauli{3}}]\\
     \expval{\pauli{3}(t)}=&\expval{\pauli{3}(0)},
 \end{align*}
 que quizá sea más clara escribiéndose en términos de las componentes de los vectores de Bloch de cada partícula (el primer subíndice indica la componente del vector, mientras que el segundo denota la partícula a la que pertenece):
 \begin{align*}
-    r_{1}(t)=&r_{1,1}(0)+\sum_{k=2}^{n}p_{k}(r_{1,k}\cos(2t)+r_{2,k}\sin(2t))\\
-    r_{2}(t)=&r_{2,1}(0)+\sum_{k=2}^{n}p_{k}(r_{2,k}\cos(2t)-r_{1,k}\sin(2t))\\
+    r_{1}(t)=&r_{1,1}(0)+\sum_{k=2}^{n}p_{k}(r_{1,k}\cos(2\omega t)+r_{2,k}\sin(2\omega t))\\
+    r_{2}(t)=&r_{2,1}(0)+\sum_{k=2}^{n}p_{k}(r_{2,k}\cos(2\omega t)-r_{1,k}\sin(2\omega t))\\
     r_{3}(t)=&r_{3}(0).
 \end{align*}
 Esto no es más que la aplicación de la misma rotación sobre todos los vectores de Bloch, a excepción del primero. Reescribiendo,
 \begin{align*}
-    \vec{r}(t)=&p_{1}\vec{r}_{1}+R_{z}(2t)\vec{r}_{e}\\
-    =&\vec{r}(0)+(R_{z}(2t)-\Id)\vec{r}_{e}
+    \vec{r}(t)=&p_{1}\vec{r}_{1}+R_{z}(2\omega t)\vec{r}_{e}\\
+    =&\vec{r}(0)+(R_{z}(2\omega t)-\Id)\vec{r}_{e}
 \end{align*}
 donde $\vec{r}_{e}\sum_{k=2}^{n}p_{k}\vec{r}_{k}$.
-En este caso, el primer término es el término invariante, y sería lo único visible en el caso en que el aparato de medición no fallara, mientras que el segundo término corresponde a pequeñas oscilaciones completamente dependientes del estado efectivo inicial. Estas pequeñas oscilaciones son el término de ruido, y por su dependencia en el estado inicial, vuelve a suceder que la evolución no es lineal, y que no tiene representación en términos de operadores de Kraus.
+En este caso, el primer término es el término invariante, y sería lo único visible en el caso en que el aparato de medición no fallara, mientras que el segundo término corresponde a pequeñas oscilaciones completamente dependientes del estado efectivo inicial que nunca aumentan la pureza del estado. Estas pequeñas oscilaciones son, justamente, el término de ruido. La visualización a la solución del problema puede observarse en la Figura \ref{fig:OscilationsSameHam}. Cada una de las componentes del vector de Bloch efectivo se ve como una suma de una constante con funciones periódicas que tienen el mismo periodo, o  como la suma de una constante más una función periódica (viendo la combinación de los vectores de cada partícula del entorno como una partícula efectiva). De cualquier forma, el resultado es una función periódica.
 
 \begin{figure}[ht!]
     \centering
@@ -169,13 +169,86 @@ En este caso, el primer término es el término invariante, y sería lo único v
     \begin{subfigure}{0.5\textwidth}
       \centering
       \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/spheretraject_sameHam_difprob_n=8_p=0.95_both.png}
-      \caption{Entorno de ocho partículas.}
+      \caption{Entorno de siete partículas.}
     \end{subfigure}
-    \caption{Oscilaciones periódicas cercanas al valor esperado. La periodicidad no depende de los pesos probabilísticos de cada partícula.}\label{fig:EvolutionOscilations}
+    \caption{Oscilaciones periódicas cercanas al valor esperado. La periodicidad no depende de los pesos probabilísticos de cada partícula. En gris, el conjunto de estados con la misma pureza (y la misma coordenada en $\pauli{3}$) que el estado efectivo inicial.}\label{fig:OscilationsSameHam}
 \end{figure}
 
+Si, por otro lado, quitamos la restricción de que todas las partículas del entorno evolucionen con la misma frecuencia, se vuelve imposible factorizar la rotación, y no existe una partícula de entorno efectiva:
+\begin{equation*}
+    \vec{r}(t)=p_{1}\vec{r}_{1}+\sum_{k=2}^{n} p_{k}R_{z}(2\omega_{k} t)\vec{r}_{k}.
+\end{equation*}
+En lugar de eso, cada partícula del entorno contribuye al error de forma única. A pesar de que la evolución de cada partícula del entorno sea periódica, la combinación de estas no tiene por qué serlo. El resultado sigue siendo de oscilaciones cercanas a un valor \textit{sin error}. Las figuras \ref{fig:OscilationsNormalFreqSmallSigm} y \ref{fig:OscilationsNormalFreqBigSigm} muestran dichas oscilaciones para el caso en que las frecuencias se han obtenido a través de distribuciones normales de media $\mu=2$ y desviaciones estándar $\sigma=0.2$ y $\sigma=10$ respectivamente.
 
-\subsubsection{Cambio de fase con oscilaciones}
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}{0.5\textwidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/sphere_traject_sigmaz_normal_freq_mean=2_std=0.2_n=3_p=0.95_both.png}
+      \caption{Entorno de dos partículas.}
+    \end{subfigure}%
+    \begin{subfigure}{0.5\textwidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/sphere_traject_sigmaz_normal_freq_mean=2_std=0.2_n=8_p=0.95_both.png}
+      \caption{Entorno de siete partículas.}
+    \end{subfigure}
+    \caption{Oscilaciones periódicas cercanas al valor esperado. Las frecuencias de evolución fueron obtenidas de una distribución normal.}\label{fig:OscilationsNormalFreqSmallSigm}
+\end{figure}
+
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}{0.5\textwidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/sphere_traject_sigmaz_normal_freq_mean=2_std=10_n=3_p=0.95_both.png}
+      \caption{Entorno de dos partículas.}
+    \end{subfigure}%
+    \begin{subfigure}{0.5\textwidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/sphere_traject_sigmaz_normal_freq_mean=2_std=10_n=8_p=0.95_both.png}
+      \caption{Entorno de siete partículas.}
+    \end{subfigure}
+    \caption{Oscilaciones periódicas cercanas al valor esperado. Las frecuencias de evolución fueron obtenidas de una distribución normal.}\label{fig:OscilationsNormalFreqBigSigm}
+\end{figure}
+
+\subsubsection{Sistema en campo magnético ?}
+
+\acnote{No tengo idea de qué justificación se pueda dar a que todas las partículas oscilen en la misma dirección pero con frecuencias diferentes.}
+
+En los dos casos anteriores se permitió que alguna de las partes del sistema se mantuviera invariante, fuera la partícula preferencial  o las partículas que conforman su entorno. Veamos ahora qué sucede cuando se permite que todo el sistema evolucione. Considérese un Hamiltoniano
+\begin{equation*}
+    \mcH=\sum_{k=1}^{n}\omega_{k}\Id_{2^{k-1}}\otimes \pauli{3} \otimes \Id_{2^{n-k}},
+\end{equation*}
+de tal forma que toda la evolución mantega constante la componente en $\pauli{3}$. Además, como antes, obténganse las frecuencias de evolución de una distribución normal, con $\omega_{1}=\mu$.
+
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}{0.5\textwidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/sphere_traject_ALL_sigmaz_normal_freq_mean=2_std=0.2_n=3_p=0.8_both.png}
+    \end{subfigure}%
+    \begin{subfigure}{0.5\textwidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/sphere_traject_ALL_sigmaz_normal_freq_mean=2_std=0.2_n=3_p=0.9_both.png}
+    \end{subfigure}
+    \caption{Oscilaciones periódicas cercanas al valor esperado. Como las frecuencias de las demás partículas son muy cercanas a la de la primera, casi no se observa error. Pero existe. \acnote{Tengo ploteado dicho error}}\label{fig:Oscilations12}
+\end{figure}
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}{0.5\textwidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/sphere_traject_ALL_sigmaz_normal_freq_mean=2_std=100_n=3_p=0.8_both.png}
+    \end{subfigure}%
+    \begin{subfigure}{0.5\textwidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/sphere_traject_ALL_sigmaz_normal_freq_mean=2_std=100_n=3_p=0.9_both.png}
+    \end{subfigure}
+    \caption{Trayectoria adecuada en azul. Las oscilaciones son más visibles conforme más pequeño es $p_{1}$ (o mayor el error). La alta desviación estándar permite ver las oscilaciones "bonitas"}\label{fig:Oscilations13}
+\end{figure}
+
+\newpage
+
+\acnote{Me crasheó la máquina haciendo unas pruebas con más partículas. Ya luego lo acabo.}
+\acnote{Lo siguiente está obsoleto -----------------------------------}
 
 Considérese un estado efectivo $\rho\in\densityspace{2}$ de la forma
 \begin{equation*}
@@ -236,3 +309,8 @@ Este resultado puede observarse en la figura \ref{fig:EvolutionOscilations}, don
     \caption{Oscilaciones cercanas al valor esperado. En este caso, el estado inicial no se halla alineado en $z$, por lo que $U_{1}$ lo rota alrededor de dicho eje. Aquí, $r=0.8$ $p=0.9$ y $\omega=15$. }
     \label{fig:GeneralOscilations1}
 \end{figure}
+
+
+\acnote{Fin parte obsoleta -----------------------------------}
+
+\pagebreak
