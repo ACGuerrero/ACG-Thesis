@@ -2,12 +2,13 @@
 \subsection{Entropía de Shannon}
 A finales de los años cuarenta, Claude Shannon se preguntaba sobre una medida de la \textit{incertidumbre}, o de la \textit{información} asociada a un proceso cuyo resultado estuviera descrito por una variable aleatoria $X$ con distribución de probabilidad $p(x_{i})$.
 
-La cantidad de información provista por el producto de un experimento depende de la probabilidad asociada a dicho suceso. Al tirar un dado, por ejemplo, saber que un número no cayó es mucho menos informativo que conocer que dicho número cayó, ya que cada número tiene una probabilidad de $\frac{5}{6}$ de no caer, pero sólo $\frac{1}{6}$ de caer. Con la misma línea de razonamiento, conocer el resultado de un evento que ocurre con probabilidad $p=1$ no transmite ninguna información. Si a cada valor de $X$ se le puede asociar una cantidad de información, entoces debe poder calcularse la cantidad de información promedio: esta es la medida que buscaba Shanon. La forma de esta medida, denótese $S(p)$, vino de las propiedades que el matemático estadounidense afirmó que debía cumplir \cite{Shannon} \cite{Wilde}:
+La cantidad de información provista por el producto de un experimento depende de la probabilidad asociada a dicho suceso. Al tirar un dado, por ejemplo, saber que un número no cayó es mucho menos informativo que conocer que dicho número cayó, ya que cada número tiene una probabilidad de $\frac{5}{6}$ de no caer, pero sólo $\frac{1}{6}$ de caer. Con la misma línea de razonamiento, conocer el resultado de un evento que ocurre con probabilidad $p=1$ no transmite ninguna información. Si a cada valor de $X$ se le puede asociar una cantidad de información, entoces debe poder calcularse la cantidad de información promedio: esta es la medida que buscaba Shanon. La forma de esta medida, denótese $S(p)$, vino de las propiedades que el matemático estadounidense afirmó que debía cumplir \ddnote*{\cite{Shannon,Wilde}}{\cite{Shannon} \cite{Wilde}}:
 \begin{enumerate}
     \item $H(p)$ debe ser continua en $p$
     \item $H(p)$ debe ser una función creciente monotónica de $n$ cuando $p_{i}=\frac{1}{n}$
     \item si $X$ e $Y$ son procesos independientes, $H(p_{X}(x_{i}),p_{Y}(y_{j}))=H(p_{X}(x_{i}))+H(p_{Y}(y_{j}))$
 \end{enumerate}
+\ddnote{faltan puntos en los items}
 y demostró que
 \begin{equation}\label{eq:ShannonEntropy}
     H=-k\sum_{i}p(x_{i})\log{p(x_{i})}.
