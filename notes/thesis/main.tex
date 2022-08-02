@@ -1,5 +1,6 @@
 \documentclass[12pt,twoside]{book}
 \usepackage[spanish]{babel}
+\decimalpoint
 \usepackage[utf8]{inputenc}
 \usepackage{cmap}
 \usepackage[T1]{fontenc}
@@ -14,6 +15,7 @@
 \usepackage{hyperref} %para referencias clickeables
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage{pdfpages} % para la portada
 
 %==============================
 %========== Comandos ==========
@@ -76,17 +78,25 @@
 
 \begin{document}
 
-\maketitle
-\cleardoublepage
+\includepdf[pages=-]{portada.pdf}
+
+%\maketitle
+%\cleardoublepage
 
 \section*{Dedicatoria}
+A mi familia, a Gabriela, a todos mis seres queridos.
+
 \cleardoublepage
 
 \section*{Agradecimientos}
+A las personas de hace ratito, a mi director, David, al grupo de Carlos, al grupo de Fernando de Melo, a Fernando L.
+
 \cleardoublepage
 
 \section*{Resumen}
 \ddnote{tratemos de que tome forma rápido. Por fas ve llenando estos huecos que son relativamente simples, para ir revisandolos. También por fas ya haz la portada como se requiere, para concentranos ya solo en el contenido y tener todos los detalles hechos.}
+El presente trabajo se utiliza el Principio de Máxima Entropía para crear una aplicación de asignación que permita hacer una conjetura sobre el estado microscópico de una descripción gruesa del estado de un sistema de $n$ qubits. En particular, la descripción gruesa corresponde a la de un aparato de medición al que se le asocian dos tipos de errores: por un lado es capaz de resolver únicamente una de las $n$ partículas, y por otro lado, existe una probabilidad no nula de que mida la $j-$-ésima partícula en lugar de la de interés. A través de la asignación de Máxima Entropía, y asumiendo que se conoce la evolución microscópica, se estudiaron diferentes dinámicas efectivas. Esto es, el cambio observable en la descripción gruesa del sistema. Las dinámicas estudiadas resultaron ser no lineales \acnote{no lineales como?}. Además, se comparan los resultados analíticos obtenidos a través de Principio de Máxima Entropía con los resultados numéricos obtenidos de otro tipo de asignación: la asignación promedio.
+
 \pagestyle{plain}
 \tableofcontents
 \newpage

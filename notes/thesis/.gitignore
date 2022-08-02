@@ -10,5 +10,6 @@ log/log_main.toc
 *.out
 *.bbl
 *.pdf
+!portada.pdf
 *.blg
 *.synctex.gz
