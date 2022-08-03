@@ -158,8 +158,44 @@ Puede verse que el resultado de la operación es trazar sobre los elementos del 
 
 \subsection{Evolución y parametrización}
 
+
+\acnote{----Sección: Evolución de sistemas cerrados}
+
+\acnote{
+La evolución de un sistema cuántico cerrado descrito por un vector de estado está dada por la ecuación de Schrödinger,
+\begin{equation*}
+    i\hbar\frac{d}{dt}\ket{\psi(t)}=H\ket{\psi(t)},
+\end{equation*}
+cuya solución formal está dada en términos de un operador unitario $U(t,t_{0})$ según
+\begin{align*}
+    \ket{\psi(t)}=U(t,t_{0})\ket{\psi(t_{0})} && \text{con} && U(t,t_{0})=e^{-iH(t-t_{0})/\hbar}\rlap{.}
+\end{align*}
+Pues bien, los postulados de la mecánica cuántica pueden adaptarse al formalismo de operadores de densidad. De la ecuación de Schrödinger se sigue que la evolución de un sistema descrito por un operador de densidad $\rho$ está descrita por ecuación de Liouville-von Neumann,
+\begin{equation*}
+    i\hbar\frac{d}{d t} \rho(t)=[H,\rho(t)].
+\end{equation*}
+De la misma forma que antes, la solución queda expresada en términos de un operador unitario,
+\begin{equation*}
+    \rho(t)=U(t,t_{0})\rho(t_{0})U^{\dagger}(t,t_{0}).
+\end{equation*}
+}
+
+\acnote{----Sección: evolución de sistemas abiertos}
+
+\acnote{Considérese, en cambio, que el sistema de interés $\rho_{S}$ se halla acoplado a un entorno $\rho_{E}$ y que, inicialmente, el conjunto de estos dos conforma un sistema cerrado descrito por el operador de densidad $\rho(0)=\rho_{S}(0)\otimes\rho_{E}$. Esta condición inicial está justificada experimentalmente: una medición proyectiva sobre el sistema de interés proyecta al sistema a un estado factorizable, así que estos estados son siempre preparables. Como el sistema es cerrado, este evoluciona siguiendo la ecuación de Liouville-von Neumann,
+\begin{align*}
+    i\hbar\frac{d}{d t} \rho(t)=[H,\rho(t)] && \text{con} && \rho(0)=\rho_{S}(0)\otimes\rho_{E}\rlap{,}
+\end{align*}
+cuya solución formal es 
+\begin{equation*}
+    \rho_{S}(t)=\mcE_{t}(\rho(0)),
+\end{equation*}
+donde $\mcE_{t}$ es un canal cuántico para cualquier $t$, y $\mcE_{0}=Id$. El formalismo cuántico queda fuera del alcance de este trabajo, y sin entrar en más detalle, basta con señalar que los canales cuánticos son aplicaciones lineales de $\mcB(\hilbert_{n})$ en $\mcB(\hilbert_{m})$ que cumplen que  [LISTA PROPIEDADES DE CANALES].
+Es particularmente interesante señalar que dado un canal cuántico, por el teorema de Stinespring...}
+
 \subsubsection{La evolución del operador de densidad}
-Los postulados de la mecánica cuántica pueden adaptarse al formalismo de operadores de densidad. En particular, reconociendo que la evolución de un sistema cuántico cerrado descrito por un vector de estado $\ket{\psi}$\ddnote{, está dada} por la ecuación de Schrodinger \cite{Breuer} \ddnote{Aquí no es tan necesario citar, ya es como citar a Newton cada vez que escribes una derivada. Si citas a alguien para cosas más trascendentes, mejor cita al autor del paper orginal},
+
+Los postulados de la mecánica cuántica pueden adaptarse al formalismo de operadores de densidad. En particular, reconociendo que la evolución de un sistema cuántico cerrado descrito por un vector de estado $\ket{\psi}$\ddnote{, está dada} por la ecuación de Schrodinger  \ddnote{Aquí no es tan necesario citar, ya es como citar a Newton cada vez que escribes una derivada. Si citas a alguien para cosas más trascendentes, mejor cita al autor del paper orginal} \acnote{cita removida},
 \begin{equation*}
     i\hbar\frac{d}{dt}\ket{\psi(t)}=H\ket{\psi(t)},
 \end{equation*}
@@ -188,7 +224,18 @@ en donde el claro problema es que el lado derecho de la ecuación, que está en 
 
 
 \subsubsection{Parametrización del operador de densidad}
-\ddnote*{la base es hermitiana, el espacio no, lo hablamos en la reunión}{Cualquier matriz de densidad puede descomponerse en términos de una base del espacio de matrices hermitianas de $n\times n$.} \ddnote*{Tengo entendido que la identidad es también un generador de SU(2), checa bien esto}{Una elección común de base para el espacio es el de los generadores $\{\varsigma_{k}\}$ del grupo $\text{SU}(n)$, junto a la matriz identidad $\Id_{n}$}. Esto es particularmente útil, \ddnote*{ya que}{pues }permite parametrizar a las matrices de densidad de forma vectorial \cite{Bruning}. En efecto, sea $\{\varsigma_{k}\}$ un conjunto de generadores de $\text{SU}(n)$ y $\rho$ una matriz de densidad $\rho\in\mcS(\hilbert_{n})$. Entonces $\rho$ está completamente descrita por el vector generalizado de Bloch de dimensión $2n^{2}-1$, $\vec{\gamma}$ definido según
+\acnote{Esta parte aún la tengo que iterar}
+
+\acnote{Es común escoger alguna base Hermítica para poder parametrizar a las matrices de densidad. El beneficio de hacer esto es que, por ser $\mcS(\hilbert_{n})$ un subconjunto de $\mcL(\hilbert_{n})$, dicha parametrización será lineal, y aún más: los parámetros serán cantidades medibles en el laboratorio. Esto significa que, realizando mediciones de forma adecuada, es posible reconstruir el estado de un sistema [cita]. Una elección común de base son las matrices generalizadas de Gell-Mann, junto a la matriz identidad.}
+
+\acnote{Remplaza:-------}
+\ddnote*{la base es hermitiana, el espacio no, lo hablamos en la reunión}{Cualquier matriz de densidad puede descomponerse en términos de una base del espacio de matrices hermitianas de $n\times n$.} \ddnote*{Tengo entendido que la identidad es también un generador de SU(2), checa bien esto}{Una elección común de base para el espacio es el de los generadores $\{\varsigma_{k}\}$ del grupo $\text{SU}(n)$, junto a la matriz identidad $\Id_{n}$}. Esto es particularmente útil, \ddnote*{ya que}{pues }permite parametrizar a las matrices de densidad de forma vectorial \cite{Bruning}. 
+\acnote{---------fin}
+
+
+\acnote{En efecto, sea $\{\varsigma_{k}\}$ el conjunto de matrices generalizadas de Gell-Mann que generan a $\text{SU}(n)$ y}
+%En efecto, sea $\{\varsigma_{k}\}$ un conjunto de generadores de $\text{SU}(n)$ y 
+$\rho$ una matriz de densidad $\rho\in\mcS(\hilbert_{n})$. Entonces $\rho$ está completamente descrita por el vector generalizado de Bloch de dimensión $2n^{2}-1$, $\vec{\gamma}$ definido según
 \begin{equation}
     \rho=\frac{1}{n}\Id_{n}+\frac{1}{2}\vec{\gamma}\cdot\vec{\varsigma}.
 \end{equation}
@@ -196,4 +243,10 @@ Si $n=2$, los generadores corresponden a las matrices de Pauli $\sigma_{i}$. En 
 \begin{equation}\label{eq::BlochParametrization4}
     \rho=\frac{1}{4}\sum_{i,j}\gamma_{ij}\sigma_{i}\otimes \sigma_{j} \ \ i,j\in\{0,1,2,3\},
 \end{equation}
-donde $\sigma_{0}=\Id$ y $\gamma_{i.j}=\Tr(\sigma_{i}\otimes \sigma_{j}\rho)$.
+donde $\sigma_{0}=\Id$ y 
+
+\acnote{
+\begin{equation*}
+        \gamma_{i.j}=\Tr(\sigma_{i}\otimes \sigma_{j}\rho).
+\end{equation*}
+Obsérvese que, como se mencionó previamente, debido a que los parámetros $\gamma_{i.j}$ son cantidades medibles, esto junto a la ecuación [2.4] (meter referencia bién) permite reconstruir el estado del sistema.}
