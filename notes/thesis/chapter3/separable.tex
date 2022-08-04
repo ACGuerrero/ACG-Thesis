@@ -4,20 +4,24 @@ En la sección \ref{sec:Ch1PartialTrace} se habló de estados separables como aq
 \begin{equation*}
     \rho=\rho_{A}\otimes\rho_{B},
 \end{equation*}
-donde $\rho_{A}\in\densityspace{m}$, $\rho_{B}\in\densityspace{l}$ y $l+m=n$. Siguiendo esta línea de pensamiento, con \textit{dinámicas factorizables} nos referimos a dinámicas unitarias generadas por Hamiltonianos que no contienen un término de interacción (que en el caso de dos partículas son Hamiltonianos de la forma $\mcH=H_{1}\otimes\Id+\Id\otimes H_{2}$), y que por lo mismo son descritas por operadores $\mcU\in\unitaryspace{n}$ que pueden reescribirse como
+donde $\rho_{A}\in\densityspace{m}$, $\rho_{B}\in\densityspace{l}$ y $l+m=n$. Siguiendo esta línea de pensamiento, con \textit{dinámicas factorizables} nos referimos a dinámicas unitarias generadas por Hamiltonianos que no contienen un término de interacción (que en el caso de dos partículas son Hamiltonianos de la forma $\mcH=H_{1}\otimes\Id+\Id\otimes H_{2}$), y que por lo mismo son descritas por operadores $\mcU\in\unitaryspace{n}$ del tipo
 \begin{equation*}
     \mcU=U_{A}\otimes U_{B}.
 \end{equation*}
-Aquí, una vez más, $U_{A}\in\unitaryspace{m}$, $U_{B}\in\unitaryspace{l}$ y $l+m=n$. Los operadores separables están compuestos por operadores que actúan de forma independiente sobre diferentes subsistemas del sistema en custión. En el caso de un sistema compuesto por dos subsistemas de dos niveles, el operador separable está compuesto por dos unitarias que actúan sobre $\hilbert_{2}$. Como el estado de máxima entropía resulta ser separable, las dinámicas separables son una muy buena primera forma de aplicar el formalismo descrito en las secciones anteriores.
+De nuevo, $U_{A}\in\unitaryspace{m}$, $U_{B}\in\unitaryspace{l}$ y $l+m=n$. Los operadores separables están compuestos por operadores que actúan de forma independiente sobre diferentes subsistemas del sistema en cuestión. En el caso de un sistema compuesto por dos subsistemas de dos niveles, el operador separable está compuesto por dos unitarias que actúan sobre $\hilbert_{2}$. Como el estado de máxima entropía resulta ser separable, las dinámicas separables son una muy buena primera forma de aplicar el formalismo descrito en las secciones anteriores.
 
-Considérese, pues, la aplicación de grano grueso de $n$ a $1$ partículas definida según (\ref{eq:CG}), un estado efectivo $\rho\in\densityspace{2}$ y la aplicación de máxima entropía compatible dada por (\ref{eq:MaxEntAss}). Si la evolución microscópica es factorizable entonces es generada por un Hamiltoniano de la forma
+Considérese la aplicación de grano grueso de $n$ a $1$ partículas definida según (\ref{eq:CG}), un estado efectivo $\rho\in\densityspace{2}$ y la aplicación de máxima entropía compatible dada por (\ref{eq:MaxEntAss}). Si la evolución microscópica es factorizable entonces es generada por un Hamiltoniano de la forma
 \begin{equation*}
-    \mcH=\sum_{k=1}^{n}\omega_{k}\Id_{2^{k-1}}\otimes H_{i} \otimes \Id_{2^{n-k}},
+    \mcH=\sum_{k=1}^{n}\omega_{k}\Id_{2^{k-1}}\otimes H_{k} \otimes \Id_{2^{n-k}},
 \end{equation*}
 siendo la unitaria 
 \begin{equation}\label{eq:NFactorUnitaries}
-    \mcU_{t}=\Motimes_{k=1}^{n}\text{exp}\qty(-i\omega_{k}H_{k}t)=\Motimes_{k=1}^{n} U_{k}(t)
+    \mcU_{t}=\Motimes_{k=1}^{n}\text{exp}\qty(-i\omega_{k}H_{k}t)=\Motimes_{k=1}^{n} U_{k}(t).
 \end{equation}
+A partir de este momento, para hacer más limpia la lectura de este documento se omitirán los productos tensoriales con operadores identidad. El subsistema sobre el que actúe un operador será denotado por un subíndice, de tal manera que el Hamiltoniano previamente definido queda
+\begin{equation*}
+    \mcH=\sum_{k=1}^{n}\omega_{k}H_{k}.
+\end{equation*}
 
 
 \subsection{Caso general}
@@ -26,18 +30,18 @@ Si se considera una evolución unitaria de la forma (\ref{eq:NFactorUnitaries}),
 \begin{equation*}
     \varrho_{\max}(t)=\Motimes_{k=1}^{n}\frac{1}{Z_{k}}U_{k}(t) e^{\qty(p_{k}\sum_{j}\lambda_{j}\pauli{j})} (U_{k}(t))^{\dag}
 \end{equation*}
-De esto, el estado efectivo evolucionado obtenido del principio de máxima entropía, en términos de los multiplicadores de Lagrange es
+El estado efectivo evolucionado en términos de los multiplicadores de Lagrange es
 \begin{equation}\label{eq:SeparableEvolution}
     \Gamma_{t}(\rho)=\sum_{k=1}^{n}p_{k} U_{k}(t) \rho_{k} (U_{k}(t))^{\dag}.
 \end{equation}
 donde hemos denotado $\rho_{k}=\frac{1}{Z_{k}}e^{\qty(p_{k}\sum_{j}\lambda_{j}\pauli{j})}$. 
 
-Por supuesto, esta expresión puede expandirse en términos de exponenciales o de funciones hiperbólicas del vector de Bloch del estado efecivo incial, $\vec{r}_{\rho}$. Si se hace esto para hallar la evolución de un observable $\pauli{i}\in\obspace{2}$ se encuentra que
+Por supuesto, esta expresión puede expandirse en términos de exponenciales o de funciones hiperbólicas del vector de Bloch del estado efectivo inicial, $\vec{r}_{\rho}$. Si se hace esto para hallar la evolución de un observable $\pauli{i}\in\obspace{2}$ se encuentra que
 \begin{equation}\label{eq:SeparableEvolutionExpVal}
     \expval{\pauli{i}(t)}=\frac{1}{2}\sum_{k=1}^{n}p_{k}\tanh(p_{k}\lambda)\Tr[\pauli{i}U_{k}(t) (\hat{r}_{\rho}\cdot\vec{\sigma}) (U_{k}(t))^{\dag}]
 \end{equation}
 
-Si se interpreta a la aplicación de grano grueso como en el contexto de la medición de una partícula con probabilidad de error, entoces esperamos que  $p_{1}>\sum_{k=2}^{n}p_{j}$ (o, aún más, $p_{1}\rightarrow 1$). En tal caso, \acnote{Aquí no estuve seguro de qué términos deshechar en la expansión de Taylor}
+Si se interpreta a la aplicación de grano grueso como en el contexto de la medición de una partícula con probabilidad de error, entonces esperamos que  $p_{1}>\sum_{k=2}^{n}p_{j}$ (o, aún más, $p_{1}\rightarrow 1$). En tal caso, \acnote{Aquí no estuve seguro de qué términos deshechar en la expansión de Taylor}
 \begin{align*}
     \expval{\pauli{i}(t)}=&\frac{1}{2}p_{1}\tanh(p_{1}\lambda)\Tr[\pauli{i}U_{1}(t) (\hat{r}_{\rho}\cdot\vec{\sigma}) (U_{1}(t))^{\dag}]+\frac{1}{2}\sum_{k=2}^{n}p_{k}\tanh(p_{k}\lambda)\Tr[\pauli{i}U_{k}(t) (\hat{r}_{\rho}\cdot\vec{\sigma}) (U_{k}(t))^{\dag}]\\
     =_{p_{1}\rightarrow 1}&\frac{1}{2}p_{1}\tanh(p_{1}\lambda)\Tr[\pauli{i}U_{1}(t) (\hat{r}_{\rho}\cdot\vec{\sigma}) (U_{1}(t))^{\dag}]+\frac{1}{2}\lambda p_{k}^{2}\Tr[\pauli{i}U_{k}(t) (\hat{r}_{\rho}\cdot\vec{\sigma}) (U_{k}(t))^{\dag}]
@@ -58,7 +62,7 @@ Comenzamos con el caso en el que la dinámica separable simétrica, esto es, de 
 \begin{equation*}
     \mcU_{t}=\Motimes_{k=1}^{n}U(t),
 \end{equation*}
-donde $U(t)\in\unitaryspace{2}$. Se realiza el mismo proceso: aplicamos la evolución al estado de máxima entropía compatible con un conjunto de observables tomográficamente completos en $\hilbert_{2}$ y propagamos al estado con la unitaria subytacente, para luego pasarlo por la aplicación de grano grueso y recuperar el estado efectivo evolucionado. Este caso es quizá el más sencillo, pues la simetría de la unitaria permite factorizarla:
+donde $U(t)\in\unitaryspace{2}$. Se realiza el mismo proceso: aplicamos la evolución al estado de máxima entropía compatible con un conjunto de observables tomográficamente completos en $\hilbert_{2}$ y propagamos al estado con la unitaria subyacente, para luego pasarlo por la aplicación de grano grueso y recuperar el estado efectivo evolucionado. Este caso es quizá el más sencillo, pues la simetría de la unitaria permite factorizarla:
 \begin{align*}
 \mcC\qty[\Motimes_{k=1}^{n}U(t) \rho_{k} (U(t))^{\dag}]&=\sum_{k=1}^{n}p_{k} U(t) \rho_{k} (U(t))^{\dag} \\
 &=U(t)\qty(\sum_{k=1}^{n}p_{k} \rho_{k}) (U(t))^{\dag}\\
@@ -88,7 +92,7 @@ De esto, definimos un entorno efectivo de $n-1$ partículas idénticas según
 \begin{equation*}
     \rho_{E}\equiv\rho_{2}^{\otimes(n-1)}.
 \end{equation*}
-Si el entorno no varía, mientras que el susbsistema de interés se propaga de forma unitaria (esto es, la dinámica subyacente es de la forma $\mcU_{t}=U\otimes\Id_{2^{n-1}}$), entonces la dinámica efectiva es
+Si el entorno no varía, mientras que el subsistema de interés se propaga de forma unitaria (esto es, la dinámica subyacente es de la forma $\mcU_{t}=U\otimes\Id_{2^{n-1}}$), entonces la dinámica efectiva es
 \begin{equation*}
     \Gamma_{t}(\rho)=p_{1}U(t)\rho_{1}(U(t))^{\dag}+(1-p_{1})\rho_{2}.
 \end{equation*}
@@ -126,7 +130,7 @@ El resultado es una rotación alrededor de una línea que no pasa por el origen.
 En efecto, la traslación tiene una magnitud $(1-p)r_{B}$ (a notar que la traslación es pequeña, y corresponde al término de ruido) en la dirección opuesta a la del estado (depende del estado tanto en magnitud como en dirección). Así que, aunque esto podría parecer una transformación afín, no lo es, pues depende enteramente del estado. Como tal, la evolución efectiva no es lineal, y no tiene expresión en términos de operadores de Kraus. La figura \ref{fig:FaseChangeSequence} muestra el efecto que una dinámica de este estilo tiene sobre la esfera de Bloch (en particular, el caso $U=e^{-i\omega t \pauli{3}}$). La contracción a lo largo del eje $z$ es un resultado del alto valor de $(1-p_{1})$ (0.4), y no sería visible si $p_{1}\rightarrow 1$.
 
 
-En efecto, si $p_{1}\approx\frac{1}{2}$, entonces $\rho_{1}\approx\rho_{2}\approx\rho$ y la dinámica efectiva se conviertiría en un canal de desfasamiento:
+En efecto, si $p_{1}\approx\frac{1}{2}$, entonces $\rho_{1}\approx\rho_{2}\approx\rho$ y la dinámica efectiva se convertiría en un canal de desfasamiento:
 
 \begin{align*}
     \Gamma_{\rho}=&p_{1}e^{-i\omega t \pauli{3}}\rho_{1}e^{i\omega t \pauli{3}}+(1-p_{1})\rho_{2}\\
@@ -218,7 +222,7 @@ En los dos casos anteriores se permitió que alguna de las partes del sistema se
 \begin{equation*}
     \mcH=\sum_{k=1}^{n}\omega_{k}\Id_{2^{k-1}}\otimes \pauli{3} \otimes \Id_{2^{n-k}},
 \end{equation*}
-de tal forma que toda la evolución mantega constante la componente en $\pauli{3}$. Además, como antes, obténganse las frecuencias de evolución de una distribución normal, con $\omega_{1}=\mu$.
+de tal forma que toda la evolución mantenga constante la componente en $\pauli{3}$. Además, como antes, obténganse las frecuencias de evolución de una distribución normal, con $\omega_{1}=\mu$.
 
 \begin{figure}[ht!]
     \centering

@@ -10,16 +10,16 @@ Compuertas de un qubit comunes icluyen a los operadores de Pauli, mientras que p
 
 La compuerta SWAP, $S$, actúa sobre dos qubits permutándolos. Su acción sobre la base de $\hilbert_{4}$ contruida mediante los eigenestados de $\pauli{3}\otimes\pauli{3}$ es
 \begin{align*}
-    \ket{0}\otimes\ket{0}\mapsto\ket{0}\otimes\ket{0}\\
-    \ket{0}\otimes\ket{1}\mapsto\ket{1}\otimes\ket{0}\\
-    \ket{1}\otimes\ket{0}\mapsto\ket{0}\otimes\ket{1}\\
-    \ket{1}\otimes\ket{1}\mapsto\ket{1}\otimes\ket{0} \rlap{.}
+    \ket{0}\otimes\ket{0}&\mapsto\ket{0}\otimes\ket{0}\\
+    \ket{0}\otimes\ket{1}&\mapsto\ket{1}\otimes\ket{0}\\
+    \ket{1}\otimes\ket{0}&\mapsto\ket{0}\otimes\ket{1}\\
+    \ket{1}\otimes\ket{1}&\mapsto\ket{1}\otimes\ket{0} \rlap{.}
 \end{align*}
 Si un sistema está descrito por un operador de densidad separable, $\varrho=\rho_{A}\otimes\rho_{B}$, entonces el efecto de la compuerta SWAP es 
 \begin{equation*}
     S\varrho S^{\dag}=\rho_{B}\otimes\rho_{A}.
 \end{equation*}
-La compuerta puede representarse como una matriz de permutación
+La compuerta tiene representación como matriz de permutación
 \begin{equation*}
     S=\begin{pmatrix}
         1&0&0&0\\
@@ -28,11 +28,11 @@ La compuerta puede representarse como una matriz de permutación
         0&0&0&1
     \end{pmatrix}.
 \end{equation*}
-Descrito de esta manera, el operador SWAP es un operador de evolución \textit{discreto}. Esto es, lleva un estado $\varrho$ a otro $\varrho'$ sin considerar ninguna dependencia temporal ni ningún estado intermedio. Sin embargo, como esta evolución es unitaria, puede generalizarse a cualquier tiempo, dado el hamiltoniano adecuado. Consideramos entonces
+Descrito de esta manera, el operador SWAP es un operador de evolución \textit{discreto}. Esto es, lleva un estado $\varrho$ a otro $\varrho'$ sin considerar ninguna dependencia temporal ni ningún estado intermedio. Sin embargo, como esta evolución es unitaria, es extendible a cualquier tiempo dado el Hamiltoniano adecuado. Consideramos entonces
 \begin{equation*}
   H_{S}=\omega\sum_{i=1}^{3}\pauli{i}\otimes\pauli{i}
 \end{equation*}
-que, tomando $\omega=\frac{\pi}{4}$ genera una compuerta SWAP al tiempo $t=1$. Dado este Hamiltoniano, la forma matricial del operador \textsc{SWAP} a un tiempo $t$ es
+que, tomando $\omega=\frac{\pi}{4}$, genera una compuerta SWAP al tiempo $t=1$. Dado este Hamiltoniano, la forma matricial del operador \textsc{SWAP} a un tiempo $t$ es
 \begin{equation}\label{eq:SWAP(t)}
 S^{t}=\begin{pmatrix}
  1 & 0 & 0 & 0 \\
@@ -53,7 +53,7 @@ Para estudiar la dinámica efectiva de una evolución subyacente descrita por el
 \begin{equation}
   \rho\mapsto \mcC(S \varrho_{\max} S^{\dag}).
 \end{equation}
-Por comodidad, los cálculos se expresarán en términos de los multiplicadores de Lagrange. Como el estado de máxima entropía es separable, la acción del operador SWAP sobre este es
+Como el estado de máxima entropía es separable, la acción del operador SWAP sobre este es
 \begin{equation*}
   \frac{e^{p\sum_{i}\lambda_{i}\sigma_{i}}}{Z_{1}} \otimes \frac{e^{(1-p)\sum_{i}\lambda_{i}\sigma_{i}}}{Z_{2}}\mapsto\frac{e^{(1-p)\sum_{i}\lambda_{i}\sigma_{i}}}{Z_{2}}\otimes\frac{e^{p\sum_{i}\lambda_{i}\sigma_{i}}}{Z_{1}}.
 \end{equation*}
@@ -185,7 +185,7 @@ En la base de los eigenestados de $\pauli{3}\otimes\pauli{3}$, la compuerta pued
 \end{equation*}
 Claro está, esta matriz corresponde a la evolución discreta. Considérese el Hamiltoniano
 \begin{equation*}
-  H_{\cnot}=\omega(\pauli{3}\otimes\Id+\Id\otimes\pauli{1}+\pauli{3}\otimes\pauli{1}),
+  H_{\cnot}=-\omega(\pauli{3}\otimes\Id+\Id\otimes\pauli{1}-\pauli{3}\otimes\pauli{1}),
 \end{equation*}
 que genera la compuerta CNOT al tiempo $t=1$ cuando $\omega=\frac{\pi}{4}$. Nótese que, por estar conformado por tres operadores que conmutan entre sí, la compuerta puede escribirse como lo acción consecutiva de tres operadores unitarios que conmutan entre sí:
 
@@ -243,7 +243,19 @@ De esta forma, el efecto de la dinámica efectiva es una combinación de dos can
 
 \subsubsection{CNOT efectivo a un tiempo arbitrario}
 
-Si se utiliza el mismo Hamiltoniano y se propaga al estado de máxima entropía compatible con el estado inicial con la unitaria generada por dicho Hamiltoniano, para luego pasar el resultado por la aplicación de grano grueso, la dinámica efectiva a un tiempo $t$ arbitrario tiene la forma
+Estudiado el caso discreto, utilícese el Hamiltoniano para propagar al estado microscópica de forma continua en el tiempo. El estado efectivo es propagado por la evolución efectiva
+
+\acnote{revisar los signos en los términos de los conmutadores}
+
+\begin{align*}
+  \Gamma_{t}(\rho)=&\frac{1}{2}\rho(\cos^{2}(2\omega t)+1)\\
+  &+\frac{p}{2}\{\sin^{2}(2\omega t)\qty(\expval{\pauli{1}}_{B}\rho_{A}+(1-\expval{\pauli{1}}_{B})\pauli{3}\rho_{A}\pauli{3})\\
+  & \ \ \ \ \ \ -i\cos(2 \omega t)\sin(2 \omega t)(1+\expval{\pauli{1}}_{B})[\pauli{3},\rho_{A}]\}\\
+  &+\frac{(1-p)}{2}\{\sin^{2}(2\omega t)\qty(\expval{\pauli{3}}_{A}\rho_{B}+(1-\expval{\pauli{3}}_{A})\pauli{1}\rho_{B}\pauli{1})\\
+  &\ \ \ \ \ \ \ \ \ \ \ \ \ -i\cos(2 \omega t)\sin(2 \omega t)(1+\expval{\pauli{3}}_{A})[\pauli{1},\rho_{B}]\}.
+\end{align*}
+
+Manipulando
 
 \begin{align*}
   \Gamma_{t}(\rho)=&\rho(\cos^{4}(\omega t)+\sin^{4}(\omega t))\\
@@ -251,10 +263,34 @@ Si se utiliza el mismo Hamiltoniano y se propaga al estado de máxima entropía 
   t)\qty[\expval{\pauli{1}}_{B}\rho_{A}+(1-\expval{\pauli{1}}_{B})\pauli{3}\rho_{A}\pauli{3}]\\
   & \ \ \ \ \ \ +i\sin(\omega t)\cos(\omega t)\cos(2\omega t)(1+\expval{\pauli{1}}_{B})[\pauli{3},\rho_{A}]\}\\
   &+(1-p)\{2\sin^{2}(\omega t)\cos^{2}(\omega t)\qty[\expval{\pauli{3}}_{A}\rho_{B}+(1-\expval{\pauli{3}}_{A})\pauli{1}\rho_{B}\pauli{1}]\\
-  &\ \ \ \ \ \ \ \ \ \ \ \ \ +i\sin(\omega t)\cos(\omega t)\cos(2\omega t)(1+\expval{\pauli{3}}_{A})[\pauli{1},\rho_{B}]\}
+  &\ \ \ \ \ \ \ \ \ \ \ \ \ +i\sin(\omega t)\cos(\omega t)\cos(2\omega t)(1+\expval{\pauli{3}}_{A})[\pauli{1},\rho_{B}]\}.
 \end{align*} 
 
-\begin{figure}[ht!]
+
+Nuevamente, la forma de la evolución es algo complicada, pero se pueden escoger algunos valores particulares de $p$ para tener un mejor entendimiento. Si $p=1$ entonces el estado de máxima entropía es $\rho\otimes\Id_{2}$, así que $\expval{\pauli{1}}_{B}=0$. La dinámica efectiva se reduce a
+\begin{align*}
+  \Gamma_{t}(\rho)=\cos^{2}(\omega t) e^{i\omega t \pauli{3}}\rho e^{-i\omega t \pauli{3}}+\sin^{2}(\omega t) \pauli{3} e^{i\omega t \pauli{3}}\rho e^{-i\omega t \pauli{3}} \pauli{3}.
+\end{align*}
+Manipulando esta expresión, se le puede llevar a \acnote{checar que el signo del exponente está bien: ver notas del 4 de agosto del cuaderno}
+\begin{equation*}
+  \Gamma_{t}(\rho)=\frac{1}{2}\qty(\rho+e^{i 2 \omega t \pauli{3}}\rho e^{-i 2 \omega t \pauli{3}})
+\end{equation*}
+que es exactamente lo que esperamos: un canal de desfasamiento. La razón por la que la frecuencia se duplica, es debido a que se está aplicando la misma unitaria dos veces sobre la primera partícula. 
+
+
+El caso $p=0$ es análogo y se recupera
+\begin{equation*}
+  \Gamma_{t}(\rho)=\frac{1}{2}\qty(\rho+e^{i 2 \omega t \pauli{1}}\rho e^{-i 2 \omega t \pauli{1}})
+\end{equation*}
+
+La dinámica efectiva es, pues, una combinación de dos canales no lineales: uno de desfasamiento y uno de bitflip. \acnote{Iterar esta sección}.
+
+\begin{align*}
+  \Gamma_{t}(\rho)=&\rho(\cos^{4}(\omega t)+\sin^{4}(\omega t))\\
+  &+(1-p)\{2\sin^{2}(\omega t)\cos^{2}(\omega t)\qty[\expval{\pauli{3}}_{A}\rho_{B}+(1-\expval{\pauli{3}}_{A})\pauli{1}\rho_{B}\pauli{1}]\\
+  &\ \ \ \ \ \ \ \ \ \ \ \ \ +i\sin(\omega t)\cos(\omega t)\cos(2\omega t)(1+\expval{\pauli{3}}_{A})[\pauli{1},\rho_{B}]\}.
+\end{align*}
+  \begin{figure}[ht!]
   \centering
   \begin{subfigure}{0.32\textwidth}
     \centering

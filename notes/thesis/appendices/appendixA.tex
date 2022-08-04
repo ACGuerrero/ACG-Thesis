@@ -66,3 +66,10 @@ Si se aplica un vector de Pauli sobre otro se halla lo siguiente
 \begin{align*}
     (\hat{n}\cdot\vec{\sigma})(\hat{m}\cdot\vec{\sigma})
 \end{align*}
+
+\subsubsection{Evolución de operador de densidad por operador unitario}
+\begin{align*}
+    e^{-i\omega t \paulivec{r}}\rho e^{i\omega t \paulivec{r}}=&(\Id \cos(\omega t)-i\paulivec{r} \sin(\omega t))\rho(\Id \cos(\omega t)+i\paulivec{r} \sin(\omega t))\\
+    =&\rho\cos^{2}(\omega t)+(\paulivec{r})\rho(\paulivec{r})\sin^{2}(\omega t)+i\rho(\paulivec{r})\cos(\omega t)\sin(\omega t)-i(\paulivec{r})\rho \sin(\omega t)\cos(\omega t)\\
+    =&\rho\cos^{2}(\omega t)+(\paulivec{r})\rho(\paulivec{r})\sin^{2}(\omega t)+i\sin(\omega t)\cos(\omega t)[\rho,\paulivec{r}]
+\end{align*}

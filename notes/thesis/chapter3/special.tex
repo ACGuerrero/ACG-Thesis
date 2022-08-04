@@ -78,4 +78,16 @@ La despolarización dependiente de la componente en $z$ inicial es más clara si
     \end{pmatrix}
 \end{equation*}
 \acnote{Aquí se ve la casi rotación, pero creo que lo tengo que descomponer en diferentes operaciones para notar que el desfasamiento se da de forma más fuerte conforme más pequeño es z}
+
 \subsection{Amortiguamiento de amplitud}
+
+\subsection{Estabilización espontánea ?}
+Considérese que un sistema de $n$ partículas evoluciona siguiendo el canal
+\begin{equation*}
+    \mcE_{\psi,t}[\varrho]=e^{-t\mu}\varrho+(1-e^{-t \mu})\dyad{\psi}
+\end{equation*}
+donde $\dyad{\psi}\in \densityspace{n}$. Aplicando el modelo de grano grueso se obtiene que:
+\begin{equation*}
+    \rho(t)=e^{-t\mu}\rho(0)+(1-e^{-t \mu})\dyad{\psi}_{eff}
+\end{equation*}
+donde $\dyad{\psi}_{eff}=\mcC(\dyad{\psi})$. Obsérvese que el resultado es un canal del mismo tipo. La única diferencia siendo que el estado al que el sistema \textit{decae} (abusando del lenguaje) es la descripción efectiva de $\dyad{\psi}$. Como es natural, el comportamiento de la evolución es completamente dependiente de $\psi$, pero, al fin y al cabo, ¡se obtiene un canal cuántico!
