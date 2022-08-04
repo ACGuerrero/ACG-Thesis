@@ -1,24 +1,25 @@
-\documentclass[onecolumn,11pt]{report}
-%*********
-%Paquetes
-%*********
+\documentclass[12pt,twoside]{book}
 \usepackage[spanish]{babel}
+\decimalpoint
 \usepackage[utf8]{inputenc}
-\usepackage[a4paper, total={7in, 9in}]{geometry}
+\usepackage{cmap}
+\usepackage[T1]{fontenc}
+
+\usepackage[margin=1in]{geometry}
 \usepackage{amsfonts}
 \usepackage{dsfont}
-\usepackage{physics}
-\usepackage{xcolor}
-\usepackage{tikz-cd} %para diagrama conmutatitvo
+\usepackage{physics} %indispensable
+\usepackage{xcolor} %colores, notas
+\usepackage{tikz-cd} %para diagrama conmutativo
 \usepackage{multicol} %para la lista de operadores
-\usepackage{hyperref}
+\usepackage{hyperref} %para referencias clickeables
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage{pdfpages} % para la portada
 
-
-%*********
-%Comandos
-%*********
+%==============================
+%========== Comandos ==========
+%==============================
 \newcommand{\mcU}{\mathcal{U}}
 \newcommand{\mcV}{\mathcal{V}}
 \newcommand{\mcO}{\mathcal{O}}
@@ -42,17 +43,24 @@
 \newcommand{\mcD}{\mathcal{D}}
 \newcommand{\mcA}{\mathcal{A}}
 \newcommand{\mcP}{\mathcal{P}}
+\newcommand{\ie}{i.e.}
 \newcommand{\Complex}{\mathbb{C}} %Para escribir al espacio de hilbert complejo
 \newcommand{\Id}{\mathds{1}}% Para escribir el op. indentidad con notación chida
 \newcommand{\CG}[1]{\mcC\left[#1\right]}
 \newcommand{\Fuzzy}[1]{\mcF\left[#1\right]}
 \newcommand{\nota}[1]{{\color{red} [#1]}}
-\newcommand{\notaAd}[1]{{\color{orange} [#1]}} %Notas pero mías
+\newcommand{\notaAd}[1]{{\color{gray} [#1]}} %Notas pero mías
+%%Fixnote
 \newcommand{\pauli}[1]{\sigma_{#1}} %Para las matrices de pauli
 \newcommand{\paulivec}[1]{\hat{#1}\cdot\vec{\sigma}} %Para vectores de Pauli unitarios
-\newcommand{\cnot}{\text{C}_{\text{NOT}}} %Para el CNOT
+\newcommand{\cnot}{\text{C}_{\text{X}}} %Para el CNOT
+\newcommand{\purity}[1]{\text{Pu}(#1)} %la pureza
+\newcommand{\Abs}{\text{abs}} %abs
+\newcommand{\rfroml}{f} %la función r(lambda)
+\newcommand{\densityspace}[1]{\mcS(\hilbert_{#1})} %el espacio de operadores de densidad
+\newcommand{\unitaryspace}[1]{\text{U}(\hilbert_{#1})} %el espacio de operadores unitarios
+\newcommand{\obspace}[1]{\mcL(\hilbert_{#1})} %el espacio de observables
 \DeclareMathOperator*{\Motimes}{\text{\raisebox{0.25ex}{\scalebox{0.8}{$\bigotimes$}}}} %para los productos tensoriales
-%FixNote
 \usepackage[draft,inline,nomargin]{fixme} \fxsetup{theme=color}
 \newcommand\dsone{\mathds{1}}
 \FXRegisterAuthor{ac}{acc}{\color{red}AC}
@@ -66,14 +74,12 @@
 \begin{document}
 
 \maketitle
-\begin{abstract}
-    Esta bitácora deberá ayudarme a mantener una mejor organización de los resultados conforme los voy obteniendo. \cite{Chuang}
-\end{abstract}
 \tableofcontents
 \newpage
 \include{general/general_main}
 \include{maxent/maxent_main}
 \include{assmap/assmap_main}
+\include{effdyn/effdyn_main}
 
 \bibliographystyle{ieeetr}
 \bibliography{bibliography}
