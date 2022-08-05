@@ -1,18 +1,44 @@
 \chapter{La Asignación Promedio}
 
-\section{Algunas dinámicas}
+\section{Definición y acercamiento}
 
-\section{Comparación de resultados de ambas asignaciones}
+En el contexto de los modelos de grano grueso, otras asignaciones han sido propuestas. Nos interesamos en este capítulo en la asignación promedio \cite{Macro-To-Micro}. Esta aplicación asigna a un estado efectivo $\rho \in \densityspace{n}$ un estado microscópico $\varrho_{\avg} \in \densityspace{m}$ por medio de promediar sobre el conjunto de todos los estados puros microscópicos tales que son compatibles con el estado efectivo bajo una aplicación de grano grueso en particular. Dicho conjunto de estados puros microscópicos queda definido como
+\begin{equation}\label{eq:Omega}
+    \Omega_{\mcC}(\rho) = \{\ket{\psi}\in\hilbert_{m}:\, \mcC(\dyad{\psi}) = \rho   \}.
+\end{equation}
+\acnote{Una motivación física de esta asignación es que cada que se prepara un estado microscópico que sea compatible con un estado efectivo, lo que se hace es tomar un elemento del conjunto $\Omega$.}
+La aplicación de asignación promedio es el promedio sobre dicho conjunto, \ie 
+\begin{equation}\label{eq:AvgMap}
+    \mcA_{\avg}(\rho) = \overline{\Omega_{\mcC}(\rho)} = \int d \mu\,\, \delta(\mcC(\dyad{\psi})-\rho)\,\dyad{\psi},
+\end{equation}
+donde $d\mu$ es la medida de Haar sobre los estados puros de $\hilbert_{m}$. La delta de Dirac asegura que únicamente se tomen en consideración a los estados puros compatibles, y la medida de Haar, que la integración sobre dicho conjunto sea uniforme. El problema de resolver (\ref{eq:AvgMap}) de forma analítica no es para nada sencillo, y es dependiente del modelo de grano grueso en cuestión. En este trabajo se abordará a la aplicación de asignación promedio numéricamente.
 
-\section{Discusión e interpretación física}
+Para hallar la asignación de un estado efectivo se generan estados puros en $\hilbert_{m}$ de manera uniforme. Todos aquellos estados cuyas imágenes bajo la aplicación de grano grueso se hallen a una distancia menor a $\epsilon$ del estado efectivo son incluidos en el cálculo del promedio. El mapeo de asignación promedio numérico queda entonces definido según
+\begin{equation}\label{eq:AvgMapNum}
+    \mcA'_{\avg}(\rho) = \overline{\Omega'_{\mcC}(\rho)} = \frac{1}{N}\sum_{i=1}^{N}\dyad{\psi},
+\end{equation}
+donde
+\begin{equation}\label{eq:OmegaNum}
+    \Omega'_{\mcC}(\rho) = \{\ket{\psi}\in\hilbert_{m}:\, \text{d}(\mcC(\dyad{\psi}),\rho)<\epsilon  \}.
+\end{equation}
 
 \section{Diferencia entre el MaxEnt y el AssMap}
-No tenemos ninguna razón para asegurar que el estado de máxima entropía y el estado asignado por promedio son el mismo. Por el momento, podemos compararlos numéricamente. Sea $\rho$ un estado alineado en $z=0.5$. 
 
 
+No tenemos ninguna razón para asegurar que el estado de máxima entropía y el estado asignado por promedio son el mismo. En la asignación promedio se hacen dos suposiciones fuertes: primero, que el sistema microscópico se halla en un estado puro. Segundo, que todos los estados puros son igualmente probables. Aunque estas suposiciones puedan parecer razonables, son el tipo de contaminación de la información de la que habla Jaynes en su artículo. En general no hay razón para hacerlas, y no tienen por qué llevar a mejores resultados.
 
-La figura \ref{fig:FidMaxEntAssMapN} muestra que la fidelidad entre ambos estados parece constante siempre que $n>1000$, y que la verdadera dependencia se halla sobre el parámetro $p$. Veamos, pues, la fidelidad entre ambos estados como función de $p$, con $n=1000$.
+La figura  muestra que la fidelidad entre ambos estados parece constante siempre que $n>1000$, y que la verdadera dependencia se halla sobre el parámetro $p$. Veamos, pues, la fidelidad entre ambos estados como función de $p$, con $n=1000$.
 
+La figura  es algo burda, y puede que requiera más puntos y observaciones, pero parece revelar que los estados tienden a ser el mismo cuando $p\rightarrow 0,1$. Asumo aquí simetría respecto a $p=0.5$. \acnote{Bastará con generar puntos entre 0.5 y 1}.
 
+\section{Algunas dinámicas}
 
-La figura \ref{fig:FidMaxEntAssMapP} es algo burda, y puede que requiera más puntos y observaciones, pero parece revelar que los estados tienden a ser el mismo cuando $p\rightarrow 0,1$. Asumo aquí simetría respecto a $p=0.5$. \acnote{Bastará con generar puntos entre 0.5 y 1}.
+\subsection{Dinámicas factorizables}
+
+\subsection{La compuerta SWAP}
+
+\subsection{El canal de despolarización}
+
+\subsection{El canal de estabilización}
+
+\section{Comparación de resultados de ambas asignaciones}

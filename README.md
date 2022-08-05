@@ -7,6 +7,12 @@ This is my license thesis' repository
 TO DO LIST
  1. Finish Ising model  [9a04ece](https://github.com/ACGuerrero/tesis-adan/commit/274d771536b0b04ea4edca866fc06359d5e0b8b8), [b0ca78](https://github.com/ACGuerrero/tesis-adan/commit/5ac8796059e41a3cdf13e09a33feb95fcfb0ca78)
  10. Finish AmpDamp section.
+ 39. Finish abstract.
+ 40. Finish intro.
+ 41. Correct "environement" problem.
+ 42. Add figures to CNOT section.
+ 43. Add figures to special section.
+ 44. Compare MaxEntAss and AvgAss.
 
 
 COMPLETED TASKS
