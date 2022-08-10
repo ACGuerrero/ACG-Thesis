@@ -10,11 +10,7 @@ En el contexto de la mecánica cuántica nos enfrentamos a dos tipos de probabil
 
 Supóngase que en lugar de estudiar un sistema que está completamente descrito por $\ket{\varphi}\in\hilbert_{n}$, con $\hilbert_{n}$ el espacio de Hilbert de dimensión $n$, \ie{} $\hilbert_{n}=\Complex^{n}$; se trabaja con uno que está en el estado $\ket{\varphi_{i}}$ con probabilidad $p_{i}$, donde $\{\ket{\varphi_{i}}\}_{i=1}^n$ es un conjunto no necesariamente ortogonal de estados de $n$ niveles $\ket{\varphi_{i}}\in\hilbert_{n}$, y $\{p_{i}\}_{i=1}^n$ es un conjunto de números reales no negativos tales que $\sum_{i=1}^n p_{i}=1$.
 
-
-
-\acnote{El siguiente párrafo ha sido iterado, solo notas}
-
-De este sistema se dice que se halla en un estado de \textit{mezcla estadística}, y no debe confundirse con que el sistema se halle en una superposición de estados $\ket{\varphi_{i}}$ con coeficientes $\sqrt{p_{i}}$, ya que una superposición está bien determinada \ddnote*{determinado}{caracterizada}, y está completamente descrita por $\ket{\psi}=\sum_{i} e^{\rmi \theta_i} \sqrt{p_{i}}\ket{\varphi_{i}}$ \ddnote{añadí fases a la ecuación, por generalidad}, mientras que la mezcla no lo está, ya que parte del elemento probabilístico \ddnote*{... :parte del elemento probabilístico...}{el elemento probabilístico} está asociado a un grado de ignorancia sobre la preparación del sistema. La mezcla estadística, en este sentido, toma en cuenta no sólo la probabilidad intrínseca a cada estado cuántico, sino una probabilidad clásica, $p_{i}$. Consideremos ahora un observable descrita por un operador hermítico $A$, se sabe que el valor de expectación del observable, con respecto a un estado $\ket{\varphi_{i}}$, está dado por $\expval{A}=\bra{\varphi_{i}}A\ket{\varphi_{i}}$. El valor esperado de dicho observable con respecto a la mezcla estadística será, justamente, el promedio de los valores esperados respecto a los estados cuánticos en la mezcla \ddnote*{promedio de los valores esperados respecto a los estados cuánticos en la mezcla}{combinación probabilística de los valores esperados respecto a los elementos de la mezcla}:
+De este sistema se dice que se halla en un estado de \textit{mezcla estadística}, y no debe confundirse con que el sistema se halle en una superposición de estados $\ket{\varphi_{i}}$ con coeficientes $\sqrt{p_{i}}$, ya que una superposición está bien determinada, y está completamente descrita por $\ket{\psi}=\sum_{i} e^{\rmi \theta_i} \sqrt{p_{i}}\ket{\varphi_{i}}$, mientras que la mezcla no lo está, ya que parte del elemento probabilístico está asociado a un grado de ignorancia sobre la preparación del sistema. La mezcla estadística, en este sentido, toma en cuenta no sólo la probabilidad intrínseca a cada estado cuántico, sino una probabilidad clásica, $p_{i}$. Consideremos ahora un observable descrita por un operador hermítico $A$, se sabe que el valor de expectación del observable, con respecto a un estado $\ket{\varphi_{i}}$, está dado por $\expval{A}=\bra{\varphi_{i}}A\ket{\varphi_{i}}$. El valor esperado de dicho observable con respecto a la mezcla estadística será, justamente, el promedio de los valores esperados respecto a los estados cuánticos en la mezcla:
 \begin{equation}
 \expval{A}=\sum_{i}p_{i}\bra{\varphi_{i}}A\ket{\varphi_{i}}. \nonumber
 \end{equation}
@@ -34,7 +30,7 @@ Con lo que la mezcla queda descrita por el operador de densidad $\rho$, definido
 \rho=\sum_{i}p_{i}\dyad{\varphi_{i}}.
 \end{equation}
 \acnote{El siguiente párrafo ha sido iterado, solo notas}
-Entonces podemos observar que es posible hallar el valor esperado de un observable respecto a un estado \ddnote*{estado}{sistema} utilizando el \ddnote*{utilizando el}{a través del} operador de densidad, cuya expresión está dada por \ddnote*{cuya expresión está dada por}{ que lo describe mediante}
+Entonces podemos observar que es posible hallar el valor esperado de un observable respecto a un estado  utilizando el operador de densidad, cuya expresión está dada por
 \begin{equation}\label{eq:ExpValFromDensOp}
 \expval{A}=\Tr(A\rho).
 \end{equation}
@@ -45,15 +41,14 @@ E[A]=\sum_{k} A(x_k) p(x_k).\nonumber
 \end{equation}
 \acnote{El siguiente párrafo no ha sido iterado}
 
-\ddnote{estandarizé un poco la notación en la ecuación y texto anteriores}
 \ddnote*{Este texto está raro. Ciertamente hay una analogía, pero no es claro que va por aquí}{Reconociendo que la operación traza no es sino la suma sobre los elementos diagonales de la matriz, es posible ver que la matriz de densidad ocupa un rol similar al de la función de densidad.}
 Ahora, es necesario ser capaz de distinguir si un operador cualquiera corresponde a un operador de la forma (\ref{eq:DensOpMix}). De esta definición destilan dos propiedades que permiten reconocer si un operador arbitrario es un operador de densidad válido, o no \cite{Holevo}:
 \begin{enumerate}
     \item $\Tr(\rho)=1$
     \item $\rho\geq 0$,
 \end{enumerate}
-\ddnote{donde $\rho\geq 0$ se define como $\bra{\varphi}\rho\ket{\varphi}\geq 0$ $\forall$ $\ket{\varphi}\in\hilbert_{n}$}.
-La primera propiedad se deriva de la normalización de los estados $\ket{\varphi_{i}}$ que definen al sistema. La segunda establece que $\rho$ es una matriz positiva semidefinida y puede interpretarse como la necesidad de que la probabilidad de que el sistema descrito por $\rho$ se halle en el estado $\ket{\varphi}$ sea mayor o igual a $0$. Un operador es un operador de densidad si \ddnote*{en las definiciones basta solo el ``si''}{y solo si} cumple con estas propiedades. Por esto, estos dos puntos funcionan como una definición alternativa al operador de densidad.
+donde $\rho\geq 0$ se define como $\bra{\varphi}\rho\ket{\varphi}\geq 0$ $\forall$ $\ket{\varphi}\in\hilbert_{n}$.
+La primera propiedad se deriva de la normalización de los estados $\ket{\varphi_{i}}$ que definen al sistema. La segunda establece que $\rho$ es una matriz positiva semidefinida y puede interpretarse como la necesidad de que la probabilidad de que el sistema descrito por $\rho$ se halle en el estado $\ket{\varphi}$ sea mayor o igual a $0$. Un operador es un operador de densidad si cumple con estas propiedades. Por esto, estos dos puntos funcionan como una definición alternativa al operador de densidad.
 
 \acnote{En el siguiente párrafo hay tres oraciones idénticas que me toca reescribir.}
 
