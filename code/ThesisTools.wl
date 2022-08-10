@@ -23,15 +23,6 @@ metropolisHastingsSample::usage="something"
 cgfidelitylist::usage="something"
 cgfrobeniuslist::usage="something"
 GenerateMHData::usage="GenerateMHData[n,beta,delta,swapP,zcoord,print_:True] generates a set of pure states using the Metropolis Hastings algorithm. If the data exists, it imports it."
-GObsMaxEnt::usage="something"
-CGMaxEntStateLM::usage="something"
-NearestPosition::usage="something"
-GObsMaxEnt::usage="something"
-CGMaxEntStateLM::usage="something"
-ZCoordFromLagrangeMult::usage="ZCoordFromLagrangeMult[\[Lambda],p] obtains the z coordinate of the effective state given the lagrange multiplier"
-RzLambdaTable::usage="RzLambdaTable[p,low,up,step] a table of {z,\[Lambda]} with \[Lambda] ranging from low to up with step step."
-LagrangeMultFromZCoord::usage="Finds the lagrange multiplier associated with a p and z values. To be used along RzLambdaTable like LagrangeMultFromZCoord[RzLambdaTable[p,low,up,step],z]"
-MaxEntForStateNotInZ::usage="something"
 CGKrausOp::usage="something"
 CGKraus::usage="CGKraus[rho,p] applies the coarse graining map using its Kraus Operators"
 CGNto1::usage="CGNto1[rho,p] takes an n qubit density matrix and applies the CG from N to 1 particle. p must be a probability vector"
@@ -49,6 +40,13 @@ PauliVector::usage="List of the pauli matrices"
 LagrangeMultFromPurity::usage="Used as LagrangeMultFromPurity[r_,p_,lo_,up_,st_]. "
 MaxEntAss::usage="MaxEntAss[rho,p] calculates the maximum entropy state given a non pure density matrix"
 DirProd::usage="It's just the Kronecker Producto. I will fix it for vectors later"
+
+RadiusAsFunctionOfLagrange::usage="It's just the Kronecker Producto. I will fix it for vectors later"
+
+MaxEntSubStates[rho_,p_]::usage="It's just the Kronecker Producto. I will fix it for vectors later"
+
+MaxEntN[rho_,p_]::usage="It's just the Kronecker Producto. I will fix it for vectors later"
+
 Begin["`Private`"]
 
 
@@ -62,7 +60,6 @@ cnotGate={{1,0,0,0},{0,1,0,0},{0,0,0,1},{0,0,1,0}};
 CNOT[t_]:={{1,0,0,0},{0,1,0,0},{0,0,Exp[I*Pi*t/2]*Cos[Pi*t/2],-I*Exp[I*Pi*t/2]*Sin[Pi*t/2]},{0,0,-I*Exp[I*Pi*t/2]*Sin[Pi*t/2],Exp[I*Pi*t/2]*Cos[Pi*t/2]}}
 PauliVector=Table[PauliMatrix[i],{i,3}];
 DirProd[rho_,varrho_]:=KroneckerProduct[rho,varrho];
-NearestPosition[haystack_,value_]:= With[{ f = Nearest[haystack -> Range@Length@haystack]},f[value, 1]];
 
 MatrixToLatex[matrix_]:=
 "\\begin{pmatrix}"<>Fold[
@@ -136,27 +133,14 @@ Ubig . #&/@fdata
 ]
 
 (*All about the MaxEnt state*)
-GObsMaxEnt[p_,i_]:=p*KroneckerProduct[PauliMatrix[i],IdentityMatrix[2]]+(1-p)*KroneckerProduct[IdentityMatrix[2],PauliMatrix[i]];
-CGMaxEntStateLM[lambda_,p_]:=With[{ExpMat=MatrixExp[lambda*GObsMaxEnt[p,3]]},ExpMat/Tr[ExpMat]]
-ZCoordFromLagrangeMult[l_,p_]:=(p*Tanh[l*p]+(1-p)*Tanh[l*(1-p)]);
-RzLambdaTable[p_,low_,up_,step_]:=Transpose[Table[{ZCoordFromLagrangeMult[l,p],l},{l,low,up,step}]];
-LagrangeMultFromZCoord[data_,zcoord_]:=data[[2,NearestPosition[data[[1]],zcoord]]]
-MaxEntForStateNotInZ[cstate_,ZMaxEnt_]:=
-With[
-{Ubig=UnitaryToRotateFineStates[cstate]
-},
-Ubig . ZMaxEnt . Dagger[Ubig]
-]
+RadiusAsFunctionOfLagrange[l_,p_]:=Sum[p[[k]]*Tanh[p[[k]]*l],{k,1,Length[p]}];
 
-LagrangeMultFromPurity[r_,p_,lo_,up_,st_]:=First@LagrangeMultFromZCoord[
-	RzLambdaTable[p,lo,up,st],
-	r];
-	
-MaxEntAss[rho_,sp_]:=With[
-{lstep=0.002,llow=0.,lup=6.,vec=densityMatrixToPoint[{rho},gellMannBasis[1]][[1]],r=Norm[densityMatrixToPoint[{rho},gellMannBasis[1]][[1]]]},
-lagmult=LagrangeMultFromPurity[r,sp,llow,lup,lstep];
-A=KroneckerProduct[MatrixExp[sp*lagmult*(Normalize[vec] . PauliVector)],MatrixExp[(1-sp)*lagmult*(Normalize[vec] . PauliVector)]];
-Return[A/Tr[A]]]
+MaxEntSubStates[rho_,p_]:=With[
+{vec=densityMatrixToPoint[{rho},gellMannBasis[1]][[1]]},
+lagmult=l/.FindRoot[RadiusAsFunctionOfLagrange[l,p]==Norm[vec],{l,0}];
+Table[(IdentityMatrix[2]+Tanh[p[[k]]*lagmult]*Normalize[vec] . Rest[gellMannBasis[1]])/2,{k,1,Length[p]}]]
+
+MaxEntN[rho_,p_]:=Fold[DirProd,MaxEntSubStates[rho,p]];
 
 CGNto1[rho_,p_]:=Sum[p[[k]]*PartialTrace[rho,2^(Length[p]-k)],{k,1,Length[p]}];
 
