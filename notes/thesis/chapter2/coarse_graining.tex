@@ -1,25 +1,25 @@
 \section{Un modelo de grano grueso y borroso}\label{sec:CH2CG}
 
-Como se discutió previamente, es natural suponer que no siempre es posible disponer de toda la información sobre el \textit{estado} del sistema de interés. Esto ya sea por insuficiencia en la resolución de los aparatos de medición o por el inevitable error inherente a las herramientas de medición. Un prototipo sencillo de error consiste en el inducido por un aparato que no distingue diferentes conjuntos de partículas entre sí. El caso más simple corresponde a la permutación de dos partículas. Este intercambio accidental a la hora de la medición es una \textit{aplicación borrosa} \cite{FuzzyMeasurements}.
+Como se discutió previamente, es natural suponer que no siempre es posible disponer de toda la información sobre el \textit{estado}\ddnote{las itálicas están de más, me parece. Cual es tu política del uso de las itálicas?} del sistema de interés. Esto ya sea por insuficiencia en la resolución de los aparatos de medición o por el inevitable error inherente a las herramientas de medición. Un prototipo sencillo de error consiste en el inducido por un aparato que no distingue diferentes conjuntos de partículas entre sí. El caso más simple corresponde a la permutación de dos partículas. Este intercambio accidental a la hora de la medición es una \textit{aplicación borrosa} \cite{FuzzyMeasurements}.
 
 Para ilustrar lo anterior, considérese dicha aplicación borrosa sobre un sistema de dos partículas. Para simplificarlo un poco más, supongamos que cada partícula es un sistema de dos niveles, esto es, el sistema está compuesto por los qubits $A$ y $B$. El estado del sistema está caracterizado por un operador de densidad $\varrho_{AB} \in \mcS(\hilbert_2 \otimes \hilbert_2)$. La acción de la aplicación borrosa se escribe como sigue:
 \begin{align*}
 \mcF:&\mcS(\hilbert_2 \otimes \hilbert_2)\to \mcS(\hilbert_2 \otimes \hilbert_2)\nonumber\\
 &\varrho \mapsto p\varrho+(1-p)S\varrho S,
 \end{align*}
-donde $0<p<1$ es la probabilidad con la que el aparato de medición identifica erróneamente a los dos subsistemas y $S$ es el operador de transposición de dos partículas (llamado operador SWAP), definido como 
+donde $0<p<1$ es la probabilidad con la que el aparato de medición identifica \ddnote*{correctamente}{erróneamente} a los dos subsistemas y $S$ es el operador de transposición de dos partículas (llamado operador SWAP), definido como 
 \begin{equation*}
     S\ket{\psi}\otimes \ket{\phi}=\ket{\phi}\otimes \ket{\psi} \ \ \forall \ket{\psi},\ket{\phi}\in \hilbert_2.
 \end{equation*}
 El estado resultante, $\Fuzzy{\varrho_{AB}}=p\varrho_{AB}+(1-p)\varrho_{BA}$, es una mezcla estadística del estado accesible con un detector perfecto, $\varrho_{AB}$, y el estado donde los qubits tienen las etiquetas equivocadas, $\varrho_{BA}:=S\varrho_{AB} S$. Así, si quisieramos hallar el valor esperado del observable $\sigma_{3}\otimes\Id$ (el valor esperado de $\sigma_{z}$ en la primer partícula), encontraríamos:
 \begin{equation*}
     \expval{\sigma_{3}\otimes\Id}_{\mcF}=(1-p)\expval{\sigma_{3}\otimes\Id}+p\expval{\Id\otimes\sigma_{3}}
-\end{equation*}
+\end{equation*}\ddnote{esta ecuación tiene las probabilidades volteadas}
 donde por $\expval{A}_{\mcF}$ nos referimos al valor esperado con respecto al estado del sistema descrito a través de $\mcF$.
 
 Es importante notar que, auque la aplicación borrosa modela el error asociado al aparato de medición, no constituye por si misma un modelo de grano grueso, pues conserva la dimensión del sistema: el aparato resuelve todos los grados de libertad.
 
-Agreguemos al error por permutación la falta de resolución. Una posibilidad es que el instrumento detecte una partícula en donde en realidad haya dos, y aún más, que en un sistema de dos partículas, este sea capaz de medir únicamente observables asociados al primer subsistema. El estado observado sería, de acuerdo con la sección \ref{sec:Ch1PartialTrace}, la matriz de densidad reducida de la primera partícula. Matemáticamente, la composición del error y de la falta de resolución puede escribirse como
+\ddnote*{esto está redundante y escrito raro, no se por que dices que el estado sería el de la primera partícula, eso confunde, parece que estás cambiando repentinamente el contexto. Mejor explica al grano la situación y sin hablar de composición de errores. Eso mas bien se deriva, y justamente lo haces mas adelantito.}{Agreguemos al error por permutación la falta de resolución. Una posibilidad es que el instrumento detecte una partícula en donde en realidad haya dos, y aún más, que en un sistema de dos partículas, este sea capaz de medir únicamente observables asociados al primer subsistema. El estado observado sería, de acuerdo con la sección \ref{sec:Ch1PartialTrace}, la matriz de densidad reducida de la primera partícula.} Matemáticamente, la composición del error y de la falta de resolución puede escribirse como
 \begin{gather*}
     \mcC:\mcS(\hilbert_2 \otimes \hilbert_2)\to \mcS(\hilbert_2)\nonumber\\
     \rho_{AB} \mapsto p\rho_A+(1-p)\rho_B\rlap{,}
@@ -40,7 +40,7 @@ Es extremadamente importante notar que la expresión anterior no es invertible. 
 Pues bien, como se ha asumido que conocemos la evolución unitaria subyacente, requerimos asignar a $\rho$ un estado microscópico que cumpla con todas las restricciones impuestas por nuestras mediciones. Asumiremos que dicho estado asignado es el que experimenta la evolución. 
 
 
-La discusión anterior giró alrededor del caso en que el modelo de grano grueso reduce un espacio de dos qubits a uno de un solo qubit. Esto puede generalizarse al caso en que el aparato de medición sólo detecta una partícula cuando el sistema microscópico comporta $n$ partículas. En particular, consideramos, nuevamente, subsistemas de dos niveles (qubits), de tal forma que $\varrho\in\mcS\qty( \hilbert_{2}^{\otimes n})$, donde $\hilbert_{2}^{\otimes n}$ representa el producto tensorial del espacio $\hilbert_{2}$ consigo mismo $k$ veces. Sean $p_{i}$ las probabilidades de medir cada una de las partículas. La aplicación borrosa pasa de ser un intercambio de dos partículas, a una serie de permutaciones entre la partícula de interés y el resto (sin pérdida de generalidad, asumiremos que la partícula de interés es la primera). Considerando un sistema de $n$ subsistemas de dos niveles (qubits), la aplicación borrosa se convierte en
+La discusión anterior giró alrededor del caso en que el modelo de grano grueso reduce un espacio de dos qubits a uno de un solo qubit. Esto puede generalizarse al caso en que el aparato de medición sólo detecta una partícula cuando el sistema microscópico \ddnote*{conforma?}{comporta} $n$ partículas. En particular, consideramos, nuevamente, subsistemas de dos niveles (qubits), de tal forma que $\varrho\in\mcS\qty( \hilbert_{2}^{\otimes n})$, donde $\hilbert_{2}^{\otimes n}$ representa el producto tensorial del espacio $\hilbert_{2}$ consigo mismo $k$ veces. Sean $p_{i}$ las probabilidades de medir cada una de las partículas. La aplicación borrosa pasa de ser un intercambio de dos partículas, a una serie de permutaciones entre la partícula de interés y el resto (sin pérdida de generalidad, asumiremos que la partícula de interés es la primera). Considerando un sistema de $n$ subsistemas de dos niveles \ddnote*{si ya definiste qubits mas arriba como sistemas de dos niveles, no es necesario el paréntesis}{(qubits)}, la aplicación borrosa \ddnote*{se define entonces como}{se convierte en}
 \begin{gather*}
     \mcF:\mcS\qty( \hilbert_{2}^{\otimes n})\to \mcS\qty( \hilbert_{2}^{\otimes n})\nonumber\\
     \varrho \mapsto p_{1}\varrho+\sum_{j=2}^{n}p_{j}(S_{1,j})\varrho(S_{1,j})^{\dagger},

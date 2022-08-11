@@ -70,11 +70,11 @@ Recordando que, en la teoría de la termodinámica \ddnote{Aquí es mejor decir 
 
 \subsection{Extensión a la mecánica cuántica}
 
-En su segundo artículo, Jaynes extiende el Principio de máxima entropía a la mecánica cuántica \cite{JaynesII}. Considérese, en un primer momento, el caso en el que se conoce el valor esperado de la energía, $\expval{H}$, para un sistema termodinámico en el que no esperamos que el estado de máxima entropía varíe con el tiempo. Esta calidad de estado estacionario nos permite afirmar que
+En su segundo artículo, Jaynes extiende el Principio de máxima entropía a la mecánica cuántica \cite{JaynesII}. Considérese, en un primer momento, el caso en el que se conoce el valor esperado de la energía, $\expval{H}$, para un sistema termodinámico \ddnote*{, es decir, podemos asumir que el estado del sistema es estacionario}{en el que no esperamos que el estado de máxima entropía varíe con el tiempo}. Esta calidad de estado estacionario nos permite \ddnote*{suponer}{afirmar} que
 \begin{equation*}
     [\rho,H]=0.
 \end{equation*}
-Gracias a esto podemos afirmar que existe una base en la que tanto $\rho$ como $H$ son diagonales. Sea $\{\ket{e_{k}}\}$ dicha base, y $E_{k}$ y $\eta_{k}$ los $k-$ésimos elementos diagonales del hamiltoniano $H$ y del operador $\rho$ en ella, respectivamente. La entropía de von Neumann puede escribirse en términos de los eigenvalores de $\rho$ como
+Gracias a esto podemos afirmar que existe una base en la que tanto $\rho$ como $H$ son diagonales. Sea $\{\ket{e_{k}}\}$ dicha base, y $E_{k}$ y $\eta_{k}$ los \ddnote*{$k$-ésimos}{$k-$ésimos} elementos diagonales del hamiltoniano $H$ y del operador $\rho$ en ella, respectivamente. La entropía de von Neumann puede escribirse en términos de los eigenvalores de $\rho$ como
 \begin{equation*}
     S=-\sum_{k}\eta_{k}\log{\eta_{k}}.
 \end{equation*}
@@ -82,7 +82,7 @@ Para maximizarla, volvemos a aplicar el método de los multiplicadores de Lagran
 \begin{equation*}
     \mcL=\sum_{k}\eta_{k}\log{\eta_{k}}+\lambda_{0}\qty(\sum_{k}\eta_{k}-1)+\lambda_{1}\qty(\sum_{k}\eta_{k}E_{k}-\expval{H}),
 \end{equation*}
-en donde la primera restricción es la normalización del estado $\rho$, $\Tr(\rho)=1$, y la segunda corresponde a la información experimental conocida. Si se deriva e iguala a cero:
+en donde la primera restricción es la normalización del estado $\rho$, $\Tr(\rho)=1$, y la segunda corresponde a la información experimental conocida. Si se deriva e iguala a cero:\ddnote{haz arreglos a la notación parecidos a los ya discutidos para el caso clásico. Lo que viene abajo es un componente (o en su defecto, una ecuación del sistema de ecuaciones que sale de computar $\frac{\partial \mcL}{\partial \vec \eta}=\vec 0$)}
 \begin{align*}
     \frac{\partial \mcL}{\partial \eta_{k}}=(1+\log{\eta_{k}})+\lambda_{0}+\lambda_{1}E_{k}=0 & & \Longrightarrow  & &\eta_{k}=-e^{(\lambda_{0}+1+\lambda_{1}E_{k})}.
 \end{align*}
@@ -90,7 +90,7 @@ Nuevamente, debido a que $\sum_{k}\eta_{k}=1$, podemos definir a la función de 
 \begin{equation*}
     e^{1+\lambda_{0}}=\sum_{k}e^{-\lambda_{1}E_{k}}.
 \end{equation*}
-Así que la expresión de los eigenvalores del estado que maximiza a la entropía, $\rho$, en términos de los eigenvalores de $H$, $E_{k}$ es
+Así que la expresión de los eigenvalores del estado que maximiza a la entropía \ddnote{sujeto a la condición $\langle H \rangle=E$}, $\rho$, en términos de los eigenvalores de $H$, $E_{k}$ es
 \begin{equation*}
     \eta_{k}=\frac{1}{Z}e^{-\lambda E_{k}}.
 \end{equation*}
@@ -98,10 +98,10 @@ Utilizando notación de Dirac, $\rho=\eta_{k}\dyad{e_{k}}$, podemos hallar el re
 \begin{equation}
     \rho=\frac{1}{Z}e^{-\lambda H}
 \end{equation}
-Este resultado es fácilmente generalizable al caso en que contemos con un  conjunto $\{A_{j}\}$ de $N$ observables tales que $[A_{j},\rho]=0$ de los que conozcamos sus valores esperados. En general, la expresión del estado de máxima entropía es
+Este resultado es fácilmente generalizable al caso en que contemos con un  conjunto $\{A_{j}\}$ de $N$ observables tales que $[A_{j},\rho]=0$\ddnote{,} de los que conozcamos sus valores esperados. En general, la expresión del estado de máxima entropía es
 \begin{equation}
     \rho=\frac{1}{Z}e^{-\sum_{k}\lambda_{k} A_{k}}
 \end{equation}
-El caso en que los observables no conmutan con el operador de densidad $\rho$ es un tanto más complicado, y, aunque el resultado es el mismo \cite{FormalJaynes}, en este trabajo no lo demostraremos.
+\ddnote*{Cabe señalar que este resultado también es válido cuando las observables $A_k$ no conmutan entre sí o con $\rho$. Sin embargo la prueba es complicada y está más allá del alcance de esta tesis~\cite{Wichmann1963,FormalJaynes}.}{El caso en que los observables no conmutan con el operador de densidad $\rho$ es un tanto más complicado, y, aunque el resultado es el mismo~\cite{FormalJaynes}, en este trabajo no lo demostraremos.}
 
 \acnote{Toda esta sección fue reescrita, después de que me quedara claro qué era lo que tenía que derivar}
