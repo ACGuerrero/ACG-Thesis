@@ -25,7 +25,6 @@ cgfrobeniuslist::usage="something"
 GenerateMHData::usage="GenerateMHData[n,beta,delta,swapP,zcoord,print_:True] generates a set of pure states using the Metropolis Hastings algorithm. If the data exists, it imports it."
 CGKrausOp::usage="something"
 CGKraus::usage="CGKraus[rho,p] applies the coarse graining map using its Kraus Operators"
-CGNto1::usage="CGNto1[rho,p] takes an n qubit density matrix and applies the CG from N to 1 particle. p must be a probability vector"
 SWAPContractionFactor::usage="SWAPContractionFactor[t,p,\[Lambda]] gives the contraction factor of the coarse system resulting from applying the swap gate to a MaxEnt state characterized by p,\[Lambda]."
 SWAP::usage="SWAP[t] applies the operator at a time t. t=1 is the full swap gate, while t=0 is the identity operator."
 SWAP2::usage="SWAP2[t] applies the operator at a time t. t=1 is the full swap gate, while t=0 is the identity operator."
@@ -40,12 +39,6 @@ PauliVector::usage="List of the pauli matrices"
 LagrangeMultFromPurity::usage="Used as LagrangeMultFromPurity[r_,p_,lo_,up_,st_]. "
 MaxEntAss::usage="MaxEntAss[rho,p] calculates the maximum entropy state given a non pure density matrix"
 DirProd::usage="It's just the Kronecker Producto. I will fix it for vectors later"
-
-RadiusAsFunctionOfLagrange::usage="It's just the Kronecker Producto. I will fix it for vectors later"
-
-MaxEntSubStates[rho_,p_]::usage="It's just the Kronecker Producto. I will fix it for vectors later"
-
-MaxEntN[rho_,p_]::usage="It's just the Kronecker Producto. I will fix it for vectors later"
 
 Begin["`Private`"]
 
@@ -132,17 +125,7 @@ Ubig=UnitaryToRotateFineStates[cstate]
 Ubig . #&/@fdata
 ]
 
-(*All about the MaxEnt state*)
-RadiusAsFunctionOfLagrange[l_,p_]:=Sum[p[[k]]*Tanh[p[[k]]*l],{k,1,Length[p]}];
 
-MaxEntSubStates[rho_,p_]:=With[
-{vec=densityMatrixToPoint[{rho},gellMannBasis[1]][[1]]},
-lagmult=l/.FindRoot[RadiusAsFunctionOfLagrange[l,p]==Norm[vec],{l,0}];
-Table[(IdentityMatrix[2]+Tanh[p[[k]]*lagmult]*Normalize[vec] . Rest[gellMannBasis[1]])/2,{k,1,Length[p]}]]
-
-MaxEntN[rho_,p_]:=Fold[DirProd,MaxEntSubStates[rho,p]];
-
-CGNto1[rho_,p_]:=Sum[p[[k]]*PartialTrace[rho,2^(Length[p]-k)],{k,1,Length[p]}];
 
 CGKrausOp[p_]:={
 Sqrt[p]KroneckerProduct[IdentityMatrix[2],{1,0}],
