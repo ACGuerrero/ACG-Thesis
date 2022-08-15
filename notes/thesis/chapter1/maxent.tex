@@ -29,23 +29,26 @@ Buscamos el valor extremal respecto a las $p(x_{i})$ de la Lagrangiana
 \begin{equation}
     \mcL=-H(p)+\sum_{j}\lambda_{j}\qty(\sum_{i}p(x_{i})f_{j}(x_{i})-\expval{f_{j}(x)})+\mu\qty(\sum_{i}p(x_{i})-1)\nonumber
 \end{equation}
-En esta ecuación, $\lambda_{j}$ es el multiplicador de Lagrange que pesa a la $j$-ésima restrición. Derivando e igualando a cero se obtiene que
-\begin{gather*}
-    \frac{\partial \mcL}{\partial p(x_{i})}=k(1+\log{p(x_{i})})+\sum_{j}\lambda_{j}f_{j}(x_{i})+\mu=0\\
-    \Rightarrow p(x_{i})=\exp[-(1+\frac{\mu}{k})-\frac{1}{k}\sum_{j}\lambda_{j}f_{j}(x_{i})].
-\end{gather*}
+En esta ecuación, $\lambda_{j}$ es el multiplicador de Lagrange que pesa a la $j$-ésima restrición. Derivando e igualando a cero se obtiene un sistema de ecuaciones de la forma
+\begin{equation}
+    \frac{\partial \mcL}{\partial p(x_{i})}=k(1+\log{p(x_{i})})+\sum_{j}\lambda_{j}f_{j}(x_{i})+\mu=0,\nonumber
+\end{equation}
+de donde se obtiene la solución a cada componente
+\begin{equation}
+    p(x_{i})=\exp[-(1+\frac{\mu}{k})-\frac{1}{k}\sum_{j}\lambda_{j}f_{j}(x_{i})].\nonumber
+\end{equation}
 Esta es la distribución que maximiza a la entropía. Respecto a los multiplicadores de Lagrange, nótese que por la restricción (\ref{eq:NormalizationRestriction}) se cumple que
-\begin{equation*}
-    \frac{1}{e^{-(1+\mu)}}=\sum_{i}\exp[-\frac{1}{k}\sum_{j}\lambda_{j}f_{j}(x_{i})].
-\end{equation*}
+\begin{equation}
+    \frac{1}{e^{-(1+\mu)}}=\sum_{i}\exp[-\frac{1}{k}\sum_{j}\lambda_{j}f_{j}(x_{i})].\nonumber
+\end{equation}
 A partir de esta relación se define a la función de partición,
-\begin{equation*}
-    Z=\sum_{i}\exp[-\frac{1}{k}\sum_{j}\lambda_{j}f_{j}(x_{i})],
-\end{equation*}
+\begin{equation}
+    Z=\sum_{i}\exp[-\frac{1}{k}\sum_{j}\lambda_{j}f_{j}(x_{i})],\nonumber
+\end{equation}
 que satisface
-\begin{equation*}
-    \expval{f_{j}(x)}=-\frac{\partial}{\partial \lambda_{j}}\ln{Z}.
-\end{equation*}
+\begin{equation}
+    \expval{f_{j}(x)}=-\frac{\partial}{\partial \lambda_{j}}\ln{Z}.\nonumber
+\end{equation}
 Considerando lo anterior, el estimado para la distribución de probabilidad que maximiza la entropía, y que es compatible con las restricciones (\ref{eq:JaynesRestrictions}) tiene la forma 
 \begin{equation}\label{eq:MaxEntDist}
     p(x_{i})=\frac{1}{Z}\exp[-\frac{1}{k}\sum_{j}\lambda_{j}f_{j}(x_{i})].
@@ -68,45 +71,48 @@ Para discernir el significado físico de dicho resultado, se puede sustituir est
 \acnote{Párrafo iterado: reescritura}
 
 Si tratásemos con un sistema en equilibrio térmico con un reservorio térmico a una temperatura $T$, la física estadística dice que $S$ coincide con la entropía termodinámica y
-\begin{equation*}
-    \lambda=\frac{1}{T}.
-\end{equation*}
+\begin{equation}
+    \lambda=\frac{1}{T}.\nonumber
+\end{equation}
 con lo que se halla el significado físico del multiplicador de Lagrange. \cite{Greiner}
 
 \subsection{Extensión a la mecánica cuántica}
+\acnote{Sección iterada: notas y notación.}
 
-En su segundo artículo, Jaynes extiende el Principio de máxima entropía a la mecánica cuántica \cite{JaynesII}. Considérese, en un primer momento, el caso en el que se conoce el valor esperado de la energía, $\expval{H}$, para un sistema termodinámico \ddnote*{, es decir, podemos asumir que el estado del sistema es estacionario}{en el que no esperamos que el estado de máxima entropía varíe con el tiempo}. Esta calidad de estado estacionario nos permite \ddnote*{suponer}{afirmar} que
-\begin{equation*}
-    [\rho,H]=0.
-\end{equation*}
-Gracias a esto podemos afirmar que existe una base en la que tanto $\rho$ como $H$ son diagonales. Sea $\{\ket{e_{k}}\}$ dicha base, y $E_{k}$ y $\eta_{k}$ los \ddnote*{$k$-ésimos}{$k-$ésimos} elementos diagonales del hamiltoniano $H$ y del operador $\rho$ en ella, respectivamente. La entropía de von Neumann puede escribirse en términos de los eigenvalores de $\rho$ como
-\begin{equation*}
-    S=-\sum_{k}\eta_{k}\log{\eta_{k}}.
-\end{equation*}
+En su segundo artículo, Jaynes extiende el Principio de máxima entropía a la mecánica cuántica \cite{JaynesII}. Considérese, en un primer momento, el caso en el que se conoce el valor esperado de la energía, $\expval{H}$, para un sistema termodinámico \ddnote*{, es decir, podemos asumir que el estado del sistema es estacionario}{en el que no esperamos que el estado de máxima entropía varíe con el tiempo}. Esta calidad de estado estacionario nos permite suponer que
+\begin{equation}
+    [\rho,H]=0.\nonumber
+\end{equation}
+Entonces existe una base en la que tanto $\rho$ como $H$ son diagonales. Sea $\{\ket{e_{k}}\}_{k}$ dicha base, y $E_{k}$ y $\eta_{k}$ los $k$-ésimos elementos diagonales del hamiltoniano $H$ y del operador $\rho$ en ella, respectivamente. La entropía de von Neumann puede escribirse en términos de los eigenvalores de $\rho$ como
+\begin{equation}
+    S=-\sum_{k}\eta_{k}\log{\eta_{k}}.\nonumber
+\end{equation}
 Para maximizarla, volvemos a aplicar el método de los multiplicadores de Lagrange. La lagrangiana es
-\begin{equation*}
-    \mcL=\sum_{k}\eta_{k}\log{\eta_{k}}+\lambda_{0}\qty(\sum_{k}\eta_{k}-1)+\lambda_{1}\qty(\sum_{k}\eta_{k}E_{k}-\expval{H}),
-\end{equation*}
-en donde la primera restricción es la normalización del estado $\rho$, $\Tr(\rho)=1$, y la segunda corresponde a la información experimental conocida. Si se deriva e iguala a cero:\ddnote{haz arreglos a la notación parecidos a los ya discutidos para el caso clásico. Lo que viene abajo es un componente (o en su defecto, una ecuación del sistema de ecuaciones que sale de computar $\frac{\partial \mcL}{\partial \vec \eta}=\vec 0$)}
-\begin{align*}
-    \frac{\partial \mcL}{\partial \eta_{k}}=(1+\log{\eta_{k}})+\lambda_{0}+\lambda_{1}E_{k}=0 & & \Longrightarrow  & &\eta_{k}=-e^{(\lambda_{0}+1+\lambda_{1}E_{k})}.
-\end{align*}
-Nuevamente, debido a que $\sum_{k}\eta_{k}=1$, podemos definir a la función de partición notando que
-\begin{equation*}
-    e^{1+\lambda_{0}}=\sum_{k}e^{-\lambda_{1}E_{k}}.
-\end{equation*}
-Así que la expresión de los eigenvalores del estado que maximiza a la entropía \ddnote{sujeto a la condición $\langle H \rangle=E$}, $\rho$, en términos de los eigenvalores de $H$, $E_{k}$ es
-\begin{equation*}
-    \eta_{k}=\frac{1}{Z}e^{-\lambda E_{k}}.
-\end{equation*}
+\begin{equation}
+    \mcL=\sum_{k}\eta_{k}\log{\eta_{k}}+\lambda_{0}\qty(\sum_{k}\eta_{k}-1)+\lambda_{1}\qty(\sum_{k}\eta_{k}E_{k}-\expval{H}),\nonumber
+\end{equation}
+en donde la primera restricción es la normalización del estado $\rho$, $\Tr(\rho)=1$, y la segunda corresponde a la información experimental conocida. Nuevamente buscamos el valor extremal respecto a todos los $\eta_{k}$. Derivando e igualando a cero se halla el sistema de ecuaciones\ddnote{haz arreglos a la notación parecidos a los ya discutidos para el caso clásico. Lo que viene abajo es un componente (o en su defecto, una ecuación del sistema de ecuaciones que sale de computar $\frac{\partial \mcL}{\partial \vec \eta}=\vec 0$)} \acnote{queda}
+\begin{equation}
+    \frac{\partial \mcL}{\partial \eta_{k}}=(1+\log{\eta_{k}})+\lambda_{0}+\lambda_{1}E_{k}=0,\nonumber
+\end{equation}
+cuyas soluciones son
+\begin{equation}
+    \eta_{k}=-e^{(\lambda_{0}+1+\lambda_{1}E_{k})}.\nonumber
+\end{equation}
+Como $\sum_{k}\eta_{k}=1$, podemos definir a la función de partición notando que
+\begin{equation}
+    e^{1+\lambda_{0}}=\sum_{k}e^{-\lambda_{1}E_{k}}.\nonumber
+\end{equation}
+Así que la expresión de los eigenvalores del estado que maximiza a la entropía sujeto a la condición $\expval{H}=\sum_{k}\eta_{k}E_{k}$ \ddnote{sujeto a la condición $\langle H \rangle=E$}, $\rho$, en términos de los eigenvalores de $H$, $E_{k}$ es
+\begin{equation}
+    \eta_{k}=\frac{1}{Z}e^{-\lambda E_{k}}.\nonumber
+\end{equation}
 Utilizando notación de Dirac, $\rho=\eta_{k}\dyad{e_{k}}$, podemos hallar el resultado independiente de la elección de la base:
 \begin{equation}
-    \rho=\frac{1}{Z}e^{-\lambda H}
+    \rho=\frac{1}{Z}e^{-\lambda H}.
 \end{equation}
-Este resultado es fácilmente generalizable al caso en que contemos con un  conjunto $\{A_{j}\}$ de $N$ observables tales que $[A_{j},\rho]=0$\ddnote{,} de los que conozcamos sus valores esperados. En general, la expresión del estado de máxima entropía es
+Este resultado es fácilmente generalizable al caso en que contemos con un  conjunto $\{A_{j}\}$ de $N$ observables tales que $[A_{j},\rho]=0$,\ddnote{,} de los que conozcamos sus valores esperados. En general, la expresión del estado de máxima entropía es
 \begin{equation}
-    \rho=\frac{1}{Z}e^{-\sum_{k}\lambda_{k} A_{k}}
+    \rho=\frac{1}{Z}e^{-\sum_{k}\lambda_{k} A_{k}}.
 \end{equation}
-\ddnote*{Cabe señalar que este resultado también es válido cuando las observables $A_k$ no conmutan entre sí o con $\rho$. Sin embargo la prueba es complicada y está más allá del alcance de esta tesis~\cite{Wichmann1963,FormalJaynes}.}{El caso en que los observables no conmutan con el operador de densidad $\rho$ es un tanto más complicado, y, aunque el resultado es el mismo~\cite{FormalJaynes}, en este trabajo no lo demostraremos.}
-
-\acnote{Toda esta sección fue reescrita, después de que me quedara claro qué era lo que tenía que derivar}
+\ddnote*{Cabe señalar que este resultado también es válido cuando las observables $A_k$ no conmutan entre sí o con $\rho$. Sin embargo la prueba es complicada y está más allá del alcance de esta tesis~\cite{Wichmann1963,FormalJaynes}.}{El caso en que los observables no conmutan con el operador de densidad $\rho$ es un tanto más complicado, y aunque el resultado es el mismo~\cite{FormalJaynes}, en este trabajo no lo demostraremos.}

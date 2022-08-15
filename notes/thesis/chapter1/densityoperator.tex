@@ -190,16 +190,34 @@ De la misma forma que antes, la solución queda expresada en términos de un ope
 \subsubsection{Evolución de sistemas abiertos}
 Considérese, en cambio, que el sistema de interés $\rho_{S}$ se halla acoplado a un entorno $\rho_{E}$ y que, inicialmente, el conjunto de estos dos conforma un sistema cerrado descrito por el operador de densidad $\rho(0)=\rho_{S}(0)\otimes\rho_{E}$. Esta condición inicial está justificada experimentalmente: una medición proyectiva sobre el sistema de interés proyecta al sistema a un estado factorizable, así que estos estados son siempre preparables. Como el sistema es cerrado, este evoluciona siguiendo la ecuación de Liouville-von Neumann,
 \begin{align}
-    i\hbar\frac{d}{d t} \rho(t)=[H,\rho(t)] && \text{con} && \rho(0)=\rho_{S}(0)\otimes\rho_{E}\rlap{,}\nonumber
+    i\hbar\frac{d}{d t} \rho(t)=[H,\rho(t)] && \text{con} && \rho(0)=\rho_{S}(0)\otimes\rho_{E}\rlap{.}\nonumber
 \end{align}
-\acnote{Tengo que terminar esta parte}
-cuya solución formal es 
+Sin embargo, para hallar la ecuación de la dinámica del sistema de interés es necesario trazar al entorno de ambos lados de esta ecuación, de forma que se halla
+\begin{align}
+    i\hbar\frac{d}{d t} \rho_{S}(t)=\Tr_{E}([H,\rho(t)]) && \text{con} && \rho(0)=\rho_{S}(0)\otimes\rho_{E}\rlap{,}\nonumber
+\end{align}
+cuya solución formal está dada en términos de un operador $\mcE_{t}$,
 \begin{equation}
-    \rho_{S}(t)=\mcE_{t}(\rho(0)),\nonumber
+    \rho_{S}(t)=\mcE_{t}(\rho_{S}(0)).\nonumber
 \end{equation}
-donde $\mcE_{t}$ es un canal cuántico para cualquier $t$, y $\mcE_{0}=Id$. El formalismo cuántico queda fuera del alcance de este trabajo, y sin entrar en más detalle, basta con señalar que los canales cuánticos son aplicaciones lineales de $\mcB(\hilbert_{n})$ en $\mcB(\hilbert_{m})$ que cumplen que  [LISTA PROPIEDADES DE CANALES].
-Es particularmente interesante señalar que dado un canal cuántico, por el teorema de Stinespring...
-
+En esta ecuación, $\mcE_{t}$ está definido como
+ \begin{equation}
+    \mcE_{t}(\rho_{S}(0))=\Tr_{E}\qty[U(t,0)\rho(0)U^{\dag}(t,0)],\nonumber
+ \end{equation}
+ y cumple que es un canal cuántico \acnote{también llamado aplicación dinámica \cite{Breuer} o operación cuántica \cite{Chuang}} cuántico $\forall t$, y que $\mcE_{0}=\Id_{S}$. El formalismo de los canales cuánticos queda fuera del alcance de este trabajo, y sin entrar en más detalle, basta con señalar que los canales cuánticos son aplicaciones lineales completamente positivas que preservan la traza, \ie, todo canal cuántico $\mcE:\mcB(\hilbert_{A})\rightarrow \mcB(\hilbert_{B})$ cumple que \cite{Watrous}
+ \begin{enumerate}
+    \item $\mcE\otimes \Id_{\mcB(\hilbert_{C})}$ es positivo para cualquier $\hilbert_{C}$.
+    \item $\Tr\qty(\mcE(\Delta))=\Tr\qty(\Delta)$.
+ \end{enumerate}
+Los canales cuánticos están relacionados directamente al esquema de sistemas abiertos a través del teorema de Stinespring \cite{Watrous}, de acuerdo con el cual dado un canal cuántico
+\begin{equation}
+    \mcE:\mcB(\hilbert_{A})\rightarrow \mcB(\hilbert_{B}),\nonumber
+\end{equation}    
+existen un espacio de Hilbert $\hilbert_{C}$ y un operador unitario $U$ que actúa sobre $\hilbert_{A}\otimes \hilbert_{C}$ tales que
+\begin{equation}
+    \mcE(\Delta_{A})=\Tr_{C}\qty(U \Delta_{A} \otimes \Delta_{C} U^{\dag}),\nonumber
+\end{equation}
+donde $\Delta_{A}\in\mcB(\hilbert_{A})$ y $\Delta_{C}\in\mcB(\hilbert_{C})$.
 \iffalse
 \subsubsection{La evolución del operador de densidad}
 
@@ -234,7 +252,7 @@ en donde el claro problema es que el lado derecho de la ecuación, que está en 
 \subsubsection{Parametrización del operador de densidad}
 \acnote{Sección iterada: reescritura}
 
-Es común escoger alguna base hermítica para poder parametrizar a las matrices de densidad. El beneficio de hacer esto es que, por ser $\mcS(\hilbert_{n})$ un subconjunto de $\mcL(\hilbert_{n})$, dicha parametrización será lineal, y aún más: los parámetros serán cantidades medibles en el laboratorio. Esto significa que, realizando mediciones de forma adecuada, es posible reconstruir el estado de un sistema \acnote{[cita]}. Una elección común de base son las matrices generalizadas de Gell-Mann, junto a la matriz identidad.
+Es común escoger alguna base hermítica para poder parametrizar a las matrices de densidad. El beneficio de hacer esto es que, por ser $\mcS(\hilbert_{n})$ un subconjunto de $\mcL(\hilbert_{n})$, dicha parametrización será lineal, y aún más: los parámetros serán cantidades medibles en el laboratorio. Esto significa que, realizando mediciones de forma adecuada, es posible reconstruir el estado de un sistema. Una elección común de base son las matrices generalizadas de Gell-Mann, junto a la matriz identidad.
 \iffalse
 \acnote{Remplaza:-------}
 \ddnote*{la base es hermitiana, el espacio no, lo hablamos en la reunión}{Cualquier matriz de densidad puede descomponerse en términos de una base del espacio de matrices hermitianas de $n\times n$.} \ddnote*{Tengo entendido que la identidad es también un generador de SU(2), checa bien esto}{Una elección común de base para el espacio es el de los generadores $\{\varsigma_{k}\}$ del grupo $\text{SU}(n)$, junto a la matriz identidad $\Id_{n}$}. Esto es particularmente útil, \ddnote*{ya que}{pues }permite parametrizar a las matrices de densidad de forma vectorial \cite{Bruning}. 
@@ -255,4 +273,4 @@ donde $\sigma_{0}=\Id$ y
 \begin{equation}\label{eq:BlochComponents}
         \gamma_{i.j}=\Tr(\sigma_{i}\otimes \sigma_{j}\rho).
 \end{equation}
-Obsérvese que, como se mencionó previamente, los parámetros $\gamma_{i.j}$ son promedios de las observables $\sigma_i \otimes \sigma_j$. Combinar las ecuaciones (\ref{eq:BlochComponents}) y (\ref{eq:BlochParametrization}) permite reconstruir el estado del sistema. A esto se le llama \textit{tomografía cuántica de estados} \acnote{[cita]}.
+Obsérvese que, como se mencionó previamente, los parámetros $\gamma_{i.j}$ son promedios de las observables $\sigma_i \otimes \sigma_j$. Combinar las ecuaciones (\ref{eq:BlochComponents}) y (\ref{eq:BlochParametrization}) permite reconstruir el estado del sistema. A esto se le llama \textit{tomografía cuántica de estados} \cite{Chuang}.
