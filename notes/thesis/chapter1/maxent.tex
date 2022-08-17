@@ -29,9 +29,9 @@ Buscamos el valor extremal respecto a las $p(x_{i})$ de la Lagrangiana
 \begin{equation}
     \mcL=-H(p)+\sum_{j}\lambda_{j}\qty(\sum_{i}p(x_{i})f_{j}(x_{i})-\expval{f_{j}(x)})+\mu\qty(\sum_{i}p(x_{i})-1)\nonumber
 \end{equation}
-En esta ecuación, $\lambda_{j}$ es el multiplicador de Lagrange que pesa a la $j$-ésima restrición. Derivando e igualando a cero se obtiene un sistema de ecuaciones de la forma
+En esta ecuación, $\lambda_{j}$ es el multiplicador de Lagrange que pesa a la $j$-ésima restrición. Derivando e igualando a cero se obtiene un sistema de ecuaciones
 \begin{equation}
-    \frac{\partial \mcL}{\partial p(x_{i})}=k(1+\log{p(x_{i})})+\sum_{j}\lambda_{j}f_{j}(x_{i})+\mu=0,\nonumber
+    \frac{\partial \mcL}{\partial p(x_{i})}=k(1+\log{p(x_{i})})+\sum_{j}\lambda_{j}f_{j}(x_{i})+\mu=0,\, i\in\{k\}_{k=1}^{n},\nonumber
 \end{equation}
 de donde se obtiene la solución a cada componente
 \begin{equation}
@@ -79,6 +79,8 @@ con lo que se halla el significado físico del multiplicador de Lagrange. \cite{
 \subsection{Extensión a la mecánica cuántica}
 \acnote{Sección iterada: notas y notación.}
 
+\acnote{Quizá tenga que corregir los límites de las sumas aquí y en la parte clásica}
+
 En su segundo artículo, Jaynes extiende el Principio de máxima entropía a la mecánica cuántica \cite{JaynesII}. Considérese, en un primer momento, el caso en el que se conoce el valor esperado de la energía, $\expval{H}$, para un sistema termodinámico \ddnote*{, es decir, podemos asumir que el estado del sistema es estacionario}{en el que no esperamos que el estado de máxima entropía varíe con el tiempo}. Esta calidad de estado estacionario nos permite suponer que
 \begin{equation}
     [\rho,H]=0.\nonumber
@@ -91,9 +93,9 @@ Para maximizarla, volvemos a aplicar el método de los multiplicadores de Lagran
 \begin{equation}
     \mcL=\sum_{k}\eta_{k}\log{\eta_{k}}+\lambda_{0}\qty(\sum_{k}\eta_{k}-1)+\lambda_{1}\qty(\sum_{k}\eta_{k}E_{k}-\expval{H}),\nonumber
 \end{equation}
-en donde la primera restricción es la normalización del estado $\rho$, $\Tr(\rho)=1$, y la segunda corresponde a la información experimental conocida. Nuevamente buscamos el valor extremal respecto a todos los $\eta_{k}$. Derivando e igualando a cero se halla el sistema de ecuaciones\ddnote{haz arreglos a la notación parecidos a los ya discutidos para el caso clásico. Lo que viene abajo es un componente (o en su defecto, una ecuación del sistema de ecuaciones que sale de computar $\frac{\partial \mcL}{\partial \vec \eta}=\vec 0$)} \acnote{queda}
+en donde la primera restricción es la normalización del estado $\rho$, $\Tr(\rho)=1$, y la segunda corresponde a la información experimental conocida. Nuevamente buscamos el valor extremal respecto a todos los $\eta_{k}$. Derivando e igualando a cero se halla el sistema de ecuaciones \ddnote{haz arreglos a la notación parecidos a los ya discutidos para el caso clásico. Lo que viene abajo es un componente (o en su defecto, una ecuación del sistema de ecuaciones que sale de computar $\frac{\partial \mcL}{\partial \vec \eta}=\vec 0$)} \acnote{queda}
 \begin{equation}
-    \frac{\partial \mcL}{\partial \eta_{k}}=(1+\log{\eta_{k}})+\lambda_{0}+\lambda_{1}E_{k}=0,\nonumber
+    \frac{\partial \mcL}{\partial \eta_{k}}=(1+\log{\eta_{k}})+\lambda_{0}+\lambda_{1}E_{k}=0, \,k\in\{l\}_{l=1}^{n}\nonumber
 \end{equation}
 cuyas soluciones son
 \begin{equation}
