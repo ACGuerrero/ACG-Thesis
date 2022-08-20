@@ -16,7 +16,7 @@ Considérese la aplicación de grano grueso de $n$ a $1$ partículas definida se
 \end{equation*}
 siendo la unitaria 
 \begin{equation}\label{eq:NFactorUnitaries}
-    \mcU_{t}=\Motimes_{k=1}^{n}\text{exp}\qty(-i\omega_{k}H_{k}t)=\Motimes_{k=1}^{n} U_{k}(t).
+    \mcU_{t}=\Motimes_{k=1}^{n}\text{exp}\qty(-\rmi\omega_{k}H_{k}t)=\Motimes_{k=1}^{n} U_{k}(t).
 \end{equation}
 A partir de este momento, para hacer más limpia la lectura de este documento se omitirán los productos tensoriales con operadores identidad. El subsistema sobre el que actúe un operador será denotado por un subíndice, de tal manera que el Hamiltoniano previamente definido queda
 \begin{equation*}
@@ -133,8 +133,8 @@ En efecto, la traslación tiene una magnitud $(1-p)r_{B}$ (a notar que la trasla
 En efecto, si $p_{1}\approx\frac{1}{2}$, entonces $\rho_{1}\approx\rho_{2}\approx\rho$ y la dinámica efectiva se convertiría en un canal de desfasamiento:
 
 \begin{align*}
-    \Gamma_{\rho}=&p_{1}e^{-i\omega t \pauli{3}}\rho_{1}e^{i\omega t \pauli{3}}+(1-p_{1})\rho_{2}\\
-    \approx&\frac{1}{2}(\rho+e^{-i\omega t \pauli{3}}\rho e^{i\omega t \pauli{3}}).
+    \Gamma_{\rho}=&p_{1}e^{-\rmi\omega t \pauli{3}}\rho_{1}e^{\rmi\omega t \pauli{3}}+(1-p_{1})\rho_{2}\\
+    \approx&\frac{1}{2}(\rho+e^{-\rmi\omega t \pauli{3}}\rho e^{\rmi\omega t \pauli{3}}).
 \end{align*}
 
 \subsubsection{Sistema invariante}
@@ -145,8 +145,8 @@ Ahora asumamos que es el sistema preferencial el que no evoluciona, mientras que
 \end{equation*}
 Por simplicidad, tómese $H=\pauli{3}$. Recordando la ecuación (\ref{eq:rhoArhoB}), se espera que los observables del sistema efectivo evolucionen según
 \begin{align*}
-    \expval{\pauli{1}(t)}=&p_{1} \expval{\sigma_{1}(0)}_{1}+\sum_{k=2}^{n}p_{k}\Tr[\pauli{1}e^{-i\omega t\pauli{3}} \rho_{k} e^{i\omega t\pauli{3}}]\\
-    \expval{\pauli{2}(t)}=&p_{1} \expval{\sigma_{2}(0)}_{1}+\sum_{k=2}^{n}p_{k}\Tr[\pauli{2}e^{-i\omega t\pauli{3}} \rho_{k} e^{i\omega t\pauli{3}}]\\
+    \expval{\pauli{1}(t)}=&p_{1} \expval{\sigma_{1}(0)}_{1}+\sum_{k=2}^{n}p_{k}\Tr[\pauli{1}e^{-\rmi\omega t\pauli{3}} \rho_{k} e^{\rmi\omega t\pauli{3}}]\\
+    \expval{\pauli{2}(t)}=&p_{1} \expval{\sigma_{2}(0)}_{1}+\sum_{k=2}^{n}p_{k}\Tr[\pauli{2}e^{-\rmi\omega t\pauli{3}} \rho_{k} e^{\rmi\omega t\pauli{3}}]\\
     \expval{\pauli{3}(t)}=&\expval{\pauli{3}(0)},
 \end{align*}
 que quizá sea más clara escribiéndose en términos de las componentes de los vectores de Bloch de cada partícula (el primer subíndice indica la componente del vector, mientras que el segundo denota la partícula a la que pertenece):

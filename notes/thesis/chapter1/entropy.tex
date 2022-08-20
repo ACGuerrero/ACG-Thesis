@@ -1,18 +1,18 @@
 \section{Entropía}
 \subsection{Entropía de Shannon}
-A finales de los años cuarenta, Claude Shannon se preguntaba sobre una medida de la \textit{incertidumbre}, o de la \textit{información} asociada a un proceso cuyo resultado estuviera descrito por una variable aleatoria $X$ con distribución de probabilidad $p(x_{i})$.
+A finales de los años cuarenta, Claude Shannon se preguntaba sobre una medida de la \textit{incertidumbre}, o de la \textit{información} asociada a un proceso cuyo resultado estuviera descrito por una variable aleatoria $X$ con distribución de probabilidad $p(x_{j})$.
 
 \acnote{Párrafo iterado: notas}
 
 La cantidad de información provista por el resultado de un experimento depende de la probabilidad asociada a dicho suceso. Por ejemplo, al tirar un dado es mucho menos informativo saber que no cayó un $6$ que saber que cayó un $6$, ya que cada número tiene una probabilidad de $\frac{5}{6}$ de no caer, pero sólo $\frac{1}{6}$ de caer. Con la misma línea de razonamiento, conocer el resultado de un evento que ocurre con probabilidad $p=1$ no transmite ninguna información. Si a cada valor de $X$ se le puede asociar una cantidad de información, entonces debe poder calcularse la cantidad de información promedio: esta es la medida que buscaba Shannon. La forma de esta medida, denotada $H(p)$, vino de las propiedades que el matemático estadounidense afirmó que debía cumplir \cite{Shannon,Wilde}
 \begin{enumerate}
     \item $H(p)$ debe ser continua en $p$.
-    \item $H(p)$ debe ser una función creciente, monotónica de $n$ cuando $p_{i}=\frac{1}{n}$.
-    \item Si $X$ e $Y$ son procesos independientes, $H(p_{X}(x_{i}),p_{Y}(y_{j}))=H(p_{X}(x_{i}))+H(p_{Y}(y_{j}))$.
+    \item $H(p)$ debe ser una función creciente, monotónica de $n$ cuando $p_{j}=\frac{1}{n}$.
+    \item Si $X$ e $Y$ son procesos independientes, $H(p_{X}(x_{j}),p_{Y}(y_{k}))=H(p_{X}(x_{j}))+H(p_{Y}(y_{k}))$.
 \end{enumerate}
 Además, demostró que
 \begin{equation}\label{eq:ShannonEntropy}
-    H=-k\sum_{i}p(x_{i})\log{p(x_{i})}.
+    H=-k\sum_{j}p(x_{j})\log{p(x_{j})}.
 \end{equation}
 Fue a través de discusiones con von Neumann que Shannon descubrió que su medida ya era ampliamente utilizada en física, y que llevaba el nombre de \textit{entropía} \cite{McIrvine}.
 

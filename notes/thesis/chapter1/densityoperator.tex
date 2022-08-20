@@ -8,26 +8,26 @@ En el contexto de la mecánica cuántica nos enfrentamos a dos tipos de probabil
 
 \acnote{El siguiente párrafo ha sido iterado, solo notas}
 
-Supóngase que en lugar de estudiar un sistema que está completamente descrito por $\ket{\varphi}\in\hilbert_{n}$, con $\hilbert_{n}$ el espacio de Hilbert de dimensión $n$, \ie{} $\hilbert_{n}=\Complex^{n}$; se trabaja con uno que está en el estado $\ket{\varphi_{i}}$ con probabilidad $p_{i}$, donde $\{\ket{\varphi_{i}}\}_{i=1}^n$ es un conjunto no necesariamente ortogonal de estados de $n$ niveles $\ket{\varphi_{i}}\in\hilbert_{n}$, y $\{p_{i}\}_{i=1}^n$ es un conjunto de números reales no negativos tales que $\sum_{i=1}^n p_{i}=1$.
+Supóngase que en lugar de estudiar un sistema que está completamente descrito por $\ket{\varphi}\in\hilbert_{n}$, con $\hilbert_{n}$ el espacio de Hilbert de dimensión $n$, \ie{} $\hilbert_{n}=\Complex^{n}$; se trabaja con uno que está en el estado $\ket{\varphi_{j}}$ con probabilidad $p_{j}$, donde $\{\ket{\varphi_{j}}\}_{j=1}^{m}$ es un conjunto no necesariamente ortogonal de $m$ estados de $n$ niveles $\ket{\varphi_{j}}\in\hilbert_{n}$, y $\{p_{j}\}_{j=1}^{m}$ es un conjunto de números reales no negativos tales que $\sum_{j=1}^{m} p_{j}=1$.
 
-De este sistema se dice que se halla en un estado de \textit{mezcla estadística}, y no debe confundirse con que el sistema se halle en una superposición de estados $\ket{\varphi_{i}}$ con coeficientes $\sqrt{p_{i}}$, ya que una superposición está bien determinada, y está completamente descrita por $\ket{\psi}=\sum_{i} e^{\rmi \theta_i} \sqrt{p_{i}}\ket{\varphi_{i}}$, mientras que la mezcla no lo está, ya que parte del elemento probabilístico está asociado a un grado de ignorancia sobre la preparación del sistema. La mezcla estadística, en este sentido, toma en cuenta no sólo la probabilidad intrínseca a cada estado cuántico, sino una probabilidad clásica, $p_{i}$. Consideremos ahora un observable descrita por un operador hermítico $A$, se sabe que el valor de expectación del observable, con respecto a un estado $\ket{\varphi_{i}}$, está dado por $\expval{A}=\bra{\varphi_{i}}A\ket{\varphi_{i}}$. El valor esperado de dicho observable con respecto a la mezcla estadística será, justamente, el promedio de los valores esperados respecto a los estados cuánticos en la mezcla:
+De este sistema se dice que se halla en un estado de \textit{mezcla estadística}, y no debe confundirse con que el sistema se halle en una superposición de estados $\ket{\varphi_{j}}$ con coeficientes $\sqrt{p_{j}}$, ya que una superposición está bien determinada, y está completamente descrita por $\ket{\psi}=\sum_{j} e^{\rmi \theta_j} \sqrt{p_{j}}\ket{\varphi_{j}}$, mientras que la mezcla no lo está, ya que parte del elemento probabilístico está asociado a un grado de ignorancia sobre la preparación del sistema. La mezcla estadística, en este sentido, toma en cuenta no sólo la probabilidad intrínseca a cada estado cuántico, sino una probabilidad clásica, $p_{j}$. Consideremos ahora un observable descrita por un operador hermítico $A$, se sabe que el valor de expectación del observable, con respecto a un estado $\ket{\varphi_{j}}$, está dado por $\expval{A}_{j}=\bra{\varphi_{j}}A\ket{\varphi_{j}}$. El valor esperado de dicho observable con respecto a la mezcla estadística será, justamente, el promedio de los valores esperados respecto a los estados cuánticos en la mezcla:
 \begin{equation}
-\expval{A}=\sum_{i}p_{i}\bra{\varphi_{i}}A\ket{\varphi_{i}}. \nonumber
+\expval{A}=\sum_{j=1}^{m}p_{j}\bra{\varphi_{j}}A\ket{\varphi_{j}}. \nonumber
 \end{equation}
-Pues bien, esta expresión puede ser manipulada a través de una base ortogonal $\{\ket{e_{k}}\}$ del espacio $\hilbert_{n}$:
+Pues bien, esta expresión puede ser manipulada a través de una base ortogonal $\{\ket{e_{k}}\}_{k=1}^{n}$ del espacio $\hilbert_{n}$:
 \begin{align}
-\expval{A}&=\sum_{i}p_{i}\bra{\varphi_{i}}A\ket{\varphi_{i}}\nonumber\\ 
-&=\sum_{i,j,k}p_{i}\bra{e_{k}}\ket{\varphi_{i}}\bra{\varphi_{i}}\ket{e_{j}} \bra{e_{j}}A\ket{e_{k}} \nonumber
+\expval{A}&=\sum_{j=1}^{m}p_{j}\bra{\varphi_{j}}A\ket{\varphi_{j}}\nonumber\\ 
+&=\sum_{j=1}^{m}\sum_{k,l=1}^{n}p_{j}\bra{e_{l}}\ket{\varphi_{j}}\bra{\varphi_{j}}\ket{e_{k}} \bra{e_{k}}A\ket{e_{l}} \nonumber
 \end{align}
-Esta es una suma sobre los elementos de la matriz del observador $A$ y las de las matrices definidas por $\dyad{\varphi_{i}}$. Agrupando la suma sobre $i$ y tomando en cuenta completez de la base $\{\ket{e_{j}}\}$,
+Esta es una suma sobre los elementos de la matriz del observador $A$ y las de las matrices definidas por $\dyad{\varphi_{j}}$. Agrupando la suma sobre $j$ y tomando en cuenta completez de la base $\{\ket{e_{k}}\}_{k=1}^{n}$,
 \begin{align}
-\expval{A}&=\sum_{j,k}\bra{e_{k}}\qty(\sum_{i}p_{i}\dyad{\varphi_{i}})\ket{e_{j}} \bra{e_{j}}A\ket{e_{k}}\nonumber\\
-&=\sum_{k}\bra{e_{k}}\qty(\sum_{i}p_{i}\dyad{\varphi_{i}})A\ket{e_{k}}\nonumber\\
-&=\Tr[\qty(\sum_{i}p_{i}\dyad{\varphi_{i}})A]\rlap{,}\nonumber
+\expval{A}&=\sum_{k,l=1}^{n}\bra{e_{l}}\qty(\sum_{j=1}^{m}p_{j}\dyad{\varphi_{j}})\ket{e_{k}} \bra{e_{k}}A\ket{e_{l}}\nonumber\\
+&=\sum_{k=1}^{n}\bra{e_{l}}\qty(\sum_{j=1}^{m}p_{j}\dyad{\varphi_{j}})A\ket{e_{l}}\nonumber\\
+&=\Tr[\qty(\sum_{j=1}^{m}p_{j}\dyad{\varphi_{j}})A]\rlap{,}\nonumber
 \end{align}
 Con lo que la mezcla queda descrita por el operador de densidad $\rho$, definido según
 \begin{equation}\label{eq:DensOpMix}
-\rho=\sum_{i}p_{i}\dyad{\varphi_{i}}.
+\rho=\sum_{j=1}^{m}p_{j}\dyad{\varphi_{j}}.
 \end{equation}
 \acnote{El siguiente párrafo ha sido iterado, solo notas}
 Entonces podemos observar que es posible hallar el valor esperado de un observable respecto a un estado  utilizando el operador de densidad, cuya expresión está dada por
@@ -48,7 +48,7 @@ Ahora, es necesario ser capaz de distinguir si un operador cualquiera correspond
     \item $\rho\geq 0$,
 \end{enumerate}
 donde $\rho\geq 0$ se define como $\bra{\varphi}\rho\ket{\varphi}\geq 0$ $\forall$ $\ket{\varphi}\in\hilbert_{n}$.
-La primera propiedad se deriva de la normalización de los estados $\ket{\varphi_{i}}$ que definen al sistema. La segunda establece que $\rho$ es una matriz positiva semidefinida y puede interpretarse como la necesidad de que la probabilidad de que el sistema descrito por $\rho$ se halle en el estado $\ket{\varphi}$ sea mayor o igual a $0$. Un operador es un operador de densidad si cumple con estas propiedades. Por esto, estos dos puntos funcionan como una definición alternativa al operador de densidad.
+La primera propiedad se deriva de la normalización de los estados $\ket{\varphi_{j}}$ que definen al sistema. La segunda establece que $\rho$ es una matriz positiva semidefinida y puede interpretarse como la necesidad de que la probabilidad de que el sistema descrito por $\rho$ se halle en el estado $\ket{\varphi}$ sea mayor o igual a $0$. Un operador es un operador de densidad si cumple con estas propiedades. Por esto, estos dos puntos funcionan como una definición alternativa al operador de densidad.
 
 \acnote{En el siguiente párrafo hay tres oraciones idénticas que me toca reescribir.}
 
@@ -58,7 +58,7 @@ A partir de este momento se asume que todos los espacios de Hilbert con los que 
 
 \subsection{Pureza}
 
-La diferencia entre una mezcla estadística y una superposición puede no ser del todo clara. ¿Cómo son diferentes un sistema que tiene una probabilidad $p_{i}$ de hallarse en el estado $\ket{\varphi_{i}}$ y otro que se halla en una superposición de cada estado $\ket{\varphi_{i}}$ con coeficientes $\sqrt{p_{i}}$? 
+La diferencia entre una mezcla estadística y una superposición puede no ser del todo clara. ¿Cómo son diferentes un sistema que tiene una probabilidad $p_{i}$ de hallarse en el estado $\ket{\varphi_{j}}$ y otro que se halla en una superposición de cada estado $\ket{\varphi_{j}}$ con coeficientes $\sqrt{p_{j}}$? 
 
 Para responder, considérense dos sistemas de dos niveles. El primero puede hallarse en cualquiera de los siguientes estados
 \begin{align}
@@ -173,15 +173,15 @@ Puede verse que el resultado de la operación es trazar sobre los elementos del 
 
 La evolución de un sistema cuántico cerrado descrito por un vector de estado está dada por la ecuación de Schrödinger,
 \begin{equation}
-    i\hbar\frac{d}{dt}\ket{\psi(t)}=H\ket{\psi(t)},\nonumber
+    \rmi\hbar\frac{d}{dt}\ket{\psi(t)}=H\ket{\psi(t)},\nonumber
 \end{equation}
 cuya solución formal está dada en términos de un operador unitario $U(t,t_{0})$ según
 \begin{align}
-    \ket{\psi(t)}=U(t,t_{0})\ket{\psi(t_{0})} && \text{con} && U(t,t_{0})=e^{-iH(t-t_{0})/\hbar}\rlap{.}\nonumber
+    \ket{\psi(t)}=U(t,t_{0})\ket{\psi(t_{0})} && \text{con} && U(t,t_{0})=e^{-\rmi H(t-t_{0})/\hbar}\rlap{.}\nonumber
 \end{align}
 Pues bien, los postulados de la mecánica cuántica pueden adaptarse al formalismo de operadores de densidad. De la ecuación de Schrödinger se sigue que la evolución de un sistema descrito por un operador de densidad $\rho$ está descrita por ecuación de Liouville-von Neumann,
 \begin{equation}
-    i\hbar\frac{d}{d t} \rho(t)=[H,\rho(t)].\nonumber
+    \rmi\hbar\frac{d}{d t} \rho(t)=[H,\rho(t)].\nonumber
 \end{equation}
 De la misma forma que antes, la solución queda expresada en términos de un operador unitario,
 \begin{equation}
@@ -190,11 +190,11 @@ De la misma forma que antes, la solución queda expresada en términos de un ope
 \subsubsection{Evolución de sistemas abiertos}
 Considérese, en cambio, que el sistema de interés $\rho_{S}$ se halla acoplado a un entorno $\rho_{E}$ y que, inicialmente, el conjunto de estos dos conforma un sistema cerrado descrito por el operador de densidad $\rho(0)=\rho_{S}(0)\otimes\rho_{E}$. Esta condición inicial está justificada experimentalmente: una medición proyectiva sobre el sistema de interés proyecta al sistema a un estado factorizable, así que estos estados son siempre preparables. Como el sistema es cerrado, este evoluciona siguiendo la ecuación de Liouville-von Neumann,
 \begin{align}
-    i\hbar\frac{d}{d t} \rho(t)=[H,\rho(t)] && \text{con} && \rho(0)=\rho_{S}(0)\otimes\rho_{E}\rlap{.}\nonumber
+    \rmi\hbar\frac{d}{d t} \rho(t)=[H,\rho(t)] && \text{con} && \rho(0)=\rho_{S}(0)\otimes\rho_{E}\rlap{.}\nonumber
 \end{align}
 Sin embargo, para hallar la ecuación de la dinámica del sistema de interés es necesario trazar al entorno de ambos lados de esta ecuación, de forma que se halla
 \begin{align}
-    i\hbar\frac{d}{d t} \rho_{S}(t)=\Tr_{E}([H,\rho(t)]) && \text{con} && \rho(0)=\rho_{S}(0)\otimes\rho_{E}\rlap{,}\nonumber
+    \rmi\hbar\frac{d}{d t} \rho_{S}(t)=\Tr_{E}([H,\rho(t)]) && \text{con} && \rho(0)=\rho_{S}(0)\otimes\rho_{E}\rlap{,}\nonumber
 \end{align}
 cuya solución formal está dada en términos de un operador $\mcE_{t}$,
 \begin{equation}
@@ -265,12 +265,12 @@ $\rho$ una matriz de densidad $\rho\in\mcS(\hilbert_{n})$. Entonces $\rho$ está
 \begin{equation}\label{eq:BlochParametrization}
     \rho=\frac{1}{n}\Id_{n}+\frac{1}{2}\vec{\gamma}\cdot\vec{\varsigma}.
 \end{equation}
-Si $n=2$, los generadores corresponden a las matrices de Pauli $\sigma_{i}$. En tal caso, el conjunto de vectores de Bloch corresponde a la bola unitaria tridimensional, con los estados puros en la superficie y los estados mixtos en el interior. Para casos en los que la dimensión es una potencia de $2$, es posible obtener nuevos generadores a través de los productos tensoriales de las matrices de Pauli consigo mismas y con la matriz identidad. El caso $n=4$, por ejemplo \cite{Chuang}:
-\begin{equation}
-    \rho=\frac{1}{4}\sum_{i,j}\gamma_{ij}\sigma_{i}\otimes \sigma_{j} \ \ i,j\in\{0,1,2,3\},\nonumber
+Si $n=2$, los generadores corresponden a las matrices de Pauli $\sigma_{j}$. En tal caso, el conjunto de vectores de Bloch corresponde a la bola unitaria tridimensional, con los estados puros en la superficie y los estados mixtos en el interior. Para casos en los que la dimensión es una potencia de $2$, es posible obtener nuevos generadores a través de los productos tensoriales de las matrices de Pauli consigo mismas y con la matriz identidad. El caso $n=4$, por ejemplo \cite{Chuang}:
+\begin{equation}\label{eq:BlochParametrization4}
+    \rho=\frac{1}{4}\sum_{j,k=0}^{3}\gamma_{jk}\sigma_{i}\otimes \sigma_{k},\nonumber
 \end{equation}
 donde $\sigma_{0}=\Id$ y 
 \begin{equation}\label{eq:BlochComponents}
-        \gamma_{i.j}=\Tr(\sigma_{i}\otimes \sigma_{j}\rho).
+        \gamma_{jk}=\Tr(\sigma_{j}\otimes \sigma_{k}\rho).
 \end{equation}
-Obsérvese que, como se mencionó previamente, los parámetros $\gamma_{i.j}$ son promedios de las observables $\sigma_i \otimes \sigma_j$. Combinar las ecuaciones (\ref{eq:BlochComponents}) y (\ref{eq:BlochParametrization}) permite reconstruir el estado del sistema. A esto se le llama \textit{tomografía cuántica de estados} \cite{Chuang}.
+Obsérvese que, como se mencionó previamente, los parámetros $\gamma_{jk}$ son promedios de las observables $\sigma_{j} \otimes \sigma_{k}$. Combinar las ecuaciones (\ref{eq:BlochComponents}) y (\ref{eq:BlochParametrization}) permite reconstruir el estado del sistema. A esto se le llama \textit{tomografía cuántica de estados} \cite{Chuang}.

@@ -36,13 +36,13 @@ que, tomando $\omega=\frac{\pi}{4}$, genera una compuerta SWAP al tiempo $t=1$. 
 \begin{equation}\label{eq:SWAP(t)}
 S^{t}=\begin{pmatrix}
  1 & 0 & 0 & 0 \\
- 0 & \frac{1}{2}(1+e^{i \pi t}) & \frac{1}{2} (1-e^{i \pi t}) & 0 \\
- 0 & \frac{1}{2}(1-e^{i \pi t}) & \frac{1}{2}(1+e^{i \pi t}) & 0 \\
+ 0 & \frac{1}{2}(1+e^{\rmi \pi t}) & \frac{1}{2} (1-e^{\rmi \pi t}) & 0 \\
+ 0 & \frac{1}{2}(1-e^{\rmi \pi t}) & \frac{1}{2}(1+e^{\rmi \pi t}) & 0 \\
  0 & 0 & 0 & 1
 \end{pmatrix}=\begin{pmatrix}
   1 & 0 & 0 & 0 \\
-  0 & e^{i\frac{t\pi}{2}}\cos{\frac{t\pi}{2}} & -ie^{i\frac{t\pi}{2}}\sin{\frac{t\pi}{2}} & 0 \\
-  0 & -ie^{i\frac{t\pi}{2}}\sin{\frac{t\pi}{2}} & e^{i\frac{t\pi}{2}}\cos{\frac{t\pi}{2}}  & 0 \\
+  0 & e^{\rmi\frac{t\pi}{2}}\cos{\frac{t\pi}{2}} & -\rmi e^{\rmi\frac{t\pi}{2}}\sin{\frac{t\pi}{2}} & 0 \\
+  0 & -\rmi e^{i\frac{t\pi}{2}}\sin{\frac{t\pi}{2}} & e^{\rmi\frac{t\pi}{2}}\cos{\frac{t\pi}{2}}  & 0 \\
   0 & 0 & 0 & 1
  \end{pmatrix}
 \end{equation}
@@ -190,7 +190,7 @@ Claro está, esta matriz corresponde a la evolución discreta. Considérese el H
 que genera la compuerta CNOT al tiempo $t=1$ cuando $\omega=\frac{\pi}{4}$. Nótese que, por estar conformado por tres operadores que conmutan entre sí, la compuerta puede escribirse como lo acción consecutiva de tres operadores unitarios que conmutan entre sí:
 
 \begin{equation*}
-  \cnot=(e^{i\omega\pauli{3}}\otimes \Id) (\Id \otimes e^{i\omega\pauli{1}}) e^{-i\omega\pauli{3}\otimes\pauli{1}}.
+  \cnot=(e^{\rmi\omega\pauli{3}}\otimes \Id) (\Id \otimes e^{\rmi\omega\pauli{1}}) e^{-\rmi\omega\pauli{3}\otimes\pauli{1}}.
 \end{equation*}
 
 \subsubsection{CNOT completo efectivo}

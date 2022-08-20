@@ -22,20 +22,20 @@ Es importante notar que, auque la aplicación borrosa modela el error asociado a
 Al error se le añade la falta de resolución: solo se resuelve una partícula. \ddnote*{esto está redundante y escrito raro, no se por que dices que el estado sería el de la primera partícula, eso confunde, parece que estás cambiando repentinamente el contexto. Mejor explica al grano la situación y sin hablar de composición de errores. Eso mas bien se deriva, y justamente lo haces mas adelantito.}{Agreguemos al error por permutación la falta de resolución. Una posibilidad es que el instrumento detecte una partícula en donde en realidad haya dos, y aún más, que en un sistema de dos partículas, este sea capaz de medir únicamente observables asociados al primer subsistema. El estado observado sería, de acuerdo con la sección \ref{sec:Ch1PartialTrace}, la matriz de densidad reducida de la primera partícula.}\acnote{\checkmark} Matemáticamente, la composición del error y de la falta de resolución puede escribirse como
 \begin{gather}
     \mcC:\mcS(\hilbert_2 \otimes \hilbert_2)\to \mcS(\hilbert_2)\nonumber\\
-    \rho_{AB} \mapsto p\rho_A+(1-p)\rho_B\rlap{,}\nonumber
+    \varrho_{AB} \mapsto p\rho_A+(1-p)\rho_B\rlap{,}\nonumber
 \end{gather}
 donde $\rho_A=\tr_B \rho_{AB}$ y $\rho_B=\tr_A \rho_{AB}$, es decir, las matrices de densidad reducidas de la partículas $A$ y $B$, respectivamente.
 
 
 A diferencia de la aplicación borrosa, el modelo de grano grueso disminuye la dimensión del estado resultante. Además se puede mostrar que la ecuación anterior puede reescribirse en términos de la aplicación borrosa \cite{FuzzyMeasurements},
 \begin{equation}
-\CG{\rho}=(\Tr_{B}\circ\mcF)[\rho].\nonumber
+\CG{\varrho}=(\Tr_{B}\circ\mcF)[\varrho].\nonumber
 \end{equation}
-En este contexto, diferenciamos al estado ``microscópico'' o ``fino'', denotado por $\varrho\in \mcS(\hilbert_2\otimes\hilbert_2)$, y al estado ``macroscópico'', ``grueso'', o  ``efectivo'' denotado por $\rho\in \mcS(\hilbert_2)$, a través de la relación
+En este contexto, diferenciamos al estado ``microscópico'' o ``fino'', denotado por $\varrho\in \mcS(\hilbert_2\otimes\hilbert_2)$, y al estado ``macroscópico'', ``grueso'', o  ``efectivo'' denotado por $\rho_{\ef}\in \mcS(\hilbert_2)$, a través de la relación
 \begin{equation}
-    \rho=\CG{\varrho}.\nonumber
+    \rho_{\ef}=\CG{\varrho}.\nonumber
 \end{equation}
-Es extremadamente importante notar que la expresión anterior no es invertible. Pueden existir una infinidad de estados $\varrho$ tales que su descripción gruesa coincida con $\rho$. Como ejemplo, supóngase que el estado efectivo está descrito por $\rho=\frac{1}{2}\Id$, el estado máximamente mezclado. Entonces cualquier sistema fino que se halle en un estado máximamente entrelazado será compatible con la descripción efectiva $\frac{1}{2}\Id$.
+Es extremadamente importante notar que la expresión anterior no es invertible. Pueden existir una infinidad de estados $\varrho$ tales que su descripción gruesa coincida con $\rho_{\ef}$. Como ejemplo, supóngase que el estado efectivo está descrito por $\rho_{\ef}=\frac{1}{2}\Id$, el estado máximamente mezclado. Entonces cualquier sistema fino que se halle en un estado máximamente entrelazado será compatible con la descripción efectiva $\frac{1}{2}\Id$.
 
 Pues bien, como se ha asumido que conocemos la evolución unitaria subyacente, requerimos asignar a $\rho$ un estado microscópico que cumpla con todas las restricciones impuestas por nuestras mediciones. Asumiremos que dicho estado asignado es el que experimenta la evolución. 
 

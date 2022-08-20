@@ -12,57 +12,57 @@ Jaynes relaciona la teoría de información clásica con la mecánica estadísti
 
 \acnote{El siguiente párrafo ha sido iterado, reescritura.}
 
-Sean $x_{i}$ los valores de la variable aleatoria $X$. Sean, además $f_{i}$, funciones sobre $X$, de las que conocemos su valor esperado. La información accesible se puede escribir como el conjunto de restricciones
+Sean $x_{j}$ los valores de la variable aleatoria $X$. Sean, además $f_{k}$, funciones sobre $X$, de las que conocemos su valor esperado. La información accesible se puede escribir como el conjunto de restricciones
 \begin{equation}\label{eq:JaynesRestrictions}
-    \expval{f_{j}(x)}=\sum_{i}p(x_{i})f_{j}(x_{i}).
+    \expval{f_{l}(x)}=\sum_{j}p(x_{j})f_{l}(x_{j}).
 \end{equation}
 \acnote{El siguiente párrafo ha sido iterado, notas}
 
 
 Buscamos $p$ tal que maximice la entropía de Shannon (\ref{eq:ShannonEntropy}), sujeta a las restricciones experimentales (\ref{eq:JaynesRestrictions}). Para esto, utilizamos el método de multiplicadores de Lagrange. A las restricciones anteriores debe añadirse la condición de normalización,
 \begin{equation}\label{eq:NormalizationRestriction}
-    \sum_{i}p(x_{i})=1.
+    \sum_{j}p(x_{j})=1.
 \end{equation}
 \acnote{Ecuaciones y párrafos iterados: notas y reescritura}
 
-Buscamos el valor extremal respecto a las $p(x_{i})$ de la Lagrangiana
+Buscamos el valor extremal respecto a las $p(x_{j})$ de la Lagrangiana
 \begin{equation}
-    \mcL=-H(p)+\sum_{j}\lambda_{j}\qty(\sum_{i}p(x_{i})f_{j}(x_{i})-\expval{f_{j}(x)})+\mu\qty(\sum_{i}p(x_{i})-1)\nonumber
+    \mcL=-H(p)+\sum_{l}\lambda_{l}\qty(\sum_{j}p(x_{j})f_{l}(x_{j})-\expval{f_{l}(x)})+\mu\qty(\sum_{j}p(x_{j})-1)\nonumber
 \end{equation}
-En esta ecuación, $\lambda_{j}$ es el multiplicador de Lagrange que pesa a la $j$-ésima restrición. Derivando e igualando a cero se obtiene un sistema de ecuaciones
+En esta ecuación, $\lambda_{l}$ es el multiplicador de Lagrange que pesa a la $j$-ésima restrición. Derivando e igualando a cero se obtiene un sistema de ecuaciones
 \begin{equation}
-    \frac{\partial \mcL}{\partial p(x_{i})}=k(1+\log{p(x_{i})})+\sum_{j}\lambda_{j}f_{j}(x_{i})+\mu=0,\, i\in\{k\}_{k=1}^{n},\nonumber
+    \frac{\partial \mcL}{\partial p(x_{j})}=k(1+\log{p(x_{j})})+\sum_{l}\lambda_{l}f_{l}(x_{j})+\mu=0,\, j\in\{1,2,3...\},\nonumber
 \end{equation}
 de donde se obtiene la solución a cada componente
 \begin{equation}
-    p(x_{i})=\exp[-(1+\frac{\mu}{k})-\frac{1}{k}\sum_{j}\lambda_{j}f_{j}(x_{i})].\nonumber
+    p(x_{j})=\exp[-(1+\frac{\mu}{k})-\frac{1}{k}\sum_{l}\lambda_{l}f_{l}(x_{j})].\nonumber
 \end{equation}
 Esta es la distribución que maximiza a la entropía. Respecto a los multiplicadores de Lagrange, nótese que por la restricción (\ref{eq:NormalizationRestriction}) se cumple que
 \begin{equation}
-    \frac{1}{e^{-(1+\mu)}}=\sum_{i}\exp[-\frac{1}{k}\sum_{j}\lambda_{j}f_{j}(x_{i})].\nonumber
+    \frac{1}{e^{-(1+\mu)}}=\sum_{j}\exp[-\frac{1}{k}\sum_{l}\lambda_{l}f_{l}(x_{j})].\nonumber
 \end{equation}
 A partir de esta relación se define a la función de partición,
 \begin{equation}
-    Z=\sum_{i}\exp[-\frac{1}{k}\sum_{j}\lambda_{j}f_{j}(x_{i})],\nonumber
+    Z=\sum_{j}\exp[-\frac{1}{k}\sum_{l}\lambda_{l}f_{l}(x_{j})],\nonumber
 \end{equation}
 que satisface
 \begin{equation}
-    \expval{f_{j}(x)}=-\frac{\partial}{\partial \lambda_{j}}\ln{Z}.\nonumber
+    \expval{f_{l}(x)}=-\frac{\partial}{\partial \lambda_{l}}\ln{Z}.\nonumber
 \end{equation}
 Considerando lo anterior, el estimado para la distribución de probabilidad que maximiza la entropía, y que es compatible con las restricciones (\ref{eq:JaynesRestrictions}) tiene la forma 
 \begin{equation}\label{eq:MaxEntDist}
-    p(x_{i})=\frac{1}{Z}\exp[-\frac{1}{k}\sum_{j}\lambda_{j}f_{j}(x_{i})].
+    p(x_{j})=\frac{1}{Z}\exp[-\frac{1}{k}\sum_{l}\lambda_{l}f_{l}(x_{j})].
 \end{equation}
 
 \subsubsection{El estimado de máxima entropía en mecánica estadística}
 
-El método anterior puede aplicarse a toda una variedad de sistemas y procesos. Considérese, pues, de un conjunto de $N$ partículas idénticas pero distinguibles de energías $\epsilon_{i}$, del cual únicamente conocemos la energía promedio $E$, y que se halla en equilibrio térmico con un entorno que actúa como baño de calor a una temperatura $T$. Nos interesa conocer la distribución de probabilidad de los posibles microestados $\epsilon_{i}$. Según lo discutido previamente, se busca maximizar la entropía,
+El método anterior puede aplicarse a toda una variedad de sistemas y procesos. Considérese, pues, de un conjunto de $N$ partículas idénticas pero distinguibles de energías $\epsilon_{j}$, del cual únicamente conocemos la energía promedio $E$, y que se halla en equilibrio térmico con un entorno que actúa como baño de calor a una temperatura $T$. Nos interesa conocer la distribución de probabilidad de los posibles microestados $\epsilon_{j}$. Según lo discutido previamente, se busca maximizar la entropía,
 \begin{equation}\label{eq:GibbsEntropy}
-    S_{G}=-k_{\text{B}}\sum_{i}p(x_{i})\log{p(x_{i})},
+    S_{G}=-k_{\text{B}}\sum_{j}p(x_{j})\log{p(x_{j})},
 \end{equation}
 que es la entropía de Gibbs, con $k_{\text{B}}$ la constante de Boltzmann. Continuando con el procedimiento, se halla que la distribución de máxima entropía compatible con la restricción $\expval{\epsilon}=E$ es
 \begin{equation}\label{eq:Boltzmann}
-    p(x_{i})=\frac{e^{-\frac{\lambda}{k_{\text{B}}}\epsilon_{i}}}{Z}.
+    p(x_{j})=\frac{e^{-\frac{\lambda}{k_{\text{B}}}\epsilon_{j}}}{Z}.
 \end{equation}
 Para discernir el significado físico de dicho resultado, se puede sustituir esta distribución en (\ref{eq:Boltzmann}), para encontrar que
 \begin{equation}
@@ -95,7 +95,7 @@ Para maximizarla, volvemos a aplicar el método de los multiplicadores de Lagran
 \end{equation}
 en donde la primera restricción es la normalización del estado $\rho$, $\Tr(\rho)=1$, y la segunda corresponde a la información experimental conocida. Nuevamente buscamos el valor extremal respecto a todos los $\eta_{k}$. Derivando e igualando a cero se halla el sistema de ecuaciones \ddnote{haz arreglos a la notación parecidos a los ya discutidos para el caso clásico. Lo que viene abajo es un componente (o en su defecto, una ecuación del sistema de ecuaciones que sale de computar $\frac{\partial \mcL}{\partial \vec \eta}=\vec 0$)} \acnote{queda}
 \begin{equation}
-    \frac{\partial \mcL}{\partial \eta_{k}}=(1+\log{\eta_{k}})+\lambda_{0}+\lambda_{1}E_{k}=0, \,k\in\{l\}_{l=1}^{n}\nonumber
+    \frac{\partial \mcL}{\partial \eta_{k}}=(1+\log{\eta_{k}})+\lambda_{0}+\lambda_{1}E_{k}=0, \,k\in\{1,2,3...\}\nonumber
 \end{equation}
 cuyas soluciones son
 \begin{equation}
@@ -113,8 +113,8 @@ Utilizando notación de Dirac, $\rho=\eta_{k}\dyad{e_{k}}$, podemos hallar el re
 \begin{equation}
     \rho=\frac{1}{Z}e^{-\lambda H}.
 \end{equation}
-Este resultado es fácilmente generalizable al caso en que contemos con un  conjunto $\{A_{j}\}$ de $N$ observables tales que $[A_{j},\rho]=0$,\ddnote{,} de los que conozcamos sus valores esperados. En general, la expresión del estado de máxima entropía es
-\begin{equation}
+Este resultado es fácilmente generalizable al caso en que contemos con un  conjunto $\{A_{j}\}_{j}$ de $N$ observables tales que $[A_{j},\rho]=0$,\ddnote{,} de los que conozcamos sus valores esperados. En general, la expresión del estado de máxima entropía es
+\begin{equation}\label{eq:GeneralMaxEnt}
     \rho=\frac{1}{Z}e^{-\sum_{k}\lambda_{k} A_{k}}.
 \end{equation}
 \ddnote*{Cabe señalar que este resultado también es válido cuando las observables $A_k$ no conmutan entre sí o con $\rho$. Sin embargo la prueba es complicada y está más allá del alcance de esta tesis~\cite{Wichmann1963,FormalJaynes}.}{El caso en que los observables no conmutan con el operador de densidad $\rho$ es un tanto más complicado, y aunque el resultado es el mismo~\cite{FormalJaynes}, en este trabajo no lo demostraremos.}

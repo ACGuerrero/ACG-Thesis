@@ -1,27 +1,27 @@
 \section{Construcción de la dinámica}\label{sec:ch2dycon}
 
-Ahora que hemos establecido que usaremos como modelo de grano grueso uno que incluye tanto problemas de resolución como errores de permutación, y que hemos contruído nuestra aplicación de asignación a través del Principio de Máxima Entropía, podemos preguntarnos sobre la evolución del sistema efectivo, la ``dinámica gruesa'', denotada como $\Gamma_t$. La dinámica efectiva es un mapa dinámico que corresponde a la evolución observada por un experimentalista. Dado un estado efectivo inicial $\rho(0)$,
+Ahora que hemos establecido que usaremos como modelo de grano grueso uno que incluye tanto problemas de resolución como errores de permutación, y que hemos contruído nuestra aplicación de asignación a través del Principio de Máxima Entropía, podemos preguntarnos sobre la evolución del sistema efectivo, la ``dinámica gruesa'', denotada como $\Gamma_t$. La dinámica efectiva es un mapa dinámico que corresponde a la evolución observada por un experimentalista. Dado un estado efectivo inicial $\rho_{\ef}(0)$,
 \begin{gather*}
 \Gamma_{t}:\mcS(\hilbert_2)\rightarrow \mcS(\hilbert_2)\\
-\rho(0) \mapsto \rho(t)\rlap{.}
+\rho_{\ef}(0) \mapsto \rho_{\ef}(t)\rlap{.}
 \end{gather*}
 Debido que asumimos que el estado que se propaga debido a la evolución subyacente es justamente el estado de máxima entropía, a la dinámica gruesa la definimos como la composición
 \begin{equation*}
 \Gamma_t:=\mcC \circ \mcV_t \circ \mcA_\mcC.
 \end{equation*}
-Donde $\mcA_\mcC$ denota a la aplicación que asigna un estado microscópico $\varrho$ al estado efectivo $\rho$. A la aplicación de asignación desarrolada previamente la denotaremos por medio de $\mcA_{\mcC}^{\max}$. El siguiente diagrama ilustra la ecuación anterior,
+Donde $\mcA_\mcC$ denota a la aplicación que asigna un estado microscópico $\varrho$ al estado efectivo $\rho_{\ef}$. A la aplicación de asignación desarrollada previamente la denotaremos por medio de $\mcA_{\mcC}^{\max}$. El siguiente diagrama ilustra la ecuación anterior,
 \[\begin{tikzcd}[arrows={<-|}]
-\rho_{g}(0)  & \rho_{g}(t) \arrow{l}{\Gamma_{t}} \arrow{d}{\mcC}\\
-\rho_{f}(0) \arrow{u}{\mcA_{\mcC}^{\max}} & \rho_{f}(t). \arrow{l}{\mcV_{t}}
+    \rho_{\ef}(0)  & \rho_{\ef}(t) \arrow{l}{\Gamma_{t}} \arrow{d}{\mcC}\\
+\varrho(0) \arrow{u}{\mcA_{\mcC}^{\max}} & \varrho(t). \arrow{l}{\mcV_{t}}
 \end{tikzcd}
 \]
-En el siguiente capítulo se analizarán dinámicas efectivas generadas por diferentes dinámicas subyacentes. Si se asume que el sistema conformado por las partículas es cerrado, entonces la evolución $\mcV_{t}$ será unitaria, generada por un Hamiltoniano $H$. Algunos ejemplos de dinámicas subyacentes no unitarias son los canales de ruido usuales, como el canal de despolarización, el canal de amortiguamiento de amplitud, o el canal de amortiguamiento de fase.
+En el siguiente capítulo se analizarán dinámicas efectivas generadas por diferentes dinámicas subyacentes. Si se asume que el sistema conformado por las partículas es cerrado, entonces la evolución $\mcV_{t}$ será unitaria, generada por un hamiltoniano $H$. Algunos ejemplos de dinámicas subyacentes no unitarias son los canales de ruido usuales, como el canal de despolarización, el canal de amortiguamiento de amplitud, o el canal de amortiguamiento de fase.
 
 Nótese que, a diferencia de los mapas dinámicos usualmente estudiados en teoría de sistemas cuánticos abiertos, la dinámica efectiva $\Gamma_{t}$ no tiene por qué ser lineal (sí debe, por supuesto, mandar estados en estados), debido a que uno de los elementos de la composición que la originan no es lineal: la aplicación de asignación. El estudio de las particularidades de algunas de estas dinámicas efectivas es el foco de este trabajo.
 
-Reconociendo que la asignación de máxima entropía no es la única asignación compatible con un conjunto de aplicación de grano grueso y estado inicial efectivo, ¿es justificable usar al estado de máxima entropía? Previamente demostramos que en nuetro caso particular, este resulta ser separable, y aunque en el caso estacionario esto no afecta, las correlaciones, que se anulan en esta asginación, sí afectan la forma en que un sistema evoluciona.
+Reconociendo que la asignación de máxima entropía no es la única asignación compatible con un conjunto de aplicación de grano grueso y estado inicial efectivo, ¿es justificable usar al estado de máxima entropía? Previamente demostramos que en nuestro caso particular, este resulta ser separable, y aunque en el caso estacionario esto no afecta, las correlaciones, que se anulan en esta asignación, sí afectan la forma en que un sistema evoluciona.
 
-Algo que queda en claro de esto es que el estado de máxima entropía es completamente dependiente de los observables que se usen en su contrucción. Después de todo, la maximización de la entropía se restringe de acuerdo a las observaciones experimentales, así que estados de máxima entropía que cumplan un conjunto particular de restricciones no tienen por qué (y probablemente no lo harán) satisfacer un conjunto diferente de restricciones, un conjunto mediante el cual se contruiría un estado de máxima entropía diferente. Esto tiene la siguiente consecuencia: el estado de máxima entropía compatible con un estado evolucionado a través de una dinámica efectiva obtenida de un estado de máxima entropía compatible con un estado efectivo inicial, no tiene por qué ser igual al estado de máxima entropía inicial evolucionado. Esto es, no tiene por que cumplirse que
+Algo que queda en claro de esto es que el estado de máxima entropía es completamente dependiente de los observables que se usen en su construcción. Después de todo, la maximización de la entropía se restringe de acuerdo a las observaciones experimentales, así que estados de máxima entropía que cumplan un conjunto particular de restricciones no tienen por qué (y probablemente no lo harán) satisfacer un conjunto diferente de restricciones, un conjunto mediante el cual se construiría un estado de máxima entropía diferente. Esto tiene la siguiente consecuencia: el estado de máxima entropía compatible con un estado evolucionado a través de una dinámica efectiva obtenida de un estado de máxima entropía compatible con un estado efectivo inicial, no tiene por qué ser igual al estado de máxima entropía inicial evolucionado. Esto es, no tiene por que cumplirse que
 \begin{equation*}
     (\mcU_{t}\circ\mcA_\mcC)(\rho) = (\mcA_\mcC\circ\mcC \circ \mcU_t \circ \mcA_\mcC)(\rho).
 \end{equation*}
