@@ -1,31 +1,31 @@
 \section{Construcción del estado de máxima entropía}
 
-Sea $\rho_{\ef}\in\mcS(\hilbert_{2})$ el estado grueso accesible al observador, y sea \ddnote*{$\{A_{i}\}_{i}$}{$\{A_{i}\}$} con $A_{i}\in\obspace{2}$ un conjunto de observables tomográficamente completo.
-Si $\rho_{\ef}$ es un estado grueso correspondiente a un estado fino $\varrho\in\mcS(\hilbert_{2}^{\otimes n})$, de acuerdo con lo discutido en el capítulo anterior, podemos asignar a $\varrho$ un estado que maximice la entropía de Von Neumann sin agregar \ddnote*{que es la información externa?, no es mejor, asignar un estado de máxima entropía compatible con las restricciones tal y tal} {información externa, y que satisfaga las restricciones $\expval{A_{i}}=\Tr(\rho_{\ef} A_{i})$}.
+Sea $\rho_{\ef}\in\mcS(\hilbert_{2})$ el estado grueso accesible al observador, y sea $\{A_{j}\}_{j}$ con $A_{j}\in\obspace{2}$ un conjunto de observables tomográficamente completo.
+Si $\rho_{\ef}$ es un estado grueso correspondiente a un estado fino $\varrho\in\mcS(\hilbert_{2}^{\otimes n})$, de acuerdo con lo discutido en el capítulo anterior, podemos asignar a $\varrho$ un estado que maximice la entropía de Von Neumann sin agregar \ddnote*{que es la información externa?, no es mejor, asignar un estado de máxima entropía compatible con las restricciones tal y tal} {información externa, y que satisfaga las restricciones $\expval{A_{j}}=\Tr(\rho_{\ef} A_{j})$}.
 Escójase ${A_{i}}={\pauli{i}}$, las matrices de Pauli, y la aplicación de grano grueso desarrollada en la sección anterior, aquella del grano grueso y borroso dada por (\ref{eq:CG}). Los valores esperados de los operadores se traducen como las componentes del vector de Bloch del operador $\rho_{\ef}$. Las restricciones a las que se ve sujeto el operador $\varrho_{\max}$ son
 \begin{equation*}
-    r_{i}=\Tr[\pauli{i}\rho_{\ef}]
+    r_{j}=\Tr[\pauli{j}\rho_{\ef}]
 \end{equation*}\ddnote{supongo que estás usando $\rho$ y $\varrho$ para las cosas finas y gruesas, pero no se entiende, a la vista los caracteres son parecidos, sugiero usar $\rho_\text{MaxEnt}$ y $\rho_\text{ef}$ o $\rho_\text{grueso}$}
 Aquí hay un problema: el estado que maximiza la entropía pertenece al espacio $\densityspace{2^{n}}$, mientras que las restricciones están definidas para un operador de densidad en $\densityspace{2}$. Entonces, ¿cómo se traducen dichas restricciones en el nivel microscópico? Naturalmente, esto dependerá de la relación entre \ddnote*{si, no no, está muy feo esto}{$\varrho$ y $\rho$}. Esto es, el estado de máxima entropía depende de la aplicación de grano grueso. Sustituyendo la relación entre algún estado microscópico compatible $\varrho$ y el estado efectivo $\rho_{\ef}$ en la ecuación anterior, y manipulando un poco se halla que
 \begin{align*}
-    r_{i}&=\Tr[\sigma_{i}\CG{\varrho}]\\
-    &=\Tr[\sigma_{i}\Tr_{\overline{1}}\qty(p_{1}\varrho+\sum_{j=2}^{n}p_{j}(S_{1,j})\varrho(S_{1,j})^{\dagger})]\\
-    &=\Tr[\sigma_{i}\otimes\Id_{2^{n-1}}\qty(p_{1}\varrho+\sum_{j=2}^{n}p_{j}(S_{1,j})\varrho(S_{1,j})^{\dagger})]\\
-    &=\Tr[\qty(p_{1}(\sigma_{i}\otimes\Id_{2^{n-1}})+\sum_{j=2}^{n}p_{j}(S_{1,j})^{\dagger}(\sigma_{i}\otimes\Id_{2^{n-1}})(S_{1,j}))\varrho]\\
-    &=\Tr[\qty(p_{1}(\sigma_{i}\otimes\Id_{2^{n-1}})+\sum_{j=2}^{n}p_{j}(\Id_{2^{j-1}}\otimes\sigma_{i}\otimes\Id_{2^{n-j}}))\varrho]\\
-    &=\Tr[\qty(\sum_{j=1}^{n}p_{j}(\Id_{2^{j-1}}\otimes\sigma_{i}\otimes\Id_{2^{n-j}}))\varrho].
+    r_{j}&=\Tr[\sigma_{j}\CG{\varrho}]\\
+    &=\Tr[\sigma_{j}\Tr_{\overline{1}}\qty(p_{1}\varrho+\sum_{k=2}^{n}p_{k}(S_{1,k})\varrho(S_{1,k})^{\dagger})]\\
+    &=\Tr[\sigma_{j}\otimes\Id_{2^{n-1}}\qty(p_{1}\varrho+\sum_{k=2}^{n}p_{k}(S_{1,k})\varrho(S_{1,k})^{\dagger})]\\
+    &=\Tr[\qty(p_{1}(\sigma_{j}\otimes\Id_{2^{n-1}})+\sum_{k=2}^{n}p_{k}(S_{1,k})^{\dagger}(\sigma_{j}\otimes\Id_{2^{n-1}})(S_{1,k}))\varrho]\\
+    &=\Tr[\qty(p_{1}(\sigma_{j}\otimes\Id_{2^{n-1}})+\sum_{k=2}^{n}p_{k}(\Id_{2^{k-1}}\otimes\sigma_{j}\otimes\Id_{2^{n-k}}))\varrho]\\
+    &=\Tr[\qty(\sum_{k=1}^{n}p_{k}(\Id_{2^{k-1}}\otimes\sigma_{j}\otimes\Id_{2^{n-k}}))\varrho].
 \end{align*}
 Definiendo
 \begin{equation}\label{eq:GhatNM}
-    \hat{G}_{i}=\sum_{j=1}^{n}p_{j}(\Id_{2^{j-1}}\otimes\sigma_{i}\otimes\Id_{2^{n-j}}),
+    \hat{G}_{j}=\sum_{k=1}^{n}p_{k}(\Id_{2^{k-1}}\otimes\sigma_{j}\otimes\Id_{2^{n-k}}),
 \end{equation}
 las restricciones se pueden esribir como
 \begin{equation}\label{eq:MaxEntRestrictions}
-    r_{i}=\Tr[\hat{G}_{i}\varrho].
+    r_{j}=\Tr[\hat{G}_{j}\varrho].
 \end{equation}
 Estas restricciones ya se hallan en términos de observables y un operador de densidad que actúan sobre $\hilbert_{2^{n}}$. Entonces se utilizan multiplicadores de Lagrange para obtener el estado de maximiza la entropía. De acuerdo con la ecuación (\ref{eq:GeneralMaxEnt}), el estado de máxima entropía compatible con (\ref{eq:MaxEntRestrictions}) es
 \begin{equation}\label{eq:MaxEntLagMult}
-    \varrho_{\max}=\frac{1}{Z}e^{\sum_{i}\lambda_{i}\hat{G}_{i}}.
+    \varrho_{\max}=\frac{1}{Z}e^{\sum_{j}\lambda_{j}\hat{G}_{j}}.
 \end{equation}
 Si se sustituye a $\varrho_{\max}$ en las ecuaciones (\ref{eq:MaxEntRestrictions}) (cosa nada recomendable), se obtienen las relaciones entre los multiplicadores de Lagrange y los valores esperados de los observables utilizados para la tomografía. Si se escribe $\lambda=\sqrt{\lambda_{1}^{2}+\lambda_{2}^{2}+\lambda_{3}^{2}}$, los resultados son
 \begin{align}\label{eq:MaxEntExpVals}
