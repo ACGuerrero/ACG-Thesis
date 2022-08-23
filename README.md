@@ -9,10 +9,9 @@ TO DO LIST
  10. Finish AmpDamp section.
  39. Finish abstract.
  40. Finish intro.
- 41. Correct "environement" problem.
- 42. Add figures to CNOT section.
  43. Add figures to special section.
  44. Compare MaxEntAss and AvgAss.
+ 45. Fix graphs on SWAP section (latex).
 
 
 COMPLETED TASKS
@@ -45,3 +44,4 @@ COMPLETED TASKS
  36. ~~Finish CNOT section~~&#x2611; [440cb67](https://github.com/ACGuerrero/tesis-adan/commit/135d4e81fdef43255ee8346ca5d050d4f440cb67), [11fb160](https://github.com/ACGuerrero/tesis-adan/commit/3d50a834289a732acf3a9f894ac6b740411fb160), [eb60bbc](https://github.com/ACGuerrero/tesis-adan/commit/5422fac6608b5ec8ff5f48e86a47494c7eb60bbc)
  37. ~~What's up with the power of the states?~~&#x2611;[f824900](https://github.com/ACGuerrero/tesis-adan/commit/4629e6f21b7987f38e5fdda4d0790a879f824900)
  38. ~~Add discusion on p=0,1, 0.5 cases~~&#x2611;[f824900](https://github.com/ACGuerrero/tesis-adan/commit/4629e6f21b7987f38e5fdda4d0790a879f824900)
+ 41. ~~Correct "environement" problem~~&#x2611;[70952e9](https://github.com/ACGuerrero/tesis-adan/commit/412367c348d6448aed2afa1f5aafa263270952e9)
