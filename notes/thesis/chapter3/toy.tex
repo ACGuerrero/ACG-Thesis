@@ -1,10 +1,10 @@
 \section{Compuertas de cómputo cuántico}
 
-Las compuertas cuánticas son el análogo cuántico de las compuertas lógicas utilizadas en cómputo clásico. En un circuito cuántico, las compuertas permiten manipular la información (qubits). Una compuerta $U$ válida es un operador de evolución unitario que actúa sobre el espacio generado por $n$ qubits (esto es, actúa sobre $\hilbert_{2^{n}}$):
+Las compuertas cuánticas son el análogo cuántico de las compuertas lógicas utilizadas en cómputo clásico. En un circuito cuántico, las compuertas permiten manipular los qubits. Una compuerta $U$ válida es un operador de evolución unitario que actúa sobre el espacio generado por $n$ qubits (esto es, actúa sobre $\hilbert_{2^{n}}$):
 \begin{equation*}
   U:\hilbert_{2^{n}}\rightarrow\hilbert_{2^{n}}.
 \end{equation*}
-Compuertas de un qubit comunes icluyen a los operadores de Pauli, mientras que para dos qubits existen compuertas como el SWAP, el controlled-not (CNOT), y la compuerta de Hadamard. Como una primera aplicación del formalismo descrito en las secciones anteriores, en este trabajo se analizará la evolución efectiva bajo evoluciones subyacentes descritas por las compuertas SWAP y CNOT. 
+Compuertas de un qubit comunes icluyen a los operadores de Pauli, mientras que para dos qubits existen compuertas como el SWAP, el controlled-not (CNOT), y la compuerta de Hadamard. En este trabajo se analizará la evolución efectiva bajo evoluciones subyacentes descritas por las compuertas SWAP y CNOT. 
 
 \subsection{La compuerta cuántica SWAP}
 
@@ -28,11 +28,11 @@ La compuerta tiene representación como matriz de permutación
         0&0&0&1
     \end{pmatrix}.
 \end{equation*}
-Descrito de esta manera, el operador SWAP es un operador de evolución \textit{discreto}. Esto es, lleva un estado $\varrho$ a otro $\varrho'$ sin considerar ninguna dependencia temporal ni ningún estado intermedio. Sin embargo, como esta evolución es unitaria, es extendible a cualquier tiempo dado el Hamiltoniano adecuado. Consideramos entonces
+Descrito de esta manera, el operador SWAP es un operador de evolución \textit{discreto}. Esto es, lleva un estado $\varrho$ a otro $\varrho'$ sin considerar ninguna dependencia temporal ni ningún estado intermedio. Sin embargo, como esta evolución es unitaria, es extendible a cualquier tiempo dado el hamiltoniano adecuado. Consideramos entonces
 \begin{equation*}
   H_{S}=\omega\sum_{i=1}^{3}\pauli{i}\otimes\pauli{i}
 \end{equation*}
-que, tomando $\omega=\frac{\pi}{4}$, genera una compuerta SWAP al tiempo $t=1$. Dado este Hamiltoniano, la forma matricial del operador \textsc{SWAP} a un tiempo $t$ es
+que, tomando $\omega=\frac{\pi}{4}$, genera una compuerta SWAP al tiempo $t=1$. Dado este hamiltoniano, la forma matricial del operador \textsc{SWAP} a un tiempo $t$ es
 \begin{equation}\label{eq:SWAP(t)}
 S^{t}=\begin{pmatrix}
  1 & 0 & 0 & 0 \\
@@ -49,52 +49,52 @@ S^{t}=\begin{pmatrix}
 
 \subsubsection{Evolución discreta}
 
-Para estudiar la dinámica efectiva de una evolución subyacente descrita por el operador SWAP, primero analizaremos el caso en que no se ha introducido la dependencia temporal. Sea $\rho\in\densityspace{2}$ el estado efectivo y $\varrho_{\max}\in\densityspace{4}$ el estado de máxima entropía compatible con $\rho$ y la aplicación de grano grueso descrita en la sección \ref{sec:CH2CG} según $\mcA_{\mcC}^{\max}(\rho)=\varrho_{\max}$. Estudiaremos la asignación
+Para estudiar la dinámica efectiva de una evolución subyacente descrita por el operador SWAP, primero analizaremos el caso en que no se ha introducido la dependencia temporal. Sea $\rho_{\ef}\in\densityspace{2}$ el estado efectivo y $\varrho_{\max}\in\densityspace{4}$ el estado de máxima entropía compatible con $\rho_{\ef}$ y la aplicación de grano grueso descrita en la sección \ref{sec:CH2CG} según $\mcA_{\mcC}^{\max}(\rho_{\ef})=\varrho_{\max}$. Estudiaremos la asignación
 \begin{equation}
-  \rho\mapsto \mcC(S \varrho_{\max} S^{\dag}).
+  \rho_{\ef}\mapsto \mcC(S \varrho_{\max} S^{\dag}).
 \end{equation}
 Como el estado de máxima entropía es separable, la acción del operador SWAP sobre este es
 \begin{equation*}
-  \frac{e^{p\sum_{i}\lambda_{i}\sigma_{i}}}{Z_{1}} \otimes \frac{e^{(1-p)\sum_{i}\lambda_{i}\sigma_{i}}}{Z_{2}}\mapsto\frac{e^{(1-p)\sum_{i}\lambda_{i}\sigma_{i}}}{Z_{2}}\otimes\frac{e^{p\sum_{i}\lambda_{i}\sigma_{i}}}{Z_{1}}.
+  \frac{e^{p_{1}\sum_{i}\lambda_{i}\sigma_{i}}}{Z_{1}} \otimes \frac{e^{p_{2}\sum_{i}\lambda_{i}\sigma_{i}}}{Z_{2}}\mapsto\frac{e^{p_{2}\sum_{i}\lambda_{i}\sigma_{i}}}{Z_{2}}\otimes\frac{e^{p_{1}\sum_{i}\lambda_{i}\sigma_{i}}}{Z_{1}}.
 \end{equation*}
 El estado de la izquierda corresponde a $\varrho_{\max}(t=0)$, mientras que el de la derecha corresponde a $\varrho_{\max}(t=1)$. Con esto, basta con aplicar la aplicación de grano grueso a ambos estados para hallar a los estados efectivos inicial y final en términos de los multiplicadores de Lagrange:
 \begin{equation}
-\rho(0)=\frac{1}{2}[\Id+(\hat{r}_{\rho}\cdot\vec{\sigma})(p\tanh{-\lambda p}+(1-p)\tanh{-\lambda (1-p)})],
+\rho_{\ef}=\frac{1}{2}[\Id+(\hat{r}_{\ef}\cdot\vec{\sigma})(p_{1}\tanh{\lambda p_{1}}+p_{2}\tanh{\lambda p_{2}})],
 \end{equation}
 \begin{equation}
-\rho(t=1)=\frac{1}{2}[\Id+(\hat{r}_{\rho}\cdot\vec{\sigma})((1-p)\tanh{-\lambda p}+p\tanh{-\lambda (1-p)})].
+\Gamma_{t=1}(\rho_{\ef})=\frac{1}{2}[\Id+(\hat{r}_{\ef}\cdot\vec{\sigma})(p_{2}\tanh{\lambda p_{1}}+p_{1}\tanh{\lambda p_{2}})].
 \end{equation}
 Vemos que ambos estados tienen la misma orientación (orientación significando la dirección del vector de Bloch) pero pureza distinta. Esto significa que el efecto del \textsc{SWAP} subyacente sobre la esfera de Bloch es comprimir al estado efectivo inicial con un coeficiente $\kappa_{1}$ definido según
 \begin{equation}\label{eq:SWAPFactor}
-  \kappa_{1}=\frac{r_{\rho(1)}}{r_{\rho(0)}}=\frac{(1-p)\tanh{\lambda p}+p\tanh{\lambda (1-p)}}{
-    p\tanh{\lambda p}+(1-p)\tanh{\lambda (1-p)}}.
+  \kappa_{1}=\frac{r_{\ef}(0)}{r_{\ef}(1)}=\frac{p_{2}\tanh{\lambda p_{1}}+p_{1}\tanh{\lambda p_{2}}}{
+    p_{1}\tanh{\lambda p_{1}}+p_{2}\tanh{\lambda p_{2}}}.
 \end{equation}
-Claro está, el factor de compresión depende del multiplicador de Lagrange, que a su vez es una función de la pureza del estado inicial. La figura \ref{fig:SWAPFactor2Drl} muestra dicha dependencia. Como la dependencia en el estado inicial incluye únicamente la pureza del mismo, por lo que la compresión no depende de la dirección. Esta dinámica no es si no un canal de despolarización no lineal. Si la dependencia del factor de compresión en el estado efectivo inicial se denota por un superíndice, la dinámica efectiva puede escribirse como
+Claro está, el factor de compresión depende del multiplicador de Lagrange, que a su vez es una función de la pureza del estado inicial. La figura \ref{fig:SWAPFactor2Drl} muestra dicha dependencia. Como la dependencia en el estado inicial incluye únicamente la pureza del mismo, por lo que la compresión no depende de la dirección. Esta dinámica no es si no un canal de despolarización no lineal. Si la dependencia del factor de despolarización en el estado efectivo inicial se denota por un superíndice, la dinámica efectiva puede escribirse como
 \begin{equation}\label{eq:EffectiveSWAP1}
-  \boxed{\Gamma_{t=1}[\rho]=\kappa_{1}^{\rho}\rho+(1-\kappa_{1}^{\rho})\frac{1}{2}\Id}
+  \boxed{\Gamma_{t=1}(\rho_{\ef})=\kappa_{1}^{\rho_{\ef}}\rho_{\ef}+(1-\kappa_{1}^{\rho_{\ef}})\frac{1}{2}\Id}
 \end{equation}
-\begin{figure}[h!]
+\begin{figure}[ht!]
   \centering
   \includegraphics[width=0.9\linewidth]{chapter3/figures_toy/ContractionFactorSWAP_2D_both.png}
-  \caption{Factor de compresión $\kappa_{1}$ como función de $r_{\rho}$ (der.) y como función de $\lambda$ (izq.), para diferentes valores de $p$.}
+  \caption{Factor de despolarización $\kappa_{1}^{\rho_{\ef}}$ como función de $r_{\ef}$ (der.) y como función de $\lambda$ (izq.), para diferentes valores de $p_{1}$.}
   \label{fig:SWAPFactor2Drl}
 \end{figure}
 
 De las ecuaciones (\ref{eq:SWAPFactor}) y (\ref{eq:EffectiveSWAP1}) distinguimos lo siguiente:
 \begin{itemize}
-  \item Si $p=\frac{1}{2}$, entonces $\kappa_{1}^{\rho}=1$. Esto se debe a que la aplicación borrosa es invariante bajo el $\textsc{SWAP}$ si $p=0.5$. Así, todos los estado gruesos son puntos fijos bajo una evolución subyacente SWAP con aplicación de grano grueso con parámetro $p=\frac{1}{2}$.
-  \item $\kappa_{1}^{\rho}$ no depende de la orientación del vector de Bloch, únicamente depende de la magnitud $r_{\rho(0)}$ y $p$.
-  \item En los casos extremos, $p=1$ o $p=0$, la esfera colapsa al origen.
+  \item Si $p_{1}=\frac{1}{2}$, entonces $\kappa_{1}^{\rho_{\ef}}=1$. Esto se debe a que la aplicación borrosa es invariante bajo el $\textsc{SWAP}$ si $p_{1}=\frac{1}{2}$. Así, todos los estado gruesos son puntos fijos bajo una evolución subyacente SWAP con aplicación de grano grueso con parámetro $p_{1}=\frac{1}{2}$.
+  \item $\kappa_{1}^{\rho_{\ef}}$ no depende de la orientación del vector de Bloch, únicamente depende de la magnitud $r_{\ef}(0)$ y $p_{1}$.
+  \item En los casos extremos, $p_{1}=1$ o $p_{1}=0$, la esfera colapsa al origen.
 \end{itemize}
 
 
-Como el factor de compresión depende de $\lambda$, la dinámica no es lineal. Las operaciones cuánticas de un qubit se traducen como aplicaciones afines en la esfera de Bloch. Si quisiéramos ver el proceso asociado al \textsc{SWAP} subyacente como una transformación de la forma
+Como el factor de despolarización depende de $\lambda$, la dinámica no es lineal. Las operaciones cuánticas de un qubit se traducen como aplicaciones afines en la esfera de Bloch. Si quisiéramos ver el proceso asociado al \textsc{SWAP} subyacente como una transformación de la forma
 \begin{equation*}
   \vec{r}\rightarrow M\vec{r}+\vec{c}
 \end{equation*}
-en la que $\vec{c}=0$, y $M=OS$ con $O=\Id$ y $S=\kappa_{1}(\vec{r})\Id$, de tal forma que
+en la que $\vec{c}=0$, y $M=OS$ con $O=\Id$ y $S=\kappa_{1}^{\rho_{\ef}}=\Id$, de tal forma que
 \begin{equation*}
-  \vec{r}\rightarrow \kappa_{1}(\vec{r})\vec{r}
+  \vec{r}\rightarrow \kappa_{1}^{\rho_{\ef}}=\vec{r}
 \end{equation*}
 nos daríamos cuenta que la transformación no es afín, y por esto, el proceso no puede ser descrito a través del formalismo de las operaciones cuánticas (no tiene representación en operadores de Kraus) \cite{Chuang}.
 
@@ -103,20 +103,20 @@ nos daríamos cuenta que la transformación no es afín, y por esto, el proceso 
 Utilizando la forma dependiente del tiempo del operador $S$ dada por la ecuación (\ref{eq:SWAP(t)}), puede seguirse el mismo proceso para hallar una expresión del estado efectivo evolucionado como función del tiempo y en términos de los operadores de Lagrange:
 \begin{align}
   \begin{split}
-  \rho(t)=\frac{1}{2}\{\Id-(\hat{r_{\rho}}\cdot\vec{\sigma})[&((1-p)\cos^{2}{\frac{\pi t}{2}}+p\sin^{2}{\frac{\pi t}{2}})\tanh{p\lambda}\\
-  &+(p\cos^{2}{\frac{\pi t}{2}}+(1-p)\sin^{2}{\frac{\pi t}{2}})\tanh{(1-p)\lambda}]\}.
+  \Gamma_{t}(\rho_{\ef})=\frac{1}{2}\{\Id+(\hat{r_{\ef}}\cdot\vec{\sigma})[&(p_{2}\cos^{2}{\frac{\pi t}{2}}+p_{1}\sin^{2}{\frac{\pi t}{2}})\tanh{p_{1}\lambda}\\
+  &+(p_{1}\cos^{2}{\frac{\pi t}{2}}+p_{2}\sin^{2}{\frac{\pi t}{2}})\tanh{p_{2}\lambda}]\}.
   \end{split}
 \end{align}
 
-El estado efectivo inicial siendo el mismo, el estado final vuelve a tener la misma orientación, y entonces es posible calcular el factor de compresión como la razón entre las normas de los vectores de Bloch de los estados inicial y final:
+El estado efectivo inicial siendo el mismo, el estado final vuelve a tener la misma orientación, y entonces es posible calcular el factor de despolarización como la razón entre las normas de los vectores de Bloch de los estados inicial y final:
 \begin{equation}\label{eq:SWAPFactort}
-  \kappa_{t}^{\rho}=\frac{((1-p)\cos^{2}{\frac{\pi t}{2}}+p\sin^{2}{\frac{\pi t}{2}})\tanh{\lambda p}+(p\cos^{2}{\frac{\pi t}{2}}+(1-p)\sin^{2}{\frac{\pi t}{2}})\tanh{\lambda (1-p)}}{
-    p\tanh{\lambda p}+(1-p)\tanh{\lambda (1-p)}}
+  \kappa_{t}^{\rho_{\ef}}=\frac{(p_{2}\cos^{2}{\frac{\pi t}{2}}+p\sin^{2}{\frac{\pi t}{2}})\tanh{\lambda p_{1}}+(p_{1}\cos^{2}{\frac{\pi t}{2}}+p_{2}\sin^{2}{\frac{\pi t}{2}})\tanh{\lambda p_{2}}}{
+    p_{1}\tanh{\lambda p_{1}}+p_{2}\tanh{\lambda p_{2}}}
 \end{equation}
 
-Nuevamente, el factor de compresión (y por consiguiente, toda la evolución) depende de la pureza del estado efectivo incial, codificada en los multiplicadores de Lagrange. El efecto gradual de la evolución sobre la esfera de Bloch puede verse en la figura \ref{fig:SWAPFactorSequence}. La dinámica efectiva puede escribirse como
+Nuevamente, el factor de despolarización (y por consiguiente, toda la evolución) depende de la pureza del estado efectivo incial, codificada en los multiplicadores de Lagrange. El efecto gradual de la evolución sobre la esfera de Bloch puede verse en la figura \ref{fig:SWAPFactorSequence}. La dinámica efectiva puede escribirse como
 \begin{equation}\label{eq:EffectiveSWAPt}
-  \boxed{\Gamma_{t}[\rho]=\kappa_{t}^{\rho}\rho+(1-\kappa_{t}^{\rho})\frac{1}{2}\Id}
+  \boxed{\Gamma_{t}(\rho_{\ef})=\kappa_{t}^{\rho_{\ef}}\rho_{\ef}+(1-\kappa_{t}^{\rho_{\ef}})\frac{1}{2}\Id}
 \end{equation}
 
 \begin{figure}[ht!]
@@ -136,21 +136,21 @@ Nuevamente, el factor de compresión (y por consiguiente, toda la evolución) de
     \includegraphics[width=0.9\linewidth]{chapter3/figures_toy/sphere_swapcontraction_t=1.0_z=0.9_p=0.9.png}
     \caption{$t=1$}
   \end{subfigure}
-  \caption{Efecto de la evolución subyacente si $r_{z}=0.9$, $p=0.9$. La dramática contracción se asocia a una pérdida casi total de información.}
+  \caption{Efecto de la evolución subyacente si $r_{\ef}(0)=0.9$, $p_{1}=0.9$. La dramática contracción se asocia a una pérdida casi total de información.}
   \label{fig:SWAPFactorSequence}
   \end{figure}
 
 De las ecuaciones (\ref{eq:SWAPFactort}) y (\ref{eq:EffectiveSWAPt}) es posible concluir:
 \begin{itemize}
-  \item $\kappa_{t}^{\rho}$ es una función periódica del tiempo, y su periodo es de $T=2$ (observable en la figura \ref{fig:SWAPFactor2Dt}). Esto viene de que el operador SWAP, además de ser unitario, es hermitiano, i.e. $SS=\Id$.
-  \item $\kappa_{t}^{\rho}$ es una función decreciente en $0\leq t\leq 1$.
-  \item Se cumplen las observaciones hechas para el caso discreto: la esfera colapsa al origen si $p=1$ o $p=0$, y los puntos se mantienen fijos si $p=\frac{1}{2}$.
+  \item $\kappa_{t}^{\rho_{\ef}}$ es una función periódica del tiempo, y su periodo es de $T=2$ (observable en la figura \ref{fig:SWAPFactor2Dt}). Esto viene de que el operador SWAP, además de ser unitario, es hermitiano, i.e. $SS=\Id$.
+  \item $\kappa_{t}^{\rho_{\ef}}$ es una función decreciente en $0\leq t\leq 1$.
+  \item Se cumplen las observaciones hechas para el caso discreto: la esfera colapsa al origen si $p_{1}=1$ o $p_{1}=0$, y los puntos se mantienen fijos si $p_{1}=\frac{1}{2}$.
 \end{itemize}
 
 \begin{figure}[ht!]
   \centering
   \includegraphics[width=0.6\linewidth]{chapter3/figures_toy/ContractionFactorSWAP_z=0.8_t=0_to_t=2.png}
-  \caption{Factor de compresión $\kappa_{t}$ como función de $t$, para diferentes valores de $p$ y $r_{\rho(0)}=0.8$.}
+  \caption{Factor de despolarización $\kappa_{t}^{\rho_{\ef}}$ como función de $t$, para diferentes valores de $p_{1}$ y $r_{\ef}(0)=0.8$.}
   \label{fig:SWAPFactor2Dt}
 \end{figure}
 
@@ -158,11 +158,11 @@ En términos del valor esperado del observable $\sigma_{3}$, la evolución del e
 \begin{equation}
   \expval{\sigma_{3}(t)}=\kappa_{t}^{\rho}\expval{\pauli{3}(0)}
 \end{equation}
-que puede escribirse, también, como las probabilidades de que $\rho(t)$ se halle en el estado $\ket{0}$ o $\ket{1}$
+que puede escribirse, también, como las probabilidades de que $\Gamma_{t}(\rho_{\ef})$ se halle en el estado $\ket{0}$ o $\ket{1}$
  \begin{align}
-  \bra{0}\rho(t)\ket{0}=\frac{1}{2}(1+\kappa_{t}^{\rho}\expval{\pauli{3}(0)}) && \bra{1}\rho(t)\ket{1}=\frac{1}{2}(1-\kappa_{t}^{\rho}\expval{\pauli{3}(0)})
+  \bra{0}\Gamma_{t}(\rho_{\ef})\ket{0}=\frac{1}{2}(1+\kappa_{t}^{\rho_{\ef}}\expval{\pauli{3}(0)}) && \bra{1}\Gamma_{t}(\rho_{\ef})\ket{1}=\frac{1}{2}(1-\kappa_{t}^{\rho_{\ef}}\expval{\pauli{3}(0)})
  \end{align}
- donde la dependencia temporal está completamente contenida dentro del factor $\kappa_{t}^{\rho}$. Nótese que el efecto del canal de despolarización es hacer a los estados menos reconocibles entre sí.
+ donde la dependencia temporal está completamente contenida dentro del factor $\kappa_{t}^{\rho_{\ef}}$. Nótese que el efecto del canal de despolarización es hacer a los estados menos reconocibles entre sí.
 
 
 \subsection{La compuerta cuántica controlled not}
@@ -183,27 +183,26 @@ En la base de los eigenestados de $\pauli{3}\otimes\pauli{3}$, la compuerta pued
         0&0&1&0
     \end{pmatrix}.
 \end{equation*}
-Claro está, esta matriz corresponde a la evolución discreta. Considérese el Hamiltoniano
+Claro está, esta matriz corresponde a la evolución discreta. Considérese el hamiltoniano
 \begin{equation*}
   H_{\cnot}=-\omega(\pauli{3}\otimes\Id+\Id\otimes\pauli{1}-\pauli{3}\otimes\pauli{1}),
 \end{equation*}
 que genera la compuerta CNOT al tiempo $t=1$ cuando $\omega=\frac{\pi}{4}$. Nótese que, por estar conformado por tres operadores que conmutan entre sí, la compuerta puede escribirse como lo acción consecutiva de tres operadores unitarios que conmutan entre sí:
-
 \begin{equation*}
   \cnot=(e^{\rmi\omega\pauli{3}}\otimes \Id) (\Id \otimes e^{\rmi\omega\pauli{1}}) e^{-\rmi\omega\pauli{3}\otimes\pauli{1}}.
 \end{equation*}
 
 \subsubsection{CNOT completo efectivo}
 
-Para estudiar la dinámica efectiva del operador $\cnot$ son particularmente útiles las expresiones (\ref{eq:rhoArhoB}). Como el estado de máxima entropía compatible con la aplicación de grano grueso puede escribirse como $\varrho_{\max}=\rho_{A}\otimes\rho_{B}$, entonces hallar el estado efectivo final es un problema de álgebra. En efecto,
+Para estudiar la dinámica efectiva del operador $\cnot$ son particularmente útiles las expresiones (\ref{eq:rhoArhoB}). Como el estado de máxima entropía compatible con la aplicación de grano grueso puede escribirse como $\varrho_{\max}=\rho_{1}\otimes\rho_{2}$, entonces hallar el estado efectivo final es un problema de álgebra. En efecto,
 \begin{align*}
-    \Gamma_{t=1}(\rho)=&\frac{p}{2}(\rho+\sigma_{3}\rho_{A}\sigma_{3}+\Tr{\sigma_{1}\rho_{B}}[\rho_{A}-\sigma_{3}\rho_{A}\sigma_{3}])\\
-    &+\frac{(1-p)}{2}(\rho+\sigma_{1}\rho_{B}\sigma_{1}+\Tr{\sigma_{3}\rho_{A}}[\rho_{B}-\sigma_{1}\rho_{B}\sigma_{1}]).
+    \Gamma_{t=1}(\rho_{\ef})=&\,\frac{p_{1}}{2}(\rho_{\ef}+\sigma_{3}\rho_{1}\sigma_{3}+\Tr{\sigma_{1}\rho_{2}}[\rho_{1}-\sigma_{3}\rho_{1}\sigma_{3}])\\
+    &+\frac{p_{2}}{2}(\rho_{\ef}+\sigma_{1}\rho_{2}\sigma_{1}+\Tr{\sigma_{3}\rho_{1}}[\rho_{2}-\sigma_{1}\rho_{2}\sigma_{1}]).
 \end{align*}
-La estructura del estado final es una consecuencia directa de la aplicación borrosa. Para entender el significado de cada uno de los términos, considérense dos casos extremos: primero, el caso en que el aparato de medición no tiene un error asociado ($p=1$). En dicho caso, a través del principio de máxima entropía, se esperaría que el estado efectivo final fuera
+La estructura del estado final es una consecuencia directa de la aplicación borrosa. Para entender el significado de cada uno de los términos, considérense dos casos extremos: primero, el caso en que el aparato de medición no tiene un error asociado ($p_{1}=1$). En dicho caso, a través del principio de máxima entropía, se esperaría que el estado efectivo final fuera
 \begin{equation*}
-  \Gamma_{t=1}(\rho)=\frac{1}{2}\qty(\rho+\pauli{3}\rho\pauli{3})
-\end{equation*},
+  \Gamma_{t=1}(\rho_{\ef})=\frac{1}{2}\qty(\rho_{\ef}+\pauli{3}\rho_{\ef}\pauli{3}),
+\end{equation*}
 \begin{figure}[ht!]
   \centering
   \begin{subfigure}{0.5\textwidth}
@@ -214,11 +213,11 @@ La estructura del estado final es una consecuencia directa de la aplicación bor
     \centering
     \includegraphics[width=0.6\linewidth]{chapter3/figures_toy/sphere_PF_t=1.0_z=0.8_p=0.6.png}
   \end{subfigure}
-  \caption{Efecto de un canal de desfasamiento sobre la esfera de Bloch.}\label{fig:PhaseFlip}
+  \caption{Efecto de un canal de desfasamiento (no total) sobre la esfera de Bloch.}\label{fig:PhaseFlip}
 \end{figure}
-que reconocemos como un canal de desfasamiento total. Este resultado viene del hecho que, en el caso $p=1$, el estado de máxima entropía es simplemente $\rho\otimes\frac{1}{2}$. De manera similar, en el caso $p=0$, la dinámica efectiva es
+que reconocemos como un canal de desfasamiento total. Este resultado viene del hecho que, en el caso $p_{1}=1$, el estado de máxima entropía es simplemente $\rho_{\ef}\otimes\frac{\Id}{2}$. De manera similar, en el caso $p_{1}=0$, la dinámica efectiva es
 \begin{equation*}
-  \Gamma_{t=1}(\rho)=\frac{1}{2}\qty(\rho+\pauli{1}\rho\pauli{1})
+  \Gamma_{t=1}(\rho_{\ef})=\frac{1}{2}\qty(\rho_{\ef}+\pauli{1}\rho_{\ef}\pauli{1})
 \end{equation*}
 \begin{figure}[ht!]
   \centering
@@ -230,23 +229,19 @@ que reconocemos como un canal de desfasamiento total. Este resultado viene del h
     \centering
     \includegraphics[width=0.6\linewidth]{chapter3/figures_toy/sphere_BitF_t=1.0_z=0.8_p=0.6.png}
   \end{subfigure}
-  \caption{Efecto del canal de \textit{bit flip} sobre la esfera de Bloch.}\label{fig:BitFlip}
+  \caption{Efecto del canal de \textit{bit flip} (no completo) sobre la esfera de Bloch.}\label{fig:BitFlip}
 \end{figure}
-que no es más que un canal de \textit{bit flip} (que equivale a un canal de despolarización total si se trabaja en la base de los eigenestados de $\pauli{1}$). Sabiendo esto, es posible reacomodar la expresión de la dinámica efectiva para recuperar la transición entre estos casos extremos:
+que no es más que un canal de \textit{bit flip} (que equivale a un canal de desfasamiento total si se trabaja en la base de los eigenestados de $\pauli{1}$). Sabiendo esto, es posible reacomodar la expresión de la dinámica efectiva para recuperar la transición entre estos casos extremos:
 \begin{align*}
-  \rho(t=1)=&\frac{1}{2}\rho(0)\\
-  &+\frac{(1-p)}{2}\qty[\expval{\pauli{1}}_{\rho_{B}}\rho_{A}+(1-\expval{\pauli{1}}_{\rho_{B}})\pauli{3}\rho_{A}\pauli{3}]\\
-  &+\frac{p}{2}\qty[\expval{\pauli{3}}_{\rho_{A}}\rho_{B}+(1-\expval{\pauli{3}}_{\rho_{A}})\pauli{1}\rho_{B}\pauli{1}].
+  \Gamma_{t=1}(\rho_{\ef})=&\,\frac{1}{2}\rho_{\ef}\\
+  &+\frac{p_{1}}{2}\qty[\expval{\pauli{1}}_{\rho_{2}}\rho_{1}+(1-\expval{\pauli{1}}_{\rho_{2}})\pauli{3}\rho_{1}\pauli{3}]\\
+  &+\frac{p_{2}}{2}\qty[\expval{\pauli{3}}_{\rho_{1}}\rho_{2}+(1-\expval{\pauli{3}}_{\rho_{1}})\pauli{1}\rho_{2}\pauli{1}].
 \end{align*}
-
 De esta forma, el efecto de la dinámica efectiva es una combinación de dos canales no lineales: un canal de despolarización total en el que los coeficientes probabilísticos dependen del estado inicial, y un canal de \textit{bit flip} total con la misma característica. 
 
 \subsubsection{CNOT efectivo a un tiempo arbitrario}
 
-Estudiado el caso discreto, utilícese el Hamiltoniano para propagar al estado microscópica de forma continua en el tiempo. El estado efectivo es propagado por la evolución efectiva
-
-\acnote{revisar los signos en los términos de los conmutadores}
-
+Estudiado el caso discreto, utilícese el hamiltoniano para propagar al estado microscópica de forma continua en el tiempo. El estado efectivo es propagado por la evolución efectiva
 \begin{align*}
   \Gamma_{t}(\rho)=&\frac{1}{2}\rho(\cos^{2}(2\omega t)+1)\\
   &+\frac{p}{2}\{\sin^{2}(2\omega t)\qty(\expval{\pauli{1}}_{B}\rho_{A}+(1-\expval{\pauli{1}}_{B})\pauli{3}\rho_{A}\pauli{3})\\
