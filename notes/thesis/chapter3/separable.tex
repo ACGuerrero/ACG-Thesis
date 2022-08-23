@@ -85,23 +85,23 @@ El estado de máxima entropía compatible con un estado efectivo $\rho_{\ef}$ es
 \end{equation}
 donde, para todo $k$ se cumple que
 \begin{equation}
-    \frac{1}{Z_{k}}e^{\frac{1-p_{1}}{n-1}\sum_{j}\lambda_{j}\pauli{j}}=\frac{1}{2}\qty(\Id+\tanh(\frac{1-p_{1}}{n-1}\lambda)\hat{r}_{\rho}\cdot\vec{\sigma})\equiv \rho_{2}.\nonumber
+    \frac{1}{Z_{k}}e^{\frac{1-p_{1}}{n-1}\sum_{j}\lambda_{j}\pauli{j}}=\frac{1}{2}\qty(\Id+\tanh(\frac{1-p_{1}}{n-1}\lambda)\hat{r}_{\rho}\cdot\vec{\sigma})\equiv \rho_{\text{np}}.\nonumber
 \end{equation}
 El conjunto de partículas no preferenciales es entonces
 \begin{equation}
-    \Motimes_{k=2}^{n}\rho_{k}=\rho_{2}^{\otimes(n-1)}\nonumber.
+    \Motimes_{k=2}^{n}\rho_{k}=\rho_{\text{np}}^{\otimes(n-1)}\nonumber.
 \end{equation}
 Si estas no varían, mientras que el subsistema de interés se propaga de forma unitaria, entonces la dinámica efectiva es
 \begin{equation}
-    \Gamma_{t}(\rho_{\ef})=p_{1}U(t)\rho_{1}(U(t))^{\dag}+(1-p_{1})\rho_{2}.\nonumber
+    \Gamma_{t}(\rho_{\ef})=p_{1}U(t)\rho_{1}(U(t))^{\dag}+(1-p_{1})\rho_{\text{np}}.\nonumber
 \end{equation}
-En términos del vector de Bloch del estado efectivo inicial, con $r_{1}=\tanh(p_{1}\lambda)$, $r_{2}=\tanh((1-p_{1})\lambda)$, y $R$ la rotación generada por $U$:
+En términos del vector de Bloch del estado efectivo inicial, con $r_{1}=\tanh(p_{1}\lambda)$, $r_{\text{np}}=\tanh((1-p_{1})\lambda)$, y $R$ la rotación generada por $U$:
 \begin{equation}
-    r_{\ef}\hat{r}_{\ef}\mapsto p_{1}r_{1}R\hat{r}_{\ef}+(1-p_{1})r_{2}\hat{r}_{\ef}.\nonumber
+    r_{\ef}\hat{r}_{\ef}\mapsto p_{1}r_{1}R\hat{r}_{\ef}+(1-p_{1})r_{\text{np}}\hat{r}_{\ef}.\nonumber
 \end{equation}
-Esta expresión parece no dar demasiada información: es simplemente la combinación lineal de dos vectores de Bloch, uno que ha sido rotado y otro al que no se le ha hecho nada, pero recordando que el vector de Bloch del estado efectivo inicial cumple $r=p_{1}r_{1}+(1-p_{1})r_{2}$, esta puede ser manipulada para ver que
+Esta expresión parece no dar demasiada información: es simplemente la combinación lineal de dos vectores de Bloch, uno que ha sido rotado y otro al que no se le ha hecho nada, pero recordando que el vector de Bloch del estado efectivo inicial cumple $r=p_{1}r_{1}+(1-p_{1})r_{\text{np}}$, esta puede ser manipulada para ver que
 \begin{equation}
-    r\hat{r}_{\rho}\mapsto R(r\hat{r}_{\rho}-(1-p_{1})r_{2}\hat{r}_{\rho})+(1-p_{1})r_{2}\hat{r}_{\rho}.\nonumber
+    r_{\ef}\hat{r}_{\ef}\mapsto R(r_{\ef}\hat{r}_{\ef}-(1-p_{1})r_{\text{np}}\hat{r}_{\ef})+(1-p_{1})r_{\text{np}}\hat{r}_{\ef}.\nonumber
 \end{equation}
 El resultado es una rotación alrededor de una línea que no pasa por el origen. Una rotación de esta naturaleza puede descomponerse en una rotación a través de un eje que pasa por el origen $R_{0}$ y una traslación $T$ como $T^{-1}\circ R_{0}\circ T$. Nótese que una transformación así no tendría por qué mantener a los estados dentro de la esfera de Bloch, por lo que esta debe depender del estado mismo. 
 
@@ -126,19 +126,19 @@ El resultado es una rotación alrededor de una línea que no pasa por el origen.
     \label{fig:FaseChangeSequence}
 \end{figure}
 
-En efecto, la traslación tiene una magnitud $(1-p_{1})r_{2}$ (a notar que la traslación es pequeña, y corresponde al término de ruido) en la dirección opuesta a la del estado (i.e. depende del estado tanto en magnitud como en dirección). Así que, aunque esto podría parecer una transformación afín, no lo es, pues depende enteramente del estado. Esto significa que la evolución efectiva no es lineal, y no tiene expresión en términos de operadores de Kraus. La figura \ref{fig:FaseChangeSequence} muestra el efecto que una dinámica de este estilo tiene sobre la esfera de Bloch (en particular, el caso $U_{1}=e^{-\rmi\omega t \pauli{3}}$). La contracción a lo largo del eje $z$ es un resultado del alto valor de $(1-p_{1})$ (0.4), y no sería visible si $p_{1}\rightarrow 1$.
+En efecto, la traslación tiene una magnitud $(1-p_{1})r_{\text{np}}$ (a notar que la traslación es pequeña, y corresponde al término de ruido) en la dirección opuesta a la del estado (i.e. depende del estado tanto en magnitud como en dirección). Así que, aunque esto podría parecer una transformación afín, no lo es, pues depende enteramente del estado. Esto significa que la evolución efectiva no es lineal, y no tiene expresión en términos de operadores de Kraus. La figura \ref{fig:FaseChangeSequence} muestra el efecto que una dinámica de este estilo tiene sobre la esfera de Bloch (en particular, el caso $U_{1}=e^{-\rmi\omega t \pauli{3}}$). La contracción a lo largo del eje $z$ es un resultado del alto valor de $(1-p_{1})$ (0.4), y no sería visible si $p_{1}\rightarrow 1$.
 
 
-En efecto, si $p_{1}\approx\frac{1}{2}$, entonces $\rho_{1}\approx\rho_{2}\approx\rho$ y la dinámica efectiva se convertiría en un canal de desfasamiento:
+En efecto, si $p_{1}\approx\frac{1}{2}$, entonces $\rho_{1}\approx\rho_{\text{np}}\approx\rho$ y la dinámica efectiva se convertiría en un canal de desfasamiento:
 
 \begin{align}
-    \Gamma_{t}(\rho_{\ef})=&p_{1}e^{-\rmi\omega t \pauli{3}}\rho_{1}e^{\rmi\omega t \pauli{3}}+(1-p_{1})\rho_{2}\nonumber\\
+    \Gamma_{t}(\rho_{\ef})=&p_{1}e^{-\rmi\omega t \pauli{3}}\rho_{1}e^{\rmi\omega t \pauli{3}}+(1-p_{1})\rho_{\text{np}}\nonumber\\
     \approx&\frac{1}{2}(\rho_{\ef}+e^{-\rmi\omega t \pauli{3}}\rho_{\ef} e^{\rmi\omega t \pauli{3}})\nonumber.
 \end{align}
 
 \subsubsection{Partícula preferencial invariante}
 
-Ahora asumamos que es el sistema preferencial el que no evoluciona, mientras que las demás partículas sí lo hacen. Existen diferentes formas de abordar este problema, según la elección de las probabilidades y de la naturaleza de la evolución del entorno. Quizá el caso más sencillo es aquel en el que todas las partículas no preferenciales evolucionan de la misma forma. Esto es, una evolución generada por un hamiltoniano de la forma
+Ahora asumamos que es el sistema preferencial el que no evoluciona, mientras que las demás partículas sí lo hacen. Existen diferentes formas de abordar este problema, según la elección de las probabilidades y de la naturaleza de la evolución del resto de las partículas. Quizá el caso más sencillo es aquel en el que todas las partículas no preferenciales evolucionan de la misma forma. Esto es, una evolución generada por un hamiltoniano de la forma
 \begin{equation}
     \mcH=\omega \sum_{k=2}^{n}H_{k}.\nonumber
 \end{equation}
@@ -150,102 +150,137 @@ Por simplicidad, tómese $H_{k}=\pauli{3}\,\forall k$. Recordando la ecuación (
 \end{align}
 que quizá sea más clara escribiéndose en términos de las componentes de los vectores de Bloch de cada partícula (el primer subíndice indica la componente del vector, mientras que el segundo denota la partícula a la que pertenece):
 \begin{align}
-    r_{1}(t)=&r_{1,1}(0)+\sum_{k=2}^{n}p_{k}(r_{1,k}\cos(2\omega t)-r_{2,k}\sin(2\omega t))\nonumber\\
-    r_{2}(t)=&r_{2,1}(0)+\sum_{k=2}^{n}p_{k}(r_{2,k}\cos(2\omega t)+r_{1,k}\sin(2\omega t))\nonumber\\
-    r_{3}(t)=&r_{3,\ef}(0).\nonumber
+    r_{1,\ef}(t)=&r_{1,1}(0)+\sum_{k=2}^{n}p_{k}(r_{1,k}\cos(2\omega t)-r_{2,k}\sin(2\omega t))\nonumber\\
+    r_{2,\ef}(t)=&r_{2,1}(0)+\sum_{k=2}^{n}p_{k}(r_{2,k}\cos(2\omega t)+r_{1,k}\sin(2\omega t))\nonumber\\
+    r_{3,\ef}(t)=&r_{3,\ef}(0).\nonumber
 \end{align}
 Esto no es más que la aplicación de la misma rotación sobre todos los vectores de Bloch, a excepción del primero. Reescribiendo,
 \begin{align}
-    \vec{r}(t)=&p_{1}\vec{r}_{1}+R_{z}(2\omega t)\vec{r}_{e}\nonumber\\
-    =&\vec{r}(0)+(R_{z}(2\omega t)-\Id)\vec{r}_{e}\nonumber
+    \vec{r}_{\ef}(t)=&p_{1}\vec{r}_{1}+R_{z}(2\omega t)\vec{r}_{e}\nonumber\\
+    =&\vec{r}_{\ef}(0)+(R_{z}(2\omega t)-\Id)\vec{r}_{e}\nonumber
 \end{align}
 donde $\vec{r}_{e}\sum_{k=2}^{n}p_{k}\vec{r}_{k}$.
-En este caso, el primer término es el término invariante, y sería lo único visible en el caso en que el aparato de medición no fallara, mientras que el segundo término corresponde a pequeñas oscilaciones completamente dependientes del estado efectivo inicial que nunca aumentan la pureza del estado. Estas pequeñas oscilaciones son, justamente, el término de ruido. La visualización a la solución del problema puede observarse en la Figura \ref{fig:OscilationsSameHam}. Cada una de las componentes del vector de Bloch efectivo se ve como una suma de una constante con funciones periódicas que tienen el mismo periodo, o  como la suma de una constante más una función periódica (viendo la combinación de los vectores de cada partícula del entorno como una partícula efectiva). De cualquier forma, el resultado es una función periódica.
-
-\begin{figure}[ht!]
-    \centering
-    \begin{subfigure}{0.5\textwidth}
-      \centering
-      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/spheretraject_sameHam_difprob_n=2_p=0.95_both.png}
-      \caption{Entorno de una partícula.}
-    \end{subfigure}%
-    \begin{subfigure}{0.5\textwidth}
-      \centering
-      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/spheretraject_sameHam_difprob_n=8_p=0.95_both.png}
-      \caption{Entorno de siete partículas.}
-    \end{subfigure}
-    \caption{Oscilaciones periódicas cercanas al valor esperado. La periodicidad no depende de los pesos probabilísticos de cada partícula. En gris, el conjunto de estados con la misma pureza (y la misma coordenada en $\pauli{3}$) que el estado efectivo inicial.}\label{fig:OscilationsSameHam}
-\end{figure}
-
-Si, por otro lado, quitamos la restricción de que todas las partículas del entorno evolucionen con la misma frecuencia, se vuelve imposible factorizar la rotación:
+En este caso, el primer término es el término invariante, y sería lo único visible en el caso en que el aparato de medición no fallara, mientras que el segundo término corresponde a pequeñas oscilaciones completamente dependientes del estado efectivo inicial que nunca aumentan la pureza del estado. En efecto, considérese un estado efectivo inicial correspondiente a un sistema microscópico de $10$ qubits cuyo vector de Bloch tiene radio $r_{\ef}=0.95$ y tal que $p_{1}=0.99$ y $p_{j}=\frac{0.01}{9}\,\forall\,j\neq $. La magnitud del error absoluto, esto es, la distancia del estado efectivo evolucionado al estado efectivo inicial es
 \begin{equation}
-    \vec{r}(t)=p_{1}\vec{r}_{1}+\sum_{k=2}^{n} p_{k}R_{z}(2\omega_{k} t)\vec{r}_{k}.\nonumber
+    \mcO_{t}=\norm{\vec{r}_{\ef}(0)-p_{1}\vec{r}_{1}-R_{z}(2\omega t)\vec{r}_{e}}=\norm{\vec{r}_{e}-R_{z}(2\omega t)\vec{r}_{e}}\nonumber.
 \end{equation}
-Ahora cada partícula del entorno contribuye al error de forma única, y a pesar de que la evolución de cada partícula del entorno sea periódica, la combinación de estas no tiene por qué serlo. El resultado sigue siendo de oscilaciones cercanas a un valor \textit{sin error}. Las figuras \ref{fig:OscilationsNormalFreqSmallSigm} y \ref{fig:OscilationsNormalFreqBigSigm} muestran dichas oscilaciones para el caso en que las frecuencias se han obtenido a través de distribuciones normales de media $\mu=2$ y desviaciones estándar $\sigma=0.2$ y $\sigma=10$ respectivamente.
+Ahora, esta magnitud es máxima cuando $t=\frac{\pi}{2\omega}$, pero depende también de las componentes de $\vec{r}_{ef}$. Por simplicidad, asumamos que el estado efectivo inicial no tiene componente en $z$. Entonces
+\begin{equation}
+    \mcO_{\max}=\norm{-2\vec{r}_{e}}=1.08\times 10^{-3}\nonumber.
+\end{equation}
+Estas pequeñas oscilaciones son, justamente, el término de ruido. La visualización a la solución del problema puede observarse en la Figura \ref{fig:OscilationsSameHam}. Cada una de las componentes del vector de Bloch efectivo se ve como una suma de una constante con funciones periódicas que tienen el mismo periodo, o  como la suma de una constante más una función periódica (viendo la combinación de los vectores de cada partícula no preferencial como una partícula efectiva). De cualquier forma, el resultado es una función periódica.
 
 \begin{figure}[ht!]
     \centering
     \begin{subfigure}{0.5\textwidth}
       \centering
-      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/sphere_traject_sigmaz_normal_freq_mean=2_std=0.2_n=3_p=0.95_both.png}
-      \caption{Dos partículas no preferenciales.}
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_Z_evol_n=2_p=0.95_from_-10_to_10_end=10.png}
+      \caption{Una partícula no preferencial}
     \end{subfigure}%
     \begin{subfigure}{0.5\textwidth}
       \centering
-      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/sphere_traject_sigmaz_normal_freq_mean=2_std=0.2_n=8_p=0.95_both.png}
-      \caption{Siete partículas no preferenciales.}
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_Z_evol_n=100_p=0.95_from_-10_to_10_end=10.png}
+      \caption{Noventa y nueve partículas no preferenciales}
     \end{subfigure}
-    \caption{Oscilaciones periódicas cercanas al valor esperado. Las frecuencias de evolución fueron obtenidas de una distribución normal.}\label{fig:OscilationsNormalFreqSmallSigm}
+    \caption{Oscilaciones periódicas cercanas al valor esperado. La periodicidad no depende de los pesos probabilísticos de cada partícula. En azul, el conjunto de estados con la misma pureza (y la misma coordenada en $\pauli{3}$) que el estado efectivo inicial (en verde).}\label{fig:OscilationsSameHam}
+\end{figure}
+
+Si, por otro lado, quitamos la restricción de que todas las partículas no preferenciales evolucionen con la misma frecuencia, se vuelve imposible factorizar la rotación:
+\begin{equation}
+    \vec{r}_{\ef}(t)=p_{1}\vec{r}_{1}+\sum_{k=2}^{n} p_{k}R_{z}(2\omega_{k} t)\vec{r}_{k}.\nonumber
+\end{equation}
+Ahora cada partícula no preferencial contribuye al error de forma única, y a pesar de que la evolución de cada partícula no preferencial sea periódica, la combinación de estas no tiene por qué serlo. El resultado ahora depende de las frecuencias de evolución de cada partícula, de sus pesos $p_{k}$, y del número $n$ de partículas en el sistema microscópico (si $n=2$ se recupera el caso anterior). Las componentes del vector de Bloch del estado efectivo evolucionado,
+\begin{align}
+    r_{1,\ef}(t)=&r_{1,1}(0)+\sum_{k=2}^{n}p_{k}(r_{1,k}\cos(2\omega_{k} t)-r_{2,k}\sin(2\omega_{k} t))\nonumber\\
+    r_{2,\ef}(t)=&r_{2,1}(0)+\sum_{k=2}^{n}p_{k}(r_{2,k}\cos(2\omega_{k} t)+r_{1,k}\sin(2\omega_{k} t))\nonumber\\
+    r_{3,\ef}(t)=&r_{3,\ef}(0).\nonumber
+\end{align}
+revelan la complejidad de la evolución, además de su no-linealidad, pues los vectores $\vec{r}_{k}$ dependen del estado efectivo inicial a través del multiplicador de Lagrange $\lambda.$ Las figuras \ref{fig:PrefInv1} y \ref{fig:PrefInv2} muestran algunos ejemplos de la geometría de estas dinámicas, en las que las frecuencias $\omega_{k}$ se obtuvieron de una distribución uniforme $\text{U}[-3,3]$.
+
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}{0.5\textwidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_Z_evol_n=4_p=0.99_from_-3_to_3_end=60.png}
+      \caption{Tres partículas no preferenciales.}
+    \end{subfigure}%
+    \begin{subfigure}{0.5\textwidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_Z_evol_n=100_p=0.99_from_-3_to_3_end=60.png}
+      \caption{Noventa y nueve partículas no preferenciales.}
+    \end{subfigure}
+    \caption{Variaciones cercanas al estado efectivo inicial (verde). El aumento en el número de partículas lleva a una evolución complicada y no periódica.}\label{fig:PrefInv1}
 \end{figure}
 
 \begin{figure}[ht!]
     \centering
     \begin{subfigure}{0.5\textwidth}
       \centering
-      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/sphere_traject_sigmaz_normal_freq_mean=2_std=10_n=3_p=0.95_both.png}
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_Z_evol_n=4_p=0.7_from_-3_to_3_end=60.png}
       \caption{Dos partículas no preferenciales.}
     \end{subfigure}%
     \begin{subfigure}{0.5\textwidth}
       \centering
-      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/sphere_traject_sigmaz_normal_freq_mean=2_std=10_n=8_p=0.95_both.png}
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_Z_evol_n=100_p=0.7_from_-3_to_3_end=60.png}
       \caption{Siete partículas no preferenciales.}
     \end{subfigure}
-    \caption{Oscilaciones periódicas cercanas al valor esperado. Las frecuencias de evolución fueron obtenidas de una distribución normal.}\label{fig:OscilationsNormalFreqBigSigm}
+    \caption{Variaciones cercanas al estado efectivo inicial (verde). El aumento en el número de partículas lleva a una evolución complicada y no periódica. Una probabilidad de error más grande lleva a que las variaciones dejan de ser pequeñas.}\label{fig:PrefInv2}
 \end{figure}
 
 \subsubsection{Sistema en campo magnético ?}
 
 \acnote{No tengo idea de qué justificación se pueda dar a que todas las partículas oscilen en la misma dirección pero con frecuencias diferentes.}
 
-En los dos casos anteriores se permitió que alguna de las partes del sistema se mantuviera invariante, fuera la partícula preferencial  o las partículas que conforman su entorno. Veamos ahora qué sucede cuando se permite que todo el sistema evolucione. Considérese un hamiltoniano
+En los dos casos anteriores se permitió que alguna de las partes del sistema se mantuviera invariante, fuera la partícula preferencial o el resto. Veamos ahora qué sucede cuando se permite que todo el sistema evolucione. Considérese un hamiltoniano
 \begin{equation}
-    \mcH=\sum_{k=1}^{n}\omega_{k}\Id_{2^{k-1}}\otimes \pauli{3} \otimes \Id_{2^{n-k}},\nonumber
+    \mcH=\sum_{k=1}^{n}\omega_{k}\pauli{3,k},\nonumber
 \end{equation}
-de tal forma que toda la evolución mantenga constante la componente en $\pauli{3}$. Además, como antes, obténganse las frecuencias de evolución de una distribución normal, con $\omega_{1}=\mu$.
+de tal forma que toda la evolución mantenga constante la componente en $\pauli{3}$. Explícitamente, las componentes del vector de Bloch del estado efectivo siguen las ecuaciones
+\begin{align}
+    r_{1,\ef}(t)=&r_{1,1}(t)-\sum_{k=2}^{n}p_{k}A_{k}\sin(2\omega_{k} t-\phi_{k})\nonumber\\
+    r_{2,\ef}(t)=&r_{2,1}(t)+\sum_{k=2}^{n}p_{k}A_{k}\sin(2\omega_{k} t+\theta_{k}),\nonumber
+\end{align}
+donde se omite la tercera componente, que no cambia, y
+\begin{align}
+    A_{k}=\sqrt{r_{1,k}^{2}+r_{2,k}^{2}} & & \phi=_{k}\arccos\qty(\frac{r_{2,k}}{\sqrt{r_{1,k}^{2}+r_{2,k}^{2}}}) & & \theta_{k}=\arcsin\qty(\frac{r_{1,k}}{\sqrt{r_{1,k}^{2}+r_{2,k}^{2}}})\nonumber
+\end{align}
+El comportamiento de los términos de suma depende de las frecuencias $\omega_{k}$, pero la amplitud de estas funciones oscilatorias puede acercarse arbitrariamente a $\sum_{k=2}^{n} p_{k} A_{k}$. Esto no significa que el error explote. En realidad, como $0\leq A_{k}\leq 1\,\forall k$, entonces $0\leq\sum_{k=2}^{n} p_{k} A_{k}\leq 1$. 
+
+
+Para obtener resultados más específicos, asumamos que $p_{j}=p_{\text{np}}=\frac{1-p_{1}}{1-n}\,\forall\,j\neq 1$ y que $r_{3,\ef}=0$. Por construcción del estado de máxima entropía compatible con $\rho_{\ef}$,
+\begin{align}
+    r_{k}=r_{\text{np}}=\tanh(p_{\text{np}} \lambda) & & r_{j,k}=r_{\text{np}}\frac{r_{j,\ef}}{r_{\ef}}\nonumber
+\end{align}
+Esto significa que las expresiones previas se simplifican considerablemente, en efecto, las primeras dos componentes del vector pasan a ser
+\begin{align}
+    r_{1,\ef}(t)&=r_{1,1}(t)-p_{\text{np}}r_{\text{np}}\sum_{k=2}^{n}\sin(2\omega_{k} t-\phi)\nonumber\\
+    r_{2,\ef}(t)&=r_{2,1}(t)+p_{\text{np}}r_{\text{np}}\sum_{k=2}^{n}\sin(2\omega_{k} t+\theta)\nonumber
+\end{align}
+Aquí pasa a ser claro que la amplitud máxima de la oscilación de error de cada componente es $(1-p_{1})r_{\text{np}}$, que en el caso en que $r_{\ef}=0.9$, $p=0.95$ y $n=100$ es $4.79\times 10^{-5}$, pero si $p_{1}=0.5$ es $0.4$. Las figuras \ref{fig:Oscilations12} y \ref{fig:Oscilations13} muestran algunos ejemplos de este tipo de dinámica.
 
 \begin{figure}[ht!]
     \centering
     \begin{subfigure}{0.5\textwidth}
       \centering
-      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/sphere_traject_ALL_sigmaz_normal_freq_mean=2_std=0.2_n=3_p=0.8_both.png}
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_Z_evol_n=3_p=0.95_from_-3_to_3_end=10.png}
     \end{subfigure}%
     \begin{subfigure}{0.5\textwidth}
       \centering
-      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/sphere_traject_ALL_sigmaz_normal_freq_mean=2_std=0.2_n=3_p=0.9_both.png}
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_Z_evol_n=100_p=0.95_from_-3_to_3_end=10.png}
     \end{subfigure}
-    \caption{Oscilaciones periódicas cercanas al valor esperado. Como las frecuencias de las demás partículas son muy cercanas a la de la primera, casi no se observa error. Pero existe. \acnote{Tengo ploteado dicho error}}\label{fig:Oscilations12}
+    \caption{Como mencionado, para el caso en que $r_{\ef}=0.9$ y $p=0.95$ las variaciones debidas al error no son perceptibles debido a su pequeña amplitud, independientemente del número de partículas consideradas.}\label{fig:Oscilations12}
 \end{figure}
 \begin{figure}[ht!]
     \centering
     \begin{subfigure}{0.5\textwidth}
       \centering
-      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/sphere_traject_ALL_sigmaz_normal_freq_mean=2_std=100_n=3_p=0.8_both.png}
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_Z_evol_n=3_p=0.5_from_-3_to_3_end=10.png}
     \end{subfigure}%
     \begin{subfigure}{0.5\textwidth}
       \centering
-      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/sphere_traject_ALL_sigmaz_normal_freq_mean=2_std=100_n=3_p=0.9_both.png}
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_Z_evol_n=100_p=0.5_from_-3_to_3_end=10.png}
     \end{subfigure}
-    \caption{Trayectoria adecuada en azul. Las oscilaciones son más visibles conforme más pequeño es $p_{1}$ (o mayor el error). La alta desviación estándar permite ver las oscilaciones "bonitas"}\label{fig:Oscilations13}
+    \caption{Si $r_{\ef}=0.9$ y $p=0.3$, el alejamiento de la evolución esperada se hace notar. Para valores grandes de $n$ se vuelve dominante el término de $p_{1}$}\label{fig:Oscilations13}
 \end{figure}
 
 \newpage
