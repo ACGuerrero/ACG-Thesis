@@ -1,17 +1,21 @@
 \section{Construcción del estado de máxima entropía}
 
+\acnote{Párrafo iterado: solo notas.}
+
 Sea $\rho_{\ef}\in\mcS(\hilbert_{2})$ el estado grueso accesible al observador, y sea $\{A_{j}\}_{j}$ con $A_{j}\in\obspace{2}$ un conjunto de observables tomográficamente completo.
-Si $\rho_{\ef}$ es un estado grueso correspondiente a un estado fino $\varrho\in\mcS(\hilbert_{2}^{\otimes n})$, de acuerdo con lo discutido en el capítulo anterior, podemos asignar a $\varrho$ un estado que maximice la entropía de Von Neumann sin agregar \ddnote*{que es la información externa?, no es mejor, asignar un estado de máxima entropía compatible con las restricciones tal y tal} {información externa, y que satisfaga las restricciones $\expval{A_{j}}=\Tr(\rho_{\ef} A_{j})$}.
+Si $\rho_{\ef}$ es un estado grueso correspondiente a un estado fino $\varrho\in\mcS(\hilbert_{2}^{\otimes n})$, de acuerdo con lo discutido en el capítulo anterior, podemos asignar a $\rho_{\ef}$ un estado microscópico que maximice la entropía de Von Neumann que satisfaga las restricciones $\expval{A_{j}}=\Tr(\rho_{\ef} A_{j})$.
 Escójase ${A_{i}}={\pauli{i}}$, las matrices de Pauli, y la aplicación de grano grueso desarrollada en la sección anterior, aquella del grano grueso y borroso dada por (\ref{eq:CG}). Los valores esperados de los operadores se traducen como las componentes del vector de Bloch del operador $\rho_{\ef}$. Las restricciones a las que se ve sujeto el operador $\varrho_{\max}$ son
 \begin{equation}
     r_{j}=\Tr[\pauli{j}\rho_{\ef}]\nonumber
-\end{equation}\ddnote{supongo que estás usando $\rho$ y $\varrho$ para las cosas finas y gruesas, pero no se entiende, a la vista los caracteres son parecidos, sugiero usar $\rho_\text{MaxEnt}$ y $\rho_\text{ef}$ o $\rho_\text{grueso}$}
-Aquí hay un problema: el estado que maximiza la entropía pertenece al espacio $\densityspace{2^{n}}$, mientras que las restricciones están definidas para un operador de densidad en $\densityspace{2}$. Entonces, ¿cómo se traducen dichas restricciones en el nivel microscópico? Naturalmente, esto dependerá de la relación entre \ddnote*{si, no no, está muy feo esto}{$\varrho$ y $\rho$}. Esto es, el estado de máxima entropía depende de la aplicación de grano grueso. Sustituyendo la relación entre algún estado microscópico compatible $\varrho$ y el estado efectivo $\rho_{\ef}$ en la ecuación anterior, y manipulando un poco se halla que
+\end{equation}
+\acnote{Párrafo iterado: notación}
+
+Aquí hay un problema: el estado que maximiza la entropía pertenece al espacio $\densityspace{2^{n}}$, mientras que las restricciones están definidas para un operador de densidad en $\densityspace{2}$. Entonces, ¿cómo se traducen dichas restricciones en el nivel microscópico? Naturalmente, esto dependerá de la relación entre el estado efectivo $rho_{\ef}$ y el estado subyacente $\varrho$. Esto es, el estado de máxima entropía depende de la aplicación de grano grueso. Sustituyendo la relación entre algún estado microscópico compatible $\varrho$ y el estado efectivo $\rho_{\ef}$ en la ecuación anterior, y manipulando un poco se halla que
 \begin{align}
     r_{j}&=\Tr[\sigma_{j}\CG{\varrho}]\nonumber\\
-    &=\Tr[\sigma_{j}\Tr_{\overline{1}}\qty(p_{1}\varrho+\sum_{k=2}^{n}p_{k}(S_{1,k})\varrho(S_{1,k})^{\dagger})]\nonumber\\
-    &=\Tr[\sigma_{j}\otimes\Id_{2^{n-1}}\qty(p_{1}\varrho+\sum_{k=2}^{n}p_{k}(S_{1,k})\varrho(S_{1,k})^{\dagger})]\nonumber\\
-    &=\Tr[\qty(p_{1}(\sigma_{j}\otimes\Id_{2^{n-1}})+\sum_{k=2}^{n}p_{k}(S_{1,k})^{\dagger}(\sigma_{j}\otimes\Id_{2^{n-1}})(S_{1,k}))\varrho]\nonumber\\
+    &=\Tr[\sigma_{j}\Tr_{\overline{1}}\qty(p_{1}\varrho+\sum_{k=2}^{n}p_{k}S_{1,k}\varrho S_{1,k}^{\dagger})]\nonumber\\
+    &=\Tr[\sigma_{j}\otimes\Id_{2^{n-1}}\qty(p_{1}\varrho+\sum_{k=2}^{n}p_{k}S_{1,k}\varrho S_{1,k}^{\dagger})]\nonumber\\
+    &=\Tr[\qty(p_{1}(\sigma_{j}\otimes\Id_{2^{n-1}})+\sum_{k=2}^{n}p_{k}S_{1,k}^{\dagger}(\sigma_{j}\otimes\Id_{2^{n-1}})S_{1,k})\varrho]\nonumber\\
     &=\Tr[\qty(p_{1}(\sigma_{j}\otimes\Id_{2^{n-1}})+\sum_{k=2}^{n}p_{k}(\Id_{2^{k-1}}\otimes\sigma_{j}\otimes\Id_{2^{n-k}}))\varrho]\nonumber\\
     &=\Tr[\qty(\sum_{k=1}^{n}p_{k}(\Id_{2^{k-1}}\otimes\sigma_{j}\otimes\Id_{2^{n-k}}))\varrho]\nonumber.
 \end{align}

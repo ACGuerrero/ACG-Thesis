@@ -33,7 +33,6 @@ Las matrices de densidad reducidas del estado de máxima entropía tienen la for
 
 \subsection{La relación entre multiplicadores y mediciones}
 
-
 El problema de la ecuación (\ref{eq:MaxEntSeparable}) es que el estado de máxima entropía está en términos de los multiplicadores de Lagrange, en lugar de cantidades medibles. Si por alguna razón tuviéramos que resignarnos a trabajar con el estado en términos de los $\lambda_{i}$, será necesario conocer la expresión del estado macroscópico. Para hallarla, basta con pasar al estado de máxima entropía por la aplicación de grano grueso. Por construcción 
 \begin{equation}
     \rho_{\ef}=\frac{1}{Z}\CG{\varrho_{\max}}=\sum_{j=1}^{n}p_{j}\rho_{j}.\nonumber
@@ -44,21 +43,21 @@ Sustiyendo las fórmulas de $\rho_{j}$, obtenemos al estado grueso en términos 
 \end{equation}
 Pues bien, el estado efectivo tiene su propia parametrización de Bloch, y es
 \begin{equation}\label{eq:EffectiveState}
-    \rho_{\ef}=\frac{1}{2}(\Id+r_{\rho_{\ef}}\paulivec{r}).
+    \rho_{\ef}=\frac{1}{2}(\Id+r_{\ef}\paulivec{r}).
 \end{equation}
-Si se comparan las ecuaciones (\ref*{eq:CG(MaxEnt)}) y (\ref*{eq:EffectiveState}), se verá que es posible expresar la pureza $\purity{\rho_{\ef}}$ en términos de $\lambda$. Esto es importante porque la pureza del estado es una cantidad que se puede calcular a través de los valores esperados de los tres observables $\pauli{i}$, según $\text{Pu}(\rho_{\ef})=\frac{1}{2}(r_{\rho_{\ef}}^{2}+1)$. Esta relación uno a uno entre la pureza del estado de un sistema de dos niveles y la norma de su vector de Bloch será referenciada constantemente a lo largo de este trabajo, en el que la norma de dicho vector será llamada \textit{pureza} de vez en cuando. Definiendo
+Si se comparan las ecuaciones (\ref*{eq:CG(MaxEnt)}) y (\ref*{eq:EffectiveState}), se verá que es posible expresar la pureza $\purity{\rho_{\ef}}$ en términos de $\lambda$. Esto es importante porque la pureza del estado es una cantidad que se puede calcular a través de los valores esperados de los tres observables $\pauli{i}$, según $\text{Pu}(\rho_{\ef})=\frac{1}{2}(r_{\ef}^{2}+1)$. Esta relación uno a uno entre la pureza del estado de un sistema de dos niveles y la norma de su vector de Bloch será referenciada constantemente a lo largo de este trabajo, en el que la norma de dicho vector será llamada \textit{pureza} de vez en cuando. Definiendo
 \begin{equation}\label{eq:r(lambda)}
     \rfroml(\lambda)=\sum_{j=1}^{n}p_{j}\tanh(p_{j}\lambda)
 \end{equation}
 obtenemos tanto el radio del vector de Bloch del estado en términos de $\lambda$,
 \begin{equation}
-    r_{\rho_{\ef}}=\rfroml(\lambda),\nonumber
+    r_{\ef}=\rfroml(\lambda),\nonumber
 \end{equation}
 así como su dirección,
 \begin{equation}
-    \hat{r}_{\rho_{\ef}}=\hat{\lambda}.\nonumber
+    \hat{r}_{\ef}=\hat{\lambda}.\nonumber
 \end{equation}
-Con estas dos ecuaciones deducimos la relación entre las cantidades medibles $\expval{\pauli{j}}=r_{\rho_{\ef}}(\hat{r}_{\rho_{\ef}})_{j}$ y los multiplicadores de Lagrange introducidos para la maximización de la entropía, y es
+Con estas dos ecuaciones deducimos la relación entre las cantidades medibles $\expval{\pauli{j}}=r_{\ef}(\hat{r}_{\ef})_{j}$ y los multiplicadores de Lagrange introducidos para la maximización de la entropía, y es
 \begin{equation}
     \expval{\pauli{j}}=\rfroml(\lambda)(\hat{\lambda})_{j}.
 \end{equation}
@@ -67,24 +66,20 @@ La función $\rfroml$ es precisamente la hallada en (\ref{eq:MaxEntExpVals}). Ah
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.6\linewidth]{chapter2/figures/r(lambda).png}
-    \caption{$r_{\rho_{\ef}}$ como función de $\lambda$ para diferentes valores de $p_{1}$ en el caso en que $n=2$.}
+    \caption{$r_{\ef}$ como función de $\lambda$ para diferentes valores de $p_{1}$ en el caso en que $n=2$.}
     \label{fig:r(lambda)}
 \end{figure}
 Cada multiplicador de Lagrange queda determinado de forma única a través de cantidades experimentales según 
 \begin{equation}
-    \lambda_{i}=\rfroml^{-1}(r_{\rho_{\ef}}) \frac{\expval{\pauli{i}}}{r_{\rho_{\ef}}},
+    \lambda_{i}=\rfroml^{-1}(r_{\ef}) \frac{\expval{\pauli{i}}}{r_{\ef}},
 \end{equation}
 y, por supuesto,
 \begin{equation}
-    \lambda=\rfroml^{-1}(r_{\rho_{\ef}})\nonumber
+    \lambda=\rfroml^{-1}(r_{\ef})\nonumber
 \end{equation}
 Aunque siempre exista, no es posible hallar una expresión de $\rfroml^{-1}$ para cualquier valor de $p$ debido a que la ecuación (\ref{eq:r(lambda)}) es una ecuación trascendental. Por esto, para escribir al estado de máxima entropía como una función de cantidades medibles, nos tendremos que conformar con llamar a $\rfroml^{-1}$ de manera explícita.
 
 \subsection{Otra expresión del estado de máxima entropía}
-
-\acnote{Revisar si la rama principal es justificación suficiente para agarrar la potencia}
-
-\acnote{Revisado, como las matrices son semidefinidas positivas, su logaritmo es único.}
 
 La ecuación (\ref{eq:MaxEntSeparable}) sugiere que el estado de máxima entropía puede expresarse como producto tensorial de potencias de un mismo estado. En efecto, dado un real $q$ y una matriz cuadrada $A$, la potenciación $A^{q}$ puede escribirse como $e^{q \ln A}$. Como las matrices $e^{\sum_{i}\lambda_{i}\pauli{i}}$ son semidefinidas positivas, su logaritmo es único. Entonces,
 \begin{equation}

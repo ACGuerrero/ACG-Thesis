@@ -1,5 +1,7 @@
 \section{Un modelo de grano grueso y borroso}\label{sec:CH2CG}
 
+\acnote{Párrafo iterado: solo notas.}
+
 Como se discutió previamente, es natural suponer que no siempre es posible disponer de toda la información sobre el estado\ddnote{las itálicas están de más, me parece. Cual es tu política del uso de las itálicas?}\acnote{\checkmark} del sistema de interés. Esto ya sea por insuficiencia en la resolución de los aparatos de medición o por el inevitable error inherente a las herramientas de medición. Un prototipo sencillo de error consiste en el inducido por un aparato que no distingue diferentes conjuntos de partículas entre sí. El caso más simple corresponde a la permutación de dos partículas. Este intercambio accidental a la hora de la medición es una \textit{aplicación borrosa} \cite{FuzzyMeasurements}.
 
 Para ilustrar lo anterior, considérese dicha aplicación borrosa sobre un sistema de dos partículas. Para simplificarlo un poco más, supongamos que cada partícula es un sistema de dos niveles, esto es, el sistema está compuesto por los qubits $A$ y $B$. El estado del sistema está caracterizado por un operador de densidad $\varrho_{AB} \in \mcS(\hilbert_2 \otimes \hilbert_2)$. La acción de la aplicación borrosa se escribe como sigue:
@@ -18,6 +20,8 @@ El estado resultante, $\Fuzzy{\varrho_{AB}}=p\varrho_{AB}+(1-p)\varrho_{BA}$, es
 donde por $\expval{A}_{\mcF}$ nos referimos al valor esperado con respecto al estado del sistema descrito a través de $\mcF$.
 
 Es importante notar que, auque la aplicación borrosa modela el error asociado al aparato de medición, no constituye por si misma un modelo de grano grueso, pues conserva la dimensión del sistema: el aparato resuelve todos los grados de libertad.
+
+\acnote{Párrafo iterado: solo notas.}
 
 Al error se le añade la falta de resolución: solo se resuelve una partícula. \ddnote*{esto está redundante y escrito raro, no se por que dices que el estado sería el de la primera partícula, eso confunde, parece que estás cambiando repentinamente el contexto. Mejor explica al grano la situación y sin hablar de composición de errores. Eso mas bien se deriva, y justamente lo haces mas adelantito.}{Agreguemos al error por permutación la falta de resolución. Una posibilidad es que el instrumento detecte una partícula en donde en realidad haya dos, y aún más, que en un sistema de dos partículas, este sea capaz de medir únicamente observables asociados al primer subsistema. El estado observado sería, de acuerdo con la sección \ref{sec:Ch1PartialTrace}, la matriz de densidad reducida de la primera partícula.}\acnote{\checkmark} Matemáticamente, la composición del error y de la falta de resolución puede escribirse como
 \begin{gather}
@@ -39,8 +43,9 @@ Es extremadamente importante notar que la expresión anterior no es invertible. 
 
 Pues bien, como se ha asumido que conocemos la evolución unitaria subyacente, requerimos asignar a $\rho$ un estado microscópico que cumpla con todas las restricciones impuestas por nuestras mediciones. Asumiremos que dicho estado asignado es el que experimenta la evolución. 
 
+\acnote{Párrafo iterado: solo notas.}
 
-La discusión anterior giró alrededor del caso en que el modelo de grano grueso reduce un espacio de dos qubits a uno de un solo qubit. Esto puede generalizarse al caso en que el aparato de medición sólo detecta una partícula cuando el sistema microscópico \ddnote*{conforma?}{comporta} $n$ partículas. En particular, consideramos, nuevamente, subsistemas de dos niveles (qubits), de tal forma que $\varrho\in\mcS\qty( \hilbert_{2}^{\otimes n})$, donde $\hilbert_{2}^{\otimes n}$ representa el producto tensorial del espacio $\hilbert_{2}$ consigo mismo $k$ veces. Sean $p_{i}$ las probabilidades de medir cada una de las partículas. La aplicación borrosa pasa de ser un intercambio de dos partículas, a una serie de permutaciones entre la partícula de interés y el resto (sin pérdida de generalidad, asumiremos que la partícula de interés es la primera). Considerando un sistema de $n$ subsistemas de dos niveles \ddnote*{si ya definiste qubits mas arriba como sistemas de dos niveles, no es necesario el paréntesis}{(qubits)}, la aplicación borrosa \ddnote*{se define entonces como}{se convierte en}
+La discusión anterior giró alrededor del caso en que el modelo de grano grueso reduce un espacio de dos qubits a uno de un solo qubit. Esto puede generalizarse al caso en que el aparato de medición sólo detecta una partícula cuando el sistema microscópico está conformado por $n$ partículas. En particular, consideramos, nuevamente, subsistemas de dos niveles (qubits), de tal forma que $\varrho\in\mcS\qty( \hilbert_{2}^{\otimes n})$, donde $\hilbert_{2}^{\otimes n}$ representa el producto tensorial del espacio $\hilbert_{2}$ consigo mismo $k$ veces. Sean $p_{i}$ las probabilidades de medir cada una de las partículas. La aplicación borrosa pasa de ser un intercambio de dos partículas, a una serie de permutaciones entre la partícula de interés y el resto (sin pérdida de generalidad, asumiremos que la partícula de interés es la primera). Considerando un sistema de $n$ subsistemas de dos niveles, la aplicación borrosa se define entonces como
 \begin{gather}
     \mcF:\mcS\qty( \hilbert_{2}^{\otimes n})\to \mcS\qty( \hilbert_{2}^{\otimes n})\nonumber\\
     \varrho \mapsto p_{1}\varrho+\sum_{j=2}^{n}p_{j}(S_{1,j})\varrho(S_{1,j})^{\dagger},\nonumber
