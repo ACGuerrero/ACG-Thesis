@@ -11,12 +11,12 @@ Esto significa que el estado de máxima entropía es separable y tiene exactamen
     \varrho_{\max}=\Motimes_{k=1}^{n}\frac{1}{Z_{k}}\text{exp}\qty(p_{k}\sum_{j=1}^{3}\lambda_{j}\sigma_{j}).
 \end{equation}
 
-Un resultado así puede parecer demasiado sencillo, y puede propiciar preguntas como: ¿qué significa que el estado de máxima entropía sea separable? ¿Qué interpretación tienen las matrices de densidad reducidas del estado de máxima entropía? Pues bien, primero hace falta ver que la información accesible al experimentalista no incluye las correlaciones entre los subsistemas. Si queda alguna duda sobre esto, considérese la parametrización de Bloch de un estado fino $\varrho\in\mcL(\hilbert_{4})$ como propuesta en (\ref{eq:BlochParametrization4}). La acción de la aplicación sobre la matriz de densidad es
+Un resultado así puede parecer demasiado sencillo, y puede propiciar preguntas como: ¿qué significa que el estado de máxima entropía sea separable? ¿Qué interpretación tienen las matrices de densidad reducidas del estado de máxima entropía? Pues bien, primero hace falta ver que la información accesible al experimentalista no incluye las correlaciones entre los subsistemas. Si queda alguna duda sobre esto, considérese la parametrización de Bloch de un estado fino $\varrho\in\mcL(\hilbert_{4})$ como propuesta en (\ref{eq:BlochParametrization4}). La acción de la aplicación de grano grueso sobre la matriz de densidad es
 \begin{align}
     \CG{\varrho}&=\CG{\frac{1}{4}\sum_{j,k=0}^{3}\gamma_{jk}\pauli{j}\otimes \pauli{k}}\nonumber\\
     &=\frac{1}{2}\qty(\Id+\sum_{k=1}^{3}(p\gamma_{k,0}+(1-p)\gamma_{0,k})\sigma_{k}).\nonumber
 \end{align}
-De esto nos damos cuenta que a través de la aplicación de grano grueso se pierden todas las correlaciones, pues estas corresponden a las componentes $\gamma_{i,j}$ con $i,j\in\{1,2,3\}$. Por la construcción de la aplicación de grano grueso, cualquier sistema de matrices de densidad reducidas $\rho_{A}$ y $\rho_{B}$ da como resultado el mismo estado efectivo, sin importar qué tan factorizable o entrelazado esté (de nuevo, siempre y cuando las marices de densidad reducidas sean $\rho_{A}$ y $\rho_{B}$, pues un sistema máximamente entrelazado arroja como ambas trazas parciales al estado máximamente mezclado). Pues bien, como estas correlaciones se pierden a la hora de hacer las mediciones, en el estado de máxima entropía estas se hacen cero, ya que no se hace ninguna suposición al respecto. 
+De esto nos damos cuenta que a través de la aplicación de grano grueso se pierden todas las correlaciones, pues estas corresponden a las componentes $\gamma_{i,j}$ con $i,j\in\{1,2,3\}$. Por la construcción de la aplicación de grano grueso, cualquier sistema de matrices de densidad reducidas $\rho_{A}$ y $\rho_{B}$ da como resultado el mismo estado efectivo, sin importar si es factorizable o no, y si no lo es, qué tan entrelazado esté (de nuevo, siempre y cuando las marices de densidad reducidas sean $\rho_{A}$ y $\rho_{B}$, pues todas las trazas parciales de un sistema máximamente entrelazado son el estado máximamente mezclado). Pues bien, como estas correlaciones se pierden a la hora de hacer las mediciones, en el estado de máxima entropía estas se hacen cero. 
 
 La expresión (\ref{eq:MaxEntSeparable}) es un producto tensorial de $n$ operadores de densidad, a los que denotaremos como $\rho_{j}$, con $\rho_{j}\in\mcL(\hilbert_{2})$. Aún más, nótese que todos los factores pueden reescribirse como la exponencial real de un vector de Pauli $\lambda\paulivec{\lambda}$ con $\hat{\lambda}_{i}=\frac{\lambda_{i}}{\lambda}$ pesado por un factor probabilístico. Ahora, en virtud de la relación (\ref{ap:PauliRealExp}) hallamos
 \begin{equation}
@@ -101,13 +101,13 @@ de tal manera que
 
 \subsection{La asignación de máxima entropía}
 
-El estado de máxima entropía nos otorga una herramienta de asignación para los estados accesibles. Después de todo, requerimos de una asignación razonable que pueda ser propagada según la dinámica microscópica conocida. Sea $\rho_{\ef}\in\densityspace{2}$ un estado efectivo, entonces definimos a la aplicación de asignación de máxima entropía como
+El estado de máxima entropía nos otorga una herramienta de asignación para los estados efectivos. Después de todo, requerimos de una asignación razonable que pueda ser propagada según la dinámica microscópica conocida. Sea $\rho_{\ef}\in\densityspace{2}$ un estado efectivo, entonces definimos a la aplicación de asignación de máxima entropía como
 
 \begin{gather}\label{eq:MaxEntAss}
     \mcA_{\mcC}^{\max}:\densityspace{2}\rightarrow\densityspace{2^{n}}\nonumber\\
     \rho_{\ef} \mapsto \Motimes_{j=1}^{n}\frac{1}{Z_{j}}\text{exp}\qty(p_{j}\sum_{k=1}^{3}\lambda_{k}\sigma_{k}).
 \end{gather}
-donde la dependencia de la asignación en el modelo de grano grueso se indica mediante un subíndice. Nótese que según los valores que puedan tomar las diferentes probabilidades, el \textit{estado asignado} tendrá diferentes propiedades. En dos casos particulares, la aplicación de asignación es lineal: cuando $p_{1}=1$ y cuando $p_{j}=\frac{1}{n}\forall j$.
+donde la dependencia de la asignación en el modelo de grano grueso se indica mediante un subíndice. Nótese que según los valores que puedan tomar las diferentes probabilidades, el estado asignado tendrá diferentes propiedades. En dos casos particulares, la aplicación de asignación es lineal: cuando $p_{1}=1$ y cuando $p_{j}=\frac{1}{n}\forall j$.
 
 Si $p_{1}=1$ entonces se eliminan los términos de error, y el estado de máxima entropía es simplemente
 \begin{equation}
@@ -129,4 +129,4 @@ y que por lo tanto el estado asignado es simplemente
 \begin{equation}
     \mcA_{\mcC}^{\max}(\rho_{\ef})=\rho_{\ef}^{\otimes n}.\nonumber
 \end{equation}
-El caso $p_{1}=1$ debe verse como un caso límite: aquel en el que la medición no es borrosa. Este trabajo estudiará el límite $p_{1}\rightarrow 1$ como el escenario en el que la probabilidad de detectar la partícula equivocada es pequeña. Por otro lado, si $p_{j}=\frac{1}{n}\forall j$, la asignación de máxima entropía resulta en $n$ partículas idénticas.
+El caso $p_{1}=1$ debe verse como un caso límite: aquel en el que la medición no es borrosa. Este trabajo estudiará el límite $p_{1}\rightarrow 1$ como el escenario en el que la probabilidad de detectar la partícula equivocada es pequeña. Por otro lado, si $p_{j}=\frac{1}{n}\forall j$, la asignación de máxima entropía resulta en un estado factorizable de $n$ partículas idénticas.
