@@ -1,6 +1,60 @@
 \section{Dinámicas especiales}
 
-\subsection{Canal de despolarización}
+\subsection{Canales de Pauli}
+
+\acnote{Cambiar la probabilidad $p$ por otra cosa, que se estorba con la $p$ del CG}
+
+Los canales de Pauli son canales cuánticos en los que se aplica un operador de Pauli con alguna probabilidad. El canal de Pauli de un qubit más general está definido como
+\begin{gather}
+    P:\mcB(\hilbert_{2}) \rightarrow \mcB(\hilbert_{2})\nonumber\\
+    P(\Delta)=\sum_{j=0}^{3}p_{j}\pauli{j}\Delta\pauli{j}\rlap{.}\nonumber
+\end{gather}
+Reconociendo que cualquiera de los tres operadores de Pauli puede escribirse en términos de los otros dos, se puede aprovechar la relación $-i\pauli{2}=\pauli{1}\pauli{3}$, para escribir a los canales de Pauli de una forma particularmente útil:
+\begin{equation}
+    P(\Delta)=\sum_{j,k=0}^{1}p_{j,k}\pauli{1}^{j}\pauli{3}^{k}\Delta\pauli{3}^{k}\pauli{1}^{j}.\nonumber
+\end{equation}
+A través de esta expresión se extienden los canales de Pauli de un qubit a $n$ qubits como
+\begin{gather}
+    P:\mcB(\hilbert_{2^{n}}) \rightarrow \mcB(\hilbert_{2^{n}})\nonumber\\
+    P(\Delta)=\sum_{\vec{j},\vec{k}}p_{\vec{j},\vec{k}}\pauli{1}^{\vec{j}}\pauli{3}^{\vec{k}}\Delta\pauli{3}^{\vec{k}}\pauli{1}^{\vec{j}}\rlap{.}\nonumber
+\end{gather}
+donde $\pauli{j}^{\vec{k}}=\pauli{j}^{k_{1}}\otimes\pauli{j}^{k_{2}}\otimes ... \otimes \pauli{j}^{k_{n}}$ y las entradas $k_{l}$ del vector $\vec{k}$ solo pueden valer $0$ o $1$.
+
+\subsubsection{Canales de desfasamiento}
+
+Por canales de desfasamiento se entiende aquellos canales cuánticos cuyo efecto es amortiguar los elementos fuera de la diagonal del operador sobre el que actúan. Ahora, esta definición es dependiente de la base sobre la que se está trabajando. Por ejemplo, sea $\rho\in\densityspace{2}$. Si se utiliza la base de eigenestados de $\pauli{3}$, entonces el canal
+\begin{equation}
+    \rho\mapsto p_{1}\rho + p_{2} \pauli{3}\rho\pauli{3}\nonumber
+\end{equation}
+es un canal de desfasamiento, mientras que el canal de \textit{bit flip},
+\begin{equation}
+    \rho\mapsto p_{1}\rho + p_{2} \pauli{1}\rho\pauli{1},\nonumber
+\end{equation}
+no lo es. Por supuesto, el canal de \textit{bit flip} es un canal de desfasamiento si se trabaja en la base de los eigenestados de $\pauli{1}$. Para extender los canales de desfasamiento a $n$ qubits, primero nótese que
+\begin{equation}
+    \Motimes \ket{e_{j}}
+\end{equation}
+con $\{\ket{e_{j}}\}$ una base de $\hilbert_{n}$, es una base de $\hilbert_{2^{n}}$. Esto significa que podemos utilizar productos tensoriales de los eigenestados de \acnote{eh}
+
+
+Así, podemos estudiar dos canales de desfasamiento, el primero actuando en la base de productos tensoriales de eigenestados de $\pauli{3}$,
+\begin{gather}
+    P_{\pauli{3}}:\mcB(\hilbert_{2^{n}}) \rightarrow \mcB(\hilbert_{2^{n}})\nonumber\\
+    P_{\pauli{3}}(\Delta)=\sum_{\vec{k}}p_{\vec{k}}\pauli{3}^{\vec{k}}\Delta\pauli{3}^{\vec{k}}\rlap{.}\nonumber
+\end{gather}
+y el segundo sobre la base de productos tensoriales de eigenestados de $\pauli{1}$,
+\begin{gather}
+    P_{\pauli{1}}:\mcB(\hilbert_{2^{n}}) \rightarrow \mcB(\hilbert_{2^{n}})\nonumber\\
+    P_{\pauli{1}}(\Delta)=\sum_{\vec{j}}p_{\vec{j}}\pauli{1}^{\vec{j}}\Delta\pauli{1}^{\vec{j}}\rlap{.}\nonumber
+\end{gather}
+ Si se escoje $p_{\vec{j}}=\frac{1-p_{\vec{0}}}{n-1}\,\forall\,\vec{j}\neq\vec{0}$, el efecto de estos canales es de reducir la amplitud de las componentes fuera de la diagonal por un factor de $(2p_{1}-1)$
+
+Consideremos en canal de desfasamiento de dos qubits en dirección $a$ con probabilidades como mencionadas anteriormente. Si se propaga al estado de máxima entropía por medio de este canal y luego se aplica el centering
+
+
+\subsubsection{Canal de despolarización}
+
+El canal de despolarización no es más que un canal de Pauli con distribución uniforme en las probabilidades \acnote{arreglar}
 
 Consideremos una evolución subyacente no unitaria: el canal de despolarización. El canal de despolarización para $n$ partículas está definido como
 \begin{equation*}
@@ -15,6 +69,19 @@ Esto significa que la dinámica efectiva es
     \Gamma_{t=1}(\rho)=\mu\rho+(1-\mu)\Id,
 \end{equation*}
 esto es, ¡el mismo canal de despolarización aplicado a un sistema de menos partículas! Nótese que este resultado es muy similar al obtenido para una evolución unitaria subyacente generada por un Hamiltoniano de la forma $\mcH=H\otimes\Id+\Id\otimes H$. En dicho caso, la dinámica efectiva era, justamente, la unitaria generada por el Hamiltoniano $H$, esto como consecuencia de la simetría de la evolución: la misma para cada partícula, sin interacción. Este caso es el mismo, el canal de despolarización actúa de la misma forma sobre cada partícula, y es completamente isotrópico dentro del subespacio de cada partícula.
+
+\subsection{Amortiguamiento de amplitud}
+
+\subsection{Estabilización espontánea ?}
+Considérese que un sistema de $n$ partículas evoluciona siguiendo el canal
+\begin{equation*}
+    \mcE_{\psi,t}[\varrho]=e^{-t\mu}\varrho+(1-e^{-t \mu})\dyad{\psi}
+\end{equation*}
+donde $\dyad{\psi}\in \densityspace{n}$. Aplicando el modelo de grano grueso se obtiene que:
+\begin{equation*}
+    \rho(t)=e^{-t\mu}\rho(0)+(1-e^{-t \mu})\dyad{\psi}_{eff}
+\end{equation*}
+donde $\dyad{\psi}_{eff}=\mcC(\dyad{\psi})$. Obsérvese que el resultado es un canal del mismo tipo. La única diferencia siendo que el estado al que el sistema \textit{decae} (abusando del lenguaje) es la descripción efectiva de $\dyad{\psi}$. Como es natural, el comportamiento de la evolución es completamente dependiente de $\psi$, pero, al fin y al cabo, ¡se obtiene un canal cuántico!
 
 \subsection{Modelo de Ising}
 
@@ -78,16 +145,3 @@ La despolarización dependiente de la componente en $z$ inicial es más clara si
     \end{pmatrix}
 \end{equation*}
 \acnote{Aquí se ve la casi rotación, pero creo que lo tengo que descomponer en diferentes operaciones para notar que el desfasamiento se da de forma más fuerte conforme más pequeño es z}
-
-\subsection{Amortiguamiento de amplitud}
-
-\subsection{Estabilización espontánea ?}
-Considérese que un sistema de $n$ partículas evoluciona siguiendo el canal
-\begin{equation*}
-    \mcE_{\psi,t}[\varrho]=e^{-t\mu}\varrho+(1-e^{-t \mu})\dyad{\psi}
-\end{equation*}
-donde $\dyad{\psi}\in \densityspace{n}$. Aplicando el modelo de grano grueso se obtiene que:
-\begin{equation*}
-    \rho(t)=e^{-t\mu}\rho(0)+(1-e^{-t \mu})\dyad{\psi}_{eff}
-\end{equation*}
-donde $\dyad{\psi}_{eff}=\mcC(\dyad{\psi})$. Obsérvese que el resultado es un canal del mismo tipo. La única diferencia siendo que el estado al que el sistema \textit{decae} (abusando del lenguaje) es la descripción efectiva de $\dyad{\psi}$. Como es natural, el comportamiento de la evolución es completamente dependiente de $\psi$, pero, al fin y al cabo, ¡se obtiene un canal cuántico!
