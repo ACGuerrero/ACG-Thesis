@@ -72,39 +72,78 @@ que corresponde al canal de Pauli \ref{eq:PauliChannelN} cuando $\vec{j}=0$, y e
     P_{\pauli{1}}:\mcB(\hilbert_{2^{n}}) \rightarrow \mcB(\hilbert_{2^{n}})\nonumber\\
     P_{\pauli{1}}(\Delta)=\sum_{\vec{j}}q_{\vec{j}}\pauli{1}^{\vec{j}}\Delta\pauli{1}^{\vec{j}}\rlap{,}\nonumber
 \end{gather}
-que corresponde al canal de Pauli \ref{eq:PauliChannelN} cuando $\vec{k}=0$. Es relativamente sencillo demostrar que si se escoge $q_{\vec{j}}=\frac{1-q_{\vec{0}}}{n-1}\,\forall\,\vec{j}\neq\vec{0}$, el efecto de estos canales es de reducir la amplitud de las componentes fuera de la diagonal en un factor de $(2q_{\vec{0}}-1)$. \acnote{Debe ser sencillo, el problema es que me hago bolas con los índices.}
+que corresponde al canal de Pauli \ref{eq:PauliChannelN} cuando $\vec{k}=0$. Es relativamente sencillo demostrar que si se escoge $q_{\vec{j}}=\frac{1-q_{\vec{0}}}{2^{n}-1}\,\forall\,\vec{j}\neq\vec{0}$, el efecto de estos canales es de reducir la amplitud de las componentes fuera de la diagonal en un factor de $(2q_{\vec{0}}-1)$. \acnote{Debe ser sencillo, el problema es que me hago bolas con los índices.}
 
 Consideremos entonces en canal de desfasamiento de dos qubits en cualquiera de las dos direcciones discutidas y con probabilidades como mencionadas anteriormente. Sea $\rho_{\ef}$ un estado efectivo en $\densityspace{2}$ correspondiente a un sistema $\varrho \in \densityspace{2^{n}}$, y sea $\varrho_{\max}\in\densityspace{2^{n}}$ el estado de máxima entropía compatible con el estado efectivo. Si se propaga al estado de máxima entropía por medio de este canal y luego se pasa el resultado por la aplicación de grano grueso, el resultado es una dinámica efectiva
 \begin{equation}
-  \Gamma_{t}(\rho_{\ef})=\mcC\qty[\sum_{\vec{j}}q_{\vec{j}}\,\pauli{3}^{\vec{j}}\varrho_{\max}\pauli{3}^{\vec{j}}]\nonumber
+  \Gamma_{t}(\rho_{\ef})=\mcC\qty[\sum_{\vec{j}}q_{\vec{j}}\,\pauli{3}^{\vec{j}}\varrho_{\max}\pauli{3}^{\vec{j}}]=\mcC\qty[\sum_{\vec{j}}q_{\vec{j}}\,\qty(\Motimes_{k=1}^{n} \pauli{3}^{j_{k}}\rho_{k}\pauli{3}^{j_{k}})]\nonumber.\nonumber
 \end{equation}
 Para resolver el lado derecho de la ecuación, nótese que existen $2^{n}$ posibles vectores $\vec{j}$, y dentro de estos, $2^{n-1}$ tienen un $0$ o un $1$ en la $\nu$-ésima posición. Esto significa que hay $\frac{2^{n-1}}{n}$ ceros y $\frac{2^{n-1}}{n}$ unos en cada posible entrada de todos los $\vec{j}$. Entonces podemos usar el hecho de que tanto los operadores $\pauli{3}^{\vec{j}}$ como el estado de máxima entropía son factorizables, así como que la aplicación de grano es lineal para sumar sobre dichos ceros y unos:
-\begin{equation}
-    \mcC\qty[\sum_{\vec{j}}q_{\vec{j}}\,\pauli{3}^{\vec{j}}(\varrho_{\max})\pauli{3}^{\vec{j}}]=\mcC\qty[\sum_{\vec{j}}q_{\vec{j}}\,\qty(\Motimes_{k=1}^{n} \pauli{3}^{j_{k}}\rho_{k}\pauli{3}^{j_{k}})]\nonumber
-\end{equation}
-En esta ecuación se puede aprovechar el hecho de que tanto los operadores $\pauli{3}^{\vec{j}_{\mu,\nu}}$ como el estado de máxima entropía son factorizables así como que la aplicación de grano grueso es lineal para hallar
 \begin{align}
-    \mcC\qty[\sum_{\mu=0}^{1}\sum_{\nu=1}^{n}q_{\vec{j}_{\mu,\nu}}\pauli{3}^{\vec{j}_{\mu,\nu}}\qty(\Motimes_{k=1}^{n} \rho_{k})\pauli{3}^{\vec{j}_{\mu,\nu}}]&=\mcC\qty[\sum_{\nu=1}^{n}q_{\vec{j}_{0,\nu}}\pauli{3}^{\vec{j}_{0,\nu}}\qty(\Motimes_{k=1}^{n} \rho_{k})\pauli{3}^{\vec{j}_{0,\nu}}]+\mcC\qty[\sum_{\nu=1}^{n}q_{\vec{j}_{1,\nu}}\pauli{3}^{\vec{j}_{1,\nu}}\qty(\Motimes_{k=1}^{n} \rho_{k})\pauli{3}^{\vec{j}_{1\nu}}]\nonumber\\
-    &=\sum_{k}\nonumber
+    \mcC\qty[\sum_{\vec{j}}q_{\vec{j}}\,\qty(\Motimes_{k=1}^{n} \pauli{3}^{j_{k}}\rho_{k}\pauli{3}^{j_{k}})]=&\sum_{\vec{j}}q_{\vec{j}}\sum_{k=1}^{n}p_{k}\pauli{3}^{j_{k}}\rho_{k}\pauli{3}^{j_{k}}\nonumber\\
+    =&\sum_{\{j_{k}:j_{k}=0\}}q_{j_{k}}\sum_{k=1}^{n}p_{k}\pauli{3}^{j_{k}}\rho_{k}\pauli{3}^{j_{k}}+\sum_{\{j_{k}:j_{k}=1\}}q_{j_{k}}\sum_{k=1}^{n}p_{k}\pauli{3}^{j_{k}}\rho_{k}\pauli{3}^{j_{k}}\nonumber\\
+    =&q_{\vec{0}}\qty(\sum_{k=1}^{n}p_{k}\rho_{k})+\frac{1-q_{\vec{0}}}{2^{n}-1}(2^{n-1}-1)\qty(\sum_{k=1}^{n}p_{k}\rho_{k})+\frac{1-q_{\vec{0}}}{2^{n}-1}2^{n-1}\qty(\sum_{k=1}^{n}\pauli{3}p_{k}\rho_{k}\pauli{3}).\nonumber
 \end{align}
+Con lo que la dinámica efectiva es
+\begin{equation}
+    \Gamma_{t}(\rho_{\ef})=\qty(q_{\vec{0}}+\frac{2^{n-1}-1}{2^{n}-1}(1-q_{\vec{0}}))\rho_{\ef}+\qty(\frac{2^{n-1}}{2^{n}-1}(1-q_{\vec{0}}))\pauli{3}\rho_{\ef}\pauli{3}.\nonumber
+\end{equation}
+Nótese que la dinámica efectiva es lineal, y que únicamente depende de del número de partículas en el sistema microscópico. Aún más, este es un canal de desfasamiento de un qubit en dirección de $\pauli{3}$. Este resultado es análogo para el canal $P_{\pauli{1}}$. Para recuperar un canal de desfasamiento total (en el que todos los elementos fuera de la diagonal se hacen cero) basta con elegir $q_{\vec{j}}=\frac{1}{2^{n}}\,\forall\,\vec{j}$. En dicho caso la dinámica efectiva se reduce a
+\begin{equation}
+    \Gamma_{t}(\rho_{\ef})=\frac{1}{2}(\rho_{\ef}+\pauli{3}\rho_{\ef}\pauli{3}).\nonumber
+\end{equation}
+Esto es, el desfasamiento total en $n$ partículas se traduce como un desfasamiento total en una partícula.
 
 
 \subsubsection{Canal de despolarización}
-El canal de despolarización no es más que un canal de Pauli con distribución uniforme en las probabilidades \acnote{arreglar}
 
-Consideremos una evolución subyacente no unitaria: el canal de despolarización. El canal de despolarización para $n$ partículas está definido como
+El canal de despolarización es el canal cuántico que contrae de manera uniforme a todos los estados hacia el estado máximamente mezclado. Al canal de despolarización se le define como
+\begin{gather}\label{eq:DepolarizingChannelN}
+    D_{q}:\mcB(\hilbert_{2^{n}}) \rightarrow \mcB(\hilbert_{2^{n}})\nonumber\\
+    D_{q}(\Delta)=q\Delta+(1-q)\Id_{2^{n}}\Tr(\Delta)\rlap{.}
+\end{gather}
+Ahora, nótese que el canal de despolarización total puede verse como una concatenación de dos canales de desfasamiento total, uno en dirección $\pauli{1}$ y luego otro en dirección $\pauli{3}$ (el orden es irrelevante). Para ver esto, es particularmente útil escribir a la matriz de densidad $\varrho\in\densityspace{2^{n}}$ en términos de las componentes de su vector de Bloch,
+\begin{equation}
+    \varrho=\frac{1}{2^{n}}\sum_{\vec{j},\vec{k}}\gamma_{\vec{j},\vec{k}}\pauli{1}^{\vec{j}}\pauli{3}^{\vec{k}},\nonumber
+\end{equation}
+y notar que el efecto de dichos canales se puede ver como
+\begin{align}
+  P_{\pauli{1}}(\varrho)=\frac{1}{2^{n}}\sum_{\vec{j},\vec{k}}\delta_{\vec{k},\vec{0}}\gamma_{\vec{j},\vec{k}}\pauli{1}^{\vec{j}}\pauli{3}^{\vec{k}}  & & \text{y} & & P_{\pauli{3}}(\varrho)=\frac{1}{2^{n}}\sum_{\vec{j},\vec{k}}\delta_{\vec{j},\vec{0}}\gamma_{\vec{j},\vec{k}}\pauli{1}^{\vec{j}}\pauli{3}^{\vec{k}} \nonumber
+\end{align}
+de tal forma que su composición es
+\begin{align}
+    \qty(P_{\pauli{1}}\circ P_{\pauli{3}})(\varrho)&=\frac{1}{2^{n}}\sum_{\vec{j},\vec{k}}\delta_{\vec{j},\vec{0}}\delta_{\vec{k},\vec{0}}\gamma_{\vec{j},\vec{k}}\pauli{1}^{\vec{j}}\pauli{3}^{\vec{k}}\nonumber\\
+    &=\frac{1}{2^{n}}\gamma_{\vec{0},\vec{0}}\Id_{2^{n}}.\nonumber
+\end{align}
+Que es precisamente el efecto del canal de despolarización total. Ahora, sea $\rho_{\ef}$ un estado efectivo en $\densityspace{2}$ correspondiente a un sistema $\varrho \in \densityspace{2^{n}}$, y sea $\varrho_{\max}\in\densityspace{2^{n}}$ el estado de máxima entropía compatible con el estado efectivo. Es inmediato ver que la dinámica efectiva correspondiente a un canal de despolarización total es otro canal de despolarización total, i.e.
+\begin{equation}
+    \Gamma_{t}(\rho_{\ef})=\frac{1}{2}\Id_{2}.
+\end{equation}
+Ahora, sabiendo que
+\begin{equation}
+    \qty(P_{\pauli{1}}\circ P_{\pauli{3}})(\varrho)=\frac{1}{2^{2n}}\sum_{\vec{j},\vec{k}}\pauli{1}^{\vec{j}}\pauli{3}^{\vec{k}}\varrho\pauli{3}^{\vec{k}}\pauli{1}^{\vec{j}}=\frac{1}{2^{n}}\Id_{2^{n}}\nonumber
+\end{equation}
+la ecuación \ref{eq:DepolarizingChannelN} puede reescribirse como
+\begin{equation}
+    D_{q}(\varrho)=\frac{q(2^{2n}-1)+1}{2^{2n}}\varrho+\frac{(1-q)}{2^{2n}}\sum_{\vec{j}\land\vec{k}\neq\vec{0}}\pauli{1}^{\vec{j}}\pauli{3}^{\vec{k}}\varrho\pauli{3}^{\vec{k}}\pauli{1}^{\vec{j}}\nonumber
+\end{equation}
+Donde es explícitamente claro que el canal de despolarización es un canal de Pauli. La dinámica efectiva que corresponde al canal de despolarización no completo es simplemente
+\begin{equation}
+    \Gamma_{t}(\rho_{\ef})=q\rho_{\ef}+(1-q)\Id_{2}.\nonumber
+\end{equation}
+Esto es, la dinámica efectiva correspondiente a un canal de despolarización siempre es un canal de despolarización. Nótese que este resultado es muy similar al obtenido para una evolución unitaria subyacente generada por un Hamiltoniano de la forma $\mcH=H\otimes\Id+\Id\otimes H$. En dicho caso, la dinámica efectiva era, justamente, la unitaria generada por el Hamiltoniano $H$, esto como consecuencia de la simetría de la evolución: la misma para cada partícula, sin interacción. Este caso es el mismo, el canal de despolarización actúa de la misma forma sobre cada partícula, y es completamente isotrópico dentro del subespacio de cada partícula.
+
+\subsection{Canal de estabilización espontánea}
+
+Considérese que un sistema de $n$ partículas evoluciona siguiendo el canal
 \begin{equation*}
-    D_{\mu}(\varrho)=\mu\varrho+(1-\mu)\Id.
+    \mcE_{\psi,t}[\varrho]=e^{-t\mu}\varrho+(1-e^{-t \mu})\dyad{\psi}
 \end{equation*}
-Dado un estado efectivo inicial $\rho$, su asignación de máxima entropía es $\varrho_{\max}=\rho_{A}\otimes\rho_{B}$. El resultado de pasar al estado de máxima entropía por el canal de despolarización es simplemente
+donde $\dyad{\psi}\in \densityspace{n}$. Aplicando el modelo de grano grueso se obtiene que:
 \begin{equation*}
-    D_{\mu}(\varrho_{\max})=\mu\varrho_{\max}+(1-\mu)\Id.
+    \rho(t)=e^{-t\mu}\rho(0)+(1-e^{-t \mu})\dyad{\psi}_{eff}
 \end{equation*}
-Esto significa que la dinámica efectiva es
-\begin{equation*}
-    \Gamma_{t=1}(\rho)=\mu\rho+(1-\mu)\Id,
-\end{equation*}
-esto es, ¡el mismo canal de despolarización aplicado a un sistema de menos partículas! Nótese que este resultado es muy similar al obtenido para una evolución unitaria subyacente generada por un Hamiltoniano de la forma $\mcH=H\otimes\Id+\Id\otimes H$. En dicho caso, la dinámica efectiva era, justamente, la unitaria generada por el Hamiltoniano $H$, esto como consecuencia de la simetría de la evolución: la misma para cada partícula, sin interacción. Este caso es el mismo, el canal de despolarización actúa de la misma forma sobre cada partícula, y es completamente isotrópico dentro del subespacio de cada partícula.
+donde $\dyad{\psi}_{eff}=\mcC(\dyad{\psi})$. Obsérvese que el resultado es un canal del mismo tipo. La única diferencia siendo que el estado al que el sistema \textit{decae} (abusando del lenguaje) es la descripción efectiva de $\dyad{\psi}$. Como es natural, el comportamiento de la evolución es completamente dependiente de $\psi$, pero, al fin y al cabo, ¡se obtiene un canal cuántico!
 
 \subsection{Canal de borradura}
 
@@ -118,18 +157,17 @@ donde $\dyad{\psi}\in \densityspace{n}$. Aplicando el modelo de grano grueso se 
 \end{equation*}
 donde $\dyad{\psi}_{eff}=\mcC(\dyad{\psi})$. Obsérvese que el resultado es un canal del mismo tipo. La única diferencia siendo que el estado al que el sistema \textit{decae} (abusando del lenguaje) es la descripción efectiva de $\dyad{\psi}$. Como es natural, el comportamiento de la evolución es completamente dependiente de $\psi$, pero, al fin y al cabo, ¡se obtiene un canal cuántico!
 
-\subsection{Modelo de Ising}
 
-El Hamiltoniano del modelo de Ising transversal es
-\begin{equation*}
-    H=-\omega\qty(\sum_{\langle j,k \rangle}\pauli{3,j}\otimes\pauli{3,k}+g\sum_{k}\Id\otimes\pauli{1,k}),
-\end{equation*}
+\subsection{Cadena de espines de Heisemberg}
 
-que, si $g=0$ (fase ordenada) y tomando en cuenta únicamente un par de partículas se convierte en el Hamiltoniano de interacción
-\begin{equation*}
-    H=-\omega \pauli{3}\otimes\pauli{3}.
-\end{equation*}
-
+El hamiltoniano del modelo de Ising transversal es
+\begin{equation}
+    H=-\omega\qty(\sum_{\langle j,k \rangle}\pauli{3,j}\otimes\pauli{3,k}+g\sum_{k}\pauli{1,k}).\nonumber
+\end{equation}
+El segundo término del hamiltoniano corresponde a evoluciones locales, i.e. evoluciones unitarias factorizables como las que se estudiaron previamente. La diferencia con los casos estudiados en esa sección es que ahora el hamiltoniano contiene un término de interacción entre vecinos. Si $g=0$ (fase ordenada) el hamiltoniano se reduce a
+\begin{equation}
+    H=-\omega\sum_{\langle j,k \rangle}\pauli{3,j}\otimes\pauli{3,k}.\nonumber
+\end{equation}
 Dado un estado efectivo $\rho\in\densityspace{2}$, propagar al estado asignando a través del Principio de Máxima Entropía con dicha evolución y luego tomar la descripción dada por la aplicación de grano grueso resulta en la dinámica efectiva
 \begin{align*}
     \Gamma_{t}^{p}(\rho)=&\rho \cos^{2}(\omega)+\pauli{3} \rho \pauli{3} \sin^{2}(\omega t)\\
