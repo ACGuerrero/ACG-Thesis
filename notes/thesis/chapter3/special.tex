@@ -148,21 +148,22 @@ donde $\dyad{\psi}\in \densityspace{2^{n}}$. Es importante señalar que si se es
         \rho_{0,0} & \rho_{0,1} \\
         \rho_{1,0} & \rho_{1,1}
     \end{pmatrix}\mapsto\begin{pmatrix}
-        \rho_{0,0} & \rho_{0,1} \\
-        \rho_{1,0} & \rho_{1,1}
+        (1-\gamma)\rho_{0,0}+\gamma & \sqrt{1-\gamma}\rho_{0,1} \\
+        \sqrt{1-\gamma}\rho_{1,0} & (1-\gamma)\rho_{1,1}
     \end{pmatrix},\nonumber
 \end{equation}
-mientras que el canal $\mcE_{\ket{0},t}$ tiene el efecto
+donde $\gamma$ puede verse como la probabilidad de emisión de un fotón, mientras que el canal $\mcE_{\ket{0},t}$ tiene el efecto
 \begin{equation}
     \begin{pmatrix}
         \rho_{0,0} & \rho_{0,1} \\
         \rho_{1,0} & \rho_{1,1}
     \end{pmatrix}\mapsto\begin{pmatrix}
-        \rho_{0,0} & \rho_{0,1} \\
-        \rho_{1,0} & \rho_{1,1}
+        (1-\gamma)\rho_{0,0}+\gamma & (1-\gamma)\rho_{0,1} \\
+        (1-\gamma)\rho_{1,0} & (1-\gamma)\rho_{1,1}
     \end{pmatrix}.\nonumber
 \end{equation}
-Con lo que queda bien establecida la diferencia entre el canal de amortiguamiento de amplitud y el de estabilización.
+donde se ha hecho $e^{\mu t}=\gamma$. Es claro que el canal de amortiguamiento y el canal de estabilización tienen efectos diferentes en las fases del estado. Aún más, mientras que la extensión del canal de estabilización a $n$ partículas es directa, la generalización del canal de amortiguamiento de amplitud es no trivial. \acnote{agregar cita.}
+
 Ahora, sea $\rho_{\ef}$ un estado efectivo en $\densityspace{2}$ y $\varrho_{\max}$ el estado de máxima entropía en $\densityspace{2^{n}}$ compatible con este. Aplicando el modelo de grano grueso al estado de máxima entropía propagado por el canal de estabilización se obtiene que
 \begin{equation}
     \Gamma_{t}(\rho_{\ef})=e^{-t\mu}\rho(0)+(1-e^{-t \mu})\mcC(\dyad{\psi}).\nonumber
