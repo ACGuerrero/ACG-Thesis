@@ -133,30 +133,41 @@ Donde es explícitamente claro que el canal de despolarización es un canal de P
 \end{equation}
 Esto es, la dinámica efectiva correspondiente a un canal de despolarización siempre es un canal de despolarización. Nótese que este resultado es muy similar al obtenido para una evolución unitaria subyacente generada por un Hamiltoniano de la forma $\mcH=H\otimes\Id+\Id\otimes H$. En dicho caso, la dinámica efectiva era, justamente, la unitaria generada por el Hamiltoniano $H$, esto como consecuencia de la simetría de la evolución: la misma para cada partícula, sin interacción. Este caso es el mismo, el canal de despolarización actúa de la misma forma sobre cada partícula, y es completamente isotrópico dentro del subespacio de cada partícula.
 
-\subsection{Canal de estabilización espontánea}
+\subsection{Canal de estabilización}
 
-Considérese que un sistema de $n$ partículas evoluciona siguiendo el canal
-\begin{equation*}
-    \mcE_{\psi,t}[\varrho]=e^{-t\mu}\varrho+(1-e^{-t \mu})\dyad{\psi}
-\end{equation*}
-donde $\dyad{\psi}\in \densityspace{n}$. Aplicando el modelo de grano grueso se obtiene que:
-\begin{equation*}
-    \rho(t)=e^{-t\mu}\rho(0)+(1-e^{-t \mu})\dyad{\psi}_{eff}
-\end{equation*}
-donde $\dyad{\psi}_{eff}=\mcC(\dyad{\psi})$. Obsérvese que el resultado es un canal del mismo tipo. La única diferencia siendo que el estado al que el sistema \textit{decae} (abusando del lenguaje) es la descripción efectiva de $\dyad{\psi}$. Como es natural, el comportamiento de la evolución es completamente dependiente de $\psi$, pero, al fin y al cabo, ¡se obtiene un canal cuántico!
+El canal de amortiguamiento de amplitud funciona como un modelo simple de emisión espontánea. En efecto, un átomo de dos niveles acoplado a un campo electromagnético experimenta emisión espontánea, y puede demostrarse que este proceso corresponde a un canal de amortiguamiento de amplitud si se traza al campo y se considera que la frecuencia del campo es igual a la frecuencia de resonancia de transiciones entre los niveles del átomo. El canal de amortiguamiento de amplitud tiene el efecto de enviar todos los estados al estado base. Aquí estudiaremos un canal más sencillo, que envía todos los estados a un estado puro aleatorio $\ket{\psi}$ de forma exponencial en el tiempo, como si el átomo de dos niveles tendiera a estabilizarse en dicho estado.
 
-\subsection{Canal de borradura}
-
-Considérese que un sistema de $n$ partículas evoluciona siguiendo el canal
-\begin{equation*}
-    \mcE_{\psi,t}[\varrho]=e^{-t\mu}\varrho+(1-e^{-t \mu})\dyad{\psi}
-\end{equation*}
-donde $\dyad{\psi}\in \densityspace{n}$. Aplicando el modelo de grano grueso se obtiene que:
-\begin{equation*}
-    \rho(t)=e^{-t\mu}\rho(0)+(1-e^{-t \mu})\dyad{\psi}_{eff}
-\end{equation*}
-donde $\dyad{\psi}_{eff}=\mcC(\dyad{\psi})$. Obsérvese que el resultado es un canal del mismo tipo. La única diferencia siendo que el estado al que el sistema \textit{decae} (abusando del lenguaje) es la descripción efectiva de $\dyad{\psi}$. Como es natural, el comportamiento de la evolución es completamente dependiente de $\psi$, pero, al fin y al cabo, ¡se obtiene un canal cuántico!
-
+Considérese entonces que un sistema de $n$ partículas evoluciona siguiendo el canal cuántico
+\begin{gather}
+    \mcE_{\psi,t}:\mcB(\hilbert_{2^{n}}) \rightarrow \mcB(\hilbert_{2^{n}})\nonumber\\
+    \mcE_{\psi,t}(\Delta)=e^{-t\mu}\varrho+(1-e^{-t \mu})\dyad{\psi}\Tr(\Delta)\rlap{.}\nonumber
+\end{gather}
+donde $\dyad{\psi}\in \densityspace{2^{n}}$. Es importante señalar que si se escoge $n=1$ y $\ket{\psi}=\ket{0}$ no se recupera el canal de amortiguamiento de amplitud, pues el canal de amortiguamiento de amplitud tiene el siguiente efecto sobre la matriz de densidad
+\begin{equation}
+    \begin{pmatrix}
+        \rho_{0,0} & \rho_{0,1} \\
+        \rho_{1,0} & \rho_{1,1}
+    \end{pmatrix}\mapsto\begin{pmatrix}
+        \rho_{0,0} & \rho_{0,1} \\
+        \rho_{1,0} & \rho_{1,1}
+    \end{pmatrix},\nonumber
+\end{equation}
+mientras que el canal $\mcE_{\ket{0},t}$ tiene el efecto
+\begin{equation}
+    \begin{pmatrix}
+        \rho_{0,0} & \rho_{0,1} \\
+        \rho_{1,0} & \rho_{1,1}
+    \end{pmatrix}\mapsto\begin{pmatrix}
+        \rho_{0,0} & \rho_{0,1} \\
+        \rho_{1,0} & \rho_{1,1}
+    \end{pmatrix}.\nonumber
+\end{equation}
+Con lo que queda bien establecida la diferencia entre el canal de amortiguamiento de amplitud y el de estabilización.
+Ahora, sea $\rho_{\ef}$ un estado efectivo en $\densityspace{2}$ y $\varrho_{\max}$ el estado de máxima entropía en $\densityspace{2^{n}}$ compatible con este. Aplicando el modelo de grano grueso al estado de máxima entropía propagado por el canal de estabilización se obtiene que
+\begin{equation}
+    \Gamma_{t}(\rho_{\ef})=e^{-t\mu}\rho(0)+(1-e^{-t \mu})\mcC(\dyad{\psi}).\nonumber
+\end{equation}
+Obsérvese que la dinámica efectiva es un canal cuántico, pero no necesariamente un canal de estabilización, pues el estado al que tiende el sistema efectivo, $\mcC(\dyad{\psi})$ no tiene por qué ser un estado puro. En realidad, en el caso en que $\ket{\psi}$ es un estado máximamente entrelazado, $\mcC(\dyad{\psi})$ es el estado máximamente mezclado, de tal manera que la dinámica efectiva es un canal de despolarización.
 
 \subsection{Cadena de espines de Heisemberg}
 
