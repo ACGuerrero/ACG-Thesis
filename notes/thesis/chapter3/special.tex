@@ -170,13 +170,17 @@ Ahora, sea $\rho_{\ef}$ un estado efectivo en $\densityspace{2}$ y $\varrho_{\ma
 \end{equation}
 Obsérvese que la dinámica efectiva es un canal cuántico, pero no necesariamente un canal de estabilización, pues el estado al que tiende el sistema efectivo, $\mcC(\dyad{\psi})$ no tiene por qué ser un estado puro. En realidad, en el caso en que $\ket{\psi}$ es un estado máximamente entrelazado, $\mcC(\dyad{\psi})$ es el estado máximamente mezclado, de tal manera que la dinámica efectiva es un canal de despolarización.
 
-\subsection{Cadena de espines de Heisemberg}
+\subsection{Cadena de espines de Heisenberg}
 
-El hamiltoniano del modelo de Ising transversal es
+El modelo $XZY_{s}$ unodimensional de Heisenberg consiste en una cadena de $n$ partículas de espín $s$ en la que se consideran interacciones de espín entre primeros vecinos. Se ha demostrado que la cadena de Heisenberg describe el comportamiento de algunos metales y cristales \acnote{cita}. El hamiltoniano del modelo de Heisenberg en el caso de espín $\frac{1}{2}$ es
 \begin{equation}
-    H=-\omega\qty(\sum_{\langle j,k \rangle}\pauli{3,j}\otimes\pauli{3,k}+g\sum_{k}\pauli{1,k}).\nonumber
+    H=\sum_{k=1}^{n}\qty(J_{1}\pauli{1,k}\pauli{1,k+1}+J_{2}\pauli{2,k}\pauli{2,k+1}+J_{3}\pauli{3,k}\pauli{3,k+1})-g\sum_{k=1}^{n}\pauli{2,k},
 \end{equation}
-El segundo término del hamiltoniano corresponde a evoluciones locales, i.e. evoluciones unitarias factorizables como las que se estudiaron previamente. La diferencia con los casos estudiados en esa sección es que ahora el hamiltoniano contiene un término de interacción entre vecinos. Si $g=0$ (fase ordenada) el hamiltoniano se reduce a
+donde $J_{k}$ son las constantes de acoplamiento, $\pauli{j,k}$ es el operador de Pauli $j$ que actúa sobre la $k$-ésima partícula, y $g$ es la constante del campo transversal. Existen diferentes simplificaciones que pueden hacerse del modelo de Heisenberg. La primera es el caso $J_{1}=J_{2}=J_{3}$, llamado modelo $XXX_{\frac{1}{2}}$. La segunda es considerar que las interacciones entre las partículas se da únicamente en la dirección de $\pauli{3}$, que corresponde al modelo unidimensional de Ising. Además, en ambos casos es posible hacer nulo el campo transversal, i.e. $g=0$
+
+\subsubsection{Modelo de Ising}
+
+Si $g=0$ (fase ordenada) el hamiltoniano se reduce a
 \begin{equation}
     H=-\omega\sum_{\langle j,k \rangle}\pauli{3,j}\otimes\pauli{3,k}.\nonumber
 \end{equation}
@@ -230,3 +234,62 @@ La despolarización dependiente de la componente en $z$ inicial es más clara si
     \end{pmatrix}
 \end{equation*}
 \acnote{Aquí se ve la casi rotación, pero creo que lo tengo que descomponer en diferentes operaciones para notar que el desfasamiento se da de forma más fuerte conforme más pequeño es z}
+
+
+\subsubsection{Modelo XXX de Heisemberg}
+
+Si $g=0$ (fase ordenada) el hamiltoniano se reduce a
+\begin{equation}
+    H=-\omega\sum_{\langle j,k \rangle}\pauli{3,j}\otimes\pauli{3,k}.\nonumber
+\end{equation}
+Dado un estado efectivo $\rho\in\densityspace{2}$, propagar al estado asignando a través del Principio de Máxima Entropía con dicha evolución y luego tomar la descripción dada por la aplicación de grano grueso resulta en la dinámica efectiva
+\begin{align*}
+    \Gamma_{t}^{p}(\rho)=&\rho \cos^{2}(\omega)+\pauli{3} \rho \pauli{3} \sin^{2}(\omega t)\\
+    & + i\sin(\omega t)\cos(\omega t)\qty(p\expval{\pauli{3}}_{B}[\pauli{3},\rho_{A}]+(1-p)\expval{\pauli{3}}_{A}[\pauli{3},\rho_{B}]).
+\end{align*}
+Reconocemos dos términos: uno lineal y uno no lineal. El primero tiene forma de canal de desfasamiento sobre el estado efectivo. El segundo depende de los parámetros de la aplicación de grano grueso y de los valores esperados con respecto a los operadores de densidad reducidos del estado de máxima entropía. En efecto, el caso límite $p=1$ o $p=1$ simplemente reduce la dinámica a un canal de desfasamiento:
+
+\begin{equation*}
+    \Gamma_{t}^{p=1}(\rho)=\rho \cos^{2}(\omega)+\pauli{3} \rho \pauli{3} \sin^{2}(\omega t).
+\end{equation*}
+
+mientras que el caso $p=\frac{1}{2}$ revela el efecto del término no lineal:
+
+\begin{equation*}
+    \Gamma_{t}^{p=\frac{1}{2}}(\rho)=\rho \cos^{2}(\omega)+\pauli{3} \rho \pauli{3} \sin^{2}(\omega t) + i\expval{\pauli{3}} \qty[\pauli{3},\rho] \sin(\omega t)\cos(\omega t).
+\end{equation*}
+
+Nótese que, si del factor $\expval{\pauli{3}}=1$, la dinámica sería no solo lineal, sino unitaria, y correspondería a una rotación respecto al eje $z$, de no ser que los únicos estados tales que $\expval{\pauli{3}}=1$ son invariantes bajo dichas rotaciones. En realidad, lo que se observa es que la dinámica efectiva es una rotación respecto a $z$ que depende de la componente en $z$ del estado efectivo inicial. Cuando $\expval{\pauli{3}}=0$, la dinámica es un canal de despolarización que manda a todos los estados al eje $z$ (a un tiempo $\omega t =\frac{\pi}{4}$). 
+
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}{0.32\textwidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_special/sphere_Ising_t=0._z=0.9_p=0.5.png}
+      \caption{$t=0$}
+    \end{subfigure}%
+    \begin{subfigure}{0.32\textwidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_special/sphere_Ising_t=0.5_z=0.9_p=0.5.png}
+      \caption{$t=0.5$}
+    \end{subfigure}
+    \begin{subfigure}{0.32\textwidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_special/sphere_Ising_t=1._z=0.9_p=0.5.png}
+      \caption{$t=1$}
+    \end{subfigure}
+    \caption{Efecto del la evolución sobre la esfera de Bloch cuando $p=\frac{1}{2}$. Nótese que el desfasamiento sólo se completa en el eje $xy$.}
+    \label{fig:Ising_p0.5_Sequence}
+    \end{figure}
+
+La despolarización dependiente de la componente en $z$ inicial es más clara si se observa el efecto de la evolución sobre el vector de Bloch. Abusando un poco de la notación se nota que 
+
+\begin{equation*}
+    \Gamma_{t}^{p=\frac{1}{2}}(\vec{r}_{\rho})=\begin{pmatrix}
+        x\cos(2\omega t)-yz\sin(2\omega t)\\
+        y\cos(2\omega t)+xz(2\omega t)\\
+        z\\
+    \end{pmatrix}
+\end{equation*}
+\acnote{Aquí se ve la casi rotación, pero creo que lo tengo que descomponer en diferentes operaciones para notar que el desfasamiento se da de forma más fuerte conforme más pequeño es z}
+
