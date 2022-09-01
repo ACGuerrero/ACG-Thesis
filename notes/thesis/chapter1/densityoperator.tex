@@ -164,7 +164,10 @@ para toda base ortonormal $\{\ket{\varphi^{C}_{j}}\}$ de $\hilbert^{C}$. Entonce
 \begin{equation}
     \Tr_{B}(\rho^{C})=\sum_{j}(\Id^{A}\otimes \bra{\varphi^{B}_{j}})\rho^{C}(\Id^{A}\otimes \ket{\varphi^{B}_{j}}).\nonumber
 \end{equation}
-Puede verse que el resultado de la operación es trazar sobre los elementos del sistema que no es de interés. La matriz reducida del sistema $A$, o traza parcial con respecto al sistema $B$, actúa como matriz de densidad de $A$, ya que contiene toda la descripción estadística de dicho subsistema.
+Puede verse que el resultado de la operación es trazar sobre los elementos del sistema que no es de interés. La matriz reducida del sistema $A$, o traza parcial con respecto al sistema $B$, actúa como matriz de densidad de $A$, ya que contiene toda la descripción estadística de dicho subsistema. \ddnote{En particular obsérvese lo siguiente, sea $G^A$ una observable del sistema $A$, \ie{} $G^A$ actúa en $\rho^C$ como $(G^A\otimes \Id_B)$, se tiene entonces que
+$$ \langle G^A \rangle =\tr\left((G^A\otimes \Id_B)\rho^C\right)=\tr \left( G^A \rho^A \right).$$
+}
+\ddnote{De pronto pon esto con tus palabras si no te gusta como está escrito.}
 
 \subsection{Evolución y parametrización}
 \acnote{Esta subsección ha sido iterada: reescritura.}
@@ -188,7 +191,7 @@ De la misma forma que antes, la solución queda expresada en términos de un ope
     \rho(t)=U(t,t_{0})\rho(t_{0})U^{\dagger}(t,t_{0}).\nonumber
 \end{equation}
 \subsubsection{Evolución de sistemas abiertos}
-Considérese, en cambio, que el sistema de interés $\rho_{S}$ se halla acoplado a un entorno $\rho_{E}$ y que, inicialmente, el conjunto de estos dos conforma un sistema cerrado descrito por el operador de densidad $\rho(0)=\rho_{S}(0)\otimes\rho_{E}$. Esta condición inicial está justificada experimentalmente: una medición proyectiva sobre el sistema de interés proyecta al sistema a un estado factorizable, así que estos estados son siempre preparables. Como el sistema es cerrado, este evoluciona siguiendo la ecuación de Liouville-von Neumann,
+Considérese, en cambio, que el sistema de interés $\rho_{S}$ se halla acoplado a un entorno $\rho_{E}$ y que, inicialmente, el conjunto de estos dos conforma un sistema cerrado descrito por el operador de densidad $\rho(0)=\rho_{S}(0)\otimes\rho_{E}$. Esta condición inicial está justificada experimentalmente \ddnote*{si se considera que el sistema $S$ se prepara al hacer una medición proyectiva, de tal manera que el estado total queda separable}{: una medición proyectiva sobre el sistema de interés proyecta al sistema a un estado factorizable, así que estos estados son siempre preparables.}. \ddnote*{Dado que el}{Como el sistema} \ddnote {total} es cerrado, este evoluciona siguiendo la ecuación de Liouville-von Neumann,
 \begin{align}
     \rmi\hbar\frac{d}{d t} \rho(t)=[H,\rho(t)] && \text{con} && \rho(0)=\rho_{S}(0)\otimes\rho_{E}\rlap{.}\nonumber
 \end{align}
@@ -196,22 +199,25 @@ Sin embargo, para hallar la ecuación de la dinámica del sistema de interés es
 \begin{align}
     \rmi\hbar\frac{d}{d t} \rho_{S}(t)=\Tr_{E}([H,\rho(t)]) && \text{con} && \rho(0)=\rho_{S}(0)\otimes\rho_{E}\rlap{,}\nonumber
 \end{align}
-cuya solución formal está dada en términos de un operador $\mcE_{t}$,
+cuya solución formal está dada en términos de un \ddnote*{superoperador parametrizado por $t$,}{operador} $\mcE_{t}$,
 \begin{equation}
     \rho_{S}(t)=\mcE_{t}(\rho_{S}(0)).\nonumber
 \end{equation}
 En esta ecuación, $\mcE_{t}$ está definido como
  \begin{equation}
-    \mcE_{t}(\rho_{S}(0))=\Tr_{E}\qty[U(t,0)\rho(0)U^{\dag}(t,0)],\nonumber
+    \mcE_{t}(\rho_{S}(0))=\Tr_{E}\qty[U(t,0)\left(\rho_{S}(0)\otimes\rho_{E}\right)U^{\dag}(t,0)],\nonumber
  \end{equation}
- y cumple que es un canal cuántico \acnote{también llamado aplicación dinámica \cite{Breuer} o operación cuántica \cite{Chuang}} cuántico $\forall t$, y que $\mcE_{0}=\Id_{S}$. El formalismo de los canales cuánticos queda fuera del alcance de este trabajo, y sin entrar en más detalle, basta con señalar que los canales cuánticos son aplicaciones lineales completamente positivas que preservan la traza, \ie, todo canal cuántico $\mcE:\mcB(\hilbert_{A})\rightarrow \mcB(\hilbert_{B})$ cumple que \cite{Watrous}
+ \ddnote{cambié un poco esta ecuación}
+ 
+ y cumple que es un canal cuántico \ddnote{[cita], puedes citar el libro de Mario Ziman y el Nielsen and Chuang} \acnote{también llamado aplicación dinámica \cite{Breuer} o operación cuántica \cite{Chuang}} cuántico $\forall t$, y que \ddnote*{Aguas, esto es incorrecto, $\mcE_0$ no es la matriz identidad en $S$ al tiempo cero. Lo correcto es $\mcE_0=\text{id}_S$}{$\mcE_{0}=\Id_{S}$}. El formalismo de los canales cuánticos queda fuera del alcance de este trabajo, y sin entrar en más detalle, basta con señalar que los canales cuánticos son aplicaciones lineales completamente positivas que preservan la traza, \ie, todo canal cuántico $\mcE:\mcB(\hilbert_{A})\rightarrow \mcB(\hilbert_{B})$ cumple que \cite{Watrous}
+ \ddnote{Lo que sigue está escrito raro, se presta a confusiones, propongo correcctión:}
  \begin{enumerate}
-    \item $\mcE\otimes \Id_{\mcB(\hilbert_{C})}$ es positivo para cualquier $\hilbert_{C}$.
+    \item \ddnote*{$\mcE\otimes \text{id}_{k}: \mcB(\hilbert_A \otimes \hilbert_k)\to \mcB(\hilbert_B \otimes \hilbert_k)$ es positivo para todo $k=1,2,\dots$.}{$\mcE\otimes \Id_{\mcB(\hilbert_{C})}$ es positivo para cualquier $\hilbert_{C}$.}
     \item $\Tr\qty(\mcE(\Delta))=\Tr\qty(\Delta)$.
  \end{enumerate}
 Los canales cuánticos están relacionados directamente al esquema de sistemas abiertos a través del teorema de Stinespring \cite{Watrous}, de acuerdo con el cual dado un canal cuántico
 \begin{equation}
-    \mcE:\mcB(\hilbert_{A})\rightarrow \mcB(\hilbert_{B}),\nonumber
+    \mcE:\mcB(\hilbert)\rightarrow \mcB(\hilbert),\nonumber
 \end{equation}    
 existen un espacio de Hilbert $\hilbert_{C}$ y un operador unitario $U$ que actúa sobre $\hilbert_{A}\otimes \hilbert_{C}$ tales que
 \begin{equation}
