@@ -116,21 +116,21 @@ se cumple que $\rho=\dyad{\varphi_{i}}$ $\forall i$,} entonces decimos que $\rho
 \ddnote{Cambiado $n$ por 2}
 \acnote{---------------- Nuevo:}
 \fi
-Observamos entonces que hay una diferencia fundamental entre los sistemas que pueden ser descritos por un vector de estado y aquellos que no. Considérese el caso en que, dada la expresión \ref{eq:DensOpMix}, el estado del sistema es $\dyad{\varphi_{1}}$ con  probabilidad $p_{1}=1$, i.e. $\rho=\dyad{\varphi_{1}}$. En tal caso decimos que $\rho$ es un estado puro. Claramente, $\rho^{2}=\rho$. Esto hace de $\rho$ un proyector, de lo que se sigue que $\Tr(\rho^{1})=1$. 
+Observamos entonces que hay una diferencia fundamental entre los sistemas que pueden ser descritos por un vector de estado y aquellos que no. Considérese el caso en que, dada la expresión \ref{eq:DensOpMix}, el estado del sistema es $\ket{\varphi_{1}}$ \ddnote{lo cambié por el ket, para que quede entendido que un estado puro es describible con un ket} con  probabilidad $p_{1}=1$, i.e. $\rho=\dyad{\varphi_{1}}$. En tal caso decimos que $\rho$ es un estado puro. Claramente, $\rho^{2}=\rho$. Esto hace de $\rho$ un proyector\ddnote{de rango $1$, de otra forma no se cumple que la traza sea $1$, por ej la matriz identidad es un proyector de rango completo}, de lo que se sigue que $\Tr(\rho^{1})=1$. 
 
-Como en general se cumple que $\Tr(\rho^{2})\leq 1$, definimos a la pureza como una medida de que tan puro es un estado como \cite{Jaeger}
+Como en general se cumple que \ddnote*{$\Tr(\rho^{2})=\sum_i p^2_i\leq 1$}{$\Tr(\rho^{2})\leq 1$}, definimos a la pureza como una medida de que tan puro es un estado como \cite{Jaeger}
 \begin{equation}
     \text{Pu}(\rho)=\Tr(\rho^{2}).\nonumber
 \end{equation}
 De esta definición es posible afirmar que
 \begin{itemize}
     \item Un estado es puro si y sólo si $\text{Pu}(\rho)=1$.
-    \item Para todo estado, $\frac{1}{n}\leq \text{Pu}(\rho)\leq 1$.
+    \item Para todo estado $\rho$, $\frac{1}{n}\leq \text{Pu}(\rho)\leq 1$.
 \end{itemize}
 
 \subsection{Sistemas multipartitos}\label{sec:Ch1PartialTrace}
 \acnote{El siguiente párrafo ha sido iterado: notas}
-Hasta ahora hemos hablado de sistemas descritos por operadores de densidad en $\densityspace{n}$, pero, ¿qué sucede si el sistema que estudiamos está conformado por dos subsistemas, cada uno descrito a través de sus respectivos espacios de Hilbert? Sean, pues, $A$ y $B$ dos sistemas con espacios de Hilbert de dimensión finita $\hilbert^{A}$ y $\hilbert^{B}$, y sea $C$ un sistema compuesto por $A$ y $B$. Entonces el producto tensorial de los espacios $\hilbert^{A}$ y $\hilbert^{B}$ es otro espacio de Hilbert \ddnote{(en el caso de dimensión finita)}\acnote{corregido}, uno asociado al sistema $C$:
+Hasta ahora hemos hablado de sistemas descritos por operadores de densidad en $\densityspace{n}$, pero, ¿qué sucede si el sistema que estudiamos está conformado por dos subsistemas, cada uno descrito a través de sus respectivos espacios de Hilbert? Sean, pues, $A$ y $B$ dos sistemas con espacios de Hilbert de dimensión finita $\hilbert^{A}$ y $\hilbert^{B}$, y sea $C$ un sistema compuesto por $A$ y $B$. Entonces el producto tensorial de los espacios $\hilbert^{A}$ y $\hilbert^{B}$ es otro espacio de Hilbert, uno asociado al sistema $C$:
  \begin{equation}
      \hilbert^{C}=\hilbert^{A}\otimes\hilbert^{B}.\nonumber
  \end{equation}
@@ -142,7 +142,7 @@ Si $A$ y $B$ representaran dos partículas diferentes, entonces $C$ representa a
 \begin{equation}
     \ket{\psi^{A}}\otimes\ket{\psi^{B}}\in\hilbert^{C}\,\; \; \forall\ket{\psi^{A}}\in\hilbert^{A},\ket{\psi^{B}}\in\hilbert^{B}.\nonumber
 \end{equation}
-Si un estado puede escribirse como un producto tensorial de estados pertenecientes a los subsistemas del sistema multipartito, entonces se dice que es un estado \textit{producto} o \textit{separable}. Nótese que, en general, los estados del sistema compuesto no son estados separables. En realidad, dadas $\{\varphi_{i}^{A}\}$ y $\{\varphi_{j}^{B}\}$ bases ortonormales de los espacios $\hilbert^{A}$ y $\hilbert^{B}$ respectivamente, podemos escribir a todo estado puro $\ket{\psi^{C}}$ del sistema multipartito como
+Si un estado puede escribirse como un producto tensorial de estados pertenecientes a los subsistemas del sistema multipartito, entonces se dice que es un estado \textit{producto} o \textit{separable}. Nótese que, en general, los estados del sistema compuesto no son estados separables. En realidad, dadas \ddnote*{las bases están formadas por kets, no solo por los simbolos dentro de los kets. Para claridad, por fas pon las bases como kets}{$\{\varphi_{i}^{A}\}$ y $\{\varphi_{j}^{B}\}$} bases ortonormales de los espacios $\hilbert^{A}$ y $\hilbert^{B}$ respectivamente, podemos escribir a todo estado puro $\ket{\psi^{C}}$ del sistema multipartito como
 \begin{equation}
     \ket{\psi^{AB}}=\sum_{j,k}\alpha_{j,k}\ket{\varphi_{j}^{A}}\otimes\ket{\varphi_{k}^{B}}.\nonumber
 \end{equation}
