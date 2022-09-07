@@ -180,28 +180,59 @@ donde $J_{k}$ son las constantes de acoplamiento, $\pauli{j,k}$ es el operador d
 
 \subsubsection{Modelo de Ising}
 
-Si $g=0$ (fase ordenada) el hamiltoniano se reduce a
+Como primer ejemplo, considérese el modelo de Ising sin campo transversal (i.e. $g=0$). En este caso, el hamiltoniano se reduce a
 \begin{equation}
-    H=-\omega\sum_{\langle j,k \rangle}\pauli{3,j}\otimes\pauli{3,k}.\nonumber
+    H=\omega\sum_{k=1}^{n-1}\pauli{3,k}\pauli{3,k+1}.\nonumber
 \end{equation}
-Dado un estado efectivo $\rho\in\densityspace{2}$, propagar al estado asignando a través del Principio de Máxima Entropía con dicha evolución y luego tomar la descripción dada por la aplicación de grano grueso resulta en la dinámica efectiva
-\begin{align*}
-    \Gamma_{t}^{p}(\rho)=&\rho \cos^{2}(\omega)+\pauli{3} \rho \pauli{3} \sin^{2}(\omega t)\\
-    & + i\sin(\omega t)\cos(\omega t)\qty(p\expval{\pauli{3}}_{B}[\pauli{3},\rho_{A}]+(1-p)\expval{\pauli{3}}_{A}[\pauli{3},\rho_{B}]).
-\end{align*}
-Reconocemos dos términos: uno lineal y uno no lineal. El primero tiene forma de canal de desfasamiento sobre el estado efectivo. El segundo depende de los parámetros de la aplicación de grano grueso y de los valores esperados con respecto a los operadores de densidad reducidos del estado de máxima entropía. En efecto, el caso límite $p=1$ o $p=1$ simplemente reduce la dinámica a un canal de desfasamiento:
+si la cadena es abierta. Para que la cadena sea cerrada basta con añadir el término de interacción entre la primera y la $n$-ésima partícula,
+\begin{equation}
+    H=\omega\qty(\pauli{3,1}\pauli{3,n}+\sum_{k=1}^{n-1}\pauli{3,k}\pauli{3,k+1}).\nonumber
+\end{equation}
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}{0.5\textwidth}
+      \centering
+      \includegraphics[width=0.5\linewidth]{chapter3/figures_special/isingchain1.jpg}
+      \caption{Cadena de Ising abierta.}
+    \end{subfigure}%
+    \begin{subfigure}{0.5\textwidth}
+      \centering
+      \includegraphics[width=0.5\linewidth]{chapter3/figures_special/isingchain1.jpg}
+      \caption{Cadena de Ising cerrada}
+    \end{subfigure}
+    \label{fig:IsingChainOpenAndClosed}
+\end{figure}
+Sea entonces $\rho_{\ef}\in\densityspace{2}$ un estado efectivo correspondiente a un sistema de $n=2$ partículas, y $\varrho_{\max}$ el estado microscópico compatible con $\rho_{\ef}$ que maximiza la entropía. El hamiltoniano del sistema microscópico es, explícitamente,
+\begin{equation}
+    H=\omega\qty(\pauli{3}\otimes\pauli{3}),\nonumber
+\end{equation}
+de tal forma que dicho sistema evoluciona de acuerdo al operador unitario
+\begin{equation}
+    U=\Id \cos(\omega t)+ \rmi \pauli{3}\otimes\pauli{3} \sin(\omega t).\nonumber
+\end{equation}
+Si se propaga al estado de máxima entropía con dicho operador y se le pasa por la aplicación de grano grueso, la dinámica efectiva es
+\begin{align}
+    \Gamma_{t}(\rho_{\ef})=&\rho_{\ef} \cos^{2}(\omega)+\pauli{3} \rho_{\ef} \pauli{3} \sin^{2}(\omega t)\nonumber\\
+    & + \rmi \sin(\omega t)\cos(\omega t)\qty(p_{1}\expval{\pauli{3}}_{2}[\pauli{3},\rho_{1}]+p_{2}\expval{\pauli{3}}_{1}[\pauli{3},\rho_{2}]).\nonumber
+\end{align}
+Dentro de la expresión de la dinámica efectiva reconocemos dos términos. El primero es un canal de desfasamiento sobre el estado efectivo, mientras que el segundo depende tanto de los parámetros de la aplicación de grano grueso, $p_{1}$ y $p_{2}$, como de valores esperados con respecto a los operadores de densidad reducidos del estado de máxima entropía. En efecto, el caso límite $p_{1}=1$ ve la dinámica efectiva reducida a un canal de desfasamiento en el tiempo,
+\begin{equation}
+    \Gamma_{t}(\rho_{\ef})=\rho_{\ef} \cos^{2}(\omega)+\pauli{3} \rho_{\ef} \pauli{3} \sin^{2}(\omega t).\nonumber
+\end{equation}
+mientras que el caso $p_{1}=p_{2}=\frac{1}{2}$ puede ser más informativo respecto al segundo término, pues en dicho caso
+\begin{equation}
+    \Gamma_{t}(\rho_{\ef})=\rho_{\ef} \cos^{2}(\omega)+\pauli{3} \rho_{\ef} \pauli{3} \sin^{2}(\omega t) + i\expval{\pauli{3}} \qty[\pauli{3},\rho_{\ef}] \sin(\omega t)\cos(\omega t).\nonumber
+\end{equation}
+Nótese que si $\expval{\pauli{3}}=1$, la dinámica es no solo lineal, sino unitaria, y corresponde a una rotación respecto al eje $z$, (con el detalle de que los estados tales que $\expval{\pauli{3}}=1$ son invariantes bajo dichas rotaciones). En realidad, el efecto de la dinámica efectiva sobre el estado es más clara en términos del vector de Bloch del estado inicial, $\vec{r}_{\ef}$.
+\begin{equation}
+    \Gamma_{t}(\vec{r}_{\ef})=\begin{pmatrix}
+        x\cos(2\omega t)-yz\sin(2\omega t)\\
+        xz\sin(2\omega t)+y\cos(2\omega t)\\
+        z\\
+    \end{pmatrix}.\nonumber
+\end{equation}
 
-\begin{equation*}
-    \Gamma_{t}^{p=1}(\rho)=\rho \cos^{2}(\omega)+\pauli{3} \rho \pauli{3} \sin^{2}(\omega t).
-\end{equation*}
-
-mientras que el caso $p=\frac{1}{2}$ revela el efecto del término no lineal:
-
-\begin{equation*}
-    \Gamma_{t}^{p=\frac{1}{2}}(\rho)=\rho \cos^{2}(\omega)+\pauli{3} \rho \pauli{3} \sin^{2}(\omega t) + i\expval{\pauli{3}} \qty[\pauli{3},\rho] \sin(\omega t)\cos(\omega t).
-\end{equation*}
-
-Nótese que, si del factor $\expval{\pauli{3}}=1$, la dinámica sería no solo lineal, sino unitaria, y correspondería a una rotación respecto al eje $z$, de no ser que los únicos estados tales que $\expval{\pauli{3}}=1$ son invariantes bajo dichas rotaciones. En realidad, lo que se observa es que la dinámica efectiva es una rotación respecto a $z$ que depende de la componente en $z$ del estado efectivo inicial. Cuando $\expval{\pauli{3}}=0$, la dinámica es un canal de despolarización que manda a todos los estados al eje $z$ (a un tiempo $\omega t =\frac{\pi}{4}$). 
+La dinámica aplicada al vector de Bloch desplaza este en trayectoria elíptica centrada en el origen. A diferencia de una rotación circular, que tiene como único parámetro al ángulo de rotación, una rotación elíptica depende de los parámetros de la elipse, ambos semiejes y un argumento de rotación de la elipse, además del ángulo de rotación. En este caso, el vector de Bloch rota $2\omega t$ grados, a lo largo de la elipse de semieje mayor $\sqrt{1-z^2}$, semieje menor $z\sqrt{x^2+y^2}$ y argumento de rotación $\arccos(x)$. Esto es, los parámetros de la transformación dependen completamente del estado efectivo inicial. En este sentido, la dinámica es no lineal y no universal. La figura \ref{fig:Ising_p0.5_Sequence} presenta la evolución de la esfera de Bloch para el caso especial $p_{1}=\frac{1}{2}$.
 
 \begin{figure}[ht!]
     \centering
@@ -224,46 +255,17 @@ Nótese que, si del factor $\expval{\pauli{3}}=1$, la dinámica sería no solo l
     \label{fig:Ising_p0.5_Sequence}
     \end{figure}
 
-La despolarización dependiente de la componente en $z$ inicial es más clara si se observa el efecto de la evolución sobre el vector de Bloch. Abusando un poco de la notación se nota que 
-
-\begin{equation*}
-    \Gamma_{t}^{p=\frac{1}{2}}(\vec{r}_{\rho})=\begin{pmatrix}
-        x\cos(2\omega t)-yz\sin(2\omega t)\\
-        y\cos(2\omega t)+xz(2\omega t)\\
-        z\\
-    \end{pmatrix}
-\end{equation*}
-\acnote{Aquí se ve la casi rotación, pero creo que lo tengo que descomponer en diferentes operaciones para notar que el desfasamiento se da de forma más fuerte conforme más pequeño es z}
-
-
-Conforme se aumenta el número de partículas, la expresión de la dinámica efectiva se vuelve cada vez más complicada y menos informativa. La dinámica unitaria general para el modelo de Ising cerrado en fase ordenada es
-\begin{equation}
-    U= \Id \cos^{n}(\omega t)+(-\rmi)^{n}\sin^{n}(\omega t) +\sum_{k=2}^{n-1}(-\rmi)^{n-k}\cos^{k}(\omega t)\sin^{n-k}(\omega t)\sum_{k_{1}<k_{2}}(\pauli{3,k_{1}}\pauli{3,k_{1}+1})(\pauli{3,k_{2}}\pauli{3,k_{2}+1}) 
-\end{equation}
-\subsubsection{Modelo XXX de Heisemberg}
-
-Si $g=0$ (fase ordenada) el hamiltoniano se reduce a
-\begin{equation}
-    H=-\omega\sum_{\langle j,k \rangle}\pauli{3,j}\otimes\pauli{3,k}.\nonumber
-\end{equation}
-Dado un estado efectivo $\rho\in\densityspace{2}$, propagar al estado asignando a través del Principio de Máxima Entropía con dicha evolución y luego tomar la descripción dada por la aplicación de grano grueso resulta en la dinámica efectiva
-\begin{align*}
-    \Gamma_{t}^{p}(\rho)=&\rho \cos^{2}(\omega)+\pauli{3} \rho \pauli{3} \sin^{2}(\omega t)\\
-    & + i\sin(\omega t)\cos(\omega t)\qty(p\expval{\pauli{3}}_{B}[\pauli{3},\rho_{A}]+(1-p)\expval{\pauli{3}}_{A}[\pauli{3},\rho_{B}]).
-\end{align*}
-Reconocemos dos términos: uno lineal y uno no lineal. El primero tiene forma de canal de desfasamiento sobre el estado efectivo. El segundo depende de los parámetros de la aplicación de grano grueso y de los valores esperados con respecto a los operadores de densidad reducidos del estado de máxima entropía. En efecto, el caso límite $p=1$ o $p=1$ simplemente reduce la dinámica a un canal de desfasamiento:
-
-\begin{equation*}
-    \Gamma_{t}^{p=1}(\rho)=\rho \cos^{2}(\omega)+\pauli{3} \rho \pauli{3} \sin^{2}(\omega t).
-\end{equation*}
-
-mientras que el caso $p=\frac{1}{2}$ revela el efecto del término no lineal:
-
-\begin{equation*}
-    \Gamma_{t}^{p=\frac{1}{2}}(\rho)=\rho \cos^{2}(\omega)+\pauli{3} \rho \pauli{3} \sin^{2}(\omega t) + i\expval{\pauli{3}} \qty[\pauli{3},\rho] \sin(\omega t)\cos(\omega t).
-\end{equation*}
-
-Nótese que, si del factor $\expval{\pauli{3}}=1$, la dinámica sería no solo lineal, sino unitaria, y correspondería a una rotación respecto al eje $z$, de no ser que los únicos estados tales que $\expval{\pauli{3}}=1$ son invariantes bajo dichas rotaciones. En realidad, lo que se observa es que la dinámica efectiva es una rotación respecto a $z$ que depende de la componente en $z$ del estado efectivo inicial. Cuando $\expval{\pauli{3}}=0$, la dinámica es un canal de despolarización que manda a todos los estados al eje $z$ (a un tiempo $\omega t =\frac{\pi}{4}$). 
+Como es natural, la expresión de la dinámica efectiva se vuelve cada vez más complicada y menos informativa conforme se aumenta el número de partículas. La dinámica unitaria general para la cadena de Ising cerrada sin campo transversal es
+\begin{align}
+    U=&\qty(\cos^{n}(\omega t)+(-\rmi)^{n}\sin^{n}(\omega t))\Id\nonumber\\ 
+    &+\sum_{k=2}^{n-1}(-\rmi)^{n-k}\cos^{k}(\omega t)\sin^{n-k}(\omega t)\sum_{k_{1}<k_{2}}(\pauli{3,k_{1}}\pauli{3,k_{1}+1})(\pauli{3,k_{2}}\pauli{3,k_{2}+1}),\nonumber
+\end{align}
+mientras que para la cadena de Ising abierta es
+\begin{align}
+    U=&\cos^{n}(\omega t)\Id+(-\rmi)^{n}\sin^{n}(\omega t)\pauli{3,1}\pauli{3,n}\nonumber\\ 
+    &+\sum_{k=2}^{n-1}(-\rmi)^{n-k}\cos^{k}(\omega t)\sin^{n-k}(\omega t)\sum_{k_{1}<k_{2}}(\pauli{3,k_{1}}\pauli{3,k_{1}+1})(\pauli{3,k_{2}}\pauli{3,k_{2}+1}).\nonumber
+\end{align}
+Si se quisiera hallar la dinámica efectiva, esta tendría términos dependientes de los valores esperados de todos los operadores $\pauli{3}^{\vec{j}}$ donde $\vec{j}$ tiene $n-1$ entradas, cosa que se traduce como un mínimo de $2^{n-1}$ términos. Aunque en este trabajo no se buscarán dichas expresiones, es posible usar calculadoras simbólicas para obtener visualizaciones de dichas dinámicas efectivas. Las figuras \ref{fig:Ising_n=3} a \ref{fig:Ising_n=8} muestran estas visualizaciones, mientras que las figuras \ref*{fig:Ising_n=3} a \ref{fig:Ising_n=8} muestran la trayectoria de diferentes vectores de Bloch efectivos bajo las mismas dinámicas.
 
 \begin{figure}[ht!]
     \centering
@@ -283,17 +285,114 @@ Nótese que, si del factor $\expval{\pauli{3}}=1$, la dinámica sería no solo l
       \caption{$t=1$}
     \end{subfigure}
     \caption{Efecto del la evolución sobre la esfera de Bloch cuando $p=\frac{1}{2}$. Nótese que el desfasamiento sólo se completa en el eje $xy$.}
-    \label{fig:Ising_p0.5_Sequence}
-    \end{figure}
+    \label{fig:Ising_n=3}
+\end{figure}
 
-La despolarización dependiente de la componente en $z$ inicial es más clara si se observa el efecto de la evolución sobre el vector de Bloch. Abusando un poco de la notación se nota que 
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}{0.32\textwidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_special/sphere_Ising_t=0._z=0.9_p=0.5.png}
+      \caption{$t=0$}
+    \end{subfigure}%
+    \begin{subfigure}{0.32\textwidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_special/sphere_Ising_t=0.5_z=0.9_p=0.5.png}
+        \caption{$t=0.5$}
+    \end{subfigure}
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{chapter3/figures_special/sphere_Ising_t=1._z=0.9_p=0.5.png}
+        \caption{$t=1$}
+    \end{subfigure}
+    \caption{Efecto del la evolución sobre la esfera de Bloch cuando $n=5$}
+    \label{fig:Ising_n=5}
+\end{figure}
 
-\begin{equation*}
-    \Gamma_{t}^{p=\frac{1}{2}}(\vec{r}_{\rho})=\begin{pmatrix}
-        x\cos(2\omega t)-yz\sin(2\omega t)\\
-        y\cos(2\omega t)+xz(2\omega t)\\
-        z\\
-    \end{pmatrix}
-\end{equation*}
-\acnote{Aquí se ve la casi rotación, pero creo que lo tengo que descomponer en diferentes operaciones para notar que el desfasamiento se da de forma más fuerte conforme más pequeño es z}
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{chapter3/figures_special/sphere_Ising_t=0._z=0.9_p=0.5.png}
+        \caption{$t=0$}
+    \end{subfigure}%
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{chapter3/figures_special/sphere_Ising_t=0.5_z=0.9_p=0.5.png}
+        \caption{$t=0.5$}
+    \end{subfigure}
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{chapter3/figures_special/sphere_Ising_t=1._z=0.9_p=0.5.png}
+        \caption{$t=1$}
+    \end{subfigure}
+    \caption{Efecto del la evolución sobre la esfera de Bloch cuando $n=8$}
+    \label{fig:Ising_n=8}
+\end{figure}
+
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}{0.32\textwidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_special/sphere_Ising_t=0._z=0.9_p=0.5.png}
+      \caption{$t=0$}
+    \end{subfigure}%
+    \begin{subfigure}{0.32\textwidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_special/sphere_Ising_t=0.5_z=0.9_p=0.5.png}
+      \caption{$t=0.5$}
+    \end{subfigure}
+    \begin{subfigure}{0.32\textwidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_special/sphere_Ising_t=1._z=0.9_p=0.5.png}
+      \caption{$t=1$}
+    \end{subfigure}
+    \caption{Efecto del la evolución sobre la esfera de Bloch cuando $p=\frac{1}{2}$. Nótese que el desfasamiento sólo se completa en el eje $xy$.}
+    \label{fig:Ising_n=3}
+\end{figure}
+
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}{0.32\textwidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_special/sphere_Ising_t=0._z=0.9_p=0.5.png}
+      \caption{$t=0$}
+    \end{subfigure}%
+    \begin{subfigure}{0.32\textwidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_special/sphere_Ising_t=0.5_z=0.9_p=0.5.png}
+        \caption{$t=0.5$}
+    \end{subfigure}
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{chapter3/figures_special/sphere_Ising_t=1._z=0.9_p=0.5.png}
+        \caption{$t=1$}
+    \end{subfigure}
+    \caption{Efecto del la evolución sobre la esfera de Bloch cuando $n=5$}
+    \label{fig:Ising_n=5}
+\end{figure}
+
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{chapter3/figures_special/sphere_Ising_t=0._z=0.9_p=0.5.png}
+        \caption{$t=0$}
+    \end{subfigure}%
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{chapter3/figures_special/sphere_Ising_t=0.5_z=0.9_p=0.5.png}
+        \caption{$t=0.5$}
+    \end{subfigure}
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{chapter3/figures_special/sphere_Ising_t=1._z=0.9_p=0.5.png}
+        \caption{$t=1$}
+    \end{subfigure}
+    \caption{Efecto del la evolución sobre la esfera de Bloch cuando $n=8$}
+    \label{fig:Ising_n=8}
+\end{figure}
+
+En general, los reusultados son no lineales. \acnote{agregar interpretación de los resultados numéricos}. Debido a que el tamaño de las matrices requeridas para el cálculo de la dinámica efectiva de un sistema microscópico de $n$ partículas aumenta como $2^{n}$, no fue posible obtener resultados numéricos para $n$ grande.
+
 
