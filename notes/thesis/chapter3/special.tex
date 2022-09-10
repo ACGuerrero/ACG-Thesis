@@ -267,130 +267,37 @@ mientras que para la cadena de Ising abierta es
 \end{align}
 Si se quisiera hallar la dinámica efectiva, esta tendría términos dependientes de los valores esperados de todos los operadores $\pauli{3}^{\vec{j}}$ donde $\vec{j}$ tiene $n-1$ entradas, cosa que se traduce como un mínimo de $2^{n-1}$ términos. Aunque en este trabajo no se buscarán dichas expresiones, es posible usar calculadoras simbólicas para obtener visualizaciones de dichas dinámicas efectivas. Las figuras \ref{fig:Ising_n=3} a \ref{fig:Ising_n=8} muestran estas visualizaciones, mientras que las figuras \ref*{fig:Ising_n=3} a \ref{fig:Ising_n=8} muestran la trayectoria de diferentes vectores de Bloch efectivos bajo las mismas dinámicas.
 
-\begin{figure}[ht!]
+\begin{figure}
     \centering
-    \begin{subfigure}{0.32\textwidth}
-      \centering
-      \includegraphics[width=0.9\linewidth]{chapter3/figures_special/sphere_Ising_t=0._z=0.9_p=0.5.png}
-      \caption{$t=0$}
-    \end{subfigure}%
-    \begin{subfigure}{0.32\textwidth}
-      \centering
-      \includegraphics[width=0.9\linewidth]{chapter3/figures_special/sphere_Ising_t=0.5_z=0.9_p=0.5.png}
-      \caption{$t=0.5$}
-    \end{subfigure}
-    \begin{subfigure}{0.32\textwidth}
-      \centering
-      \includegraphics[width=0.9\linewidth]{chapter3/figures_special/sphere_Ising_t=1._z=0.9_p=0.5.png}
-      \caption{$t=1$}
-    \end{subfigure}
-    \caption{Efecto del la evolución sobre la esfera de Bloch cuando $p=\frac{1}{2}$. Nótese que el desfasamiento sólo se completa en el eje $xy$.}
-    \label{fig:Ising_n=3}
-\end{figure}
-
-\begin{figure}[ht!]
-    \centering
-    \begin{subfigure}{0.32\textwidth}
-      \centering
-      \includegraphics[width=0.9\linewidth]{chapter3/figures_special/sphere_Ising_t=0._z=0.9_p=0.5.png}
-      \caption{$t=0$}
-    \end{subfigure}%
-    \begin{subfigure}{0.32\textwidth}
-      \centering
-      \includegraphics[width=0.9\linewidth]{chapter3/figures_special/sphere_Ising_t=0.5_z=0.9_p=0.5.png}
-        \caption{$t=0.5$}
-    \end{subfigure}
-    \begin{subfigure}{0.32\textwidth}
+    \begin{subfigure}[b]{0.475\textwidth}
         \centering
-        \includegraphics[width=0.9\linewidth]{chapter3/figures_special/sphere_Ising_t=1._z=0.9_p=0.5.png}
-        \caption{$t=1$}
+        \includegraphics[width=\textwidth]{chapter3/figures_special/Ising_open_preferential_equal_p_n=n_r=1._z=0.10_p1=0.9.png}
+        \caption{$p_{1}=0.9$}  
+        \label{fig:OpenIsingPure1}
     \end{subfigure}
-    \caption{Efecto del la evolución sobre la esfera de Bloch cuando $n=5$}
-    \label{fig:Ising_n=5}
-\end{figure}
-
-\begin{figure}[ht!]
-    \centering
-    \begin{subfigure}{0.32\textwidth}
-        \centering
-        \includegraphics[width=0.9\linewidth]{chapter3/figures_special/sphere_Ising_t=0._z=0.9_p=0.5.png}
-        \caption{$t=0$}
-    \end{subfigure}%
-    \begin{subfigure}{0.32\textwidth}
-        \centering
-        \includegraphics[width=0.9\linewidth]{chapter3/figures_special/sphere_Ising_t=0.5_z=0.9_p=0.5.png}
-        \caption{$t=0.5$}
+    \hfill
+    \begin{subfigure}[b]{0.475\textwidth}  
+        \centering 
+        \includegraphics[width=\textwidth]{chapter3/figures_special/Ising_open_preferential_equal_p_n=n_r=1._z=0.10_p1=0.7.png}
+        \caption{$p_{1}=0.7$}    
+        \label{fig:OpenIsingPure2}
     \end{subfigure}
-    \begin{subfigure}{0.32\textwidth}
-        \centering
-        \includegraphics[width=0.9\linewidth]{chapter3/figures_special/sphere_Ising_t=1._z=0.9_p=0.5.png}
-        \caption{$t=1$}
+    \vskip\baselineskip
+    \begin{subfigure}[b]{0.475\textwidth}   
+        \centering 
+        \includegraphics[width=\textwidth]{chapter3/figures_special/Ising_open_preferential_equal_p_n=n_r=1._z=0.10_p1=0.3.png}
+        \caption{$p_{1}=0.3$}   
+        \label{fig:OpenIsingPure3}
     \end{subfigure}
-    \caption{Efecto del la evolución sobre la esfera de Bloch cuando $n=8$}
-    \label{fig:Ising_n=8}
-\end{figure}
-
-\begin{figure}[ht!]
-    \centering
-    \begin{subfigure}{0.32\textwidth}
-      \centering
-      \includegraphics[width=0.9\linewidth]{chapter3/figures_special/sphere_Ising_t=0._z=0.9_p=0.5.png}
-      \caption{$t=0$}
-    \end{subfigure}%
-    \begin{subfigure}{0.32\textwidth}
-      \centering
-      \includegraphics[width=0.9\linewidth]{chapter3/figures_special/sphere_Ising_t=0.5_z=0.9_p=0.5.png}
-      \caption{$t=0.5$}
+    \hfill
+    \begin{subfigure}[b]{0.475\textwidth}   
+        \centering 
+        \includegraphics[width=\textwidth]{chapter3/figures_special/Ising_open_preferential_equal_p_n=n_r=1._z=0.10_p1=0.1.png}
+        \caption{$p_{1}=0.1$}    
+        \label{fig:OpenIsingPure4}
     \end{subfigure}
-    \begin{subfigure}{0.32\textwidth}
-      \centering
-      \includegraphics[width=0.9\linewidth]{chapter3/figures_special/sphere_Ising_t=1._z=0.9_p=0.5.png}
-      \caption{$t=1$}
-    \end{subfigure}
-    \caption{Efecto del la evolución sobre la esfera de Bloch cuando $p=\frac{1}{2}$. Nótese que el desfasamiento sólo se completa en el eje $xy$.}
-    \label{fig:Ising_n=3}
-\end{figure}
-
-\begin{figure}[ht!]
-    \centering
-    \begin{subfigure}{0.32\textwidth}
-      \centering
-      \includegraphics[width=0.9\linewidth]{chapter3/figures_special/sphere_Ising_t=0._z=0.9_p=0.5.png}
-      \caption{$t=0$}
-    \end{subfigure}%
-    \begin{subfigure}{0.32\textwidth}
-      \centering
-      \includegraphics[width=0.9\linewidth]{chapter3/figures_special/sphere_Ising_t=0.5_z=0.9_p=0.5.png}
-        \caption{$t=0.5$}
-    \end{subfigure}
-    \begin{subfigure}{0.32\textwidth}
-        \centering
-        \includegraphics[width=0.9\linewidth]{chapter3/figures_special/sphere_Ising_t=1._z=0.9_p=0.5.png}
-        \caption{$t=1$}
-    \end{subfigure}
-    \caption{Efecto del la evolución sobre la esfera de Bloch cuando $n=5$}
-    \label{fig:Ising_n=5}
-\end{figure}
-
-\begin{figure}[ht!]
-    \centering
-    \begin{subfigure}{0.32\textwidth}
-        \centering
-        \includegraphics[width=0.9\linewidth]{chapter3/figures_special/sphere_Ising_t=0._z=0.9_p=0.5.png}
-        \caption{$t=0$}
-    \end{subfigure}%
-    \begin{subfigure}{0.32\textwidth}
-        \centering
-        \includegraphics[width=0.9\linewidth]{chapter3/figures_special/sphere_Ising_t=0.5_z=0.9_p=0.5.png}
-        \caption{$t=0.5$}
-    \end{subfigure}
-    \begin{subfigure}{0.32\textwidth}
-        \centering
-        \includegraphics[width=0.9\linewidth]{chapter3/figures_special/sphere_Ising_t=1._z=0.9_p=0.5.png}
-        \caption{$t=1$}
-    \end{subfigure}
-    \caption{Efecto del la evolución sobre la esfera de Bloch cuando $n=8$}
-    \label{fig:Ising_n=8}
+    \caption{Trayectorias del vector de Bloch de $\rho_{\ef}$ para si $r_{\ef}=1$ a una altura $z_{\ef}=0.1$, para diferentes valores de $n$ y $p_{1}$}
+    \label{fig:OpenIsingPure}
 \end{figure}
 
 En general, los reusultados son no lineales. Se observa que, en los casos en los que se escoge $p_{k}=\frac{1}{n-1}\,\forall\,k\neq 1$, la evolución acerca más al estado efectivo hacia el desfasamiento. Para el caso en que las probabilidades diferentes a la de la primera partícula son aleatorias, los resultados son variados. El caso en que $p_{k}=\frac{1}{n-1}\,\forall\,k$. El caso en que el estado efectivo inicial es puro,
