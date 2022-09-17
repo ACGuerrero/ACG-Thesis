@@ -2,12 +2,8 @@ This is my license thesis' repository
 
 TO DO LIST
  1. Finish Heisemberg spin model  [9a04ece](https://github.com/ACGuerrero/tesis-adan/commit/274d771536b0b04ea4edca866fc06359d5e0b8b8), [b0ca78](https://github.com/ACGuerrero/tesis-adan/commit/5ac8796059e41a3cdf13e09a33feb95fcfb0ca78), [5029f4c](https://github.com/ACGuerrero/tesis-adan/commit/7e4e73633a698c93f23d5bee02b142ac75029f4c), [a24f01f](https://github.com/ACGuerrero/tesis-adan/commit/13ea4aa6791b6c075e6eeb800e66000bca24f01f), [48a6b28](https://github.com/ACGuerrero/tesis-adan/commit/cf3800934c0389db2823474d3fbc849f448a6b28)
- 43. Add figures to special section.
  46. Add references to special section
  45. Fix graphs on SWAP section (latex).
- 44. Finish 4Ch Intro.
- 47. Finish 4Ch comparisons.
- 48. Finish 4Ch conclusions.
  39. Finish abstract.
  40. Finish intro.
  49. Finish conclusions.
