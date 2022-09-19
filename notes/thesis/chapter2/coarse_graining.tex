@@ -2,28 +2,29 @@
 
 \acnote{Párrafo iterado: solo notas.}
 
-Como se discutió previamente, es natural suponer que no siempre es posible disponer de toda la información sobre el estado\ddnote{las itálicas están de más, me parece. Cual es tu política del uso de las itálicas?}\acnote{\checkmark} del sistema de interés. Esto ya sea por insuficiencia en la resolución de los aparatos de medición o por el inevitable error inherente a las herramientas de medición. Un prototipo sencillo de error consiste en el inducido por un aparato que no distingue diferentes conjuntos de partículas entre sí. El caso más simple corresponde a la permutación de dos partículas. Este intercambio accidental a la hora de la medición es una \textit{aplicación borrosa} \cite{FuzzyMeasurements}.
+Como se discutió previamente, es natural suponer que no siempre es posible disponer de toda la información sobre el estado
+ del sistema de interés. Esto ya sea por insuficiencia en la resolución de los aparatos de medición o por el inevitable error inherente a las herramientas de medición. Un prototipo sencillo de error consiste en el inducido por un aparato que no distingue diferentes conjuntos de partículas entre sí. El caso más simple corresponde a la permutación de dos partículas. Este intercambio accidental a la hora de la medición es una \textit{aplicación borrosa} \cite{FuzzyMeasurements}.
 
 Para ilustrar lo anterior, considérese dicha aplicación borrosa sobre un sistema de dos partículas. Para simplificarlo un poco más, supongamos que cada partícula es un sistema de dos niveles, esto es, el sistema está compuesto por los qubits $A$ y $B$. El estado del sistema está caracterizado por un operador de densidad $\varrho_{AB} \in \mcS(\hilbert_2 \otimes \hilbert_2)$. La acción de la aplicación borrosa se escribe como sigue:
 \begin{align}
 \mcF:&\mcS(\hilbert_2 \otimes \hilbert_2)\to \mcS(\hilbert_2 \otimes \hilbert_2)\nonumber\\
 &\varrho \mapsto p\varrho+(1-p)S\varrho S,\nonumber
 \end{align}
-donde $0<p<1$ es la probabilidad con la que el aparato de medición identifica correctamente \ddnote*{correctamente}{erróneamente}\acnote{\checkmark} a los dos subsistemas y $S$ es el operador de transposición de dos partículas (llamado operador SWAP), definido como 
+donde $0<p<1$ es la probabilidad con la que el aparato de medición identifica correctamente  a los dos subsistemas y $S$ es el operador de transposición de dos partículas (llamado operador SWAP), definido como 
 \begin{equation}
     S\ket{\psi}\otimes \ket{\phi}=\ket{\phi}\otimes \ket{\psi} \ \ \forall \ket{\psi},\ket{\phi}\in \hilbert_2.\nonumber
 \end{equation}
 El estado resultante, $\Fuzzy{\varrho_{AB}}=p\varrho_{AB}+(1-p)\varrho_{BA}$, es una mezcla estadística del estado accesible con un detector perfecto, $\varrho_{AB}$, y el estado donde los qubits tienen las etiquetas equivocadas, $\varrho_{BA}:=S\varrho_{AB} S$. Así, si quisieramos hallar el valor esperado del observable $\sigma_{3}\otimes\Id$ (el valor esperado de $\sigma_{z}$ en la primer partícula), encontraríamos:
 \begin{equation}
     \expval{\sigma_{3}\otimes\Id}_{\mcF}=p\expval{\sigma_{3}\otimes\Id}+(1-p)\expval{\Id\otimes\sigma_{3}}\nonumber
-\end{equation}\ddnote{esta ecuación tiene las probabilidades volteadas}\acnote{\checkmark}
-donde por $\expval{A}_{\mcF}$ nos referimos al valor esperado con respecto al estado del sistema descrito a través de $\mcF$.
+\end{equation}
+donde por $\expval{A}_{\mcF}$ nos referimos al valor esperado con respecto al estado del sistema descrito a través de \ddnote*{$\mcF(\varrho_{AB})$}{$\mcF$}.
 
 Es importante notar que, auque la aplicación borrosa modela el error asociado al aparato de medición, no constituye por si misma un modelo de grano grueso, pues conserva la dimensión del sistema: el aparato resuelve todos los grados de libertad.
 
 \acnote{Párrafo iterado: solo notas.}
 
-Al error se le añade la falta de resolución: solo se resuelve una partícula. \ddnote*{esto está redundante y escrito raro, no se por que dices que el estado sería el de la primera partícula, eso confunde, parece que estás cambiando repentinamente el contexto. Mejor explica al grano la situación y sin hablar de composición de errores. Eso mas bien se deriva, y justamente lo haces mas adelantito.}{Agreguemos al error por permutación la falta de resolución. Una posibilidad es que el instrumento detecte una partícula en donde en realidad haya dos, y aún más, que en un sistema de dos partículas, este sea capaz de medir únicamente observables asociados al primer subsistema. El estado observado sería, de acuerdo con la sección \ref{sec:Ch1PartialTrace}, la matriz de densidad reducida de la primera partícula.}\acnote{\checkmark} Matemáticamente, la composición del error y de la falta de resolución puede escribirse como
+Al error se le añade la falta de resolución: solo se resuelve una partícula. Matemáticamente, la composición del error y de la falta de resolución puede escribirse como
 \begin{gather}
     \mcC:\mcS(\hilbert_2 \otimes \hilbert_2)\to \mcS(\hilbert_2)\nonumber\\
     \varrho_{AB} \mapsto p\rho_A+(1-p)\rho_B\rlap{,}\nonumber
@@ -49,10 +50,10 @@ La discusión anterior giró alrededor del caso en que el modelo de grano grueso
 \begin{gather}
     \mcF:\mcS\qty( \hilbert_{2}^{\otimes n})\to \mcS\qty( \hilbert_{2}^{\otimes n})\nonumber\\
     \varrho \mapsto p_{1}\varrho+\sum_{j=2}^{n}p_{j}(S_{1,j})\varrho(S_{1,j})^{\dagger},\nonumber
-\end{gather}
+\end{gather}\ddnote{el swap es hermítico, no se necesita poner daggers en ningún swap}
 donde $S_{1,j}$ es el operador que permuta la primera y la $j$-ésima partícula. De esta manera, donde $\Tr_{\overline{i}}$ denota la traza parcial sobre todos menos el $i$-ésimo qubit, la aplicación de grano grueso que resuelve un qubit donde hay $n$ qubits es
 \begin{gather}\label{eq:CG}
     \mcC:\mcS( \hilbert_{2}^{\otimes n})\to \mcS(\hilbert_{2})\nonumber\\
     \varrho\mapsto\Tr_{\overline{1}}(\Fuzzy{\varrho}).
 \end{gather}
-Reconocemos, según los valores de las probabilidades $p_{j}$ dos tipos de regímenes. El primero corresponde a nuestra discusión: si $p_{1}>p_{j}\forall j\neq 1$ se dice que el modelo tiene una partícula preferencial. Si $p_{j}=\frac{1}{n}\forall j$ entonces no existe ninguna partícula preferencial, y se puede ver al sistema como una caja de gas en la que medir a cualquier partícula es igual de probable.
+Reconocemos, según los valores de las probabilidades $p_{j}$ \ddnote*{varios tipos de regímenes, entre ellos:}{dos tipos de regímenes. El primero corresponde a nuestra discusión:} si $p_{1}>p_{j}\forall j\neq 1$ se dice que el modelo tiene una partícula preferencial. Si $p_{j}=\frac{1}{n}\forall j$ entonces no existe ninguna partícula preferencial, y se puede ver al sistema como una caja de gas en la que medir a cualquier partícula es igual de probable.

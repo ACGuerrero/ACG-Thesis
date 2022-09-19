@@ -5,28 +5,28 @@ Ahora que hemos establecido que usaremos como modelo de grano grueso uno que inc
 \Gamma_{t}:\mcS(\hilbert_2)\rightarrow \mcS(\hilbert_2)\nonumber\\
 \rho_{\ef}(0) \mapsto \Gamma_{t}(\rho_{\ef}(0))\rlap{.}\nonumber
 \end{gather}
-Debido que asumimos que el estado que se propaga debido a la evolución subyacente es justamente un estado compatible con $\rho_{\ef}$ seleccionado a través de una aplicación de asignación, a la dinámica gruesa la definimos como la composición
+Debido que asumimos que el estado que se propaga debido a la evolución subyacente es justamente un estado compatible con $\rho_{\ef}$, seleccionado a través de una aplicación de asignación, a la dinámica gruesa la definimos como la composición
 \begin{equation}
 \Gamma_t:=\mcC \circ \mcV_t \circ \mcA_\mcC.\nonumber
 \end{equation}
-Donde $\mcA_\mcC$ denota a la aplicación que asigna un estado microscópico $\varrho$ al estado efectivo $\rho_{\ef}$. A la aplicación de asignación desarrollada previamente la denotaremos por medio de $\mcA_{\mcC}^{\max}$. El siguiente diagrama ilustra la ecuación anterior,
+\ddnote*{Mejor ve directo a $\mcA_{\mcC}^{\max}$ (ademas que ya esta definida anteriormente)}{Donde $\mcA_\mcC$ denota a la aplicación que asigna un estado microscópico $\varrho$ al estado efectivo $\rho_{\ef}$. A la aplicación de asignación desarrollada previamente la denotaremos por medio de $\mcA_{\mcC}^{\max}$.} \ddnote{Por otro lado, no explicaste que es $\mcV_t$} El siguiente diagrama ilustra la ecuación anterior,
 \[\begin{tikzcd}[arrows={<-|}]
     \rho_{\ef}(0)  & \rho_{\ef}(t) \arrow{l}{\Gamma_{t}} \arrow{d}{\mcC}\\
 \varrho_{\max}(0) \arrow{u}{\mcA_{\mcC}^{\max}} & \varrho_{\max}(t). \arrow{l}{\mcV_{t}}
 \end{tikzcd}
 \]
-En el siguiente capítulo se analizarán dinámicas efectivas generadas por diferentes dinámicas subyacentes. Si se asume que el sistema conformado por las partículas es cerrado, entonces la evolución $\mcV_{t}$ será unitaria, generada por un hamiltoniano $H$. Algunos ejemplos de dinámicas subyacentes no unitarias son los canales de ruido usuales, como el canal de despolarización, el canal de amortiguamiento de amplitud, o el canal de amortiguamiento de fase.
+En el siguiente capítulo se analizarán dinámicas efectivas generadas por diferentes dinámicas subyacentes. Si se asume que el sistema conformado por las partículas es cerrado, entonces la evolución $\mcV_{t}$ será unitaria, generada por un hamiltoniano $H$. Algunos ejemplos de dinámicas subyacentes no unitarias son los canales de ruido usuales, como el canal de \textit{despolarización}, el canal de \textit{amortiguamiento de amplitud}, o el canal de \textit{amortiguamiento de fase}. \ddnote{puse italicas en algunas partes}
 
-Nótese que, a diferencia de los mapas dinámicos usualmente estudiados en teoría de sistemas cuánticos abiertos, la dinámica efectiva $\Gamma_{t}$ no tiene por qué ser lineal (sí debe, por supuesto, mandar estados cuánticos en estados cuánticos), debido a que uno de los elementos de la composición que la originan no es lineal: la aplicación de asignación. El estudio de las particularidades de algunas de estas dinámicas efectivas es el foco de este trabajo.
+Nótese que, a diferencia de los mapas dinámicos usualmente estudiados en teoría de sistemas cuánticos abiertos, la dinámica efectiva $\Gamma_{t}$ no tiene por qué ser lineal (sí debe, por supuesto, mandar estados cuánticos a estados cuánticos), debido a que uno de los elementos de la composición que la originan \ddnote*{no siempre es lineal}{no es lineal}: la aplicación de asignación. El estudio de las particularidades de algunas de estas dinámicas efectivas es el foco de este trabajo.
 
-Reconociendo que la asignación de máxima entropía no es la única asignación compatible con un conjunto de aplicación de grano grueso y estado inicial efectivo, ¿es justificable usar al estado de máxima entropía? Previamente demostramos que en nuestro caso particular, este resulta ser separable debido a que las correlaciones entre los subsistemas son nulas. Aunque esto no tiene ninguna consecuencia en el caso en que el estado no se propaga, las correlaciones tienen un efecto en la evolución de un sistema.
+Reconociendo que la asignación de máxima entropía no es la única asignación compatible con un conjunto de aplicación de grano grueso y estado inicial efectivo, ¿es justificable usar al estado de máxima entropía? \ddnote*{este texto no está conectado a la pregunta}{Previamente demostramos que en nuestro caso particular, este resulta ser separable debido a que las correlaciones entre los subsistemas son nulas. Aunque esto no tiene ninguna consecuencia en el caso en que el estado no se propaga, las correlaciones tienen un efecto en la evolución de un sistema.} \ddnote{Por otro lado, de que efecto hablas?, al no haber correlaciones, como afectan a la dinámica? O en su defecto, cual de las dinámicas. Propongo reformular.}
 
-Algo que queda en claro de esto es que el estado de máxima entropía es completamente dependiente de los observables que se usen en su construcción. Después de todo, la maximización de la entropía se restringe de acuerdo a las observaciones experimentales, así que estados de máxima entropía que cumplan un conjunto particular de restricciones no tienen por qué satisfacer un conjunto diferente de restricciones. Esto tiene la siguiente consecuencia: el estado de máxima entropía compatible con un estado evolucionado a través de una dinámica efectiva obtenida de un estado de máxima entropía compatible con un estado efectivo inicial, no tiene por qué ser igual al estado de máxima entropía inicial evolucionado. Esto es, aunque parecería que se cumple que
+Algo que queda en claro de esto es que el estado de máxima entropía es completamente dependiente de los observables que se usen en su construcción. Después de todo, la maximización de la entropía se restringe de acuerdo a las observaciones experimentales, así que estados de máxima entropía que cumplan un conjunto particular de restricciones no tienen por qué satisfacer un conjunto diferente de restricciones. \ddnote*{Entiendo el mensaje, pero está cantinfleado, propongo reformular. No se bien tampoco cual es el punto con las ecuaciones, en particular $\mcC^{-1}$ no existe, entonces no puede ser diferente a nada. Revisa esto con cuidado.}{Esto tiene la siguiente consecuencia: el estado de máxima entropía compatible con un estado evolucionado a través de una dinámica efectiva obtenida de un estado de máxima entropía compatible con un estado efectivo inicial, no tiene por qué ser igual al estado de máxima entropía inicial evolucionado. Esto es, aunque parecería que se cumple que
 \begin{equation}
     (\mcU_{t}\circ\mcA_{\mcC}^{\max})(\rho_{\ef}) = (\mcA_{\mcC}^{\max}\circ\mcC \circ \mcU_t \circ \mcA_{\mcC}^{\max})(\rho_{\ef}),\nonumber
 \end{equation}
 En realidad no lo hace, y la razón de esto es que
 \begin{equation}
     \mcA_{\mcC}^{\max}\neq\mcC^{-1}.\nonumber
-\end{equation}
+\end{equation}}
 
