@@ -6,7 +6,9 @@
 
 Si se nos informa que el valor esperado de tirar un dado de seis caras particular es $3.5$. ¿Cuál es la probabilidad asociada a cada cara del dado? En principio, el problema no puede resolverse, porque la distribución de probabilidad que da como resultado el valor esperado de $3.5$ no es única. Sería igual de válido asumir que el dado está pesado de tal forma que cae la mitad de veces en $2$, y la otra mitad de veces en $5$, que suponer que todos los valores tienen una probabilidad $\frac{1}{6}$. La segunda opción, claro, parecería la más judiciosa. Esta opción es también la que más incertidumbre sobre cada resultado tiene asociada, y la que menos suposiciones sobre los pesos del dado hace. Aún más importante, asumir que todos los valores son igualmente probables equivale a escoger la distribución de probabilidad que maximiza la entropía.
 
-El principio de máxima entropía fue introducido por E. T. Jaynes en 1957 \ddnote{[cita]}. En su artículo, \textit{Information Theory and Statistical Mechanics}: Jaynes afirma que la distribución de probabilidad que maximice la entropía es la \ddnote*{estimación menos sesgada}{mejor estimación} que se puede hacer a través de la información disponible~\cite{JaynesI}. La estimación obtenida a través de la minimización de la entropía es, además, \ddnote*{aquella que no introduce suposiciones espurias sobre el sistema.}{aquella que introduce la menor cantidad de información externa al sistema.}
+\acnote{Párrafo iterado: notas}
+
+El principio de máxima entropía fue introducido por E. T. Jaynes en 1957 \cite{JaynesI}. En su artículo, \textit{Information Theory and Statistical Mechanics}: Jaynes afirma que la distribución de probabilidad que maximice la entropía es la estimación menos sesgada que se puede hacer a través de la información disponible~\cite{JaynesI}. La estimación obtenida a través de la minimización de la entropía es, además, aquella que no introduce suposiciones espurias sobre el sistema.
 
 Jaynes relaciona la teoría de información clásica con la mecánica estadística no por la simple coincidencia en la forma de las entropías de Shannon y de Gibbs, sino a través de una reinterpretación de la mecánica estadística como una forma de inferencia estadística. En este contexto, viendo la entropía física como una medida de la incertidumbre asociada a una distribución de probabilidad, una distribución $p$ que no maximice la entropía, es una distribución que introduce información arbitraria no incluida en las hipótesis iniciales. En efecto, el problema de hallar una distribución de probabilidad adecuada es también un problema de contaminación de la información accesible. Esta contaminación proviene de suposiciones arbitrarias, y sin sustento físico, que pueden hacerse sobre el sistema. Utilizar el principio de máxima entropía permite hallar la distribución de probabilidad menos sesgada posible.
 
@@ -54,7 +56,7 @@ Considerando lo anterior, el estimado para la distribución de probabilidad que 
     p(x_{j})=\frac{1}{Z}\exp[-\frac{1}{k}\sum_{l}\lambda_{l}f_{l}(x_{j})].
 \end{equation}
 
-\subsubsection{\ddnote*{Principio de máxima entropía en la mecánica estadística}{El estimado de máxima entropía en mecánica estadística}}
+\subsubsection{Principio de máxima entropía en la mecánica estadística}
 
 El método anterior puede aplicarse a toda una variedad de sistemas y procesos. \ddnote*{Esto tiene varios problemas, las $\epsilon_j$ es la energía de la j-estima particula o es la energia del j-esimo microestado, ya que despues les llamas microestdos y computas la probabilidad del microestado, este ejemplo está raro, hay que discutirlo}{Considérese un sistema de $N$ partículas idénticas pero distinguibles con energías $\epsilon_{j}$}{Considérese, pues, un conjunto de $N$ partículas idénticas pero distinguibles con energías $\epsilon_{j}$}, del cual únicamente conocemos la energía promedio $E$, y que se halla en equilibrio térmico \ddnote*{con un reservorio térmico a temperatura $T$}{con un entorno que actúa como baño de calor a una temperatura $T$}. Nos interesa conocer la distribución de probabilidad de los posibles microestados $\epsilon_{j}$. Según lo discutido previamente, se busca maximizar la entropía,
 \begin{equation}\label{eq:GibbsEntropy}
@@ -80,7 +82,9 @@ con lo que se halla el significado físico del multiplicador de Lagrange. \cite{
 
 \acnote{Quizá tenga que corregir los límites de las sumas aquí y en la parte clásica}
 
-En su segundo artículo, Jaynes extiende el Principio de máxima entropía a la mecánica cuántica \cite{JaynesII}. Considérese, en un primer momento, el caso en el que se conoce el valor esperado de la energía, $\expval{H}$, para un sistema termodinámico \ddnote*{, es decir, podemos asumir que el estado del sistema no varía con el tiempo}{en el que no esperamos que el estado de máxima entropía varíe con el tiempo}. Esta calidad de estado estacionario nos permite suponer que
+\acnote{Sección iterada: notas}
+
+En su segundo artículo, Jaynes extiende el Principio de máxima entropía a la mecánica cuántica \cite{JaynesII}. Considérese, en un primer momento, el caso en el que se conoce el valor esperado de la energía, $\expval{H}$, para un sistema termodinámico, es decir, podemos asumir que el estado del sistema no varía con el tiempo. Esta calidad de estado estacionario nos permite suponer que
 \begin{equation}
     [\rho,H]=0.\nonumber
 \end{equation}
@@ -116,4 +120,4 @@ Este resultado es fácilmente generalizable al caso en que contemos con un  conj
 \begin{equation}\label{eq:GeneralMaxEnt}
     \rho=\frac{1}{Z}e^{-\sum_{k}\lambda_{k} A_{k}}.
 \end{equation}
-\ddnote*{Cabe señalar que este resultado también es válido cuando las observables $A_k$ no conmutan entre sí o con $\rho$. Sin embargo la prueba es complicada y está más allá del alcance de esta tesis~\cite{Wichmann1963,FormalJaynes}.}{El caso en que los observables no conmutan con el operador de densidad $\rho$ es un tanto más complicado, y aunque el resultado es el mismo~\cite{FormalJaynes}, en este trabajo no lo demostraremos.}
+Cabe señalar que este resultado también es válido cuando las observables $A_k$ no conmutan entre sí o con $\rho$. Sin embargo la prueba es complicada y está más allá del alcance de esta tesis~\cite{FormalJaynes,Wichmann1963}.
