@@ -14,13 +14,13 @@ donde $0<p<1$ es la probabilidad con la que el aparato de medición identifica c
 \begin{equation}
     S\ket{\psi}\otimes \ket{\phi}=\ket{\phi}\otimes \ket{\psi} \ \ \forall \ket{\psi},\ket{\phi}\in \hilbert_2.\nonumber
 \end{equation}
-El estado resultante, $\Fuzzy{\varrho_{AB}}=p\varrho_{AB}+(1-p)\varrho_{BA}$, es una mezcla estadística del estado accesible con un detector perfecto, $\varrho_{AB}$, y el estado donde los qubits tienen las etiquetas equivocadas, $\varrho_{BA}:=S\varrho_{AB} S$. Así, si quisieramos hallar el valor esperado del observable $\sigma_{3}\otimes\Id$ (el valor esperado de $\sigma_{z}$ en la primer partícula), encontraríamos:
+El estado resultante, $\Fuzzy{\varrho_{AB}}=p\varrho_{AB}+(1-p)\varrho_{BA}$, es una mezcla estadística del estado accesible con un detector perfecto, $\varrho_{AB}$, y el estado donde los qubits tienen las etiquetas equivocadas, $\varrho_{BA}:=S\varrho_{AB} S$. Así, si quisiéramos hallar el valor esperado del observable $\sigma_{3}\otimes\Id$ (el valor esperado de $\sigma_{z}$ en la primer partícula), encontraríamos:
 \begin{equation}
     \expval{\sigma_{3}\otimes\Id}_{\mcF}=p\expval{\sigma_{3}\otimes\Id}+(1-p)\expval{\Id\otimes\sigma_{3}}\nonumber
 \end{equation}
-donde por $\expval{A}_{\mcF}$ nos referimos al valor esperado con respecto al estado del sistema descrito a través de \ddnote*{$\mcF(\varrho_{AB})$}{$\mcF$}.
+donde por $\expval{A}_{\mcF}$ nos referimos al valor esperado con respecto al estado del sistema descrito por $\mcF(\varrho_{AB})$.
 
-Es importante notar que, auque la aplicación borrosa modela el error asociado al aparato de medición, no constituye por si misma un modelo de grano grueso, pues conserva la dimensión del sistema: el aparato resuelve todos los grados de libertad.
+Es importante notar que, aunque la aplicación borrosa modela el error asociado al aparato de medición, no constituye por si misma un modelo de grano grueso, pues conserva la dimensión del sistema: el aparato resuelve todos los grados de libertad.
 
 \acnote{Párrafo iterado: solo notas.}
 
@@ -49,11 +49,11 @@ Pues bien, como se ha asumido que conocemos la evolución unitaria subyacente, r
 La discusión anterior giró alrededor del caso en que el modelo de grano grueso reduce un espacio de dos qubits a uno de un solo qubit. Esto puede generalizarse al caso en que el aparato de medición sólo detecta una partícula cuando el sistema microscópico está conformado por $n$ partículas. En particular, consideramos, nuevamente, subsistemas de dos niveles (qubits), de tal forma que $\varrho\in\mcS\qty( \hilbert_{2}^{\otimes n})$, donde $\hilbert_{2}^{\otimes n}$ representa el producto tensorial del espacio $\hilbert_{2}$ consigo mismo $k$ veces. Sean $p_{i}$ las probabilidades de medir cada una de las partículas. La aplicación borrosa pasa de ser un intercambio de dos partículas, a una serie de permutaciones entre la partícula de interés y el resto (sin pérdida de generalidad, asumiremos que la partícula de interés es la primera). Considerando un sistema de $n$ subsistemas de dos niveles, la aplicación borrosa se define entonces como
 \begin{gather}
     \mcF:\mcS\qty( \hilbert_{2}^{\otimes n})\to \mcS\qty( \hilbert_{2}^{\otimes n})\nonumber\\
-    \varrho \mapsto p_{1}\varrho+\sum_{j=2}^{n}p_{j}(S_{1,j})\varrho(S_{1,j})^{\dagger},\nonumber
-\end{gather}\ddnote{el swap es hermítico, no se necesita poner daggers en ningún swap}
+    \varrho \mapsto p_{1}\varrho+\sum_{j=2}^{n}p_{j}(S_{1,j})\varrho(S_{1,j}),\nonumber
+\end{gather}
 donde $S_{1,j}$ es el operador que permuta la primera y la $j$-ésima partícula. De esta manera, donde $\Tr_{\overline{i}}$ denota la traza parcial sobre todos menos el $i$-ésimo qubit, la aplicación de grano grueso que resuelve un qubit donde hay $n$ qubits es
 \begin{gather}\label{eq:CG}
     \mcC:\mcS( \hilbert_{2}^{\otimes n})\to \mcS(\hilbert_{2})\nonumber\\
     \varrho\mapsto\Tr_{\overline{1}}(\Fuzzy{\varrho}).
 \end{gather}
-Reconocemos, según los valores de las probabilidades $p_{j}$ \ddnote*{varios tipos de regímenes, entre ellos:}{dos tipos de regímenes. El primero corresponde a nuestra discusión:} si $p_{1}>p_{j}\forall j\neq 1$ se dice que el modelo tiene una partícula preferencial. Si $p_{j}=\frac{1}{n}\forall j$ entonces no existe ninguna partícula preferencial, y se puede ver al sistema como una caja de gas en la que medir a cualquier partícula es igual de probable.
+Reconocemos, según los valores de las probabilidades $p_{j}$, varios tipos de regímenes. Dos de estos serán analizados con más profundidad: si $p_{1}>p_{j}\forall j\neq 1$ se dice que el modelo tiene una partícula preferencial. Si $p_{j}=\frac{1}{n}\forall j$ entonces no existe ninguna partícula preferencial, y se puede ver al sistema como una caja de gas en la que medir a cualquier partícula es igual de probable.

@@ -7,17 +7,25 @@ Ahora que hemos establecido que usaremos como modelo de grano grueso uno que inc
 \end{gather}
 Debido que asumimos que el estado que se propaga debido a la evolución subyacente es justamente un estado compatible con $\rho_{\ef}$, seleccionado a través de una aplicación de asignación, a la dinámica gruesa la definimos como la composición
 \begin{equation}
-\Gamma_t:=\mcC \circ \mcV_t \circ \mcA_\mcC.\nonumber
+\Gamma_t:=\mcC \circ \mcV_t \circ \mcA_{\mcC}^{\max}.\nonumber
 \end{equation}
-\ddnote*{Mejor ve directo a $\mcA_{\mcC}^{\max}$ (ademas que ya esta definida anteriormente)}{Donde $\mcA_\mcC$ denota a la aplicación que asigna un estado microscópico $\varrho$ al estado efectivo $\rho_{\ef}$. A la aplicación de asignación desarrollada previamente la denotaremos por medio de $\mcA_{\mcC}^{\max}$.} \ddnote{Por otro lado, no explicaste que es $\mcV_t$} El siguiente diagrama ilustra la ecuación anterior,
+
+\acnote{Párrafo iterado: reescritura}
+
+Donde $\mcV_{t}$ es la evolución seguida por el sistema microscópico. Esta puede ser unitaria, o un canal cuántico. El siguiente diagrama ilustra la ecuación anterior,
 \[\begin{tikzcd}[arrows={<-|}]
     \rho_{\ef}(0)  & \rho_{\ef}(t) \arrow{l}{\Gamma_{t}} \arrow{d}{\mcC}\\
 \varrho_{\max}(0) \arrow{u}{\mcA_{\mcC}^{\max}} & \varrho_{\max}(t). \arrow{l}{\mcV_{t}}
 \end{tikzcd}
 \]
-En el siguiente capítulo se analizarán dinámicas efectivas generadas por diferentes dinámicas subyacentes. Si se asume que el sistema conformado por las partículas es cerrado, entonces la evolución $\mcV_{t}$ será unitaria, generada por un hamiltoniano $H$. Algunos ejemplos de dinámicas subyacentes no unitarias son los canales de ruido usuales, como el canal de \textit{despolarización}, el canal de \textit{amortiguamiento de amplitud}, o el canal de \textit{amortiguamiento de fase}. \ddnote{puse italicas en algunas partes}
+En el siguiente capítulo se analizarán dinámicas efectivas generadas por diferentes dinámicas subyacentes. Si se asume que el sistema conformado por las partículas es cerrado, entonces la evolución $\mcV_{t}$ será unitaria, generada por un hamiltoniano $H$. Algunos ejemplos de dinámicas subyacentes no unitarias son los canales de ruido usuales, como el canal de \textit{despolarización}, el canal de \textit{amortiguamiento de amplitud}, o el canal de \textit{amortiguamiento de fase}. \ddnote{puse italicas en algunas partes}\acnote{enterado}
 
-Nótese que, a diferencia de los mapas dinámicos usualmente estudiados en teoría de sistemas cuánticos abiertos, la dinámica efectiva $\Gamma_{t}$ no tiene por qué ser lineal (sí debe, por supuesto, mandar estados cuánticos a estados cuánticos), debido a que uno de los elementos de la composición que la originan \ddnote*{no siempre es lineal}{no es lineal}: la aplicación de asignación. El estudio de las particularidades de algunas de estas dinámicas efectivas es el foco de este trabajo.
+
+\acnote{Párrafo iterado: notas}
+
+Nótese que, a diferencia de los mapas dinámicos usualmente estudiados en teoría de sistemas cuánticos abiertos, la dinámica efectiva $\Gamma_{t}$ no tiene por qué ser lineal (sí debe, por supuesto, mandar estados cuánticos a estados cuánticos), debido a que uno de los elementos de la composición que la originan no siempre es lineal: la aplicación de asignación. El estudio de las particularidades de algunas de estas dinámicas efectivas es el foco de este trabajo.
+
+\acnote{Todo lo que sigue no me gustaba}
 
 Reconociendo que la asignación de máxima entropía no es la única asignación compatible con un conjunto de aplicación de grano grueso y estado inicial efectivo, ¿es justificable usar al estado de máxima entropía? \ddnote*{este texto no está conectado a la pregunta}{Previamente demostramos que en nuestro caso particular, este resulta ser separable debido a que las correlaciones entre los subsistemas son nulas. Aunque esto no tiene ninguna consecuencia en el caso en que el estado no se propaga, las correlaciones tienen un efecto en la evolución de un sistema.} \ddnote{Por otro lado, de que efecto hablas?, al no haber correlaciones, como afectan a la dinámica? O en su defecto, cual de las dinámicas. Propongo reformular.}
 
@@ -29,4 +37,6 @@ En realidad no lo hace, y la razón de esto es que
 \begin{equation}
     \mcA_{\mcC}^{\max}\neq\mcC^{-1}.\nonumber
 \end{equation}}
+
+\acnote{Conlusión: se requiere discusión}
 

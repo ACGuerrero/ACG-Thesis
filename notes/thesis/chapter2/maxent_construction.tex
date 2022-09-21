@@ -13,13 +13,12 @@ Escójase ${A_{i}}={\pauli{i}}$, las matrices de Pauli, y la aplicación de gran
 Aquí hay un problema: el estado que maximiza la entropía pertenece al espacio $\densityspace{2^{n}}$, mientras que las restricciones están definidas para un operador de densidad en $\densityspace{2}$. Entonces, ¿cómo se traducen dichas restricciones en el nivel microscópico? Naturalmente, esto dependerá de la relación entre el estado efectivo $\rho_{\ef}$ y el estado subyacente, $\rho_{\ef}=\CG{\varrho}$. Esto es, el estado de máxima entropía depende de la aplicación de grano grueso. Sustituyendo la relación entre algún estado microscópico compatible $\varrho$ y el estado efectivo $\rho_{\ef}$ en la ecuación \label{eq:Restrictions}, y manipulando un poco se halla que
 \begin{align}
     r_{j}&=\Tr[\sigma_{j}\CG{\varrho}]\nonumber\\
-    &=\Tr[\sigma_{j}\Tr_{\overline{1}}\qty(p_{1}\varrho+\sum_{k=2}^{n}p_{k}S_{1,k}\varrho S_{1,k}^{\dagger})]\nonumber\\
-    &=\Tr[\sigma_{j}\otimes\Id_{2^{n-1}}\qty(p_{1}\varrho+\sum_{k=2}^{n}p_{k}S_{1,k}\varrho S_{1,k}^{\dagger})]\nonumber\\
-    &=\Tr[\qty(p_{1}(\sigma_{j}\otimes\Id_{2^{n-1}})+\sum_{k=2}^{n}p_{k}S_{1,k}^{\dagger}(\sigma_{j}\otimes\Id_{2^{n-1}})S_{1,k})\varrho]\nonumber\\
+    &=\Tr[\sigma_{j}\Tr_{\overline{1}}\qty(p_{1}\varrho+\sum_{k=2}^{n}p_{k}S_{1,k}\varrho S_{1,k})]\nonumber\\
+    &=\Tr[\sigma_{j}\otimes\Id_{2^{n-1}}\qty(p_{1}\varrho+\sum_{k=2}^{n}p_{k}S_{1,k}\varrho S_{1,k})]\nonumber\\
+    &=\Tr[\qty(p_{1}(\sigma_{j}\otimes\Id_{2^{n-1}})+\sum_{k=2}^{n}p_{k}S_{1,k}(\sigma_{j}\otimes\Id_{2^{n-1}})S_{1,k})\varrho]\nonumber\\
     &=\Tr[\qty(p_{1}(\sigma_{j}\otimes\Id_{2^{n-1}})+\sum_{k=2}^{n}p_{k}(\Id_{2^{k-1}}\otimes\sigma_{j}\otimes\Id_{2^{n-k}}))\varrho]\nonumber\\
     &=\Tr[\qty(\sum_{k=1}^{n}p_{k}(\Id_{2^{k-1}}\otimes\sigma_{j}\otimes\Id_{2^{n-k}}))\varrho]\nonumber.
 \end{align}
-\ddnote{también se pueden quitar los daggers del swap}
 Definiendo
 \begin{equation}\label{eq:GhatNM}
     \hat{G}_{j}=\sum_{k=1}^{n}p_{k}(\Id_{2^{k-1}}\otimes\sigma_{j}\otimes\Id_{2^{n-k}}),
@@ -32,7 +31,7 @@ Estas restricciones ya se hallan en términos de observables y un operador de de
 \begin{equation}\label{eq:MaxEntLagMult}
     \varrho_{\max}=\frac{1}{Z}e^{\sum_{j}\lambda_{j}\hat{G}_{j}}.
 \end{equation}
-Si se sustituye a $\varrho_{\max}$ en las ecuaciones (\ref{eq:MaxEntRestrictions}) \ddnote*{esto mete polémica innecesaria}{(cosa nada recomendable)}, se obtienen las relaciones entre los multiplicadores de Lagrange y los valores esperados de los operadores $\pauli{j}$ Si se escribe $\lambda=\sqrt{\lambda_{1}^{2}+\lambda_{2}^{2}+\lambda_{3}^{2}}$, los resultados son
+Si se sustituye a $\varrho_{\max}$ en las ecuaciones (\ref{eq:MaxEntRestrictions}) \ddnote*{esto mete polémica innecesaria}{(cosa nada recomendable)}\acnote{entendido}, se obtienen las relaciones entre los multiplicadores de Lagrange y los valores esperados de los operadores $\pauli{j}$ Si se escribe $\lambda=\sqrt{\lambda_{1}^{2}+\lambda_{2}^{2}+\lambda_{3}^{2}}$, los resultados son
 \begin{align}\label{eq:MaxEntExpVals}
     \begin{split}
     \expval{\pauli{1}}&=\lambda_{1}\rfroml(\lambda),\\
@@ -40,6 +39,6 @@ Si se sustituye a $\varrho_{\max}$ en las ecuaciones (\ref{eq:MaxEntRestrictions
     \expval{\pauli{3}}&=\lambda_{3}\rfroml(\lambda),
     \end{split}
 \end{align}
-donde $\rfroml(\lambda)$ es una función biyectiva de $\lambda$, y cuya expresión será derivada en la siguiente sección de una forma que requiere muchas menos cuentas. Idealmente, la ecuación (\ref{eq:MaxEntLagMult}) \ddnote*{se requiere}{está} en términos de los valores de expectación $r_{i}=\Tr(\sigma_{i}\rho_{\ef})$, y no de los multiplicadores de Lagrange. Aunque no es posible despejar a los multiplicadores de Lagrange de las ecuaciones \ddnote*{esto es redundante}{de manera algebráica}, la naturaleza de $\rfroml(\lambda)$ nos permite asegurar que las relaciones son uno a uno y que tienen inversa.
+donde $\rfroml(\lambda)$ es una función biyectiva de $\lambda$, y cuya expresión será derivada en la siguiente sección de una forma que requiere muchas menos cuentas. \acnote*{Normalmente}{Idealmente}, la ecuación (\ref{eq:MaxEntLagMult}) se requiere en términos de los valores de expectación $r_{i}=\Tr(\sigma_{i}\rho_{\ef})$, y no de los multiplicadores de Lagrange. Aunque no es posible despejar a los multiplicadores de Lagrange de las ecuaciones \ddnote*{esto es redundante}{de manera algebráica}\acnote{en efecto}, la naturaleza de $\rfroml(\lambda)$ nos permite asegurar que las relaciones son uno a uno y que tienen inversa.
 
 A partir de este momento, cada vez que se hable del \textit{estado de máxima entropía}, se entiende que se hace referencia al estado dado por la ecuación (\ref{eq:MaxEntLagMult}). Esto es, al estado de máxima entropía que es compatible con un estado efectivo inducido por nuestro modelo de grano grueso particular.
