@@ -164,7 +164,7 @@ para toda base ortonormal $\{\ket{\varphi^{C}_{j}}\}$ de $\hilbert^{C}$. Entonce
 \begin{equation}
     \Tr_{B}(\rho^{C})=\sum_{j}(\Id^{A}\otimes \bra{\varphi^{B}_{j}})\rho^{C}(\Id^{A}\otimes \ket{\varphi^{B}_{j}}).\nonumber
 \end{equation}
-Puede verse que el resultado de la operación es trazar sobre los elementos del sistema que no es de interés. La matriz reducida del sistema $A$, o traza parcial con respecto al sistema $B$, actúa como matriz de densidad de $A$, ya que contiene toda la descripción estadística de dicho subsistema. \ddnote{En particular obsérvese lo siguiente, sea $G^A$ una observable del sistema $A$, \ie{} $G^A$ actúa en $\rho^C$ como $(G^A\otimes \Id_B)$, se tiene entonces que
+Puede verse que el resultado de la operación es trazar sobre los elementos del sistema que no es de interés. La matriz reducida del sistema $A$, o traza parcial con respecto al sistema $B$, actúa como matriz de densidad de $A$, ya que contiene toda la descripción estadística de dicho subsistema. \ddnote{En particular obsérvese lo siguiente, sea $G^A$ una observable del subsistema $A$, \ie{} $G^A$ actúa en $\rho^C$ como $(G^A\otimes \Id_B)$, se tiene entonces que
 $$ \langle G^A \rangle =\tr\left((G^A\otimes \Id_B)\rho^C\right)=\tr \left( G^A \rho^A \right).$$
 }
 \ddnote{De pronto pon esto con tus palabras si no te gusta como está escrito.}
@@ -212,18 +212,18 @@ En esta ecuación, $\mcE_{t}$ está definido como
  y cumple que es un canal cuántico \ddnote{[cita], puedes citar el libro de Mario Ziman y el Nielsen and Chuang} \acnote{también llamado aplicación dinámica \cite{Breuer} o operación cuántica \cite{Chuang}} cuántico $\forall t$, y que \ddnote*{Aguas, esto es incorrecto, $\mcE_0$ no es la matriz identidad en $S$ al tiempo cero. Lo correcto es $\mcE_0=\text{id}_S$}{$\mcE_{0}=\Id_{S}$}. El formalismo de los canales cuánticos queda fuera del alcance de este trabajo, y sin entrar en más detalle, basta con señalar que los canales cuánticos son aplicaciones lineales completamente positivas que preservan la traza, \ie, todo canal cuántico $\mcE:\mcB(\hilbert_{A})\rightarrow \mcB(\hilbert_{B})$ cumple que \cite{Watrous}
  \ddnote{Lo que sigue está escrito raro, se presta a confusiones, propongo correcctión:}
  \begin{enumerate}
-    \item \ddnote*{$\mcE\otimes \text{id}_{k}: \mcB(\hilbert_A \otimes \hilbert_k)\to \mcB(\hilbert_B \otimes \hilbert_k)$ es positivo para todo $k=1,2,\dots$.}{$\mcE\otimes \Id_{\mcB(\hilbert_{C})}$ es positivo para cualquier $\hilbert_{C}$.}
+    \item \ddnote*{$\mcE\otimes \text{id}_{k}: \mcB(\hilbert_A \otimes \hilbert_k)\to \mcB(\hilbert_B \otimes \hilbert_k)$ es positivo para todo entero positivo $k$.}{$\mcE\otimes \Id_{\mcB(\hilbert_{C})}$ es positivo para cualquier $\hilbert_{C}$.}
     \item $\Tr\qty(\mcE(\Delta))=\Tr\qty(\Delta)$.
  \end{enumerate}
 Los canales cuánticos están relacionados directamente al esquema de sistemas abiertos a través del teorema de Stinespring \cite{Watrous}, de acuerdo con el cual dado un canal cuántico
 \begin{equation}
     \mcE:\mcB(\hilbert)\rightarrow \mcB(\hilbert),\nonumber
 \end{equation}    
-existen un espacio de Hilbert $\hilbert_{C}$ y un operador unitario $U$ que actúa sobre $\hilbert_{A}\otimes \hilbert_{C}$ tales que
+existen un espacio de Hilbert $\tilde \hilbert$ y un operador unitario $U$ que actúa sobre $\hilbert\otimes \tilde \hilbert$ tales que
 \begin{equation}
-    \mcE(\Delta_{A})=\Tr_{C}\qty(U \Delta_{A} \otimes \Delta_{C} U^{\dag}),\nonumber
+    \mcE(\rho)=\Tr_{C}\qty(U  \left(\rho \otimes \dyad{e}{e}\right) U^{\dag}),\nonumber
 \end{equation}
-donde $\Delta_{A}\in\mcB(\hilbert_{A})$ y $\Delta_{C}\in\mcB(\hilbert_{C})$.
+donde $\rho\in\mcS(\hilbert)$ y $\ket{e}\in \tilde \hilbert$. \ddnote{Hice varios cambios aquí, cuando el canal opera entre diferentes espacios de Hilbert, el teorema es ligeramente mas complicado. Mejor simplifiqué a cuando se usa el mismo espacio.}
 \iffalse
 \subsubsection{La evolución del operador de densidad}
 
@@ -258,7 +258,7 @@ en donde el claro problema es que el lado derecho de la ecuación, que está en 
 \subsubsection{Parametrización del operador de densidad}
 \acnote{Sección iterada: reescritura}
 
-Es común escoger alguna base hermítica para poder parametrizar a las matrices de densidad. El beneficio de hacer esto es que, por ser $\mcS(\hilbert_{n})$ un subconjunto de $\mcL(\hilbert_{n})$, dicha parametrización será lineal, y aún más: los parámetros serán cantidades medibles en el laboratorio. Esto significa que, realizando mediciones de forma adecuada, es posible reconstruir el estado de un sistema. Una elección común de base son las matrices generalizadas de Gell-Mann, junto a la matriz identidad.
+Es común escoger alguna base hermítica para poder parametrizar a las matrices de densidad. El beneficio de hacer esto es que, por ser $\mcS(\hilbert_{n})$ un subconjunto de $\mcL(\hilbert_{n})$, dicha parametrización será \ddnote*{real}{lineal}, y aún más: los parámetros serán cantidades \ddnote*{promedios de observables}{medibles en el laboratorio} \ddnote{ojo aquí, los promedios no son directamente medibles, son computables, como lo son también los parámetros complejos}. \ddnote*{Propongo mejor esto: Dicho de otro modo, se puede escoger una base de tal forma que es un conjunto de observables tomográficamente completo.}{Esto significa que, realizando mediciones de forma adecuada, es posible reconstruir el estado de un sistema.} Una elección común de base son las matrices generalizadas de Gell-Mann, junto a la matriz identidad.
 \iffalse
 \acnote{Remplaza:-------}
 \ddnote*{la base es hermitiana, el espacio no, lo hablamos en la reunión}{Cualquier matriz de densidad puede descomponerse en términos de una base del espacio de matrices hermitianas de $n\times n$.} \ddnote*{Tengo entendido que la identidad es también un generador de SU(2), checa bien esto}{Una elección común de base para el espacio es el de los generadores $\{\varsigma_{k}\}$ del grupo $\text{SU}(n)$, junto a la matriz identidad $\Id_{n}$}. Esto es particularmente útil, \ddnote*{ya que}{pues }permite parametrizar a las matrices de densidad de forma vectorial \cite{Bruning}. 
@@ -267,7 +267,7 @@ Es común escoger alguna base hermítica para poder parametrizar a las matrices 
 
 Sea $\{\varsigma_{k}\}_{k}$ el conjunto de matrices generalizadas de Gell-Mann que generan a $\text{SU}(n)$ y
 %En efecto, sea $\{\varsigma_{k}\}$ un conjunto de generadores de $\text{SU}(n)$ y 
-$\rho$ una matriz de densidad $\rho\in\mcS(\hilbert_{n})$. Entonces $\rho$ está completamente descrita por el vector generalizado de Bloch de dimensión $n^{2}-1$, $\vec{\gamma}$ definido como
+$\rho$ una matriz de densidad $\rho\in\mcS(\hilbert_{n})$. Entonces $\rho$ está completamente descrita por el vector generalizado de Bloch de dimensión $n^{2}-1$, $\vec{\gamma}$ definido como \ddnote{En lo que sigue defines $\rho$ en terminos de $\vec \gamma$, tu necesitas definir $\vec \gamma$ en terminos de $\rho$, es decir, poner los componentes de $\vec \gamma$ en terminos del producto punto de HIlbert Schmidt. Y luego poner, tal que (y aquí ya pones la ecuación que está a continuación)}
 \begin{equation}\label{eq:BlochParametrization}
     \rho=\frac{1}{n}\Id_{n}+\frac{1}{2}\vec{\gamma}\cdot\vec{\varsigma}.
 \end{equation}

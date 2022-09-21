@@ -8,7 +8,7 @@ La cantidad de información provista por el resultado de un experimento depende 
 \begin{enumerate}
     \item $H(p)$ debe ser continua en $p$.
     \item $H(p)$ debe ser una función creciente, monotónica de $n$ cuando $p_{j}=\frac{1}{n}$.
-    \item Si $X$ e $Y$ son procesos independientes, $H(p_{X}(x_{j}),p_{Y}(y_{k}))=H(p_{X}(x_{j}))+H(p_{Y}(y_{k}))$.
+    \item Si $X$ e $Y$ son procesos independientes, \ddnote*{$H(p_{X}(x_{j})p_{Y}(y_{k}))=H(p_{X}(x_{j}))+H(p_{Y}(y_{k}))$}{$H(p_{X}(x_{j}),p_{Y}(y_{k}))=H(p_{X}(x_{j}))+H(p_{Y}(y_{k}))$}.
 \end{enumerate}
 Además, demostró que
 \begin{equation}\label{eq:ShannonEntropy}
@@ -18,7 +18,7 @@ Fue a través de discusiones con von Neumann que Shannon descubrió que su medid
 
 Como medida de incertidumbre, la entropía de Shannon (\ref{eq:ShannonEntropy}) es máxima para distribuciones equiprobables. Retomando la idea del dado bien balanceado, como no es posible tener ningún tipo de seguridad sobre el resultado de un tiro, la incertidumbre (la entropía) es máxima.
 
-En teoría de información clásica, la entropía de Shannon se suele estudiar como la cantidad promedio de bits requerida para trasmitir un mensaje. Considérese que se desea transmitir un mensaje encriptado en el que únicamente se utilizan los caracteres A, B, C y D. Si el método de encriptación es tal que resulta que todos los caracteres tienen la misma probabilidad de aparecer, entonces a los caracteres se les pueden asignar los valores 00, 01, 10, y 11 respectivamente. Calculando la entropía de Shannon se halla que, en promedio, se requieren dos bits para transmitir cada caracter del mensaje. 
+En teoría de información clásica, la entropía de Shannon se suele estudiar como la cantidad promedio de bits requerida para trasmitir un mensaje \ddnote{propongo añadir (cuando se toma $k=1$ y el $\log$ en base 2)}. Considérese que se desea transmitir un mensaje encriptado en el que únicamente se utilizan los caracteres A, B, C y D. Si el método de encriptación es tal que resulta que todos los caracteres tienen la misma probabilidad de aparecer, entonces a los caracteres se les pueden asignar los valores 00, 01, 10, y 11 respectivamente. Calculando la entropía de Shannon se halla que, en promedio, se requieren dos bits para transmitir cada caracter del mensaje. 
 
 Supóngase ahora que las probabilidades de que aparezca cada uno de los caracteres son $p(A)=\frac{1}{2}$, $p(B)=\frac{1}{4}$, $p(C)=\frac{1}{8}$, $p(D)=\frac{1}{8}$. En este caso se pueden asignar los valores 1, 10, 110, 111, a cada letra respectivamente. Nótese que ahora solo se requiere un bit para transmitir la letra más común. Pues bien, si se calcula la entropía de Shannon, se encuentra que cada letra requerirá $1.75$ bits para ser transmitida \cite{Chuang}.
 
@@ -34,10 +34,10 @@ La entropía de von Neumann puede interpretarse de manera similar a la entropía
 
 \acnote{Lista iterada: notas y reescritura}
 
-De la entropía de von Neumann de un sistema descrito por un operador de densidad $\rho\in\mcS(\hilbert_{n})$ nos interesan las siguientes propiedades \cite{Chuang}:
+De la entropía de von Neumann de un sistema descrito por un operador de densidad $\rho\in\mcS(\hilbert_{n})$, nos interesan las siguientes propiedades \cite{Chuang}:
 \begin{enumerate}
     \item La entropía puede escribirse en términos de los eigenvalores de $\rho$, $\eta_{j}$, como $S(\rho)=-\sum_{j}\eta_{j}\ln{\eta_{j}}$. Esto coincide con la entropía de Shannon si se envían los eigenestados de $\rho$ con probabilidades $\eta_{j}$.
     \item La entropía es no negativa, y es nula si y sólo sí $\rho$ es de la forma $\dyad{\psi}$ con $\ket{\psi}\in\hilbert_{n}$.
     \item La entropía es máxima cuando $\rho=\frac{1}{n}\Id_{n}$, y $S(\rho)=n$. Esto es de esperarse, de acuerdo con nuestra discusión previa, el estado máximamente mezclado es aquel del que somo máximamente ignorantes, y por lo mismo debe ser el que tiene la máxima entropía (recordando a la entropía como medida de incertidumbre).
-    \item La entropía de un estado producto es igual a la suma de las entropías de cada factor, $S(\rho_{A}\otimes\rho_{B})=S(\rho_{A})+S(\rho_{B})$.
+    \item La entropía de un estado producto es igual a la suma de las entropías de cada factor, $S(\rho_{A}\otimes\rho_{B})=S(\rho_{A})+S(\rho_{B})$. \ddnote{Esta propiedad es análoga al caso clásico en el que se tienen dos variables aleatorias independientes.}
 \end{enumerate}
