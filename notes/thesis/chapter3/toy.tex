@@ -75,10 +75,17 @@ Claro está, el factor de compresión depende del multiplicador de Lagrange, que
 \end{equation}
 \begin{figure}[ht!]
   \centering
-  \includegraphics[width=0.9\linewidth]{chapter3/figures_toy/ContractionFactorSWAP_2D_both.png}
-  \caption{Factor de despolarización $\kappa_{1}^{\rho_{\ef}}$ como función de $r_{\ef}$ (der.) y como función de $\lambda$ (izq.), para diferentes valores de $p_{1}$.}
-  \label{fig:SWAPFactor2Drl}
+  \begin{subfigure}{0.5\textwidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{chapter3/figures_toy/K(r).png}
+  \end{subfigure}%
+  \begin{subfigure}{0.5\textwidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{chapter3/figures_toy/K(lambda).png}
+  \end{subfigure}
+  \caption{Factor de despolarización $\kappa_{1}^{\rho_{\ef}}$ como función de $r_{\ef}$ (der.) y como función de $\lambda$ (izq.), para diferentes valores de $p_{1}$.}\label{fig:SWAPFactor2Drl}
 \end{figure}
+
 
 De las ecuaciones (\ref{eq:SWAPFactor}) y (\ref{eq:EffectiveSWAP1}) distinguimos lo siguiente:
 \begin{itemize}
@@ -149,7 +156,7 @@ De las ecuaciones (\ref{eq:SWAPFactort}) y (\ref{eq:EffectiveSWAPt}) es posible 
 
 \begin{figure}[ht!]
   \centering
-  \includegraphics[width=0.6\linewidth]{chapter3/figures_toy/ContractionFactorSWAP_z=0.8_t=0_to_t=2.png}
+  \includegraphics[width=0.6\linewidth]{chapter3/figures_toy/K(t).png}
   \caption{Factor de despolarización $\kappa_{t}^{\rho_{\ef}}$ como función de $t$, para diferentes valores de $p_{1}$ y $r_{\ef}(0)=0.8$.}
   \label{fig:SWAPFactor2Dt}
 \end{figure}

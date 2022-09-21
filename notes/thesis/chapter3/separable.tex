@@ -1,4 +1,4 @@
-\section{Dinámicas factorizables}
+\section{Dinámicas locales}
 
 En la sección \ref{sec:Ch1PartialTrace} se habló de estados separables como aquellos estados que, descritos por un operador de densidad $\rho\in\densityspace{n}$, tienen la forma
 \begin{equation}
@@ -19,9 +19,9 @@ siendo la unitaria
     \mcU_{t}=\Motimes_{k=1}^{n}\text{exp}\qty(-\rmi\omega_{k}H_{k}t)=\Motimes_{k=1}^{n} U_{k}(t).
 \end{equation}
 A partir de este momento, para hacer más limpia la lectura de este documento se omitirán los productos tensoriales con operadores identidad. El subsistema sobre el que actúe un operador será denotado por un subíndice, de tal manera que el hamiltoniano previamente definido queda
-\begin{equation*}
-    \mcH=\sum_{k=1}^{n}\omega_{k}H_{k}.
-\end{equation*}
+\begin{equation}
+    \mcH=\sum_{k=1}^{n}\omega_{k}H_{k}.\nonumber
+\end{equation}
 
 
 \subsection{Caso general}
@@ -138,6 +138,8 @@ En efecto, si $p_{1}\approx\frac{1}{2}$, entonces $\rho_{1}\approx\rho_{\text{np
 
 \subsubsection{Partícula preferencial invariante}
 
+\acnote{Esta sección la tengo que volver a tocar}
+
 Ahora asumamos que es el sistema preferencial el que no evoluciona, mientras que las demás partículas sí lo hacen. Existen diferentes formas de abordar este problema, según la elección de las probabilidades y de la naturaleza de la evolución del resto de las partículas. Quizá el caso más sencillo es aquel en el que todas las partículas no preferenciales evolucionan de la misma forma. Esto es, una evolución generada por un hamiltoniano de la forma
 \begin{equation}
     \mcH=\omega \sum_{k=2}^{n}H_{k}.\nonumber
@@ -174,12 +176,12 @@ Estas pequeñas oscilaciones son, justamente, el término de ruido. La visualiza
     \centering
     \begin{subfigure}{0.5\textwidth}
       \centering
-      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_Z_evol_n=2_p=0.95_from_-10_to_10_end=10.png}
-      \caption{Una partícula no preferencial}
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_prefinv_eq_n=10_p=0.95.png}
+      \caption{Nueve no preferencial}
     \end{subfigure}%
     \begin{subfigure}{0.5\textwidth}
       \centering
-      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_Z_evol_n=100_p=0.95_from_-10_to_10_end=10.png}
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_prefinv_eq_n=100_p=0.95.png}
       \caption{Noventa y nueve partículas no preferenciales}
     \end{subfigure}
     \caption{Oscilaciones periódicas cercanas al valor esperado. La periodicidad no depende de los pesos probabilísticos de cada partícula. En azul, el conjunto de estados con la misma pureza (y la misma coordenada en $\pauli{3}$) que el estado efectivo inicial (en verde).}\label{fig:OscilationsSameHam}
@@ -201,30 +203,26 @@ revelan la complejidad de la evolución, además de su no-linealidad, pues los v
     \centering
     \begin{subfigure}{0.5\textwidth}
       \centering
-      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_Z_evol_n=4_p=0.99_from_-3_to_3_end=60.png}
-      \caption{Tres partículas no preferenciales.}
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_prefinv_ran_n=10_p=0.95_r=0.95_a=-3_b=3.png}
     \end{subfigure}%
     \begin{subfigure}{0.5\textwidth}
       \centering
-      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_Z_evol_n=100_p=0.99_from_-3_to_3_end=60.png}
-      \caption{Noventa y nueve partículas no preferenciales.}
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_prefinv_ran_n=500_p=0.95_r=0.95_a=-3_b=3.png}
     \end{subfigure}
-    \caption{Variaciones cercanas al estado efectivo inicial (verde). El aumento en el número de partículas lleva a una evolución complicada y no periódica.}\label{fig:PrefInv1}
+    \caption{Variaciones cercanas al estado efectivo inicial (verde). El aumento en el número de partículas lleva a una evolución complicada y no periódica, pero que converge al punto $\vec{r}_{1}$. En azul, el conjunto de estados con la misma pureza y la misma coordenada en $\pauli{3}$ que el estado efectivo inicial.}\label{fig:PrefInv1}
 \end{figure}
 
 \begin{figure}[ht!]
     \centering
     \begin{subfigure}{0.5\textwidth}
       \centering
-      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_Z_evol_n=4_p=0.7_from_-3_to_3_end=60.png}
-      \caption{Dos partículas no preferenciales.}
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_prefinv_ran_n=10_p=0.7_r=0.95_a=-3_b=3.png}
     \end{subfigure}%
     \begin{subfigure}{0.5\textwidth}
       \centering
-      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_Z_evol_n=100_p=0.7_from_-3_to_3_end=60.png}
-      \caption{Siete partículas no preferenciales.}
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_prefinv_ran_n=500_p=0.7_r=0.95_a=-3_b=3.png}
     \end{subfigure}
-    \caption{Variaciones cercanas al estado efectivo inicial (verde). El aumento en el número de partículas lleva a una evolución complicada y no periódica. Una probabilidad de error más grande lleva a que las variaciones dejan de ser pequeñas.}\label{fig:PrefInv2}
+    \caption{Variaciones cercanas al estado efectivo inicial (verde). El aumento en el número de partículas lleva a una evolución complicada y no periódica, pero que converge al punto $\vec{r}_{1}$. Valores menos importantes de $p_{1}$ conducen a mayores variaciones. En azul, el conjunto de estados con la misma pureza y la misma coordenada en $\pauli{3}$ que el estado efectivo inicial.}\label{fig:PrefInv2}
 \end{figure}
 
 \subsubsection{Sistema en campo magnético ?}
@@ -262,11 +260,11 @@ Aquí pasa a ser claro que la amplitud máxima de la oscilación de error de cad
     \centering
     \begin{subfigure}{0.5\textwidth}
       \centering
-      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_Z_evol_n=3_p=0.95_from_-3_to_3_end=10.png}
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_all_ran_p=0.95_r=0.9_n=10_a=-3_b=3.png}
     \end{subfigure}%
     \begin{subfigure}{0.5\textwidth}
       \centering
-      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_Z_evol_n=100_p=0.95_from_-3_to_3_end=10.png}
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_all_ran_p=0.95_r=0.9_n=500_a=-3_b=3.png}
     \end{subfigure}
     \caption{Como mencionado, para el caso en que $r_{\ef}=0.9$ y $p=0.95$ las variaciones debidas al error no son perceptibles debido a su pequeña amplitud, independientemente del número de partículas consideradas.}\label{fig:Oscilations12}
 \end{figure}
@@ -274,11 +272,11 @@ Aquí pasa a ser claro que la amplitud máxima de la oscilación de error de cad
     \centering
     \begin{subfigure}{0.5\textwidth}
       \centering
-      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_Z_evol_n=3_p=0.5_from_-3_to_3_end=10.png}
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_all_ran_p=0.5_r=0.9_n=5_a=-3_b=3.png}
     \end{subfigure}%
     \begin{subfigure}{0.5\textwidth}
       \centering
-      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_Z_evol_n=100_p=0.5_from_-3_to_3_end=10.png}
+      \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_all_ran_p=0.5_r=0.9_n=500_a=-3_b=3.png}
     \end{subfigure}
     \caption{Si $r_{\ef}=0.9$ y $p=0.3$, el alejamiento de la evolución esperada se hace notar. Para valores grandes de $n$ se vuelve dominante el término de $p_{1}$}\label{fig:Oscilations13}
 \end{figure}
