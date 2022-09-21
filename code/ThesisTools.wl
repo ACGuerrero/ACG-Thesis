@@ -4,8 +4,6 @@ BeginPackage["ThesisTools`"]
 Needs["CoolTools`"]
 Needs["Carlos`"]
 Needs["Quantum`"]
-Pauli2Basis::usage="something"
-cnotGate::usage="Controlled not gate"
 CNOT::usage="CNOT[t] evaluates the controlled not gate at a time t."
 MatrixToLatex::usage="something"
 ShowOperatorsWithSphere::usage="something"
@@ -18,13 +16,6 @@ UB2Q::usage="something"
 UnitaryToRotateFineStates::usage="something"
 AssignementMapForStateNotInZ::usage="something"
 RotatedFineStates::usage="something"
-testDistribution::usage="something"
-metropolisHastingsSample::usage="something"
-cgfidelitylist::usage="something"
-cgfrobeniuslist::usage="something"
-GenerateMHData::usage="GenerateMHData[n,beta,delta,swapP,zcoord,print_:True] generates a set of pure states using the Metropolis Hastings algorithm. If the data exists, it imports it."
-CGKrausOp::usage="something"
-CGKraus::usage="CGKraus[rho,p] applies the coarse graining map using its Kraus Operators"
 SWAPContractionFactor::usage="SWAPContractionFactor[t,p,\[Lambda]] gives the contraction factor of the coarse system resulting from applying the swap gate to a MaxEnt state characterized by p,\[Lambda]."
 SWAP::usage="SWAP[t] applies the operator at a time t. t=1 is the full swap gate, while t=0 is the identity operator."
 SWAP2::usage="SWAP2[t] applies the operator at a time t. t=1 is the full swap gate, while t=0 is the identity operator."
@@ -35,10 +26,7 @@ SphereMesh::usage="Draws a sphere mesh with latitudinal and longitudinal lines."
 TransformedSphereMesh::usage="Same as sphere mesh but accepts a transformation parameter. Transforms the sphere mesh using the given transformation."
 SU2ToSO3::usage="Transforms a SU(2) matrix into a SO(3) matrix using the Pauli basis"
 FunctionSphereMesh::usage="Same as sphere mesh but accepts a function parameter. Transforms the sphere mesh using the given function."
-PauliVector::usage="List of the pauli matrices"
-LagrangeMultFromPurity::usage="Used as LagrangeMultFromPurity[r_,p_,lo_,up_,st_]. "
-MaxEntAss::usage="MaxEntAss[rho,p] calculates the maximum entropy state given a non pure density matrix"
-DirProd::usage="It's just the Kronecker Producto. I will fix it for vectors later"
+
 
 Begin["`Private`"]
 
@@ -48,8 +36,6 @@ Begin["`Private`"]
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*)
 
 
-Pauli2Basis=Flatten[Table[Pauli[{i,j}],{i,0,3},{j,0,3}],1];
-cnotGate={{1,0,0,0},{0,1,0,0},{0,0,0,1},{0,0,1,0}};
 CNOT[t_]:={{1,0,0,0},{0,1,0,0},{0,0,Exp[I*Pi*t/2]*Cos[Pi*t/2],-I*Exp[I*Pi*t/2]*Sin[Pi*t/2]},{0,0,-I*Exp[I*Pi*t/2]*Sin[Pi*t/2],Exp[I*Pi*t/2]*Cos[Pi*t/2]}}
 PauliVector=Table[PauliMatrix[i],{i,3}];
 DirProd[rho_,varrho_]:=KroneckerProduct[rho,varrho];
@@ -126,15 +112,6 @@ Ubig . #&/@fdata
 ]
 
 
-
-CGKrausOp[p_]:={
-Sqrt[p]KroneckerProduct[IdentityMatrix[2],{1,0}],
-Sqrt[p]KroneckerProduct[IdentityMatrix[2],{0,1}],
-Sqrt[1-p]KroneckerProduct[IdentityMatrix[2],{1,0}] . swapGate,
-Sqrt[1-p]KroneckerProduct[IdentityMatrix[2],{0,1}] . swapGate
-};
-
-CGKraus[rho_,p_]:=With[{kr=CGKrausOp[p]},Total[(# . rho . ConjugateTranspose[#])&/@kr]];
 
 SWAPContractionFactor[t_,p_,l_]:=((p*(Cos[Pi*t/2]^2)+(1-p)*(Sin[Pi*t/2]^2))*Tanh[-l*p]+((1-p)*(Cos[Pi*t/2]^2)+p*(Sin[Pi*t/2]^2))*Tanh[-l*(1-p)])/((p)*Tanh[-l*p]+(1-p)*Tanh[-l*(1-p)]);
 SWAP[t_]:={{1,0,0,0},{0,Exp[I*Pi*t/2]*Cos[Pi*t/2],-I*Exp[I*Pi*t/2]*Sin[Pi*t/2],0},{0,-I*Exp[I*Pi*t/2]*Sin[Pi*t/2],Exp[I*Pi*t/2]*Cos[Pi*t/2],0},{0,0,0,1}}
@@ -221,73 +198,6 @@ Flatten[{gif, Table[gif[[i]], {i, Length[gif] }]}]]
 *)
 
 
-(*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@TOOLS FROM ADANERICK@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*)
 
-testDistribution[beta_,targetstate_,state_,swapP_]:= Exp[-beta*Norm[targetstate - coarseGraining2[state,swapP],"Frobenius"]]
-
-metropolisHastingsSample[size_,\[Beta]_,\[Delta]_,swapP_,initialstate_,targetstate_]:= Module[{n = 0, X = initialstate, Y, U, \[Alpha], statelist = {}},
-	While[n < size,
-		(*Y = ketsToDensity[randomKets[4,1]][[1]];*)
-		U = randomSmallEvolution[4,\[Delta]];
-		Y = U . X . ConjugateTranspose[U];
-		\[Alpha] = Min[testDistribution[\[Beta],targetstate,Y,swapP]/testDistribution[\[Beta],targetstate,X,swapP],1];
-		X = RandomChoice[{\[Alpha], 1 - \[Alpha]}->{Y,X}];
-		If[X == Y, AppendTo[statelist,X];n++]
-	];
-	Return[statelist]
-	]
-
-cgfidelitylist[bigstateslist_,targetstate_,swapP_]:=fidelity[coarseGraining2[#,swapP],targetstate]&/@bigstateslist
-cgfrobeniuslist[bigstateslist_,targetstate_,swapP_]:=Norm[coarseGraining2[#,swapP]-targetstate,"Frobenius"]&/@bigstateslist
-
-CreateData[n_,beta_,delta_,swapP_,zcoord_]:=Module[{
-targetstate,
-data,
-filename,
-thertestdist,
-time
-},
-targetstate=(IdentityMatrix[2]+zcoord*PauliMatrix[3])/2;
-{time,data}=Timing[metropolisHastingsSample[n+400,beta,delta,swapP,ketsToDensity[randomKets[4,1]][[1]],targetstate][[401;;]]];
-thertestdist=cgfrobeniuslist[data,targetstate,swapP];
-Print["Data created."];
-Print["Process took "<>ToString[time/60]<>" minutes"];
-Print["Mean distance between images and target: ", Mean[thertestdist]];
-Print["Number of states in the file: ",Length[data]];
-Return[data]
-]
-
-GenerateMHData[n_,beta_,delta_,swapP_,zcoord_,print_:True]:=
-Module[{
-targetstate,
-data,
-filename,
-thertestdist,
-time,
-size
-},
-SetDirectory["/home/acastillo/Documents/tesis-adan/code"];
-filename="MHstates_z="<>ToString[zcoord]<>"_p="<>ToString[swapP]<>"_beta="<>ToString[beta]<>"_delta="<>ToString[delta];
-If[FileExistsQ["/home/acastillo/Documents/tesis-adan/code/MH_data/"<>filename<>"_data"<>".m"],
-	If[print,Print["Set of data exists already."]];
-	data=Get["MH_data/"<>filename<>"_data"<>".m"];
-	size=Length[data];
-	If[print,Print["Data imported from file. File contains "<>ToString[size]<>" elements."]];
-	If[size>=n,
-		If[print,Print["File has enough data"]];
-		Return[data[[;;n]]],
-		If[print,Print["Set of data doesn't have enough data. Creating more data."]];
-		data=Join[CreateData[n-Length[data],beta,delta,swapP,zcoord],data];
-		Export["MH_data/"<>filename<>"_data"<>".m",data];
-		Return[data]
-	],
-	If[print,Print["Set of data doesn't exist. Creating data."]];
-	data=CreateData[n,beta,delta,swapP,zcoord];
-	Export["MH_data/"<>filename<>"_data"<>".m",data];
-	Return[data]
-]
-];
 End[]
 EndPackage[]
