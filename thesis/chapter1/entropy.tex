@@ -8,7 +8,7 @@ La cantidad de información provista por el resultado de un experimento depende 
 \begin{enumerate}
     \item $H(p)$ debe ser continua en $p$.
     \item $H(p)$ debe ser una función creciente, monotónica de $n$ cuando $p_{j}=\frac{1}{n}$.
-    \item Si $X$ e $Y$ son procesos independientes, \ddnote*{$H(p_{X}(x_{j})p_{Y}(y_{k}))=H(p_{X}(x_{j}))+H(p_{Y}(y_{k}))$}{$H(p_{X}(x_{j}),p_{Y}(y_{k}))=H(p_{X}(x_{j}))+H(p_{Y}(y_{k}))$}. \acnote{No entendí esto}
+    \item Si $X$ e $Y$ son procesos independientes, $H(p_{X}(x_{j})p_{Y}(y_{k}))=H(p_{X}(x_{j}))+H(p_{Y}(y_{k}))$.
 \end{enumerate}
 Además, demostró que
 \begin{equation}\label{eq:ShannonEntropy}
@@ -41,6 +41,6 @@ De la entropía de von Neumann de un sistema descrito por un operador de densida
     \item La entropía puede escribirse en términos de los eigenvalores de $\rho$, $\eta_{j}$, como $S(\rho)=-\sum_{j}\eta_{j}\ln{\eta_{j}}$. Esto coincide con la entropía de Shannon si se envían los eigenestados de $\rho$ con probabilidades $\eta_{j}$.
     \item La entropía es no negativa, y es nula si y sólo sí $\rho$ es de la forma $\dyad{\psi}$ con $\ket{\psi}\in\hilbert_{n}$.
     \item La entropía es máxima cuando $\rho=\frac{1}{n}\Id_{n}$, y $S(\rho)=n$. Esto es de esperarse, de acuerdo con nuestra discusión previa, el estado máximamente mezclado es aquel del que somo máximamente ignorantes, y por lo mismo debe ser el que tiene la máxima entropía (recordando a la entropía como medida de incertidumbre).
-    \item La entropía de un estado producto es igual a la suma de las entropías de cada factor, $S(\rho_{A}\otimes\rho_{B})=S(\rho_{A})+S(\rho_{B})$. \ddnote{Esta propiedad es análoga al caso clásico en el que se tienen dos variables aleatorias independientes.} \acnote{En efecto, lo añado como linea.}
+    \item La entropía de un estado producto es igual a la suma de las entropías de cada factor, $S(\rho_{A}\otimes\rho_{B})=S(\rho_{A})+S(\rho_{B})$.
 \end{enumerate}
 Nótese que la última propiedad es análoga al caso clásico en el que se tienen dos variables aleatorias independientes.
