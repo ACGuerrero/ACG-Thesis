@@ -1,14 +1,14 @@
 \section{Dinámicas locales}
 
-En la sección \ref{sec:Ch1PartialTrace} se habló de estados separables como aquellos estados que, descritos por un operador de densidad $\rho\in\densityspace{n}$, tienen la forma
+En la sección \ref{sec:Ch1PartialTrace} se habló de estados \ddnote*{factorizables}{separables} como aquellos estados que, descritos por un operador de densidad $\rho\in\densityspace{n}$, tienen la forma
 \begin{equation}
     \rho=\rho_{A}\otimes\rho_{B},\nonumber
 \end{equation}
-donde $\rho_{A}\in\densityspace{m}$, $\rho_{B}\in\densityspace{l}$ y $l+m=n$. Siguiendo esta línea de pensamiento, con \textit{dinámicas factorizables} nos referimos a dinámicas unitarias generadas por hamiltonianos que no contienen un término de interacción (que en el caso de dos partículas son hamiltonianos de la forma $\mcH=H_{1}\otimes\Id+\Id\otimes H_{2}$), y que por lo mismo son descritas por operadores $\mcU\in\unitaryspace{n}$ del tipo
+donde $\rho_{A}\in\densityspace{m}$, $\rho_{B}\in\densityspace{l}$ y $l+m=n$. Siguiendo esta línea de pensamiento, con \ddnote*{\textit{dinámicas locales}}{\textit{dinámicas factorizables}} nos referimos a dinámicas unitarias generadas por hamiltonianos que no contienen un término de interacción (que en el caso de dos partículas son hamiltonianos de la forma $\mcH=H_{1}\otimes\Id+\Id\otimes H_{2}$), y que por lo mismo son descritas por operadores $\mcU\in\unitaryspace{n}$ \ddnote{cambié la notación del grupo unitario por la estándar (y correcta, si tienes dudas, me preguntas)} del tipo
 \begin{equation}
     \mcU=U_{A}\otimes U_{B}.\nonumber
 \end{equation}
-De nuevo, $U_{A}\in\unitaryspace{m}$, $U_{B}\in\unitaryspace{l}$ y $l+m=n$. Los operadores separables están compuestos por operadores que actúan de forma independiente sobre diferentes subsistemas del sistema en cuestión. En el caso de un sistema compuesto por dos subsistemas de dos niveles, el operador separable está compuesto por dos unitarias que actúan sobre $\hilbert_{2}$. Como el estado de máxima entropía resulta ser separable, las dinámicas separables son una muy buena primera forma de aplicar el formalismo descrito en las secciones anteriores.
+De nuevo, $U_{A}\in\unitaryspace{m}$, $U_{B}\in\unitaryspace{l}$ y $l+m=n$. Los operadores \ddnote*{locales}{separables} \ddnote{dejaré de prestar atención a este tipo de errores, por fas corrige todos. Recuerda, si hablamos de estados, se llaman factorizables, si hablamos de dinámicas, son locales} están compuestos por operadores que actúan de forma independiente sobre diferentes subsistemas del sistema en cuestión. En el caso de un sistema compuesto por dos subsistemas de dos niveles, el operador separable está compuesto por dos unitarias que actúan sobre $\hilbert_{2}$. Como el estado de máxima entropía resulta ser separable, las dinámicas separables son una muy buena primera forma de aplicar el formalismo descrito en las secciones anteriores.
 
 Considérese la aplicación de grano grueso de $n$ a $1$ partículas definida según (\ref{eq:CG}), un estado efectivo $\rho_{\ef}\in\densityspace{2}$ y la aplicación de máxima entropía compatible dada por (\ref{eq:MaxEntAss}). Si la evolución microscópica es factorizable entonces es generada por un hamiltoniano de la forma
 \begin{equation}
@@ -55,7 +55,7 @@ Por otro lado, en el caso en el que no hay partícula prioritaria, \ie ($p_{j}=\
 que no es más que una combinación lineal de las mismas componentes evolucionadas de formas diferentes.
 \subsection{Ejemplos particulares}
 
-\subsubsection{Dinámica simétrica}
+\subsubsection{\ddnote*{Dinámica local simétrica}{Dinámica simétrica}}
 
 Comenzamos con el caso en el que la dinámica separable simétrica, esto es, de una unitaria $\mcU\in\unitaryspace{2^{n}}$ de la forma
 \begin{equation}
