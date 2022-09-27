@@ -58,7 +58,9 @@ Considerando lo anterior, el estimado para la distribución de probabilidad que 
 
 \subsubsection{Principio de máxima entropía en la mecánica estadística}
 
-El método anterior puede aplicarse a toda una variedad de sistemas y procesos. \ddnote*{Esto tiene varios problemas, las $\epsilon_j$ es la energía de la j-estima particula o es la energia del j-esimo microestado, ya que despues les llamas microestdos y computas la probabilidad del microestado, este ejemplo está raro, hay que discutirlo}{Considérese un sistema de $N$ partículas idénticas pero distinguibles con energías $\epsilon_{j}$}{Considérese, pues, un conjunto de $N$ partículas idénticas pero distinguibles con energías $\epsilon_{j}$}, del cual únicamente conocemos la energía promedio $E$, y que se halla en equilibrio térmico \ddnote*{con un reservorio térmico a temperatura $T$}{con un entorno que actúa como baño de calor a una temperatura $T$}. Nos interesa conocer la distribución de probabilidad de los posibles microestados $\epsilon_{j}$. Según lo discutido previamente, se busca maximizar la entropía,
+\acnote{Párrafo iterado: reescritura}
+
+El método anterior puede aplicarse a toda una variedad de sistemas y procesos. Considérese un conjunto de partículas que se halla en equilibrio con un reservorio térmico a temperatura $T$. El sistema tiene niveles energéticos $\epsilon_{j}$, pero únicamente conocemos la energía promedio $E$. Nos interesa conocer la probabilidad asociada a que el sistema se halle en el estado con energía $\epsilon_{j}$. Según lo discutido previamente, se busca maximizar la entropía
 \begin{equation}\label{eq:GibbsEntropy}
     S_{G}=-k_{\text{B}}\sum_{j}p(x_{j})\log{p(x_{j})},
 \end{equation}
@@ -71,7 +73,7 @@ Para discernir el significado físico de dicho resultado, se puede sustituir est
     S_{G}=\lambda\expval{\epsilon}+k_{\text{B}}\ln{Z}.
 \end{equation}
 
-Si tratásemos con un sistema en equilibrio térmico con un reservorio térmico a una temperatura $T$, la física estadística establece que $S$ coincide con la entropía termodinámica y
+Como tratamos con un sistema en equilibrio térmico con un reservorio térmico a una temperatura $T$, la física estadística establece que $S_{G}$ coincide con la entropía termodinámica y
 \begin{equation}
     \lambda=\frac{1}{T}.\nonumber
 \end{equation}
