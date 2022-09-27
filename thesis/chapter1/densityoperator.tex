@@ -107,7 +107,7 @@ El segundo resultado es de esperarse, pues $\dyad{\psi}$ se halla en el estado $
 
 \acnote{Sección iterada revisada: notas}
 
-Observamos entonces que hay una diferencia fundamental entre los sistemas que pueden ser descritos por un vector de estado y aquellos que no. Considérese el caso en que, dada la expresión \ref{eq:DensOpMix}, el estado del sistema es $\ket{\varphi_{1}}$ con  probabilidad $p_{1}=1$, i.e. $\rho=\dyad{\varphi_{1}}$. En tal caso decimos que $\rho$ es un estado puro. Claramente, $\rho^{2}=\rho$. Esto hace de $\rho$ un proyector de rango $1$, de lo que se sigue que $\Tr(\rho^{1})=1$. 
+Observamos entonces que hay una diferencia fundamental entre los sistemas que pueden ser descritos por un vector de estado y aquellos que no. Considérese el caso en que, dada la expresión \ref{eq:DensOpMix}, el estado del sistema es $\ket{\varphi_{1}}$ con  probabilidad $p_{1}=1$, i.e. $\rho=\dyad{\varphi_{1}}$. En tal caso decimos que $\rho$ es un estado puro: los estados puros no pueden expresarse como una combinación convexa de otros estados. Claramente, $\rho^{2}=\rho$. Esto hace de $\rho$ un proyector de rango $1$, de lo que se sigue que $\Tr(\rho^{1})=1$.
 
 Como en general se cumple que $\Tr(\rho^{2})=\sum_i p^2_i\leq 1$, definimos a la pureza como una medida de que tan puro es un estado como \cite{Jaeger}
 \begin{equation}
@@ -232,7 +232,7 @@ donde $\rho\in\mcS(\hilbert)$ y $\ket{e}\in \tilde \hilbert$. \ddnote{Hice vario
 
 \acnote{Reescritura iterada: notas, reescritura}
 
-Es común escoger alguna base hermítica para poder parametrizar a las matrices de densidad. El beneficio de hacer esto es que, por ser $\mcS(\hilbert_{n})$ un subconjunto de $\mcL(\hilbert_{n})$, dicha parametrización será real, y aún más: los parámetros serán promedios de observables. \ddnote*{Propongo mejor esto: Dicho de otro modo, se puede escoger una base de tal forma que es un conjunto de observables tomográficamente completo.}{Esto significa que, realizando mediciones de forma adecuada, es posible reconstruir el estado de un sistema.}\acnote{Contrapropuesta: Dicho de otro modo, se puede escoger una base de tal forma que sea un conjunto de observables a través del cual sea posible reconstruir el estado de un sistema.} Una elección común de base son las matrices generalizadas de Gell-Mann, junto a la matriz identidad.
+Es común escoger alguna base hermítica para poder parametrizar a las matrices de densidad. El beneficio de hacer esto es que, por ser $\mcS(\hilbert_{n})$ un subconjunto de $\mcL(\hilbert_{n})$, dicha parametrización será real, y aún más: los parámetros serán promedios de observables. Dicho de otro modo, se puede escoger una base de tal forma que sea un conjunto de observables a través del cual sea posible reconstruir el estado de un sistema. Una elección común de base son las matrices generalizadas de Gell-Mann, junto a la matriz identidad.
 
 Sea $\{\varsigma_{k}\}_{k}$ el conjunto de $n^{2}-1$ matrices generalizadas de Gell-Mann que generan a $\text{SU}(n)$ y $\rho$ una matriz de densidad $\rho\in\mcS(\hilbert_{n})$. Entonces $\rho$ puede expandirse en la base formada por dichas matrices y la identidad a través del producto punto de Hilbert-Schmidt como
 \begin{equation}

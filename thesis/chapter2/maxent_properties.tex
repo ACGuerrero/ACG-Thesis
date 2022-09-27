@@ -6,7 +6,7 @@ Nótese que el argumento de la exponencial en la ecuación (\ref{eq:MaxEntLagMul
 \begin{equation}
     \sum_{j=1}^{3}\lambda_{j}\hat{G}_{j}=\sum_{j=1}^{3}\lambda_{j}\sum_{k=1}^{n}p_{k}(\Id_{2^{k-1}}\otimes\sigma_{j}\otimes\Id_{2^{n-k}}).\nonumber
 \end{equation}
-Esto significa que el estado de máxima entropía es \ddnote*{factorizable. Ojo aquí: para estados mixtos, separabilidad no implica factorizabilidad, pero factorizabilidad si implica separabilidad. Tienes razón con que son separables, pero en realidad tienen una propiedad mas fuerte: son factorizables.}{separable} \acnote{Ya sabía la diferencia entre factorizable y separable y creo que ya se me olvidó} y tiene exactamente $n$ factores. Explícitamente,
+Esto significa que el estado de máxima entropía es factorizable y tiene exactamente $n$ factores. Explícitamente,
 \begin{equation}\label{eq:MaxEntSeparable}
     \varrho_{\max}=\Motimes_{k=1}^{n}\frac{1}{Z_{k}}\text{exp}\qty(p_{k}\sum_{j=1}^{3}\lambda_{j}\sigma_{j}).
 \end{equation}
@@ -16,7 +16,7 @@ Un resultado así puede parecer demasiado sencillo, y puede propiciar preguntas 
     \CG{\varrho}&=\CG{\frac{1}{4}\sum_{j,k=0}^{3}\gamma_{jk}\pauli{j}\otimes \pauli{k}}\nonumber\\
     &=\frac{1}{2}\qty(\Id+\sum_{k=1}^{3}(p\gamma_{k,0}+(1-p)\gamma_{0,k})\sigma_{k}).\nonumber
 \end{align}
-De esto nos damos cuenta que a través de la aplicación de grano grueso se pierden todas las correlaciones, pues estas corresponden a las componentes $\gamma_{i,j}$ con $i,j\in\{1,2,3\}$. Por la construcción de la aplicación de grano grueso, cualquier sistema de matrices de densidad reducidas $\rho_{A}$ y $\rho_{B}$ da como resultado el mismo estado efectivo, sin importar si es factorizable o no, y si no lo es, qué tan entrelazado esté (de nuevo, siempre y cuando las marices de densidad reducidas sean $\rho_{A}$ y $\rho_{B}$, pues todas las trazas parciales de un sistema máximamente entrelazado son el estado máximamente mezclado). Pues bien, como estas correlaciones se pierden a la hora de hacer las mediciones, en el estado de máxima entropía estas se hacen cero. 
+De esto nos damos cuenta que a través de la aplicación de grano grueso se pierden todas las correlaciones, pues estas están contenidas dentro de las componentes $\gamma_{i,j}$ con $i,j\in\{1,2,3\}$. Por la construcción de la aplicación de grano grueso, cualquier sistema de matrices de densidad reducidas $\rho_{1}$ y $\rho_{2}$ da como resultado el mismo estado efectivo, sin importar si es factorizable o no, y si no lo es, qué tan entrelazado esté (de nuevo, siempre y cuando las marices de densidad reducidas sean $\rho_{1}$ y $\rho_{2}$, pues todas las trazas parciales de un sistema máximamente entrelazado son el estado máximamente mezclado). Pues bien, como estas correlaciones se pierden a la hora de hacer las mediciones, en el estado de máxima entropía estas se hacen cero.
 
 \acnote{Párrafo iterado: notas}
 
@@ -46,31 +46,28 @@ El problema de la ecuación (\ref{eq:MaxEntSeparable}) es que el estado de máxi
 Sustituyendo las fórmulas de $\rho_{j}$, obtenemos al estado grueso en términos de los multiplicadores de Lagrange.
 \begin{equation}\label{eq:CG(MaxEnt)}
     \rho_{\ef}=\frac{1}{2}\qty[\Id+(\paulivec{\lambda})\qty(\sum_{j=1}^{n}p_{j}\tanh(p_{j}\lambda))].
-\end{equation}\ddnote{acuerdame de platicar, hay una forma trivial de sacar esta ecuación}
-\acnote{RECORDAR}Pues bien, el estado efectivo tiene su propia parametrización de Bloch, y es
+\end{equation}
+Pues bien, el estado efectivo tiene su propia parametrización de Bloch, y es
 \begin{equation}\label{eq:EffectiveState}
     \rho_{\ef}=\frac{1}{2}(\Id+r_{\ef}\paulivec{r}).
 \end{equation}
-Si se comparan las ecuaciones (\ref*{eq:CG(MaxEnt)}) y (\ref*{eq:EffectiveState}), se verá que es posible expresar la pureza $\purity{\rho_{\ef}}$ en términos de $\lambda$. Esto es importante porque la pureza del estado es una cantidad que se puede calcular a través de los valores esperados de los tres observables $\pauli{i}$, según $\text{Pu}(\rho_{\ef})=\frac{1}{2}(r_{\ef}^{2}+1)$. Esta relación uno a uno entre la pureza del estado de un sistema de dos niveles y la norma de su vector de Bloch será referenciada constantemente a lo largo de este trabajo, \ddnote*{mala idea}{en el que la norma de dicho vector será llamada \textit{pureza} de vez en cuando.}\acnote{Tengo que corregir esto, creo que no lo hice mucho} Definiendo
+Si se comparan las ecuaciones (\ref*{eq:CG(MaxEnt)}) y (\ref*{eq:EffectiveState}), será evidente que
 \begin{equation}\label{eq:r(lambda)}
-    \rfroml(\lambda)=\sum_{j=1}^{n}p_{j}\tanh(p_{j}\lambda)
+    \rfroml(\lambda)=\sum_{j=1}^{n}p_{j}\tanh(p_{j}\lambda),
 \end{equation}
-obtenemos tanto el radio del vector de Bloch del estado en términos de $\lambda$,
+donde $\rfroml(\lambda)$ es la función que aparece en las ecuaciones (\ref{eq:MaxEntExpVals}). Así, obtenemos tanto el radio del vector de Bloch del estado en términos de $\lambda$,
 \begin{equation}
     r_{\ef}=\rfroml(\lambda),\nonumber
 \end{equation}
-así como su dirección,
+como su dirección,
 \begin{equation}
     \hat{r}_{\ef}=\hat{\lambda}.\nonumber
 \end{equation}
-
-\acnote{Párrafo iterado: notas}
-
-Con estas dos ecuaciones deducimos la relación entre los promedios de las observables a nivel grueso $\expval{\pauli{j}}=r_{\ef}(\hat{r}_{\ef})_{j}$ y los multiplicadores de Lagrange introducidos para la maximización de la entropía, y es
+De esta manera deducimos la relación entre los promedios de las observables a nivel grueso $\expval{\pauli{j}}=r_{\ef}(\hat{r}_{\ef})_{j}$ y los multiplicadores de Lagrange introducidos para la maximización de la entropía, y es
 \begin{equation}
-    \expval{\pauli{j}}=\rfroml(\lambda)(\hat{\lambda})_{j}.
+    \expval{\pauli{j}}=\frac{\lambda_{j}}{\lambda}\rfroml(\lambda).
 \end{equation}
-La función $\rfroml$ es precisamente la hallada en (\ref{eq:MaxEntExpVals}). Ahora, la ecuación (\ref{eq:r(lambda)}), fijadas $p_{j}$, es una suma de $n$ funciones inyectivas, y como tal, es inyectiva también. Esto significa que existe la función inversa. La figura \ref{fig:r(lambda)} muestra la forma de $\rfroml(\lambda)$ para valores selectos de $p_{1}$ en el caso en que $n=2$. Después de una breve inspección de (\ref{eq:r(lambda)}) se concluye que los estados puros corresponden al caso límite $\lambda\rightarrow+\infty$.
+Nada más y nada menos que las ecuaciones (\ref{eq:MaxEntExpVals}). Ahora, la ecuación (\ref{eq:r(lambda)}), fijadas $p_{j}$, es una suma de $n$ funciones inyectivas, y como tal, es inyectiva también. Esto significa que existe la función inversa. La figura \ref{fig:r(lambda)} muestra la forma de $\rfroml(\lambda)$ para valores selectos de $p_{1}$ en el caso en que $n=2$. Después de una breve inspección de (\ref{eq:r(lambda)}) se concluye que los estados puros corresponden al caso límite $\lambda\rightarrow+\infty$.
 
 \begin{figure}[ht]
     \centering
@@ -92,7 +89,7 @@ Aunque siempre exista, no es posible hallar una expresión de $\rfroml^{-1}$ par
 
 \acnote{Al final nunca usé esto, ¿se queda?}
 
-La ecuación (\ref{eq:MaxEntSeparable}) sugiere que el estado de máxima entropía puede expresarse como producto tensorial de potencias de un mismo estado. En efecto, dado un real $q$ y una matriz cuadrada $A$, la potenciación $A^{q}$ puede escribirse como $e^{q \ln A}$. Como las matrices $e^{\sum_{i}\lambda_{i}\pauli{i}}$ son \ddnote*{positivas semidefinidas}{semidefinidas positivas}, \ddnote*{su logaritmo es único en el caso de no ser degenerado. En caso de degeneración, basta con tomar la rama principal [cita mi trabajo que está en Quantum]}{su logaritmo es único} \acnote{en donde?}. Entonces,
+La ecuación (\ref{eq:MaxEntSeparable}) sugiere que el estado de máxima entropía puede expresarse como producto tensorial de potencias de un mismo estado. En efecto, dado un real $q$ y una matriz cuadrada $A$, la potenciación $A^{q}$ puede escribirse como $e^{q \ln A}$. Como las matrices $e^{\sum_{i}\lambda_{i}\pauli{i}}$ son positivas semidefinidas, su logaritmo es único en el caso de no ser degenerado, y en caso de degeneración, basta con tomar la rama principal \cite{log1,Davalos2019}. Entonces,
 \begin{equation}
     \varrho_{\max}=\Motimes_{j=1}^{n}\frac{1}{Z_{j}}e^{p_{j}\sum_{k}\lambda_{k}\pauli{k}}=\Motimes_{j=1}^{n}\frac{1}{Z_{j}}\qty(e^{\sum_{k}\lambda_{k}\pauli{k}})^{p_{j}}.\nonumber
 \end{equation}
@@ -121,13 +118,15 @@ El estado de máxima entropía nos otorga una herramienta de asignación para lo
 
 \acnote{Párrafo iterado: notas}
 
-donde la dependencia de la asignación en el modelo de grano grueso se indica mediante un subíndice, $\mcC$, ver ecuación (\ref{eq:CG}). Nótese que según los valores que puedan tomar las diferentes probabilidades, el estado asignado tendrá diferentes propiedades. \ddnote*{Esto tiene varios problemas, das dos casos, pero el segundo no es cierto, no es lineal. Después los explicas en el orden opuesto.}{En dos casos particulares, la aplicación de asignación es lineal: cuando $p_{1}=1$ y cuando $p_{j}=\frac{1}{n}\forall j$.
+\acnote{Parte iterada: reescritura}
 
-Si $p_{1}=1$ entonces se eliminan los términos de error, y el estado de máxima entropía es simplemente
+donde la dependencia de la asignación en el modelo de grano grueso se indica mediante un subíndice, $\mcC$, ver ecuación (\ref{eq:CG}). Nótese que según los valores que puedan tomar las diferentes probabilidades, el estado asignado tendrá diferentes propiedades. Nos concentramos en dos casos particulares. El primero corresponde a $p_{1}=1$. En este caso se eliminan los términos de error, y el estado de máxima entropía es simplemente
 \begin{equation}
     \varrho_{\max}=\rho_{\ef}\otimes\Id^{2^{n-1}}.\nonumber
 \end{equation}
-Si, por otro lado, $p_{j}=\frac{1}{n}\forall j$, entonces el estado de máxima entropía es
+Nótese que la aplicación de asignación se vuelve lineal si no hay error de medición. Esto debe verse como un caso límite. Este trabajo estudiará $p_{1}\rightarrow 1$ como el escenario en el que la probabilidad de detectar la partícula equivocada es pequeña. De acuerdo con esto, se le llamará  \textit{regimen de partícula preferencial}.
+
+Ahora, si por otro lado, $p_{j}=\frac{1}{n}\forall j$, entonces el estado de máxima entropía es
 \begin{equation}
     \varrho_{\max}=\qty[\frac{1}{Z}\text{exp}\qty(\frac{1}{n}\sum_{k=1}^{3}\lambda_{k}\sigma_{k})]^{\otimes n}=(\rho')^{\otimes n}.\nonumber
 \end{equation}
@@ -143,4 +142,16 @@ y que por lo tanto el estado asignado es simplemente
 \begin{equation}
     \mcA_{\mcC}^{\max}(\rho_{\ef})=\rho_{\ef}^{\otimes n}.\nonumber
 \end{equation}
-El caso $p_{1}=1$ debe verse como un caso límite: aquel en el que la medición no es borrosa. Este trabajo estudiará el límite $p_{1}\rightarrow 1$ como el escenario en el que la probabilidad de detectar la partícula equivocada es pequeña. Por otro lado, si $p_{j}=\frac{1}{n}\forall j$, la asignación de máxima entropía resulta en un estado factorizable de $n$ partículas idénticas.}\acnote{Creo que no veo por qué no es lineal}
+Así, si $p_{j}=\frac{1}{n}\forall j$, la asignación de máxima entropía resulta en un estado factorizable de $n$ partículas idénticas. A este caso se le llamará \textit{régimen de Boltzmann}.
+
+
+
+Ahora supóngase que $\varrho$ es un estado microscópico compatible con un estado efectivo puro $\rho_{\ef}=\dyad{\psi}$, y que $p_{j}\neq 0\,\forall\,j$. Entonces, por (\ref{eq:CG}) se cumple que
+\begin{equation}
+    \dyad{\psi}=\sum_{k=1}^{n}p_{k}\varrho_{k},\nonumber
+\end{equation}
+donde $\varrho_{k}\in\densityspace{2}$ es la $k$-ésima traza parcial de $\varrho$. Pues bien, recordando que un estado puro es un punto extremo del conjunto de estados, la ecuación anterior solo se puede cumplir si $\varrho_{k}=\dyad{\psi}\,\forall\,k$.  Si cada traza parcial de $\varrho$ es igual al estado puro $\rho_{\ef}$ se sigue que
+\begin{equation}\label{eq:PureEffectiveState}
+    \varrho=(\rho_{\ef})^{\otimes n}.
+\end{equation}
+Nótese que para obtener (\ref{eq:PureEffectiveState}) no se hizo ninguna suposición sobre la aplicación de asignación. Lo que se acaba de demostrar es que, dado que todas las trazas parciales participen en la aplicación de grano grueso, el único estado microscópico compatible con un estado efectivo puro es el $n$-producto de dicho estado.

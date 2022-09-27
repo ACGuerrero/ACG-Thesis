@@ -31,14 +31,14 @@ Estas restricciones ya se hallan en términos de observables y un operador de de
 \begin{equation}\label{eq:MaxEntLagMult}
     \varrho_{\max}=\frac{1}{Z}e^{\sum_{j}\lambda_{j}\hat{G}_{j}}.
 \end{equation}
-Si se sustituye a $\varrho_{\max}$ en las ecuaciones (\ref{eq:MaxEntRestrictions}) \ddnote*{esto mete polémica innecesaria}{(cosa nada recomendable)}\acnote{entendido}, se obtienen las relaciones entre los multiplicadores de Lagrange y los valores esperados de los operadores $\pauli{j}$ Si se escribe $\lambda=\sqrt{\lambda_{1}^{2}+\lambda_{2}^{2}+\lambda_{3}^{2}}$, los resultados son
+Si se sustituye a $\varrho_{\max}$ en las ecuaciones (\ref{eq:MaxEntRestrictions}), se obtienen las relaciones entre los multiplicadores de Lagrange y los valores esperados de los operadores $\pauli{j}$ Si se escribe $\lambda=\sqrt{\lambda_{1}^{2}+\lambda_{2}^{2}+\lambda_{3}^{2}}$, los resultados son
 \begin{align}\label{eq:MaxEntExpVals}
     \begin{split}
-    \expval{\pauli{1}}&=\lambda_{1}\rfroml(\lambda),\\
-    \expval{\pauli{2}}&=\lambda_{2}\rfroml(\lambda),\\
-    \expval{\pauli{3}}&=\lambda_{3}\rfroml(\lambda),
+    \expval{\pauli{1}}&=\frac{\lambda_{1}}{\lambda}\rfroml(\lambda),\\
+    \expval{\pauli{2}}&=\frac{\lambda_{2}}{\lambda}\rfroml(\lambda),\\
+    \expval{\pauli{3}}&=\frac{\lambda_{3}}{\lambda}\rfroml(\lambda),
     \end{split}
 \end{align}
-donde $\rfroml(\lambda)$ es una función biyectiva de $\lambda$, y cuya expresión será derivada en la siguiente sección de una forma que requiere muchas menos cuentas. \acnote*{Normalmente}{Idealmente}, la ecuación (\ref{eq:MaxEntLagMult}) se requiere en términos de los valores de expectación $r_{i}=\Tr(\sigma_{i}\rho_{\ef})$, y no de los multiplicadores de Lagrange. Aunque no es posible despejar a los multiplicadores de Lagrange de las ecuaciones \ddnote*{esto es redundante}{de manera algebráica}\acnote{en efecto}, la naturaleza de $\rfroml(\lambda)$ nos permite asegurar que las relaciones son uno a uno y que tienen inversa.
+donde $\rfroml(\lambda)$ es una función biyectiva de $\lambda$, y cuya expresión será derivada en la siguiente sección de una forma que requiere muchas menos cuentas. Idealmente, la ecuación (\ref{eq:MaxEntLagMult}) se requiere en términos de los valores de expectación $r_{i}=\Tr(\sigma_{i}\rho_{\ef})$, y no de los multiplicadores de Lagrange. Aunque no es posible despejar a los multiplicadores de Lagrange de las ecuaciones (\ref{eq:MaxEntExpVals}), la naturaleza de $\rfroml(\lambda)$ nos permite asegurar que las relaciones son uno a uno y que tienen inversa.
 
 A partir de este momento, cada vez que se hable del \textit{estado de máxima entropía}, se entiende que se hace referencia al estado dado por la ecuación (\ref{eq:MaxEntLagMult}). Esto es, al estado de máxima entropía que es compatible con un estado efectivo inducido por nuestro modelo de grano grueso particular.

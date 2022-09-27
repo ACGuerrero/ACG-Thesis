@@ -18,21 +18,26 @@ Donde $\mcV_{t}$ es la evolución seguida por el sistema microscópico. Esta pue
 \varrho_{\max}(0) \arrow{u}{\mcA_{\mcC}^{\max}} & \varrho_{\max}(t). \arrow{l}{\mcV_{t}}
 \end{tikzcd}
 \]
+
+\acnote{Párrafo iterado: reescritura}
+
+Debe notarse que, debido a la no invertibilidad de la aplicación de grano grueso, en general
+\begin{equation}
+    (\mcU_{t}\circ\mcA_{\mcC}^{\max})(\rho_{\ef}) \neq (\mcA_{\mcC}^{\max}\circ\mcC \circ \mcU_t \circ \mcA_{\mcC}^{\max})(\rho_{\ef}),\nonumber
+\end{equation}
+que también puede escribirse como
+\begin{equation}
+    \varrho_{\max}(t)\neq\mcA_{\mcC}^{\max}(\rho_{\ef}(t))\nonumber
+\end{equation}
+Después de todo, la maximización de la entropía se restringe de acuerdo a las observaciones experimentales, así que estados de máxima entropía que cumplan un conjunto particular de restricciones no tienen por qué satisfacer un conjunto diferente de restricciones.
+
+
+
 En el siguiente capítulo se analizarán dinámicas efectivas generadas por diferentes dinámicas subyacentes. Si se asume que el sistema conformado por las partículas es cerrado, entonces la evolución $\mcV_{t}$ será unitaria, generada por un hamiltoniano $H$. Algunos ejemplos de dinámicas subyacentes no unitarias son los canales de ruido usuales, como el canal de \textit{despolarización}, el canal de \textit{amortiguamiento de amplitud}, o el canal de \textit{amortiguamiento de fase}. \ddnote{puse italicas en algunas partes}\acnote{enterado}
 
 
 \acnote{Párrafo iterado: notas}
 
-Nótese que, a diferencia de los mapas dinámicos usualmente estudiados en teoría de sistemas cuánticos abiertos, la dinámica efectiva $\Gamma_{t}$ no tiene por qué ser lineal (sí debe, por supuesto, mandar estados cuánticos a estados cuánticos), debido a que uno de los elementos de la composición que la originan no siempre es lineal: la aplicación de asignación. El estudio de las particularidades de algunas de estas dinámicas efectivas es el foco de este trabajo.
+A diferencia de los mapas dinámicos usualmente estudiados en teoría de sistemas cuánticos abiertos, la dinámica efectiva $\Gamma_{t}$ no tiene por qué ser lineal (sí debe, por supuesto, mandar estados cuánticos a estados cuánticos), debido a que uno de los elementos de la composición que la originan no siempre es lineal: la aplicación de asignación. El estudio de las particularidades de algunas de estas dinámicas efectivas es el foco de este trabajo.
 
-Algo que queda en claro de esto es que el estado de máxima entropía es completamente dependiente de los observables que se usen en su construcción. Después de todo, la maximización de la entropía se restringe de acuerdo a las observaciones experimentales, así que estados de máxima entropía que cumplan un conjunto particular de restricciones no tienen por qué satisfacer un conjunto diferente de restricciones. \ddnote*{Entiendo el mensaje, pero está cantinfleado, propongo reformular. No se bien tampoco cual es el punto con las ecuaciones, en particular $\mcC^{-1}$ no existe, entonces no puede ser diferente a nada. Revisa esto con cuidado.}{Esto tiene la siguiente consecuencia: el estado de máxima entropía compatible con un estado evolucionado a través de una dinámica efectiva obtenida de un estado de máxima entropía compatible con un estado efectivo inicial, no tiene por qué ser igual al estado de máxima entropía inicial evolucionado. Esto es, aunque parecería que se cumple que
-\begin{equation}
-    (\mcU_{t}\circ\mcA_{\mcC}^{\max})(\rho_{\ef}) = (\mcA_{\mcC}^{\max}\circ\mcC \circ \mcU_t \circ \mcA_{\mcC}^{\max})(\rho_{\ef}),\nonumber
-\end{equation}
-En realidad no lo hace, y la razón de esto es que
-\begin{equation}
-    (\mcU_{t}\circ\mcA_{\mcC}^{\max})(\rho_{\ef}) \neq (\mcA_{\mcC}^{\max}\circ\mcC \circ \mcU_t \circ \mcA_{\mcC}^{\max})(\rho_{\ef}),\nonumber
-\end{equation}}
-
-\acnote{Conlusión: se requiere discusión}
 
