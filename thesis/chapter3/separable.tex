@@ -69,8 +69,8 @@ donde $U(t)\in\unitaryspace{2}$. Se aplica la evolución al estado de máxima en
 \end{align}
 La dinámica efectiva tiene la forma
 \begin{equation}
-    \Gamma_{t}(\rho_{\ef})=U(t)\rho_{\ef}(U(t))^{\dag}.\nonumber
-\end{equation}
+    \Gamma_{t}(\rho_{\ef})=U(t)\rho_{\ef}U^\dag(t).\nonumber
+\end{equation}\ddnote{embellecí un poco esta ecuación}
 Este resultado es natural. No solo no hay interacción entre los diferentes subsistemas, significando esto que no se \textit{filtra} ningún tipo de información entre la partícula de interés y el resto, sino que cada parte evoluciona de manera idéntica: bajo la aplicación de grano grueso, lo que se observa es una combinación de $n$ entidades idénticas evolucionando de la misma forma.
 
 \subsubsection{Particulas no preferenciales invariantes}
@@ -87,11 +87,11 @@ donde, para todo $k$ se cumple que
 \begin{equation}
     \frac{1}{Z_{k}}e^{\frac{1-p_{1}}{n-1}\sum_{j}\lambda_{j}\pauli{j}}=\frac{1}{2}\qty(\Id+\tanh(\frac{1-p_{1}}{n-1}\lambda)\hat{r}_{\rho}\cdot\vec{\sigma})\equiv \rho_{\text{np}}.\nonumber
 \end{equation}
-El conjunto de partículas no preferenciales es entonces
+\ddnote{explica por fas los subindices np} El \ddnote{estado del} conjunto de partículas no preferenciales es entonces
 \begin{equation}
     \Motimes_{k=2}^{n}\rho_{k}=\rho_{\text{np}}^{\otimes(n-1)}\nonumber.
 \end{equation}
-Si estas no varían, mientras que el subsistema de interés se propaga de forma unitaria, entonces la dinámica efectiva es
+Si estas no varían \ddnote{poner dinámica explicita}, mientras que el subsistema de interés se propaga de forma unitaria, entonces la dinámica efectiva es
 \begin{equation}
     \Gamma_{t}(\rho_{\ef})=p_{1}U(t)\rho_{1}(U(t))^{\dag}+(1-p_{1})\rho_{\text{np}}.\nonumber
 \end{equation}
@@ -122,7 +122,7 @@ El resultado es una rotación alrededor de una línea que no pasa por el origen.
       \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/szxId_t=0.5_p=0.6_r=0.9.png}
       \caption{$t=0.5$}
     \end{subfigure}
-    \caption{Efecto de la evolución subyacente sobre la esfera de Bloch si $r_{\ef}=0.9$, $p_{1}=0.6$ y $U=e^{-i\pi t \pauli{3}}$. La dramática contracción a lo largo de $z$ se asocia al alto valor de $1-p_{1}$.}
+    \caption{Efecto de la evolución subyacente sobre la esfera de Bloch si $r_{\ef}=0.9$, $p_{1}=0.6$ y $U=e^{-i\pi t \pauli{3}}$. La dramática contracción a lo largo de $z$ se asocia al alto valor de $1-p_{1}$.\ddnote{Se necesita caption casi-autocontenido. Hace falta poner para que dinámica es esto.}}
     \label{fig:FaseChangeSequence}
 \end{figure}
 
