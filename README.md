@@ -2,8 +2,7 @@ This is my license thesis' repository
 
 TO DO LIST
  1.  Add references to special section [38be583](https://github.com/ACGuerrero/tesis-adan/commit/746a97e573f763650fad78c9d1059a03238be583)
- 53. Add Chapter 5 Appendix.
- 50. Address David's comments. [b4fa78b](https://github.com/ACGuerrero/tesis-adan/commit/e90a5996ea3e0828923a8b6c7ad11ff6db4fa78b) [d6a7657](https://github.com/ACGuerrero/tesis-adan/commit/9ad79ebed2c0cbd34a20dd20aed4c5f71d6a7657)
+ 50. Address David's comments. [b4fa78b](https://github.com/ACGuerrero/tesis-adan/commit/e90a5996ea3e0828923a8b6c7ad11ff6db4fa78b), [d6a7657](https://github.com/ACGuerrero/tesis-adan/commit/9ad79ebed2c0cbd34a20dd20aed4c5f71d6a7657), [bacba04](https://github.com/ACGuerrero/tesis-adan/commit/c0e50abfedcc861006884762099a7dd65bacba04)
  51. Address Carlos' comments.
  52. Party about finished thesis.
 
@@ -14,7 +13,7 @@ COMPLETED TASKS
  1. ~~Obtain the separable form of the maximum entropy state in terms of three lagrange multipliers~~&#x2611;[ee3a015](https://github.com/ACGuerrero/tesis-adan/commit/ee3a0158e816816f808c2ecc06bc1f412434d948)
  9. ~~Use real exponential expansion to simplify results in SWAP section~~&#x2611;[654ba8d](https://github.com/ACGuerrero/tesis-adan/commit/654ba8dc64cde36e31ce3bc9441ffac0098d7bc5)
  16. ~~Add sequence of compression to the SWAP section~~&#x2611;[13269ca](https://github.com/ACGuerrero/tesis-adan/commit/13269ca00d8cde7d6a227597cadee13661861c82)
- 12. ~~Finish first chapter's Purity and Evolution sections~~&#x2611; [800776b](https://github.com/ACGuerrero/tesis-adan/commit/800776b02a9f1b44c08d7509be9413000f6acc87) [917ca38](https://github.com/ACGuerrero/tesis-adan/commit/917ca38cd526944531e9abafe18178cece1f13ef)
+ 12. ~~Finish first chapter's Purity and Evolution sections~~&#x2611; [800776b](https://github.com/ACGuerrero/tesis-adan/commit/800776b02a9f1b44c08d7509be9413000f6acc87), [917ca38](https://github.com/ACGuerrero/tesis-adan/commit/917ca38cd526944531e9abafe18178cece1f13ef)
  17. ~~Try particular unitaries in the case UxV~~&#x2611; [d2417b6](https://github.com/ACGuerrero/tesis-adan/commit/d2417b6104a94d028aaf8026f86667775adb2e32)
  5. ~~Develop $U\otimes V$ using exponential of pauli vector~~&#x2611;[542cc6b](https://github.com/ACGuerrero/tesis-adan/commit/542cc6bcd036544eca2d0139823e981164e34673)
  8. ~~Series of real exponential of a pauli vector: pauli coordinates in terms of lagrange mult~~ &#x2611; [8371c7c](https://github.com/ACGuerrero/tesis-adan/commit/8371c7c6653dcdbee99a91017139cb5bcb551f91)
@@ -45,4 +44,5 @@ COMPLETED TASKS
  46. ~~Finish Heisemberg spin model~~&#x2611; [9a04ece](https://github.com/ACGuerrero/tesis-adan/commit/274d771536b0b04ea4edca866fc06359d5e0b8b8), [b0ca78](https://github.com/ACGuerrero/tesis-adan/commit/5ac8796059e41a3cdf13e09a33feb95fcfb0ca78), [5029f4c](https://github.com/ACGuerrero/tesis-adan/commit/7e4e73633a698c93f23d5bee02b142ac75029f4c), [a24f01f](https://github.com/ACGuerrero/tesis-adan/commit/13ea4aa6791b6c075e6eeb800e66000bca24f01f), [48a6b28](https://github.com/ACGuerrero/tesis-adan/commit/cf3800934c0389db2823474d3fbc849f448a6b28), [b8c1e69](https://github.com/ACGuerrero/tesis-adan/commit/5ee0ef9a23f0565ba2a2e5e4ccbdb1931b8c1e69)
  39. ~~Finish abstract~~&#x2611; [7619d35](https://github.com/ACGuerrero/tesis-adan/commit/576146db6b63c3bf6f7044ad61193691f7619d35)
  40. ~~Finish intro~~&#x2611; [7619d35](https://github.com/ACGuerrero/tesis-adan/commit/576146db6b63c3bf6f7044ad61193691f7619d35)
- 49. ~~Finish conclusions~~&#x2611; [7619d35](https://github.com/ACGuerrero/tesis-adan/commit/576146db6b63c3bf6f7044ad61193691f7619d35)
+ 49. ~~Finish conclusions~~&#x2611; [7619d35](https://github.com/ACGuerrero/tesis-adan/commit/576146db6b63c3bf6f7044ad61193691f7619d35), [bacba04](https://github.com/ACGuerrero/tesis-adan/commit/c0e50abfedcc861006884762099a7dd65bacba04)
+ 53. ~~Add Chapter 5 Appendix~~&#x2611; [6bc2be1](https://github.com/ACGuerrero/tesis-adan/commit/c6676d3bb230da57933ff3e28dcbacbf36bc2be1), [bacba04](https://github.com/ACGuerrero/tesis-adan/commit/c0e50abfedcc861006884762099a7dd65bacba04)
