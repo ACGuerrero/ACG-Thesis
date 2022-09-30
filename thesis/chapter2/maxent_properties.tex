@@ -121,8 +121,8 @@ El estado de máxima entropía nos otorga una herramienta de asignación para lo
 \acnote{Parte iterada: reescritura}
 
 donde la dependencia de la asignación en el modelo de grano grueso se indica mediante un subíndice, $\mcC$, ver ecuación (\ref{eq:CG}). Nótese que según los valores que puedan tomar las diferentes probabilidades, el estado asignado tendrá diferentes propiedades. Nos concentramos en dos casos particulares. El primero corresponde a $p_{1}=1$. En este caso se eliminan los términos de error, y el estado de máxima entropía es simplemente
-\begin{equation}
-    \varrho_{\max}=\rho_{\ef}\otimes\Id^{2^{n-1}}.\nonumber
+\begin{equation}\label{eq:PreferentialAss}
+    \varrho_{\max}=\rho_{\ef}\otimes\Id^{2^{n-1}}.
 \end{equation}
 Nótese que la aplicación de asignación se vuelve lineal si no hay error de medición. Esto debe verse como un caso límite. Este trabajo estudiará $p_{1}\rightarrow 1$ como el escenario en el que la probabilidad de detectar la partícula equivocada es pequeña. De acuerdo con esto, se le llamará  \textit{regimen de partícula preferencial}.
 
@@ -139,8 +139,8 @@ de  lo que se concluye que
     \rho'=\rho_{\ef},
 \end{equation*}
 y que por lo tanto el estado asignado es simplemente
-\begin{equation}
-    \mcA_{\mcC}^{\max}(\rho_{\ef})=\rho_{\ef}^{\otimes n}.\nonumber
+\begin{equation}\label{eq:BoltzmannAss}
+    \mcA_{\mcC}^{\max}(\rho_{\ef})=\rho_{\ef}^{\otimes n}.
 \end{equation}
 Así, si $p_{j}=\frac{1}{n}\forall j$, la asignación de máxima entropía resulta en un estado factorizable de $n$ partículas idénticas. A este caso se le llamará \textit{régimen de Boltzmann}.
 

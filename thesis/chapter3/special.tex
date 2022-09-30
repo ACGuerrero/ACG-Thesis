@@ -89,8 +89,8 @@ Con lo que la dinámica efectiva es
     \Gamma_{t}(\rho_{\ef})=\qty(q_{\vec{0}}+\frac{2^{n-1}-1}{2^{n}-1}(1-q_{\vec{0}}))\rho_{\ef}+\qty(\frac{2^{n-1}}{2^{n}-1}(1-q_{\vec{0}}))\pauli{3}\rho_{\ef}\pauli{3}.\nonumber
 \end{equation}
 Nótese que la dinámica efectiva es lineal, y que únicamente depende de del número de partículas en el sistema microscópico. Aún más, este es un canal de desfasamiento de un qubit en dirección de $\pauli{3}$. Este resultado es análogo para el canal $P_{\pauli{1}}$. Para recuperar un canal de desfasamiento total (en el que todos los elementos fuera de la diagonal se hacen cero) basta con elegir $q_{\vec{j}}=\frac{1}{2^{n}}\,\forall\,\vec{j}$. En dicho caso la dinámica efectiva se reduce a
-\begin{equation}
-    \Gamma_{t}(\rho_{\ef})=\frac{1}{2}(\rho_{\ef}+\pauli{3}\rho_{\ef}\pauli{3}).\nonumber
+\begin{equation}\label{eq:EffectiveDephasing}
+    \Gamma_{t}(\rho_{\ef})=\frac{1}{2}(\rho_{\ef}+\pauli{3}\rho_{\ef}\pauli{3}).
 \end{equation}
 Esto es, el desfasamiento total en $n$ partículas se traduce como un desfasamiento total en una partícula.
 
@@ -128,8 +128,8 @@ la ecuación \ref{eq:DepolarizingChannelN} puede reescribirse como
     D_{q}(\varrho)=\frac{q(2^{2n}-1)+1}{2^{2n}}\varrho+\frac{(1-q)}{2^{2n}}\sum_{\vec{j}\land\vec{k}\neq\vec{0}}\pauli{1}^{\vec{j}}\pauli{3}^{\vec{k}}\varrho\pauli{3}^{\vec{k}}\pauli{1}^{\vec{j}}\nonumber
 \end{equation}
 Donde es explícitamente claro que el canal de despolarización es un canal de Pauli. La dinámica efectiva que corresponde al canal de despolarización no completo es simplemente
-\begin{equation}
-    \Gamma_{t}(\rho_{\ef})=q\rho_{\ef}+(1-q)\Id_{2}.\nonumber
+\begin{equation}\label{eq:EffectiveDepolarizing}
+    \Gamma_{t}(\rho_{\ef})=q\rho_{\ef}+(1-q)\Id_{2}.
 \end{equation}
 Esto es, la dinámica efectiva correspondiente a un canal de despolarización siempre es un canal de despolarización. Nótese que este resultado es muy similar al obtenido para una evolución unitaria subyacente generada por un Hamiltoniano de la forma $\mcH=H\otimes\Id+\Id\otimes H$. En dicho caso, la dinámica efectiva era, justamente, la unitaria generada por el Hamiltoniano $H$, esto como consecuencia de la simetría de la evolución: la misma para cada partícula, sin interacción. Este caso es el mismo, el canal de despolarización actúa de la misma forma sobre cada partícula, y es completamente isotrópico dentro del subespacio de cada partícula.
 
@@ -165,7 +165,7 @@ donde $\gamma$ puede verse como la probabilidad de emisión de un fotón, mientr
 donde se ha hecho $e^{\mu t}=\gamma$. Es claro que el canal de amortiguamiento y el canal de estabilización tienen efectos diferentes en las fases del estado. Aún más, mientras que la extensión del canal de estabilización a $n$ partículas es directa, la generalización del canal de amortiguamiento de amplitud es no trivial. \acnote{agregar cita.}
 
 Ahora, sea $\rho_{\ef}$ un estado efectivo en $\densityspace{2}$ y $\varrho_{\max}$ el estado de máxima entropía en $\densityspace{2^{n}}$ compatible con este. Aplicando el modelo de grano grueso al estado de máxima entropía propagado por el canal de estabilización se obtiene que
-\begin{equation}
+\begin{equation}\label{eq:EffectiveStabilizing}
     \Gamma_{t}(\rho_{\ef})=e^{-t\mu}\rho(0)+(1-e^{-t \mu})\mcC(\dyad{\psi}).\nonumber
 \end{equation}
 Obsérvese que la dinámica efectiva es un canal cuántico, pero no necesariamente un canal de estabilización, pues el estado al que tiende el sistema efectivo, $\mcC(\dyad{\psi})$ no tiene por qué ser un estado puro. En realidad, en el caso en que $\ket{\psi}$ es un estado máximamente entrelazado, $\mcC(\dyad{\psi})$ es el estado máximamente mezclado, de tal manera que la dinámica efectiva es un canal de despolarización.
@@ -216,7 +216,7 @@ Si se propaga al estado de máxima entropía con dicho operador y se le pasa por
     & + \rmi \sin(\omega t)\cos(\omega t)\qty(p_{1}\expval{\pauli{3}}_{2}[\pauli{3},\rho_{1}]+p_{2}\expval{\pauli{3}}_{1}[\pauli{3},\rho_{2}]).\nonumber
 \end{align}
 Dentro de la expresión de la dinámica efectiva reconocemos dos términos. El primero es un canal de desfasamiento sobre el estado efectivo, mientras que el segundo depende tanto de los parámetros de la aplicación de grano grueso, $p_{1}$ y $p_{2}$, como de valores esperados con respecto a los operadores de densidad reducidos del estado de máxima entropía. En efecto, el caso límite $p_{1}=1$ ve la dinámica efectiva reducida a un canal de desfasamiento en el tiempo,
-\begin{equation}
+\begin{equation}\label{eq:EffectiveIsing2}
     \Gamma_{t}(\rho_{\ef})=\rho_{\ef} \cos^{2}(\omega)+\pauli{3} \rho_{\ef} \pauli{3} \sin^{2}(\omega t).\nonumber
 \end{equation}
 mientras que el caso $p_{1}=p_{2}=\frac{1}{2}$ puede ser más informativo respecto al segundo término, pues en dicho caso
@@ -224,12 +224,12 @@ mientras que el caso $p_{1}=p_{2}=\frac{1}{2}$ puede ser más informativo respec
     \Gamma_{t}(\rho_{\ef})=\rho_{\ef} \cos^{2}(\omega)+\pauli{3} \rho_{\ef} \pauli{3} \sin^{2}(\omega t) + i\expval{\pauli{3}} \qty[\pauli{3},\rho_{\ef}] \sin(\omega t)\cos(\omega t).\nonumber
 \end{equation}
 Nótese que si $\expval{\pauli{3}}=1$, la dinámica es no solo lineal, sino unitaria, y corresponde a una rotación respecto al eje $z$, (con el detalle de que los estados tales que $\expval{\pauli{3}}=1$ son invariantes bajo dichas rotaciones). En realidad, el efecto de la dinámica efectiva sobre el estado es más clara en términos del vector de Bloch del estado inicial, $\vec{r}_{\ef}$.
-\begin{equation}
+\begin{equation}\label{eq:EffectiveIsing2BV}
     \Gamma_{t}(\vec{r}_{\ef})=\begin{pmatrix}
         x\cos(2\omega t)-yz\sin(2\omega t)\\
         xz\sin(2\omega t)+y\cos(2\omega t)\\
         z\\
-    \end{pmatrix}.\nonumber
+    \end{pmatrix}.
 \end{equation}
 
 La dinámica aplicada al vector de Bloch desplaza este en trayectoria elíptica centrada en el origen. A diferencia de una rotación circular, que tiene como único parámetro al ángulo de rotación, una rotación elíptica depende de los parámetros de la elipse, ambos semiejes y un argumento de rotación de la elipse, además del ángulo de rotación. En este caso, el vector de Bloch rota $2\omega t$ grados, a lo largo de la elipse de semieje mayor $\sqrt{1-z^2}$, semieje menor $z\sqrt{x^2+y^2}$ y argumento de rotación $\arccos(x)$. Esto es, los parámetros de la transformación dependen completamente del estado efectivo inicial. En este sentido, la dinámica es no lineal y no universal. La figura \ref{fig:Ising_p0.5_Sequence} presenta la evolución de la esfera de Bloch para el caso especial $p_{1}=\frac{1}{2}$.

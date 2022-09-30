@@ -71,7 +71,7 @@ Vemos que ambos estados tienen la misma orientación (orientación significando 
 \end{equation}
 Claro está, el factor de compresión depende del multiplicador de Lagrange, que a su vez es una función de la pureza del estado inicial. La figura \ref{fig:SWAPFactor2Drl} muestra dicha dependencia. Como la dependencia en el estado inicial incluye únicamente la pureza del mismo, por lo que la compresión no depende de la dirección. Esta dinámica no es si no un canal de despolarización no lineal. Si la dependencia del factor de despolarización en el estado efectivo inicial se denota por un superíndice, la dinámica efectiva puede escribirse como
 \begin{equation}\label{eq:EffectiveSWAP1}
-  \boxed{\Gamma_{t=1}(\rho_{\ef})=\kappa_{1}^{\rho_{\ef}}\rho_{\ef}+(1-\kappa_{1}^{\rho_{\ef}})\frac{1}{2}\Id}
+  \Gamma_{t=1}(\rho_{\ef})=\kappa_{1}^{\rho_{\ef}}\rho_{\ef}+(1-\kappa_{1}^{\rho_{\ef}})\frac{1}{2}\Id
 \end{equation}
 \begin{figure}[ht!]
   \centering
@@ -258,12 +258,12 @@ Estudiado el caso discreto, utilícese el hamiltoniano para propagar al estado m
   &\ \ \ \ \ \ \ \ +i(\sin^{3}(\omega t)\cos(\omega t)-\sin(\omega t)\cos^{3}(\omega t))\qty(1-\expval{\pauli{3}}_{\rho_{1}})[\rho_{2},\pauli{1}]\}.\nonumber
 \end{align} 
 Esta expresión puede manipularse para recuperar algo más parecido a lo obtenido en el caso discreto,
-\begin{align}
+\begin{align}\label{eq:EffectiveCNOT}
   \Gamma_{t}(\rho_{\ef})=&\frac{1}{2}\rho_{\ef}\nonumber\\
   &+\frac{p_{1}}{2}\{\rho_{1}\cos^{2}(2\omega t)+\qty[\expval{\pauli{1}}_{\rho_{2}}\rho_{1}+\qty(1-\expval{\pauli{1}}_{\rho_{2}})\pauli{3}\rho_{1}\pauli{3}]\sin^{2}(2\omega t)\nonumber\\
   & \ \ \ \ \ \ \ \ -i\qty(1-\expval{\pauli{1}}_{\rho_{2}})\cos(2\omega t)\sin(2\omega t)[\rho_{1},\pauli{3}]\}\nonumber\\
   &+\frac{p_{2}}{2}\{\rho_{2}\cos^{2}(2\omega t)+\qty[\expval{\pauli{3}}_{\rho_{1}}\rho_{2}+\qty(1-\expval{\pauli{3}}_{\rho_{1}})\pauli{1}\rho_{2}\pauli{3}]\sin^{2}(2\omega t)\nonumber\\
-  & \ \ \ \ \ \ \ \ -i\qty(1-\expval{\pauli{3}}_{\rho_{1}})\cos(2\omega t)\sin(2\omega t)[\rho_{2},\pauli{1}]\}.\nonumber
+  & \ \ \ \ \ \ \ \ -i\qty(1-\expval{\pauli{3}}_{\rho_{1}})\cos(2\omega t)\sin(2\omega t)[\rho_{2},\pauli{1}]\}.
 \end{align}
 En esta ecuación ya se ve la acción de la evolución efectiva. El segundo y tercer términos pueden verse como canales de desfasamiento en dirección $\pauli{3}$ y $\pauli{1}$ respectivamente, pero contaminados con factores dependientes de los valores de expectación $\expval{\pauli{3}}_{\rho_{1}}$ y $\expval{\pauli{1}}_{\rho_{2}}$, que median la interacción entre las partículas. Para que esto sea aún más claro, volvamos a considerar los casos extremos de $p_{1}$.
 

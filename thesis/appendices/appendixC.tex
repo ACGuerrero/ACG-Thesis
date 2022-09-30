@@ -21,37 +21,113 @@ La solución analítica a la ecuación (\ref{eq:AvgMap}) ha sido encontrada para
 
 \section{Diferencia entre el MaxEnt y el AssMap}
 
-Aunque las hipótesis de la aplicación de asignación promedio puedan parecer razonables, Jaynes, en su artículo, argumenta que estas son tan arbitrarias como cualquier otra suposición, a menos que algún tipo de simetría del sistema sugiera lo contrario. Nos preguntamos, pues, sobre la diferencia entre el estado de máxima entropía y el estado promedio. Calculamos, pues, la distancia entre estos estados como una función del parámetro $p_{1}$ de la aplicación de grano grueso (recuérdese que en el caso $n=1$ el segundo parámetro es simplemente $1-p_{1}$). Esto es, nos interesa obtener
-\begin{equation}
-    \text{d}\qty(\avgass(\rho_{\ef}),\maxass(\rho_{\ef}))=\text{d}\qty(\avgass(\rho_{\ef}),\maxass(\rho_{\ef}))(p_{1}),\nonumber
+Aunque las hipótesis de la aplicación de asignación promedio puedan parecer razonables, Jaynes, en su artículo, argumenta que estas son tan arbitrarias como cualquier otra suposición, a menos que algún tipo de simetría del sistema sugiera lo contrario. Nos preguntamos sobre la diferencia entre el estado de máxima entropía y el estado promedio, como una función del parámetro $p_{1}$ de la aplicación de grano grueso (recuérdese que en el caso $n=1$ el segundo parámetro es simplemente $(1-p_{1}$) y del radio de Bloch del estado efectivo inicial $r_{\ef}$, \ie{} 
+\begin{equation}\label{eq:DistAvgMaxEnt}
+    \text{d}\qty(\avgass(\rho_{\ef}),\maxass(\rho_{\ef}))=\text{d}\qty(\avgass(\rho_{\ef}),\maxass(\rho_{\ef}))(p_{1},r_{\ef}).\nonumber
 \end{equation}
-
+Como se mencionó previamente, la expresión de $\avgass(\rho_{\ef})$ no es sencilla, así que esta distancia se analizará de manera cuantitativa. La figura \ref{ap:DistAvgMaxEnt} muestra dicha distancia, primero como función del parámetro de ruido $p_{1}$ para diferentes valores del radio de Bloch del estado efectivo inicial, $r_{\ef}$, y luego como función de $r_{\ef}$ para diferentes valores de $p_{1}$.
 \begin{figure}[ht!]
     \centering
     \begin{subfigure}{0.5\textwidth}
       \centering
       \includegraphics[width=1.\linewidth]{appendices/figures/dist_maxent_avg_vs_p.png}
-      \caption{Nueve no preferencial}
     \end{subfigure}%
     \begin{subfigure}{0.5\textwidth}
       \centering
       \includegraphics[width=1.\linewidth]{appendices/figures/dist_maxent_avg_vs_z.png}
-      \caption{Noventa y nueve partículas no preferenciales}
     \end{subfigure}
-    \caption{Distancia entre asignaciones como función de $p_{1}$ para diferentes valores de $r_{z}$, y como función de $r_{z}$ para diferentes valores de $p_{1}$. \acnote{Arreglar esta figura}}\label{ap:DistAvgMaxEnt}
+    \caption{Distancia de Frobenius entre asignaciones como función de $p_{1}$ para diferentes valores de $r_{z}$, y como función de $r_{z}$ para diferentes valores de $p_{1}$.}\label{ap:DistAvgMaxEnt}
 \end{figure}
-La figura \ref{ap:DistAvgMaxEnt} revela que las asignaciones son iguales en el caso en el que $p_{1}=0$, así como cuando $r_{\ef}=1.$. En efecto, si el estado efectivo es puro, entonces \acnote{demostración de que son iguales}
+
+Lo primero que puede observarse en dichas gráficas es que la distancia no es diferenciable en para valores de $r_{\ef}$ y $p_{1}$ tales que $r_{z}=1-2p_{1}$. Esta característica es una consecuencia del comportamiento de la asignación promedio, y no de la asignación de máxima entropía. Para convencerse de esto basta con observar la figura \ref{ap:DistAvgMaxEntId}, que muestra las distancias de Frobenius de la asignación de máxima entropía y de la asignación promedio al estado máximamente mezclado.
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}{0.5\textwidth}
+      \centering
+      \includegraphics[width=1.\linewidth]{appendices/figures/dist_maxent_or_vs_p.png}
+    \end{subfigure}%
+    \begin{subfigure}{0.5\textwidth}
+      \centering
+      \includegraphics[width=1.\linewidth]{appendices/figures/dist_avg_or_vs_p.png}
+    \end{subfigure}
+    \caption{Distancia entre asignaciones y el estado máximamente mezclado.}\label{ap:DistAvgMaxEntId}
+\end{figure}
+
+De las figuras \ref{ap:DistAvgMaxEnt} y \ref{ap:DistAvgMaxEntId} se puede extraer información interesante. Por un lado, hay dos casos en los que las asignaciones son iguales. El primero siendo el caso en el que el estado efectivo inicial es puro, \ie{} $r_{\ef}=1$. Este resultado ya había sido previamente discutido y demostrado: de acuerdo con la ecuación (\ref{eq:PureEffectiveState}), $\avgass(\rho_{\ef})=\maxass(\rho_{\ef})=\rho_{\ef}\otimes\rho_{\ef}$. El segundo siendo el caso en que la aplicación de grano grueso se reduce a una traza parcial ($p_{1}\in\{0,1\}$), para el que el estado asignado en ambos casos es $\Id\otimes\rho_{ef}$ o $\rho_{\ef}\otimes\Id$. Por otro lado, mientras que la asignación de máxima entropía asigna al estado máximamente mezclado $\Id_{2}/2$ el estado máximamente mezclado correspondiente, $\Id_{4}/4$, la asignación promedio no hace esto. En lugar de esto, la asignación promedio asigna un estado máximamente entrelazado \acnote{comprobar}.
+
+Las diferencias y similitudes entre las asignaciones tendrán efectos en las dinámicas efectivas. Recordando que el estado efectivo evolucionado está dado por la composición
+\begin{equation}
+    \rho_{\ef}(t)=(\mcC\circ\mcE_{t})(\mcA_{\mcC}(\rho_{\ef}(0))),\nonumber
+\end{equation}
+es natural que siempre que $\mcA_{\mcC}^{\max}(\rho_{\ef}(0))=\mcA_{\mcC}^{\avg}(\rho_{\ef}(0))$ coincidan, entonces $\Gamma_{t}^{\avg}=\Gamma_{t}^{\max}$. Sin embargo, como hemos visto, las asignaciones no suelen coincidir.
+
+
+\section{Comparación de dinámicas efectivas}
+
+\subsection{Dinámicas locales}
+
+\subsubsection{Dinámica local simétrica}
+
+Consideramos la unitaria local simétrica
+\begin{equation}
+    U_{t}=U_{1,t}\otimes U_{2,t},\nonumber
+\end{equation}
+donde $U_{1,j}\in\unitaryspace{2}$ y $U_{1,t}=U_{2,t}$. Debido a que el promedio es lineal, la dinámica simétrica se factoriza cuando se utiliza la aplicación de asignación promedio. Para ver esto, nótese que \acnote{pedirle a David ayuda con el último paso}
 \begin{align}
-    lkjasdf
+\Tr_{2}\qty[U_{1,t}\otimes U_{1,t} \varrho_{\avg} U_{1,t}^{\dag}\otimes U_{1,t}^{\dag}]&=\sum_{j=1}^{2}\qty[(\Id\otimes \bra{\varphi_{j}}) (U_{1,t}\otimes U_{1,t}) \varrho_{\avg} (U_{1,t}^{\dag}\otimes U_{1,t}^{\dag})(\Id\otimes \ket{\varphi_{j}})]\nonumber \\
+&=\sum_{j=1}^{2}\qty[(U_{1,t}\otimes \bra{\varphi_{j}'}) \varrho_{\avg} (U_{1,t}^{\dag}\otimes \ket{\varphi_{j}'})]\nonumber \\
+&=U_{1,t}\Tr_{2}(\varrho_{\avg})U_{1,t}^{\dag}.\nonumber
 \end{align}
-Además, se observan máximos locales en la distancia entre las asignaciones siempre que $p_{1}=\frac{1-r_{\ef}}{2}$. Esto es un resultado del comportamiento de la asignación promedio.
+Este resultado es análogo para $\Tr_{1}\qty[\varrho_{\avg}(t)]$. De esto se sigue que
+\begin{align}
+    \mcC\qty[U_{1,t}\otimes U_{1,t} \varrho_{\avg} U_{1,t}^{\dag}\otimes U_{1,t}^{\dag}]&=\sum_{k=1}^{2}U_{1,t}\Tr_{k}(\varrho_{\avg})U_{1,t}^{\dag}\nonumber\\
+    &=U_{1,t}\qty(\sum_{k=1}^{2}\Tr_{k}(\varrho_{\avg}))U_{1,t}^{\dag},\nonumber
+\end{align}
+de tal forma que la dinámica efectiva es
+\begin{equation}
+    \Gamma_{t}^{\avg}(\rho_{\ef})=U(t)\rho_{\ef}(U(t))^{\dag}.\nonumber
+\end{equation}
 
-\section{Algunas dinámicas}
+En este caso, las dinámicas gruesas coinciden.
 
-\subsection{Dinámicas factorizables}
+\subsubsection{Dinámica general}
+
+Debido a que la aplicación promedio crea correlaciones que la aplicación de máxima entropía no, la dinámicas efectivas generadas por una evolución local no coinciden en general, como lo demuestran las figuras \ref{ap:EffDunAVGvsMaxEnt1} y \ref{ap:EffDunAVGvsMaxEnt2}.
+
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}{0.5\textwidth}
+      \centering
+      \includegraphics[width=0.8\linewidth]{appendices/figures/local_AvgVSMax_p2=0.1_r=0.9_w1=0_w2=1.png}
+    \end{subfigure}%
+    \begin{subfigure}{0.5\textwidth}
+      \centering
+      \includegraphics[width=0.8\linewidth]{appendices/figures/local_AvgVSMax_p2=0.1_r=0.9_w1=1_w2=0.png}
+    \end{subfigure}
+    \caption{\acnote{CAPTION: VER NOMBRE DE ARCHIVO}}\label{ap:EffDunAVGvsMaxEnt1}
+\end{figure}
+
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}{0.5\textwidth}
+      \centering
+      \includegraphics[width=0.8\linewidth]{appendices/figures/local_AvgVSMax_p2=0.1_r=0.9_w1=30_w2=1.png}
+    \end{subfigure}%
+    \begin{subfigure}{0.5\textwidth}
+      \centering
+      \includegraphics[width=0.8\linewidth]{appendices/figures/local_AvgVSMax_p2=0.1_r=0.9_w1=1_w2=10.png}
+    \end{subfigure}
+    \caption{\acnote{CAPTION: VER NOMBRE DE ARCHIVO}}\label{ap:EffDunAVGvsMaxEnt2}
+\end{figure}
 
 \subsection{La compuerta SWAP}
 
+La dinámica efectiva generada por la compuerta cuántica SWAP y la aplicación de asignación promedio es, nuevamente, un canal de despolarización. Sin embargo, exceptuando los valores de $p_{1}$ y $r_{\ef}$ para los que las asignaciones coinciden, además de $p_{1}=\frac{1}{2}$, caso en el que no hay despolarización, la contracción observada cuando se usa la aplicación de asignación promedio es más fuerte.
+
+\acnote{tengo figuras no muy interesantes, toca enseñárselas a David a ver qué opina}
+
 \subsection{Canales de Pauli}
 
-\section{Comparación de resultados de ambas asignaciones}
+La dinámica efectiva generada por el canal de despolarización es la misma independientemente de la aplicación de asignación utilizada.
+
+\acnote{Creo que es lo mismo para los canales de despolarización. Lo demuestro mañana.}
