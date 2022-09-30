@@ -103,7 +103,7 @@ Esta expresión parece no dar demasiada información: es simplemente la combinac
 \begin{equation}
     r_{\ef}\hat{r}_{\ef}\mapsto R(r_{\ef}\hat{r}_{\ef}-(1-p_{1})r_{\text{np}}\hat{r}_{\ef})+(1-p_{1})r_{\text{np}}\hat{r}_{\ef}.\nonumber
 \end{equation}
-El resultado es una rotación alrededor de una línea que no pasa por el origen. Una rotación de esta naturaleza puede descomponerse en una rotación a través de un eje que pasa por el origen $R_{0}$ y una traslación $T$ como $T^{-1}\circ R_{0}\circ T$. Nótese que una transformación así no tendría por qué mantener a los estados dentro de la esfera de Bloch, por lo que esta debe depender del estado mismo. 
+El resultado es una rotación alrededor de una línea que no pasa por el origen. Una rotación de esta naturaleza puede descomponerse en una rotación a través de un eje que pasa por el origen $R_{0}$ y una traslación $T$ como $T^{-1}\circ R_{0}\circ T$. Nótese que una transformación así no tendría por qué mantener a los estados dentro de la esfera de Bloch, por lo que esta debe depender del estado mismo. \ddnote{Te felicito por esta observación}
 
 \begin{figure}[ht!]
     \centering
@@ -135,7 +135,7 @@ En efecto, si $p_{1}\approx\frac{1}{2}$, entonces $\rho_{1}\approx\rho_{\text{np
     \Gamma_{t}(\rho_{\ef})=&p_{1}e^{-\rmi\omega t \pauli{3}}\rho_{1}e^{\rmi\omega t \pauli{3}}+(1-p_{1})\rho_{\text{np}}\nonumber\\
     \approx&\frac{1}{2}(\rho_{\ef}+e^{-\rmi\omega t \pauli{3}}\rho_{\ef} e^{\rmi\omega t \pauli{3}})\nonumber.
 \end{align}
-
+\ddnote{Nótese que en este regimen, la dinámica si es lineal y tiene operadores de Kraus $1/\sqrt{2}\left\{\Id, e^{\rmi\omega t \pauli{3}} \right\}$}
 \subsubsection{Partícula preferencial invariante}
 
 \acnote{Esta sección la tengo que volver a tocar}
@@ -144,7 +144,7 @@ Ahora asumamos que es el sistema preferencial el que no evoluciona, mientras que
 \begin{equation}
     \mcH=\omega \sum_{k=2}^{n}H_{k}.\nonumber
 \end{equation}
-Por simplicidad, tómese $H_{k}=\pauli{3}\,\forall k$. Recordando la ecuación (\ref{eq:rhoArhoB}), los valores de expectación de $\pauli{j}$ serán
+\ddnote*{Sin perdida de generalidad, }{Por simplicidad,} tómese $H_{k}=\pauli{3}\,\forall k$. Recordando la ecuación (\ref{eq:rhoArhoB}), los valores de expectación de $\pauli{j}$ serán
 \begin{align}
     \expval{\pauli{1}(t)}=&p_{1} \expval{\sigma_{1}(0)}_{1}+\sum_{k=2}^{n}p_{k}\Tr[\pauli{1}e^{-\rmi\omega t\pauli{3}} \rho_{k} e^{\rmi\omega t\pauli{3}}]\nonumber\\
     \expval{\pauli{2}(t)}=&p_{1} \expval{\sigma_{2}(0)}_{1}+\sum_{k=2}^{n}p_{k}\Tr[\pauli{2}e^{-\rmi\omega t\pauli{3}} \rho_{k} e^{\rmi\omega t\pauli{3}}]\nonumber\\
@@ -184,7 +184,7 @@ Estas pequeñas oscilaciones son, justamente, el término de ruido. La visualiza
       \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_prefinv_eq_n=100_p=0.95.png}
       \caption{Noventa y nueve partículas no preferenciales}
     \end{subfigure}
-    \caption{Oscilaciones periódicas cercanas al valor esperado. La periodicidad no depende de los pesos probabilísticos de cada partícula. En azul, el conjunto de estados con la misma pureza (y la misma coordenada en $\pauli{3}$) que el estado efectivo inicial (en verde).}\label{fig:OscilationsSameHam}
+    \caption{Oscilaciones periódicas cercanas al valor esperado. La periodicidad no depende de los pesos probabilísticos de cada partícula. En azul, el conjunto de estados con la misma pureza (y la misma coordenada en $\pauli{3}$) que el estado efectivo inicial (en verde).\ddnote{De nuez, se necesita caption mas autocontenido, que sistea y que estado inicial.}}\label{fig:OscilationsSameHam}
 \end{figure}
 
 Si, por otro lado, quitamos la restricción de que todas las partículas no preferenciales evolucionen con la misma frecuencia, se vuelve imposible factorizar la rotación:
@@ -209,7 +209,7 @@ revelan la complejidad de la evolución, además de su no-linealidad, pues los v
       \centering
       \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_prefinv_ran_n=500_p=0.95_r=0.95_a=-3_b=3.png}
     \end{subfigure}
-    \caption{Variaciones cercanas al estado efectivo inicial (verde). El aumento en el número de partículas lleva a una evolución complicada y no periódica, pero que converge al punto $\vec{r}_{1}$. En azul, el conjunto de estados con la misma pureza y la misma coordenada en $\pauli{3}$ que el estado efectivo inicial.}\label{fig:PrefInv1}
+    \caption{Variaciones cercanas al estado efectivo inicial (verde). El aumento en el número de partículas lleva a una evolución complicada y no periódica, pero que converge al punto $\vec{r}_{1}$. En azul, el conjunto de estados con la misma pureza y la misma coordenada en $\pauli{3}$ que el estado efectivo inicial. \ddnote{autocontenido}}\label{fig:PrefInv1}
 \end{figure}
 
 \begin{figure}[ht!]
@@ -222,12 +222,12 @@ revelan la complejidad de la evolución, además de su no-linealidad, pues los v
       \centering
       \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_prefinv_ran_n=500_p=0.7_r=0.95_a=-3_b=3.png}
     \end{subfigure}
-    \caption{Variaciones cercanas al estado efectivo inicial (verde). El aumento en el número de partículas lleva a una evolución complicada y no periódica, pero que converge al punto $\vec{r}_{1}$. Valores menos importantes de $p_{1}$ conducen a mayores variaciones. En azul, el conjunto de estados con la misma pureza y la misma coordenada en $\pauli{3}$ que el estado efectivo inicial.}\label{fig:PrefInv2}
+    \caption{Variaciones cercanas al estado efectivo inicial (verde). El aumento en el número de partículas lleva a una evolución complicada y no periódica, pero que converge al punto $\vec{r}_{1}$. Valores menos importantes de $p_{1}$ conducen a mayores variaciones. En azul, el conjunto de estados con la misma pureza y la misma coordenada en $\pauli{3}$ que el estado efectivo inicial. \ddnote{autocontenido}}\label{fig:PrefInv2}
 \end{figure}
 
-\subsubsection{Sistema en campo magnético ?}
+\subsubsection{Sistema en campo magnético ? \ddnote{Partículas no interactuantes con diferente frecuencia de transición}}
 
-\acnote{No tengo idea de qué justificación se pueda dar a que todas las partículas oscilen en la misma dirección pero con frecuencias diferentes.}
+\acnote{No tengo idea de qué justificación se pueda dar a que todas las partículas oscilen en la misma dirección pero con frecuencias diferentes.} \ddnote{Esta y las dos dinámicas anteriores son casos particulares de partículas no interactuantes y ya, que tan facil sea su realización, pues no sé.}
 
 En los dos casos anteriores se permitió que alguna de las partes del sistema se mantuviera invariante, fuera la partícula preferencial o el resto. Veamos ahora qué sucede cuando se permite que todo el sistema evolucione. Considérese un hamiltoniano
 \begin{equation}
@@ -266,7 +266,7 @@ Aquí pasa a ser claro que la amplitud máxima de la oscilación de error de cad
       \centering
       \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_all_ran_p=0.95_r=0.9_n=500_a=-3_b=3.png}
     \end{subfigure}
-    \caption{Como mencionado, para el caso en que $r_{\ef}=0.9$ y $p=0.95$ las variaciones debidas al error no son perceptibles debido a su pequeña amplitud, independientemente del número de partículas consideradas.}\label{fig:Oscilations12}
+    \caption{Como mencionado, para el caso en que $r_{\ef}=0.9$ y $p=0.95$ las variaciones debidas al error no son perceptibles debido a su pequeña amplitud, independientemente del número de partículas consideradas. \ddnote{autocontenido}}\label{fig:Oscilations12}
 \end{figure}
 \begin{figure}[ht!]
     \centering
@@ -278,7 +278,9 @@ Aquí pasa a ser claro que la amplitud máxima de la oscilación de error de cad
       \centering
       \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_all_ran_p=0.5_r=0.9_n=500_a=-3_b=3.png}
     \end{subfigure}
-    \caption{Si $r_{\ef}=0.9$ y $p=0.3$, el alejamiento de la evolución esperada se hace notar. Para valores grandes de $n$ se vuelve dominante el término de $p_{1}$}\label{fig:Oscilations13}
+    \caption{Si $r_{\ef}=0.9$ y $p=0.3$, el alejamiento de la evolución esperada se hace notar. Para valores grandes de $n$ se vuelve dominante el término de $p_{1}$ \ddnote{autocontenido. Otro comentario, no sé si has tenido problemas con las referencias a los labels de las figuras, pero los labels van dentro del caption para que funcionen bien, en este caso ya lo metí al caption, por fas ve el tex}
+\label{fig:Oscilations13}    
+}
 \end{figure}
 
 \newpage

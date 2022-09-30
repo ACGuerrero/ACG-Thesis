@@ -8,7 +8,7 @@ Compuertas de un qubit comunes icluyen a los operadores de Pauli, mientras que p
 
 \subsection{La compuerta cuántica SWAP}
 
-La compuerta SWAP, $S$, actúa sobre dos qubits permutándolos. Su acción sobre la base de $\hilbert_{4}$ contruida mediante los eigenestados de $\pauli{3}\otimes\pauli{3}$ es
+La compuerta SWAP, $S$, actúa sobre dos qubits permutándolos. \ddnote*{Su acción sobre la base computacional de dos qubits es}{Su acción sobre la base de $\hilbert_{4}$ contruida mediante los eigenestados de $\pauli{3}\otimes\pauli{3}$ es} \ddnote{ojo, no hay una única base de $\pauli{3}\otimes\pauli{3}$, pues el operador es degenerado, es mejor mencionarla base computacional, y ya}
 \begin{align}
     \ket{0}\otimes\ket{0}&\mapsto\ket{0}\otimes\ket{0}\nonumber\\
     \ket{0}\otimes\ket{1}&\mapsto\ket{1}\otimes\ket{0}\nonumber\\
@@ -17,8 +17,9 @@ La compuerta SWAP, $S$, actúa sobre dos qubits permutándolos. Su acción sobre
 \end{align}
 Si un sistema está descrito por un operador de densidad separable, $\varrho=\rho_{A}\otimes\rho_{B}$, entonces el efecto de la compuerta SWAP es 
 \begin{equation}
-    S\varrho S^{\dag}=\rho_{B}\otimes\rho_{A}.\nonumber
+    S\varrho S=\rho_{B}\otimes\rho_{A}.\nonumber
 \end{equation}
+\ddnote{El swap es hermítico, quité la dagger}
 La compuerta tiene representación como matriz de permutación
 \begin{equation}
     S=\begin{pmatrix}
@@ -51,8 +52,9 @@ S^{t}=\begin{pmatrix}
 
 Para estudiar la dinámica efectiva de una evolución subyacente descrita por el operador SWAP, primero analizaremos el caso en que no se ha introducido la dependencia temporal. Sea $\rho_{\ef}\in\densityspace{2}$ el estado efectivo y $\varrho_{\max}\in\densityspace{4}$ el estado de máxima entropía compatible con $\rho_{\ef}$ y la aplicación de grano grueso descrita en la sección \ref{sec:CH2CG} según $\mcA_{\mcC}^{\max}(\rho_{\ef})=\varrho_{\max}$. Estudiaremos la asignación
 \begin{equation}
-  \rho_{\ef}\mapsto \mcC(S \varrho_{\max} S^{\dag}).
+  \rho_{\ef}\mapsto \mcC(S \varrho_{\max} S).
 \end{equation}
+\ddnote{quité dagger}
 Como el estado de máxima entropía es separable, la acción del operador SWAP sobre este es
 \begin{equation}
   \frac{e^{p_{1}\sum_{i}\lambda_{i}\sigma_{i}}}{Z_{1}} \otimes \frac{e^{p_{2}\sum_{i}\lambda_{i}\sigma_{i}}}{Z_{2}}\mapsto\frac{e^{p_{2}\sum_{i}\lambda_{i}\sigma_{i}}}{Z_{2}}\otimes\frac{e^{p_{1}\sum_{i}\lambda_{i}\sigma_{i}}}{Z_{1}}.\nonumber
@@ -103,6 +105,7 @@ en la que $\vec{c}=0$, y $M=OS$ con $O=\Id$ y $S=\kappa_{1}^{\rho_{\ef}}=\Id$, d
 \begin{equation}
   \vec{r}\rightarrow \kappa_{1}^{\rho_{\ef}}=\vec{r}\nonumber
 \end{equation}
+\ddnote{error en ecuación, supongo que el $=$ no va.}
 nos daríamos cuenta que la transformación no es afín, y por esto, el proceso no puede ser descrito a través del formalismo de las operaciones cuánticas (no tiene representación en operadores de Kraus) \cite{Chuang}.
 
 \subsubsection{Evolución continua}
@@ -114,7 +117,7 @@ Utilizando la forma dependiente del tiempo del operador $S$ dada por la ecuació
   &+(p_{1}\cos^{2}{\frac{\pi t}{2}}+p_{2}\sin^{2}{\frac{\pi t}{2}})\tanh{p_{2}\lambda}]\}.
   \end{split}
 \end{align}
-
+\ddnote{arreglar llaves}
 El estado efectivo inicial siendo el mismo, el estado final vuelve a tener la misma orientación, y entonces es posible calcular el factor de despolarización como la razón entre las normas de los vectores de Bloch de los estados inicial y final:
 \begin{equation}\label{eq:SWAPFactort}
   \kappa_{t}^{\rho_{\ef}}=\frac{(p_{2}\cos^{2}{\frac{\pi t}{2}}+p\sin^{2}{\frac{\pi t}{2}})\tanh{\lambda p_{1}}+(p_{1}\cos^{2}{\frac{\pi t}{2}}+p_{2}\sin^{2}{\frac{\pi t}{2}})\tanh{\lambda p_{2}}}{
@@ -143,7 +146,7 @@ Nuevamente, el factor de despolarización (y por consiguiente, toda la evolució
     \includegraphics[width=0.9\linewidth]{chapter3/figures_toy/SWAP_t=1._p=0.9_r=0.9.png}
     \caption{$t=1$}
   \end{subfigure}
-  \caption{Efecto de la evolución subyacente si $r_{\ef}(0)=0.9$, $p_{1}=0.9$. La dramática contracción se asocia a una pérdida casi total de información.}
+  \caption{Efecto de la evolución subyacente si $r_{\ef}(0)=0.9$, $p_{1}=0.9$. La dramática contracción se asocia a una pérdida casi total de información. \ddnote{autocontenido}}
   \label{fig:SWAPFactorSequence}
   \end{figure}
 
@@ -181,7 +184,7 @@ La compuerta \textit{controlled not}, o CNOT, es el análogo cuántico de la com
     \ket{1}\otimes\ket{0}\mapsto\ket{1}\otimes\ket{1}\nonumber\\
     \ket{1}\otimes\ket{1}\mapsto\ket{1}\otimes\ket{0} \rlap{.}\nonumber
 \end{align}
-En la base de los eigenestados de $\pauli{3}\otimes\pauli{3}$, la compuerta puede representarse como la matriz de permutación
+\ddnote*{En la base computacional de dos qubits}{En la base de los eigenestados de $\pauli{3}\otimes\pauli{3}$}, la compuerta puede representarse como la matriz de permutación
 \begin{equation}
     \cnot=\begin{pmatrix}
         1&0&0&0\\
@@ -293,7 +296,7 @@ En ambos casos recuperamos los resultados del caso discreto al tiempo $t=1$ elig
     \includegraphics[width=0.9\linewidth]{chapter3/figures_toy/sphere_CNOT_t=1._r=0.9_p=0.1.png}
     \caption{$t=1$}
   \end{subfigure}
-  \caption{Efecto de la evolución subyacente si $r_{z}=0.9$, $p=0.1$. Nótese que a tiempo $t=1$ se recupera el \textit{casi} canal de \textit{bit flip}}
+  \caption{Efecto de la evolución subyacente si $r_{z}=0.9$, $p=0.1$. Nótese que a tiempo $t=1$ se recupera el \textit{casi} canal de \textit{bit flip}. \ddnote{autocontenido}}
   \label{fig:AlmostBitFlipSequence}
   \end{figure}
 
@@ -314,7 +317,7 @@ En ambos casos recuperamos los resultados del caso discreto al tiempo $t=1$ elig
       \includegraphics[width=0.9\linewidth]{chapter3/figures_toy/sphere_CNOT_t=1._r=0.9_p=0.9.png}
       \caption{$t=1$}
     \end{subfigure}
-    \caption{Efecto de la evolución subyacente si $r_{z}=0.9$, $p=0.9$. Nótese que a tiempo $t=1$ se recupera el \textit{casi} canal de desfasamiento.}
+    \caption{Efecto de la evolución subyacente si $r_{z}=0.9$, $p=0.9$. Nótese que a tiempo $t=1$ se recupera el \textit{casi} canal de desfasamiento. \ddnote{autocontenido} }
     \label{fig:AlmostPhaseFlipSequence}
     \end{figure}
 
@@ -335,7 +338,7 @@ En ambos casos recuperamos los resultados del caso discreto al tiempo $t=1$ elig
         \includegraphics[width=0.9\linewidth]{chapter3/figures_toy/sphere_CNOT_t=1._r=0.9_p=0.5.png}
         \caption{$t=1$}
       \end{subfigure}
-      \caption{Efecto de la evolución subyacente si $r_{z}=0.9$, $p=0.5$. La deformación (y rompimiento) de la esfera de Bloch es consecuencia de la combinación de dos canales no lineales.}
+      \caption{Efecto de la evolución subyacente si $r_{z}=0.9$, $p=0.5$. La deformación (y rompimiento) de la esfera de Bloch es consecuencia de la combinación de dos canales no lineales. \ddnote{autocontenido}}
       \label{fig:CNOTSequence}
       \end{figure}
       \newpage
