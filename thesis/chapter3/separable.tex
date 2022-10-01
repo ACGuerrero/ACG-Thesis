@@ -1,16 +1,16 @@
 \section{Dinámicas locales}
 
-En la sección \ref{sec:Ch1PartialTrace} se habló de estados \ddnote*{factorizables}{separables} como aquellos estados que, descritos por un operador de densidad $\rho\in\densityspace{n}$, tienen la forma
+En la sección \ref{sec:Ch1PartialTrace} se habló de estados factorizables como aquellos estados que, descritos por un operador de densidad $\rho\in\densityspace{n}$, tienen la forma
 \begin{equation}
     \rho=\rho_{A}\otimes\rho_{B},\nonumber
 \end{equation}
-donde $\rho_{A}\in\densityspace{m}$, $\rho_{B}\in\densityspace{l}$ y $l+m=n$. Siguiendo esta línea de pensamiento, con \ddnote*{\textit{dinámicas locales}}{\textit{dinámicas factorizables}} nos referimos a dinámicas unitarias generadas por hamiltonianos que no contienen un término de interacción (que en el caso de dos partículas son hamiltonianos de la forma $\mcH=H_{1}\otimes\Id+\Id\otimes H_{2}$), y que por lo mismo son descritas por operadores $\mcU\in\unitaryspace{n}$ \ddnote{cambié la notación del grupo unitario por la estándar (y correcta, si tienes dudas, me preguntas)} del tipo
+donde $\rho_{A}\in\densityspace{m}$, $\rho_{B}\in\densityspace{l}$ y $l+m=n$. Siguiendo esta línea de pensamiento, con \textit{dinámicas factorizables} nos referimos a dinámicas unitarias generadas por hamiltonianos que no contienen un término de interacción (que en el caso de dos partículas son hamiltonianos de la forma $\mcH=H_{1}\otimes\Id+\Id\otimes H_{2}$), y que por lo mismo son descritas por operadores $\mcU\in\unitaryspace{n}$ \ddnote{cambié la notación del grupo unitario por la estándar (y correcta, si tienes dudas, me preguntas)} del tipo
 \begin{equation}
     \mcU=U_{A}\otimes U_{B}.\nonumber
 \end{equation}
-De nuevo, $U_{A}\in\unitaryspace{m}$, $U_{B}\in\unitaryspace{l}$ y $l+m=n$. Los operadores \ddnote*{locales}{separables} \ddnote{dejaré de prestar atención a este tipo de errores, por fas corrige todos. Recuerda, si hablamos de estados, se llaman factorizables, si hablamos de dinámicas, son locales} están compuestos por operadores que actúan de forma independiente sobre diferentes subsistemas del sistema en cuestión. En el caso de un sistema compuesto por dos subsistemas de dos niveles, el operador separable está compuesto por dos unitarias que actúan sobre $\hilbert_{2}$. Como el estado de máxima entropía resulta ser separable, las dinámicas separables son una muy buena primera forma de aplicar el formalismo descrito en las secciones anteriores.
+De nuevo, $U_{A}\in\unitaryspace{m}$, $U_{B}\in\unitaryspace{l}$ y $l+m=n$. Los operadores locales están compuestos por operadores que actúan de forma independiente sobre diferentes subsistemas del sistema en cuestión. En el caso de un sistema compuesto por dos subsistemas de dos niveles, el operador local está compuesto por dos unitarias que actúan sobre $\hilbert_{2}$. Como el estado de máxima entropía resulta ser factorizable, las dinámicas locales son una muy buena primera forma de aplicar el formalismo descrito en las secciones anteriores.
 
-Considérese la aplicación de grano grueso de $n$ a $1$ partículas definida según (\ref{eq:CG}), un estado efectivo $\rho_{\ef}\in\densityspace{2}$ y la aplicación de máxima entropía compatible dada por (\ref{eq:MaxEntAss}). Si la evolución microscópica es factorizable entonces es generada por un hamiltoniano de la forma
+Considérese la aplicación de grano grueso de $n$ a $1$ partículas definida según (\ref{eq:CG}), un estado efectivo $\rho_{\ef}\in\densityspace{2}$ y la aplicación de máxima entropía compatible dada por (\ref{eq:MaxEntAss}). Si la evolución microscópica es local entonces es generada por un hamiltoniano de la forma
 \begin{equation}
     \mcH=\sum_{k=1}^{n}\omega_{k}\Id_{2^{k-1}}\otimes H_{k} \otimes \Id_{2^{n-k}},\nonumber
 \end{equation}
@@ -55,9 +55,9 @@ Por otro lado, en el caso en el que no hay partícula prioritaria, \ie ($p_{j}=\
 que no es más que una combinación lineal de las mismas componentes evolucionadas de formas diferentes.
 \subsection{Ejemplos particulares}
 
-\subsubsection{\ddnote*{Dinámica local simétrica}{Dinámica simétrica}}
+\subsubsection{Dinámica local simétrica}
 
-Comenzamos con el caso en el que la dinámica separable simétrica, esto es, de una unitaria $\mcU\in\unitaryspace{2^{n}}$ de la forma
+Comenzamos con el caso en el que la dinámica local simétrica, esto es, de una unitaria $\mcU\in\unitaryspace{2^{n}}$ de la forma
 \begin{equation}
     \mcU_{t}=\Motimes_{k=1}^{n}U(t),\nonumber
 \end{equation}
@@ -69,13 +69,13 @@ donde $U(t)\in\unitaryspace{2}$. Se aplica la evolución al estado de máxima en
 \end{align}
 La dinámica efectiva tiene la forma
 \begin{equation}\label{eq:EffectiveSymmetricLocal}
-    \Gamma_{t}(\rho_{\ef})=U(t)\rho_{\ef}U^\dag(t).\nonumber
+    \Gamma_{t}(\rho_{\ef})=U(t)\rho_{\ef}U^\dag(t).
 \end{equation}\ddnote{embellecí un poco esta ecuación}
 Este resultado es natural. No solo no hay interacción entre los diferentes subsistemas, significando esto que no se \textit{filtra} ningún tipo de información entre la partícula de interés y el resto, sino que cada parte evoluciona de manera idéntica: bajo la aplicación de grano grueso, lo que se observa es una combinación de $n$ entidades idénticas evolucionando de la misma forma.
 
 \subsubsection{Particulas no preferenciales invariantes}
 
-Centrémonos, momentáneamente, en el régimen $p_{1}>p_{j}\,\forall j\neq 1$. Asúmase que la probabilidad de detectar a la $k$-ésima partícula es la misma para todas excepto la primera. Entonces
+Centrémonos, momentáneamente, en el régimen de partícula preferencial, \ie{} $p_{1}>p_{j}\,\forall j\neq 1$. Asúmase que la probabilidad de detectar a la $k$-ésima partícula es la misma para todas excepto la primera. Entonces
 \begin{equation}
     p_{k}=\frac{(1-p_{1})}{n-1}\text{ }\forall k\neq 1.\nonumber
 \end{equation}
@@ -83,19 +83,23 @@ El estado de máxima entropía compatible con un estado efectivo $\rho_{\ef}$ es
 \begin{equation}
     \varrho_{\max}=\rho_{1}\otimes\qty(\Motimes_{k=2}^{n}\frac{1}{Z_{k}}e^{\frac{(1-p_{1})}{n-1}\sum_{j}\lambda_{j}\pauli{j}}),\nonumber
 \end{equation}
-donde, para todo $k$ se cumple que
+donde, para todo $k\neq 1$ se cumple que
 \begin{equation}
     \frac{1}{Z_{k}}e^{\frac{1-p_{1}}{n-1}\sum_{j}\lambda_{j}\pauli{j}}=\frac{1}{2}\qty(\Id+\tanh(\frac{1-p_{1}}{n-1}\lambda)\hat{r}_{\rho}\cdot\vec{\sigma})\equiv \rho_{\text{np}}.\nonumber
 \end{equation}
-\ddnote{explica por fas los subindices np} El \ddnote{estado del} conjunto de partículas no preferenciales es entonces
+Como a cada partícula no preferencial se le asigna el mismo estado $\rho_{\text{np}}$, el estado del conjunto de partículas no preferenciales es
 \begin{equation}
     \Motimes_{k=2}^{n}\rho_{k}=\rho_{\text{np}}^{\otimes(n-1)}\nonumber.
 \end{equation}
-Si estas no varían \ddnote{poner dinámica explicita}, mientras que el subsistema de interés se propaga de forma unitaria, entonces la dinámica efectiva es
+Consíderese ahora la dinámica local generada por el hamiltoniano
 \begin{equation}
-    \Gamma_{t}(\rho_{\ef})=p_{1}U(t)\rho_{1}(U(t))^{\dag}+(1-p_{1})\rho_{\text{np}}.\nonumber
+    \mcH=\omega H_{1}.\nonumber
 \end{equation}
-En términos del vector de Bloch del estado efectivo inicial, con $r_{1}=\tanh(p_{1}\lambda)$, $r_{\text{np}}=\tanh((1-p_{1})\lambda)$, y $R$ la rotación generada por $U$:
+Es decir, la dinámica en la que las partículas no preferenciales no varían, mientras que el subsistema de interés se propaga de forma unitaria. En este caso la dinámica efectiva es
+\begin{equation}
+    \Gamma_{t}(\rho_{\ef})=p_{1}U_{1}(t)\rho_{1}(U_{1}(t))^{\dag}+(1-p_{1})\rho_{\text{np}}.\nonumber
+\end{equation}
+En términos del vector de Bloch del estado efectivo inicial, con $r_{1}=\tanh(p_{1}\lambda)$, $r_{\text{np}}=\tanh((1-p_{1})\lambda)$, y $R$ la rotación generada por $U_{1}6p$:
 \begin{equation}
     r_{\ef}\hat{r}_{\ef}\mapsto p_{1}r_{1}R\hat{r}_{\ef}+(1-p_{1})r_{\text{np}}\hat{r}_{\ef}.\nonumber
 \end{equation}
@@ -122,29 +126,26 @@ El resultado es una rotación alrededor de una línea que no pasa por el origen.
       \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/szxId_t=0.5_p=0.6_r=0.9.png}
       \caption{$t=0.5$}
     \end{subfigure}
-    \caption{Efecto de la evolución subyacente sobre la esfera de Bloch si $r_{\ef}=0.9$, $p_{1}=0.6$ y $U=e^{-i\pi t \pauli{3}}$. La dramática contracción a lo largo de $z$ se asocia al alto valor de $1-p_{1}$.\ddnote{Se necesita caption casi-autocontenido. Hace falta poner para que dinámica es esto.}}
-    \label{fig:FaseChangeSequence}
+    \caption{Efecto de la dinámica efectiva inducida por la unitaria microscópica $\mcU=U_{1}\otimes\Id_{2^{n-1}}$ sobre la esfera de Bloch cuando $r_{\ef}=0.9$, $p_{1}=0.6$ y $U_{1}=e^{-i\pi t \pauli{3}}$. La dramática contracción a lo largo de $r_{z}$ se asocia al alto valor de $1-p_{1}$. \label{fig:FaseChangeSequence}}
 \end{figure}
 
-En efecto, la traslación tiene una magnitud $(1-p_{1})r_{\text{np}}$ (a notar que la traslación es pequeña, y corresponde al término de ruido) en la dirección opuesta a la del estado (i.e. depende del estado tanto en magnitud como en dirección). Así que, aunque esto podría parecer una transformación afín, no lo es, pues depende enteramente del estado. Esto significa que la evolución efectiva no es lineal, y no tiene expresión en términos de operadores de Kraus. La figura \ref{fig:FaseChangeSequence} muestra el efecto que una dinámica de este estilo tiene sobre la esfera de Bloch (en particular, el caso $U_{1}=e^{-\rmi\omega t \pauli{3}}$). La contracción a lo largo del eje $z$ es un resultado del alto valor de $(1-p_{1})$ (0.4), y no sería visible si $p_{1}\rightarrow 1$.
+En efecto, la traslación tiene una magnitud $(1-p_{1})r_{\text{np}}$ (a notar que la traslación es pequeña, y corresponde al término de ruido) en la dirección opuesta a la del estado (i.e. depende del estado tanto en magnitud como en dirección). Así que, aunque esto podría parecer una transformación afín, no lo es, pues depende enteramente del estado. Esto significa que la evolución efectiva no es lineal, y no tiene expresión en términos de operadores de Kraus. La figura \ref{fig:FaseChangeSequence} muestra el efecto que una dinámica de este estilo tiene sobre la esfera de Bloch (en particular, el caso $U_{1}=e^{-\rmi\omega t \pauli{3}}$). La contracción a lo largo del eje $r_{z}$ es un resultado del alto valor de $(1-p_{1})$ (0.4), y no sería visible si $p_{1}\rightarrow 1$.
 
 
-En efecto, si $p_{1}\approx\frac{1}{2}$, entonces $\rho_{1}\approx\rho_{\text{np}}\approx\rho$ y la dinámica efectiva se convertiría en un canal de desfasamiento:
+En efecto, si $p_{1}\approx\frac{1}{2}$, entonces $\rho_{1}\approx\rho_{\ef}$, $\rho_{\text{np}}\approx\rho_{\ef}$, y la dinámica efectiva no solo sería lineal, sino que se convertiría en un canal de desfasamiento:
 
 \begin{align}
     \Gamma_{t}(\rho_{\ef})=&p_{1}e^{-\rmi\omega t \pauli{3}}\rho_{1}e^{\rmi\omega t \pauli{3}}+(1-p_{1})\rho_{\text{np}}\nonumber\\
-    \approx&\frac{1}{2}(\rho_{\ef}+e^{-\rmi\omega t \pauli{3}}\rho_{\ef} e^{\rmi\omega t \pauli{3}})\nonumber.
+    \approx&\frac{1}{2}(\rho_{\ef}+e^{-\rmi\omega t \pauli{3}}\rho_{\ef} e^{\rmi\omega t \pauli{3}}),\nonumber
 \end{align}
-\ddnote{Nótese que en este regimen, la dinámica si es lineal y tiene operadores de Kraus $1/\sqrt{2}\left\{\Id, e^{\rmi\omega t \pauli{3}} \right\}$}
+cuyos operadores de Kraus son $\frac{1}{\sqrt{2}}\left\{\Id, e^{\rmi\omega t \pauli{3}} \right\}$.
 \subsubsection{Partícula preferencial invariante}
-
-\acnote{Esta sección la tengo que volver a tocar}
 
 Ahora asumamos que es el sistema preferencial el que no evoluciona, mientras que las demás partículas sí lo hacen. Existen diferentes formas de abordar este problema, según la elección de las probabilidades y de la naturaleza de la evolución del resto de las partículas. Quizá el caso más sencillo es aquel en el que todas las partículas no preferenciales evolucionan de la misma forma. Esto es, una evolución generada por un hamiltoniano de la forma
 \begin{equation}
     \mcH=\omega \sum_{k=2}^{n}H_{k}.\nonumber
 \end{equation}
-\ddnote*{Sin perdida de generalidad, }{Por simplicidad,} tómese $H_{k}=\pauli{3}\,\forall k$. Recordando la ecuación (\ref{eq:rhoArhoB}), los valores de expectación de $\pauli{j}$ serán
+Sin perdida de generalidad, tómese $H_{k}=\pauli{3}\,\forall k$. Recordando la ecuación (\ref{eq:rhoArhoB}), los valores de expectación de $\pauli{j}$ serán
 \begin{align}
     \expval{\pauli{1}(t)}=&p_{1} \expval{\sigma_{1}(0)}_{1}+\sum_{k=2}^{n}p_{k}\Tr[\pauli{1}e^{-\rmi\omega t\pauli{3}} \rho_{k} e^{\rmi\omega t\pauli{3}}]\nonumber\\
     \expval{\pauli{2}(t)}=&p_{1} \expval{\sigma_{2}(0)}_{1}+\sum_{k=2}^{n}p_{k}\Tr[\pauli{2}e^{-\rmi\omega t\pauli{3}} \rho_{k} e^{\rmi\omega t\pauli{3}}]\nonumber\\
@@ -177,14 +178,12 @@ Estas pequeñas oscilaciones son, justamente, el término de ruido. La visualiza
     \begin{subfigure}{0.5\textwidth}
       \centering
       \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_prefinv_eq_n=10_p=0.95.png}
-      \caption{Nueve no preferencial}
     \end{subfigure}%
     \begin{subfigure}{0.5\textwidth}
       \centering
       \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_prefinv_eq_n=100_p=0.95.png}
-      \caption{Noventa y nueve partículas no preferenciales}
     \end{subfigure}
-    \caption{Oscilaciones periódicas cercanas al valor esperado. La periodicidad no depende de los pesos probabilísticos de cada partícula. En azul, el conjunto de estados con la misma pureza (y la misma coordenada en $\pauli{3}$) que el estado efectivo inicial (en verde).\ddnote{De nuez, se necesita caption mas autocontenido, que sistea y que estado inicial.}}\label{fig:OscilationsSameHam}
+    \caption{Oscilaciones periódicas correspondientes a la dinámica efectiva inducida por el hamiltoniano microscópico $\mcH=\omega\sum_{k=2}^{n}\pauli{3,k}$ en un sistema de $n$ partículas. En azul, el conjunto de estados con el mismo radio de Bloch ($r_{\ef}=0.95$) y el mismo $r_{z}$ (aprox. $0.09$) que el estado efectivo inicial (en verde). \label{fig:OscilationsSameHam}}
 \end{figure}
 
 Si, por otro lado, quitamos la restricción de que todas las partículas no preferenciales evolucionen con la misma frecuencia, se vuelve imposible factorizar la rotación:
@@ -209,7 +208,7 @@ revelan la complejidad de la evolución, además de su no-linealidad, pues los v
       \centering
       \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_prefinv_ran_n=500_p=0.95_r=0.95_a=-3_b=3.png}
     \end{subfigure}
-    \caption{Variaciones cercanas al estado efectivo inicial (verde). El aumento en el número de partículas lleva a una evolución complicada y no periódica, pero que converge al punto $\vec{r}_{1}$. En azul, el conjunto de estados con la misma pureza y la misma coordenada en $\pauli{3}$ que el estado efectivo inicial. \ddnote{autocontenido}}\label{fig:PrefInv1}
+    \caption{Variaciones correspondientes a la dinámica efectiva inducida por el hamiltoniano $\mcH=\sum_{k=2}^{n}\omega_{k}\pauli{3,k}$ en un sistema de $n$ partículas. En azul, el conjunto de estados con el mismo radio de Bloch ($r_{\ef}=0.95$) y el mismo $r_{z}$ (aprox. $0.07$) que el estado efectivo inicial (verde). Valores de $p_{1}$ cercanos a $1$ conducen a variaciones menos importantes. \label{fig:PrefInv1}}
 \end{figure}
 
 \begin{figure}[ht!]
@@ -222,12 +221,10 @@ revelan la complejidad de la evolución, además de su no-linealidad, pues los v
       \centering
       \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_prefinv_ran_n=500_p=0.7_r=0.95_a=-3_b=3.png}
     \end{subfigure}
-    \caption{Variaciones cercanas al estado efectivo inicial (verde). El aumento en el número de partículas lleva a una evolución complicada y no periódica, pero que converge al punto $\vec{r}_{1}$. Valores menos importantes de $p_{1}$ conducen a mayores variaciones. En azul, el conjunto de estados con la misma pureza y la misma coordenada en $\pauli{3}$ que el estado efectivo inicial. \ddnote{autocontenido}}\label{fig:PrefInv2}
+    \caption{Variaciones correspondientes a la dinámica efectiva inducida por el hamiltoniano $\mcH=\sum_{k=2}^{n}\omega_{k}\pauli{3,k}$ en un sistema de $n$ partículas. En azul, el conjunto de estados con el mismo radio de Bloch ($r_{\ef}=0.95$) y el mismo $r_{z}$ (aprox. $0.07$) que el estado efectivo inicial (verde). Valores de $p_{1}$ menores conducen a variaciones más importantes. \label{fig:PrefInv2}}
 \end{figure}
 
-\subsubsection{Sistema en campo magnético ? \ddnote{Partículas no interactuantes con diferente frecuencia de transición}}
-
-\acnote{No tengo idea de qué justificación se pueda dar a que todas las partículas oscilen en la misma dirección pero con frecuencias diferentes.} \ddnote{Esta y las dos dinámicas anteriores son casos particulares de partículas no interactuantes y ya, que tan facil sea su realización, pues no sé.}
+\subsubsection{Partículas no interactuantes con diferente frecuencia de transición}
 
 En los dos casos anteriores se permitió que alguna de las partes del sistema se mantuviera invariante, fuera la partícula preferencial o el resto. Veamos ahora qué sucede cuando se permite que todo el sistema evolucione. Considérese un hamiltoniano
 \begin{equation}
@@ -266,7 +263,7 @@ Aquí pasa a ser claro que la amplitud máxima de la oscilación de error de cad
       \centering
       \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_all_ran_p=0.95_r=0.9_n=500_a=-3_b=3.png}
     \end{subfigure}
-    \caption{Como mencionado, para el caso en que $r_{\ef}=0.9$ y $p=0.95$ las variaciones debidas al error no son perceptibles debido a su pequeña amplitud, independientemente del número de partículas consideradas. \ddnote{autocontenido}}\label{fig:Oscilations12}
+    \caption{Variaciones correspondientes a la dinámica efectiva inducida por el hamiltoniano $\mcH=\sum_{k=1}^{n}\omega_{k}\pauli{3,k}$ en un sistema de $n$ partículas. Si $r_{\ef}=0.9$ y $p=0.95$ las variaciones debidas al error no son perceptibles debido a su pequeña amplitud. En verde, el estado efectivo inicial. En azul, la evolución del vector de Bloch que seguiría el sistema si $p_{1}=1$. \label{fig:Oscilations12}}
 \end{figure}
 \begin{figure}[ht!]
     \centering
@@ -278,9 +275,7 @@ Aquí pasa a ser claro que la amplitud máxima de la oscilación de error de cad
       \centering
       \includegraphics[width=0.9\linewidth]{chapter3/figures_separable/local_all_ran_p=0.5_r=0.9_n=500_a=-3_b=3.png}
     \end{subfigure}
-    \caption{Si $r_{\ef}=0.9$ y $p=0.3$, el alejamiento de la evolución esperada se hace notar. Para valores grandes de $n$ se vuelve dominante el término de $p_{1}$ \ddnote{autocontenido. Otro comentario, no sé si has tenido problemas con las referencias a los labels de las figuras, pero los labels van dentro del caption para que funcionen bien, en este caso ya lo metí al caption, por fas ve el tex}
-\label{fig:Oscilations13}    
-}
+    \caption{Variaciones correspondientes a la dinámica efectiva inducida por el hamiltoniano $\mcH=\sum_{k=1}^{n}\omega_{k}\pauli{3,k}$ en un sistema de $n$ partículas. Si $r_{\ef}=0.9$ y $p=0.5$ el alejamiento de la evolución esperada se hace notar. En verde, el estado efectivo inicial. Para valores grandes de $n$ se vuelve dominante el término de $p_{1}$. En azul, la evolución del vector de Bloch que seguiría el sistema si $p_{1}=1$. \label{fig:Oscilations13}}
 \end{figure}
 
 \newpage
