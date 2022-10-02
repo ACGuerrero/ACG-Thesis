@@ -1,8 +1,8 @@
 This is my license thesis' repository
 
 TO DO LIST
- 1.  Add references to special section [38be583](https://github.com/ACGuerrero/tesis-adan/commit/746a97e573f763650fad78c9d1059a03238be583)
- 50. Address David's comments. [b4fa78b](https://github.com/ACGuerrero/tesis-adan/commit/e90a5996ea3e0828923a8b6c7ad11ff6db4fa78b), [d6a7657](https://github.com/ACGuerrero/tesis-adan/commit/9ad79ebed2c0cbd34a20dd20aed4c5f71d6a7657), [bacba04](https://github.com/ACGuerrero/tesis-adan/commit/c0e50abfedcc861006884762099a7dd65bacba04)
+ 1.  Add references to special section [38be583](https://github.com/ACGuerrero/tesis-adan/commit/746a97e573f763650fad78c9d1059a03238be583), [d956f4c](https://github.com/ACGuerrero/tesis-adan/commit/b95f41f7137704253aa29483bc3ec7cf0d956f4c)
+ 50. Address David's comments. [b4fa78b](https://github.com/ACGuerrero/tesis-adan/commit/e90a5996ea3e0828923a8b6c7ad11ff6db4fa78b), [d6a7657](https://github.com/ACGuerrero/tesis-adan/commit/9ad79ebed2c0cbd34a20dd20aed4c5f71d6a7657), [bacba04](https://github.com/ACGuerrero/tesis-adan/commit/c0e50abfedcc861006884762099a7dd65bacba04), [99ac4af](https://github.com/ACGuerrero/tesis-adan/commit/f84498efd50abc88959441859f62ae09099ac4af), [c6921d8](https://github.com/ACGuerrero/tesis-adan/commit/0377330cceb46ccb0f9b5b1722faa631dc6921d8), [d956f4c](https://github.com/ACGuerrero/tesis-adan/commit/b95f41f7137704253aa29483bc3ec7cf0d956f4c)
  51. Address Carlos' comments.
  52. Party about finished thesis.
 
@@ -41,7 +41,7 @@ COMPLETED TASKS
  41. ~~Correct "environement" problem~~&#x2611;[70952e9](https://github.com/ACGuerrero/tesis-adan/commit/412367c348d6448aed2afa1f5aafa263270952e9)
  10. ~~Finish AmpDamp section~~&#x2611;[8f4e90a](https://github.com/ACGuerrero/tesis-adan/commit/2264fcdc2f988323328a9496e5910c3338f4e90a)
  45. ~~Fix graphs on SWAP section~~&#x2611;[09240b5](https://github.com/ACGuerrero/tesis-adan/commit/74d6c71f688e6f74dbcbe73d40efc7ba909240b5)
- 46. ~~Finish Heisemberg spin model~~&#x2611; [9a04ece](https://github.com/ACGuerrero/tesis-adan/commit/274d771536b0b04ea4edca866fc06359d5e0b8b8), [b0ca78](https://github.com/ACGuerrero/tesis-adan/commit/5ac8796059e41a3cdf13e09a33feb95fcfb0ca78), [5029f4c](https://github.com/ACGuerrero/tesis-adan/commit/7e4e73633a698c93f23d5bee02b142ac75029f4c), [a24f01f](https://github.com/ACGuerrero/tesis-adan/commit/13ea4aa6791b6c075e6eeb800e66000bca24f01f), [48a6b28](https://github.com/ACGuerrero/tesis-adan/commit/cf3800934c0389db2823474d3fbc849f448a6b28), [b8c1e69](https://github.com/ACGuerrero/tesis-adan/commit/5ee0ef9a23f0565ba2a2e5e4ccbdb1931b8c1e69)
+ 46. ~~Finish Heisemberg spin model~~&#x2611; [9a04ece](https://github.com/ACGuerrero/tesis-adan/commit/274d771536b0b04ea4edca866fc06359d5e0b8b8), [b0ca78](https://github.com/ACGuerrero/tesis-adan/commit/5ac8796059e41a3cdf13e09a33feb95fcfb0ca78), [5029f4c](https://github.com/ACGuerrero/tesis-adan/commit/7e4e73633a698c93f23d5bee02b142ac75029f4c), [a24f01f](https://github.com/ACGuerrero/tesis-adan/commit/13ea4aa6791b6c075e6eeb800e66000bca24f01f), [48a6b28](https://github.com/ACGuerrero/tesis-adan/commit/cf3800934c0389db2823474d3fbc849f448a6b28), [b8c1e69](https://github.com/ACGuerrero/tesis-adan/commit/5ee0ef9a23f0565ba2a2e5e4ccbdb1931b8c1e69), [d956f4c](https://github.com/ACGuerrero/tesis-adan/commit/b95f41f7137704253aa29483bc3ec7cf0d956f4c)
  39. ~~Finish abstract~~&#x2611; [7619d35](https://github.com/ACGuerrero/tesis-adan/commit/576146db6b63c3bf6f7044ad61193691f7619d35)
  40. ~~Finish intro~~&#x2611; [7619d35](https://github.com/ACGuerrero/tesis-adan/commit/576146db6b63c3bf6f7044ad61193691f7619d35)
  49. ~~Finish conclusions~~&#x2611; [7619d35](https://github.com/ACGuerrero/tesis-adan/commit/576146db6b63c3bf6f7044ad61193691f7619d35), [bacba04](https://github.com/ACGuerrero/tesis-adan/commit/c0e50abfedcc861006884762099a7dd65bacba04)
