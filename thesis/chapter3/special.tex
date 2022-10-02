@@ -265,36 +265,50 @@ mientras que para la cadena de Ising abierta es
     \mcU_{t}=&\cos^{n}(\omega t)\Id+(-\rmi)^{n}\sin^{n}(\omega t)\pauli{3,1}\pauli{3,n}\nonumber\\ 
     &+\sum_{k=2}^{n-1}(-\rmi)^{n-k}\cos^{k}(\omega t)\sin^{n-k}(\omega t)\sum_{k_{1}<k_{2}}(\pauli{3,k_{1}}\pauli{3,k_{1}+1})(\pauli{3,k_{2}}\pauli{3,k_{2}+1}).\nonumber
 \end{align}
-Si se quisiera hallar la dinámica efectiva, esta tendría términos dependientes de los valores esperados de todos los operadores $\pauli{3}^{\vec{j}}$ donde $\vec{j}$ tiene $n-1$ entradas, cosa que se traduce como un mínimo de $2^{n-1}$ términos. Aunque en este trabajo no se buscarán dichas expresiones, es posible usar calculadoras simbólicas para obtener visualizaciones de dichas dinámicas efectivas. Las figuras \ref{OpenIsingPure1} a \ref{OpenIsingPure1} muestran estas visualizaciones, mientras que las figuras \ref{OpenIsingPure1} a \ref{OpenIsingPure1} muestran la trayectoria de diferentes vectores de Bloch efectivos bajo las mismas dinámicas.
+Si se quisiera hallar la dinámica efectiva siguiendo el mismo procedimiento que se ha utilizado hasta ahora, esta tendría términos dependientes de los valores esperados de cadenas de Pauli $\pauli{3}^{\vec{j}}$, donde $\vec{j}$ tiene $n-1$ entradas, cosa que se traduce en un aumento exponencial en el número de términos conforme crezca $n$. Aunque en este trabajo no se buscarán dichas expresiones, es posible usar calculadoras simbólicas para obtener visualizaciones de dichas dinámicas efectivas. 
 
 \begin{figure}
     \centering
     \begin{subfigure}[b]{0.475\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{chapter3/figures_special/Ising_open_preferential_equal_p_n=n_r=1._z=0.10_p1=0.9.png}
+        \includegraphics[width=\textwidth]{chapter3/figures_special/Ising_Boltz_r=0.3_z=0.10.png}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.475\textwidth}  
         \centering 
-        \includegraphics[width=\textwidth]{chapter3/figures_special/Ising_open_preferential_equal_p_n=n_r=1._z=0.10_p1=0.7.png}
+        \includegraphics[width=\textwidth]{chapter3/figures_special/Ising_Boltz_r=1._z=0.10.png}
+    \end{subfigure}
+    \caption{Evolución del vector de Bloch de un estado efectivo inicial tal que $r_{z}=0.1$ en el régimen de Boltzmann, inducida por el hamiltoniano de la cadena de Ising abierta de $n$ partículas, para diferentes valores de $n$ y dos valores distintos del radio de Bloch inicial $r_{\ef}$.}
+    \label{fig:OpenIsingBoltz}
+\end{figure}
+
+La figura \ref{fig:OpenIsingBoltz} muestra la misma evolución pero en el caso del régimen de Boltzmann. Nótese que la forma de la evolución no parece depender del radio de Bloch inicial, pero que cambia considerablemente conforme aumenta el número de partículas $n$. Además, la evolución, lejos de ser una rotación alrededor de $r_{z}$, a cualquier tiempo $t\neq 0$ conlleva cierto grado de desfasamiento. Esto es, $r_{\ef}(t)<r_{\ef}(0)$. Queda por ser estudiado el límite $n\rightarrow\infty$, para el que parece se completa el desfasamiento.
+
+Por otro lado, figura \ref{fig:OpenIsingPref} muestra la evolución del vector de Bloch del estado efectivo, $\vec{r}_{\ef}(t)$, en el plano $r_{z}=0.1$, en el caso del régimen preferencial, para diferentes valores de $p_{1}$. Nuevamente, el valor inicial del vector de Bloch no tiene efecto en la forma general de la evolución, por lo que solo se muestra el caso en el que el estado efectivo inicial es puro. A notarse que la dinámica se aleja cada vez más de una evolución unitaria conforme disminuye $p_{1}$ y aumenta el número de partículas $n$
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.475\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{chapter3/figures_special/Ising_Pref_p1=0.3_z=0.10.png}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.475\textwidth}  
+        \centering 
+        \includegraphics[width=\textwidth]{chapter3/figures_special/Ising_Pref_p1=0.5_z=0.10.png}
     \end{subfigure}
     \vskip\baselineskip
     \begin{subfigure}[b]{0.475\textwidth}   
         \centering 
-        \includegraphics[width=\textwidth]{chapter3/figures_special/Ising_open_preferential_equal_p_n=n_r=1._z=0.10_p1=0.3.png}
+        \includegraphics[width=\textwidth]{chapter3/figures_special/Ising_Pref_p1=0.7_z=0.10.png}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.475\textwidth}   
         \centering 
-        \includegraphics[width=\textwidth]{chapter3/figures_special/Ising_open_preferential_equal_p_n=n_r=1._z=0.10_p1=0.1.png}
+        \includegraphics[width=\textwidth]{chapter3/figures_special/Ising_Pref_p1=0.9_z=0.10.png}
     \end{subfigure}
-    \caption{Trayectorias del vector de Bloch de $\rho_{\ef}$ para si $r_{\ef}=1$ a una altura $z_{\ef}=0.1$, para diferentes valores de $n$ y $p_{1}$}
-    \label{fig:OpenIsingPure}
+    \caption{Evolución del vector de Bloch de un estado efectivo inicial tal que $r_{z}=0.1$ en el régimen de partícula preferencial, inducida por el hamiltoniano de la cadena de Ising abierta de $n$ partículas, para diferentes valores de $n$ y cuatro valores del parámetro probabilístico asociado a la partícula preferencial, $p_{1}$.}
+    \label{fig:OpenIsingPref}
 \end{figure}
 
-En general, los reusultados son no lineales. Se observa que, en los casos en los que se escoge $p_{k}=\frac{1}{n-1}\,\forall\,k\neq 1$, la evolución acerca más al estado efectivo hacia el desfasamiento. Para el caso en que las probabilidades diferentes a la de la primera partícula son aleatorias, los resultados son variados. El caso en que $p_{k}=\frac{1}{n-1}\,\forall\,k$. El caso en que el estado efectivo inicial es puro,
-\acnote{hoy se me hizo algo tarde pero  tengo que obtener figuras como las que obtuve hoy para el caso puro y para el caso del Boltzman. Ya con eso se termina este capítulo.}
-
-\acnote{agregar interpretación de los resultados numéricos}. Debido a que el tamaño de las matrices requeridas para el cálculo de la dinámica efectiva de un sistema microscópico de $n$ partículas aumenta como $2^{n}$, no fue posible obtener resultados numéricos para $n$ grande.
-
-
+En ambos casos las dinámicas son no lineales, y, en algunos casos particulares parecen tener derivadas no continuas en casos particulares (ver figura \ref{fig:OpenIsingPref}, caso $n=3$).
