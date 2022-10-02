@@ -17,7 +17,7 @@ La aplicación de asignación promedio es el promedio sobre dicho conjunto, \ie
 \end{equation}
 donde $d\mu$ es la medida de Haar sobre los estados puros de $\hilbert_{m}$. La delta de Dirac asegura que únicamente se tomen en consideración a los estados puros compatibles, y la medida de Haar, que la integración sobre dicho conjunto sea uniforme. Dicho de otra forma, la aplicación de asignación promedio asume dos cosas sobre el sistema microscópico: que puede estar estar en un estado puro, y que todos los estados puros son igualmente probables.
 
-La solución analítica a la ecuación (\ref{eq:AvgMap}) ha sido encontrada para el caso en que la aplicación de grano grueso va de $\densityspace{4}$ a $\densityspace{2}$. Esto es, del espacio de dos partículas de dos niveles, al espacio de una partícula de dos niveles. En este trabajo no se profundizará en dicho resultado, pero se utilizará para poder comparar ambas aplicaciones de asignación.
+La solución analítica a la ecuación (\ref{eq:AvgMap}) es complicada y no se discutirá en este trabajo, pero ha sido encontrada por los doctores C. Pineda y R. Uriostegui del Instituto de Física de la UNAM, para el caso en que la aplicación de grano grueso va de $\densityspace{4}$ a $\densityspace{2}$. Esto es, del espacio de dos partículas de dos niveles, al espacio de una partícula de dos niveles. En este trabajo no se profundizará en dicho resultado, pero se utilizará para poder comparar ambas aplicaciones de asignación.
 
 \section{Diferencia entre el MaxEnt y el AssMap}
 
@@ -53,7 +53,7 @@ Lo primero que puede observarse en dichas gráficas es que la distancia no es di
     \caption{Distancia entre asignaciones y el estado máximamente mezclado.}\label{ap:DistAvgMaxEntId}
 \end{figure}
 
-De las figuras \ref{ap:DistAvgMaxEnt} y \ref{ap:DistAvgMaxEntId} se puede extraer información interesante. Por un lado, hay dos casos en los que las asignaciones son iguales. El primero siendo el caso en el que el estado efectivo inicial es puro, \ie{} $r_{\ef}=1$. Este resultado ya había sido previamente discutido y demostrado: de acuerdo con la ecuación (\ref{eq:PureEffectiveState}), $\avgass(\rho_{\ef})=\maxass(\rho_{\ef})=\rho_{\ef}\otimes\rho_{\ef}$. El segundo siendo el caso en que la aplicación de grano grueso se reduce a una traza parcial ($p_{1}\in\{0,1\}$), para el que el estado asignado en ambos casos es $\Id\otimes\rho_{ef}$ o $\rho_{\ef}\otimes\Id$. Por otro lado, mientras que la asignación de máxima entropía asigna al estado máximamente mezclado $\Id_{2}/2$ el estado máximamente mezclado correspondiente, $\Id_{4}/4$, la asignación promedio no hace esto. En lugar de esto, la asignación promedio asigna un estado máximamente entrelazado \acnote{comprobar}.
+De las figuras \ref{ap:DistAvgMaxEnt} y \ref{ap:DistAvgMaxEntId} se puede extraer información interesante. Por un lado, hay dos casos en los que las asignaciones son iguales. El primero siendo el caso en el que el estado efectivo inicial es puro, \ie{} $r_{\ef}=1$. Este resultado ya había sido previamente discutido y demostrado: de acuerdo con la ecuación (\ref{eq:PureEffectiveState}), $\avgass(\rho_{\ef})=\maxass(\rho_{\ef})=\rho_{\ef}\otimes\rho_{\ef}$. El segundo siendo el caso en que la aplicación de grano grueso se reduce a una traza parcial ($p_{1}\in\{0,1\}$), para el que el estado asignado en ambos casos es $\Id\otimes\rho_{ef}$ o $\rho_{\ef}\otimes\Id$. Por otro lado, mientras que la asignación de máxima entropía asigna al estado máximamente mezclado $\Id_{2}/2$ el estado máximamente mezclado correspondiente, $\Id_{4}/4$, la asignación promedio no hace esto.
 
 Las diferencias y similitudes entre las asignaciones tendrán efectos en las dinámicas efectivas. Recordando que el estado efectivo evolucionado está dado por la composición
 \begin{equation}
@@ -70,25 +70,21 @@ es natural que siempre que $\mcA_{\mcC}^{\max}(\rho_{\ef}(0))=\mcA_{\mcC}^{\avg}
 
 Consideramos la unitaria local simétrica
 \begin{equation}
-    U_{t}=U_{1,t}\otimes U_{2,t},\nonumber
+    \mcU_{t}=U_{t}\otimes V_{t},\nonumber
 \end{equation}
-donde $U_{1,j}\in\unitaryspace{2}$ y $U_{1,t}=U_{2,t}$. Debido a que el promedio es lineal, la dinámica simétrica se factoriza cuando se utiliza la aplicación de asignación promedio. Para ver esto, nótese que \acnote{pedirle a David ayuda con el último paso}
+donde $U_{t},V_{t}\in\unitaryspace{2}$ y $U_{t}=V_{t}$. Debido a que el promedio es lineal, la dinámica simétrica se factoriza cuando se utiliza la aplicación de asignación promedio. Para ver esto, nótese que
+\begin{equation}
+  U_{t}\otimes U_{t}=(\Id\otimes U_{t})(\varrho_{\avg})(\Id\otimes U_{t}^{\dag}).\nonumber
+\end{equation}
+Luego
 \begin{align}
-\Tr_{2}\qty[U_{1,t}\otimes U_{1,t} \varrho_{\avg} U_{1,t}^{\dag}\otimes U_{1,t}^{\dag}]&=\sum_{j=1}^{2}\qty[(\Id\otimes \bra{\varphi_{j}}) (U_{1,t}\otimes U_{1,t}) \varrho_{\avg} (U_{1,t}^{\dag}\otimes U_{1,t}^{\dag})(\Id\otimes \ket{\varphi_{j}})]\nonumber \\
-&=\sum_{j=1}^{2}\qty[(U_{1,t}\otimes \bra{\varphi_{j}'}) \varrho_{\avg} (U_{1,t}^{\dag}\otimes \ket{\varphi_{j}'})]\nonumber \\
-&=U_{1,t}\Tr_{2}(\varrho_{\avg})U_{1,t}^{\dag}.\nonumber
+  \rho_{\ef}(t)=\frac{1}{2}\sum_{j=0}\Tr\qty[\pauli{j}\rho_{\ef}(t)]\pauli{j} & & \text{con} & &\Tr\qty[\pauli{j}\rho_{\ef}(t)]=\Tr\left\{\pauli{j}\mcC\qty[\mcU_{t} (\varrho_{\avg}) \mcU_{t}^{\dagger}]\right\}.\nonumber
 \end{align}
-Este resultado es análogo para $\Tr_{1}\qty[\varrho_{\avg}(t)]$. De esto se sigue que
-\begin{align}
-    \mcC\qty[U_{1,t}\otimes U_{1,t} \varrho_{\avg} U_{1,t}^{\dag}\otimes U_{1,t}^{\dag}]&=\sum_{k=1}^{2}U_{1,t}\Tr_{k}(\varrho_{\avg})U_{1,t}^{\dag}\nonumber\\
-    &=U_{1,t}\qty(\sum_{k=1}^{2}\Tr_{k}(\varrho_{\avg}))U_{1,t}^{\dag},\nonumber
-\end{align}
-de tal forma que la dinámica efectiva es
+Como $\Tr\qty[(A\otimes \Id) \varrho]=\Tr\qty[ \Tr_{2}(\varrho)]$ y gracias a la propiedad cíclica de la traza es inmediato que la dinámica efectiva es
 \begin{equation}
     \Gamma_{t}^{\avg}(\rho_{\ef})=U(t)\rho_{\ef}(U(t))^{\dag}.\nonumber
 \end{equation}
-
-En este caso, las dinámicas gruesas coinciden.
+Por lo que, en este caso, las dinámicas gruesas coinciden.
 
 \subsubsection{Dinámica general}
 
@@ -99,12 +95,14 @@ Debido a que la aplicación promedio crea correlaciones que la aplicación de m�
     \begin{subfigure}{0.5\textwidth}
       \centering
       \includegraphics[width=0.8\linewidth]{appendices/figures/local_AvgVSMax_p2=0.1_r=0.9_w1=0_w2=1.png}
+      \caption{$H=\Id\otimes\pauli{3}$}
     \end{subfigure}%
     \begin{subfigure}{0.5\textwidth}
       \centering
       \includegraphics[width=0.8\linewidth]{appendices/figures/local_AvgVSMax_p2=0.1_r=0.9_w1=1_w2=0.png}
+      \caption{$H=\pauli{3}\otimes\Id$}
     \end{subfigure}
-    \caption{\acnote{CAPTION: VER NOMBRE DE ARCHIVO}}\label{ap:EffDunAVGvsMaxEnt1}
+    \caption{Variaciones correspondientes a la dinámica efectiva inducida por diferentes hamiltonianos en un sistema de dos partículas partiendo de un estado efectivo inicial (verde) tal que $r_{\ef}=0.9$ y $r_{z}\approx0.09$. En rojo, la evolución del estado promedio. En negro, la del estado de máxima entropía. \label{ap:EffDunAVGvsMaxEnt1}}
 \end{figure}
 
 \begin{figure}[ht!]
@@ -112,22 +110,25 @@ Debido a que la aplicación promedio crea correlaciones que la aplicación de m�
     \begin{subfigure}{0.5\textwidth}
       \centering
       \includegraphics[width=0.8\linewidth]{appendices/figures/local_AvgVSMax_p2=0.1_r=0.9_w1=30_w2=1.png}
+      \caption{$H=30\pauli{3,1}+\pauli{3}$}
     \end{subfigure}%
     \begin{subfigure}{0.5\textwidth}
       \centering
       \includegraphics[width=0.8\linewidth]{appendices/figures/local_AvgVSMax_p2=0.1_r=0.9_w1=1_w2=10.png}
+      \caption{$H=\pauli{3,1}+10\pauli{3}$}
     \end{subfigure}
-    \caption{\acnote{CAPTION: VER NOMBRE DE ARCHIVO}}\label{ap:EffDunAVGvsMaxEnt2}
+    \caption{Variaciones correspondientes a la dinámica efectiva inducida por diferentes hamiltonianos en un sistema de dos partículas partiendo de un estado efectivo inicial (verde) tal que $r_{\ef}=0.9$ y $r_{z}\approx0.09$. En rojo, la evolución del estado promedio. En negro, la del estado de máxima entropía. \label{ap:EffDunAVGvsMaxEnt2}}
 \end{figure}
+
+Debido a que la aplicación de asignación promedio únicamente toma en cuenta estados puros, la contribución del entrelazamiento es más importante. Esto conduce a una mayor pérdida de información bajo la aplicación de grano grueso y, como consecuencia, una mayor contracción en la esfera de Bloch, que es lo que podemos observar en las figuras \ref{ap:EffDunAVGvsMaxEnt1} y \ref{ap:EffDunAVGvsMaxEnt2}.
 
 \subsection{La compuerta SWAP}
 
-La dinámica efectiva generada por la compuerta cuántica SWAP y la aplicación de asignación promedio es, nuevamente, un canal de despolarización. Sin embargo, exceptuando los valores de $p_{1}$ y $r_{\ef}$ para los que las asignaciones coinciden, además de $p_{1}=\frac{1}{2}$, caso en el que no hay despolarización, la contracción observada cuando se usa la aplicación de asignación promedio es más fuerte.
-
-\acnote{tengo figuras no muy interesantes, toca enseñárselas a David a ver qué opina}
-
-\subsection{Canales de Pauli}
-
-La dinámica efectiva generada por el canal de despolarización es la misma independientemente de la aplicación de asignación utilizada.
-
-\acnote{Creo que es lo mismo para los canales de despolarización. Lo demuestro mañana.}
+La dinámica efectiva generada por la compuerta cuántica SWAP y la aplicación de asignación promedio es, de manera similar a como ocurrió cuando se utilizó la aplicación de asignación de máxima entropía, un canal de despolarización. Estos canales de despolarización coinciden de forma trivial cuando las asignaciones lo hacen, esto es, para $p_{1}\in\{0,1\}$ y también cuando $r_{\ef}=1$. Sin embargo, resulta que las dinámicas coinciden también cuando $p_{1}=\frac{1}{2}$. Aún más, la dinámica es la misma independientemente de la asignación que se escoja. Sea $\rho_{\ef}(0)\in\densityspace{2}$ el estado efectivo inicial y $\varrho=\mcA(\rho_{\ef}(0))$ un estado compatible bajo la aplicación de grano grueso cuando $p_{1}=\frac{1}{2}$. La dinámica efectiva:
+\begin{align}
+  \Gamma_{t=1}^{\mcA}(\rho_{\ef}(0))=&\mcC\qty[S\varrho S]\nonumber\\
+  =&\Tr_{2}\qty[S\qty(\frac{1}{2}\varrho+\frac{1}{2}S\varrho S)S]\nonumber\\
+  =&\Tr_{2}\qty[\frac{1}{2}S\varrho S+\frac{1}{2}\varrho ]\nonumber\\
+  =&\rho_{\ef}(0)\nonumber
+\end{align}
+Esto es, toda la esfera de Bloch es invariante bajo la dinámica efectiva inducida por una evolución microscópica SWAP si el parámetro de la aplicación de grano grueso es $p_{1}=\frac{1}{2}$. Fuera de estos casos particulares, el canal de despolarización efectivo no es necesariamente el mismo cuando se usan diferentes aplicaciones de asignación.
