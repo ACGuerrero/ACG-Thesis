@@ -2,7 +2,7 @@ This is my license thesis' repository
 
 TO DO LIST
  1.  Add references to special section [38be583](https://github.com/ACGuerrero/tesis-adan/commit/746a97e573f763650fad78c9d1059a03238be583), [d956f4c](https://github.com/ACGuerrero/tesis-adan/commit/b95f41f7137704253aa29483bc3ec7cf0d956f4c)
- 50. Address David's comments. [b4fa78b](https://github.com/ACGuerrero/tesis-adan/commit/e90a5996ea3e0828923a8b6c7ad11ff6db4fa78b), [d6a7657](https://github.com/ACGuerrero/tesis-adan/commit/9ad79ebed2c0cbd34a20dd20aed4c5f71d6a7657), [bacba04](https://github.com/ACGuerrero/tesis-adan/commit/c0e50abfedcc861006884762099a7dd65bacba04), [99ac4af](https://github.com/ACGuerrero/tesis-adan/commit/f84498efd50abc88959441859f62ae09099ac4af), [c6921d8](https://github.com/ACGuerrero/tesis-adan/commit/0377330cceb46ccb0f9b5b1722faa631dc6921d8), [d956f4c](https://github.com/ACGuerrero/tesis-adan/commit/b95f41f7137704253aa29483bc3ec7cf0d956f4c)
+ 50. Address David's comments. [b4fa78b](https://github.com/ACGuerrero/tesis-adan/commit/e90a5996ea3e0828923a8b6c7ad11ff6db4fa78b), [d6a7657](https://github.com/ACGuerrero/tesis-adan/commit/9ad79ebed2c0cbd34a20dd20aed4c5f71d6a7657), [bacba04](https://github.com/ACGuerrero/tesis-adan/commit/c0e50abfedcc861006884762099a7dd65bacba04), [99ac4af](https://github.com/ACGuerrero/tesis-adan/commit/f84498efd50abc88959441859f62ae09099ac4af), [c6921d8](https://github.com/ACGuerrero/tesis-adan/commit/0377330cceb46ccb0f9b5b1722faa631dc6921d8), [d956f4c](https://github.com/ACGuerrero/tesis-adan/commit/b95f41f7137704253aa29483bc3ec7cf0d956f4c), [6c8da18](https://github.com/ACGuerrero/tesis-adan/commit/8ca6ea58828d14ebb98fcff0067c507726c8da18)
  51. Address Carlos' comments.
  52. Party about finished thesis.
 
@@ -45,4 +45,4 @@ COMPLETED TASKS
  39. ~~Finish abstract~~&#x2611; [7619d35](https://github.com/ACGuerrero/tesis-adan/commit/576146db6b63c3bf6f7044ad61193691f7619d35)
  40. ~~Finish intro~~&#x2611; [7619d35](https://github.com/ACGuerrero/tesis-adan/commit/576146db6b63c3bf6f7044ad61193691f7619d35)
  49. ~~Finish conclusions~~&#x2611; [7619d35](https://github.com/ACGuerrero/tesis-adan/commit/576146db6b63c3bf6f7044ad61193691f7619d35), [bacba04](https://github.com/ACGuerrero/tesis-adan/commit/c0e50abfedcc861006884762099a7dd65bacba04)
- 53. ~~Add Chapter 5 Appendix~~&#x2611; [6bc2be1](https://github.com/ACGuerrero/tesis-adan/commit/c6676d3bb230da57933ff3e28dcbacbf36bc2be1), [bacba04](https://github.com/ACGuerrero/tesis-adan/commit/c0e50abfedcc861006884762099a7dd65bacba04)
+ 53. ~~Add Chapter 5 Appendix~~&#x2611; [6bc2be1](https://github.com/ACGuerrero/tesis-adan/commit/c6676d3bb230da57933ff3e28dcbacbf36bc2be1), [bacba04](https://github.com/ACGuerrero/tesis-adan/commit/c0e50abfedcc861006884762099a7dd65bacba04), [6c8da18](https://github.com/ACGuerrero/tesis-adan/commit/8ca6ea58828d14ebb98fcff0067c507726c8da18)
