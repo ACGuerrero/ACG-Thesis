@@ -4,19 +4,14 @@
 
 Los canales de Pauli son canales cuánticos en los que se aplica un operador de Pauli con alguna probabilidad. El canal de Pauli de un qubit más general está definido como
 \begin{gather}
-    P:\mcB(\hilbert_{2}) \rightarrow \mcB(\hilbert_{2})\nonumber\\
-    P(\Delta)=\sum_{j=0}^{3}q_{j}\pauli{j}\Delta\pauli{j}\,\text{ con }\, \sum_{j=0}^{3}q_{j}=1\rlap{.}\nonumber
+    \mcP:\mcB(\hilbert_{2}) \rightarrow \mcB(\hilbert_{2})\nonumber\\
+    \mcP(\Delta)=\sum_{j=0}^{3}q_{j}\pauli{j}\Delta\pauli{j}\,\text{ con }\, \sum_{j=0}^{3}q_{j}=1\rlap{.}\nonumber
 \end{gather}
-Reconociendo que cualquiera de los tres operadores de Pauli puede escribirse en términos de los otros dos, se puede aprovechar la relación $-i\pauli{2}=\pauli{1}\pauli{3}$ para escribir a los canales de Pauli de una forma particularmente útil:
-\begin{equation}
-    P(\Delta)=\sum_{j,k=0}^{1}q_{j,k}\pauli{1}^{j}\pauli{3}^{k}\Delta\pauli{3}^{k}\pauli{1}^{j}.\nonumber
-\end{equation}\ddnote{$\mcP$}
-\ddnote{Usaste esta forma para algún calculo?}
-A través de esta expresión se extienden los canales de Pauli de un qubit a $n$ qubits como \acnote{agregar cita}
+Reconociendo que cualquiera de los tres operadores de Pauli puede escribirse en términos de los otros dos, una manera de extender los canales de Pauli de un qubit a $n$ qubits es \cite{NPauliOperators}
 \begin{gather}\label{eq:PauliChannelN}
-    P:\mcB(\hilbert_{2^{n}}) \rightarrow \mcB(\hilbert_{2^{n}})\nonumber\\
-    P(\Delta)=\sum_{\vec{j},\vec{k}}q_{\vec{j},\vec{k}}\pauli{1}^{\vec{j}}\pauli{3}^{\vec{k}}\Delta\pauli{3}^{\vec{k}}\pauli{1}^{\vec{j}}\rlap{.}
-\end{gather}\ddnote{$\mcP$}
+    \mcP:\mcB(\hilbert_{2^{n}}) \rightarrow \mcB(\hilbert_{2^{n}})\nonumber\\
+    \mcP(\Delta)=\sum_{\vec{j},\vec{k}}q_{\vec{j},\vec{k}}\pauli{1}^{\vec{j}}\pauli{3}^{\vec{k}}\Delta\pauli{3}^{\vec{k}}\pauli{1}^{\vec{j}}\rlap{.}
+\end{gather}
 donde $\pauli{j}^{\vec{k}}=\pauli{j}^{k_{1}}\otimes\pauli{j}^{k_{2}}\otimes ... \otimes \pauli{j}^{k_{n}}$ y las entradas $k_{l}$ del vector $\vec{k}$ solo pueden valer $0$ o $1$.
 
 \subsubsection{Canales de desfasamiento}
@@ -59,21 +54,21 @@ Por supuesto, el canal de \textit{bit flip} es un canal de desfasamiento si se t
         (q_{1}-q_{2})\rho_{1,0} & \rho_{1,1}\\
     \end{pmatrix}.\nonumber
 \end{equation}
-Para extender la noción de canal de desfasamiento a $n$ qubits, primero nótese que dada la base de $\hilbert_{2}$ conformada por los eigenestados de $\sigma{3}$, $\{\ket{e_{0}},\ket{e_{1}}\}$, es posible construir una base $\{e_{\vec{k}}\}_{\vec{k}}$ \ddnote{falta notación de ket} de $\hilbert_{2^{n}}$ como
+Para extender la noción de canal de desfasamiento a $n$ qubits, primero nótese que dada la base de $\hilbert_{2}$ conformada por los eigenestados de $\pauli{3}$, $\{\ket{e_{0}},\ket{e_{1}}\}$, es posible construir una base $\left\{\ket{e_{\vec{k}}}\right\}_{\vec{k}}$ de $\hilbert_{2^{n}}$ como
 \begin{equation}
-    \{e_{\vec{k}}\}_{\vec{k}}=\left\{\ket{e_{\vec{k}}}\in\hilbert_{2^{n}}: \ket{e_{\vec{k}}}=\Motimes_{j=1}^{n}\ket{e_{k_{j}}},\,k_{j}\in\{0,1\}\right\} \rlap{.}\nonumber
-\end{equation}\ddnote{falta notación de ket}
+    \left\{\ket{e_{\vec{k}}}\right\}_{\vec{k}}=\left\{\ket{e_{\vec{k}}}\in\hilbert_{2^{n}}: \ket{e_{\vec{k}}}=\Motimes_{j=1}^{n}\ket{e_{k_{j}}},\,k_{j}\in\{0,1\}\right\} \rlap{.}\nonumber
+\end{equation}
 Esto es, tomando los productos tensoriales de los eigenestados de $\pauli{3}$ consigo mismos. De esta manera podemos estudiar dos canales de desfasamiento, el primero actuando en la base de productos tensoriales de eigenestados de $\pauli{3}$,
 \begin{gather}
-    P_{\pauli{3}}:\mcB(\hilbert_{2^{n}}) \rightarrow \mcB(\hilbert_{2^{n}})\nonumber\\
-    P_{\pauli{3}}(\Delta)=\sum_{\vec{k}}q_{\vec{k}}\pauli{3}^{\vec{k}}\Delta\pauli{3}^{\vec{k}}\rlap{,}\nonumber
-\end{gather}\ddnote{$\mcP$}
-que corresponde al canal de Pauli \ref{eq:PauliChannelN} cuando $\vec{j}=0$ \ddnote{estás igualando un vector a un número, aquí que hongo?}, y el segundo definido sobre la base de productos tensoriales de eigenestados de $\pauli{1}$,
+    \mcP_{\pauli{3}}:\mcB(\hilbert_{2^{n}}) \rightarrow \mcB(\hilbert_{2^{n}})\nonumber\\
+    \mcP_{\pauli{3}}(\Delta)=\sum_{\vec{k}}q_{\vec{k}}\pauli{3}^{\vec{k}}\Delta\pauli{3}^{\vec{k}}\rlap{,}\nonumber
+\end{gather}
+que corresponde al canal de Pauli \ref{eq:PauliChannelN} cuando $\vec{j}=\vec{0}$, y el segundo definido sobre la base de productos tensoriales de eigenestados de $\pauli{1}$,
 \begin{gather}
-    P_{\pauli{1}}:\mcB(\hilbert_{2^{n}}) \rightarrow \mcB(\hilbert_{2^{n}})\nonumber\\
-    P_{\pauli{1}}(\Delta)=\sum_{\vec{j}}q_{\vec{j}}\pauli{1}^{\vec{j}}\Delta\pauli{1}^{\vec{j}}\rlap{,}\nonumber
-\end{gather}\ddnote{$\mcP$}
-que corresponde al canal de Pauli \ref{eq:PauliChannelN} cuando $\vec{k}=0$. Es relativamente sencillo demostrar que si se escoge $q_{\vec{j}}=\frac{1-q_{\vec{0}}}{2^{n}-1}\,\forall\,\vec{j}\neq\vec{0}$, el efecto de estos canales es de reducir la amplitud de las componentes fuera de la diagonal en un factor de $(2q_{\vec{0}}-1)$. \acnote{Debe ser sencillo, el problema es que me hago bolas con los índices.} \ddnote{Ya veo lo que se necesita demostrar, hay que tener cuidado pues puede que haya $\sigma$s no triviales que conmuten con $\sigma_1 \otimes \sigma_1 \otimes \dots$, o aclarame, solo hay productos de $\sigma_1$ e identidades?}
+    \mcP_{\pauli{1}}:\mcB(\hilbert_{2^{n}}) \rightarrow \mcB(\hilbert_{2^{n}})\nonumber\\
+    \mcP_{\pauli{1}}(\Delta)=\sum_{\vec{j}}q_{\vec{j}}\pauli{1}^{\vec{j}}\Delta\pauli{1}^{\vec{j}}\rlap{,}\nonumber
+\end{gather}
+que corresponde al canal de Pauli \ref{eq:PauliChannelN} cuando $\vec{k}=\vec{0}$. Es relativamente sencillo demostrar que si se escoge $q_{\vec{j}}=\frac{1-q_{\vec{0}}}{2^{n}-1}\,\forall\,\vec{j}\neq\vec{0}$, el efecto de estos canales es de reducir la amplitud de las componentes fuera de la diagonal en un factor de $(2q_{\vec{0}}-1)$. \acnote{Debe ser sencillo, el problema es que me hago bolas con los índices.} \ddnote{Ya veo lo que se necesita demostrar, hay que tener cuidado pues puede que haya $\sigma$s no triviales que conmuten con $\sigma_1 \otimes \sigma_1 \otimes \dots$, o aclarame, solo hay productos de $\sigma_1$ e identidades?}
 
 Consideremos entonces en canal de desfasamiento de dos qubits en cualquiera de las dos direcciones discutidas y con probabilidades como mencionadas anteriormente. Sea $\rho_{\ef}$ un estado efectivo en $\densityspace{2}$ correspondiente a un sistema $\varrho \in \densityspace{2^{n}}$, y sea $\varrho_{\max}\in\densityspace{2^{n}}$ el estado de máxima entropía compatible con el estado efectivo. Si se propaga al estado de máxima entropía por medio de este canal y luego se pasa el resultado por la aplicación de grano grueso, el resultado es una dinámica efectiva
 \begin{equation}
@@ -100,21 +95,20 @@ Esto es, el desfasamiento total en $n$ partículas se traduce como un desfasamie
 
 El canal de despolarización es el canal cuántico que contrae de manera uniforme a todos los estados hacia el estado máximamente mezclado. Al canal de despolarización se le define como
 \begin{gather}\label{eq:DepolarizingChannelN}
-    D_{q}:\mcB(\hilbert_{2^{n}}) \rightarrow \mcB(\hilbert_{2^{n}})\nonumber\\
-    D_{q}(\Delta)=q\Delta+(1-q)\Id_{2^{n}}\Tr(\Delta)\rlap{.}
+    \mcD_{q}:\mcB(\hilbert_{2^{n}}) \rightarrow \mcB(\hilbert_{2^{n}})\nonumber\\
+    \mcD_{q}(\Delta)=q\Delta+(1-q)\Id_{2^{n}}\Tr(\Delta)\rlap{.}
 \end{gather}
-\ddnote{$\mcD$}
 Ahora, nótese que el canal de despolarización total puede verse como una concatenación de dos canales de desfasamiento total, uno en dirección $\pauli{1}$ y luego otro en dirección $\pauli{3}$ (el orden es irrelevante). Para ver esto, es particularmente útil escribir a la matriz de densidad $\varrho\in\densityspace{2^{n}}$ en términos de las componentes de su vector de Bloch,
 \begin{equation}
     \varrho=\frac{1}{2^{n}}\sum_{\vec{j},\vec{k}}\gamma_{\vec{j},\vec{k}}\pauli{1}^{\vec{j}}\pauli{3}^{\vec{k}},\nonumber
 \end{equation}
 y notar que el efecto de dichos canales se puede ver como
 \begin{align}
-  P_{\pauli{1}}(\varrho)=\frac{1}{2^{n}}\sum_{\vec{j},\vec{k}}\delta_{\vec{k},\vec{0}}\gamma_{\vec{j},\vec{k}}\pauli{1}^{\vec{j}}\pauli{3}^{\vec{k}}  & & \text{y} & & P_{\pauli{3}}(\varrho)=\frac{1}{2^{n}}\sum_{\vec{j},\vec{k}}\delta_{\vec{j},\vec{0}}\gamma_{\vec{j},\vec{k}}\pauli{1}^{\vec{j}}\pauli{3}^{\vec{k}} \nonumber
+    \mcP_{\pauli{1}}(\varrho)=\frac{1}{2^{n}}\sum_{\vec{j},\vec{k}}\delta_{\vec{k},\vec{0}}\gamma_{\vec{j},\vec{k}}\pauli{1}^{\vec{j}}\pauli{3}^{\vec{k}}  & & \text{y} & & \mcP_{\pauli{3}}(\varrho)=\frac{1}{2^{n}}\sum_{\vec{j},\vec{k}}\delta_{\vec{j},\vec{0}}\gamma_{\vec{j},\vec{k}}\pauli{1}^{\vec{j}}\pauli{3}^{\vec{k}} \nonumber
 \end{align}
 de tal forma que su composición es
 \begin{align}
-    \qty(P_{\pauli{1}}\circ P_{\pauli{3}})(\varrho)&=\frac{1}{2^{n}}\sum_{\vec{j},\vec{k}}\delta_{\vec{j},\vec{0}}\delta_{\vec{k},\vec{0}}\gamma_{\vec{j},\vec{k}}\pauli{1}^{\vec{j}}\pauli{3}^{\vec{k}}\nonumber\\
+    \qty(\mcP_{\pauli{1}}\circ \mcP_{\pauli{3}})(\varrho)&=\frac{1}{2^{n}}\sum_{\vec{j},\vec{k}}\delta_{\vec{j},\vec{0}}\delta_{\vec{k},\vec{0}}\gamma_{\vec{j},\vec{k}}\pauli{1}^{\vec{j}}\pauli{3}^{\vec{k}}\nonumber\\
     &=\frac{1}{2^{n}}\gamma_{\vec{0},\vec{0}}\Id_{2^{n}}.\nonumber
 \end{align}
 Que es precisamente el efecto del canal de despolarización total. Ahora, sea $\rho_{\ef}$ un estado efectivo en $\densityspace{2}$ correspondiente a un sistema $\varrho \in \densityspace{2^{n}}$, y sea $\varrho_{\max}\in\densityspace{2^{n}}$ el estado de máxima entropía compatible con el estado efectivo. Es inmediato ver que la dinámica efectiva correspondiente a un canal de despolarización total es otro canal de despolarización total, i.e.
@@ -123,12 +117,12 @@ Que es precisamente el efecto del canal de despolarización total. Ahora, sea $\
 \end{equation}
 Ahora, sabiendo que
 \begin{equation}
-    \qty(P_{\pauli{1}}\circ P_{\pauli{3}})(\varrho)=\frac{1}{2^{2n}}\sum_{\vec{j},\vec{k}}\pauli{1}^{\vec{j}}\pauli{3}^{\vec{k}}\varrho\pauli{3}^{\vec{k}}\pauli{1}^{\vec{j}}=\frac{1}{2^{n}}\Id_{2^{n}}\nonumber
+    \qty(\mcP_{\pauli{1}}\circ \mcP_{\pauli{3}})(\varrho)=\frac{1}{2^{2n}}\sum_{\vec{j},\vec{k}}\pauli{1}^{\vec{j}}\pauli{3}^{\vec{k}}\varrho\pauli{3}^{\vec{k}}\pauli{1}^{\vec{j}}=\frac{1}{2^{n}}\Id_{2^{n}}\nonumber
 \end{equation}
 la ecuación \ref{eq:DepolarizingChannelN} puede reescribirse como
 \begin{equation}
-    D_{q}(\varrho)=\frac{q(2^{2n}-1)+1}{2^{2n}}\varrho+\frac{(1-q)}{2^{2n}}\sum_{\vec{j}\land\vec{k}\neq\vec{0}}\pauli{1}^{\vec{j}}\pauli{3}^{\vec{k}}\varrho\pauli{3}^{\vec{k}}\pauli{1}^{\vec{j}}\nonumber
-\end{equation}\ddnote{$\mcD$}
+    \mcD_{q}(\varrho)=\frac{q(2^{2n}-1)+1}{2^{2n}}\varrho+\frac{(1-q)}{2^{2n}}\sum_{\vec{j}\land\vec{k}\neq\vec{0}}\pauli{1}^{\vec{j}}\pauli{3}^{\vec{k}}\varrho\pauli{3}^{\vec{k}}\pauli{1}^{\vec{j}}\nonumber
+\end{equation}
 Donde es explícitamente claro que el canal de despolarización es un canal de Pauli. La dinámica efectiva que corresponde al canal de despolarización no completo es simplemente
 \begin{equation}\label{eq:EffectiveDepolarizing}
     \Gamma_{t}(\rho_{\ef})=q\rho_{\ef}+(1-q)\Id_{2}.
@@ -137,7 +131,7 @@ Esto es, la dinámica efectiva correspondiente a un canal de despolarización si
 
 \subsection{Canal de estabilización}
 
-El canal de amortiguamiento de amplitud funciona como un modelo simple de emisión espontánea. En efecto, un átomo de dos niveles acoplado a un campo electromagnético experimenta emisión espontánea, y puede demostrarse que este proceso corresponde a un canal de amortiguamiento de amplitud si se traza al campo y se considera que la frecuencia del campo es igual a la frecuencia de resonancia de transiciones entre los niveles del átomo \ddnote{cita algún libro de óptica cuántica por fas}. El canal de amortiguamiento de amplitud tiene el efecto de enviar todos los estados al estado base. Aquí estudiaremos un canal más sencillo, que envía todos los estados a un estado puro \ddnote*{dado}{aleatorio} $\ket{\psi}$ de forma exponencial en el tiempo, como si el átomo de dos niveles tendiera a estabilizarse en dicho estado.
+El canal de amortiguamiento de amplitud funciona como un modelo simple de emisión espontánea. En efecto, un átomo de dos niveles acoplado a un campo electromagnético experimenta emisión espontánea, y puede demostrarse que este proceso corresponde a un canal de amortiguamiento de amplitud si se traza al campo y se considera que la frecuencia del campo es igual a la frecuencia de resonancia de transiciones entre los niveles del átomo \cite{Fox}. El canal de amortiguamiento de amplitud tiene el efecto de enviar todos los estados al estado base. Aquí estudiaremos un canal más sencillo, que envía todos los estados a un estado puro dado $\ket{\psi}$ de forma exponencial en el tiempo, como si el átomo de dos niveles tendiera a estabilizarse en dicho estado.
 
 Considérese entonces que un sistema de $n$ partículas evoluciona siguiendo el canal cuántico
 \begin{gather}
@@ -164,7 +158,7 @@ donde $\gamma$ puede verse como la probabilidad de emisión de un fotón, mientr
         (1-\gamma)\rho_{1,0} & (1-\gamma)\rho_{1,1}
     \end{pmatrix}.\nonumber
 \end{equation}
-donde se ha hecho $e^{\mu t}=\gamma$. Es claro que el canal de amortiguamiento y el canal de estabilización tienen efectos diferentes en las fases del estado. Aún más, mientras que la extensión del canal de estabilización a $n$ partículas es directa, la generalización del canal de amortiguamiento de amplitud es no trivial \ddnote{, ya que no hay una forma única de conectar los amortiguamientos entre los niveles energéticos}. \acnote{agregar cita.} \ddnote{Alguna vez encontré una, pero ya no la encuentro, de momento demosle poca prioridad a esta cita.}
+donde se ha hecho $e^{\mu t}=\gamma$. Es claro que el canal de amortiguamiento y el canal de estabilización tienen efectos diferentes en las fases del estado. Aún más, mientras que la extensión del canal de estabilización a $n$ partículas es directa, la generalización del canal de amortiguamiento de amplitud es no trivial, ya que no hay una forma única de conectar los amortiguamientos entre los niveles energéticos.
 
 Ahora, sea $\rho_{\ef}$ un estado efectivo en $\densityspace{2}$ y $\varrho_{\max}$ el estado de máxima entropía en $\densityspace{2^{n}}$ compatible con este. Aplicando el modelo de grano grueso al estado de máxima entropía propagado por el canal de estabilización se obtiene que
 \begin{equation}\label{eq:EffectiveStabilizing}
@@ -194,12 +188,12 @@ si la cadena es abierta. Para que la cadena sea cerrada basta con añadir el té
     \centering
     \begin{subfigure}{0.5\textwidth}
       \centering
-      \includegraphics[width=0.5\linewidth]{chapter3/figures_special/isingchain1.jpg}
+      \includegraphics[width=0.7\linewidth]{chapter3/figures_special/OpenIsing.png}
       \caption{Cadena de Ising abierta.}
     \end{subfigure}%
     \begin{subfigure}{0.5\textwidth}
       \centering
-      \includegraphics[width=0.5\linewidth]{chapter3/figures_special/isingchain1.jpg}
+      \includegraphics[width=0.7\linewidth]{chapter3/figures_special/ClosedIsing.png}
       \caption{Cadena de Ising cerrada}
     \end{subfigure}
     \label{fig:IsingChainOpenAndClosed}
