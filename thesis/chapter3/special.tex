@@ -80,6 +80,7 @@ Para resolver el lado derecho de la ecuación, nótese que existen $2^{n}$ posib
     =&\sum_{\{j_{k}:j_{k}=0\}}q_{j_{k}}\sum_{k=1}^{n}p_{k}\pauli{3}^{j_{k}}\rho_{k}\pauli{3}^{j_{k}}+\sum_{\{j_{k}:j_{k}=1\}}q_{j_{k}}\sum_{k=1}^{n}p_{k}\pauli{3}^{j_{k}}\rho_{k}\pauli{3}^{j_{k}}\nonumber\\
     =&q_{\vec{0}}\qty(\sum_{k=1}^{n}p_{k}\rho_{k})+\frac{1-q_{\vec{0}}}{2^{n}-1}(2^{n-1}-1)\qty(\sum_{k=1}^{n}p_{k}\rho_{k})+\frac{1-q_{\vec{0}}}{2^{n}-1}2^{n-1}\qty(\sum_{k=1}^{n}\pauli{3}p_{k}\rho_{k}\pauli{3}).\nonumber
 \end{align}
+\ddnote{Esta ecuación se sale del marco, no debe de superar el texto, propongo pasar él último sumando a una nueva línea.}
 Con lo que la dinámica efectiva es
 \begin{equation}
     \Gamma_{t}(\rho_{\ef})=\qty(q_{\vec{0}}+\frac{2^{n-1}-1}{2^{n}-1}(1-q_{\vec{0}}))\rho_{\ef}+\qty(\frac{2^{n-1}}{2^{n}-1}(1-q_{\vec{0}}))\pauli{3}\rho_{\ef}\pauli{3}.\nonumber
@@ -168,8 +169,6 @@ Obsérvese que la dinámica efectiva es un canal cuántico, pero no necesariamen
 
 \subsection{Cadena de espines de Heisenberg}
 
-\ddnote{Ok, a esta no le he puesto atención, como me dijiste}
-
 El modelo $XZY_{s}$ unodimensional de Heisenberg consiste en una cadena de $n$ partículas de espín $s$ en la que se consideran interacciones de espín entre primeros vecinos. Se ha demostrado que la cadena de Heisenberg describe el comportamiento de algunos metales y cristales \cite{HeisenbergModel}. El hamiltoniano del modelo de Heisenberg en el caso de espín $\frac{1}{2}$ es
 \begin{equation}
     \mcH=\sum_{k=1}^{n}\qty(J_{1}\pauli{1,k}\pauli{1,k+1}+J_{2}\pauli{2,k}\pauli{2,k+1}+J_{3}\pauli{3,k}\pauli{3,k+1})-g\sum_{k=1}^{n}\pauli{2,k},
@@ -178,7 +177,7 @@ donde $J_{k}$ son las constantes de acoplamiento, $\pauli{j,k}$ es el operador d
 
 \subsubsection{Modelo de Ising}
 
-Como primer ejemplo, considérese el modelo de Ising sin campo transversal (i.e. $g=0$). En este caso, el hamiltoniano se reduce a
+Como primer ejemplo, considérese el modelo de Ising \ddnote{($J_1=J_2=0$)} sin campo transversal (i.e. $g=0$). En este caso, el hamiltoniano se reduce a
 \begin{equation}
     \mcH=\omega\sum_{k=1}^{n-1}\pauli{3,k}\pauli{3,k+1}.\nonumber
 \end{equation}
@@ -216,13 +215,13 @@ Si se propaga al estado de máxima entropía con dicho operador y se le pasa por
 \end{align}
 Dentro de la expresión de la dinámica efectiva reconocemos dos términos. El primero es un canal de desfasamiento sobre el estado efectivo, mientras que el segundo depende tanto de los parámetros de la aplicación de grano grueso, $p_{1}$ y $p_{2}$, como de valores esperados con respecto a los operadores de densidad reducidos del estado de máxima entropía. En efecto, el caso límite $p_{1}=1$ ve la dinámica efectiva reducida a un canal de desfasamiento en el tiempo,
 \begin{equation}\label{eq:EffectiveIsing2}
-    \Gamma_{t}(\rho_{\ef})=\rho_{\ef} \cos^{2}(\omega)+\pauli{3} \rho_{\ef} \pauli{3} \sin^{2}(\omega t).\nonumber
+    \Gamma_{t}(\rho_{\ef})=\rho_{\ef} \cos^{2}(\omega t)+\pauli{3} \rho_{\ef} \pauli{3} \sin^{2}(\omega t).\nonumber
 \end{equation}
 mientras que el caso $p_{1}=p_{2}=\frac{1}{2}$ puede ser más informativo respecto al segundo término, pues en dicho caso
 \begin{equation}
     \Gamma_{t}(\rho_{\ef})=\rho_{\ef} \cos^{2}(\omega)+\pauli{3} \rho_{\ef} \pauli{3} \sin^{2}(\omega t) + i\expval{\pauli{3}} \qty[\pauli{3},\rho_{\ef}] \sin(\omega t)\cos(\omega t).\nonumber
 \end{equation}
-Nótese que si $\expval{\pauli{3}}=1$, la dinámica es no solo lineal, sino unitaria, y corresponde a una rotación respecto al eje $z$, (con el detalle de que los estados tales que $\expval{\pauli{3}}=1$ son invariantes bajo dichas rotaciones). En realidad, el efecto de la dinámica efectiva sobre el estado es más clara en términos del vector de Bloch del estado inicial, $\vec{r}_{\ef}$.
+\ddnote*{Aquí hay algo delicado, $\langle \sigma_z \rangle$ depende de $\rho_\text{ef}$, si la aparente linealidad está condicionada al estado inicial, por hende, no es linealidad y mucho menos unitariedad, solo es aparente. Linealidad debe valer para todos los estados iniciales, por definición.}{Nótese que si $\expval{\pauli{3}}=1$, la dinámica es no solo lineal, sino unitaria, y corresponde a una rotación respecto al eje $z$, (con el detalle de que los estados tales que $\expval{\pauli{3}}=1$ son invariantes bajo dichas rotaciones)}. En realidad, el efecto de la dinámica efectiva sobre el estado es más clara en términos del vector de Bloch del estado inicial, $\vec{r}_{\ef}$.
 \begin{equation}\label{eq:EffectiveIsing2BV}
     \Gamma_{t}(\vec{r}_{\ef})=\begin{pmatrix}
         r_{x}\cos(2\omega t)-r_{y}r_{z}\sin(2\omega t)\\
@@ -230,8 +229,9 @@ Nótese que si $\expval{\pauli{3}}=1$, la dinámica es no solo lineal, sino unit
         r_{z}\\
     \end{pmatrix}.
 \end{equation}
+\ddnote{Supongo que esta ecuación está condicionada a $r_z=0$, aguas.}
 
-La dinámica aplicada al vector de Bloch desplaza este en trayectoria elíptica centrada en el origen. A diferencia de una rotación circular, que tiene como único parámetro al ángulo de rotación, una rotación elíptica depende de los parámetros de la elipse, ambos semiejes y un argumento de rotación de la elipse, además del ángulo de rotación. En este caso, el vector de Bloch rota $2\omega t$ grados, a lo largo de la elipse de semieje mayor $\sqrt{1-r_{z}^2}$, semieje menor $r_{z}\sqrt{r_{x}^2+r_{y}^2}$ y argumento de rotación $\arccos(r_{x})$. Esto es, los parámetros de la transformación dependen completamente del estado efectivo inicial. En este sentido, la dinámica es no lineal y no universal. La figura \ref{fig:Ising_p0.5_Sequence} presenta la evolución de la esfera de Bloch para el caso especial $p_{1}=\frac{1}{2}$.
+La dinámica aplicada al vector de Bloch desplaza este en trayectoria elíptica centrada en el origen. A diferencia de una rotación circular, que tiene como único parámetro al ángulo de rotación, una rotación elíptica depende de los parámetros de la elipse, ambos semiejes y un argumento de rotación de la elipse, además del ángulo de rotación. En este caso, el vector de Bloch rota $2\omega t$ grados, a lo largo de la elipse de semieje mayor $\sqrt{1-r_{z}^2}$, semieje menor $r_{z}\sqrt{r_{x}^2+r_{y}^2}$ y argumento de rotación $\arccos(r_{x})$. Esto es, los parámetros de la transformación dependen completamente del estado efectivo inicial. \ddnote*{Siempre es no lineal}{En este sentido, la dinámica es no lineal y no universal.} La figura \ref{fig:Ising_p0.5_Sequence} presenta la evolución de la esfera de Bloch para el caso especial $p_{1}=\frac{1}{2}$.
 
 \begin{figure}[ht!]
     \centering
@@ -282,7 +282,7 @@ Si se quisiera hallar la dinámica efectiva siguiendo el mismo procedimiento que
     \label{fig:OpenIsingBoltz}
 \end{figure}
 
-La figura \ref{fig:OpenIsingBoltz} muestra la misma evolución pero en el caso del régimen de Boltzmann. Nótese que la forma de la evolución no parece depender del radio de Bloch inicial, pero que cambia considerablemente conforme aumenta el número de partículas $n$. Además, la evolución, lejos de ser una rotación alrededor de $r_{z}$, a cualquier tiempo $t\neq 0$ conlleva cierto grado de desfasamiento. Esto es, $r_{\ef}(t)<r_{\ef}(0)$. Queda por ser estudiado el límite $n\rightarrow\infty$, para el que parece se completa el desfasamiento.
+La figura \ref{fig:OpenIsingBoltz} muestra la misma evolución pero en el caso del régimen de Boltzmann \ddnote{cual es el régimen de Boltzmann, bueno, ya vi que lo definiste más arriba, cual fue tu motivación?, que todas las probabilidades son iguales? (platiquemoslo, no se si es del todo buena idea.)}. Nótese que la forma de la evolución no parece depender del radio de Bloch inicial, pero que cambia considerablemente conforme aumenta el número de partículas $n$. Además, la evolución, lejos de ser una rotación alrededor de $r_{z}$, a cualquier tiempo $t\neq 0$ conlleva cierto grado de desfasamiento. Esto es, $r_{\ef}(t)<r_{\ef}(0)$. Queda por ser estudiado el límite $n\rightarrow\infty$, para el que parece se completa el desfasamiento.
 
 Por otro lado, figura \ref{fig:OpenIsingPref} muestra la evolución del vector de Bloch del estado efectivo, $\vec{r}_{\ef}(t)$, en el plano $r_{z}=0.1$, en el caso del régimen preferencial, para diferentes valores de $p_{1}$. Nuevamente, el valor inicial del vector de Bloch no tiene efecto en la forma general de la evolución, por lo que solo se muestra el caso en el que el estado efectivo inicial es puro. A notarse que la dinámica se aleja cada vez más de una evolución unitaria conforme disminuye $p_{1}$ y aumenta el número de partículas $n$
 
