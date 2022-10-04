@@ -68,7 +68,7 @@ El estado de la izquierda corresponde a $\varrho_{\max}(t=0)$, mientras que el d
 \end{equation}
 Vemos que ambos estados tienen la misma orientación (orientación significando la dirección del vector de Bloch) pero pureza distinta. Esto significa que el efecto del \textsc{SWAP} subyacente sobre la esfera de Bloch es comprimir al estado efectivo inicial con un coeficiente $\kappa_{1}$ definido según
 \begin{equation}\label{eq:SWAPFactor}
-  \kappa_{1}=\frac{r_{\ef}(0)}{r_{\ef}(1)}=\frac{p_{2}\tanh{\lambda p_{1}}+p_{1}\tanh{\lambda p_{2}}}{
+  \kappa_{1}=\frac{r_{\ef}(1)}{r_{\ef}(0)}=\frac{p_{2}\tanh{\lambda p_{1}}+p_{1}\tanh{\lambda p_{2}}}{
     p_{1}\tanh{\lambda p_{1}}+p_{2}\tanh{\lambda p_{2}}}.
 \end{equation}
 Claro está, el factor de compresión depende del multiplicador de Lagrange, que a su vez es una función de la pureza del estado inicial. La figura \ref{fig:SWAPFactor2Drl} muestra dicha dependencia. Como la dependencia en el estado inicial incluye únicamente la pureza del mismo, por lo que la compresión no depende de la dirección. Esta dinámica no es si no un canal de despolarización no lineal. Si la dependencia del factor de despolarización en el estado efectivo inicial se denota por un superíndice, la dinámica efectiva puede escribirse como
@@ -97,15 +97,7 @@ De las ecuaciones (\ref{eq:SWAPFactor}) y (\ref{eq:EffectiveSWAP1}) distinguimos
 \end{itemize}
 
 
-Como el factor de despolarización depende de $\lambda$, la dinámica no es lineal. Las operaciones cuánticas de un qubit se traducen como aplicaciones afines en la esfera de Bloch. Si quisiéramos ver el proceso asociado al \textsc{SWAP} subyacente como una transformación de la forma
-\begin{equation}
-  \vec{r}\rightarrow M\vec{r}+\vec{c}\nonumber
-\end{equation}
-en la que $\vec{c}=0$, y $M=OS$ con $O=\Id$ y $S=\kappa_{1}^{\rho_{\ef}}=\Id$\ddnote{esta ecuación está extraña, ya lo había hecho notar, pero mi nota desapareció}, de tal forma que
-\begin{equation}
-  \vec{r}\rightarrow \kappa_{1}^{\rho_{\ef}}\vec{r}\nonumber
-\end{equation}
-nos daríamos cuenta que la transformación no es afín, y por esto, el proceso no puede ser descrito a través del formalismo de las operaciones cuánticas (no tiene representación en operadores de Kraus) \cite{Chuang}.
+Como el factor de despolarización depende de $\lambda$, la dinámica no es lineal, y por esto, el proceso no puede ser descrito a través del formalismo de las operaciones cuánticas (no tiene representación en operadores de Kraus) \cite{Chuang}.
 
 \subsubsection{Evolución continua}
 
