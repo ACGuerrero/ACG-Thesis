@@ -39,7 +39,7 @@ Las matrices de densidad reducidas del estado de máxima entropía tienen la for
 
 \acnote{Párrafo iterado: notas}
 
-El problema de la ecuación (\ref{eq:MaxEntSeparable}) es que el estado de máxima entropía está en términos de los multiplicadores de Lagrange, en lugar de cantidades más claras. Si por alguna razón tuviéramos que resignarnos a trabajar con el estado en términos de los $\lambda_{i}$, será necesario conocer la expresión del estado macroscópico. Para hallarla, basta con pasar al estado de máxima entropía por la aplicación de grano grueso. Por construcción 
+El problema de la ecuación (\ref{eq:MaxEntSeparable}) es que el estado de máxima entropía está en términos de los multiplicadores de Lagrange, en lugar de cantidades con un significado físico claro. Si por alguna razón tuviéramos que resignarnos a trabajar con el estado en términos de los $\lambda_{i}$, será necesario conocer la expresión del estado macroscópico. Para hallarla, basta con pasar al estado de máxima entropía por la aplicación de grano grueso. Por construcción 
 \begin{equation}
     \rho_{\ef}=\CG{\varrho_{\max}}=\sum_{j=1}^{n}p_{j}\rho_{j}.\nonumber
 \end{equation}
@@ -47,34 +47,19 @@ Sustituyendo las fórmulas de $\rho_{j}$, obtenemos al estado grueso en término
 \begin{equation}\label{eq:CG(MaxEnt)}
     \rho_{\ef}=\frac{1}{2}\qty[\Id+(\paulivec{\lambda})\qty(\sum_{j=1}^{n}p_{j}\tanh(p_{j}\lambda))].
 \end{equation}
-Pues bien, el estado efectivo tiene su propia parametrización de Bloch, y es
-\begin{equation}\label{eq:EffectiveState}
-    \rho_{\ef}=\frac{1}{2}(\Id+r_{\ef}\paulivec{r}).
-\end{equation}
-Si se comparan las ecuaciones (\ref*{eq:CG(MaxEnt)}) y (\ref*{eq:EffectiveState}), será evidente que
-\begin{equation}\label{eq:r(lambda)}
-    \rfroml(\lambda)=\sum_{j=1}^{n}p_{j}\tanh(p_{j}\lambda),
-\end{equation}
-donde $\rfroml(\lambda)$ es la función que aparece en las ecuaciones (\ref{eq:MaxEntExpVals}). Así, obtenemos tanto el radio del vector de Bloch del estado en términos de $\lambda$,
-\begin{equation}
-    r_{\ef}=\rfroml(\lambda),\nonumber
-\end{equation}
-como su dirección,
-\begin{equation}
-    \hat{r}_{\ef}=\hat{\lambda}.\nonumber
-\end{equation}
-De esta manera deducimos la relación entre los promedios de las observables a nivel grueso $\expval{\pauli{j}}=r_{\ef}(\hat{r}_{\ef})_{j}$ y los multiplicadores de Lagrange introducidos para la maximización de la entropía, y es
+Pues bien, el estado efectivo tiene su propia parametrización de Bloch. Sea $\vec{r}_{\ef}$ el vector de Bloch de la partícula efectiva. Entonces es claro que
+\begin{align}
+    r_{\ef}=\sum_{j=1}^{n}p_{j}\tanh(p_{j}\lambda) && \text{y} && \hat{r}_{\ef}=\hat{\lambda},\nonumber
+\end{align}
+que no son más que la norma y dirección del vector de Bloch del estado efectivo en términos de $\lambda$. De esta manera deducimos la relación entre los promedios de las observables a nivel grueso $\expval{\pauli{j}}=r_{\ef}(\hat{r}_{\ef})_{j}$ y los multiplicadores de Lagrange introducidos para la maximización de la entropía, y es
 \begin{equation}
     \expval{\pauli{j}}=\frac{\lambda_{j}}{\lambda}\rfroml(\lambda).
 \end{equation}
-Nada más y nada menos que las ecuaciones (\ref{eq:MaxEntExpVals}). Ahora, la ecuación (\ref{eq:r(lambda)}), fijadas $p_{j}$, es una suma de $n$ funciones inyectivas, y como tal, es inyectiva también. Esto significa que existe la función inversa. La figura \ref{fig:r(lambda)} muestra la forma de $\rfroml(\lambda)$ para valores selectos de $p_{1}$ en el caso en que $n=2$. Después de una breve inspección de (\ref{eq:r(lambda)}) se concluye que los estados puros corresponden al caso límite $\lambda\rightarrow+\infty$.
-
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.5\linewidth]{chapter2/figures/r(lambda).png}
-    \caption{$r_{\ef}$ como función de $\lambda$ para diferentes valores de $p_{1}$ en el caso en que $n=2$.}
-    \label{fig:r(lambda)}
-\end{figure}
+donde $\rfroml(\lambda)$ es la función que aparece en las ecuaciones (\ref{eq:MaxEntExpVals}),
+\begin{equation}\label{eq:r(lambda)}
+    \rfroml(\lambda)=\sum_{j=1}^{n}p_{j}\tanh(p_{j}\lambda)
+\end{equation}
+Ahora, la ecuación (\ref{eq:r(lambda)}), fijadas $p_{j}$, es una suma de $n$ funciones inyectivas, y como tal, es inyectiva también. Esto significa que existe la función inversa. La figura \ref{fig:r(lambda)} muestra la forma de $\rfroml(\lambda)$ para valores selectos de $p_{1}$ en el caso en que $n=2$. Después de una breve inspección de (\ref{eq:r(lambda)}) se concluye que los estados puros corresponden al caso límite $\lambda\rightarrow+\infty$.
 Cada multiplicador de Lagrange queda determinado de forma única a través de cantidades experimentales según 
 \begin{equation}
     \lambda_{i}=\rfroml^{-1}(r_{\ef}) \frac{\expval{\pauli{i}}}{r_{\ef}},
@@ -84,6 +69,12 @@ y, por supuesto,
     \lambda=\rfroml^{-1}(r_{\ef})\nonumber
 \end{equation}
 Aunque siempre exista, no es posible hallar una expresión de $\rfroml^{-1}$ para cualquier valor de $p$ debido a que la ecuación (\ref{eq:r(lambda)}) es una ecuación trascendental. Por esto, para escribir al estado de máxima entropía como una función de cantidades medibles, nos tendremos que conformar con llamar a $\rfroml^{-1}$ de manera explícita.
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.5\linewidth]{chapter2/figures/r(lambda).pdf}
+    \caption{$r_{\ef}$ como función de $\lambda$ para diferentes valores de $p_{1}$ en el caso en que $n=2$.}
+    \label{fig:r(lambda)}
+\end{figure}
 
 \subsection{Otra expresión del estado de máxima entropía}
 
