@@ -4,13 +4,13 @@
 
 \subsection{El principio de máxima entropía clásico}
 
-Si se nos informa que el valor esperado de tirar un dado de seis caras particular es $3.5$. ¿Cuál es la probabilidad asociada a cada cara del dado? En principio, el problema no puede resolverse, porque la distribución de probabilidad que da como resultado el valor esperado de $3.5$ no es única. Sería igual de válido asumir que el dado está pesado de tal forma que cae la mitad de veces en $2$, y la otra mitad de veces en $5$, que suponer que todos los valores tienen una probabilidad $\frac{1}{6}$. La segunda opción, claro, parecería la más judiciosa. Esta opción es también la que más incertidumbre sobre cada resultado tiene asociada, y la que menos suposiciones sobre los pesos del dado hace. Aún más importante, asumir que todos los valores son igualmente probables equivale a escoger la distribución de probabilidad que maximiza la entropía.
+Si se nos informa que el valor esperado de la variable aleatoria que describe el resultado de tirar un dado de seis caras particular es $3.5$, ¿cuál es la probabilidad asociada a cada cara del dado? En principio, el problema no puede resolverse, porque la distribución de probabilidad que da como resultado el valor esperado de $3.5$ no es única. Sería igual de válido asumir que el dado está pesado de tal forma que cae la mitad de veces en $2$, y la otra mitad de veces en $5$, que suponer que todos los valores tienen una probabilidad $\frac{1}{6}$. La segunda opción, claro, parecería la más judiciosa. Esta opción es también la que más incertidumbre sobre cada resultado tiene asociada, y la que menos suposiciones sobre los pesos del dado hace. Aún más importante, asumir que todos los valores son igualmente probables equivale a escoger la distribución de probabilidad que maximiza la entropía.
 
 \acnote{Párrafo iterado: notas}
 
-El principio de máxima entropía fue introducido por E. T. Jaynes en 1957 \cite{JaynesI}. En su artículo, \textit{Information Theory and Statistical Mechanics}: Jaynes afirma que la distribución de probabilidad que maximice la entropía es la estimación menos sesgada que se puede hacer a través de la información disponible~\cite{JaynesI}. La estimación obtenida a través de la minimización de la entropía es, además, aquella que no introduce suposiciones espurias sobre el sistema.
+El principio de máxima entropía fue introducido por E. T. Jaynes en 1957 \cite{JaynesI}. En su artículo, \textit{Information Theory and Statistical Mechanics}, Jaynes afirma que la distribución de probabilidad que maximice la entropía es la estimación menos sesgada que se puede hacer a través de la información disponible~\cite{JaynesI}. La estimación obtenida a través de la minimización de la entropía es, además, aquella que no introduce suposiciones espurias sobre el sistema.
 
-Jaynes relaciona la teoría de información clásica con la mecánica estadística no por la simple coincidencia en la forma de las entropías de Shannon y de Gibbs, sino a través de una reinterpretación de la mecánica estadística como una forma de inferencia estadística. En este contexto, viendo la entropía física como una medida de la incertidumbre asociada a una distribución de probabilidad, una distribución $p$ que no maximice la entropía, es una distribución que introduce información arbitraria no incluida en las hipótesis iniciales. En efecto, el problema de hallar una distribución de probabilidad adecuada es también un problema de contaminación de la información accesible. Esta contaminación proviene de suposiciones arbitrarias, y sin sustento físico, que pueden hacerse sobre el sistema. Utilizar el principio de máxima entropía permite hallar la distribución de probabilidad menos sesgada posible.
+Jaynes relaciona la teoría de información clásica con la mecánica estadística no por la simple coincidencia en la forma de las entropías de Shannon y de Gibbs, sino a través de una reinterpretación de la mecánica estadística como una forma de inferencia estadística. En este contexto, viendo la entropía física como una medida de la incertidumbre asociada a una distribución de probabilidad, una distribución $p$ que no maximice la entropía es una distribución que introduce información arbitraria no incluida en las hipótesis iniciales. En efecto, el problema de hallar una distribución de probabilidad adecuada es también un problema de contaminación de la información accesible. Esta contaminación proviene de suposiciones arbitrarias, y sin sustento físico, que pueden hacerse sobre el sistema. Utilizar el principio de máxima entropía permite hallar la distribución de probabilidad menos sesgada posible.
 
 \acnote{El siguiente párrafo ha sido iterado, reescritura.}
 
@@ -18,15 +18,10 @@ Sean $x_{j}$ los valores de la variable aleatoria $X$. Sean, además $f_{k}$, fu
 \begin{equation}\label{eq:JaynesRestrictions}
     \expval{f_{l}(x)}=\sum_{j}p(x_{j})f_{l}(x_{j}).
 \end{equation}
-\acnote{El siguiente párrafo ha sido iterado, notas}
-
-
-Buscamos $p$ tal que maximice la entropía de Shannon (\ref{eq:ShannonEntropy}), sujeta a las restricciones experimentales (\ref{eq:JaynesRestrictions}). Para esto, utilizamos el método de multiplicadores de Lagrange. A las restricciones anteriores debe añadirse la condición de normalización,
+Buscamos $p$ tal que maximice la entropía de Shannon (\ref{eq:ShannonEntropy}), $H(p)$, sujeta a las restricciones experimentales (\ref{eq:JaynesRestrictions}). Para esto, utilizamos el método de multiplicadores de Lagrange. A las restricciones anteriores debe añadirse la condición de normalización,
 \begin{equation}\label{eq:NormalizationRestriction}
     \sum_{j}p(x_{j})=1.
 \end{equation}
-\acnote{Ecuaciones y párrafos iterados: notas y reescritura}
-
 Buscamos el valor extremal respecto a las $p(x_{j})$ de la Lagrangiana
 \begin{equation}
     \mcL=-H(p)+\sum_{l}\lambda_{l}\qty(\sum_{j}p(x_{j})f_{l}(x_{j})-\expval{f_{l}(x)})+\mu\qty(\sum_{j}p(x_{j})-1)\nonumber
@@ -73,9 +68,9 @@ Para discernir el significado físico de dicho resultado, se puede sustituir est
     S_{G}=\lambda\expval{\epsilon}+k_{\text{B}}\ln{Z}.
 \end{equation}
 
-Como tratamos con un sistema en equilibrio térmico con un reservorio térmico a una temperatura $T$, la física estadística establece que $S_{G}$ coincide con la entropía termodinámica y
+Como tratamos con un sistema en equilibrio térmico con un reservorio a una temperatura $T$, la física estadística establece que $S_{G}$ coincide con la entropía termodinámica y
 \begin{equation}
-    \lambda=\frac{1}{T}.\nonumber
+    \lambda=\frac{1}{T},\nonumber
 \end{equation}
 con lo que se halla el significado físico del multiplicador de Lagrange. \cite{Greiner}
 

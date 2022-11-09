@@ -1,7 +1,8 @@
 This is my license thesis' repository
 
 TO DO LIST
- 1. Party about finished thesis.
+ 1. Adress Andrea's comments
+
 
 
 
