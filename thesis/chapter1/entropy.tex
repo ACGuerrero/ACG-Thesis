@@ -1,34 +1,38 @@
 \section{Entropía}
 \subsection{Entropía de Shannon}
-A finales de los años cuarenta, Claude Shannon se preguntaba sobre una medida de la \textit{incertidumbre}, o de la \textit{información} asociada a un proceso cuyo resultado estuviera descrito por una variable aleatoria $X$ con distribución de probabilidad $p(x_{j})$.
+A finales de los años cuarenta, Claude Shannon se preguntaba sobre una medida de la \textit{incertidumbre}, o de la \textit{información} \footnote{En teoría de información clásica, los términos \textit{información}, \textit{incertidumbre} y \textit{sorpresa} se utilizan de manera intercambiable.} asociada a un proceso cuyo resultado estuviera descrito por una variable aleatoria $X$ con distribución de probabilidad $p(x_{j})$.
 
 \acnote{Párrafo iterado: notas}
 
 La cantidad de información provista por el resultado de un experimento depende de la probabilidad asociada a dicho suceso. Por ejemplo, al tirar un dado es mucho menos informativo saber que no cayó un $6$ que saber que cayó un $6$, ya que cada número tiene una probabilidad de $\frac{5}{6}$ de no caer, pero sólo $\frac{1}{6}$ de caer. Con la misma línea de razonamiento, conocer el resultado de un evento que ocurre con probabilidad $p=1$ no transmite ninguna información. Si a cada valor de $X$ se le puede asociar una cantidad de información, entonces debe poder calcularse la cantidad de información promedio: esta es la medida que buscaba Shannon. La forma de esta medida, denotada $H(p)$, vino de las propiedades que el matemático estadounidense afirmó que debía cumplir \cite{Shannon,Wilde}
 \begin{enumerate}
-    \item $H(p)$ debe ser continua en $p$.
-    \item $H(p)$ debe ser una función creciente, monotónica de $n$ cuando $p_{j}=\frac{1}{n}$.
-    \item Si $X$ e $Y$ son procesos independientes, $H(p_{X}(x_{j})p_{Y}(y_{l}))=H(p_{X}(x_{j}))+H(p_{Y}(y_{l}))$.
+    \item $S_{\text{S}}(p)$ debe ser continua en $p$.
+    \item $S_{\text{S}}(p)$ debe ser una función creciente, monotónica de $n$ cuando $p_{j}=\frac{1}{n}$.
+    \item Si $X$ e $Y$ son procesos independientes, $S_{\text{S}}(p_{X}(x_{j})p_{Y}(y_{l}))=S_{\text{S}}(p_{X}(x_{j}))+S_{\text{S}}(p_{Y}(y_{l}))$.
 \end{enumerate}
 Además, demostró que
 \begin{equation}\label{eq:ShannonEntropy}
-    H=-k\sum_{j}p(x_{j})\log{p(x_{j})},
+    S_{\text{S}}=-k\sum_{j}p(x_{j})\log{p(x_{j})},
 \end{equation}
-donde $k$ es una constante que depende de la naturaleza del sistema estudiado. Fue a través de discusiones con von Neumann que Shannon descubrió que su medida ya era ampliamente utilizada en física, y que llevaba el nombre de \textit{entropía} \cite{McIrvine}.
+donde $k$ es una constante que depende de la naturaleza del sistema estudiado. Fue a través de discusiones con von Neumann que Shannon descubrió que su medida ya era ampliamente utilizada en física, y que llevaba el nombre de \textit{entropía} \cite{McIrvine}. En efecto, la entropía de Gibbs es
+\begin{equation}\label{eq:GibbsEntropy}
+    S_{\text{G}}=-k_{\text{B}}\sum_{j}p_{j}\log{p_{j}},
+\end{equation}
+donde $k_{B}$ es la constante de Boltzmann, y $p_{j}$ es la probabilidad de que el sistema se halle en la $j$-ésima configuración microscópica posible.
 
 Como medida de incertidumbre, la entropía de Shannon (\ref{eq:ShannonEntropy}) es máxima para distribuciones equiprobables. Retomando la idea del dado bien balanceado, como no es posible tener ningún tipo de seguridad sobre el resultado de un tiro, la incertidumbre (la entropía) es máxima.
 
 \acnote{Párrafo iterado: notas}
 
-En teoría de información clásica, la entropía de Shannon se suele estudiar como la cantidad promedio de bits requerida para trasmitir un mensaje, tomando el logaritmo en base $2$ y $k=1$ en la ecuación (\ref{eq:ShannonEntropy}). Como breve ejemplo, supóngase que se desea transmitir un mensaje encriptado en el que únicamente se utilizan los caracteres A, B, C y D. Si el método de encriptación es tal que resulta que todos los caracteres tienen la misma probabilidad de aparecer, entonces a los caracteres se les pueden asignar los valores 00, 01, 10, y 11 respectivamente. Calculando la entropía de Shannon se halla que, en promedio, se requieren dos bits para transmitir cada caracter del mensaje. 
+En teoría de información clásica, la entropía de Shannon se suele utilizar como la cantidad promedio de bits requerida para trasmitir un mensaje, tomando el logaritmo en base $2$ y $k=1$ en la ecuación (\ref{eq:ShannonEntropy}). Para ejemplificar la naturaleza de ``medida de información'' de la entropía de Shannon, supóngase que se desea transmitir un mensaje encriptado en el que únicamente se utilizan los caracteres A, B, C y D. Si el método de encriptación es tal que todos los caracteres tienen la misma probabilidad de aparecer, entonces una forma de transmitir el mensaje es asignándoles los valores $00$, $01$, $10$, y $11$ respectivamente\footnote{Esta forma de codificar los caracteres no es única, pero es la más sencilla. Otra sería asignarle a los caracteres A, B, C y D los valores $101$, $1001$, $10001$ y $100001$. Esta codificación, aunque produzca una cadena de bits que se traduzca de forma única a la cadena de caracteres, es altamente ineficiente. }. Calculando la entropía de Shannon se halla que, en promedio, se requieren dos bits para transmitir cada caracter del mensaje. 
 
-Supóngase ahora que las probabilidades de que aparezca cada uno de los caracteres son $p(A)=\frac{1}{2}$, $p(B)=\frac{1}{4}$, $p(C)=\frac{1}{8}$, $p(D)=\frac{1}{8}$. En este caso se pueden asignar los valores 1, 10, 110, 111, a cada letra respectivamente. Nótese que ahora solo se requiere un bit para transmitir la letra más común. Pues bien, si se calcula la entropía de Shannon, se encuentra que cada letra requerirá $1.75$ bits para ser transmitida \cite{Chuang}.
+Si, en cambio, las probabilidades de que aparezca cada uno de los caracteres son $p(A)=\frac{1}{2}$, $p(B)=\frac{1}{4}$, $p(C)=\frac{1}{8}$, $p(D)=\frac{1}{8}$. En este caso, una codificación posible, tal que no haya ambigüedad en la cadena de bits, es $A \rightarrow 0$, $B\rightarrow 10$, $C\rightarrow 110$, $D\rightarrow 111$. Nótese que ahora solo se requiere un bit para transmitir la letra más común. Pues bien, si se calcula la entropía de Shannon, se encuentra que cada letra requerirá $1.75$ bits para ser transmitida \cite{Cryptography}.
 
 \subsection{Entropía de von Neumann}
 
 La entropía de von Neumann, a pesar de haber sido obtenida veinte años antes, puede verse como la extensión cuántica de la entropía clásica de Shannon. Von Neumann introdujo el concepto del operador de densidad de forma paralela e independendiente a L. Landau, y definió la entropía $S$ asociada a un sistema descrito por un operador de densidad $\rho$ como \cite{vonNeumann}
 \begin{equation}\label{eq:VonNeumannEntropy}
-    S(\rho)=-\Tr(\rho\ln{\rho}).
+    S_{\text{N}}(\rho)=-\Tr(\rho\ln{\rho}).
 \end{equation}
 \acnote{El siguiente párrafo ha sido iterado, solo notas}
 
@@ -38,9 +42,9 @@ La entropía de von Neumann puede interpretarse de manera similar a la entropía
 
 De la entropía de von Neumann de un sistema descrito por un operador de densidad $\rho\in\mcS(\hilbert_{n})$, nos interesan las siguientes propiedades \cite{Chuang}:
 \begin{enumerate}
-    \item La entropía puede escribirse en términos de los eigenvalores de $\rho$, $\eta_{j}$, como $S(\rho)=-\sum_{j}\eta_{j}\ln{\eta_{j}}$. Esto coincide con la entropía de Shannon si se envían los eigenestados de $\rho$ con probabilidades $\eta_{j}$.
+    \item La entropía puede escribirse en términos de los eigenvalores de $\rho$, $\eta_{j}$, como $S_{\text{N}}(\rho)=-\sum_{j}\eta_{j}\ln{\eta_{j}}$. Esto coincide con la entropía de Shannon si se envían los eigenestados de $\rho$ con probabilidades $\eta_{j}$.
     \item La entropía es no negativa, y es nula si y sólo sí $\rho$ es de la forma $\dyad{\psi}$ con $\ket{\psi}\in\hilbert_{n}$.
-    \item La entropía es máxima cuando $\rho=\frac{1}{n}\Id_{n}$, y $S(\rho)=n$. Esto es de esperarse, de acuerdo con nuestra discusión previa, el estado máximamente mezclado es aquel del que somos máximamente ignorantes, y por lo mismo debe ser el que tiene la máxima entropía (recordando a la entropía como medida de incertidumbre).
-    \item La entropía de un estado producto es igual a la suma de las entropías de cada factor, $S(\rho_{A}\otimes\rho_{B})=S(\rho_{A})+S(\rho_{B})$.
+    \item La entropía es máxima cuando $\rho=\frac{1}{n}\Id_{n}$, y $S_{\text{N}}(\rho)=n$. Esto es de esperarse, de acuerdo con nuestra discusión previa, el estado máximamente mezclado es aquel del que somos máximamente ignorantes, y por lo mismo debe ser el que tiene la máxima entropía (recordando a la entropía como medida de incertidumbre).
+    \item La entropía de un estado producto es igual a la suma de las entropías de cada factor, $S_{\text{N}}(\rho_{A}\otimes\rho_{B})=S_{\text{N}}(\rho_{A})+S_{\text{N}}(\rho_{B})$.
 \end{enumerate}
 Nótese que la última propiedad es análoga al caso clásico en el que se tienen dos variables aleatorias independientes.
