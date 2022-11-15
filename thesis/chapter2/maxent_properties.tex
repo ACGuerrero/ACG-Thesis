@@ -11,16 +11,38 @@ Esto significa que el estado de máxima entropía es factorizable y tiene exacta
     \varrho_{\max}=\Motimes_{k=1}^{n}\frac{1}{Z_{k}}\text{exp}\qty(p_{k}\sum_{j=1}^{3}\lambda_{j}\sigma_{j}).
 \end{equation}
 
-Un resultado así puede parecer demasiado sencillo, y puede propiciar preguntas como: ¿qué significa que el estado de máxima entropía sea separable? ¿Qué interpretación tienen las matrices de densidad reducidas del estado de máxima entropía? Pues bien, primero hace falta ver que la información accesible al experimentalista no incluye las correlaciones entre los subsistemas. Si queda alguna duda sobre esto, considérese la parametrización de Bloch de un estado fino $\varrho\in\mcL(\hilbert_{4})$ como propuesta en (\ref{eq:BlochParametrization4}). La acción de la aplicación de grano grueso sobre la matriz de densidad es
-\begin{align}
-    \CG{\varrho}&=\CG{\frac{1}{4}\sum_{j,k=0}^{3}\gamma_{jk}\pauli{j}\otimes \pauli{k}}\nonumber\\
-    &=\frac{1}{2}\qty(\Id+\sum_{k=1}^{3}(p\gamma_{k,0}+(1-p)\gamma_{0,k})\sigma_{k}).\nonumber
+Un resultado así puede parecer demasiado sencillo, y puede propiciar preguntas como: ¿qué significa que el estado de máxima entropía sea factorizable? ¿Qué interpretación tienen las matrices de densidad reducidas del estado de máxima entropía? Pues bien, primero hace falta ver que la información accesible al experimentalista no incluye las correlaciones entre los subsistemas. Para ver esto, considérese la parametrización de Bloch de un estado fino $\varrho\in\mcL(\hilbert_{4})$ como propuesta en (\ref{eq:BlochParametrization4}). Esto es,
+\begin{align}\label{}
+    \varrho=\frac{1}{4}\sum_{j,k=0}^{3}\gamma_{jk}\sigma_{i}\otimes \sigma_{k} & & \text{con} & & \gamma_{jk}=\Tr(\sigma_{j}\otimes \sigma_{k}\varrho).\nonumber
 \end{align}
-De esto nos damos cuenta que a través de la aplicación de grano grueso se pierden todas las correlaciones, pues estas están contenidas dentro de las componentes $\gamma_{i,j}$ con $i,j\in\{1,2,3\}$. Por la construcción de la aplicación de grano grueso, cualquier sistema de matrices de densidad reducidas $\rho_{1}$ y $\rho_{2}$ da como resultado el mismo estado efectivo, sin importar si es factorizable o no, y si no lo es, qué tan entrelazado esté (de nuevo, siempre y cuando las marices de densidad reducidas sean $\rho_{1}$ y $\rho_{2}$, pues todas las trazas parciales de un sistema máximamente entrelazado son el estado máximamente mezclado). Pues bien, como estas correlaciones se pierden a la hora de hacer las mediciones, en el estado de máxima entropía estas se hacen cero.
+De acuerdo con la ecuación (\ref{eq:Ch1PartialTrace}) las matrices de densidad reducidas de $\varrho$ en términos de los parámetros $\gamma_{jk}$ son
+\begin{align}
+    \rho_{1}=\frac{1}{2}\sum_{j=0}^{3}\gamma_{0j}\pauli{j} & & \text{y} & & \rho_{2}=\frac{1}{2}\sum_{j=0}^{3}\gamma_{j0}\pauli{j}.\nonumber
+\end{align}
+La matriz de densidad reducida contiene la información estadística de dicho subsistema. Esto significa que las correlaciones entre los subsistemas están contenidas en los elementos $\gamma_{jk}$ tales que $j,k\neq 0$ (los elementos no presentes en las matrices de densidad reducidas). Ahora, la acción de la aplicación de grano grueso sobre la matriz de densidad es justamente
+\begin{align}
+    \CG{\varrho}&=\Tr_{2}\qty[(p \varrho + (1-p)S\varrho S]\nonumber\\
+    &=p\rho_{1}+(1-p)\rho_{2}\nonumber\\
+    &=\frac{1}{2}\qty(\Id+\sum_{k=1}^{3}(p\gamma_{k0}+(1-p)\gamma_{0k})\sigma_{k}).\nonumber
+\end{align}
+¡El estado efectivo no contiene información sobre las correlaciones del estado subyacente! Una consecuencia de esto es que todos los estados pertenecientes a un conjunto de estados microscópicos cuyas matrices de densidad reducidas coinciden tienen la misma imagen bajo la aplicación de grano grueso. Matemáticamente, si se tienen dos estados microscópicos, $\varrho_{A}$ y $\varrho_{B}$, y estos estados cumplen que
+\begin{align}
+    \Tr_{2}[\varrho_{A}]=\rho_{1} & & \Tr_{1}[\varrho_{A}]=\rho_{2} & & \text{y} & &\Tr_{2}[\varrho_{B}]=\rho_{1} & & \Tr_{1}[\varrho_{B}]=\rho_{2},\nonumber
+\end{align}
+entonces
+\begin{align}
+    \CG{\varrho_{A}}=\CG{\varrho_{B}}.\nonumber
+\end{align}
+Como el estado de máxima entropía respeta el principio de mínima información, todas las correlaciones contenidas en los elementos $\gamma_{jk}$ tales que $j,k\neq 0$ se hacen cero \footnote{Es importante señalar que esto no implica que las entradas $\gamma_{jk}$ tales que $j,k\neq 0$ de un estado de máxima entropía $\varrho_{\max}\in\mcL(\hilbert_{4})$ sean nulas (basta con desarrollar la expresión (\ref{eq:MaxEntSeparable}) para ver que no es así), si no que las correlaciones contenidas en dichos elementos son nulas, esto es $\gamma_{jk}=\gamma_{0k}\gamma_{j0}$}. 
+
 
 \acnote{Párrafo iterado: notas}
 
-La expresión (\ref{eq:MaxEntSeparable}) es un producto tensorial de $n$ operadores de densidad, a los que denotaremos como $\rho_{j}$, con $\rho_{j}\in\mcL(\hilbert_{2})$. Aún más, nótese que todos los factores pueden reescribirse como la exponencial real de $\lambda(\paulivec{\lambda})$ (con $\hat{\lambda}_{i}=\frac{\lambda_{i}}{\lambda}$) pesado por un factor probabilístico. Ahora, en virtud de la relación (\ref{ap:PauliRealExp}) hallamos
+La expresión (\ref{eq:MaxEntSeparable}) es un producto tensorial de $n$ operadores de densidad, a los que denotaremos como $\rho_{j}$, con $\rho_{j}\in\mcL(\hilbert_{2})$. Aún más, nótese que si definimos al vector unitario $\hat{\lambda}$ a través de
+\begin{equation}
+    \hat{\lambda}_{i}=\frac{\lambda_{i}}{\lambda},\nonumber
+\end{equation}
+con $\lambda$ dada por la ecuación (\ref{eq:Ch2LagrangeNorm}), entonces todos los factores pueden reescribirse como la exponencial real de $\lambda(\paulivec{\lambda})$ pesado por un factor probabilístico. Ahora, en virtud de la relación (\ref{ap:PauliRealExp}) hallamos
 \begin{equation}
     \rho_{j}=\frac{1}{Z_{j}}\qty(\Id\cosh{p_{j}\lambda}+\paulivec{\lambda}\sinh{p_{j}\lambda}).\nonumber
 \end{equation}
@@ -91,29 +113,25 @@ En virtud de (\ref*{ap:PauliRealExp}), se cumple que
 \end{align}
 Definimos
 \begin{equation}\label{eq:Xi}
-  \Xi_{\max}=\frac{1}{2}(\Id+\tanh{\lambda}(\paulivec{r_{\rho}})).
+  \Xi_{\max}=\frac{1}{2}(\Id+\tanh{\lambda}(\paulivec{r_{\rho}})),
 \end{equation}
 de tal manera que 
 \begin{equation}\label{eq:MaxEntSeparablePower}
-  \varrho_{\max}=\Motimes_{j=1}^{n}\frac{(\Xi_{\max})^{p_{j}}}{\Tr[ (\Xi_{\max})^{p_{j}}]}
+  \varrho_{\max}=\Motimes_{j=1}^{n}\frac{(\Xi_{\max})^{p_{j}}}{\Tr[ (\Xi_{\max})^{p_{j}}]}.
 \end{equation}
 
 \subsection{La asignación de máxima entropía}
 
 El estado de máxima entropía nos otorga una herramienta de asignación para los estados efectivos. Después de todo, requerimos de una asignación razonable que pueda ser propagada según la dinámica microscópica conocida. Sea $\rho_{\ef}\in\densityspace{2}$ un estado efectivo, entonces definimos a la aplicación de asignación de máxima entropía como
-
-\begin{gather}\label{eq:MaxEntAss}
-    \mcA_{\mcC}^{\max}:\densityspace{2}\rightarrow\densityspace{2^{n}}\nonumber\\
-    \rho_{\ef} \mapsto \Motimes_{j=1}^{n}\frac{1}{Z_{j}}\text{exp}\qty(p_{j}\sum_{k=1}^{3}\lambda_{k}\sigma_{k}).
-\end{gather}
-
-\acnote{Párrafo iterado: notas}
-
-\acnote{Parte iterada: reescritura}
-
-donde la dependencia de la asignación en el modelo de grano grueso se indica mediante un subíndice, $\mcC$, ver ecuación (\ref{eq:CG}). Nótese que según los valores que puedan tomar las diferentes probabilidades, el estado asignado tendrá diferentes propiedades. Nos concentramos en dos casos particulares. El primero corresponde a $p_{1}=1$. En este caso se eliminan los términos de error, y el estado de máxima entropía es simplemente
+\begin{equation}\label{eq:MaxEntAss}
+    \begin{gathered}
+        \mcA_{\mcC}^{\max}:\densityspace{2}\rightarrow\densityspace{2^{n}}\nonumber\\
+        \rho_{\ef} \mapsto \Motimes_{j=1}^{n}\frac{1}{Z_{j}}\text{exp}\qty(p_{j}\sum_{k=1}^{3}\lambda_{k}\sigma_{k}).
+    \end{gathered}
+\end{equation}
+donde la dependencia de la asignación en el modelo de grano grueso se indica mediante un subíndice, $\mcC$, ver ecuación (\ref{eq:CG}). Nótese que según los valores que puedan tomar las diferentes probabilidades $p_{j}$, el estado asignado tendrá diferentes propiedades. Nos concentramos en dos casos particulares. El primero corresponde a $p_{1}=1$. En este caso se eliminan los términos de error, y el estado de máxima entropía es simplemente
 \begin{equation}\label{eq:PreferentialAss}
-    \varrho_{\max}=\rho_{\ef}\otimes\Id^{2^{n-1}}.
+    \varrho_{\max}=\rho_{\ef}\otimes\Id^{2^{n-1}},
 \end{equation}
 Nótese que la aplicación de asignación se vuelve lineal si no hay error de medición. Esto debe verse como un caso límite. Este trabajo estudiará $p_{1}\rightarrow 1$ como el escenario en el que la probabilidad de detectar la partícula equivocada es pequeña. De acuerdo con esto, se le llamará  \textit{regimen de partícula preferencial}.
 
