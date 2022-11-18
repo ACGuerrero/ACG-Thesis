@@ -1,7 +1,9 @@
 This is my license thesis' repository
 
 TO DO LIST
- 1. Adress Andrea's comments
+ 1. Adress Andrea's comments [9fb1ef1](https://github.com/ACGuerrero/tesis-adan/commit/9fb1ef1d1539f6846402d94088bd14f32f2d01d2), [71cb68b](https://github.com/ACGuerrero/tesis-adan/commit/71cb68ba08bd866ed7a6bb8063d655d94572e1c1), [e7a9d2c](https://github.com/ACGuerrero/tesis-adan/commit/e7a9d2cf475105ae58296c0250f9345a369e7277), [a842a08](https://github.com/ACGuerrero/tesis-adan/commit/a842a08c0d987c1431f8eb43b44aef51eede967e), [e18cd95](https://github.com/ACGuerrero/tesis-adan/commit/e18cd95ff002966b505d2b72204d9dae32d54ebe), 
+
+
 
 
 
