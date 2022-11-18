@@ -13,7 +13,7 @@ La compuerta SWAP, $S$, actúa sobre dos qubits permutándolos. Su acción sobre
     \ket{0}\otimes\ket{0}&\mapsto\ket{0}\otimes\ket{0}\nonumber\\
     \ket{0}\otimes\ket{1}&\mapsto\ket{1}\otimes\ket{0}\nonumber\\
     \ket{1}\otimes\ket{0}&\mapsto\ket{0}\otimes\ket{1}\nonumber\\
-    \ket{1}\otimes\ket{1}&\mapsto\ket{1}\otimes\ket{0} \rlap{.}\nonumber
+    \ket{1}\otimes\ket{1}&\mapsto\ket{1}\otimes\ket{1} \rlap{.}\nonumber
 \end{align}
 Si un sistema está descrito por un operador de densidad separable, $\varrho=\rho_{A}\otimes\rho_{B}$, entonces el efecto de la compuerta SWAP es 
 \begin{equation}
@@ -45,12 +45,12 @@ S^{t}=\begin{pmatrix}
   0 & e^{\rmi\frac{t\pi}{2}}\cos{\frac{t\pi}{2}} & -\rmi e^{\rmi\frac{t\pi}{2}}\sin{\frac{t\pi}{2}} & 0 \\
   0 & -\rmi e^{i\frac{t\pi}{2}}\sin{\frac{t\pi}{2}} & e^{\rmi\frac{t\pi}{2}}\cos{\frac{t\pi}{2}}  & 0 \\
   0 & 0 & 0 & 1
- \end{pmatrix}
+ \end{pmatrix}.
 \end{equation}
 
 \subsubsection{Evolución discreta}
 
-Para estudiar la dinámica efectiva de una evolución subyacente descrita por el operador SWAP, primero analizaremos el caso en que no se ha introducido la dependencia temporal. Sea $\rho_{\ef}\in\densityspace{2}$ el estado efectivo y $\varrho_{\max}\in\densityspace{4}$ el estado de máxima entropía compatible con $\rho_{\ef}$ y la aplicación de grano grueso descrita en la sección \ref{sec:CH2CG} según $\mcA_{\mcC}^{\max}(\rho_{\ef})=\varrho_{\max}$. Estudiaremos la asignación
+Para estudiar la dinámica efectiva de una evolución subyacente descrita por el operador SWAP, primero analizaremos el caso en que no se ha introducido la dependencia temporal. Sea $\rho_{\ef}\in\densityspace{2}$ el estado efectivo y $\varrho_{\max}\in\densityspace{4}$ el estado de máxima entropía compatible con $\rho_{\ef}$ y la aplicación de grano grueso descrita en la sección \ref{sec:ch3_cg} según $\mcA_{\mcC}^{\max}(\rho_{\ef})=\varrho_{\max}$. Estudiaremos la asignación
 \begin{equation}
   \rho_{\ef}\mapsto \mcC(S \varrho_{\max} S).
 \end{equation}
@@ -68,24 +68,24 @@ El estado de la izquierda corresponde a $\varrho_{\max}(t=0)$, mientras que el d
 \end{equation}
 Vemos que ambos estados tienen la misma orientación (orientación significando la dirección del vector de Bloch) pero pureza distinta. Esto significa que el efecto del \textsc{SWAP} subyacente sobre la esfera de Bloch es comprimir al estado efectivo inicial con un coeficiente $\kappa_{1}$ definido según
 \begin{equation}\label{eq:SWAPFactor}
-  \kappa_{1}=\frac{r_{\ef}(1)}{r_{\ef}(0)}=\frac{p_{2}\tanh{\lambda p_{1}}+p_{1}\tanh{\lambda p_{2}}}{
+  \kappa_{1}=\frac{r_{\ef}(t=1)}{r_{\ef}(t=0)}=\frac{p_{2}\tanh{\lambda p_{1}}+p_{1}\tanh{\lambda p_{2}}}{
     p_{1}\tanh{\lambda p_{1}}+p_{2}\tanh{\lambda p_{2}}}.
 \end{equation}
-Claro está, el factor de compresión depende del multiplicador de Lagrange, que a su vez es una función de la pureza del estado inicial. La figura \ref{fig:SWAPFactor2Drl} muestra dicha dependencia. Como la dependencia en el estado inicial incluye únicamente la pureza del mismo, por lo que la compresión no depende de la dirección. Esta dinámica no es si no un canal de despolarización no lineal. Si la dependencia del factor de despolarización en el estado efectivo inicial se denota por un superíndice, la dinámica efectiva puede escribirse como
+Claro está, el factor de compresión depende del multiplicador de Lagrange, que a su vez es una función de la pureza del estado inicial. La figura \ref{fig:SWAPFactor2Drl} muestra dicha dependencia. Como la dependencia en el estado inicial incluye únicamente la pureza del mismo, por lo que la compresión no depende de la dirección. Esta dinámica no es sino un canal de despolarización no lineal. Si la dependencia del factor de despolarización en el estado efectivo inicial se denota por un superíndice, la dinámica efectiva puede escribirse como
 \begin{equation}\label{eq:EffectiveSWAP1}
-  \Gamma_{t=1}(\rho_{\ef})=\kappa_{1}^{\rho_{\ef}}\rho_{\ef}+(1-\kappa_{1}^{\rho_{\ef}})\frac{1}{2}\Id
+  \Gamma_{t=1}(\rho_{\ef})=\kappa_{1}^{\rho_{\ef}}\rho_{\ef}+(1-\kappa_{1}^{\rho_{\ef}})\frac{1}{2}\Id.
 \end{equation}
 \begin{figure}[ht!]
   \centering
   \begin{subfigure}{0.5\textwidth}
     \centering
-    \includegraphics[width=0.9\linewidth]{chapter3/figures_toy/K(r).pdf}
+    \includegraphics[width=0.9\linewidth]{chapter4/figures_toy/K(r).pdf}
   \end{subfigure}%
   \begin{subfigure}{0.5\textwidth}
     \centering
-    \includegraphics[width=0.9\linewidth]{chapter3/figures_toy/K(lambda).pdf}
+    \includegraphics[width=0.9\linewidth]{chapter4/figures_toy/K(lambda).pdf}
   \end{subfigure}
-  \caption{Factor de despolarización $\kappa_{1}^{\rho_{\ef}}$ como función de $r_{\ef}$ (der.) y como función de $\lambda$ (izq.), para diferentes valores de $p_{1}$.}\label{fig:SWAPFactor2Drl}
+  \caption{Factor de despolarización $\kappa_{1}^{\rho_{\ef}}$ como función de $r_{\ef}$ (izq.) y como función de $\lambda$ (der.), para diferentes valores de $p_{1}$.}\label{fig:SWAPFactor2Drl}
 \end{figure}
 
 
@@ -101,7 +101,7 @@ Como el factor de despolarización depende de $\lambda$, la dinámica no es line
 
 \subsubsection{Evolución continua}
 
-Utilizando la forma dependiente del tiempo del operador $S$ dada por la ecuación (\ref{eq:SWAP(t)}), puede seguirse el mismo proceso para hallar una expresión del estado efectivo evolucionado como función del tiempo y en términos de los operadores de Lagrange:
+Utilizando la forma dependiente del tiempo del operador $S$ dada por la ecuación (\ref{eq:SWAP(t)}), puede seguirse el mismo proceso para hallar una expresión del estado efectivo evolucionado como función del tiempo y en términos de los multiplicadores de Lagrange:
 \begin{align}
   \begin{split}
   \Gamma_{t}(\rho_{\ef})=\frac{1}{2}\bigg\{\Id+(\hat{r_{\ef}}\cdot\vec{\sigma})\bigg[&\qty(p_{2}\cos^{2}{\frac{\pi t}{2}}+p_{1}\sin^{2}{\frac{\pi t}{2}})\tanh{p_{1}\lambda}\\
@@ -112,10 +112,10 @@ Utilizando la forma dependiente del tiempo del operador $S$ dada por la ecuació
 El estado efectivo inicial siendo el mismo, el estado final vuelve a tener la misma orientación, y entonces es posible calcular el factor de despolarización como la razón entre las normas de los vectores de Bloch de los estados inicial y final:
 \begin{equation}\label{eq:SWAPFactort}
   \kappa_{t}^{\rho_{\ef}}=\frac{\qty(p_{2}\cos^{2}{\frac{\pi t}{2}}+p\sin^{2}{\frac{\pi t}{2}})\tanh{\lambda p_{1}}+\qty(p_{1}\cos^{2}{\frac{\pi t}{2}}+p_{2}\sin^{2}{\frac{\pi t}{2}})\tanh{\lambda p_{2}}}{
-    p_{1}\tanh{\lambda p_{1}}+p_{2}\tanh{\lambda p_{2}}}
+    p_{1}\tanh{\lambda p_{1}}+p_{2}\tanh{\lambda p_{2}}}.
 \end{equation}
 
-Nuevamente, el factor de despolarización (y por consiguiente, toda la evolución) depende de la pureza del estado efectivo incial, codificada en los multiplicadores de Lagrange. El efecto gradual de la evolución sobre la esfera de Bloch puede verse en la figura \ref{fig:SWAPFactorSequence}. La dinámica efectiva puede escribirse como
+Nuevamente, el factor de despolarización (y por consiguiente, toda la evolución) depende de la pureza del estado efectivo inicial, codificada en los multiplicadores de Lagrange. El efecto gradual de la evolución sobre la esfera de Bloch puede verse en la figura \ref{fig:SWAPFactorSequence}. La dinámica efectiva puede escribirse como
 \begin{equation}\label{eq:EffectiveSWAPt}
   \Gamma_{t}(\rho_{\ef})=\kappa_{t}^{\rho_{\ef}}\rho_{\ef}+(1-\kappa_{t}^{\rho_{\ef}})\frac{1}{2}\Id.
 \end{equation}
@@ -124,17 +124,17 @@ Nuevamente, el factor de despolarización (y por consiguiente, toda la evolució
   \centering
   \begin{subfigure}{0.32\textwidth}
     \centering
-    \includegraphics[width=0.9\linewidth]{chapter3/figures_toy/SWAP_t=0._p=0.9_r=0.9.pdf}
+    \includegraphics[width=0.9\linewidth]{chapter4/figures_toy/SWAP_t=0._p=0.9_r=0.9.pdf}
     \caption{$t=0$}
   \end{subfigure}%
   \begin{subfigure}{0.32\textwidth}
     \centering
-    \includegraphics[width=0.9\linewidth]{chapter3/figures_toy/SWAP_t=0.5_p=0.9_r=0.9.pdf}
+    \includegraphics[width=0.9\linewidth]{chapter4/figures_toy/SWAP_t=0.5_p=0.9_r=0.9.pdf}
     \caption{$t=0.5$}
   \end{subfigure}
   \begin{subfigure}{0.32\textwidth}
     \centering
-    \includegraphics[width=0.9\linewidth]{chapter3/figures_toy/SWAP_t=1._p=0.9_r=0.9.pdf}
+    \includegraphics[width=0.9\linewidth]{chapter4/figures_toy/SWAP_t=1._p=0.9_r=0.9.pdf}
     \caption{$t=1$}
   \end{subfigure}
   \caption{Efecto sobre la esfera de Bloch de la dinámica efectiva inducida por la evolución SWAP continua a diferentes tiempos $t$. Se muestra una esfera inicial de radio $r_{\ef}(0)=0.9$. El parámetro de la aplicación de grano grueso es $p_{1}=0.9$. \label{fig:SWAPFactorSequence}}
@@ -149,20 +149,20 @@ De las ecuaciones (\ref{eq:SWAPFactort}) y (\ref{eq:EffectiveSWAPt}) es posible 
 
 \begin{figure}[ht!]
   \centering
-  \includegraphics[width=0.6\linewidth]{chapter3/figures_toy/K(t).pdf}
+  \includegraphics[width=0.6\linewidth]{chapter4/figures_toy/K(t).pdf}
   \caption{Factor de despolarización $\kappa_{t}^{\rho_{\ef}}$ de la dinámica efectiva inducida por la evolución SWAP como función de $t$, para diferentes valores de $p_{1}$ y $r_{\ef}(0)=0.8$.}
   \label{fig:SWAPFactor2Dt}
 \end{figure}
 
 En términos del valor esperado del observable $\sigma_{3}$, la evolución del estado se da como
 \begin{equation}
-  \expval{\sigma_{3}(t)}=\kappa_{t}^{\rho}\expval{\pauli{3}(0)},\nonumber
+  \expval{\sigma_{3}(t)}=\kappa_{t}^{\rho_{\ef}}\expval{\pauli{3}(0)},\nonumber
 \end{equation}
 que puede escribirse, también, como las probabilidades de que $\Gamma_{t}(\rho_{\ef})$ se halle en el estado $\ket{0}$ o $\ket{1}$
  \begin{align}
   \bra{0}\Gamma_{t}(\rho_{\ef})\ket{0}=\frac{1}{2}(1+\kappa_{t}^{\rho_{\ef}}\expval{\pauli{3}(0)}) && \bra{1}\Gamma_{t}(\rho_{\ef})\ket{1}=\frac{1}{2}(1-\kappa_{t}^{\rho_{\ef}}\expval{\pauli{3}(0)})\nonumber
  \end{align}
- donde la dependencia temporal está completamente contenida dentro del factor $\kappa_{t}^{\rho_{\ef}}$. Nótese que el efecto del canal de despolarización es hacer a los estados menos reconocibles entre sí.
+ donde la dependencia temporal está completamente contenida dentro del factor $\kappa_{t}^{\rho_{\ef}}$. Nótese que el efecto del canal de despolarización es hacer acercar a todos los estados al estado máximamente mezclado.
 
 
 \subsection{La compuerta cuántica controlled not}
@@ -184,22 +184,22 @@ En la base computacional de dos qubits, la compuerta puede representarse como la
     \end{pmatrix}.\nonumber
 \end{equation}
 Claro está, esta matriz corresponde a la evolución discreta. Considérese el hamiltoniano
-\begin{equation}
-  H_{\cnot}=-\omega(\pauli{3}\otimes\Id+\Id\otimes\pauli{1}-\pauli{3}\otimes\pauli{1}),\nonumber
+\begin{equation}\label{eq:CNOTHam}
+  H_{\cnot}=-\omega(\pauli{3}\otimes\Id+\Id\otimes\pauli{1}-\pauli{3}\otimes\pauli{1}),
 \end{equation}
-que genera la compuerta CNOT al tiempo $t=1$ cuando $\omega=\frac{\pi}{4}$. Nótese que, por estar conformado por tres operadores que conmutan entre sí, la compuerta puede escribirse como lo acción consecutiva de tres operadores unitarios que conmutan entre sí:
+que genera la compuerta CNOT al tiempo $t=1$ cuando $\omega=\frac{\pi}{4}$. Nótese que, por estar conformado por tres operadores que conmutan entre sí, la compuerta puede escribirse como la acción consecutiva de tres operadores unitarios que conmutan entre sí:
 \begin{equation}
   \cnot=(e^{\rmi\omega\pauli{3}}\otimes \Id) (\Id \otimes e^{\rmi\omega\pauli{1}}) e^{-\rmi\omega\pauli{3}\otimes\pauli{1}}.\nonumber
 \end{equation}
 
 \subsubsection{CNOT completo efectivo}
 
-Para estudiar la dinámica efectiva del operador $\cnot$ son particularmente útiles las expresiones (\ref{eq:rhoArhoB}). Como el estado de máxima entropía compatible con la aplicación de grano grueso puede escribirse como $\varrho_{\max}=\rho_{1}\otimes\rho_{2}$, entonces hallar el estado efectivo final es un problema de álgebra. En efecto,
+Para estudiar la dinámica efectiva del operador $\cnot$ son particularmente útiles las expresiones (\ref{eq:rhoArhoB}). Como el estado de máxima entropía compatible con la aplicación de grano grueso puede escribirse como $\varrho_{\max}=\rho_{1}\otimes\rho_{2}$, entonces hallar el estado efectivo final es un problema de álgebra. Si se aplica el operador $\cnot$ al estado de máxima entropía, y luego se pasa el resultado por la aplicación de grano grueso, el resultado es la dinámica efectiva
 \begin{align}
     \Gamma_{t=1}(\rho_{\ef})=&\,\frac{p_{1}}{2}(\rho_{\ef}+\sigma_{3}\rho_{1}\sigma_{3}+\Tr{\sigma_{1}\rho_{2}}[\rho_{1}-\sigma_{3}\rho_{1}\sigma_{3}])\nonumber\\
     &+\frac{p_{2}}{2}(\rho_{\ef}+\sigma_{1}\rho_{2}\sigma_{1}+\Tr{\sigma_{3}\rho_{1}}[\rho_{2}-\sigma_{1}\rho_{2}\sigma_{1}]).\nonumber
 \end{align}
-La estructura del estado final es una consecuencia directa de la aplicación borrosa. Para entender el significado de cada uno de los términos, considérense dos casos extremos: primero, el caso en que el aparato de medición no tiene un error asociado ($p_{1}=1$). En dicho caso, a través del principio de máxima entropía, se esperaría que el estado efectivo final fuera
+La estructura del estado final es una consecuencia directa de la aplicación borrosa. Para entender el significado de cada uno de los términos, considérense dos casos extremos: primero, el caso en que el aparato de medición no tiene un error asociado ($p_{1}=1$). En dicho caso, a través del principio de máxima entropía, el estado efectivo final es
 \begin{equation}
   \Gamma_{t=1}(\rho_{\ef})=\frac{1}{2}\qty(\rho_{\ef}+\pauli{3}\rho_{\ef}\pauli{3}),\nonumber
 \end{equation}
@@ -207,11 +207,11 @@ La estructura del estado final es una consecuencia directa de la aplicación bor
   \centering
   \begin{subfigure}{0.5\textwidth}
     \centering
-    \includegraphics[width=0.6\linewidth]{chapter3/figures_toy/CNOT_p=0.5_t=0._r=0.9.png}
+    \includegraphics[width=0.6\linewidth]{chapter4/figures_toy/CNOT_p=0.5_t=0._r=0.9.png}
   \end{subfigure}%
   \begin{subfigure}{0.5\textwidth}
     \centering
-    \includegraphics[width=0.6\linewidth]{chapter3/figures_toy/CNOT_p=1._t=1_r=0.9.png}
+    \includegraphics[width=0.6\linewidth]{chapter4/figures_toy/CNOT_p=1._t=1_r=0.9.png}
   \end{subfigure}
   \caption{Efecto de un canal de desfasamiento total sobre la esfera de Bloch. \label{fig:PhaseFlip}}
 \end{figure}
@@ -223,11 +223,11 @@ que reconocemos como un canal de desfasamiento total (ver figura \ref{fig:PhaseF
   \centering
   \begin{subfigure}{0.5\textwidth}
     \centering
-    \includegraphics[width=0.6\linewidth]{chapter3/figures_toy/CNOT_p=0.5_t=0._r=0.9.png}
+    \includegraphics[width=0.6\linewidth]{chapter4/figures_toy/CNOT_p=0.5_t=0._r=0.9.png}
   \end{subfigure}%
   \begin{subfigure}{0.5\textwidth}
     \centering
-    \includegraphics[width=0.6\linewidth]{chapter3/figures_toy/CNOT_p=0._t=1_r=0.9.png}
+    \includegraphics[width=0.6\linewidth]{chapter4/figures_toy/CNOT_p=0._t=1_r=0.9.png}
   \end{subfigure}
   \caption{Efecto del canal de \textit{bit flip} total sobre la esfera de Bloch. \label{fig:BitFlip}}
 \end{figure}
@@ -241,7 +241,7 @@ De esta forma, el efecto de la dinámica efectiva es una combinación de dos can
 
 \subsubsection{CNOT efectivo a un tiempo arbitrario}
 
-Estudiado el caso discreto, utilícese el hamiltoniano para propagar al estado microscópica de forma continua en el tiempo. El estado efectivo es propagado por la evolución efectiva
+Estudiado el caso discreto, utilícese el hamiltoniano dado por la ecuación (\ref{eq:CNOTHam}) para propagar al estado microscópico de forma continua en el tiempo. El estado efectivo es propagado por la evolución efectiva
 \begin{align}
   \Gamma_{t}(\rho_{\ef})=&\rho(\cos^{4}(\omega t)+\sin^{4}(\omega t))\nonumber\\
   &+p_{1}\{2\sin^{2}(\omega t)\cos^{2}(\omega
@@ -273,17 +273,17 @@ En ambos casos recuperamos los resultados del caso discreto al tiempo $t=1$ elig
   \centering
   \begin{subfigure}{0.32\textwidth}
     \centering
-    \includegraphics[width=0.9\linewidth]{chapter3/figures_toy/CNOT_p=0.5_t=0._r=0.9.png}
+    \includegraphics[width=0.9\linewidth]{chapter4/figures_toy/CNOT_p=0.5_t=0._r=0.9.png}
     \caption{$t=0$}
   \end{subfigure}%
   \begin{subfigure}{0.32\textwidth}
     \centering
-    \includegraphics[width=0.9\linewidth]{chapter3/figures_toy/CNOT_p=0.1_t=0.5_r=0.9.png}
+    \includegraphics[width=0.9\linewidth]{chapter4/figures_toy/CNOT_p=0.1_t=0.5_r=0.9.png}
     \caption{$t=0.5$}
   \end{subfigure}
   \begin{subfigure}{0.32\textwidth}
     \centering
-    \includegraphics[width=0.9\linewidth]{chapter3/figures_toy/CNOT_p=0.1_t=1._r=0.9.png}
+    \includegraphics[width=0.9\linewidth]{chapter4/figures_toy/CNOT_p=0.1_t=1._r=0.9.png}
     \caption{$t=1$}
   \end{subfigure}
   \caption{Efecto sobre la esfera de Bloch de la dinámica efectiva inducida por la evolución CNOT continua a diferentes tiempos $t$. Se muestra una esfera inicial de radio $r_{\ef}(0)=0.9$. El parámetro de la aplicación de grano grueso es $p_{1}=0.1$. Nótese que a tiempo $t=1$ se recupera el \textit{casi} canal de \textit{bit flip}. \label{fig:AlmostBitFlipSequence}}
@@ -293,17 +293,17 @@ En ambos casos recuperamos los resultados del caso discreto al tiempo $t=1$ elig
     \centering
     \begin{subfigure}{0.32\textwidth}
       \centering
-      \includegraphics[width=0.9\linewidth]{chapter3/figures_toy/CNOT_p=0.5_t=0._r=0.9.png}
+      \includegraphics[width=0.9\linewidth]{chapter4/figures_toy/CNOT_p=0.5_t=0._r=0.9.png}
       \caption{$t=0$}
     \end{subfigure}%
     \begin{subfigure}{0.32\textwidth}
       \centering
-      \includegraphics[width=0.9\linewidth]{chapter3/figures_toy/CNOT_p=0.9_t=0.5_r=0.9.png}
+      \includegraphics[width=0.9\linewidth]{chapter4/figures_toy/CNOT_p=0.9_t=0.5_r=0.9.png}
       \caption{$t=0.5$}
     \end{subfigure}
     \begin{subfigure}{0.32\textwidth}
       \centering
-      \includegraphics[width=0.9\linewidth]{chapter3/figures_toy/CNOT_p=0.9_t=1._r=0.9.png}
+      \includegraphics[width=0.9\linewidth]{chapter4/figures_toy/CNOT_p=0.9_t=1._r=0.9.png}
       \caption{$t=1$}
     \end{subfigure}
     \caption{Efecto sobre la esfera de Bloch de la dinámica efectiva inducida por la evolución CNOT continua a diferentes tiempos $t$. Se muestra una esfera inicial de radio $r_{\ef}(0)=0.9$. El parámetro de la aplicación de grano grueso es $p_{1}=0.9$. Nótese que a tiempo $t=1$ se recupera el \textit{casi} canal de desfasamiento.  \label{fig:AlmostPhaseFlipSequence}}
@@ -313,17 +313,17 @@ En ambos casos recuperamos los resultados del caso discreto al tiempo $t=1$ elig
       \centering
       \begin{subfigure}{0.32\textwidth}
         \centering
-        \includegraphics[width=0.9\linewidth]{chapter3/figures_toy/CNOT_p=0.5_t=0._r=0.9.png}
+        \includegraphics[width=0.9\linewidth]{chapter4/figures_toy/CNOT_p=0.5_t=0._r=0.9.png}
         \caption{$t=0$}
       \end{subfigure}%
       \begin{subfigure}{0.32\textwidth}
         \centering
-        \includegraphics[width=0.9\linewidth]{chapter3/figures_toy/CNOT_p=0.5_t=0.5_r=0.9.png}
+        \includegraphics[width=0.9\linewidth]{chapter4/figures_toy/CNOT_p=0.5_t=0.5_r=0.9.png}
         \caption{$t=0.5$}
       \end{subfigure}
       \begin{subfigure}{0.32\textwidth}
         \centering
-        \includegraphics[width=0.9\linewidth]{chapter3/figures_toy/CNOT_p=0.5_t=1._r=0.9.png}
+        \includegraphics[width=0.9\linewidth]{chapter4/figures_toy/CNOT_p=0.5_t=1._r=0.9.png}
         \caption{$t=1$}
       \end{subfigure}
       \caption{Efecto sobre la esfera de Bloch de la dinámica efectiva inducida por la evolución CNOT continua a diferentes tiempos $t$. Se muestra una esfera inicial de radio $r_{\ef}(0)=0.9$. El parámetro de la aplicación de grano grueso es $p_{1}=0.5$. La deformación (y rompimiento) de la esfera de Bloch es consecuencia de la combinación de dos canales no lineales. \label{fig:CNOTSequence}}

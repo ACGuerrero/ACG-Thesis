@@ -1,4 +1,5 @@
 \section{El operador de densidad}
+\label{sec:ch2_density_operator}
 
 \subsection{Mezclas estadísticas}
 
@@ -171,6 +172,7 @@ Puede verse que el resultado de la operación es trazar sobre los elementos del 
 \end{equation}
 
 \subsection{Evolución y parametrización}
+\label{subsec:ch2_evol_param}
 
 \acnote{Esta subsección ha sido iterada: reescritura.}
 \acnote{Reescritura iterada: notas}
@@ -248,7 +250,7 @@ de tal manera que la matriz de densidad $\rho$ puede escribirse como
 \begin{equation}\label{eq:BlochParametrization}
     \rho=\frac{1}{n}\qty(\Id_{n}+\vec{\gamma}\cdot\vec{\varsigma}).
 \end{equation}
-Si $n=2$, los generadores corresponden a las matrices de Pauli $\sigma_{j}$. En tal caso, el conjunto de vectores de Bloch corresponde a la bola unitaria tridimensional, con los estados puros en la superficie y los estados mixtos en el interior. Para casos en los que la dimensión es una potencia de $2$, es posible obtener nuevos generadores a través de los productos tensoriales de las matrices de Pauli consigo mismas y con la matriz identidad. El caso $n=4$, por ejemplo \cite{Chuang}:
+Esta parametrización es especialmente útil en el caso en que $n=2$, en el que los generadores corresponden a las matrices de Pauli, $\sigma_{j}$. Si $n=2$, el conjunto de vectores de Bloch corresponde a la bola unitaria tridimensional (llamada \textit{esfera de Bloch}), con los estados puros en la superficie y los estados mixtos en el interior. Esto permite visualizar dinámicas cuánticas de un qubit de forma geométrica. Por ejemplo, en la esfera de Bloch, las dinámicas unitarias se ven traducidas a rotaciones respecto al origen. Por esta razón, esfera de Bloch será una herramienta ampliamente utilizada a lo largo de este trabajo. Para casos en los que la dimensión es una potencia de $2$, es posible obtener nuevos generadores a través de los productos tensoriales de las matrices de Pauli consigo mismas y con la matriz identidad. El caso $n=4$, por ejemplo \cite{Chuang}:
 \begin{equation}\label{eq:BlochParametrization4}
     \rho=\frac{1}{4}\sum_{j,k=0}^{3}\gamma_{jk}\sigma_{i}\otimes \sigma_{k},\nonumber
 \end{equation}

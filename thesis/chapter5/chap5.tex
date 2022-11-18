@@ -1,4 +1,4 @@
-\chapter{La aplicación de asignación promedio}\label{sec:AVG}
+\chapter{La aplicación de asignación promedio}\label{ch:5}
 
 En este apéndice se comparan dos tipos de aplicaciones de asignación diferentes: la aplicación de asignación de máxima entropía, construida en este trabajo, y la aplicación de asignación promedio.
 
@@ -17,38 +17,46 @@ La aplicación de asignación promedio es el promedio sobre dicho conjunto, \ie
 \end{equation}
 donde $d\mu$ es la medida de Haar sobre los estados puros de $\hilbert_{m}$. La delta de Dirac asegura que únicamente se tomen en consideración a los estados puros compatibles, y la medida de Haar, que la integración sobre dicho conjunto sea uniforme. Dicho de otra forma, la aplicación de asignación promedio asume dos cosas sobre el sistema microscópico: que puede estar estar en un estado puro, y que todos los estados puros son igualmente probables.
 
-La solución analítica a la ecuación (\ref{eq:AvgMap}) es complicada y no se discutirá en este trabajo, pero ha sido encontrada por los doctores C. Pineda y R. Uriostegui del Instituto de Física de la UNAM, para el caso en que la aplicación de grano grueso va de $\densityspace{4}$ a $\densityspace{2}$. Esto es, del espacio de dos partículas de dos niveles, al espacio de una partícula de dos niveles. En este trabajo no se profundizará en dicho resultado, pero se utilizará para poder comparar ambas aplicaciones de asignación.
+La solución analítica a la ecuación (\ref{eq:AvgMap}) es complicada y no se discutirá en este trabajo, pero ha sido encontrada por los doctores C. Pineda y R. Uriostegui del Instituto de Física de la UNAM, para el caso en que la aplicación de grano grueso va de $\densityspace{4}$ a $\densityspace{2}$\footnote{Debido a que el trabajo no ha sido publicado aún, no hay una referencia disponible.}. Esto es, del espacio de dos partículas de dos niveles, al espacio de una partícula de dos niveles. En este trabajo no se profundizará en dicho resultado, pero se utilizará para poder comparar ambas aplicaciones de asignación.
 
-\section{Diferencia entre el MaxEnt y el AssMap}
+\section{La diferencia entre asignaciones}
 
-Aunque las hipótesis de la aplicación de asignación promedio puedan parecer razonables, Jaynes, en su artículo, argumenta que estas son tan arbitrarias como cualquier otra suposición, a menos que algún tipo de simetría del sistema sugiera lo contrario. Nos preguntamos sobre la diferencia entre el estado de máxima entropía y el estado promedio, como una función del parámetro $p_{1}$ de la aplicación de grano grueso (recuérdese que en el caso $n=1$ el segundo parámetro es simplemente $(1-p_{1}$) y del radio de Bloch del estado efectivo inicial $r_{\ef}$, \ie{} 
+Aunque las hipótesis de la aplicación de asignación promedio puedan parecer razonables, Jaynes, en su artículo, argumenta que estas son tan arbitrarias como cualquier otra suposición, a menos que algún tipo de simetría del sistema sugiera lo contrario. Nos preguntamos sobre la diferencia entre el estado de máxima entropía y el estado promedio, como una función del parámetro $p_{1}$ de la aplicación de grano grueso (recuérdese que en el caso $n=1$ el segundo parámetro es simplemente $(1-p_{1}$)) y del radio de Bloch del estado efectivo inicial $r_{\ef}$, \ie{} 
 \begin{equation}\label{eq:DistAvgMaxEnt}
-    \text{d}\qty(\avgass(\rho_{\ef}),\maxass(\rho_{\ef}))=\text{d}\qty(\avgass(\rho_{\ef}),\maxass(\rho_{\ef}))(p_{1},r_{\ef}).\nonumber
+    \text{d}_{F}\qty(\avgass(\rho_{\ef}),\maxass(\rho_{\ef}))=\text{d}_{F}\qty(\avgass(\rho_{\ef}),\maxass(\rho_{\ef}))(p_{1},r_{\ef}),\nonumber
+\end{equation}
+donde $\text{d}_{F}(A,B)$ designa a la distancia entre dos matrices inducida por la norma de Frobenius. La norma de Frobenius de una matriz $A$ es
+\begin{equation}
+  \norm{A}_{F}=\sqrt{\Tr(AA^{\dagger})},\nonumber
+\end{equation}
+de tal forma que
+\begin{equation}
+  \text{d}_{F}(A,B)=\norm{A-B}_{F}.\nonumber
 \end{equation}
 Como se mencionó previamente, la expresión de $\avgass(\rho_{\ef})$ no es sencilla, así que esta distancia se analizará de manera cuantitativa. La figura \ref{ap:DistAvgMaxEnt} muestra dicha distancia, primero como función del parámetro de ruido $p_{1}$ para diferentes valores del radio de Bloch del estado efectivo inicial, $r_{\ef}$, y luego como función de $r_{\ef}$ para diferentes valores de $p_{1}$.
 \begin{figure}[ht!]
     \centering
     \begin{subfigure}{0.5\textwidth}
       \centering
-      \includegraphics[width=1.\linewidth]{appendices/figures/dist_maxent_avg_vs_p.png}
+      \includegraphics[width=1.\linewidth]{chapter5/figures/dist_maxent_avg_vs_p.png}
     \end{subfigure}%
     \begin{subfigure}{0.5\textwidth}
       \centering
-      \includegraphics[width=1.\linewidth]{appendices/figures/dist_maxent_avg_vs_z.png}
+      \includegraphics[width=1.\linewidth]{chapter5/figures/dist_maxent_avg_vs_z.png}
     \end{subfigure}
     \caption{Distancia de Frobenius entre asignaciones como función de $p_{1}$ para diferentes valores de $r_{z}$, y como función de $r_{z}$ para diferentes valores de $p_{1}$.}\label{ap:DistAvgMaxEnt}
 \end{figure}
 
-Lo primero que puede observarse en dichas gráficas es que la distancia no es diferenciable en para valores de $r_{\ef}$ y $p_{1}$ tales que $r_{z}=1-2p_{1}$. Esta característica es una consecuencia del comportamiento de la asignación promedio, y no de la asignación de máxima entropía. Para convencerse de esto basta con observar la figura \ref{ap:DistAvgMaxEntId}, que muestra las distancias de Frobenius de la asignación de máxima entropía y de la asignación promedio al estado máximamente mezclado.
+Lo primero que puede observarse en dichas gráficas es que la distancia no es diferenciable para valores de $r_{\ef}$ y $p_{1}$ tales que $r_{z}=1-2p_{1}$. Esta característica es una consecuencia del comportamiento de la asignación promedio, y no de la asignación de máxima entropía. Para convencerse de esto basta con observar la figura \ref{ap:DistAvgMaxEntId}, que muestra las distancias de Frobenius de la asignación de máxima entropía y de la asignación promedio al estado máximamente mezclado.
 \begin{figure}[ht!]
     \centering
     \begin{subfigure}{0.5\textwidth}
       \centering
-      \includegraphics[width=1.\linewidth]{appendices/figures/dist_maxent_or_vs_p.png}
+      \includegraphics[width=1.\linewidth]{chapter5/figures/dist_maxent_or_vs_p.png}
     \end{subfigure}%
     \begin{subfigure}{0.5\textwidth}
       \centering
-      \includegraphics[width=1.\linewidth]{appendices/figures/dist_avg_or_vs_p.png}
+      \includegraphics[width=1.\linewidth]{chapter5/figures/dist_avg_or_vs_p.png}
     \end{subfigure}
     \caption{Distancia entre asignaciones y el estado máximamente mezclado.}\label{ap:DistAvgMaxEntId}
 \end{figure}
@@ -76,9 +84,9 @@ donde $U_{t},V_{t}\in\unitaryspace{2}$ y $U_{t}=V_{t}$. Debido a que el promedio
 \begin{equation}
   U_{t}\otimes U_{t}=(\Id\otimes U_{t})(\varrho_{\avg})(\Id\otimes U_{t}^{\dag}).\nonumber
 \end{equation}
-Luego
+Luego, descomponiendo al estado efectivo evolucionado en la base de las matrices de Pauli,
 \begin{align}
-  \rho_{\ef}(t)=\frac{1}{2}\sum_{j=0}\Tr\qty[\pauli{j}\rho_{\ef}(t)]\pauli{j} & & \text{con} & &\Tr\qty[\pauli{j}\rho_{\ef}(t)]=\Tr\left\{\pauli{j}\mcC\qty[\mcU_{t} (\varrho_{\avg}) \mcU_{t}^{\dagger}]\right\}.\nonumber
+  \rho_{\ef}(t)=\frac{1}{2}\sum_{j=0}^{3}\Tr\qty[\pauli{j}\rho_{\ef}(t)]\pauli{j} & & \text{con} & &\Tr\qty[\pauli{j}\rho_{\ef}(t)]=\Tr\left\{\pauli{j}\mcC\qty[\mcU_{t} (\varrho_{\avg}) \mcU_{t}^{\dagger}]\right\}.\nonumber
 \end{align}
 Como $\Tr\qty[(A\otimes \Id) \varrho]=\Tr\qty[ \Tr_{2}(\varrho)]$ y gracias a la propiedad cíclica de la traza es inmediato que la dinámica efectiva es
 \begin{equation}
@@ -94,12 +102,12 @@ Debido a que la aplicación promedio crea correlaciones que la aplicación de m�
     \centering
     \begin{subfigure}{0.5\textwidth}
       \centering
-      \includegraphics[width=0.8\linewidth]{appendices/figures/local_AvgVSMax_p2=0.1_r=0.9_w1=0_w2=1.png}
+      \includegraphics[width=0.8\linewidth]{chapter5/figures/local_AvgVSMax_p2=0.1_r=0.9_w1=0_w2=1.png}
       \caption{$H=\Id\otimes\pauli{3}$}
     \end{subfigure}%
     \begin{subfigure}{0.5\textwidth}
       \centering
-      \includegraphics[width=0.8\linewidth]{appendices/figures/local_AvgVSMax_p2=0.1_r=0.9_w1=1_w2=0.png}
+      \includegraphics[width=0.8\linewidth]{chapter5/figures/local_AvgVSMax_p2=0.1_r=0.9_w1=1_w2=0.png}
       \caption{$H=\pauli{3}\otimes\Id$}
     \end{subfigure}
     \caption{Variaciones correspondientes a la dinámica efectiva inducida por diferentes hamiltonianos en un sistema de dos partículas partiendo de un estado efectivo inicial (verde) tal que $r_{\ef}=0.9$ y $r_{z}\approx0.09$. En rojo, la evolución del estado promedio. En negro, la del estado de máxima entropía. \label{ap:EffDunAVGvsMaxEnt1}}
@@ -109,12 +117,12 @@ Debido a que la aplicación promedio crea correlaciones que la aplicación de m�
     \centering
     \begin{subfigure}{0.5\textwidth}
       \centering
-      \includegraphics[width=0.8\linewidth]{appendices/figures/local_AvgVSMax_p2=0.1_r=0.9_w1=30_w2=1.png}
+      \includegraphics[width=0.8\linewidth]{chapter5/figures/local_AvgVSMax_p2=0.1_r=0.9_w1=30_w2=1.png}
       \caption{$H=30\pauli{3,1}+\pauli{3}$}
     \end{subfigure}%
     \begin{subfigure}{0.5\textwidth}
       \centering
-      \includegraphics[width=0.8\linewidth]{appendices/figures/local_AvgVSMax_p2=0.1_r=0.9_w1=1_w2=10.png}
+      \includegraphics[width=0.8\linewidth]{chapter5/figures/local_AvgVSMax_p2=0.1_r=0.9_w1=1_w2=10.png}
       \caption{$H=\pauli{3,1}+10\pauli{3}$}
     \end{subfigure}
     \caption{Variaciones correspondientes a la dinámica efectiva inducida por diferentes hamiltonianos en un sistema de dos partículas partiendo de un estado efectivo inicial (verde) tal que $r_{\ef}=0.9$ y $r_{z}\approx0.09$. En rojo, la evolución del estado promedio. En negro, la del estado de máxima entropía. \label{ap:EffDunAVGvsMaxEnt2}}

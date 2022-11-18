@@ -1,4 +1,5 @@
-\section{Un modelo de grano grueso y mediciones borrosas}\label{sec:CH2CG}
+\section{Un modelo de grano grueso y mediciones borrosas}
+\label{sec:ch3_cg}
 
 \acnote{Párrafo iterado: solo notas.}
 
@@ -52,8 +53,10 @@ La discusión anterior giró alrededor del caso en que el modelo de grano grueso
     \varrho \mapsto p_{1}\varrho+\sum_{j=2}^{n}p_{j}(S_{1,j})\varrho(S_{1,j}),\nonumber
 \end{gather}
 donde $S_{1,j}$ es el operador que permuta la primera y la $j$-ésima partícula. De esta manera, donde $\Tr_{\overline{i}}$ denota la traza parcial sobre todos menos el $i$-ésimo qubit, la aplicación de grano grueso que resuelve un qubit donde hay $n$ qubits es
-\begin{gather}\label{eq:CG}
-    \mcC:\mcS( \hilbert_{2}^{\otimes n})\to \mcS(\hilbert_{2})\nonumber\\
-    \varrho\mapsto\Tr_{\overline{1}}(\Fuzzy{\varrho}).
-\end{gather}
+\begin{equation}\label{eq:CG}
+    \begin{gathered}
+        \mcC:\mcS( \hilbert_{2}^{\otimes n})\to \mcS(\hilbert_{2})\nonumber\\
+        \varrho\mapsto\Tr_{\overline{1}}(\Fuzzy{\varrho}).
+    \end{gathered}
+\end{equation}
 Reconocemos, según los valores de las probabilidades $p_{j}$, varios tipos de regímenes. Dos de estos serán analizados con más profundidad: si $p_{1}>p_{j}\forall j\neq 1$ se dice que el modelo tiene una partícula preferencial. Si $p_{j}=\frac{1}{n}\forall j$ entonces no existe ninguna partícula preferencial, y se puede ver al sistema como una caja de gas en la que medir a cualquier partícula es igual de probable.

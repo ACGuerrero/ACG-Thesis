@@ -8,10 +8,12 @@ Los canales de Pauli son canales cuánticos en los que se aplica un operador de 
     \mcP(\Delta)=\sum_{j=0}^{3}q_{j}\pauli{j}\Delta\pauli{j}\,\text{ con }\, \sum_{j=0}^{3}q_{j}=1\rlap{.}\nonumber
 \end{gather}
 Reconociendo que cualquiera de los tres operadores de Pauli puede escribirse en términos de los otros dos, una manera de extender los canales de Pauli de un qubit a $n$ qubits es \cite{NPauliOperators}
-\begin{gather}\label{eq:PauliChannelN}
-    \mcP:\mcB(\hilbert_{2^{n}}) \rightarrow \mcB(\hilbert_{2^{n}})\nonumber\\
-    \mcP(\Delta)=\sum_{\vec{j},\vec{k}}q_{\vec{j},\vec{k}}\pauli{1}^{\vec{j}}\pauli{3}^{\vec{k}}\Delta\pauli{3}^{\vec{k}}\pauli{1}^{\vec{j}}\rlap{.}
-\end{gather}
+\begin{equation}\label{eq:PauliChannelN}
+    \begin{gathered}
+        \mcP:\mcB(\hilbert_{2^{n}}) \rightarrow \mcB(\hilbert_{2^{n}})\\
+        \mcP(\Delta)=\sum_{\vec{j},\vec{k}}q_{\vec{j},\vec{k}}\pauli{1}^{\vec{j}}\pauli{3}^{\vec{k}}\Delta\pauli{3}^{\vec{k}}\pauli{1}^{\vec{j}}\rlap{.}
+    \end{gathered}
+\end{equation}
 donde $\pauli{j}^{\vec{k}}=\pauli{j}^{k_{1}}\otimes\pauli{j}^{k_{2}}\otimes ... \otimes \pauli{j}^{k_{n}}$ y las entradas $k_{l}$ del vector $\vec{k}$ solo pueden valer $0$ o $1$.
 
 \subsubsection{Canales de desfasamiento}
@@ -54,23 +56,33 @@ Por supuesto, el canal de \textit{bit flip} es un canal de desfasamiento si se t
         (q_{1}-q_{2})\rho_{1,0} & \rho_{1,1}\\
     \end{pmatrix}.\nonumber
 \end{equation}
-Para extender la noción de canal de desfasamiento a $n$ qubits, primero nótese que dada la base de $\hilbert_{2}$ conformada por los eigenestados de $\pauli{3}$, $\{\ket{e_{0}},\ket{e_{1}}\}$, es posible construir una base $\left\{\ket{e_{\vec{k}}}\right\}_{\vec{k}}$ de $\hilbert_{2^{n}}$ como
+Para extender la noción de canal de desfasamiento a $n$ qubits, primero nótese que dada la base de $\hilbert_{2}$ conformada por los eigenestados de $\pauli{3}$ (la base computacional), $\{\ket{e_{0}},\ket{e_{1}}\}$, es posible construir una base $\left\{\ket{e_{\vec{k}}}\right\}_{\vec{k}}$ de $\hilbert_{2^{n}}$ como
 \begin{equation}
     \left\{\ket{e_{\vec{k}}}\right\}_{\vec{k}}=\left\{\ket{e_{\vec{k}}}\in\hilbert_{2^{n}}: \ket{e_{\vec{k}}}=\Motimes_{j=1}^{n}\ket{e_{k_{j}}},\,k_{j}\in\{0,1\}\right\} \rlap{.}\nonumber
 \end{equation}
 Esto es, tomando los productos tensoriales de los eigenestados de $\pauli{3}$ consigo mismos. De esta manera podemos estudiar dos canales de desfasamiento, el primero actuando en la base de productos tensoriales de eigenestados de $\pauli{3}$,
-\begin{gather}
-    \mcP_{\pauli{3}}:\mcB(\hilbert_{2^{n}}) \rightarrow \mcB(\hilbert_{2^{n}})\nonumber\\
-    \mcP_{\pauli{3}}(\Delta)=\sum_{\vec{k}}q_{\vec{k}}\pauli{3}^{\vec{k}}\Delta\pauli{3}^{\vec{k}}\rlap{,}\nonumber
-\end{gather}
+\begin{equation}\label{eq:PauliChannel3}
+    \begin{gathered}
+        \mcP_{\pauli{3}}:\mcB(\hilbert_{2^{n}}) \rightarrow \mcB(\hilbert_{2^{n}})\\
+        \mcP_{\pauli{3}}(\Delta)=\sum_{\vec{k}}q_{\vec{k}}\pauli{3}^{\vec{k}}\Delta\pauli{3}^{\vec{k}}\rlap{,}
+    \end{gathered}
+\end{equation}
 que corresponde al canal de Pauli \ref{eq:PauliChannelN} cuando $\vec{j}=\vec{0}$, y el segundo definido sobre la base de productos tensoriales de eigenestados de $\pauli{1}$,
-\begin{gather}
-    \mcP_{\pauli{1}}:\mcB(\hilbert_{2^{n}}) \rightarrow \mcB(\hilbert_{2^{n}})\nonumber\\
-    \mcP_{\pauli{1}}(\Delta)=\sum_{\vec{j}}q_{\vec{j}}\pauli{1}^{\vec{j}}\Delta\pauli{1}^{\vec{j}}\rlap{,}\nonumber
-\end{gather}
+\begin{equation}\label{eq:PauliChannel1}
+    \begin{gathered}
+        \mcP_{\pauli{1}}:\mcB(\hilbert_{2^{n}}) \rightarrow \mcB(\hilbert_{2^{n}})\\
+        \mcP_{\pauli{1}}(\Delta)=\sum_{\vec{j}}q_{\vec{j}}\pauli{1}^{\vec{j}}\Delta\pauli{1}^{\vec{j}}\rlap{,}
+    \end{gathered}
+\end{equation}
+
 que corresponde al canal de Pauli \ref{eq:PauliChannelN} cuando $\vec{k}=\vec{0}$. \acnote{Erróneo: Es relativamente sencillo demostrar que si se escoge $q_{\vec{j}}=\frac{1-q_{\vec{0}}}{2^{n}-1}\,\forall\,\vec{j}\neq\vec{0}$, el efecto de estos canales es de reducir la amplitud de las componentes fuera de la diagonal en un factor de $(2q_{\vec{0}}-1)$.} \acnote{Debe ser sencillo, el problema es que me hago bolas con los índices.} \ddnote{Ya veo lo que se necesita demostrar, hay que tener cuidado pues puede que haya $\sigma$s no triviales que conmuten con $\sigma_1 \otimes \sigma_1 \otimes \dots$, o aclarame, solo hay productos de $\sigma_1$ e identidades?}
 
-Consideremos entonces en canal de desfasamiento de dos qubits en cualquiera de las dos direcciones discutidas y con probabilidades como mencionadas anteriormente. Sea $\rho_{\ef}$ un estado efectivo en $\densityspace{2}$ correspondiente a un sistema $\varrho \in \densityspace{2^{n}}$, y sea $\varrho_{\max}\in\densityspace{2^{n}}$ el estado de máxima entropía compatible con el estado efectivo. Si se propaga al estado de máxima entropía por medio de este canal y luego se pasa el resultado por la aplicación de grano grueso, el resultado es una dinámica efectiva
+Consideremos entonces en canal de desfasamiento de dos qubits en cualquiera de las dos direcciones discutidas y con probabilidades como mencionadas anteriormente. Sea $\rho_{\ef}$ un estado efectivo en $\densityspace{2}$ correspondiente a un sistema $\varrho \in \densityspace{2^{n}}$, y sea $\varrho_{\max}\in\densityspace{2^{n}}$ el estado de máxima entropía compatible con el estado efectivo. Recordemos que, de acuerdo con la ecuación \ref{eq:MaxEntSeparable}, el estado de máxima entropía tiene la forma
+\begin{equation}
+    \varrho_{\max}=\Motimes_{k=1}^{n}\rho_{k}.\nonumber
+\end{equation}
+
+Si se propaga al estado de máxima entropía por medio de este canal y luego se pasa el resultado por la aplicación de grano grueso, el resultado es una dinámica efectiva
 \begin{equation}
   \Gamma_{t}(\rho_{\ef})=\mcC\qty[\sum_{\vec{j}}q_{\vec{j}}\,\pauli{3}^{\vec{j}}\varrho_{\max}\pauli{3}^{\vec{j}}]=\mcC\qty[\sum_{\vec{j}}q_{\vec{j}}\,\qty(\Motimes_{k=1}^{n} \pauli{3}^{j_{k}}\rho_{k}\pauli{3}^{j_{k}})]\nonumber.\nonumber
 \end{equation}
@@ -86,7 +98,7 @@ Con lo que la dinámica efectiva es
 \begin{equation}
     \Gamma_{t}(\rho_{\ef})=\qty(q_{\vec{0}}+\frac{2^{n-1}-1}{2^{n}-1}(1-q_{\vec{0}}))\rho_{\ef}+\qty(\frac{2^{n-1}}{2^{n}-1}(1-q_{\vec{0}}))\pauli{3}\rho_{\ef}\pauli{3}.\nonumber
 \end{equation}
-Nótese que la dinámica efectiva es lineal, y que únicamente depende de del número de partículas en el sistema microscópico. Aún más, este es un canal de desfasamiento de un qubit en dirección de $\pauli{3}$. Este resultado es análogo para el canal $P_{\pauli{1}}$. Para recuperar un canal de desfasamiento total (en el que todos los elementos fuera de la diagonal se hacen cero) basta con elegir $q_{\vec{j}}=\frac{1}{2^{n}}\,\forall\,\vec{j}$. En dicho caso la dinámica efectiva se reduce a
+Nótese que la dinámica efectiva es lineal, y que únicamente depende del número de partículas en el sistema microscópico. Aún más, este es un canal de desfasamiento de un qubit en dirección de $\pauli{3}$ (ver ecuación (\ref{eq:PauliChannel3})). Este resultado es análogo para el canal $\mcP_{\pauli{1}}$, dado por (\ref{eq:PauliChannel1}). Para recuperar un canal de desfasamiento total (en el que todos los elementos fuera de la diagonal se hacen cero) basta con elegir $q_{\vec{j}}=\frac{1}{2^{n}}\,\forall\,\vec{j}$. En dicho caso la dinámica efectiva se reduce a
 \begin{equation}\label{eq:EffectiveDephasing}
     \Gamma_{t}(\rho_{\ef})=\frac{1}{2}(\rho_{\ef}+\pauli{3}\rho_{\ef}\pauli{3}).
 \end{equation}
@@ -133,14 +145,14 @@ Esto es, la dinámica efectiva correspondiente a un canal de despolarización si
 
 \subsection{Canal de estabilización}
 
-El canal de amortiguamiento de amplitud funciona como un modelo simple de emisión espontánea. En efecto, un átomo de dos niveles acoplado a un campo electromagnético experimenta emisión espontánea, y puede demostrarse que este proceso corresponde a un canal de amortiguamiento de amplitud si se traza al campo y se considera que la frecuencia del campo es igual a la frecuencia de resonancia de transiciones entre los niveles del átomo \cite{Fox}. El canal de amortiguamiento de amplitud tiene el efecto de enviar todos los estados al estado base. Aquí estudiaremos un canal más sencillo, que envía todos los estados a un estado puro dado $\ket{\psi}$ de forma exponencial en el tiempo, como si el átomo de dos niveles tendiera a estabilizarse en dicho estado.
+En esta sección estudiaremos un canal que envía todos los estados a un estado puro dado $\ket{\psi}$ de forma exponencial en el tiempo, como si el átomo de dos niveles tendiera a estabilizarse en dicho estado. Aunque esto pueda recordar al canal de amortiguamiento de amplitud, no son lo mismo. El canal de amortiguamiento de amplitud funciona como un modelo simple de emisión espontánea. En efecto, un átomo de dos niveles acoplado a un campo electromagnético experimenta emisión espontánea, y puede demostrarse que este proceso corresponde a un canal de amortiguamiento de amplitud si se traza al campo y se considera que la frecuencia del campo es igual a la frecuencia de resonancia de transiciones entre los niveles del átomo \cite{Fox}. El canal de amortiguamiento de amplitud tiene el efecto de enviar todos los estados al estado base.
 
 Considérese entonces que un sistema de $n$ partículas evoluciona siguiendo el canal cuántico
 \begin{gather}
     \mcE_{\psi,t}:\mcB(\hilbert_{2^{n}}) \rightarrow \mcB(\hilbert_{2^{n}})\nonumber\\
     \mcE_{\psi,t}(\Delta)=e^{-t\mu}\varrho+(1-e^{-t \mu})\dyad{\psi}\Tr(\Delta)\rlap{.}\nonumber
 \end{gather}
-donde $\dyad{\psi}\in \densityspace{2^{n}}$. Es importante señalar que si se escoge $n=1$ y $\ket{\psi}=\ket{0}$ no se recupera el canal de amortiguamiento de amplitud, pues el canal de amortiguamiento de amplitud tiene el siguiente efecto sobre la matriz de densidad
+donde $\dyad{\psi}\in \densityspace{2^{n}}$. Para ver que el canal de estabilización y el canal de amortiguamiento de amplitud son diferentes, véase que si se escoge $n=1$ y $\ket{\psi}=\ket{0}$ en la expresión del canal de estabilización, no se recupera el canal de amortiguamiento de amplitud. El canal de amortiguamiento de amplitud tiene el siguiente efecto sobre la matriz de densidad
 \begin{equation}
     \begin{pmatrix}
         \rho_{0,0} & \rho_{0,1} \\
@@ -150,7 +162,7 @@ donde $\dyad{\psi}\in \densityspace{2^{n}}$. Es importante señalar que si se es
         \sqrt{1-\gamma}\rho_{1,0} & (1-\gamma)\rho_{1,1}
     \end{pmatrix},\nonumber
 \end{equation}
-donde $\gamma$ puede verse como la probabilidad de emisión de un fotón, mientras que el canal $\mcE_{\ket{0},t}$ tiene el efecto
+donde $\gamma$ puede verse como la probabilidad de emisión de un fotón. Por otro lado, el canal $\mcE_{\ket{0},t}$ tiene el efecto
 \begin{equation}
     \begin{pmatrix}
         \rho_{0,0} & \rho_{0,1} \\
@@ -180,7 +192,7 @@ donde $J_{k}$ son las constantes de acoplamiento, $\pauli{j,k}$ es el operador d
 
 Considérese el modelo de Ising, correspondiente a la cadena de espines de Heisenberg tal que $J_{1}=J_{2}=0$ y sin campo transversal (i.e. $g=0$). En este caso, el hamiltoniano se reduce a
 \begin{equation}
-    \mcH=\omega\sum_{k=1}^{n-1}\pauli{3,k}\pauli{3,k+1}.\nonumber
+    \mcH=\omega\sum_{k=1}^{n-1}\pauli{3,k}\pauli{3,k+1}\nonumber
 \end{equation}
 si la cadena es abierta (ver figura \ref{fig:IsingChainOpen}). Para que la cadena sea cerrada (ver figura \ref{fig:IsingChainClosed}) basta con añadir el término de interacción entre la primera y la $n$-ésima partícula,
 \begin{equation}
@@ -190,12 +202,12 @@ si la cadena es abierta (ver figura \ref{fig:IsingChainOpen}). Para que la caden
     \centering
     \begin{subfigure}{0.5\textwidth}
       \centering
-      \includegraphics[width=0.7\linewidth]{chapter3/figures_special/OpenIsing.png}
+      \includegraphics[width=0.7\linewidth]{chapter4/figures_special/OpenIsing.png}
       \caption{Cadena de Ising abierta. \label{fig:IsingChainOpen}}
     \end{subfigure}%
     \begin{subfigure}{0.5\textwidth}
       \centering
-      \includegraphics[width=0.7\linewidth]{chapter3/figures_special/ClosedIsing.png}
+      \includegraphics[width=0.7\linewidth]{chapter4/figures_special/ClosedIsing.png}
       \caption{Cadena de Ising cerrada. \label{fig:IsingChainClosed}}
     \end{subfigure}
     \caption{Diagrama de la cadena de Ising. \label{fig:IsingChainOpenAndClosed}}
@@ -216,7 +228,7 @@ Si se propaga al estado de máxima entropía con dicho operador y se le pasa por
 \end{align}
 Dentro de la expresión de la dinámica efectiva reconocemos dos términos. El primero es un canal de desfasamiento sobre el estado efectivo, mientras que el segundo depende tanto de los parámetros de la aplicación de grano grueso, $p_{1}$ y $p_{2}$, como de valores esperados con respecto a los operadores de densidad reducidos del estado de máxima entropía. En efecto, el caso límite $p_{1}=1$ ve la dinámica efectiva reducida a un canal de desfasamiento en el tiempo,
 \begin{equation}\label{eq:EffectiveIsing2}
-    \Gamma_{t}(\rho_{\ef})=\rho_{\ef} \cos^{2}(\omega t)+\pauli{3} \rho_{\ef} \pauli{3} \sin^{2}(\omega t).\nonumber
+    \Gamma_{t}(\rho_{\ef})=\rho_{\ef} \cos^{2}(\omega t)+\pauli{3} \rho_{\ef} \pauli{3} \sin^{2}(\omega t),\nonumber
 \end{equation}
 mientras que el caso $p_{1}=p_{2}=\frac{1}{2}$ puede ser más informativo respecto al segundo término, pues en dicho caso
 \begin{equation}
@@ -236,17 +248,17 @@ La dinámica aplicada al vector de Bloch desplaza este en trayectoria elíptica 
     \centering
     \begin{subfigure}{0.32\textwidth}
       \centering
-      \includegraphics[width=0.9\linewidth]{chapter3/figures_special/sphere_Ising_t=0._z=0.9_p=0.5.png}
+      \includegraphics[width=0.9\linewidth]{chapter4/figures_special/sphere_Ising_t=0._z=0.9_p=0.5.png}
       \caption{$t=0$}
     \end{subfigure}%
     \begin{subfigure}{0.32\textwidth}
       \centering
-      \includegraphics[width=0.9\linewidth]{chapter3/figures_special/sphere_Ising_t=0.5_z=0.9_p=0.5.png}
+      \includegraphics[width=0.9\linewidth]{chapter4/figures_special/sphere_Ising_t=0.5_z=0.9_p=0.5.png}
       \caption{$t=0.5$}
     \end{subfigure}
     \begin{subfigure}{0.32\textwidth}
       \centering
-      \includegraphics[width=0.9\linewidth]{chapter3/figures_special/sphere_Ising_t=1._z=0.9_p=0.5.png}
+      \includegraphics[width=0.9\linewidth]{chapter4/figures_special/sphere_Ising_t=1._z=0.9_p=0.5.png}
       \caption{$t=1$}
     \end{subfigure}
     \caption{Efecto sobre la esfera de Bloch de la dinámica efectiva inducida por el hamiltoniano de la cadena de Ising de dos partículas a diferentes tiempos $t$. Nótese que el desfasamiento sólo se completa para estados tales que $r_{z}=0$.\label{fig:Ising_p0.5_Sequence}}
@@ -270,18 +282,18 @@ Si se quisiera hallar la dinámica efectiva siguiendo el mismo procedimiento que
     \centering
     \begin{subfigure}[b]{0.475\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{chapter3/figures_special/Ising_Boltz_r=0.3_z=0.10.png}
+        \includegraphics[width=\textwidth]{chapter4/figures_special/Ising_Boltz_r=0.3_z=0.10.png}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.475\textwidth}  
         \centering 
-        \includegraphics[width=\textwidth]{chapter3/figures_special/Ising_Boltz_r=1._z=0.10.png}
+        \includegraphics[width=\textwidth]{chapter4/figures_special/Ising_Boltz_r=1._z=0.10.png}
     \end{subfigure}
     \caption{Evolución del vector de Bloch de un estado efectivo inicial tal que $r_{z}=0.1$ en el régimen imparcial, inducida por el hamiltoniano de la cadena de Ising abierta de $n$ partículas, para diferentes valores de $n$ y dos valores distintos del radio de Bloch inicial $r_{\ef}$.}
     \label{fig:OpenIsingBoltz}
 \end{figure}
 
-La figura \ref{fig:OpenIsingBoltz} muestra la misma evolución pero en el caso del régimen imparcial \ddnote{cual es el régimen de Boltzmann, bueno, ya vi que lo definiste más arriba, cual fue tu motivación?, que todas las probabilidades son iguales? (platiquemoslo, no se si es del todo buena idea.)} \acnote{cambiado}. Nótese que la forma de la evolución no parece depender del radio de Bloch inicial, pero que cambia considerablemente conforme aumenta el número de partículas $n$. Además, la evolución, lejos de ser una rotación alrededor de $r_{z}$, a cualquier tiempo $t\neq 0$ conlleva cierto grado de desfasamiento. Esto es, $r_{\ef}(t)<r_{\ef}(0)$. Queda por ser estudiado el límite $n\rightarrow\infty$, para el que parece se completa el desfasamiento.
+La figura \ref{fig:OpenIsingBoltz} muestra la misma evolución pero en el caso del régimen imparcial\ddnote{cual es el régimen de Boltzmann, bueno, ya vi que lo definiste más arriba, cual fue tu motivación?, que todas las probabilidades son iguales? (platiquemoslo, no se si es del todo buena idea.)}\acnote{cambiado}. A notar que la forma de la evolución no parece depender del radio de Bloch inicial, pero que cambia considerablemente conforme aumenta el número de partículas $n$. Además, la evolución, lejos de ser una rotación alrededor de $r_{z}$, a cualquier tiempo $t\neq 0$ conlleva cierto grado de desfasamiento. Esto es, $r_{\ef}(t)<r_{\ef}(0)$. Queda por ser estudiado el límite $n\rightarrow\infty$, para el que parece se completa el desfasamiento.
 
 Por otro lado, figura \ref{fig:OpenIsingPref} muestra la evolución del vector de Bloch del estado efectivo, $\vec{r}_{\ef}(t)$, en el plano $r_{z}=0.1$, en el caso del régimen preferencial, para diferentes valores de $p_{1}$. Nuevamente, el valor inicial del vector de Bloch no tiene efecto en la forma general de la evolución, por lo que solo se muestra el caso en el que el estado efectivo inicial es puro. A notarse que la dinámica se aleja cada vez más de una evolución unitaria conforme disminuye $p_{1}$ y aumenta el número de partículas $n$
 
@@ -289,22 +301,22 @@ Por otro lado, figura \ref{fig:OpenIsingPref} muestra la evolución del vector d
     \centering
     \begin{subfigure}[b]{0.475\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{chapter3/figures_special/Ising_Pref_p1=0.3_z=0.10.png}
+        \includegraphics[width=\textwidth]{chapter4/figures_special/Ising_Pref_p1=0.3_z=0.10.png}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.475\textwidth}  
         \centering 
-        \includegraphics[width=\textwidth]{chapter3/figures_special/Ising_Pref_p1=0.5_z=0.10.png}
+        \includegraphics[width=\textwidth]{chapter4/figures_special/Ising_Pref_p1=0.5_z=0.10.png}
     \end{subfigure}
     \vskip\baselineskip
     \begin{subfigure}[b]{0.475\textwidth}   
         \centering 
-        \includegraphics[width=\textwidth]{chapter3/figures_special/Ising_Pref_p1=0.7_z=0.10.png}
+        \includegraphics[width=\textwidth]{chapter4/figures_special/Ising_Pref_p1=0.7_z=0.10.png}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.475\textwidth}   
         \centering 
-        \includegraphics[width=\textwidth]{chapter3/figures_special/Ising_Pref_p1=0.9_z=0.10.png}
+        \includegraphics[width=\textwidth]{chapter4/figures_special/Ising_Pref_p1=0.9_z=0.10.png}
     \end{subfigure}
     \caption{Evolución del vector de Bloch de un estado efectivo inicial tal que $r_{z}=0.1$ en el régimen de partícula preferencial, inducida por el hamiltoniano de la cadena de Ising abierta de $n$ partículas, para diferentes valores de $n$ y cuatro valores del parámetro probabilístico asociado a la partícula preferencial, $p_{1}$.}
     \label{fig:OpenIsingPref}
