@@ -9,7 +9,6 @@ log/log_main.toc
 *.aux
 *.out
 *.bbl
-*.pdf
-!portada.pdf
+main.pdf
 *.blg
 *.synctex.gz
