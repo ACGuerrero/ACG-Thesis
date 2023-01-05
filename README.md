@@ -1,7 +1,7 @@
 This is my license thesis' repository
 
 TO DO LIST
- 1. Adress Andrea's comments&#x2611; [9fb1ef1](https://github.com/ACGuerrero/tesis-adan/commit/9fb1ef1d1539f6846402d94088bd14f32f2d01d2), [71cb68b](https://github.com/ACGuerrero/tesis-adan/commit/71cb68ba08bd866ed7a6bb8063d655d94572e1c1), [e7a9d2c](https://github.com/ACGuerrero/tesis-adan/commit/e7a9d2cf475105ae58296c0250f9345a369e7277), [a842a08](https://github.com/ACGuerrero/tesis-adan/commit/a842a08c0d987c1431f8eb43b44aef51eede967e), [e18cd95](https://github.com/ACGuerrero/tesis-adan/commit/e18cd95ff002966b505d2b72204d9dae32d54ebe) 
+ 1. Adress Miguel's comments
 
 
 
@@ -49,3 +49,4 @@ COMPLETED TASKS
  50. ~~Add references to special section~~&#x2611; [746a97e](https://github.com/ACGuerrero/tesis-adan/commit/746a97e573f763650fad78c9d1059a03238be583), [b95f41f](https://github.com/ACGuerrero/tesis-adan/commit/b95f41f7137704253aa29483bc3ec7cf0d956f4c), [b1b677e](https://github.com/ACGuerrero/tesis-adan/commit/b1b677ea287be6677a52048b10d800a6fb59009e)
  51. ~~Address David's comments~~&#x2611; [e90a599](https://github.com/ACGuerrero/tesis-adan/commit/e90a5996ea3e0828923a8b6c7ad11ff6db4fa78b), [9ad79eb](https://github.com/ACGuerrero/tesis-adan/commit/9ad79ebed2c0cbd34a20dd20aed4c5f71d6a7657), [c0e50ab](https://github.com/ACGuerrero/tesis-adan/commit/c0e50abfedcc861006884762099a7dd65bacba04), [f84498e](https://github.com/ACGuerrero/tesis-adan/commit/f84498efd50abc88959441859f62ae09099ac4af), [0377330](https://github.com/ACGuerrero/tesis-adan/commit/0377330cceb46ccb0f9b5b1722faa631dc6921d8), [b95f41f](https://github.com/ACGuerrero/tesis-adan/commit/b95f41f7137704253aa29483bc3ec7cf0d956f4c), [8ca6ea5](https://github.com/ACGuerrero/tesis-adan/commit/8ca6ea58828d14ebb98fcff0067c507726c8da18), [3a807fb](https://github.com/ACGuerrero/tesis-adan/commit/3a807fb63839c43accb2a6a723012ddfdcfe8434), [5d5f1f7](https://github.com/ACGuerrero/tesis-adan/commit/5d5f1f78f55c61becd504780dbb28d2cb58b8095), [e4ea3eb](https://github.com/ACGuerrero/tesis-adan/commit/e4ea3ebce6b57a6bc8ada149bd795a7b1f35a527)
  52. ~~Address Carlos' comments~~&#x2611; [f9b872e](https://github.com/ACGuerrero/tesis-adan/commit/f9b872ebfd089a8617ba7f35f5a82583305607fb)
+ 53. ~~Adress Andrea's comments~~ &#x2611; [9fb1ef1](https://github.com/ACGuerrero/tesis-adan/commit/9fb1ef1d1539f6846402d94088bd14f32f2d01d2), [71cb68b](https://github.com/ACGuerrero/tesis-adan/commit/71cb68ba08bd866ed7a6bb8063d655d94572e1c1), [e7a9d2c](https://github.com/ACGuerrero/tesis-adan/commit/e7a9d2cf475105ae58296c0250f9345a369e7277), [a842a08](https://github.com/ACGuerrero/tesis-adan/commit/a842a08c0d987c1431f8eb43b44aef51eede967e), [e18cd95](https://github.com/ACGuerrero/tesis-adan/commit/e18cd95ff002966b505d2b72204d9dae32d54ebe) 
