@@ -5,7 +5,7 @@
 
 \acnote{El siguiente párrafo ha sido iterado, solo notas}
 
-En el contexto de la mecánica cuántica nos enfrentamos a dos tipos de probabilidades. La primera, la probabilidad cuántica, está codificada dentro de los vectores de estado que se utilizan para describir al estado en el que se pueda hallar un sistema. Debido a la linealidad de la ecuación de Schrödinger, cualquier combinación lineal de soluciones es también una solución, que es una \textit{superposición} de las soluciones que la conforman. De acuerdo con la regla de Born, es posible calcular la probabilidad de obtener un resultado en específico al momento de realizar una medición. Esta es la probabilidad cuántica. Los vectores de estado, sin embargo, no contemplan el segundo tipo de probabilidad: la asociada a la ignorancia. Esta no es una probabilidad cuántica sino una clásica. Por esto, y porque será particularmente útil para nuestro trabajo, introducimos el concepto del operador de densidad (también llamado, en el caso discreto, que es el que nos incumbe, matriz de densidad).
+En el contexto de la mecánica cuántica nos enfrentamos a dos tipos de probabilidades. La primera, la probabilidad cuántica, está codificada dentro de los vectores de estado que se utilizan para describir al estado en el que se pueda hallar un sistema. Los vectores de estado, sin embargo, no contemplan el segundo tipo de probabilidad: la asociada a la ignorancia. Esta no es una probabilidad cuántica sino una clásica. Por esto, y porque será particularmente útil para nuestro trabajo, introducimos el concepto del operador de densidad (también llamado, en el caso discreto, que es el que nos incumbe, matriz de densidad).
 
 \acnote{El siguiente párrafo ha sido iterado, solo notas}
 
@@ -111,7 +111,7 @@ El segundo resultado es de esperarse, pues $\dyad{\psi}$ se halla en el estado $
 
 \acnote{Sección iterada revisada: notas}
 
-Observamos entonces que hay una diferencia fundamental entre los sistemas que pueden ser descritos por un vector de estado y aquellos que no. Considérese el caso en que, dada la expresión \ref{eq:DensOpMix}, el estado del sistema es $\ket{\varphi_{1}}$ con  probabilidad $p_{1}=1$, i.e. $\rho=\dyad{\varphi_{1}}$. En tal caso decimos que $\rho$ es un estado puro. Claramente, en este caso, $\rho^{2}=\rho$. Esto hace de $\rho$ un proyector de rango $1$, de lo que se sigue que $\Tr(\rho^{2})=1$. En el espacio de operadores de densidad $\densityspace{n}$, los estados puros no pueden expresarse como una combinación convexa de otros estados. Dicho de otra forma, los estados puros son los puntos extremos del conjunto convexo $\densityspace{n}$.
+Observamos entonces que hay una diferencia fundamental entre los sistemas que pueden ser descritos por un vector de estado y aquellos que no. Considérese el caso en que, dada la expresión \ref{eq:DensOpMix}, el estado del sistema es $\ket{\varphi_{1}}$ con  probabilidad $p_{1}=1$, i.e. $\rho=\dyad{\varphi_{1}}$. En tal caso decimos que $\rho$ es un estado puro. Claramente, en este caso, $\rho^{2}=\rho$. Esto hace de $\rho$ un proyector de rango $1$, de lo que se sigue que $\Tr(\rho^{2})=1$. En el espacio de operadores de densidad $\densityspace{n}$, los estados puros no pueden expresarse como una combinación convexa no trivial de otros estados. Dicho de otra forma, los estados puros son los puntos extremos del conjunto convexo $\densityspace{n}$.
 
 Como en general se cumple que $\Tr(\rho^{2})=\sum_i p^2_i\leq 1$, definimos a la pureza como una medida de que tan puro es un estado como \cite{Jaeger}
 \begin{equation}
@@ -145,9 +145,6 @@ Si un estado puede escribirse como un producto tensorial de estados pertenecient
     \ket{\psi^{AB}}=\sum_{j,k}\alpha_{j,k}\ket{\varphi_{j}^{A}}\otimes\ket{\varphi_{k}^{B}}.\nonumber
 \end{equation}
 El significado físico de que un sistema se encuentre en un estado producto es que el sistema se halla en un estado en el que no hay correlaciones entre sus subsistemas (de esto que puedan separarse, pues pueden ser descritos de forma independiente). No todos los estados pueden separarse. En realidad, la no-separabilidad es una propiedad fundamental en mecánica cuántica y el \textit{entrelazamiento cuántico} es precisamente una manifestación de esta propiedad \cite{Holevo}. Si dos sistemas están entrelazados, no es posible describirlos de forma independiente sin pérdida de información, por lo que deja de tener sentido hablar de vectores de estado individuales a cada partícula. En razón de esto, distinguimos dos términos: decimos que un estado $\rho$ es \textit{separable} si no hay entrelazamiento en todo el sistema, y decimos que es \textit{factorizable} si pueden hallarse dos factores $\rho_{1}$ y $\rho_{2}$ tales que $\rho=\rho_{1}\otimes\rho_{2}$, independiente si $\rho_{1}$ o $\rho_{2}$ presentan entrelazamiento.
-
-
-De un estado cuántico que no es separable se dice que es un estado \textit{entrelazado}. Si un grupo de partículas está entrelazado, el estado de cada partícula no 
 
 Un estado que no puede separarse tiene cierto grado de entrelazamiento, y por esto deja de tener sentido hablar de vectores de estado individuales a cada partícula. Ahora, sean $G^{A}$ y $G^{B}$ dos operadores que actúan en $\hilbert^{A}$ y $\hilbert^{B}$ respectivamente, correspondientes a observables de cada subsistema. Entonces se cumple:
 \begin{equation}
