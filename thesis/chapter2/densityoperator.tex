@@ -124,6 +124,8 @@ De esta definición es posible afirmar que
 \end{itemize}
 
 \subsection{Sistemas multipartitos}\label{sec:Ch1PartialTrace}
+
+
 \acnote{El siguiente párrafo ha sido iterado: notas}
 Hasta ahora hemos hablado de sistemas descritos por operadores de densidad en $\densityspace{n}$, pero, ¿qué sucede si el sistema que estudiamos está conformado por dos subsistemas, cada uno descrito a través de sus respectivos espacios de Hilbert? Sean, pues, $A$ y $B$ dos sistemas con espacios de Hilbert de dimensión finita $\hilbert^{A}$ y $\hilbert^{B}$, y sea $C$ un sistema compuesto por $A$ y $B$. Entonces el producto tensorial de los espacios $\hilbert^{A}$ y $\hilbert^{B}$ es otro espacio de Hilbert, uno asociado al sistema $C$:
  \begin{equation}
@@ -133,26 +135,29 @@ Hasta ahora hemos hablado de sistemas descritos por operadores de densidad en $\
 \begin{equation}
     \text{dim}(\hilbert^{C})=\text{dim}(\hilbert^{A})\text{dim}(\hilbert^{B}).\nonumber
 \end{equation}
-Si $A$ y $B$ representaran dos partículas diferentes, entonces $C$ representa a las partículas como conjunto, como sistema de dos partículas. Si cada una de las partículas puede ser descrita mediante un vector de estado, el estado del sistema es simplemente el producto tensorial de dichos vectores de estado:
+Si $A$ y $B$ representaran dos partículas diferentes, entonces $C$ representa a las partículas como conjunto, como sistema de dos partículas. Dadas $\{\ket{\varphi_{i}^{A}\}}$ y $\{\ket{\varphi_{j}^{B}\}}$ bases ortonormales de los espacios $\hilbert^{A}$ y $\hilbert^{B}$ respectivamente, cualquier estado puro $\ket{\psi^{C}}$ del sistema multipartito puede escribirse como
 \begin{equation}
-    \ket{\psi^{A}}\otimes\ket{\psi^{B}}\in\hilbert^{C}\,\; \; \forall\ket{\psi^{A}}\in\hilbert^{A},\ket{\psi^{B}}\in\hilbert^{B}.\nonumber
+    \ket{\psi^{C}}=\sum_{j,k}\alpha_{j,k}\ket{\varphi_{j}^{A}}\otimes\ket{\varphi_{k}^{B}}.\nonumber
+\end{equation}
+Decimos que un estado puro es \textit{producto} o \textit{separable} cuando el estado puede expresarse como un producto tensorial simple, esto es,
+\begin{equation}
+    \ket{\psi^{C}}=\ket{\psi^{A}}\otimes\ket{\psi^{B}},\; \text{para algún}\; \ket{\psi^{A}}\in\hilbert^{A} \; \text{y} \; \ket{\psi^{B}}\in\hilbert^{B}.\nonumber
+\end{equation} 
+En el caso de los estados puros, el significado físico de que un sistema se encuentre en un estado producto es que el sistema se halla en un estado en el que no hay correlaciones entre sus subsistemas (de esto que puedan separarse, pues pueden ser descritos de forma independiente). El énfasis sobre la separabilidad viene del hecho de que la no-separabilidad es una propiedad fundamental en mecánica cuántica y el \textit{entrelazamiento cuántico} es precisamente una manifestación de esta propiedad \cite{Holevo}. Si dos sistemas están entrelazados, no es posible describirlos de forma independiente sin pérdida de información, por lo que deja de tener sentido hablar de vectores de estado individuales a cada partícula. 
+
+Cuando se trata con estados mixtos, las palabras \textit{separable} y \textit{producto}\footnote{También se usará el término \textit{factorizable}.} no son intercambiables. Un estado mixto descrito por el operador de densidad $\rho^{C}$ que actúa sobre $\hilbert^{C}$ es separable si existen $\{\psi_{j}^{A}\}_{j}$ y $\{\psi_{k}^{B}\}_{k}$, conjuntos de estados en $\hilbert^{A}$ y $\hilbert_{B}$ respectivamente, tales que
+\begin{equation}
+    \rho^{C}=\sum_{k}p_{k}\dyad{\psi_{k}^{A}}\otimes\dyad{\psi_{k}^{B}},\nonumber
+\end{equation}
+y es \textit{factorizable} cuando existen $\rho^{A}\in\mcS(\hilbert^{A})$ y $\rho^{B}\in\mcS(\hilbert^{B})$ tales que
+\begin{equation}
+    \rho^{C}=\rho^{A}\otimes\rho^{B}.\nonumber
 \end{equation}
 
-\acnote{Párrafo iterado: notas}
-
-Si un estado puede escribirse como un producto tensorial de estados pertenecientes a los subsistemas del sistema multipartito, entonces se dice que es un estado \textit{producto} o \textit{separable}. Nótese que, en general, los estados del sistema compuesto no son estados separables. En realidad, dadas $\{\ket{\varphi_{i}^{A}\}}$ y $\{\ket{\varphi_{j}^{B}\}}$ bases ortonormales de los espacios $\hilbert^{A}$ y $\hilbert^{B}$ respectivamente, podemos escribir a todo estado puro $\ket{\psi^{C}}$ del sistema multipartito como
-\begin{equation}
-    \ket{\psi^{AB}}=\sum_{j,k}\alpha_{j,k}\ket{\varphi_{j}^{A}}\otimes\ket{\varphi_{k}^{B}}.\nonumber
-\end{equation}
-El significado físico de que un sistema se encuentre en un estado producto es que el sistema se halla en un estado en el que no hay correlaciones entre sus subsistemas (de esto que puedan separarse, pues pueden ser descritos de forma independiente). No todos los estados pueden separarse. En realidad, la no-separabilidad es una propiedad fundamental en mecánica cuántica y el \textit{entrelazamiento cuántico} es precisamente una manifestación de esta propiedad \cite{Holevo}. Si dos sistemas están entrelazados, no es posible describirlos de forma independiente sin pérdida de información, por lo que deja de tener sentido hablar de vectores de estado individuales a cada partícula. En razón de esto, distinguimos dos términos: decimos que un estado $\rho$ es \textit{separable} si no hay entrelazamiento en todo el sistema, y decimos que es \textit{factorizable} si pueden hallarse dos factores $\rho_{1}$ y $\rho_{2}$ tales que $\rho=\rho_{1}\otimes\rho_{2}$, independiente si $\rho_{1}$ o $\rho_{2}$ presentan entrelazamiento.
-
-Un estado que no puede separarse tiene cierto grado de entrelazamiento, y por esto deja de tener sentido hablar de vectores de estado individuales a cada partícula. Ahora, sean $G^{A}$ y $G^{B}$ dos operadores que actúan en $\hilbert^{A}$ y $\hilbert^{B}$ respectivamente, correspondientes a observables de cada subsistema. Entonces se cumple:
+Ahora, sean $G^{A}$ y $G^{B}$ dos operadores que actúan en $\hilbert^{A}$ y $\hilbert^{B}$ respectivamente, correspondientes a observables de cada subsistema. Entonces se cumple:
 \begin{equation}
     G^{A}\ket{\psi^{A}}\otimes G^{B}\ket{\psi^{B}}=(G^{A}\otimes G^{B})\ket{\psi^{A}}\otimes\ket{\psi^{B}}.\nonumber
 \end{equation}
-\acnote{El siguiente párrafo ha sido iterado: notas}
-
-\acnote{Párrafo iterado: notas}
 
 ¿Qué sucede si únicamente nos es relevante el estado de una partícula? Es en este caso en el que surge el concepto de la matriz de densidad reducida. Si $\rho^{C}$ es la matriz de densidad del sistema compuesto por $A$ y $B$, entonces la matriz de densidad reducida del sistema $A$ es
 \begin{equation}
