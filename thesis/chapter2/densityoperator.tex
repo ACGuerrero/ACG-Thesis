@@ -180,8 +180,38 @@ Puede verse que el resultado de la operación es trazar sobre los elementos del 
     \expval{G^{A}}=\Tr\qty((G^A\otimes \Id_B)\rho^C)=\Tr \qty( G^A \rho^A ).\nonumber
 \end{equation}
 
-\subsection{Evolución y parametrización}
+\subsection{Parametrización y evolución}
 \label{subsec:ch2_evol_param}
+
+\subsubsection{Parametrización del operador de densidad}
+\acnote{Sección iterada: reescritura}
+
+\acnote{Reescritura iterada: notas, reescritura}
+
+Es común escoger alguna base hermítica para poder parametrizar a las matrices de densidad. El beneficio de hacer esto es que, por ser $\mcS(\hilbert_{n})$ un subconjunto de $\mcL(\hilbert_{n})$, dicha parametrización será real, y aún más: los parámetros serán promedios de observables. Dicho de otro modo, se puede escoger una base de tal forma que sea un conjunto de observables a través del cual sea posible reconstruir el estado de un sistema. Una elección común de base son las matrices generalizadas de Gell-Mann, junto a la matriz identidad.
+
+Sea $\{\varsigma_{k}\}_{k}$ el conjunto de $n^{2}-1$ matrices generalizadas de Gell-Mann que generan a $\text{SU}(n)$ y $\rho$ una matriz de densidad $\rho\in\mcS(\hilbert_{n})$. Entonces $\rho$ puede expandirse en la base formada por dichas matrices y la identidad a través del producto punto de Hilbert-Schmidt como
+\begin{equation}
+    \rho=\frac{1}{n}\qty(\Id_{n}\Tr(\rho)+\sum_{k=1}^{n^{2}-1}\Tr(\rho\varsigma_{k})\varsigma_{k}).\nonumber
+\end{equation}
+Lo que significa que está completamente descrita por el vector generalizado de Bloch de dimensión $n^{2}-1$, $\vec{\gamma}$ definido a través de
+\begin{equation}
+    \gamma_{k}=\Tr(\rho\varsigma_{k}),\nonumber
+\end{equation}
+de tal manera que la matriz de densidad $\rho$ puede escribirse como
+\begin{equation}\label{eq:BlochParametrization}
+    \rho=\frac{1}{n}\qty(\Id_{n}+\vec{\gamma}\cdot\vec{\varsigma}).
+\end{equation}
+Esta parametrización es especialmente útil en el caso en que $n=2$, en el que los generadores corresponden a las matrices de Pauli, $\sigma_{j}$. Si $n=2$, el conjunto de vectores de Bloch corresponde a la bola unitaria tridimensional (llamada \textit{esfera de Bloch}), con los estados puros en la superficie y los estados mixtos en el interior. Esto permite visualizar dinámicas cuánticas de un qubit de forma geométrica. Por ejemplo, en la esfera de Bloch, las dinámicas unitarias se ven traducidas a rotaciones respecto al origen. Por esta razón, esfera de Bloch será una herramienta ampliamente utilizada a lo largo de este trabajo. Para casos en los que la dimensión es una potencia de $2$, es posible obtener nuevos generadores a través de los productos tensoriales de las matrices de Pauli consigo mismas y con la matriz identidad. El caso $n=4$, por ejemplo \cite{Chuang}:
+\begin{equation}\label{eq:BlochParametrization4}
+    \rho=\frac{1}{4}\sum_{j,k=0}^{3}\gamma_{jk}\sigma_{i}\otimes \sigma_{k},\nonumber
+\end{equation}
+donde $\sigma_{0}=\Id$ y 
+\begin{equation}\label{eq:BlochComponents}
+        \gamma_{jk}=\Tr(\sigma_{j}\otimes \sigma_{k}\rho).
+\end{equation}
+Obsérvese que, como se mencionó previamente, los parámetros $\gamma_{jk}$ son promedios de las observables $\sigma_{j} \otimes \sigma_{k}$. Combinar las ecuaciones (\ref{eq:BlochComponents}) y (\ref{eq:BlochParametrization}) permite reconstruir el estado del sistema. A esto se le llama \textit{tomografía de estados cuánticos}. Si un conjunto de operadores forman una base en el espacio de operadores acotados $\mcB(\hilbert_{n})$, se dice que dicho conjunto es \textit{tomográficamente completo}, pues pueden utilizarse para realizar una tomografía \textit{completa} del estado \cite{Chuang}.
+
 
 \acnote{Esta subsección ha sido iterada: reescritura.}
 \acnote{Reescritura iterada: notas}
@@ -235,36 +265,46 @@ Los canales cuánticos están relacionados directamente al esquema de sistemas a
     \mcE:\mcB(\hilbert)\rightarrow \mcB(\hilbert),\nonumber
 \end{equation}    
 existen un espacio de Hilbert $\tilde \hilbert$ y un operador unitario $U$ que actúa sobre $\hilbert\otimes \tilde \hilbert$ tales que
-\begin{equation}
-    \mcE(\rho)=\Tr_{2}\qty(U  \left(\rho \otimes \dyad{e}{e}\right) U^{\dag}),\nonumber
+\begin{equation}\label{eq:Stinespring}
+    \mcE(\rho)=\Tr_{2}\qty(U  \left(\rho \otimes \dyad{e}\right) U^{\dag}),
 \end{equation}
 donde $\rho\in\mcS(\hilbert)$ y $\ket{e}\in \tilde \hilbert$. \ddnote{Hice varios cambios aquí, cuando el canal opera entre diferentes espacios de Hilbert, el teorema es ligeramente mas complicado. Mejor simplifiqué a cuando se usa el mismo espacio.}\acnote{\checkmark}
 
-\subsubsection{Parametrización del operador de densidad}
-\acnote{Sección iterada: reescritura}
-
-\acnote{Reescritura iterada: notas, reescritura}
-
-Es común escoger alguna base hermítica para poder parametrizar a las matrices de densidad. El beneficio de hacer esto es que, por ser $\mcS(\hilbert_{n})$ un subconjunto de $\mcL(\hilbert_{n})$, dicha parametrización será real, y aún más: los parámetros serán promedios de observables. Dicho de otro modo, se puede escoger una base de tal forma que sea un conjunto de observables a través del cual sea posible reconstruir el estado de un sistema. Una elección común de base son las matrices generalizadas de Gell-Mann, junto a la matriz identidad.
-
-Sea $\{\varsigma_{k}\}_{k}$ el conjunto de $n^{2}-1$ matrices generalizadas de Gell-Mann que generan a $\text{SU}(n)$ y $\rho$ una matriz de densidad $\rho\in\mcS(\hilbert_{n})$. Entonces $\rho$ puede expandirse en la base formada por dichas matrices y la identidad a través del producto punto de Hilbert-Schmidt como
+La ecuación (\ref{eq:Stinespring}) puede reescribirse de tal forma que se obtenga un resultado particularmente útil para los fines del presente trabajo. Sea $\{e_{k}\}_{k}$ una base del espacio $\tilde \hilbert$, entonces, de acuerdo con la ecuación (\ref{eq:Ch1PartialTrace}) \cite{Chuang},
 \begin{equation}
-    \rho=\frac{1}{n}\qty(\Id_{n}\Tr(\rho)+\sum_{k=1}^{n^{2}-1}\Tr(\rho\varsigma_{k})\varsigma_{k}).\nonumber
+    \mcE(\rho)=\sum_{k} \Id\otimes\bra{e_{k}} \qty(U  \left(\rho \otimes \dyad{e}\right) U^{\dag})\Id\otimes\ket{e_{k}}\nonumber
 \end{equation}
-Lo que significa que está completamente descrita por el vector generalizado de Bloch de dimensión $n^{2}-1$, $\vec{\gamma}$ definido a través de
+donde definimos a los \textit{operadores de Kraus} del canal $\mcE$ como los operadores
 \begin{equation}
-    \gamma_{k}=\Tr(\rho\varsigma_{k}),\nonumber
+    A_{k}=\Id\otimes\bra{e_{k}} \qty(U)\Id\otimes\ket{e_{k}}\nonumber
 \end{equation}
-de tal manera que la matriz de densidad $\rho$ puede escribirse como
-\begin{equation}\label{eq:BlochParametrization}
-    \rho=\frac{1}{n}\qty(\Id_{n}+\vec{\gamma}\cdot\vec{\varsigma}).
+que actúan sobre el espacio $\hilbert$, y decimos que 
+\begin{equation}
+    \mcE(\rho)=\sum_{k}A_{k}\rho A_{k}\nonumber
 \end{equation}
-Esta parametrización es especialmente útil en el caso en que $n=2$, en el que los generadores corresponden a las matrices de Pauli, $\sigma_{j}$. Si $n=2$, el conjunto de vectores de Bloch corresponde a la bola unitaria tridimensional (llamada \textit{esfera de Bloch}), con los estados puros en la superficie y los estados mixtos en el interior. Esto permite visualizar dinámicas cuánticas de un qubit de forma geométrica. Por ejemplo, en la esfera de Bloch, las dinámicas unitarias se ven traducidas a rotaciones respecto al origen. Por esta razón, esfera de Bloch será una herramienta ampliamente utilizada a lo largo de este trabajo. Para casos en los que la dimensión es una potencia de $2$, es posible obtener nuevos generadores a través de los productos tensoriales de las matrices de Pauli consigo mismas y con la matriz identidad. El caso $n=4$, por ejemplo \cite{Chuang}:
-\begin{equation}\label{eq:BlochParametrization4}
-    \rho=\frac{1}{4}\sum_{j,k=0}^{3}\gamma_{jk}\sigma_{i}\otimes \sigma_{k},\nonumber
+es la representación en suma de operadores de $\mcE$, que permite describir la evolución del sistema de interés en términos de operadores que actúen sobre su espacio. El teorema de Kraus asegura que todo canal cuántico tiene representación en términos de operadores de Kraus \cite{Breuer}. 
+
+En el esquema de sistemas abiertos, los canales cuánticos son vistos como \textit{evoluciones ruidosas}. En este sentido, podemos construir canales cuánticos a través de la aplicación aleatoria de evoluciones unitarias. Esto es, dado un estado $\rho\in\densityspace{2}$, se aplica una unitaria $U$ con probabilidad $(1-p)$ o la identidad $\Id$ con probabilidad $p$ \cite{Wilde}. Tres canales cuánticos comunes (y a los cuales se hará referencia en los capítulos siguientes) son el \textit{canal de desfasamiento}, el \textit{canal de bitflip}, y el \textit{canal de despolarización} \cite{Chuang}. 
+
+El \textit{canal de desfasamiento} tiene operadores de Kraus $\{\sqrt{p}\Id,\sqrt{(1-p)}\pauli{3}\}$. Su efecto sobre un estado $\rho$ es
+\begin{equation}
+    \rho\mapsto p\rho+(1-p)\pauli{3}\rho\pauli{3}.\nonumber
 \end{equation}
-donde $\sigma_{0}=\Id$ y 
-\begin{equation}\label{eq:BlochComponents}
-        \gamma_{jk}=\Tr(\sigma_{j}\otimes \sigma_{k}\rho).
+Si se parametriza a $\rho$ a través de las matrices de Pauli, el efecto del canal de desfasamiento se vuelve claro:
+\begin{equation}
+    \frac{1}{2}\qty(\Id+\vec{r}.\vec{\sigma})\mapsto \frac{1}{2}\qty(\Id+(2p-1)r_{1}\sigma_{1}+(2p-1)r_{2}\sigma_{2}+r_{3}\sigma_{3}).\nonumber
 \end{equation}
-Obsérvese que, como se mencionó previamente, los parámetros $\gamma_{jk}$ son promedios de las observables $\sigma_{j} \otimes \sigma_{k}$. Combinar las ecuaciones (\ref{eq:BlochComponents}) y (\ref{eq:BlochParametrization}) permite reconstruir el estado del sistema. A esto se le llama \textit{tomografía de estados cuánticos}. Si un conjunto de operadores forman una base en el espacio de operadores acotados $\mcB(\hilbert_{n})$, se dice que dicho conjunto es \textit{tomográficamente completo}, pues pueden utilizarse para realizar una tomografía \textit{completa} del estado \cite{Chuang}.
+En el caso en que $p=\frac{1}{2}$ se dice que el desfasamiento es total debido a que se pierde la información de las componentes de $\pauli{1}$ y $\pauli{2}$. De forma más general, dichas componentes se ven reducidas por un factor de $2p-1$, cosa que equivale a perder conocimiento sobre dicho estado. En efecto, el estado se vuelve más mixto en esas direcciones.
+
+El \textit{canal de bitflip} es análogo al canal de desfasamiento. Este canal tiene por operadores de Kraus $\{\sqrt{p}\Id,\sqrt{(1-p)\pauli{1}}\}$, y no será difícil ver que su efecto es el de reducir la magnitud de las componentes de $\pauli{2}$ y $\pauli{3}$ por un factor de $2p-1$. El nombre de \textit{bitflip} viene del efecto que tiene el operador $\pauli{1}$ sobre los elementos de la base de eigenestados de $\pauli{3}$ (la comúnmente llamada \textit{base computacional}):
+\begin{align}
+    \sigma{1}\ket{0}=\ket{1}& &\sigma{1}\ket{1}=\ket{0}\nonumber.
+\end{align}
+
+Finalmente, el \textit{canal de despolarización} se define mediante
+\begin{equation}
+    \rho\mapsto p\frac{1}{2}\Id+(1-p)\rho\nonumber.
+\end{equation}
+Esto equivale a perder toda la información acerca del estado con una probabilidad $p$. A esta probabilidad también se le llamará \textit{factor de despolarización} (ver sección \ref{subsec:SWAP}). El efecto sobre el estado es el de reducir todas sus componentes por un factor $2p-1$. 
+
+Aunque se han definido estos canales de tal forma que actúan sobre el espacio $\hilbert_{2}$, en la sección \ref{subsec:PauliChannels} se extenderán estas definiciones al espacio $\hilbert_{d^{n}}$ (el espacio de Hilbert de $n$ partículas de $d$ niveles).

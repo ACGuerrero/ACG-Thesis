@@ -1,13 +1,10 @@
 \chapter{La aplicación de asignación promedio}\label{ch:5}
 
-En este capítulo se comparan dos tipos de aplicaciones de asignación diferentes: la aplicación de asignación de máxima entropía, construida en este trabajo, y la aplicación de asignación promedio.
+En este capítulo se comparan dos tipos de aplicaciones de asignación diferentes: la aplicación de asignación de máxima entropía, construida en la sección \ref{sec:maxentcons}, y la aplicación de asignación promedio.
 
 \section{Definición y acercamiento}
 
-
-
-
-Nos interesamos en este apéndice en la \textit{asignación de aplicación promedio} \cite{Macro-To-Micro}. Esta aplicación asigna a un estado efectivo $\rho_{\ef} \in \densityspace{n}$ un estado microscópico $\varrho_{\avg} \in \densityspace{m}$ que es una mezcla estadística de estados finos. Más específicamente, le asigna el promedio del conjunto de todos los estados puros microscópicos tales que son compatibles con el estado efectivo bajo una aplicación de grano grueso en particular (en este trabajo, la dada por la ecuación \ref{eq:CG}). Dicho conjunto de estados puros microscópicos queda definido como
+Nos interesamos en este capítulo en la \textit{asignación de aplicación promedio} \cite{Macro-To-Micro}. Esta aplicación asigna a un estado efectivo $\rho_{\ef} \in \densityspace{n}$ un estado microscópico $\varrho_{\avg} \in \densityspace{m}$ que es una mezcla estadística de estados finos. Más específicamente, le asigna el promedio del conjunto de todos los estados puros microscópicos tales que son compatibles con el estado efectivo bajo una aplicación de grano grueso en particular (en este trabajo, la dada por la ecuación \ref{eq:CG}). Dicho conjunto de estados puros microscópicos queda definido como
 \begin{equation}\label{eq:Omega}
     \Omega_{\mcC}(\rho_{\ef}) = \{\ket{\psi}\in\hilbert_{m}:\, \mcC(\dyad{\psi}) = \rho_{\ef}  \}.
 \end{equation}
@@ -17,7 +14,7 @@ La aplicación de asignación promedio es el promedio sobre dicho conjunto, \ie
 \end{equation}
 donde $d\mu$ es la medida de Haar sobre los estados puros de $\hilbert_{m}$. La delta de Dirac asegura que únicamente se tomen en consideración a los estados puros compatibles, y la medida de Haar, que la integración sobre dicho conjunto sea uniforme. Dicho de otra forma, la aplicación de asignación promedio asume dos cosas sobre el sistema microscópico: que puede estar estar en un estado puro, y que todos los estados puros son igualmente probables.
 
-La solución analítica a la ecuación (\ref{eq:AvgMap}) es complicada y no se discutirá en este trabajo, pero ha sido encontrada por los doctores C. Pineda y R. Uriostegui del Instituto de Física de la UNAM, para el caso en que la aplicación de grano grueso va de $\densityspace{4}$ a $\densityspace{2}$\footnote{Debido a que el trabajo no ha sido publicado aún, no hay una referencia disponible.}. Esto es, del espacio de dos partículas de dos niveles, al espacio de una partícula de dos niveles. En este trabajo no se profundizará en dicho resultado, pero se utilizará para poder comparar ambas aplicaciones de asignación.
+La solución analítica a la ecuación (\ref{eq:AvgMap}) es complicada y no se discutirá en este trabajo, pero ha sido encontrada por los doctores C. Pineda y R. Uriostegui del Instituto de Física de la UNAM, para el caso en que la aplicación de grano grueso va de $\densityspace{4}$ a $\densityspace{2}$\footnote{Debido a que el trabajo no ha sido publicado aún, no hay una referencia disponible.}. Esto es, del espacio de dos partículas de dos niveles, al espacio de una partícula de dos niveles. Aquí no se profundizará en dicho resultado, pero se utilizará para poder comparar ambas aplicaciones de asignación.
 
 \section{La diferencia entre asignaciones}
 
