@@ -18,7 +18,7 @@ siendo la unitaria
 \begin{equation}\label{eq:NFactorUnitaries}
     \mcU_{t}=\Motimes_{k=1}^{n}\text{exp}\qty(-\rmi\omega_{k}H_{k}t)=\Motimes_{k=1}^{n} U_{k}(t).
 \end{equation}
-A partir de este momento, para hacer más limpia la lectura de este documento se omitirán los productos tensoriales con operadores identidad. El subsistema sobre el que actúe un operador será denotado por un subíndice, de tal manera que el hamiltoniano previamente definido queda
+A partir de este momento, para hacer más limpia la lectura de este documento se omitirán los productos tensoriales con operadores identidad. El subsistema sobre el que actúe un operador será denotado por un subíndice, de tal manera que el hamiltoniano previamente definido queda como
 \begin{equation}
     \mcH=\sum_{k=1}^{n}\omega_{k}H_{k}.\nonumber
 \end{equation}
@@ -30,7 +30,7 @@ Si se considera una evolución unitaria de la forma (\ref{eq:NFactorUnitaries}),
 \begin{equation}
     \varrho_{\max}(t)=\Motimes_{k=1}^{n}\frac{1}{Z_{k}}U_{k}(t) e^{\qty(p_{k}\sum_{j}\lambda_{j}\pauli{j})} (U_{k}(t))^{\dag}\nonumber
 \end{equation}
-El estado efectivo evolucionado en términos de los multiplicadores de Lagrange queda
+El estado efectivo evolucionado en términos de los multiplicadores de Lagrange es
 \begin{equation}\label{eq:SeparableEvolution}
     \Gamma_{t}(\rho_{\ef})=\sum_{k=1}^{n}p_{k} U_{k}(t) \rho_{k} (U_{k}(t))^{\dag}.
 \end{equation}
@@ -159,7 +159,7 @@ Sin pérdida de generalidad, tómese $H_{k}=\pauli{3}\,\forall k$. Recordando la
 que quizá sea más clara escribiéndose en términos de las componentes de los vectores de Bloch de los estados de cada partícula (el primer subíndice indica la componente del vector, mientras que el segundo denota la partícula a la que pertenece):
 \begin{align}
     r_{1,\ef}(t)=&p_{1}r_{1,1}(0)+\sum_{k=2}^{n}p_{k}(r_{1,k}\cos(2\omega t)-r_{2,k}\sin(2\omega t))\nonumber\\
-    r_{2,\ef}(t)=&p_{2}r_{2,1}(0)+\sum_{k=2}^{n}p_{k}(r_{2,k}\cos(2\omega t)+r_{1,k}\sin(2\omega t))\nonumber\\
+    r_{2,\ef}(t)=&p_{1}r_{2,1}(0)+\sum_{k=2}^{n}p_{k}(r_{2,k}\cos(2\omega t)+r_{1,k}\sin(2\omega t))\nonumber\\
     r_{3,\ef}(t)=&r_{3,\ef}(0).\nonumber
 \end{align}
 Esto no es más que la aplicación de la misma rotación sobre todos los vectores de Bloch, a excepción del primero. Reescribiendo,
@@ -198,7 +198,7 @@ Si, por otro lado, quitamos la restricción de que todas las partículas no pref
 Ahora cada partícula no preferencial contribuye al error de forma única, y a pesar de que la evolución de cada partícula no preferencial sea periódica, la combinación de estas no tiene por qué serlo. El resultado ahora depende de las frecuencias de evolución de cada partícula, de sus pesos $p_{k}$, y del número $n$ de partículas en el sistema microscópico (si $n=2$ se recupera el caso anterior). Las componentes del vector de Bloch del estado efectivo evolucionado,
 \begin{align}
     r_{1,\ef}(t)=&p_{1}r_{1,1}(0)+\sum_{k=2}^{n}p_{k}(r_{1,k}\cos(2\omega_{k} t)-r_{2,k}\sin(2\omega_{k} t))\nonumber\\
-    r_{2,\ef}(t)=&p_{2}r_{2,1}(0)+\sum_{k=2}^{n}p_{k}(r_{2,k}\cos(2\omega_{k} t)+r_{1,k}\sin(2\omega_{k} t))\nonumber\\
+    r_{2,\ef}(t)=&p_{1}r_{2,1}(0)+\sum_{k=2}^{n}p_{k}(r_{2,k}\cos(2\omega_{k} t)+r_{1,k}\sin(2\omega_{k} t))\nonumber\\
     r_{3,\ef}(t)=&r_{3,\ef}(0).\nonumber
 \end{align}
 revelan la complejidad de la evolución, además de su no-linealidad, pues los vectores $\vec{r}_{k}$ dependen del estado efectivo inicial a través del multiplicador de Lagrange $\lambda.$ Las figuras \ref{fig:PrefInv1} y \ref{fig:PrefInv2} muestran algunos ejemplos de la geometría de estas dinámicas, en las que las frecuencias $\omega_{k}$ se obtuvieron de una distribución uniforme $\text{U}[-3,3]$. En dichas figuras puede observarse la relación entre la amplitud de las variaciones y los parámetros $p_{1}$ y $n$. En efecto, a mayor (menor) número de partículas corresponden variaciones de menor (mayor) amplitud. De manera similar, valores de $p_{1}$ cercanos a $1$ conducen a variaciones menos importantes.
@@ -238,7 +238,7 @@ En los dos casos anteriores se permitió que alguna de las partes del sistema se
 de tal forma que toda la evolución mantenga constante la componente en $\pauli{3}$. Explícitamente, las componentes del vector de Bloch del estado efectivo siguen las ecuaciones
 \begin{align}
     r_{1,\ef}(t)=&p_{1}r_{1,1}(t)-\sum_{k=2}^{n}p_{k}A_{k}\sin(2\omega_{k} t-\phi_{k})\nonumber\\
-    r_{2,\ef}(t)=&p_{2}r_{2,1}(t)+\sum_{k=2}^{n}p_{k}A_{k}\sin(2\omega_{k} t+\theta_{k}),\nonumber
+    r_{2,\ef}(t)=&p_{1}r_{2,1}(t)+\sum_{k=2}^{n}p_{k}A_{k}\sin(2\omega_{k} t+\theta_{k}),\nonumber
 \end{align}
 donde se omite la tercera componente, que no cambia, y
 \begin{align}
@@ -256,7 +256,7 @@ Esto significa que las expresiones previas se simplifican considerablemente, en 
 \begin{equation}\label{eq:}
     \begin{gathered}
         r_{1,\ef}(t)=p_{1}r_{1,1}(t)-p_{\text{np}}r_{\text{np}}\sum_{k=2}^{n}\sin(2\omega_{k} t-\phi)\\
-        r_{2,\ef}(t)=p_{2}r_{2,1}(t)+p_{\text{np}}r_{\text{np}}\sum_{k=2}^{n}\sin(2\omega_{k} t+\theta).
+        r_{2,\ef}(t)=p_{1}r_{2,1}(t)+p_{\text{np}}r_{\text{np}}\sum_{k=2}^{n}\sin(2\omega_{k} t+\theta).
     \end{gathered}
 \end{equation}
 Aquí se hace claro que la amplitud máxima de la oscilación de error de cada componente es $(1-p_{1})r_{\text{np}}$. Esto debido a que la suma de $n-1$ senos\footnote{Senos con amplitud igual a $1$.} puede tener una amplitud máxima igual a $n-1$, de tal forma que la amplitud máxima de las oscilaciones es $(n-1)p_{\text{np}}r_{\text{np}}=(1-p_{1})r_{\text{np}}$.
@@ -268,11 +268,11 @@ Otro resultado importante es el límite $n\rightarrow\infty$. En este límite la
 \begin{equation}\label{eq:MeanDynamics}
     \Gamma_{t\rightarrow\infty}(\vec{r}_{\ef})\rightarrow\begin{pmatrix}
         p_{1}r_{1,1}(t)\\
-        p_{2}r_{2,1}(t)\\
+        p_{1}r_{2,1}(t)\\
         r_{3}\\
     \end{pmatrix}.
 \end{equation}
-Esto significa que la dinámica tiende a la seguida por la primera partícula únicamente. Nuevamente, las figuras \ref{fig:Oscilations12} y \ref{fig:Oscilations13} revelan este resultado de manera geométrica.
+Esto significa que la dinámica converge a la dinámica de la primera partícula, pero con una contracción. La ecuación (\ref{eq:MeanDynamics}) muestra que las componentes del estado efectivo cambian como lo harían los de la primera partícula, con la excepción de que las componentes se ven reducidas en un factor de $(p_{1}\tanh{\lambda p_{1}})$ Nuevamente, las figuras \ref{fig:Oscilations12} y \ref{fig:Oscilations13} revelan este resultado de manera geométrica.
 
 
 \begin{figure}[ht!]
