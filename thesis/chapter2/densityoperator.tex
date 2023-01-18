@@ -280,7 +280,7 @@ donde definimos a los \textit{operadores de Kraus} del canal $\mcE$ como los ope
 \end{equation}
 que actúan sobre el espacio $\hilbert$, y decimos que 
 \begin{equation}
-    \mcE(\rho)=\sum_{k}A_{k}\rho A_{k}\nonumber
+    \mcE(\rho)=\sum_{k}A_{k}\rho A^{\dagger}_{k}\nonumber
 \end{equation}
 es la representación en suma de operadores de $\mcE$, que permite describir la evolución del sistema de interés en términos de operadores que actúen sobre su espacio. El teorema de Kraus asegura que todo canal cuántico tiene representación en términos de operadores de Kraus \cite{Breuer}. 
 
@@ -294,11 +294,11 @@ Si se parametriza a $\rho$ a través de las matrices de Pauli, el efecto del can
 \begin{equation}
     \frac{1}{2}\qty(\Id+\vec{r}.\vec{\sigma})\mapsto \frac{1}{2}\qty(\Id+(2p-1)r_{1}\sigma_{1}+(2p-1)r_{2}\sigma_{2}+r_{3}\sigma_{3}).\nonumber
 \end{equation}
-En el caso en que $p=\frac{1}{2}$ se dice que el desfasamiento es total debido a que se pierde la información de las componentes de $\pauli{1}$ y $\pauli{2}$. De forma más general, dichas componentes se ven reducidas por un factor de $2p-1$, cosa que equivale a perder conocimiento sobre dicho estado. En efecto, el estado se vuelve más mixto en esas direcciones.
+En el caso en que $p=\frac{1}{2}$ se dice que el desfasamiento es total debido a que se pierde la información de las componentes de $\pauli{1}$ y $\pauli{2}$. De forma más general, dichas componentes se ven reducidas por un factor de $2p-1$, cosa que equivale a pérdida de distinguibilidad entre cualesquiera dos estados \cite{Chuang}.
 
-El \textit{canal de bitflip} es análogo al canal de desfasamiento. Este canal tiene por operadores de Kraus $\{\sqrt{p}\Id,\sqrt{(1-p)\pauli{1}}\}$, y no será difícil ver que su efecto es el de reducir la magnitud de las componentes de $\pauli{2}$ y $\pauli{3}$ por un factor de $2p-1$. El nombre de \textit{bitflip} viene del efecto que tiene el operador $\pauli{1}$ sobre los elementos de la base de eigenestados de $\pauli{3}$ (la comúnmente llamada \textit{base computacional}):
+El \textit{canal de bitflip} es análogo al canal de desfasamiento. Este canal tiene por operadores de Kraus $\{\sqrt{p}\Id,\sqrt{(1-p)}\pauli{1}\}$, y no será difícil ver que su efecto es el de reducir la magnitud de las componentes de $\pauli{2}$ y $\pauli{3}$ por un factor de $2p-1$. El nombre de \textit{bitflip} viene del efecto que tiene el operador $\pauli{1}$ sobre los elementos de la base de eigenestados de $\pauli{3}$ (la comúnmente llamada \textit{base computacional}):
 \begin{align}
-    \sigma{1}\ket{0}=\ket{1}& &\sigma{1}\ket{1}=\ket{0}\nonumber.
+    \pauli{1}\ket{0}=\ket{1}& &\pauli{1}\ket{1}=\ket{0}\nonumber.
 \end{align}
 
 Finalmente, el \textit{canal de despolarización} se define mediante
