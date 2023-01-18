@@ -11,7 +11,7 @@ Esto significa que el estado de máxima entropía es factorizable y tiene exacta
     \varrho_{\max}=\Motimes_{k=1}^{n}\frac{1}{Z_{k}}\text{exp}\qty(p_{k}\sum_{j=1}^{3}\lambda_{j}\sigma_{j}).
 \end{equation}
 
-Un resultado así puede parecer demasiado sencillo, y puede propiciar preguntas como: ¿qué significa que el estado de máxima entropía sea factorizable? ¿Qué interpretación tienen las matrices de densidad reducidas del estado de máxima entropía? Pues bien, primero hace falta ver que la información accesible al experimentalista no incluye las correlaciones entre los subsistemas. Para ver esto, considérese la parametrización de Bloch de un estado fino $\varrho\in\mcL(\hilbert_{4})$ como propuesta en (\ref{eq:BlochParametrization4}). Esto es,
+¿Por qué el estado de máxima entropía resulta ser factorizable respecto a todas las partículas del sistema microscópico? Para responder a esta pregunta, primero hace falta ver que la información accesible al experimentalista no incluye las correlaciones entre los subsistemas. Para ver esto, considérese la parametrización de Bloch de un estado fino $\varrho\in\mcL(sa\hilbert_{4})$ como propuesta en (\ref{eq:BlochParametrization4}). Esto es,
 \begin{align}\label{}
     \varrho=\frac{1}{4}\sum_{j,k=0}^{3}\gamma_{jk}\sigma_{i}\otimes \sigma_{k} & & \text{con} & & \gamma_{jk}=\Tr(\sigma_{j}\otimes \sigma_{k}\varrho).\nonumber
 \end{align}
@@ -157,7 +157,7 @@ Así, si $p_{j}=\frac{1}{n}\forall j$, la asignación de máxima entropía resul
 
 Ahora supóngase que $\varrho$ es un estado microscópico compatible con un estado efectivo puro $\rho_{\ef}=\dyad{\psi}$, y que $p_{j}\neq 0\,\forall\,j$. Entonces, por (\ref{eq:CG}) se cumple que
 \begin{equation}
-    \dyad{\psi}=\sum_{k=1}^{n}p_{k}\varrho_{k},\nonumber
+    \rho_{ef}=\sum_{k=1}^{n}p_{k}\varrho_{k},\nonumber
 \end{equation}
 donde $\varrho_{k}\in\densityspace{2}$ es la $k$-ésima traza parcial de $\varrho$. Como se mencionó en la sección \ref{subsec:ch2_purity}, un estado puro es un punto extremo del conjunto de estados, así que la ecuación anterior solo se puede cumplir si $\varrho_{k}=\dyad{\psi}\,\forall\,k$.  Si cada traza parcial de $\varrho$ es igual al estado puro $\rho_{\ef}$ se sigue que
 \begin{equation}\label{eq:PureEffectiveState}
