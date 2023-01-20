@@ -1,0 +1,40 @@
+\section{Motivación}
+
+\begin{frame}{Herramienta borrosa y de poca resolución}
+    \begin{itemize}
+        \item Intrumentación imperfecta.
+        \item Sólo resuelve una partícula.
+        \item Puede medir la pertícula errónea.
+    \end{itemize}
+    \begin{equation*}
+        \mcC[\varrho]=\Tr_{2}[(1-p)\varrho+pS\varrho S^{\dag}].
+    \end{equation*}
+\end{frame}
+
+\begin{frame}{La dinámica efectiva}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item \textbf{Objetivo:} estudiar la dinámica observable.
+                \item Se conoce la dinámica microscópica.
+                \item Es necesario un estimado del estadp microscópico. 
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{displaymath}
+                \xymatrix{
+                  {\rho(0)} \ar[rr]^{\Gamma_{t}} \ar[d]^{\mcA_{\mcC}}
+                  && {\rho(t)}\\
+                  {\varrho(0)} \ar[rr]^{\mcU_{t}}
+                  && {\varrho(t)} \ar[u]^{\mcC}
+                }
+              \end{displaymath}
+              \begin{itemize}
+              \item Effective dynamical map:
+                \begin{equation*}
+                    \Gamma_t[\rho]:=(\mcC \circ \mcU_t \circ \mcA_\mcC)[\rho].
+                \end{equation*}
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}

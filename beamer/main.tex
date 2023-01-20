@@ -1,0 +1,35 @@
+\documentclass{mybeamer}
+\usepackage[all,cmtip]{xy}
+\usepackage{lipsum}
+\title{Dinámica efectiva de un sistema de N qubits}
+\subtitle{Utilizando el principio de máxima entropía}
+\author[A. Castillo Guerrero]{Autor: A. Castillo\\ Director de tesis: D. Dávalos\\ Equipo de trabajo: C. Pineda, D. Dávalos, K. Uriostegui, E. Navarrete.}
+\date{Enero 2023} % or whatever the date you are presenting in is
+\institute[Facultad de Ciencias, UNAM]{Facultad de Ciencias, UNAM}
+% \copyrightnotice{Published by the American Institute of Aeronautics and Astronautics, Inc., with permission}
+
+\begin{document}
+
+\maketitle
+
+\cutoc
+\include{problem_statement}
+\include{preliminaries}
+\include{cg_maxent_dyn}
+\include{maxent_results}
+\include{avg_results}
+\include{conclusions}
+
+
+\appendix
+
+\begin{frame}{Referencias}
+\begin{thebibliography}{99}
+\bibitem ONielsen, M. \& Chuang, L. (2010).\textit{Quantum Computation and Quantum Information}. Cambridge, United Kingdom: Cambridge University Press.
+\bibitem OSilva, P. \& Concha, P. \& Vallejos, R. \& de Melo, F. (2020).\textit{Macro-to-micro quantum mapping and the emergence of nonlinearity}. PsyArXiv. DOI:10.1103/PhysRevA.103.052210
+\end{thebibliography}
+\end{frame}
+
+\include{apendices}
+
+\end{document}
