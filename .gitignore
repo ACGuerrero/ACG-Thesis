@@ -4,3 +4,15 @@ bureaucracy/carta_director_facultad.odt
 /bibliography
 /presentations
 /code
+*.toc
+*.fls
+*.fdb_latexmk
+*.lof
+*.lot
+*.log
+*.aux
+*.out
+*.bbl
+main.pdf
+*.blg
+*.synctex.gz
