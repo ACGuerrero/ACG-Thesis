@@ -319,14 +319,22 @@
 \begin{frame}{Información clásica}
     \begin{columns}
         \begin{column}{0.5\textwidth}
-            Cantidad de información $\propto$ probabilidad
+            \begin{center}
+                Cantidad de información $\propto$ probabilidad\pause
+            \end{center}
             \begin{itemize}
-                \item ``No cayó 6''$\rightarrow$poca información
-                \item ``Cayó 6''$\rightarrow$más información
+                \item ``No cayó 6''$\rightarrow$poca información\pause
+                \item ``Cayó 6''$\rightarrow$más información\pause
             \end{itemize}
+            \begin{center}
+                Un evento $p=1$ no transmite información.
+            \end{center}
         \end{column}
+        \pause
         \begin{column}{0.5\textwidth}
-            Conocer el resultado de un evento que ocurre con probabilidad $p=1$ no transmite ninguna información. Si a cada valor de $X$ se le puede asociar una cantidad de información, entonces debe poder calcularse la cantidad de información promedio: esta es la medida que buscaba Shannon.
+            Si a cada evento se le puede asociar una cantidad de información, entonces debe poder calcularse la cantidad de información promedio:\\
+            \pause
+            Shannon.
         \end{column}
     \end{columns}
 \end{frame}
@@ -357,22 +365,26 @@
 \begin{frame}{Entropía de Shannon}
     \begin{columns}
         \begin{column}{0.5\textwidth}
-            Retomando la idea del dado bien balanceado, como no es posible tener ningún tipo de seguridad sobre el resultado de un tiro, la incertidumbre (la entropía) es máxima.
+            En un dado bien balanceado la incertidumbre (la entropía) es máxima.
 
             \pause
 
-            En teoría de información clásica, la entropía de Shannon se suele utilizar como la cantidad promedio de bits requerida para trasmitir un mensaje.
+            La entropía de Shannon se utiliza como la cantidad promedio de bits requerida para trasmitir un mensaje.
 
         \end{column}
         \pause
         \begin{column}{0.5\textwidth}
-            ABCD $00$, $01$, $10$, y $11$ $S_{S}=2$
+            \textbf{Ejemplo}
+            \begin{tcolorbox}
+                Mensaje con carácteres A, B, C, D, equiprobables. \\
+                Codificación: $00$, $01$, $10$, y $11$.\\
+                $S_{S}=2$\\
 
-            \pause
+                $p(A)=\frac{1}{2}$, $p(B)=\frac{1}{4}$, $p(C)=\frac{1}{8}$, $p(D)=\frac{1}{8}$\\
+                Codificación:$A \rightarrow 0$, $B\rightarrow 10$, $C\rightarrow 110$, $D\rightarrow 111$\\
 
-            Si, en cambio, las probabilidades de que aparezca cada uno de los caracteres son $p(A)=\frac{1}{2}$, $p(B)=\frac{1}{4}$, $p(C)=\frac{1}{8}$, $p(D)=\frac{1}{8}$. En este caso, una codificación posible, tal que no haya ambigüedad en la cadena de bits, es $A \rightarrow 0$, $B\rightarrow 10$, $C\rightarrow 110$, $D\rightarrow 111$. Nótese que ahora solo se requiere un bit para transmitir la letra más común. Pues bien, si se calcula la entropía de Shannon, se encuentra que cada letra requerirá $1.75$ bits para ser transmitida
-
-
+                $S=1.75$
+            \end{tcolorbox}
         \end{column}
     \end{columns}
 \end{frame}
@@ -383,11 +395,13 @@
 \begin{frame}{El PME clásico}
     \begin{columns}
         \begin{column}{0.5\textwidth}
-            \Pisymbol{dice3d}{102}
-            {\usefont{U}{dice3d}{m}{n}6a 2b 3d}
-            No hay forma de saber.
-            $p(\epsdice{5})=0.5$ y $p(\epsdice{2})=0.5$
-            O todo igual (maximiza la entropía)
+            Supóngase que
+            $\expval{\text{\Pisymbol{dice3d}{102}}}=3.5$\\
+            ¿$p(x)$?\\
+            $p(\epsdice{5})=\frac{1}{2}$ y $p(\epsdice{2})=\frac{1}{2}$\\
+            Dado bien balanceado
+            $\downarrow$
+            maximiza la entropía de Shannon
         \end{column}
         \begin{column}{0.5\textwidth}
             El principio de máxima entropía fue introducido por E. T. Jaynes en 1957.
@@ -397,86 +411,56 @@
 \end{frame}
 
 \begin{frame}{El PME clásico}
-    \begin{columns}
-        \begin{column}{0.5\textwidth}
-            Sean $x_{j}$ los valores de $X$, $f_{k}$, funciones de valor esperado conocido. La información accesible:
-            \begin{equation}
-            \expval{f_{l}(x)}=\sum_{j}p(x_{j})f_{l}(x_{j}).\nonumber
-            \end{equation}
-            Maximizamos la entropía usando multiplicadores de Lagrange:
-            \begin{equation}
-                \mcL=-S_{\text{S}}(p)+\sum_{l}\lambda_{l}\qty(\sum_{j}p(x_{j})f_{l}(x_{j})-\expval{f_{l}(x)})+\mu\qty(\sum_{j}p(x_{j})-1).\nonumber
-            \end{equation}
-            La solución a cada componente
-            \begin{equation}
-                p(x_{j})=\exp[-(1+\frac{\mu}{k})-\frac{1}{k}\sum_{l}\lambda_{l}f_{l}(x_{j})].\nonumber
-            \end{equation}
-        \end{column}
-        \begin{column}{0.5\textwidth}
-            Notar que
-            \begin{equation}
-                \frac{1}{e^{-(1+\mu)}}=\sum_{j}\exp[-\frac{1}{k}\sum_{l}\lambda_{l}f_{l}(x_{j})].\nonumber
-            \end{equation}
-            La función de partición,
-            \begin{equation}
-                Z=\sum_{j}\exp[-\frac{1}{k}\sum_{l}\lambda_{l}f_{l}(x_{j})],\nonumber
-            \end{equation}
-            La distribución de probabilidad que maximiza la entropía: 
-            \begin{equation}
-                p(x_{j})=\frac{1}{Z}\exp[-\frac{1}{k}\sum_{l}\lambda_{l}f_{l}(x_{j})].\nonumber
-            \end{equation}
-        \end{column}
-    \end{columns}
+    Sean $x_{j}$ los valores de $X$, $f_{k}$, funciones de valor esperado conocido. La información:
+    \begin{equation}
+    \expval{f_{l}(x)}=\sum_{j}p(x_{j})f_{l}(x_{j}).\nonumber
+    \end{equation}
+    Maximizamos la entropía usando multiplicadores de Lagrange:
+    \begin{equation}
+        \mcL=-S_{\text{S}}(p)+\sum_{l}\lambda_{l}\qty(\sum_{j}p(x_{j})f_{l}(x_{j})-\expval{f_{l}(x)})+\mu\qty(\sum_{j}p(x_{j})-1).\nonumber
+    \end{equation}
+    Se deriva, se iguala a cero, se halla un sistema de ecuaciones.
+\end{frame}
+
+\begin{frame}{El PME clásico}
+    Las soluciones:
+    \begin{equation}
+        p(x_{j})=\exp[-(1+\frac{\mu}{k})-\frac{1}{k}\sum_{l}\lambda_{l}f_{l}(x_{j})].\nonumber
+    \end{equation}
+    La función de partición,
+    \begin{equation}
+        \frac{1}{e^{-(1+\mu)}}=\sum_{j}\exp[-\frac{1}{k}\sum_{l}\lambda_{l}f_{l}(x_{j})] \Rightarrow Z=\sum_{j}\exp[-\frac{1}{k}\sum_{l}\lambda_{l}f_{l}(x_{j})],\nonumber
+    \end{equation}
+    La distribución de probabilidad que maximiza la entropía: 
+    \begin{equation}
+        p(x_{j})=\frac{1}{Z}\exp[-\frac{1}{k}\sum_{l}\lambda_{l}f_{l}(x_{j})].\nonumber
+    \end{equation}
 \end{frame}
 
 \begin{frame}{El PME cuántico}
-    \begin{columns}
-        \begin{column}{0.5\textwidth}
-            Utilizamos la entropía de von Neumann:
-            \begin{equation}
-                S=
-            \end{equation}
-            Sean $\rho$ $H$ tales que $[\rho,H]=0$. La entropía de von Neumann:
-            \begin{equation}
-                S_{\text{N}}=-\sum_{k}\eta_{k}\log{\eta_{k}}.\nonumber
-            \end{equation}
-        \end{column}
-        \begin{column}{0.5\textwidth}
-            Para maximizarla:
-            \begin{equation}
-                \mcL=\sum_{k}\eta_{k}\log{\eta_{k}}+\lambda_{0}\qty(\sum_{k}\eta_{k}-1)+\lambda_{1}\qty(\sum_{k}\eta_{k}E_{k}-\expval{H}),\nonumber
-            \end{equation}
-            cuyas soluciones son
-            \begin{equation}
-                \eta_{k}=-e^{(\lambda_{0}+1+\lambda_{1}E_{k})}.\nonumber
-            \end{equation}
-        \end{column}
-    \end{columns}
+    Usamos la entropía de von Neuman $S=-Tr(\rho\ln(\rho))$, que para $\rho$ $H$ tales que $[\rho,H]=0$ es
+    \begin{equation}
+        S_{\text{N}}=-\sum_{k}\eta_{k}\log{\eta_{k}}.\nonumber
+    \end{equation}
+    Para maximizarla:
+    \begin{equation}
+        \mcL=\sum_{k}\eta_{k}\log{\eta_{k}}+\lambda_{0}\qty(\sum_{k}\eta_{k}-1)+\lambda_{1}\qty(\sum_{k}\eta_{k}E_{k}-\expval{H}).\nonumber
+    \end{equation}
+    Las soluciones:
+    \begin{equation}
+        \eta_{k}=-e^{(\lambda_{0}+1+\lambda_{1}E_{k})}=\frac{1}{Z}e^{-\lambda E_{k}}.\nonumber
+    \end{equation}
 \end{frame}
 
 \begin{frame}{El PME cuántico}
-   \begin{columns}
-    \begin{column}{0.5\textwidth}
-        Como $\sum_{k}\eta_{k}=1$, podemos definir a la función de partición notando que
-        \begin{equation}
-            e^{1+\lambda_{0}}=\sum_{k}e^{-\lambda_{1}E_{k}}.\nonumber
-        \end{equation}
-Así que la expresión de los eigenvalores del estado $\rho$ que maximiza a la entropía sujeto a la condición $\expval{H}=\sum_{k}\eta_{k}E_{k}=E$ en términos de los eigenvalores de $H$, $E_{k}$ es
-\begin{equation}
-\eta_{k}=\frac{1}{Z}e^{-\lambda E_{k}}.\nonumber
-\end{equation}
-    \end{column}
-    \begin{column}{0.5\textwidth}
-Utilizando notación de Dirac, $\rho=\sum_{k}\eta_{k}\dyad{e_{k}}$, podemos hallar el resultado independiente de la elección de la base:
-\begin{equation}
-    \rho=\frac{1}{Z}e^{-\lambda H}.
-\end{equation}
-Este resultado es fácilmente generalizable al caso en que contemos con un  conjunto $\{A_{j}\}_{j}$ de $N$ observables tales que $[A_{j},\rho]=0$, de los que conozcamos sus valores esperados. En general, la expresión del estado de máxima entropía es
-\begin{equation}\label{eq:GeneralMaxEnt}
-    \rho=\frac{1}{Z}e^{-\sum_{k}\lambda_{k} A_{k}}.
-\end{equation}
-    \end{column}
-   \end{columns}
+    Utilizando notación de Dirac, $\rho=\sum_{k}\eta_{k}\dyad{e_{k}}$, podemos hallar el resultado independiente de la elección de la base:
+    \begin{equation}
+        \rho=\frac{1}{Z}e^{-\lambda H}.\nonumber
+    \end{equation}
+    Este resultado es fácilmente generalizable al caso en que contemos con un  conjunto $\{A_{j}\}_{j}$ de $N$ observables tales que $[A_{j},\rho]=0$, de los que conozcamos sus valores esperados. En general, la expresión del estado de máxima entropía es
+    \begin{equation}\label{eq:GeneralMaxEnt}
+        \rho=\frac{1}{Z}e^{-\sum_{k}\lambda_{k} A_{k}}.\nonumber
+    \end{equation}
 \end{frame}
 
 
@@ -484,5 +468,13 @@ Este resultado es fácilmente generalizable al caso en que contemos con un  conj
     \begin{center}
         ``Dinámica efectiva de un sistema de N qubits\\
         Utilizando el Principio de Máxima Entropía''
+        \begin{displaymath}
+            \xymatrix{
+              {\rho_{\ef}(0)} \ar[rr]^{\Gamma_{t}} \ar[d]^{\mcA_{\mcC}^{\max}}
+              && {\rho_{\ef}(t)}\\
+              {\varrho_{\max}(0)} \ar[rr]^{\mcE_{t}}
+              && {\varrho_{\max}(t)} \ar[u]^{\mcC}
+            }
+          \end{displaymath}
     \end{center}
 \end{frame}
