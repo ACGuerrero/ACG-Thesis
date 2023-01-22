@@ -1,13 +1,52 @@
 \section{El modelo, la asignación, y la dinámica}
-
+\iffalse
 \subsection{El modelo de grano grueso}
+
 \begin{frame}{Motivación}
-    \lipsum[1]
+    \begin{columns}
+        \begin{column}
+            El modelo de grano grueso considera dos tipos de error:
+            \begin{itemize}
+                \item posibilidad de medir una partícula diferente a la pretendida
+                \item falta de resolución en el aparato de detección
+            \end{itemize} 
+        \end{column}
+        \begin{column}
+            Un prototipo sencillo de error consiste en el inducido por un aparato que no distingue diferentes conjuntos de partículas entre sí. El caso más simple corresponde a la permutación de dos partículas.
+            \begin{align}
+                \mcF:&\mcS(\hilbert_2 \otimes \hilbert_2)\to \mcS(\hilbert_2 \otimes \hilbert_2)\nonumber\\
+                &\varrho \mapsto p\varrho+(1-p)S\varrho S,\nonumber
+            \end{align}
+        \end{column}
+    \end{columns}
 \end{frame}
 
-\begin{frame}{Construcción y extensión}
-    \lipsum[1]
+\begin{frame}{Motivación}
+    \begin{columns}
+        \begin{column}
+            Al error se le añade la falta de resolución: solo se resuelve una partícula. Matemáticamente, la composición del error y de la falta de resolución puede escribirse como
+            \begin{gather}
+                \mcC:\mcS(\hilbert_2 \otimes \hilbert_2)\to \mcS(\hilbert_2)\nonumber\\
+                \varrho_{AB} \mapsto p\rho_A+(1-p)\rho_B\rlap{,}\nonumber
+            \end{gather}
+        \end{column}
+        \begin{column}
+            Considerando un sistema de $n$ subsistemas de dos niveles, la aplicación borrosa se define entonces como
+\begin{gather}
+    \mcF:\mcS\qty( \hilbert_{2}^{\otimes n})\to \mcS\qty( \hilbert_{2}^{\otimes n})\nonumber\\
+    \varrho \mapsto p_{1}\varrho+\sum_{j=2}^{n}p_{j}(S_{1,j})\varrho(S_{1,j}),\nonumber
+\end{gather}
+donde $S_{1,j}$ es el operador que permuta la primera y la $j$-ésima partícula. De esta manera, donde $\Tr_{\overline{i}}$ denota la traza parcial sobre todos menos el $i$-ésimo qubit, la aplicación de grano grueso que resuelve un qubit donde hay $n$ qubits es
+\begin{equation}
+    \begin{gathered}
+        \mcC:\mcS( \hilbert_{2}^{\otimes n})\to \mcS(\hilbert_{2})\\
+        \varrho\mapsto\Tr_{\overline{1}}(\Fuzzy{\varrho}).
+    \end{gathered}
+\end{equation}
+        \end{column}
+    \end{columns}
 \end{frame}
+\fi
 
 \subsection{La aplicación de asignación}
 \begin{frame}{Repaso: PME}

@@ -225,25 +225,6 @@
     }{}{}
 }
 
-% % Use full section name in section pages
-% \setbeamertemplate{section page}{
-%     \centering
-%     \begin{minipage}{22em}
-%         \raggedright
-%         \usebeamercolor[fg]{section title}
-%         \usebeamerfont{section title}
-%         \insertsection\\[-1ex]
-%         \usebeamertemplate*{progress bar in section page}
-%         \par
-%         \ifx\insertsubsection\@empty\else%
-%             \usebeamercolor[fg]{subsection title}%
-%             \usebeamerfont{subsection title}%
-%             \insertsubsection
-%         \fi
-%   \end{minipage}
-%   \par
-%   \vspace{\baselineskip}
-% }
 
 % Add footer to section pages
 \AtBeginSection{
@@ -283,7 +264,6 @@
                     \insertshortsubtitle
                 }
                 \hfill
-                % \includegraphics[height = 0.6cm]{img/aems.pdf}
             \end{beamercolorbox}%
         }
         \frame{
@@ -406,3 +386,53 @@
 \newcommand{\avgass}{\mcA_{\mcC}^{\avg}}
 \newcommand{\maxass}{\mcA_{\mcC}^{\max}}
 \DeclareMathOperator*{\Motimes}{\text{\raisebox{0.25ex}{\scalebox{0.8}{$\bigotimes$}}}} %para los productos tensoriales
+
+\newcommand{\BlochSphere}{            \begin{tikzpicture}[line cap=round, line join=round, >=Triangle]
+    \clip(-2.19,-2.49) rectangle (2.66,2.58);
+    \draw [shift={(0,0)}, lightgray, fill, fill opacity=0.1] (0,0) -- (56.7:0.4) arc (56.7:90.:0.4) -- cycle;
+    \draw [shift={(0,0)}, lightgray, fill, fill opacity=0.1] (0,0) -- (-135.7:0.4) arc (-135.7:-33.2:0.4) -- cycle;
+    \draw(0,0) circle (2cm);
+    \draw [rotate around={0.:(0.,0.)},dash pattern=on 3pt off 3pt] (0,0) ellipse (2cm and 0.9cm);
+    \draw (0,0)-- (0.70,1.07);
+    \draw [->] (0,0) -- (0,2);
+    \draw [->] (0,0) -- (-0.81,-0.79);
+    \draw [->] (0,0) -- (2,0);
+    \draw [dotted] (0.7,1)-- (0.7,-0.46);
+    \draw [dotted] (0,0)-- (0.7,-0.46);
+    \draw (-0.08,-0.3) node[anchor=north west] {$\varphi$};
+    \draw (0.01,0.9) node[anchor=north west] {$\theta$};
+    \draw (-1.01,-0.72) node[anchor=north west] {$\hat{x}$};
+    \draw (2.07,0.3) node[anchor=north west] {$\hat{y}$};
+    \draw (-0.5,2.6) node[anchor=north west] {$\hat{z}=\ket{0}$};
+    \draw (-0.4,-2) node[anchor=north west] {$-\hat{z}=\ket{1}$};
+    \draw (0.4,1.65) node[anchor=north west] {$\ket{\psi}$};
+    \scriptsize
+    \draw [fill] (0,0) circle (1.5pt);
+    \draw [fill] (0.7,1.1) circle (0.5pt);
+  \end{tikzpicture}}
+
+  \newcommand{\BlochSphereDensity}{            \begin{tikzpicture}[line cap=round, line join=round, >=Triangle]
+    \clip(-2.19,-2.49) rectangle (2.66,2.58);
+    \draw(0,0) circle (2cm);
+    \draw [rotate around={0.:(0.,0.)},dash pattern=on 3pt off 3pt] (0,0) ellipse (2cm and 0.9cm);
+    \draw [->] (0,0) -- (-0.81,-0.79); %Eje x
+    \draw [->] (0,0) -- (2,0); %Eje y
+    \draw [->] (0,0) -- (0,2); %Eje z
+    \draw (0,0) -- (0.70,1.07); %Vector rho
+    \draw [dotted] (0.0,1.46)-- (0.7,1.07); %Proyección en z
+    \draw [dotted] (0,0)-- (0.7,-0.46); % Proyección en xy
+    \draw [dotted] (0.7,1.07)-- (0.7,-0.46); %Proyección en xy
+    \draw [dotted] (0.7,-0.46)-- (1.18,0.0); %Proyección en y
+    \draw [dotted] (-0.47,-0.46)-- (0.7,-0.46); %Proyección en x
+    \draw (-1.1,-0.15) node[anchor=north west] {$r_{x}$};
+    \draw (1.,0.4) node[anchor=north west] {$r_{y}$};
+    \draw (-0.5,1.75) node[anchor=north west] {$r_{z}$};
+    \draw (-1.01,-0.72) node[anchor=north west] {$\hat{x}$};
+    \draw (2.07,0.3) node[anchor=north west] {$\hat{y}$};
+    \draw (-0.5,2.6) node[anchor=north west] {$\ket{0}$};
+    \draw (-0.4,-2) node[anchor=north west] {$\ket{1}$};
+    \draw (0.4,1.65) node[anchor=north west] {$\vec{r}_{\rho}$};
+    \scriptsize
+    \draw [fill] (0,0) circle (1.5pt);
+    \draw [fill] (0.7,1.07) circle (0.5pt);
+  \end{tikzpicture}}
