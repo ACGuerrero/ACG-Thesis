@@ -320,19 +320,17 @@
     \begin{columns}
         \begin{column}{0.5\textwidth}
             \begin{center}
-                Cantidad de información $\propto$ probabilidad\pause
+                A cada evento se le puede asociar una cantidad de información\pause
             \end{center}
             \begin{itemize}
                 \item ``No cayó 6''$\rightarrow$poca información\pause
                 \item ``Cayó 6''$\rightarrow$más información\pause
             \end{itemize}
-            \begin{center}
-                Un evento $p=1$ no transmite información.
-            \end{center}
+            Entonces es decreciente con la probabilidad, monótona y Un evento $p=1$ no transmite información.
         \end{column}
         \pause
         \begin{column}{0.5\textwidth}
-            Si a cada evento se le puede asociar una cantidad de información, entonces debe poder calcularse la cantidad de información promedio:\\
+            Si , entonces debe poder calcularse la cantidad de información promedio:\\
             \pause
             Shannon.
         \end{column}
@@ -342,52 +340,19 @@
 \begin{frame}{Entropía de Shannon}
     \begin{columns}
         \begin{column}{0.5\textwidth}
-            La entropía de Shannon $S_{\text{S}}$ es una medida \textit{incertidumbre} o \textit{información}.
-            \pause
-            \begin{enumerate}
-                \item $S_{\text{S}}(p)$ debe ser continua en $p$. \pause
-                \item $S_{\text{S}}(p)$ debe ser una función creciente, monotónica de $n$ cuando $p_{j}=\frac{1}{n}$. \pause
-                \item Si $X$ e $Y$ son procesos independientes, $S_{\text{S}}(p_{X}(x_{j})p_{Y}(y_{l}))=S_{\text{S}}(p_{X}(x_{j}))+S_{\text{S}}(p_{Y}(y_{l}))$.
-            \end{enumerate}
-        \end{column}
-        \pause
-        \begin{column}{0.5\textwidth}
             Claude Shannon demostró 
             \begin{equation}
                 S_{\text{S}}=-k\sum_{j}p(x_{j})\log{p(x_{j})}.\nonumber
             \end{equation}
-            \pause
             Fue a través de discusiones con von Neumann que Shannon descubrió que su medida ya era ampliamente utilizada en física, y que llevaba el nombre de \textit{entropía}.   
-        \end{column}
-    \end{columns}
-\end{frame}
-
-\begin{frame}{Entropía de Shannon}
-    \begin{columns}
-        \begin{column}{0.5\textwidth}
-            En un dado bien balanceado la incertidumbre (la entropía) es máxima.
-
-            \pause
-
             La entropía de Shannon se utiliza como la cantidad promedio de bits requerida para trasmitir un mensaje.
-
         \end{column}
-        \pause
         \begin{column}{0.5\textwidth}
-            \textbf{Ejemplo}
-            \begin{tcolorbox}
-                Mensaje con carácteres A, B, C, D, equiprobables. \\
-                Codificación: $00$, $01$, $10$, y $11$.\\
-                $S_{S}=2$\\
-
-                $p(A)=\frac{1}{2}$, $p(B)=\frac{1}{4}$, $p(C)=\frac{1}{8}$, $p(D)=\frac{1}{8}$\\
-                Codificación:$A \rightarrow 0$, $B\rightarrow 10$, $C\rightarrow 110$, $D\rightarrow 111$\\
-
-                $S=1.75$
-            \end{tcolorbox}
+            Ejemplo en apéndice?
         \end{column}
     \end{columns}
 \end{frame}
+
 
 
 \subsection{El principio de Máxima Entropía}
