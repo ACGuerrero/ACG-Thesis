@@ -1,11 +1,8 @@
 \section{Introducción}
 
-
-\begin{frame}{Qubits}
-    \begin{center}
-        ``\textbf{Dinámica} efectiva de un sistema de N \textbf{qubits}''
-    \end{center}
-    \pause
+%###########################
+%######### Qubits ##########
+\begin{frame}{Qubits y su dinámica}
     \begin{columns}
         \begin{column}{0.5\textwidth}
             \begin{center}
@@ -36,7 +33,6 @@
         \end{column}
     \end{columns}
 \end{frame}
-
 \begin{frame}{Parametrización de un qubit}
     \begin{columns}
         \begin{column}{0.5\textwidth}
@@ -56,10 +52,12 @@
         \end{column}
     \end{columns}
 \end{frame}
+%###########################
 
 
-
-\begin{frame}{Efectiva}
+%###########################
+%# Descripciones efectivas #
+\begin{frame}{Dinámica que emerge de una descripción efectiva}
     \begin{center}
         ``Dinámica \textbf{efectiva} de un sistema de N qubits''
     \end{center}
@@ -80,7 +78,7 @@
         \end{column}
         \pause
         \begin{column}{0.5\textwidth}
-            La descripción gruesa de un sistema puede ser resultado de
+            La descripción gruesa de un sistema es resultado de
             \begin{itemize}
                 \item Aparato de medición imperfecto
                 \item Descarte de grados de libertad del sistema
@@ -88,8 +86,7 @@
         \end{column}
     \end{columns}
 \end{frame}
-
-\begin{frame}{Modelos de grano grueso}
+\begin{frame}{Descripciones efectivas y modelos de grano grueso}
     \begin{center}
         Una descripción de grano grueso es aquella que no toma en cuenta todos los detalles de un sistema o fenómeno.
     \end{center}
@@ -113,21 +110,31 @@
         \end{column}
     \end{columns}
 \end{frame}
+%###########################
 
+
+%###########################
+% ## Operador de densidad ##
 \subsection{El operador de densidad}
 
 \begin{frame}{Mezclas estadísticas}
     \begin{columns}
         \begin{column}{0.5\textwidth}
+            \begin{block}{Probabilidad cuántica}
             Los vectores de estado contienen probabilidad cuántica:
             \begin{equation}
-                \ket{\psi}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1}),\nonumber
+                \ket{\psi}=\alpha\ket{0}+\beta\ket{1},\nonumber
             \end{equation}
             \pause
-            pero no el segundo tipo de probabilidad: la asociada a la ignorancia.
+            de la que se recupera la regla de Born:
+            \begin{equation}
+                p(\ket{0})=\abs{\alpha}^{2}\qquad p(\ket{0})=\abs{\beta}^{2}\nonumber
+            \end{equation}
+        \end{block}
         \end{column}
         \pause
         \begin{column}{0.5\textwidth}
+            \begin{block}{Probabilidad \textit{por ignorancia}}
             Un sistema del que se sabe se halla en el estado $\ket{\varphi_{j}}$ con probabilidad $p_{j}$.\\
             \vspace{0.2cm}
             \pause
@@ -138,10 +145,10 @@
             \begin{equation}
                 \rho=\sum_{j}p_{j}\dyad{\varphi_{j}}.\nonumber
             \end{equation}
+        \end{block}
         \end{column}
     \end{columns}
 \end{frame}
-
 \begin{frame}{Parametrización}
     \begin{columns}
         \begin{column}{0.5\textwidth}
@@ -166,75 +173,80 @@
         \end{column}
     \end{columns}
 \end{frame}
+%###########################
 
 
+%###########################
+%#### Sistemas abiertos ####
 \begin{frame}{Sistemas multipartitos}
-    \begin{center}
-        ``Dinámica efectiva de un sistema de \textbf{N} qubits''
-    \end{center}
-    \pause
     \begin{columns}
         \begin{column}{0.5\textwidth}
+            \begin{block}{Combinar y reducir}
+            Si $\rho_{\text{bi}}$ describe dos qubits A y B,
             \begin{equation}
                 \hilbert_{\text{bi}}=\hilbert_{2}\otimes\hilbert_{2}.\nonumber
-            \end{equation} \pause
-            La dimensión cumple
-           \begin{equation}
-               \text{dim}(\hilbert_{\text{bi}})=\text{dim}(\hilbert_{2})\text{dim}(\hilbert_{2}).\nonumber
-           \end{equation}
+            \end{equation}
            \pause
-           ¿Qué sucede si únicamente nos es relevante el estado de una partícula?
-        \end{column}
-        \pause
-        \begin{column}{0.5\textwidth}
-             Si $\rho_{\text{bi}}$ describe dos qubits A y B, \pause
+           ¿Qué sucede si es relevante \textbf{una} partícula?\pause
             \begin{equation}
                 \rho^{A}=\Tr_{B}(\rho_{\text{bi}}),\nonumber
             \end{equation}
-            donde $\Tr_{B}$ es la traza parcial respecto al qubit $B$.\\
-            \pause
-            \begin{center}
-                ¿Y la evolución?
-            \end{center}
-        \end{column}
-    \end{columns}
-\end{frame}
-
-\begin{frame}{Evolución abierta}
-    Supóngase que el sistema de interés está acoplado a un \textit{entorno}: $\rho(0)=\rho_{S}(0)\otimes\rho_{E}$
-    \vspace*{0.3cm}
-    \begin{columns}
-        \begin{column}{0.5\textwidth}
-            El sistema completo evoluciona de forma unitaria.\begin{equation}
-                \rmi\hbar\frac{d}{d t} \rho(t)=[H,\rho(t)].\nonumber
-            \end{equation}\pause
-            Para hallar la dinámica del sistema de interés hay que trazar:
-            \begin{align}
-                \rmi\hbar\frac{d}{d t} \rho_{S}(t)=\Tr_{E}([H,\rho(t)])\rlap{,}\nonumber
-            \end{align}
+            \end{block}
         \end{column}
         \pause
         \begin{column}{0.5\textwidth}
+            \begin{block}{Evolución}
+            Sistema multipartito $\rightarrow$ von Neumann
             \begin{equation}
-                \rho_{S}(t)=\mcE_{t}(\rho_{S}(0)).\nonumber
+                \rmi\hbar\frac{d}{d t} \rho_{\text{bi}}(t)=[H,\rho_{\text{bi}}(t)].\nonumber
             \end{equation}\pause
-            \begin{equation}
-                \mcE_{t}(\rho_{S}(0))=\Tr_{E}\qty[U(t,0)\left(\rho_{S}(0)\otimes\rho_{E}\right)U^{\dag}(t,0)],\nonumber
-            \end{equation}\pause
-            Es un canal cuántico y\pause
-            \begin{equation}
-                \mcE(\rho)=\sum_{k}A_{k}\rho A^{\dagger}_{k}\nonumber
-            \end{equation}\pause
-            es su representación en suma de operadores de Kraus.
+            \vspace{0.3cm}
+            Trazando:
+            \begin{align}
+                \rmi\hbar\frac{d}{d t} \rho^{A}(t)=\Tr_{B}([H,\rho_{\text{bi}}(t)])\rlap{.}\nonumber
+            \end{align}
+        \end{block}
         \end{column}
     \end{columns}
 \end{frame}
+\begin{frame}{Evolución abierta}
+    Supóngase que el sistema de interés está acoplado a un \textit{entorno}: $\rho_{\text{Tot}}(0)=\rho_{S}(0)\otimes\rho_{E}$
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{block}{El canal cuántico}
+            \begin{align}
+                \rmi\hbar\frac{d}{d t} \rho_{S}(t)=\Tr_{E}([H,\rho_{\text{Tot}}(t)])\rlap{,}\nonumber
+            \end{align}\pause
+            Tiene solución:
+            \begin{equation}
+                \begin{gathered}
+                \rho_{S}(t)=\mcE_{t}(\rho_{S}(0))\\
+                \mcE_{t}(\rho_{S}(0))=\Tr_{E}\qty[U(t)\left(\rho_{S}(0)\otimes\rho_{E}\right)U^{\dag}(t)]
+            \end{gathered}\nonumber
+            \end{equation}
+            \end{block}
+        \end{column}
+        \pause
+        \begin{column}{0.5\textwidth}
+            \begin{block}{Operadores de Kraus}
+            \begin{itemize}
+                \item $\mcE(\rho)=\sum_{k}A_{k}\rho A^{\dagger}_{k}$
+                \item $\sum_{k}A_{k}^{\dagger}A_{k}=\Id$
+            \end{itemize}
+        \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+%###########################
 
-\begin{frame}{Canal de desfasamiento}
-    El \textit{canal de desfasamiento} tiene operadores de Kraus $\{\sqrt{p}\Id,\sqrt{(1-p)}\pauli{3}\}$. Su efecto sobre un estado $\rho$ es
-    \begin{equation}
-        \rho\mapsto p\rho+(1-p)\pauli{3}\rho\pauli{3}.\nonumber
-    \end{equation}
+
+
+%###########################
+%### Ejemplos de canales ###
+\begin{frame}{Ejemplo de canal cuántico: desfasamiento}
+    \begin{center}
+        El \textit{canal de desfasamiento} tiene operadores de Kraus $\{\sqrt{p}\Id,\sqrt{(1-p)}\pauli{3}\}$.
+    \end{center}
     \begin{figure}
         \centering
         \begin{subfigure}{0.45\textwidth}
@@ -247,9 +259,10 @@
         \end{subfigure}
     \end{figure}
 \end{frame}
-
-\begin{frame}{Canal de bitflip}
-    El \textit{canal de bitflip} tiene operadores de Kraus $\{\sqrt{p}\Id,\sqrt{(1-p)}\pauli{1}\}$. Su efecto es el de reducir la magnitud de las componentes de $\pauli{2}$ y $\pauli{3}$ por un factor de $2p-1$.
+\begin{frame}{Ejemplo de canal cuántico: bitflip}
+    \begin{center}
+        El \textit{canal de bitflip} tiene operadores de Kraus $\{\sqrt{p}\Id,\sqrt{(1-p)}\pauli{1}\}$.
+    \end{center}
     \begin{figure}
         \centering
         \begin{subfigure}{0.45\textwidth}
@@ -262,8 +275,7 @@
         \end{subfigure}
     \end{figure}
 \end{frame}
-
-\begin{frame}{Canal de despolarización}
+\begin{frame}{Ejemplo de canal cuántico: despolarización}
     Finalmente, el \textit{canal de despolarización} se define mediante
     \begin{equation}
         \rho\mapsto p\frac{1}{2}\Id+(1-p)\rho\nonumber.
@@ -280,19 +292,20 @@
         \end{subfigure}
     \end{figure}
 \end{frame}
+%###########################
 
-\begin{frame}{El problema}
+\begin{frame}{El problema: motivación}
     \begin{center}
-        ``Dinámica efectiva de un sistema de N qubits''
+        Se estudia la dinámica que emerge de una descripción efectiva
     \end{center}
     \begin{columns}
         \begin{column}{0.5\textwidth}
             \begin{displaymath}
                 \xymatrix{
-                  {\rho_{\ef}(0)} \ar[rr]^{\text{?}}
+                  {\rho_{\ef}(0)} \ar[rr]^{\text{\textcolor{red}{?}}}
                   && {\rho_{\ef}(t)}\\
-                  {\varrho_{\text{?}}(0)} \ar[rr]^{\mcE_{t}} \ar[u]^{\mcC}
-                  && {\varrho_{\text{?}}(t)} \ar[u]^{\mcC}
+                  {\varrho_{\text{\textcolor{red}{?}}}(0)} \ar[rr]^{\mcE_{t}} \ar[u]^{\mcC}
+                  && {\varrho_{\text{\textcolor{red}{?}}}(t)} \ar[u]^{\mcC}
                 }
               \end{displaymath}
         \end{column}
@@ -300,25 +313,28 @@
         \begin{column}{0.5\textwidth}
             \begin{displaymath}
                 \xymatrix{
-                  {\rho_{\ef}(0)} \ar[rr]^{\Gamma} \ar[d]^{\mcA}
+                  {\rho_{\ef}(0)} \ar[rr]^{{\mcC\circ\mcE_{t}\circ\color{red}\mcA}} \ar[d]^{{\color{red}\mcA}}
                   && {\rho_{\ef}(t)}\\
-                  {\varrho(0)} \ar[rr]^{\mcE_{t}}
-                  && {\varrho(t)} \ar[u]^{\mcC}
+                  {\varrho_{{\color{red}\mcA}}(0)} \ar[rr]^{\mcE_{t}}
+                  && {\varrho_{{\color{red}\mcA}}(t)} \ar[u]^{\mcC}
                 }
               \end{displaymath}
               \pause
         \end{column}
     \end{columns}
     \begin{center}
-        ``Utilizando el Principio de Máxima Entropía''
+        ¿Cómo construir ${\color{red}\mcA}$?
     \end{center}
 \end{frame}
 
+%###########################
+%#### Entropía y MaxEnt ####
 \subsection{Entropía e información}
 
-\begin{frame}{Información clásica}
+\begin{frame}{Entropía en teoría de información clásica}
     \begin{columns}
         \begin{column}{0.5\textwidth}
+            \begin{block}{Información clásica}
             \begin{center}
                 A cada evento se le puede asociar una cantidad de información\pause
             \end{center}
@@ -327,46 +343,44 @@
                 \item ``Cayó 6''$\rightarrow$más información\pause
             \end{itemize}
             Entonces es decreciente con la probabilidad, monótona y Un evento $p=1$ no transmite información.
+        \end{block}
         \end{column}
         \pause
         \begin{column}{0.5\textwidth}
+            \begin{block}{Entropía de Shannon}
             Si , entonces debe poder calcularse la cantidad de información promedio:\\
             \pause
-            Shannon.
-        \end{column}
-    \end{columns}
-\end{frame}
-
-\begin{frame}{Entropía de Shannon}
-    \begin{columns}
-        \begin{column}{0.5\textwidth}
             Claude Shannon demostró 
             \begin{equation}
                 S_{\text{S}}=-k\sum_{j}p(x_{j})\log{p(x_{j})}.\nonumber
             \end{equation}
-            Fue a través de discusiones con von Neumann que Shannon descubrió que su medida ya era ampliamente utilizada en física, y que llevaba el nombre de \textit{entropía}.   
-            La entropía de Shannon se utiliza como la cantidad promedio de bits requerida para trasmitir un mensaje.
-        \end{column}
-        \begin{column}{0.5\textwidth}
-            Ejemplo en apéndice?
+        \end{block}
         \end{column}
     \end{columns}
 \end{frame}
 
+\subsection{El Principio de Máxima Entropía}
 
-
-\subsection{El principio de Máxima Entropía}
-
-\begin{frame}{El PME clásico}
+\begin{frame}{Intuición del Principio de Máxima Entropía}
     \begin{columns}
         \begin{column}{0.5\textwidth}
-            Supóngase que
-            $\expval{\text{\Pisymbol{dice3d}{102}}}=3.5$\\
-            ¿$p(x)$?\\
-            $p(\epsdice{5})=\frac{1}{2}$ y $p(\epsdice{2})=\frac{1}{2}$\\
-            Dado bien balanceado
-            $\downarrow$
-            maximiza la entropía de Shannon
+            \begin{block}{Usando dados: {\usefont{U}{dice3d}{m}{n}6a 2b 3d}}
+                \begin{center}   
+                Supóngase que $\expval{\text{\Pisymbol{dice3d}{102}}}=3.5$\\
+                ¿$p(x)$?\\ \pause
+                Dado balanceado:
+                \begin{tabular}{ c c c }
+                    $p(\epsdice{1})=\frac{1}{6}$ & $p(\epsdice{2})=\frac{1}{6}$ & $p(\epsdice{3})=\frac{1}{6}$ \\
+                    $p(\epsdice{4})=\frac{1}{6}$ & $p(\epsdice{5})=\frac{1}{6}$ & $p(\epsdice{6})=\frac{1}{6}$
+                \end{tabular}\pause \\
+                \vspace{0.3cm}
+                Dado pesado:
+                \begin{tabular}{ c c c }
+                    $p(\epsdice{5})=\frac{1}{2}$ & $p(\epsdice{2})=\frac{1}{2}$ & $p(\epsdice{1})=0$ \\
+                    $p(\epsdice{3})=0$ & $p(\epsdice{4})=0$ & $p(\epsdice{6})=0$
+                \end{tabular}
+                \end{center}
+            \end{block}
         \end{column}
         \begin{column}{0.5\textwidth}
             El principio de máxima entropía fue introducido por E. T. Jaynes en 1957.
@@ -374,61 +388,39 @@
         \end{column}
     \end{columns}
 \end{frame}
-
-\begin{frame}{El PME clásico}
-    Sean $x_{j}$ los valores de $X$, $f_{k}$, funciones de valor esperado conocido. La información:
-    \begin{equation}
-    \expval{f_{l}(x)}=\sum_{j}p(x_{j})f_{l}(x_{j}).\nonumber
-    \end{equation}
-    Maximizamos la entropía usando multiplicadores de Lagrange:
+\begin{frame}{El Principio de Máxima Entropía clásico}
+    Sean $x_{j}$ los valores de $X$, $f_{k}$, funciones de valor esperado conocido. Maximizamos la entropía:
     \begin{equation}
         \mcL=-S_{\text{S}}(p)+\sum_{l}\lambda_{l}\qty(\sum_{j}p(x_{j})f_{l}(x_{j})-\expval{f_{l}(x)})+\mu\qty(\sum_{j}p(x_{j})-1).\nonumber
     \end{equation}
-    Se deriva, se iguala a cero, se halla un sistema de ecuaciones.
-\end{frame}
-
-\begin{frame}{El PME clásico}
-    Las soluciones:
-    \begin{equation}
-        p(x_{j})=\exp[-(1+\frac{\mu}{k})-\frac{1}{k}\sum_{l}\lambda_{l}f_{l}(x_{j})].\nonumber
-    \end{equation}
-    La función de partición,
-    \begin{equation}
-        \frac{1}{e^{-(1+\mu)}}=\sum_{j}\exp[-\frac{1}{k}\sum_{l}\lambda_{l}f_{l}(x_{j})] \Rightarrow Z=\sum_{j}\exp[-\frac{1}{k}\sum_{l}\lambda_{l}f_{l}(x_{j})],\nonumber
-    \end{equation}
-    La distribución de probabilidad que maximiza la entropía: 
+    Se deriva, se iguala a cero, se halla un sistema de ecuaciones. La distribución de probabilidad que maximiza la entropía: 
     \begin{equation}
         p(x_{j})=\frac{1}{Z}\exp[-\frac{1}{k}\sum_{l}\lambda_{l}f_{l}(x_{j})].\nonumber
     \end{equation}
 \end{frame}
-
-\begin{frame}{El PME cuántico}
+\begin{frame}{El Principio de Máxima Entropía cuántico}
     Usamos la entropía de von Neuman $S=-Tr(\rho\ln(\rho))$, que para $\rho$ $H$ tales que $[\rho,H]=0$ es
     \begin{equation}
         S_{\text{N}}=-\sum_{k}\eta_{k}\log{\eta_{k}}.\nonumber
     \end{equation}
-    Para maximizarla:
-    \begin{equation}
-        \mcL=\sum_{k}\eta_{k}\log{\eta_{k}}+\lambda_{0}\qty(\sum_{k}\eta_{k}-1)+\lambda_{1}\qty(\sum_{k}\eta_{k}E_{k}-\expval{H}).\nonumber
-    \end{equation}
-    Las soluciones:
+    Siguiendo el mismo procedimiento, las soluciones:
     \begin{equation}
         \eta_{k}=-e^{(\lambda_{0}+1+\lambda_{1}E_{k})}=\frac{1}{Z}e^{-\lambda E_{k}}.\nonumber
     \end{equation}
-\end{frame}
-
-\begin{frame}{El PME cuántico}
-    Utilizando notación de Dirac, $\rho=\sum_{k}\eta_{k}\dyad{e_{k}}$, podemos hallar el resultado independiente de la elección de la base:
+    Utilizando notación de Dirac, $\rho=\sum_{k}\eta_{k}\dyad{e_{k}}$:
     \begin{equation}
         \rho=\frac{1}{Z}e^{-\lambda H}.\nonumber
     \end{equation}
-    Este resultado es fácilmente generalizable al caso en que contemos con un  conjunto $\{A_{j}\}_{j}$ de $N$ observables tales que $[A_{j},\rho]=0$, de los que conozcamos sus valores esperados. En general, la expresión del estado de máxima entropía es
+    En general:
     \begin{equation}\label{eq:GeneralMaxEnt}
         \rho=\frac{1}{Z}e^{-\sum_{k}\lambda_{k} A_{k}}.\nonumber
     \end{equation}
 \end{frame}
+%###########################
 
 
+%###########################
+%###########################
 \begin{frame}{El problema}
     \begin{center}
         ``Dinámica efectiva de un sistema de N qubits\\
@@ -443,3 +435,4 @@
           \end{displaymath}
     \end{center}
 \end{frame}
+%###########################

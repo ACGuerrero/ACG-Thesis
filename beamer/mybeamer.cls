@@ -3,8 +3,6 @@
 \LoadClass[aspectratio = 169]{beamer}
 \usetheme{metropolis}
 
-% Metropolis global options
-% See: http://www.tug.org/texlive//devsrc/Master/texmf-dist/doc/latex/beamertheme-metropolis/metropolistheme.pdf
 \metroset{sectionpage = progressbar}
 \metroset{subsectionpage = progressbar}
 \metroset{progressbar = frametitle}
