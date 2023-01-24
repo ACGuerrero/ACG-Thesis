@@ -110,12 +110,11 @@
         \pause
         \begin{column}{0.5\textwidth}
             Definimos la aplicación de asignación de máxima entropía:
-            \begin{equation}
+            \tcbox{$
                 \begin{gathered}
                     \mcA_{\mcC}^{\max}:\densityspace{2}\rightarrow\mcS(\hilbert_{2}^{\otimes n})\nonumber\\
                     \rho_{\ef} \mapsto \Motimes_{j=1}^{n}\frac{1}{Z_{j}}\text{exp}\qty(p_{j}\sum_{k=1}^{3}\lambda_{k}\sigma_{k}).
-                \end{gathered}
-            \end{equation}
+                \end{gathered}$}
         \end{column}
     \end{columns}
 \end{frame}
@@ -137,8 +136,8 @@
         \begin{equation}
             \mcA_{\mcC}^{\max}[\rho]=\Motimes_{j=1}^{n}\frac{1}{Z_{j}}\text{exp}\qty(p_{j}\sum_{k=1}^{3}\lambda_{k}\sigma_{k}) \qquad \CG{\varrho}=\Tr_{\overline{1}}\qty(p_{1}\varrho+\sum_{j=2}^{n}p_{j}(S_{1,j})\varrho(S_{1,j}))\nonumber
         \end{equation}\pause
-        \begin{equation}
-            \boxed{\Gamma_t[\rho]:=(\mcC \circ \mcE_t \circ \mcA^{max}_{\mcC})[\rho].}\nonumber
-        \end{equation}
+        \begin{center}
+            \tcbox{$\Gamma_t[\rho]:=(\mcC \circ \mcE_t \circ \mcA^{max}_{\mcC})[\rho].$}
+        \end{center}
 \end{frame}
 %###########################

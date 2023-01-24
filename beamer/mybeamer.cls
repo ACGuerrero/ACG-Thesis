@@ -111,6 +111,7 @@
 \RequirePackage[all,cmtip]{xy}
 \RequirePackage{lipsum} %Just in case
 
+
 % Cites in footones
 \RequirePackage[style=authortitle, bibstyle=authortitle,backend=bibtex,maxnames=1]{biblatex}
 \setbeamerfont{footnote}{size=\tiny}

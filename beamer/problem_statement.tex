@@ -229,10 +229,16 @@
         \pause
         \begin{column}{0.5\textwidth}
             \begin{block}{Operadores de Kraus}
+                \vspace{0.5cm}
+                La representación en operadores:
+                \vspace{0.3cm}
             \begin{itemize}
-                \item $\mcE(\rho)=\sum_{k}A_{k}\rho A^{\dagger}_{k}$
-                \item $\sum_{k}A_{k}^{\dagger}A_{k}=\Id$
+                \item $\mcE(\rho)=\sum_{k}A_{k}\rho A^{\dagger}_{k}$,\pause
+                \item $\sum_{k}A_{k}^{\dagger}A_{k}=\Id$,
             \end{itemize}
+            \vspace{0.3cm}
+            asegura \textbf{CPTP}.
+            \vspace{0.5cm}
         \end{block}
         \end{column}
     \end{columns}
@@ -339,21 +345,21 @@
                 A cada evento se le puede asociar una cantidad de información\pause
             \end{center}
             \begin{itemize}
-                \item ``No cayó 6''$\rightarrow$poca información\pause
-                \item ``Cayó 6''$\rightarrow$más información\pause
+                \item ``No cayó 6''$\rightarrow$ poca información\pause
+                \item ``Cayó 5''$\rightarrow$ más información\pause
+                \item ``Número entre 1 y 6''$\rightarrow$ no da información.
             \end{itemize}
-            Entonces es decreciente con la probabilidad, monótona y Un evento $p=1$ no transmite información.
+            Entonces $\text{información}\propto f\qty(p(\text{evento})^{-1})$
         \end{block}
         \end{column}
         \pause
         \begin{column}{0.5\textwidth}
             \begin{block}{Entropía de Shannon}
-            Si , entonces debe poder calcularse la cantidad de información promedio:\\
-            \pause
-            Claude Shannon demostró 
+            Claude Shannon demostró\mycite{Shannon}
             \begin{equation}
                 S_{\text{S}}=-k\sum_{j}p(x_{j})\log{p(x_{j})}.\nonumber
-            \end{equation}
+            \end{equation}\pause
+            La \textit{entropía de Shannon} representa la información promedio.
         \end{block}
         \end{column}
     \end{columns}
@@ -383,13 +389,13 @@
             \end{block}
         \end{column}
         \begin{column}{0.5\textwidth}
-            El principio de máxima entropía fue introducido por E. T. Jaynes en 1957.
-            Jaynes afirma que la distribución de probabilidad que maximice la entropía es la estimación menos sesgada que se puede hacer.
+            El principio de máxima entropía fue introducido por E. T. Jaynes en 1957.\pause
+            Jaynes afirma que la distribución de probabilidad que maximice la entropía es la estimación menos sesgada que se puede hacer.\cite{JaynesI}
         \end{column}
     \end{columns}
 \end{frame}
 \begin{frame}{El Principio de Máxima Entropía clásico}
-    Sean $x_{j}$ los valores de $X$, $f_{k}$, funciones de valor esperado conocido. Maximizamos la entropía:
+    Sean $x_{j}$ los valores de $X$, $\expval{f_{l}(x)}$ conocidos. Maximizamos la entropía:
     \begin{equation}
         \mcL=-S_{\text{S}}(p)+\sum_{l}\lambda_{l}\qty(\sum_{j}p(x_{j})f_{l}(x_{j})-\expval{f_{l}(x)})+\mu\qty(\sum_{j}p(x_{j})-1).\nonumber
     \end{equation}
@@ -399,22 +405,18 @@
     \end{equation}
 \end{frame}
 \begin{frame}{El Principio de Máxima Entropía cuántico}
-    Usamos la entropía de von Neuman $S=-Tr(\rho\ln(\rho))$, que para $\rho$ $H$ tales que $[\rho,H]=0$ es
+    Usamos la entropía de von Neuman $S=-Tr(\rho\ln(\rho))$, \pause que si $[\rho,H]=0$ \pause es
     \begin{equation}
-        S_{\text{N}}=-\sum_{k}\eta_{k}\log{\eta_{k}}.\nonumber
-    \end{equation}
-    Siguiendo el mismo procedimiento, las soluciones:
-    \begin{equation}
-        \eta_{k}=-e^{(\lambda_{0}+1+\lambda_{1}E_{k})}=\frac{1}{Z}e^{-\lambda E_{k}}.\nonumber
+        S_{\text{N}}=-\sum_{k}\rho_{kk}\log{\rho_{kk}}\xrightarrow{\text{maximización}}\rho_{kk}=\frac{1}{Z}e^{-\lambda E_{k}}\nonumber
     \end{equation}
     Utilizando notación de Dirac, $\rho=\sum_{k}\eta_{k}\dyad{e_{k}}$:
     \begin{equation}
         \rho=\frac{1}{Z}e^{-\lambda H}.\nonumber
     \end{equation}
     En general:
-    \begin{equation}\label{eq:GeneralMaxEnt}
-        \rho=\frac{1}{Z}e^{-\sum_{k}\lambda_{k} A_{k}}.\nonumber
-    \end{equation}
+    \begin{center}
+        \tcbox{$\rho=\frac{1}{Z}e^{-\sum_{k}\lambda_{k} A_{k}}$}
+    \end{center}
 \end{frame}
 %###########################
 
