@@ -108,6 +108,14 @@
 \RequirePackage{tcolorbox}
 \RequirePackage{threeparttable}
 \RequirePackage{colortbl}
+\RequirePackage[all,cmtip]{xy}
+\RequirePackage{lipsum} %Just in case
+
+% Cites in footones
+\RequirePackage[style=authortitle, bibstyle=authortitle,backend=bibtex,maxnames=1]{biblatex}
+\setbeamerfont{footnote}{size=\tiny}
+\newcommand{\mycite}[1]{\footnote[frame,1]{\cite{#1}}}
+
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
@@ -181,7 +189,7 @@
 
 % Footer
 \setbeamertemplate{footline}{%
-    \begin{beamercolorbox}[wd = \textwidth, ht = 1cm, sep = 0.2cm]{footer}
+    \begin{beamercolorbox}[wd = \textwidth, ht = 0.5cm, sep = 0.02cm]{footer}
         \hfill
         \raisebox{0.22cm}{
             \insertshortauthor
@@ -206,14 +214,14 @@
 \AtBeginDocument{%
     \apptocmd{\appendix}{%
         \setbeamertemplate{footline}{%
-        \begin{beamercolorbox}[wd = \textwidth, ht = 1cm, sep = 0.2cm]{footer}
+        \begin{beamercolorbox}[wd = \textwidth, ht = 0.5cm, sep = 0.02cm]{footer}
             \hfill
             \raisebox{0.22cm}{
                 \insertshortauthor
                 \quad
                 \textbullet
                 \quad
-                \insertsubtitle
+                \inserttitle
                 \quad
             }
             \hfill
@@ -228,14 +236,14 @@
 \AtBeginSection{
     {
         \setbeamertemplate{footline}{
-           \begin{beamercolorbox}[wd = \textwidth, ht = 1cm, sep = 0.2cm]{footer}
+           \begin{beamercolorbox}[wd = \textwidth, ht = 0.5cm, sep = 0.02cm]{footer}
                 \hfill
                 \raisebox{0.22cm}{
                     \insertshortauthor
                     \quad
                     \textbullet
                     \quad
-                    \insertshortsubtitle
+                    \inserttitle
                 }
                 \hfill
                 % \includegraphics[height = 0.6cm]{img/aems.pdf}
@@ -259,7 +267,7 @@
                     \quad
                     \textbullet
                     \quad
-                    \insertshortsubtitle
+                    \inserttitle
                 }
                 \hfill
             \end{beamercolorbox}%
@@ -338,6 +346,15 @@
 % Avoid overfull \vbox warnings
 \vfuzz = 20pt
 
+
+%This makes \pause work inside align, gather, and such
+\let\save@measuring@true\measuring@true
+\def\measuring@true{%
+  \save@measuring@true
+  \def\beamer@sortzero##1{\beamer@ifnextcharospec{\beamer@sortzeroread{##1}}{}}%
+  \def\beamer@sortzeroread##1<##2>{}%
+  \def\beamer@finalnospec{}%
+}
 
 %==============================
 %========== Comandos ==========

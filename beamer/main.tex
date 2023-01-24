@@ -1,17 +1,15 @@
 \documentclass{mybeamer}
-\usepackage[all,cmtip]{xy}
-\usepackage{lipsum}
-\usepackage{tikz-cd} %para diagrama conmutativo
-\usepackage{epsdice}
+\usepackage{epsdice} %Dices!
 \usepackage{pifont}
 \DeclareFontFamily{U}{dice3d}{}
 \DeclareFontShape{U}{dice3d}{m}{n}{<-> s*[4] dice3d}{}
 \title{Dinámica efectiva de un sistema de N qubits}
 \subtitle{Utilizando el principio de máxima entropía}
 \author[A. Castillo Guerrero]{Autor: A. Castillo\\ Director de tesis: D. Dávalos\\ Equipo de trabajo: C. Pineda, D. Dávalos, K. Uriostegui, E. Navarrete.}
-\date{Enero 2023} % or whatever the date you are presenting in is
+\date{Enero 2023}
 \institute[Facultad de Ciencias, UNAM]{Facultad de Ciencias, UNAM}
 \AtBeginDocument{\renewcommand\pause{}}
+\bibliography{bibliography}
 \begin{document}
 
 \maketitle
@@ -23,15 +21,7 @@
 \include{conclusions}
 
 
-\appendix
-
-\begin{frame}{Referencias}
-\begin{thebibliography}{99}
-\bibitem ONielsen, M. \& Chuang, L. (2010).\textit{Quantum Computation and Quantum Information}. Cambridge, United Kingdom: Cambridge University Press.
-\bibitem OSilva, P. \& Concha, P. \& Vallejos, R. \& de Melo, F. (2020).\textit{Macro-to-micro quantum mapping and the emergence of nonlinearity}. PsyArXiv. DOI:10.1103/PhysRevA.103.052210
-\end{thebibliography}
-\end{frame}
-
-\include{apendices}
+%\appendix
+%\include{apendix}
 
 \end{document}

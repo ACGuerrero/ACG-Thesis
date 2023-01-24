@@ -1,7 +1,8 @@
-\section{El modelo, la asignación, y la dinámica}
+\section{Construcción del modelo y la asignación}
 
+%###########################
+%########### CG ############
 \subsection{El modelo de grano grueso}
-
 \begin{frame}{Medición borrosa y falta de resolución}
     \begin{center}
         El modelo de grano grueso considera dos tipos de error\pause:
@@ -9,28 +10,32 @@
     \vspace{0.3cm}
     \begin{columns}
         \begin{column}{0.5\textwidth}
+            \begin{block}{Permutación}
             \centering
             La posibilidad de medir una partícula diferente a la pretendida\pause:
             \begin{align}
                 \mcF:&\mcS(\hilbert_2 \otimes \hilbert_2)\to \mcS(\hilbert_2 \otimes \hilbert_2)\nonumber\\
                 &\varrho \mapsto p\varrho+(1-p)S\varrho S.\nonumber
             \end{align}
+        \end{block}
         \end{column}
         \pause
         \begin{column}{0.5\textwidth}
+            \begin{block}{Resolución}
             \centering
             Falta de resolución en el aparato de detección\pause:
             \begin{gather}
                 \mcC:\mcS(\hilbert_2 \otimes \hilbert_2)\to \mcS(\hilbert_2)\nonumber\\
                 \varrho_{AB} \mapsto p\rho_A+(1-p)\rho_B\rlap{,}\nonumber
             \end{gather}
+        \end{block}
         \end{column}
     \end{columns}
 \end{frame}
-
-\begin{frame}{Motivación}
+\begin{frame}{Extensión a N qubits}
     \begin{columns}
         \begin{column}{0.5\textwidth}
+            \begin{block}{Permutación}
             Para $N$ qubits la aplicación borrosa\pause:
             \begin{equation}
                 \begin{gathered}
@@ -38,9 +43,11 @@
                 \varrho \mapsto p_{1}\varrho+\sum_{j=2}^{n}p_{j}(S_{1,j})\varrho(S_{1,j}),\nonumber
             \end{gathered}\nonumber
         \end{equation}
+    \end{block}
         \end{column}
         \pause
         \begin{column}{0.5\textwidth}
+            \begin{block}{Resolución}
         La aplicación de grano grueso\pause:
         \begin{equation}
             \begin{gathered}
@@ -48,11 +55,15 @@
                 \varrho\mapsto\Tr_{\overline{1}}(\Fuzzy{\varrho}).
             \end{gathered}\nonumber
         \end{equation}
+    \end{block}
         \end{column}
     \end{columns}
 \end{frame}
+%###########################
 
 
+%###########################
+%######### MaxEnt ##########
 \subsection{La aplicación de asignación}
 \begin{frame}{El estado de máxima entropía}
     \begin{columns}
@@ -67,23 +78,22 @@
               \end{displaymath}
               El estado que maximiza la entropía es:
               \begin{equation}
-                  \varrho_{\max}=\frac{1}{Z}\exp(\sum_{i}\lambda_{i}G_{i})\nonumber
+                  \varrho_{\max}=\frac{1}{Z}\exp(\sum_{i}\lambda_{i}{\color{red}G_{i}})\nonumber
               \end{equation}\pause
-              ¿Qué valores de expectación conocemos?
+              ¿Qué valores de expectación \textbf{conocemos}?
         \end{column}
         \begin{column}{0.5\textwidth}
             Los de $\rho_{\ef}$\pause:
             \begin{align}
-                \expval{\pauli{i}}&=\Tr(\pauli{i}\rho_{\ef})\nonumber\\
+                \expval{\pauli{i}}_{\rho_{\ef}}&=\Tr(\pauli{i}\rho_{\ef})\nonumber\\
                 &=\Tr[\sigma_{j}\CG{\varrho}]\nonumber\\
                 &=\Tr[\sigma_{j}\otimes\Id_{2^{n-1}}\qty(p_{1}\varrho+\sum_{k=2}^{n}p_{k}S_{1,k}\varrho S_{1,k})]\nonumber\\
-                &=\Tr[\qty(\sum_{k=1}^{n}p_{k}(\Id_{2^{k-1}}\otimes\sigma_{j}\otimes\Id_{2^{n-k}}))\varrho]\nonumber\\
-                &=\expval{G_{i}}.\nonumber
+                &=\Tr[{\color{red}\qty(\sum_{k=1}^{n}p_{k}(\Id_{2^{k-1}}\otimes\sigma_{j}\otimes\Id_{2^{n-k}}))}\varrho]\nonumber\\
+                &=\expval{{\color{red}G_{i}}}_{\varrho}.\nonumber
             \end{align}
         \end{column}
     \end{columns}
 \end{frame}
-
 \begin{frame}{La aplicación de Máxima Entropía}
     \begin{columns}
         \begin{column}{0.5\textwidth}
@@ -91,25 +101,29 @@
             \begin{equation}
                 \varrho_{\max}=\varrho_{\max}(\lambda_{1},\lambda_{2},\lambda_{3})\nonumber
             \end{equation}\pause
-            Pero si se define $\lambda=\sqrt{\lambda_{1}^{2}+\lambda_{2}^{2}+\lambda_{3}^{2}}$\pause:
+            La relación:
             \begin{equation}
                 \expval{\pauli{k}}=\frac{\lambda_{k}}{\lambda}\sum_{j=1}^{n}p_{j}\tanh(p_{j}\lambda)\nonumber
-            \end{equation}
+            \end{equation}\pause
+            donde $\lambda=\sqrt{\lambda_{1}^{2}+\lambda_{2}^{2}+\lambda_{3}^{2}}$
         \end{column}
         \pause
         \begin{column}{0.5\textwidth}
             Definimos la aplicación de asignación de máxima entropía:
             \begin{equation}
                 \begin{gathered}
-                    \mcA_{\mcC}^{\max}:\densityspace{2}\rightarrow\densityspace{2^{n}}\nonumber\\
+                    \mcA_{\mcC}^{\max}:\densityspace{2}\rightarrow\mcS(\hilbert_{2}^{\otimes n})\nonumber\\
                     \rho_{\ef} \mapsto \Motimes_{j=1}^{n}\frac{1}{Z_{j}}\text{exp}\qty(p_{j}\sum_{k=1}^{3}\lambda_{k}\sigma_{k}).
                 \end{gathered}
             \end{equation}
         \end{column}
     \end{columns}
 \end{frame}
+%###########################
 
 
+%###########################
+%######### Gammat ##########
 \begin{frame}{Uniendo todo}
     \begin{displaymath}
         \xymatrix{
@@ -127,3 +141,4 @@
             \boxed{\Gamma_t[\rho]:=(\mcC \circ \mcE_t \circ \mcA^{max}_{\mcC})[\rho].}\nonumber
         \end{equation}
 \end{frame}
+%###########################
