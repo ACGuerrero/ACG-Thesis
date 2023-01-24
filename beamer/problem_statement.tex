@@ -6,7 +6,7 @@
     \begin{columns}
         \begin{column}{0.5\textwidth}
             \begin{center}
-                Un qubit es un sistema cuántico de dos estados.
+                Un qubit es un sistema cuántico de dos niveles.
                 \pause
                 Todo qubit se puede escribir como
                 \begin{equation}
@@ -46,6 +46,7 @@
                 \ket{\psi}=\cos(\frac{\theta}{2})\ket{0}+e^{\rmi\varphi}\sin(\frac{\theta}{2})\ket{1}.\nonumber
             \end{equation}
         \end{column}
+        \pause
         \begin{column}{0.5\textwidth}
             \centering
             \BlochSphere
@@ -152,7 +153,7 @@
 \begin{frame}{Parametrización}
     \begin{columns}
         \begin{column}{0.5\textwidth}
-            Una base hermítica permite parametrizar a una matriz de densidad a través del producto punto de Hilbert-Schmidt
+            Una base hermítica permite parametrizar a una matriz de densidad a través del producto punto de Hilbert-Schmidt\mycite{Chuang}
             \begin{equation}
                 \rho=\frac{1}{2}\qty(\Id_{2}\Tr(\rho)+\sum_{k=1}^{3}\Tr(\rho\pauli{k})\pauli{k}).\nonumber
             \end{equation}
@@ -210,7 +211,7 @@
     \end{columns}
 \end{frame}
 \begin{frame}{Evolución abierta}
-    Supóngase que el sistema de interés está acoplado a un \textit{entorno}: $\rho_{\text{Tot}}(0)=\rho_{S}(0)\otimes\rho_{E}$
+    Supóngase que el sistema de interés está acoplado a un \textit{entorno}: $\rho_{\text{Tot}}(0)=\rho_{S}(0)\otimes\rho_{E}$\pause
     \begin{columns}
         \begin{column}{0.5\textwidth}
             \begin{block}{El canal cuántico}
@@ -220,7 +221,7 @@
             Tiene solución:
             \begin{equation}
                 \begin{gathered}
-                \rho_{S}(t)=\mcE_{t}(\rho_{S}(0))\\
+                \rho_{S}(t)=\mcE_{t}(\rho_{S}(0))\pause\\
                 \mcE_{t}(\rho_{S}(0))=\Tr_{E}\qty[U(t)\left(\rho_{S}(0)\otimes\rho_{E}\right)U^{\dag}(t)]
             \end{gathered}\nonumber
             \end{equation}
@@ -234,10 +235,10 @@
                 \vspace{0.3cm}
             \begin{itemize}
                 \item $\mcE(\rho)=\sum_{k}A_{k}\rho A^{\dagger}_{k}$,\pause
-                \item $\sum_{k}A_{k}^{\dagger}A_{k}=\Id$,
+                \item $\sum_{k}A_{k}^{\dagger}A_{k}=\Id$,\pause
             \end{itemize}
             \vspace{0.3cm}
-            asegura \textbf{CPTP}.
+            asegura \textbf{CPTP}.\mycite{Breuer}
             \vspace{0.5cm}
         \end{block}
         \end{column}
@@ -302,7 +303,7 @@
 
 \begin{frame}{El problema: motivación}
     \begin{center}
-        Se estudia la dinámica que emerge de una descripción efectiva
+        Se estudia la dinámica que emerge de una descripción efectiva\pause
     \end{center}
     \begin{columns}
         \begin{column}{0.5\textwidth}
@@ -345,9 +346,9 @@
                 A cada evento se le puede asociar una cantidad de información\pause
             \end{center}
             \begin{itemize}
+                \item ``Número entre 1 y 6''$\rightarrow$ no da información. \pause
                 \item ``No cayó 6''$\rightarrow$ poca información\pause
                 \item ``Cayó 5''$\rightarrow$ más información\pause
-                \item ``Número entre 1 y 6''$\rightarrow$ no da información.
             \end{itemize}
             Entonces $\text{información}\propto f\qty(p(\text{evento})^{-1})$
         \end{block}
@@ -388,18 +389,19 @@
                 \end{center}
             \end{block}
         \end{column}
+        \pause
         \begin{column}{0.5\textwidth}
-            El principio de máxima entropía fue introducido por E. T. Jaynes en 1957.\pause
-            Jaynes afirma que la distribución de probabilidad que maximice la entropía es la estimación menos sesgada que se puede hacer.\cite{JaynesI}
+            El principio de máxima entropía fue introducido por E. T. Jaynes en 1957. \pause \\
+            Afirma que la distribución de probabilidad que maximice la entropía es la estimación menos sesgada que se puede hacer.\mycite{JaynesI}
         \end{column}
     \end{columns}
 \end{frame}
 \begin{frame}{El Principio de Máxima Entropía clásico}
-    Sean $x_{j}$ los valores de $X$, $\expval{f_{l}(x)}$ conocidos. Maximizamos la entropía:
+    Sean $x_{j}$ los valores de $X$, $\expval{f_{l}(x)}$ conocidos. Maximizamos la entropía:\pause
     \begin{equation}
-        \mcL=-S_{\text{S}}(p)+\sum_{l}\lambda_{l}\qty(\sum_{j}p(x_{j})f_{l}(x_{j})-\expval{f_{l}(x)})+\mu\qty(\sum_{j}p(x_{j})-1).\nonumber
-    \end{equation}
-    Se deriva, se iguala a cero, se halla un sistema de ecuaciones. La distribución de probabilidad que maximiza la entropía: 
+        \mcL=-S_{\text{S}}(p)\pause+\sum_{l}\lambda_{l}\qty(\sum_{j}p(x_{j})f_{l}(x_{j})\expval{f_{l}(x)})\pause-+\mu\qty(\sum_{j}p(x_{j})-1).\nonumber
+    \end{equation}\pause
+    Resolviendo: \pause
     \begin{equation}
         p(x_{j})=\frac{1}{Z}\exp[-\frac{1}{k}\sum_{l}\lambda_{l}f_{l}(x_{j})].\nonumber
     \end{equation}
@@ -407,13 +409,13 @@
 \begin{frame}{El Principio de Máxima Entropía cuántico}
     Usamos la entropía de von Neuman $S=-Tr(\rho\ln(\rho))$, \pause que si $[\rho,H]=0$ \pause es
     \begin{equation}
-        S_{\text{N}}=-\sum_{k}\rho_{kk}\log{\rho_{kk}}\xrightarrow{\text{maximización}}\rho_{kk}=\frac{1}{Z}e^{-\lambda E_{k}}\nonumber
-    \end{equation}
-    Utilizando notación de Dirac, $\rho=\sum_{k}\eta_{k}\dyad{e_{k}}$:
+        S_{\text{N}}=-\sum_{k}\rho_{kk}\log{\rho_{kk}}\pause\xrightarrow{\text{maximización}}\rho_{kk}=\frac{1}{Z}e^{-\lambda E_{k}}\nonumber
+    \end{equation}\pause
+    Utilizando notación de Dirac, $\rho=\sum_{k}\rho_{kk}\dyad{e_{k}}$:\pause
     \begin{equation}
         \rho=\frac{1}{Z}e^{-\lambda H}.\nonumber
-    \end{equation}
-    En general:
+    \end{equation}\pause
+    En general\mycite{JaynesII}:
     \begin{center}
         \tcbox{$\rho=\frac{1}{Z}e^{-\sum_{k}\lambda_{k} A_{k}}$}
     \end{center}
