@@ -1,60 +1,5 @@
 \section{Introducción}
 
-%###########################
-%######### Qubits ##########
-\begin{frame}{Qubits y su dinámica}
-    \begin{columns}
-        \begin{column}{0.5\textwidth}
-            \begin{center}
-                Un qubit es un sistema cuántico de dos niveles.
-                \pause
-                Todo qubit se puede escribir como
-                \begin{equation}
-                    \ket{\psi}=\alpha\ket{0}+\beta\ket{1}.\nonumber
-                \end{equation}
-                \pause
-                Por convención usamos los eigenestados del operador $\pauli{3}$.
-                \begin{align}
-                    \ket{0} & & \text{y} & & \ket{1}. \nonumber
-                \end{align} 
-            \end{center}
-        \end{column}
-        \pause
-        \begin{column}{0.5\textwidth}
-            La evolución de un sistema cuántico descrito por $\ket{\psi}$ está dada por
-            \begin{equation}
-                \rmi\hbar\frac{d}{dt}\ket{\psi(t)}=H\ket{\psi(t)}.\nonumber
-            \end{equation}
-            \pause
-            Cuya solución es una evolución unitaria $U(t,t_{0})=e^{-\rmi H(t-t_{0})/\hbar}$
-            \begin{align}
-                \ket{\psi(t)}=U(t,t_{0})\ket{\psi(t_{0})} \rlap{.}\nonumber
-            \end{align}
-        \end{column}
-    \end{columns}
-\end{frame}
-\begin{frame}{Parametrización de un qubit}
-    \begin{columns}
-        \begin{column}{0.5\textwidth}
-            Un qubit $\ket{\psi}\in\hilbert_{2}$ arbitrario
-            \begin{equation}
-                \ket{\psi}=\alpha\ket{0}+\beta\ket{1},\nonumber
-            \end{equation}
-            \pause
-            se puede reescribir como:
-            \begin{equation}
-                \ket{\psi}=\cos(\frac{\theta}{2})\ket{0}+e^{\rmi\varphi}\sin(\frac{\theta}{2})\ket{1}.\nonumber
-            \end{equation}
-        \end{column}
-        \pause
-        \begin{column}{0.5\textwidth}
-            \centering
-            \BlochSphere
-        \end{column}
-    \end{columns}
-\end{frame}
-%###########################
-
 
 %###########################
 %# Descripciones efectivas #
@@ -69,7 +14,7 @@
                 Dinámica \textbf{efectiva}\\
                 \pause
                 $\downarrow$\\
-                Dinámica {\tiny(que emerge de una descripción)} \textbf{efectiva}
+                Dinámica {\tiny(que emerge de una descripción)} \textbf{efectiva}\mycite{CGEmergingDynamics}
             \end{center}
             \pause
             Aquí, 
@@ -84,30 +29,6 @@
                 \item Aparato de medición imperfecto
                 \item Descarte de grados de libertad del sistema
             \end{itemize}
-        \end{column}
-    \end{columns}
-\end{frame}
-\begin{frame}{Descripciones efectivas y modelos de grano grueso}
-    \begin{center}
-        Una descripción de grano grueso es aquella que no toma en cuenta todos los detalles de un sistema o fenómeno.
-    \end{center}
-    \pause
-    \begin{columns}
-        \begin{column}{0.5\textwidth}
-            \begin{center}
-                Variables termodinámicas\\
-                $\downarrow$\\
-                Descripción efectiva\\
-                \pause
-                \begin{equation}
-                    T=\frac{1}{k_\text{B}}\frac{2}{3}\expval{E_{\text{cin}}}.\nonumber
-                \end{equation}
-            \end{center}
-        \end{column}
-        \begin{column}{0.5\textwidth}
-            \begin{figure}
-                \includegraphics[width=1\textwidth]{figures/CGT.png}
-            \end{figure}
         \end{column}
     \end{columns}
 \end{frame}
@@ -129,7 +50,7 @@
             \pause
             de la que se recupera la regla de Born:
             \begin{equation}
-                p(\ket{0})=\abs{\alpha}^{2}\qquad p(\ket{0})=\abs{\beta}^{2}\nonumber
+                p(\ket{0})=\abs{\alpha}^{2}\qquad p(\ket{1})=\abs{\beta}^{2}\nonumber
             \end{equation}
         \end{block}
         \end{column}
@@ -264,6 +185,7 @@
             \centering
             \includegraphics[width=0.5\textwidth]{figures/dephased.png}
         \end{subfigure}
+        \caption{Efecto del canal de desfasamiento sobre la esfera de Bloch si $p=0.6$}
     \end{figure}
 \end{frame}
 \begin{frame}{Ejemplo de canal cuántico: bitflip}
@@ -280,6 +202,7 @@
             \centering
             \includegraphics[width=0.5\textwidth]{figures/bitflip.png}
         \end{subfigure}
+        \caption{Efecto del canal de bit flip sobre la esfera de Bloch si $p=0.5$}
     \end{figure}
 \end{frame}
 \begin{frame}{Ejemplo de canal cuántico: despolarización}
@@ -297,6 +220,7 @@
             \centering
             \includegraphics[width=0.5\textwidth]{figures/depol.png}
         \end{subfigure}
+        \caption{Efecto del canal de despolarización sobre la esfera de Bloch si $p=0.6$}
     \end{figure}
 \end{frame}
 %###########################
@@ -391,15 +315,17 @@
         \end{column}
         \pause
         \begin{column}{0.5\textwidth}
-            El principio de máxima entropía fue introducido por E. T. Jaynes en 1957. \pause \\
-            Afirma que la distribución de probabilidad que maximice la entropía es la estimación menos sesgada que se puede hacer.\mycite{JaynesI}
+            \begin{block}{El principio de Máxima Entropía}
+                ``La distribución de probabilidad que maximiza la entropía es la única asignación sin sesgo. Cualquier otra implicaría la suposición arbitraria de información que no se tiene. ''\mycite{JaynesI}
+            \end{block}
+            El principio de máxima entropía fue introducido por E. T. Jaynes en 1957. \pause
         \end{column}
     \end{columns}
 \end{frame}
 \begin{frame}{El Principio de Máxima Entropía clásico}
     Sean $x_{j}$ los valores de $X$, $\expval{f_{l}(x)}$ conocidos. Maximizamos la entropía:\pause
     \begin{equation}
-        \mcL=-S_{\text{S}}(p)\pause+\sum_{l}\lambda_{l}\qty(\sum_{j}p(x_{j})f_{l}(x_{j})\expval{f_{l}(x)})\pause-+\mu\qty(\sum_{j}p(x_{j})-1).\nonumber
+        \mcL=-S_{\text{S}}(p)\pause+\sum_{l}\lambda_{l}\qty(\sum_{j}p(x_{j})f_{l}(x_{j})-\expval{f_{l}(x)})\pause+\mu\qty(\sum_{j}p(x_{j})-1).\nonumber
     \end{equation}\pause
     Resolviendo: \pause
     \begin{equation}
