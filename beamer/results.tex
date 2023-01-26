@@ -67,7 +67,7 @@
                 p_{1}r_{2,1}(t)\\
                 r_{3}\\
             \end{pmatrix}$\\ \pause
-            Esto \textbf{no es típicamente cuántico}.
+            La dinámica \textbf{converge}.
         \end{column}
         \pause
         \begin{column}{0.5\textwidth}
@@ -89,23 +89,23 @@
         \begin{column}{0.5\textwidth}
             Estado efectivo antes y después:
             \begin{align*}
-                \rho(0)&=p\rho_{A}+(1-p)\rho_{B},\\
-                \rho(t=1)&=(1-p)\rho_{A}+p\rho_{B}.
+                \rho_{\ef}(0)&=p\rho_{A}+(1-p)\rho_{B},\\
+                \rho_{\ef}(t=1)&=(1-p)\rho_{A}+p\rho_{B}.
                 \end{align*}\pause
                 Esto es una contracción:
                 \begin{equation*}
-                    \kappa_{t}=\frac{r_{\rho(1)}}{r_{\rho(0)}}.
+                    \kappa_{t}=\frac{r_{\rho_{\ef}(1)}}{r_{\rho_{\ef}(0)}}.
                   \end{equation*}\pause
                   Canal de despolarización \textbf{no lineal}:\pause
                   \begin{center}
-                    \tcbox{$\rho\mapsto\kappa_{1}^{\rho}\rho+(1-\kappa_{1}^{\rho})\frac{1}{2}\Id$}
+                    \tcbox{$\rho_{\ef}\mapsto\kappa_{1}^{\rho_{\ef}}\rho_{\ef}+(1-\kappa_{1}^{\rho_{\ef}})\frac{1}{2}\Id$}
                   \end{center}
         \end{column}\pause
         \begin{column}{0.5\textwidth}
             \begin{figure}[h!]
                 \centering
                 \includegraphics[width=0.9\linewidth]{figures/maxent_results/K(r).pdf}
-                \caption{Coeficiente de despolarización como function de $r_{\rho(0)}$ para diferentes valores de $p$.}
+                \caption{Coeficiente de despolarización como function de $r_{\rho_{\ef}(0)}$ para diferentes valores de $p$.}
               \end{figure}
         \end{column}
     \end{columns}
@@ -115,19 +115,19 @@
         \begin{column}{0.5\textwidth}
             Estudiamos:
             \begin{equation}
-                \rho(t=1)=\CG{\cnot \mcA_{\mcC}^{max}[\rho(0)](\cnot)^{\dag}}\nonumber
+                \rho_{\ef}(t=1)=\CG{\cnot \mcA_{\mcC}^{max}[\rho_{\ef}(0)](\cnot)^{\dag}}\nonumber
             \end{equation}
         \end{column}\pause
         \begin{column}{0.5\textwidth}
             El estado efectivo inicial es
             \begin{equation}
-                \rho(0)=p\rho_{A}+(1-p)\rho_{B}.\nonumber
+                \rho_{\ef}(0)=p\rho_{A}+(1-p)\rho_{B}.\nonumber
             \end{equation}
         \end{column}\pause
     \end{columns}
     El estado efectivo final es\pause
     \begin{align*}
-        \rho(t=1)=&\frac{1}{2}\rho(0)\\
+        \rho_{\ef}(t=1)=&\frac{1}{2}\rho_{\ef}(0)\\
         &+\frac{(1-p)}{2}\qty[{\color{red}\expval{\pauli{1}}_{\rho_{B}}\rho_{A}+(1-\expval{\pauli{1}}_{\rho_{B}})\pauli{3}\rho_{A}\pauli{3}}]\\
         &+\frac{p}{2}\qty[{\color{blue}\expval{\pauli{3}}_{\rho_{A}}\rho_{B}+(1-\expval{\pauli{3}}_{\rho_{A}})\pauli{1}\rho_{B}\pauli{1}}].
     \end{align*}\pause
@@ -138,7 +138,7 @@
         \begin{column}{0.5\textwidth}
             Supongamos $p=0$. El estado efectivo evolucionado:
             \begin{equation*}
-              \rho(t=1)=\frac{1}{2}\rho(0)+\frac{1}{2}\pauli{3}\rho(0)\pauli{3}.
+              \rho_{\ef}(t=1)=\frac{1}{2}\rho_{\ef}(0)+\frac{1}{2}\pauli{3}\rho_{\ef}(0)\pauli{3}.
             \end{equation*}\pause
             ¡Esto es un canal de desfasamiento!\pause
         \end{column}
@@ -158,28 +158,32 @@
 %########## AVG ############
 \subsection{Dinámicas especiales}
 
-\begin{frame}{Canales de Pauli de N qubits}
+\begin{frame}{Canales de Pauli}
     \begin{columns}
         \begin{column}{0.5\textwidth}
+            \begin{block}{Sobre un qubit}
             Un canal de Pauli sobre un qubit,
             \begin{equation}
                 \begin{gathered}
-                P:\mcB(\hilbert_{2}) \rightarrow \mcB(\hilbert_{2})\nonumber\pause\\
-                P(\Delta)=\sum_{k}q_{k}\pauli{k}\Delta\pauli{k} \rlap{,}
+                P:\densityspace{2} \rightarrow \densityspace{2}\nonumber\pause\\
+                P(\rho)=\sum_{k}q_{k}\pauli{k}\rho\pauli{k} \rlap{,}
                 \end{gathered}
             \end{equation}\pause
             aplica $\pauli{k}$ con probabilidad $q_{k}$.
+        \end{block}
         \end{column}
         \pause
         \begin{column}{0.5\textwidth}
-            El canal de Pauli sobre $n$ qubits:
+            \begin{block}{Sobre $n$ qubits}
+            Un canal de Pauli sobre $n$ qubits:
             \begin{equation}
                 \begin{gathered}
-                P:\mcB(\hilbert_{2^{n}}) \rightarrow \mcB(\hilbert_{2^{n}})\nonumber\pause\\
-                P(\Delta)=\sum_{\vec{\alpha}}q_{\vec{\alpha}}\pauli{\vec{\alpha}}\Delta\pauli{\vec{\alpha}},\pause \,\text{ }\, \alpha_{k}\in\{0,1,2,3\} \rlap{.}
+                P:\densityspace{2^{n}} \rightarrow \densityspace{2^{n}}\nonumber\pause\\
+                P(\varrho)=\sum_{\vec{\alpha}}q_{\vec{\alpha}}\pauli{\vec{\alpha}}\varrho\pauli{\vec{\alpha}},\pause \,\text{ }\, \alpha_{k}\in\{0,1,2,3\} \rlap{.}
                 \end{gathered}
             \end{equation}\pause
             donde  $\pauli{\vec{\alpha}}=\pauli{\alpha_{1}}\otimes\pauli{\alpha_{2}}\otimes...\otimes \pauli{\alpha_{n}}$.
+        \end{block}
         \end{column}
     \end{columns}
 \end{frame}
@@ -188,29 +192,27 @@
     \begin{columns}
         \begin{column}{0.5\textwidth}
             \begin{block}{Desfasamiento}
-                El canal de Pauli
                 \begin{equation}
-                    P_{n,\pauli{j}}(\Delta)=\sum_{\vec{\alpha}}q_{\vec{\alpha}}\pauli{\vec{\alpha}}\Delta\pauli{\vec{\alpha}}, \,\text{ }\, \alpha_{k}\in\{0,j\}\nonumber
+                    P_{n,\pauli{j}}(\varrho)=\sum_{\vec{\alpha}}q_{\vec{\alpha}}\pauli{\vec{\alpha}}\varrho\pauli{\vec{\alpha}}, \,\text{ }\, \alpha_{k}\in\{0,j\}\nonumber
                 \end{equation}\pause
-                es  de desfasamiento si $q_{\vec{\alpha}\neq\vec{0}}=\frac{1-q_{\vec{0} }}{2^{n}-1}$\pause y 
-                \begin{align}
-                    \Gamma_{t}(\rho_{\ef})=&\qty(q_{\vec{0}}+\frac{2^{n-1}-1}{2^{n}-1}(1-q_{\vec{0}}))\rho_{\ef}\nonumber\\
-                    &+\qty(\frac{2^{n-1}}{2^{n}-1}(1-q_{\vec{0}}))\pauli{j}\rho_{\ef}\pauli{j}.\nonumber
-                \end{align}
+                es  de desfasamiento si $q_{\vec{\alpha}\neq\vec{0}}=\frac{1-q_{\vec{0} }}{2^{n}-1}$. \pause La dinámica efectiva: 
+                \begin{equation}
+                    \Gamma_{t}(\rho_{\ef})=p_{q_{\vec{0}},n}\rho_{\ef}+(1-p_{q_{\vec{0}},n})\pauli{j}\rho_{\ef}\pauli{j}.\nonumber
+                \end{equation}
+                ¡Otro canal de desfasamiento!
             \end{block}
         \end{column}\pause
         \begin{column}{0.5\textwidth}
             \begin{block}{Despolarización}
-                Para $n$ qubits:\pause
+                \vspace{0.3cm}
                 \begin{equation}
-                    \begin{gathered}
-                    D_{q}:\mcB(\hilbert_{2^{n}}) \rightarrow \mcB(\hilbert_{2^{n}})\\
-                    D_{q}(\Delta)=q\Delta+(1-q)\Id_{2^{n}}\Tr(\Delta)\rlap{.}
-                \end{gathered}\nonumber
+                    D_{q}(\varrho)=q\varrho+(1-q)\frac{\Id_{2^{n}}}{2^n}\nonumber
             \end{equation}\pause
+            \vspace{0.3cm}
+            
                 La dinámica efectiva que corresponde al canal de despolarización es\pause
                 \begin{equation}
-                    \Gamma_{t}(\rho_{\ef})=q\rho_{\ef}+(1-q)\Id_{2},\nonumber
+                    \Gamma_{t}(\rho_{\ef})=q\rho_{\ef}+(1-q)\frac{\Id_{2}}{2},\nonumber
                 \end{equation}\pause
                 ¡Otro canal de despolarización!
             \end{block}
@@ -222,18 +224,17 @@
     \begin{columns}
         \begin{column}{0.5\textwidth}
             El canal de estabilización.
-            \begin{gather}
-                \mcE_{\psi,t}:\mcB(\hilbert_{2^{n}}) \rightarrow \mcB(\hilbert_{2^{n}})\nonumber\pause\\
-                \mcE_{\psi,t}(\Delta)=e^{-t\mu}\varrho+(1-e^{-t \mu})\dyad{\psi}\Tr(\Delta)\rlap{.}\nonumber\pause
-            \end{gather}
+            \begin{equation}
+                \mcE_{\psi,t}(\varrho)=e^{-t\mu}\varrho+(1-e^{-t \mu})\dyad{\psi}\rlap{.}\nonumber\pause
+            \end{equation}
             donde $\dyad{\psi}\in \densityspace{2^{n}}$
         \end{column}\pause
         \begin{column}{0.5\textwidth}
             La dinámica efectiva:\pause
             \begin{equation}\label{eq:EffectiveStabilizing}
-                \Gamma_{t}(\rho_{\ef})=e^{-t\mu}\rho(0)+(1-e^{-t \mu})\mcC(\dyad{\psi}).\nonumber
+                \Gamma_{t}(\rho_{\ef})=e^{-t\mu}\rho_{\ef}(0)+(1-e^{-t \mu})\mcC(\dyad{\psi}).\nonumber
             \end{equation}\pause
-            Canal cuántico, pero no necesariamente un canal de estabilización: ¡puede ser despolarización!
+            ¡Otro canal de estabilización!
         \end{column}
     \end{columns}
 \end{frame}
@@ -244,33 +245,34 @@
 %########## AVG ############
 \subsection{La asignación promedio}
 \begin{frame}{Construcción de la asignación promedio}
-    Otra forma de escoger un estado microscópico compatible es tomando un promedio\mycite{Macro-To-Micro}. Un promedio sobre el conjunto
+    Otra forma de escoger un estado microscópico compatible \pause es tomando un promedio\mycite{Macro-To-Micro}. \pause Un promedio sobre el conjunto \pause
     \begin{equation}
         \Omega_{\mcC}(\rho_{\ef}) = \{\ket{\psi}\in\hilbert_{m}:\, \mcC(\dyad{\psi}) = \rho_{\ef}  \}.\nonumber
     \end{equation}
-    La aplicación de asignación promedio es el promedio sobre dicho conjunto\mycite{priv}, \ie 
+    La aplicación de asignación promedio es el promedio sobre dicho conjunto\mycite{priv}, \ie \pause
     \begin{equation}
         \mcA_{\mcC}^{\avg}(\rho_{\ef}) =\int d \mu\,\, \delta(\mcC(\dyad{\psi})-\rho_{\ef})\,\dyad{\psi}.\nonumber
-    \end{equation}
+    \end{equation} \pause
+    ¿Difiere la dinámica observable para diferentes asignaciones?
 \end{frame}
 \begin{frame}{Distancia entre la asignación promedio y la de máxima entropía}
-    \begin{figure}
-        \centering
-        \begin{subfigure}{.45\textwidth}
-          \centering
-          \includegraphics[width=1.\linewidth]{figures/avg_results/dist_maxent_avg_vs_p.pdf}
-        \end{subfigure}%
-        \begin{subfigure}{.45\textwidth}
-          \centering
-          \includegraphics[width=1.\linewidth]{figures/avg_results/dist_maxent_avg_vs_z.pdf}
-        \end{subfigure}
-        \caption{Distancia de Frobenius entre asignaciones como función de $p_{1}$ para diferentes valores de $r_{z}$, y como función de $r_{z}$ para diferentes valores de $p_{1}$.}
-    \end{figure}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=1.\linewidth]{figures/avg_results/dist_maxent_avg_vs_p.pdf}
+                \caption{Distancia de Frobenius entre asignaciones como función de $p_{1}$ para diferentes valores de $r_{z}$.}
+            \end{figure}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item Iguales si $\rho_{ef}$ es puro o si ($p_{1}\in\{0,1\}$).\pause
+                \item Notar que $\mcA_{\mcC}^{\max}(\Id_{2}/2)=\Id_{4}/4$ mientras que $\mcA_{\mcC}^{\avg}(\Id_{2}/2)\neq\Id_{4}/4$.\pause
+                \item $\mcA_{\mcC}^{\max}$ puede ser modificado para hacer las mismas suposiciones que $\mcA_{\mcC}^{\avg}$.\pause
+            \end{itemize}
+        \end{column}
+    \end{columns}
+    \tcbox{La dinámica efectiva es dependiente de la aplicación de asignación que se utilice}
 \end{frame}
-\begin{frame}{Discusión}
-\begin{itemize}
-    \item Iguales si el estado efectivo inicial es puro y si la aplicación de grano grueso se reduce a una traza parcial ($p_{1}\in\{0,1\}$).
-    \item Notar que $\mcA_{\mcC}^{\max}(\Id_{2}/2)=\Id_{4}/4$ mientras que $\mcA_{\mcC}^{\avg}(\Id_{2}/2)\neq\Id_{4}/4$.
-\end{itemize}
-\end{frame}
+
 %###########################

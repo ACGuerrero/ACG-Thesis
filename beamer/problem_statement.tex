@@ -50,7 +50,7 @@
         \end{column}
     \end{columns}
     \begin{center}
-        \tcbox{Un modelo de grano grueso permite estudiar dinámicas observables}
+        \tcbox{Un modelo de grano grueso permite estudiar dinámicas observables, exploraciones iniciales resultaban en comportamientos impropios de la mecánica cuántica}
     \end{center}
 \end{frame}
 %###########################
@@ -149,7 +149,7 @@
                 \item Relacionados a sistemas abiertos.
                 \item Tienen representación en operadores de \textbf{Kraus}\mycite{Breuer}:
                     \begin{align}
-                        \mcE(\rho)=\sum_{k}A_{k}\rho A^{\dagger}_{k}& &\sum_{k}A_{k}^{\dagger}A_{k}=\Id \nonumber
+                        \mcE(\rho)=\sum_{k}A_{k}\rho A^{\dagger}_{k},& &\sum_{k}A_{k}^{\dagger}A_{k}=\Id \nonumber
                     \end{align}
             \end{itemize}
         \end{block}
@@ -350,7 +350,7 @@
     \begin{equation}
         S_{\text{N}}=-Tr(\rho\ln(\rho))\pause\xrightarrow{\text{maximización}}\rho=\frac{1}{Z}e^{-\sum_{k}\lambda_{k} A_{k}}\nonumber
     \end{equation}\pause
-    Así que el operador de densidad que maximiza la entropía\mycite{JaynesII}:
+    Así que el operador de densidad que maximiza la entropía\mycite{JaynesII}\mycite{FormalJaynes}:
     \begin{center}
         \tcbox{$\rho=\frac{1}{Z}e^{-\sum_{k}\lambda_{k} A_{k}}$}
     \end{center}
@@ -369,8 +369,8 @@
             \draw [red,fill=red!20, fill opacity=0.5] (1.2cm,-1.8cm) ellipse (2.2cm and 0.7cm);
             \node (ef0) {$\rho_{\ef}(0)$};
             \node (eft) [right=1.5cm of ef0] {$\rho_{\ef}(t)$};
-            \node (varrho0) [below=1.2cm of ef0] {$\varrho_{\text{\textcolor{red}{?}}}(0)$};
-            \node (varrhot) [below=1.2cm of eft] {$\varrho_{\text{\textcolor{red}{?}}}(t)$};
+            \node (varrho0) [below=1.2cm of ef0] {$\varrho_{\max}(0)$};
+            \node (varrhot) [below=1.2cm of eft] {$\varrho_{\max}(t)$};
             \draw[->] (ef0) to node {$\Gamma_{t}$} (eft);
             \draw[->] (varrho0) to node [swap] {$\mcE_{t}$} 
             (varrhot);
