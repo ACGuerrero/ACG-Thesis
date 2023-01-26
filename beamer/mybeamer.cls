@@ -115,7 +115,7 @@
 % Cites in footones
 \RequirePackage[style=authortitle, bibstyle=authortitle,backend=bibtex,maxnames=1]{biblatex}
 \setbeamerfont{footnote}{size=\tiny}
-\newcommand{\mycite}[1]{\footnote[frame,1]{\cite{#1}}}
+\newcommand{\mycite}[1]{\footnote[frame]{\cite{#1}}}
 
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}

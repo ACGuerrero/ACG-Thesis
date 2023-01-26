@@ -15,7 +15,7 @@
         \begin{column}{0.5\textwidth}
             El estado de máxima entropía es\pause
             \begin{equation}
-                \varrho_{\max}(t)=\Motimes_{k=1}^{n}{\color{blue}\frac{1}{Z_{k}}}U_{k}(t) {\color{blue}e^{\qty(p_{k}\sum_{j}\lambda_{j}\pauli{j})}} (U_{k}(t))^{\dag}\nonumber
+                \varrho_{\max}(t)=\Motimes_{k=1}^{n}U_{k}(t) {\color{blue}\qty(\frac{e^{\qty(p_{k}\sum_{j}\lambda_{j}\pauli{j})}}{Z})} (U_{k}(t))^{\dag}\nonumber
             \end{equation}
         \end{column}
         \pause
@@ -30,31 +30,24 @@
 \begin{frame}{Partículas no interactuantes con diferente frecuencia de transición}
     \begin{columns}
         \begin{column}{0.5\textwidth}
-            Usamos el hamiltoniano $\mcH=\sum_{k=1}^{n}\omega_{k}\pauli{3,k}$.\\ \pause
-            Los valores $\expval{\pauli{k}(t)}_{\ef}\equiv\Tr(\pauli{k}\Gamma_{t}(\rho_{\ef}))$:\pause
+            Hamiltoniano: $\mcH=\sum_{k=1}^{n}\omega_{k}\pauli{3,k}$.\\ \pause
+            Usaremos: $\expval{\pauli{k}(t)}_{\ef}=r_{k,\ef}(t)$\\ \pause
+            A notar $\expval{\pauli{3}(t)}_{\ef}=\text{cte}$.\\ \pause
+            Según lo anterior:
             \begin{equation}
-                \begin{gathered}
-                \expval{\pauli{1}(t)}_{\ef}=p_{1} \expval{\sigma_{1}(t)}_{1}+\sum_{k=2}^{n}p_{k}\expval{\pauli{1}(t)}_{k}\text{\footnotemark}\pause\\
-                \expval{\pauli{2}(t)}_{\ef}=p_{1} \expval{\sigma_{2}(t)}_{1}+\sum_{k=2}^{n}p_{k}\expval{\pauli{2}(t)}_{k}\pause\\
-                \expval{\pauli{3}(t)}_{\ef}=\expval{\pauli{3}(0)}_{\ef}.
-            \end{gathered}\nonumber
+                \expval{\pauli{j}(t)}_{\ef}=\sum_{k=1}^{n}p_{k}\expval{\pauli{j}(t)}_{k}\nonumber
+            \end{equation}
+            Sea $p_{j\neq 1}=p_{\text{np}}=\frac{1-p_{1}}{1-n}$. Entonces:\pause
+            \begin{equation}
+                r_{j,\ef}(t)=p_{1}r_{j,1}(t)-\pause p_{\text{np}}r_{\text{np}}\sum_{k=2}^{n}\sin(2\omega_{k} t-\phi_{j})\nonumber
         \end{equation}
-        \footnotetext{$^{1}$Aquí, $\expval{\pauli{1}(t)}_{k}=\Tr[\pauli{1}e^{-\rmi\omega_{k} t\pauli{3}} \rho_{k} e^{\rmi\omega_{k} t\pauli{3}}]$}
         \end{column}
         \pause
         \begin{column}{0.5\textwidth}
-            Sea $p_{j\neq 1}=p_{\text{np}}=\frac{1-p_{1}}{1-n}$ y $r_{3,\ef}=0$.\pause\\
-            Las expresiones se reducen a:\pause
-            \begin{equation}
-                \begin{gathered}
-                    r_{1,\ef}(t)=p_{1}r_{1,1}(t)-p_{\text{np}}r_{\text{np}}\sum_{k=2}^{n}\sin(2\omega_{k} t-\phi)\pause\\
-                    r_{2,\ef}(t)=p_{1}r_{2,1}(t)+p_{\text{np}}r_{\text{np}}\sum_{k=2}^{n}\sin(2\omega_{k} t+\theta).
-                \end{gathered}\nonumber
-            \end{equation}\pause
-            donde\pause
-            \begin{equation}
-                r_{\text{np}}=\tanh(p_{\text{np}} \lambda).\nonumber
-            \end{equation}
+            \begin{figure}
+                \centering
+                \includegraphics[width=1.\textwidth]{figures/maxent_results/local_all_ran_p=0.5_r=0.9_n=10_a=-3_b=3.pdf}
+               \end{figure}
         \end{column}
     \end{columns}
 \end{frame}
@@ -63,18 +56,18 @@
         \begin{column}{0.5\textwidth}
             Importante: límite $n\rightarrow\infty$. \pause
             \begin{equation}
-                r_{1,\ef}(t)=p_{1}r_{1,1}(t)-p_{\text{np}}r_{\text{np}}\sum_{k=2}^{n}\sin(2\omega_{k} t-\phi)\nonumber
+                \begin{gathered}
+                r_{1,\ef}(t)=p_{1}r_{1,1}(t)-p_{\text{np}}r_{\text{np}}{\color{blue}\sum_{k=2}^{n}\sin(2\omega_{k} t-\phi)}\pause\\
+                {\color{blue}\sum_{k=2}^{n}\sin(2\omega_{k} t-\phi)}\xrightarrow{n\rightarrow\infty} N(0,\text{std})
+                \end{gathered}\nonumber
             \end{equation}\pause
-            Sumas trigonométricas $\xrightarrow{n\rightarrow\infty} N(0,\text{std})$ \pause \\
-            \vspace{0.3cm}
-            La dinámica efectiva tiende a\pause  \\
-\begin{equation}\label{eq:MeanDynamics}
-    \Gamma_{t\rightarrow\infty}(\vec{r}_{\ef})\rightarrow\begin{pmatrix}
-        p_{1}r_{1,1}(t)\\
-        p_{1}r_{2,1}(t)\\
-        r_{3}\\
-    \end{pmatrix}\nonumber.
-\end{equation}
+            Pasado algún $t_{\text{s}}$, la dinámica efectiva tiende a\\ \pause
+            $\Gamma_{t>t_{\text{s}}}(\vec{r}_{\ef})\xrightarrow{n\rightarrow\infty}\begin{pmatrix}
+                p_{1}r_{1,1}(t)\\
+                p_{1}r_{2,1}(t)\\
+                r_{3}\\
+            \end{pmatrix}$\\ \pause
+            Esto \textbf{no es típicamente cuántico}.
         \end{column}
         \pause
         \begin{column}{0.5\textwidth}
@@ -84,19 +77,6 @@
            \end{figure}
         \end{column}
     \end{columns}
-\end{frame}
-\begin{frame}{Convergencia}
-    \begin{figure}
-        \begin{subfigure}{0.45\textwidth}
-            \centering
-            \includegraphics[width=1.\textwidth]{figures/maxent_results/local_all_ran_p=0.5_r=0.9_n=10_a=-3_b=3.pdf}
-        \end{subfigure}
-        \begin{subfigure}{0.45\textwidth}
-            \centering
-            \includegraphics[width=1.\textwidth]{figures/maxent_results/local_all_ran_p=0.5_r=0.9_n=500_a=-3_b=3.pdf}
-        \end{subfigure}
-        \caption{CAPTION}
-       \end{figure}
 \end{frame}
 %###########################
 
@@ -116,7 +96,7 @@
                 \begin{equation*}
                     \kappa_{t}=\frac{r_{\rho(1)}}{r_{\rho(0)}}.
                   \end{equation*}\pause
-                  Canal de despolarización no lineal:\pause
+                  Canal de despolarización \textbf{no lineal}:\pause
                   \begin{center}
                     \tcbox{$\rho\mapsto\kappa_{1}^{\rho}\rho+(1-\kappa_{1}^{\rho})\frac{1}{2}\Id$}
                   \end{center}
@@ -125,7 +105,7 @@
             \begin{figure}[h!]
                 \centering
                 \includegraphics[width=0.9\linewidth]{figures/maxent_results/K(r).pdf}
-                \caption{Depolarizing coefficient as a function of $r_{\rho(0)}$ for different values of $p$.}
+                \caption{Coeficiente de despolarización como function de $r_{\rho(0)}$ para diferentes valores de $p$.}
               \end{figure}
         \end{column}
     \end{columns}
@@ -151,7 +131,7 @@
         &+\frac{(1-p)}{2}\qty[{\color{red}\expval{\pauli{1}}_{\rho_{B}}\rho_{A}+(1-\expval{\pauli{1}}_{\rho_{B}})\pauli{3}\rho_{A}\pauli{3}}]\\
         &+\frac{p}{2}\qty[{\color{blue}\expval{\pauli{3}}_{\rho_{A}}\rho_{B}+(1-\expval{\pauli{3}}_{\rho_{A}})\pauli{1}\rho_{B}\pauli{1}}].
     \end{align*}\pause
-    Combinación de un canal no lineal de {\color{red}desfasamiento} y un canal no lineal de {\color{blue}bit flip}.
+    \tcbox{Combinación de un canal \textbf{no lineal} de {\color{red}desfasamiento} y un canal \textbf{no lineal} de {\color{blue}bit flip}.}
 \end{frame}
 \begin{frame}{Caso límite: canal de desfasamiento}
     \begin{columns}

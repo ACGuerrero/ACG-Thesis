@@ -1,9 +1,27 @@
 \section{Introducción}
-
+\begin{frame}{Qubits}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            Sistemas cuánticos de dos niveles:
+            \begin{equation}
+                \ket{\psi}=\alpha\ket{0}+\beta\ket{1}.\nonumber
+            \end{equation}
+            Reescribible como:
+            \begin{equation}
+                \ket{\psi}=\cos(\frac{1}{2})\ket{0}+e^{\rmi\varphi}\sin(\frac{1}{2})\ket{1}.\nonumber
+            \end{equation}
+        \end{column}
+        \pause
+        \begin{column}{0.5\textwidth}
+            \centering
+            \BlochSphere
+        \end{column}
+    \end{columns}
+\end{frame}
 
 %###########################
 %# Descripciones efectivas #
-\begin{frame}{Dinámica que emerge de una descripción efectiva}
+\begin{frame}{Dinámica que emerge de una descripción efectiva: motivación}
     \begin{center}
         ``Dinámica \textbf{efectiva} de un sistema de N qubits''
     \end{center}
@@ -24,13 +42,16 @@
         \end{column}
         \pause
         \begin{column}{0.5\textwidth}
-            La descripción gruesa de un sistema es resultado de
+            Una descripción de grano grueso de un sistema es resultado de
             \begin{itemize}
                 \item Aparato de medición imperfecto
                 \item Descarte de grados de libertad del sistema
             \end{itemize}
         \end{column}
     \end{columns}
+    \begin{center}
+        \tcbox{Un modelo de grano grueso permite estudiar dinámicas observables}
+    \end{center}
 \end{frame}
 %###########################
 
@@ -74,7 +95,7 @@
 \begin{frame}{Parametrización}
     \begin{columns}
         \begin{column}{0.5\textwidth}
-            Una base hermítica permite parametrizar a una matriz de densidad a través del producto punto de Hilbert-Schmidt\mycite{Chuang}
+            Parametrizar usando producto punto\mycite{Chuang}
             \begin{equation}
                 \rho=\frac{1}{2}\qty(\Id_{2}\Tr(\rho)+\sum_{k=1}^{3}\Tr(\rho\pauli{k})\pauli{k}).\nonumber
             \end{equation}
@@ -100,67 +121,37 @@
 
 %###########################
 %#### Sistemas abiertos ####
-\begin{frame}{Sistemas multipartitos}
+\begin{frame}{Sistemas multipartitos y canales cuánticos}
     \begin{columns}
         \begin{column}{0.5\textwidth}
             \begin{block}{Combinar y reducir}
-            Si $\rho_{\text{bi}}$ describe dos qubits A y B,
-            \begin{equation}
-                \hilbert_{\text{bi}}=\hilbert_{2}\otimes\hilbert_{2}.\nonumber
-            \end{equation}
-           \pause
-           ¿Qué sucede si es relevante \textbf{una} partícula?\pause
-            \begin{equation}
-                \rho^{A}=\Tr_{B}(\rho_{\text{bi}}),\nonumber
-            \end{equation}
+                \begin{center}
+            Si $\rho_{\text{bi}}$ describe dos qubits A y B,\pause \\
+            $\hilbert_{\text{bi}}=\hilbert_{2}\otimes\hilbert_{2}$. \pause \\
+            \vspace{0.2cm}
+           ¿Y si es relevante \textbf{una} partícula?\pause \\
+            $\rho^{A}=\Tr_{B}(\rho_{\text{bi}})$. \pause \\
+            \vspace{0.2cm} 
+            Sistema multipartito $\rightarrow$ von Neumann\\
+            $\rmi\hbar\frac{d}{d t} \rho_{\text{bi}}(t)=[H,\rho_{\text{bi}}(t)]$. \pause \\
+            \vspace{0.2cm}
+            Trazando:\\
+            $\rmi\hbar\frac{d}{d t} \rho^{A}(t)=\Tr_{B}([H,\rho_{\text{bi}}(t)])$.\pause \\
+                \end{center}
             \end{block}
         \end{column}
         \pause
         \begin{column}{0.5\textwidth}
-            \begin{block}{Evolución}
-            Sistema multipartito $\rightarrow$ von Neumann
-            \begin{equation}
-                \rmi\hbar\frac{d}{d t} \rho_{\text{bi}}(t)=[H,\rho_{\text{bi}}(t)].\nonumber
-            \end{equation}\pause
-            \vspace{0.3cm}
-            Trazando:
-            \begin{align}
-                \rmi\hbar\frac{d}{d t} \rho^{A}(t)=\Tr_{B}([H,\rho_{\text{bi}}(t)])\rlap{.}\nonumber
-            \end{align}
-        \end{block}
-        \end{column}
-    \end{columns}
-\end{frame}
-\begin{frame}{Evolución abierta}
-    Supóngase que el sistema de interés está acoplado a un \textit{entorno}: $\rho_{\text{Tot}}(0)=\rho_{S}(0)\otimes\rho_{E}$\pause
-    \begin{columns}
-        \begin{column}{0.5\textwidth}
-            \begin{block}{El canal cuántico}
-            \begin{align}
-                \rmi\hbar\frac{d}{d t} \rho_{S}(t)=\Tr_{E}([H,\rho_{\text{Tot}}(t)])\rlap{,}\nonumber
-            \end{align}\pause
-            Tiene solución:
-            \begin{equation}
-                \begin{gathered}
-                \rho_{S}(t)=\mcE_{t}(\rho_{S}(0))\pause\\
-                \mcE_{t}(\rho_{S}(0))=\Tr_{E}\qty[U(t)\left(\rho_{S}(0)\otimes\rho_{E}\right)U^{\dag}(t)]
-            \end{gathered}\nonumber
-            \end{equation}
-            \end{block}
-        \end{column}
-        \pause
-        \begin{column}{0.5\textwidth}
-            \begin{block}{Operadores de Kraus}
-                \vspace{0.5cm}
-                La representación en operadores:
-                \vspace{0.3cm}
+        \begin{block}{Canales cuánticos}
             \begin{itemize}
-                \item $\mcE(\rho)=\sum_{k}A_{k}\rho A^{\dagger}_{k}$,\pause
-                \item $\sum_{k}A_{k}^{\dagger}A_{k}=\Id$,\pause
+                \item Son generalización lineal de la dinámica unitaria: $\mcE_{t}$.
+                \item Modelan procesos ruidosos.
+                \item Relacionados a sistemas abiertos.
+                \item Tienen representación en operadores de \textbf{Kraus}\mycite{Breuer}:
+                    \begin{align}
+                        \mcE(\rho)=\sum_{k}A_{k}\rho A^{\dagger}_{k}& &\sum_{k}A_{k}^{\dagger}A_{k}=\Id \nonumber
+                    \end{align}
             \end{itemize}
-            \vspace{0.3cm}
-            asegura \textbf{CPTP}.\mycite{Breuer}
-            \vspace{0.5cm}
         \end{block}
         \end{column}
     \end{columns}
@@ -225,31 +216,49 @@
 \end{frame}
 %###########################
 
-\begin{frame}{El problema: motivación}
+\begin{frame}{Planteamiento del problema}
     \begin{center}
-        Se estudia la dinámica que emerge de una descripción efectiva\pause
+        Se estudia la dinámica que emerge de una descripción efectiva ${\color{blue}\mcC}$. \pause
     \end{center}
     \begin{columns}
         \begin{column}{0.5\textwidth}
-            \begin{displaymath}
-                \xymatrix{
-                  {\rho_{\ef}(0)} \ar[rr]^{\text{\textcolor{red}{?}}}
-                  && {\rho_{\ef}(t)}\\
-                  {\varrho_{\text{\textcolor{red}{?}}}(0)} \ar[rr]^{\mcE_{t}} \ar[u]^{\mcC}
-                  && {\varrho_{\text{\textcolor{red}{?}}}(t)} \ar[u]^{\mcC}
-                }
-              \end{displaymath}
+            \begin{center}
+                $$\begin{tikzpicture}[node distance=2cm, auto]
+                    \draw [blue,fill=cyan!20, fill opacity=0.6] (1.2cm,0cm) ellipse (2.2cm and 0.7cm);
+                    \draw [red,fill=red!20, fill opacity=0.5] (1.2cm,-1.8cm) ellipse (2.2cm and 0.7cm);
+                    \node (ef0) {$\rho_{\ef}(0)$};
+                    \node (eft) [right=1.5cm of ef0] {$\rho_{\ef}(t)$};
+                    \node (varrho0) [below=1.2cm of ef0] {$\varrho_{\text{\textcolor{red}{?}}}(0)$};
+                    \node (varrhot) [below=1.2cm of eft] {$\varrho_{\text{\textcolor{red}{?}}}(t)$};
+                    \draw[->] (ef0) to node {\textbf{?}} (eft);
+                    \draw[->] (varrho0) to node [swap] {$\mcE_{t}$} 
+                    (varrhot);
+                    \draw[blue,->] (varrho0) to node [left] {$\mcC$} 
+                    (ef0);
+                    \draw[blue,->] (varrhot) to node [right] {$\mcC$} 
+                    (eft);
+                  \end{tikzpicture}$$
+            \end{center}
         \end{column}
         \pause
         \begin{column}{0.5\textwidth}
-            \begin{displaymath}
-                \xymatrix{
-                  {\rho_{\ef}(0)} \ar[rr]^{{\mcC\circ\mcE_{t}\circ\color{red}\mcA}} \ar[d]^{{\color{red}\mcA}}
-                  && {\rho_{\ef}(t)}\\
-                  {\varrho_{{\color{red}\mcA}}(0)} \ar[rr]^{\mcE_{t}}
-                  && {\varrho_{{\color{red}\mcA}}(t)} \ar[u]^{\mcC}
-                }
-              \end{displaymath}
+            \begin{center}
+                $$\begin{tikzpicture}[node distance=2cm, auto]
+                    \draw [blue,fill=cyan!20, fill opacity=0.6] (1.2cm,0cm) ellipse (2.2cm and 0.7cm);
+                    \draw [red,fill=red!20, fill opacity=0.5] (1.2cm,-1.8cm) ellipse (2.2cm and 0.7cm);
+                    \node (ef0) {$\rho_{\ef}(0)$};
+                    \node (eft) [right=1.5cm of ef0] {$\rho_{\ef}(t)$};
+                    \node (varrho0) [below=1.2cm of ef0] {$\varrho_{\text{\textcolor{red}{?}}}(0)$};
+                    \node (varrhot) [below=1.2cm of eft] {$\varrho_{\text{\textcolor{red}{?}}}(t)$};
+                    \draw[->] (ef0) to node {\textbf{?}} (eft);
+                    \draw[->] (varrho0) to node [swap] {$\mcE_{t}$} 
+                    (varrhot);
+                    \draw[red,->] (ef0) to node [left] {$\mcA$} 
+                    (varrho0);
+                    \draw[blue,->] (varrhot) to node [right] {$\mcC$} 
+                    (eft);
+                  \end{tikzpicture}$$
+            \end{center}
               \pause
         \end{column}
     \end{columns}
@@ -292,7 +301,7 @@
 
 \subsection{El Principio de Máxima Entropía}
 
-\begin{frame}{Intuición del Principio de Máxima Entropía}
+\begin{frame}{Intuición y enunciación del Principio de Máxima Entropía}
     \begin{columns}
         \begin{column}{0.5\textwidth}
             \begin{block}{Usando dados: {\usefont{U}{dice3d}{m}{n}6a 2b 3d}}
@@ -316,7 +325,7 @@
         \pause
         \begin{column}{0.5\textwidth}
             \begin{block}{El principio de Máxima Entropía}
-                ``La distribución de probabilidad que maximiza la entropía es la única asignación sin sesgo. Cualquier otra implicaría la suposición arbitraria de información que no se tiene. ''\mycite{JaynesI}
+                ``La distribución de probabilidad que maximiza la entropía es la única asignación sin sesgo. Cualquier otra implicaría la suposición arbitraria de información que no se tiene''.\mycite{JaynesI}
             \end{block}
             El principio de máxima entropía fue introducido por E. T. Jaynes en 1957. \pause
         \end{column}
@@ -333,15 +342,15 @@
     \end{equation}
 \end{frame}
 \begin{frame}{El Principio de Máxima Entropía cuántico}
-    Usamos la entropía de von Neuman $S=-Tr(\rho\ln(\rho))$, \pause que si $[\rho,H]=0$ \pause es
+    Usamos la entropía de von Neuman \pause 
     \begin{equation}
-        S_{\text{N}}=-\sum_{k}\rho_{kk}\log{\rho_{kk}}\pause\xrightarrow{\text{maximización}}\rho_{kk}=\frac{1}{Z}e^{-\lambda E_{k}}\nonumber
-    \end{equation}\pause
-    Utilizando notación de Dirac, $\rho=\sum_{k}\rho_{kk}\dyad{e_{k}}$:\pause
+        S=-Tr(\rho\ln(\rho))\nonumber
+    \end{equation}
+    y asumimos que conocemos $\expval{A_{k}}$
     \begin{equation}
-        \rho=\frac{1}{Z}e^{-\lambda H}.\nonumber
+        S_{\text{N}}=-Tr(\rho\ln(\rho))\pause\xrightarrow{\text{maximización}}\rho=\frac{1}{Z}e^{-\sum_{k}\lambda_{k} A_{k}}\nonumber
     \end{equation}\pause
-    En general\mycite{JaynesII}:
+    Así que el operador de densidad que maximiza la entropía\mycite{JaynesII}:
     \begin{center}
         \tcbox{$\rho=\frac{1}{Z}e^{-\sum_{k}\lambda_{k} A_{k}}$}
     \end{center}
@@ -355,14 +364,22 @@
     \begin{center}
         ``Dinámica efectiva de un sistema de N qubits\\
         Utilizando el Principio de Máxima Entropía''
-        \begin{displaymath}
-            \xymatrix{
-              {\rho_{\ef}(0)} \ar[rr]^{\Gamma_{t}} \ar[d]^{\mcA_{\mcC}^{\max}}
-              && {\rho_{\ef}(t)}\\
-              {\varrho_{\max}(0)} \ar[rr]^{\mcE_{t}}
-              && {\varrho_{\max}(t)} \ar[u]^{\mcC}
-            }
-          \end{displaymath}
+        $$\begin{tikzpicture}[node distance=2cm, auto]
+            \draw [blue,fill=cyan!20, fill opacity=0.6] (1.2cm,0cm) ellipse (2.2cm and 0.7cm);
+            \draw [red,fill=red!20, fill opacity=0.5] (1.2cm,-1.8cm) ellipse (2.2cm and 0.7cm);
+            \node (ef0) {$\rho_{\ef}(0)$};
+            \node (eft) [right=1.5cm of ef0] {$\rho_{\ef}(t)$};
+            \node (varrho0) [below=1.2cm of ef0] {$\varrho_{\text{\textcolor{red}{?}}}(0)$};
+            \node (varrhot) [below=1.2cm of eft] {$\varrho_{\text{\textcolor{red}{?}}}(t)$};
+            \draw[->] (ef0) to node {$\Gamma_{t}$} (eft);
+            \draw[->] (varrho0) to node [swap] {$\mcE_{t}$} 
+            (varrhot);
+            \draw[red,->] (ef0) to node [left] {$\mcA_{\mcC}^{\max}$} 
+            (varrho0);
+            \draw[blue,->] (varrhot) to node [right] {$\mcC$} 
+            (eft);
+          \end{tikzpicture}$$ \pause
+          Queda construir matemáticamente $\color{blue}\mcC$ y $\color{red}\mcA_{\mcC}^{\max}$.
     \end{center}
 \end{frame}
 %###########################
