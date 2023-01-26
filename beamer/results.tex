@@ -36,7 +36,7 @@
             Según lo anterior:
             \begin{equation}
                 \expval{\pauli{j}(t)}_{\ef}=\sum_{k=1}^{n}p_{k}\expval{\pauli{j}(t)}_{k}\nonumber
-            \end{equation}
+            \end{equation}\pause
             Sea $p_{j\neq 1}=p_{\text{np}}=\frac{1-p_{1}}{1-n}$. Entonces:\pause
             \begin{equation}
                 r_{j,\ef}(t)=p_{1}r_{j,1}(t)-\pause p_{\text{np}}r_{\text{np}}\sum_{k=2}^{n}\sin(2\omega_{k} t-\phi_{j})\nonumber
@@ -132,24 +132,6 @@
         &+\frac{p}{2}\qty[{\color{blue}\expval{\pauli{3}}_{\rho_{A}}\rho_{B}+(1-\expval{\pauli{3}}_{\rho_{A}})\pauli{1}\rho_{B}\pauli{1}}].
     \end{align*}\pause
     \tcbox{Combinación de un canal \textbf{no lineal} de {\color{red}desfasamiento} y un canal \textbf{no lineal} de {\color{blue}bit flip}.}
-\end{frame}
-\begin{frame}{Caso límite: canal de desfasamiento}
-    \begin{columns}
-        \begin{column}{0.5\textwidth}
-            Supongamos $p=0$. El estado efectivo evolucionado:
-            \begin{equation*}
-              \rho_{\ef}(t=1)=\frac{1}{2}\rho_{\ef}(0)+\frac{1}{2}\pauli{3}\rho_{\ef}(0)\pauli{3}.
-            \end{equation*}\pause
-            ¡Esto es un canal de desfasamiento!\pause
-        \end{column}
-        \begin{column}{0.5\textwidth}
-            \begin{figure}[h!]
-                \centering
-                \includegraphics[width=0.7\linewidth]{figures/maxent_results/CNOT_p=1._t=1_r=0.9.png}
-                \caption{Canal de desfasamiento}
-              \end{figure}
-        \end{column}
-    \end{columns}
 \end{frame}
 %###########################
 
@@ -247,9 +229,9 @@
 \begin{frame}{Construcción de la asignación promedio}
     Otra forma de escoger un estado microscópico compatible \pause es tomando un promedio\mycite{Macro-To-Micro}. \pause Un promedio sobre el conjunto \pause
     \begin{equation}
-        \Omega_{\mcC}(\rho_{\ef}) = \{\ket{\psi}\in\hilbert_{m}:\, \mcC(\dyad{\psi}) = \rho_{\ef}  \}.\nonumber
-    \end{equation}
-    La aplicación de asignación promedio es el promedio sobre dicho conjunto\mycite{priv}, \ie \pause
+        \Omega_{\mcC}(\rho_{\ef}) = \{\ket{\psi}\in\hilbert_{2^{n}}:\, \mcC(\dyad{\psi}) = \rho_{\ef}  \}.\nonumber
+    \end{equation}\pause
+    La aplicación de asignación promedio\mycite{priv}: \pause
     \begin{equation}
         \mcA_{\mcC}^{\avg}(\rho_{\ef}) =\int d \mu\,\, \delta(\mcC(\dyad{\psi})-\rho_{\ef})\,\dyad{\psi}.\nonumber
     \end{equation} \pause
@@ -264,6 +246,7 @@
                 \caption{Distancia de Frobenius entre asignaciones como función de $p_{1}$ para diferentes valores de $r_{z}$.}
             \end{figure}
         \end{column}
+        \pause
         \begin{column}{0.5\textwidth}
             \begin{itemize}
                 \item Iguales si $\rho_{ef}$ es puro o si ($p_{1}\in\{0,1\}$).\pause

@@ -52,7 +52,7 @@
         \begin{equation}
             \begin{gathered}
                 \mcC:\mcS( \hilbert_{2}^{\otimes n})\to \mcS(\hilbert_{2})\pause\\
-                \varrho\mapsto\Tr_{\overline{1}}(\Fuzzy{\varrho})\pause = \sum_{k}p_{k=1}^{n}\rho_{k}.
+                \varrho\mapsto\Tr_{\overline{1}}(\Fuzzy{\varrho})\pause = \sum_{k=1}^{n}p_{k}\rho_{k}.
             \end{gathered}\nonumber
         \end{equation}
     \end{block}
@@ -96,31 +96,21 @@
     \end{columns}
 \end{frame}
 \begin{frame}{Definición de la aplicación de Máxima Entropía}
-    \begin{columns}
-        \begin{column}{0.5\textwidth}
-            Tenemos
-            \begin{equation}
-                \varrho_{\max}=\varrho_{\max}(\lambda_{1},\lambda_{2},\lambda_{3})\nonumber
-            \end{equation}\pause
-            La relación:
-            \begin{equation}
-                \expval{\pauli{k}}=\frac{\lambda_{k}}{\lambda}\sum_{j=1}^{n}p_{j}\tanh(p_{j}\lambda)\nonumber
-            \end{equation}\pause
-            donde $\lambda=\sqrt{\lambda_{1}^{2}+\lambda_{2}^{2}+\lambda_{3}^{2}}$
-        \end{column}
-        \pause
-        \begin{column}{0.5\textwidth}
             \begin{block}{La aplicación}
             Definimos la aplicación de asignación de máxima entropía:\pause
+            \begin{center}
             \tcbox{$
                 \begin{gathered}
-                    \mcA_{\mcC}^{\max}:\densityspace{2}\rightarrow\mcS(\hilbert_{2}^{\otimes n})\pause\nonumber\\
+                    \mcA_{\mcC}^{\max}:\densityspace{2}\rightarrow\mcS(\hilbert_{2}^{\otimes n})\nonumber\\
                     \rho_{\ef} \mapsto \Motimes_{j=1}^{n}\frac{1}{Z_{j}}\text{exp}\qty(p_{j}\sum_{k=1}^{3}\lambda_{k}\sigma_{k}).
                 \end{gathered}$}
-                A notar \textbf{factorizabilidad}: $\varrho_{\max}=\Motimes_{j=1}^{n}\rho_{k}$
+            \end{center}
+                \pause
+                A notar \textbf{factorizabilidad}:
+                \begin{equation}
+                    \varrho_{\max}=\Motimes_{j=1}^{n}\rho_{k}\nonumber
+                \end{equation}
             \end{block}
-        \end{column}
-    \end{columns}
 \end{frame}
 %###########################
 
@@ -130,8 +120,8 @@
 \begin{frame}{Uniendo todo}
     \begin{displaymath}
         \xymatrix{
-          {\rho(0)} \ar[rr]^{\Gamma_{t}} \ar[d]^{\mcA^{max}_{\mcC}}
-          && {\rho(t)}\\
+          {\rho_{\ef}(0)} \ar[rr]^{\Gamma_{t}} \ar[d]^{\mcA^{max}_{\mcC}}
+          && {\rho_{\ef}(t)}\\
           {\varrho_{max}(0)} \ar[rr]^{\mcE_{t}}
           && {\varrho_{max}(t)} \ar[u]^{\mcC}
         }

@@ -2,13 +2,13 @@
 \begin{frame}{Qubits}
     \begin{columns}
         \begin{column}{0.5\textwidth}
-            Sistemas cuánticos de dos niveles:
+            Sistemas cuánticos de dos niveles:\pause
             \begin{equation}
                 \ket{\psi}=\alpha\ket{0}+\beta\ket{1}.\nonumber
-            \end{equation}
-            Reescribible como:
+            \end{equation}\pause
+            Reescribible como:\pause
             \begin{equation}
-                \ket{\psi}=\cos(\frac{1}{2})\ket{0}+e^{\rmi\varphi}\sin(\frac{1}{2})\ket{1}.\nonumber
+                \ket{\psi}=\cos(\frac{\theta}{2})\ket{0}+e^{\rmi\varphi}\sin(\frac{\theta}{2})\ket{1}.\nonumber
             \end{equation}
         \end{column}
         \pause
@@ -42,15 +42,20 @@
         \end{column}
         \pause
         \begin{column}{0.5\textwidth}
-            Una descripción de grano grueso de un sistema es resultado de
+            Una descripción de grano grueso de un sistema es resultado de\pause
             \begin{itemize}
                 \item Aparato de medición imperfecto
                 \item Descarte de grados de libertad del sistema
             \end{itemize}
         \end{column}
     \end{columns}
+    \pause
     \begin{center}
-        \tcbox{Un modelo de grano grueso permite estudiar dinámicas observables, exploraciones iniciales resultaban en comportamientos impropios de la mecánica cuántica}
+        \begin{tcolorbox}
+            \begin{center}
+                Un modelo de grano grueso permite estudiar la emergencia de comportamientos comúnmente física clásica
+            \end{center}
+        \end{tcolorbox}
     \end{center}
 \end{frame}
 %###########################
@@ -144,9 +149,9 @@
         \begin{column}{0.5\textwidth}
         \begin{block}{Canales cuánticos}
             \begin{itemize}
-                \item Son generalización lineal de la dinámica unitaria: $\mcE_{t}$.
-                \item Modelan procesos ruidosos.
-                \item Relacionados a sistemas abiertos.
+                \item Son generalización lineal de la dinámica unitaria: $\mcE_{t}$.\pause
+                \item Modelan procesos ruidosos.\pause
+                \item Relacionados a sistemas abiertos.\pause
                 \item Tienen representación en operadores de \textbf{Kraus}\mycite{Breuer}:
                     \begin{align}
                         \mcE(\rho)=\sum_{k}A_{k}\rho A^{\dagger}_{k},& &\sum_{k}A_{k}^{\dagger}A_{k}=\Id \nonumber
@@ -305,8 +310,9 @@
     \begin{columns}
         \begin{column}{0.5\textwidth}
             \begin{block}{Usando dados: {\usefont{U}{dice3d}{m}{n}6a 2b 3d}}
+                \pauses
                 \begin{center}   
-                Supóngase que $\expval{\text{\Pisymbol{dice3d}{102}}}=3.5$\\
+                Supóngase que $\expval{\text{\Pisymbol{dice3d}{102}}}=3.5$\\ \pause
                 ¿$p(x)$?\\ \pause
                 Dado balanceado:
                 \begin{tabular}{ c c c }
@@ -345,7 +351,7 @@
     Usamos la entropía de von Neuman \pause 
     \begin{equation}
         S=-Tr(\rho\ln(\rho))\nonumber
-    \end{equation}
+    \end{equation}\pause
     y asumimos que conocemos $\expval{A_{k}}$
     \begin{equation}
         S_{\text{N}}=-Tr(\rho\ln(\rho))\pause\xrightarrow{\text{maximización}}\rho=\frac{1}{Z}e^{-\sum_{k}\lambda_{k} A_{k}}\nonumber
